@@ -359,7 +359,48 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h1 id="前提-博客文件夹还在"><a href="#前提-博客文件夹还在" class="headerlink" title="前提(博客文件夹还在!!!)"></a>前提(博客文件夹还在!!!)</h1><blockquote>
+<p>我写这篇博客想记录重装系统之后如何重新部署hexo博客!!</p>
+</blockquote>
+<hr>
+<h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><h2 id="安装git和node-js文件"><a href="#安装git和node-js文件" class="headerlink" title="安装git和node.js文件"></a>安装git和node.js文件</h2><blockquote>
+<p>两个软件路径百度就可以找到(如果你有幸看到这篇文章,可以联系我发给你)</p>
+</blockquote>
+<h2 id="配置git信息-生成新的ssh密钥"><a href="#配置git信息-生成新的ssh密钥" class="headerlink" title="配置git信息,生成新的ssh密钥"></a>配置git信息,生成新的ssh密钥</h2><pre><code>//每次输入一行就执行一次(按回车)
+    git config --global user.name &quot;你自己的github用户名&quot;
+    git config --global user.email &quot;Xxxxx@qq.com&quot;
+
+//你需要把邮件地址和用户名换成你自己的，然后一路回车，使用默认值即可。    
+    ssh-keygen -t rsa -C &quot;Xxxx@qq.com&quot;</code></pre><h2 id="更新ssh密钥"><a href="#更新ssh密钥" class="headerlink" title="更新ssh密钥"></a>更新ssh密钥</h2><blockquote>
+<p>打开id_rsa.pub文件并且复制里面的内容</p>
+</blockquote>
+<p><img src="lujing.png" alt=""></p>
+<blockquote>
+<p>生成的ssh公钥(刚复制的内容)复制到github的settings里面的ssh选项中(参考github讲ssh密钥添加到github账户)</p>
+</blockquote>
+<p><a href="http://https://docs.github.com/cn/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account" target="_blank" rel="noopener" title="参考">http://https://docs.github.com/cn/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account</a></p>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><blockquote>
+<p>npm install hexo-cli -g</p>
+</blockquote>
+<h2 id="打开原来的hexo博客所在文件夹"><a href="#打开原来的hexo博客所在文件夹" class="headerlink" title="打开原来的hexo博客所在文件夹"></a>打开原来的hexo博客所在文件夹</h2><blockquote>
+<p>只需保留_config.yml，theme/，source/，scaffolds/，package.json，.gitignore 这些项目，删除其他的文件。</p>
+</blockquote>
+<blockquote>
+<p>git bush运行命令npm install</p>
+</blockquote>
+<blockquote>
+<p>git bush运行命令npm install hexo-deployer-git –save</p>
+</blockquote>
+<blockquote>
+<p>最后执行hexo g和hexo d试试就行</p>
+</blockquote>
+<hr>
+<h1 id="参考网址"><a href="#参考网址" class="headerlink" title="参考网址"></a>参考网址</h1><blockquote>
+<p>参考别人的思路!!!</p>
+</blockquote>
+<p><a href="http://http://fenghub.top/2017/02/25/hexo-rebuilding/" target="_blank" rel="noopener" title="大佬的">http://http://fenghub.top/2017/02/25/hexo-rebuilding/</a></p>
+<hr>
+
       
       
     </div>
