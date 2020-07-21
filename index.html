@@ -915,10 +915,22 @@
 
 <h2 id="结果-38"><a href="#结果-38" class="headerlink" title="结果"></a>结果</h2><p><img src="" alt=""></p>
 <hr>
-<h1 id="连续子数组的最大和"><a href="#连续子数组的最大和" class="headerlink" title="连续子数组的最大和"></a>连续子数组的最大和</h1><h2 id="题目-39"><a href="#题目-39" class="headerlink" title="题目"></a>题目</h2><p><img src="disishi.png" alt=""></p>
-<h2 id="分析-39"><a href="#分析-39" class="headerlink" title="分析"></a>分析</h2><h2 id="代码-39"><a href="#代码-39" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="连续子数组的最大和-动态规划"><a href="#连续子数组的最大和-动态规划" class="headerlink" title="连续子数组的最大和(动态规划)"></a>连续子数组的最大和(动态规划)</h1><h2 id="题目-39"><a href="#题目-39" class="headerlink" title="题目"></a>题目</h2><p><img src="disishi.png" alt=""></p>
+<h2 id="分析-39"><a href="#分析-39" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 新建dp数组存放每个nums[i]值时候的最大和
+2. 新建res每次dp[i]确定值之后进行比较,不断取出dp里面最大值(或者可以dp最后排序取出最后一位即可)
+3. 思路:
+    3.1 res和dp[0]都必须先默认是第一位(不然报错)
+    3.2从第二位开始遍历
+    3.3 如果dp[i-1]&lt;0说明对于后面的和没有作用,不如dp[i]=nums[i];
+    3.4 反之有加强作用,因此dp[i]=dp[i-1]+nums[i];
+    3.5 每次循环结束前进行res和dp[i]取最大</code></pre><h2 id="代码-39"><a href="#代码-39" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;动态规划</span><br><span class="line">   public static int maxSubArray(int[] nums) &#123;</span><br><span class="line">     &#x2F;&#x2F;接答案(默认第一个值就是最大的和)</span><br><span class="line">       int res&#x3D;nums[0];</span><br><span class="line">     &#x2F;&#x2F;记录每个位置能取得最大值</span><br><span class="line">       int[] dp&#x3D;new int[nums.length];</span><br><span class="line">           dp[0]&#x3D;nums[0];  &#x2F;&#x2F;初始最大值是第一个值</span><br><span class="line">     &#x2F;&#x2F;依次遍历</span><br><span class="line">       for (int i&#x3D;1;i&lt;nums.length;i++) &#123; &#x2F;&#x2F;从第二个位置开始</span><br><span class="line">          if(dp[i-1]&gt;0)&#123;  &#x2F;&#x2F;如果前面的和大于0</span><br><span class="line">              dp[i]&#x3D;dp[i-1]+nums[i]; &#x2F;&#x2F;就加上当前值更大</span><br><span class="line">          &#125;else&#123;  &#x2F;&#x2F;前面的和小于0  那我还不如当前值为和</span><br><span class="line">              dp[i]&#x3D;nums[i];  &#x2F;&#x2F;更换为当前值</span><br><span class="line">          &#125;</span><br><span class="line">          res&#x3D;Math.max(res,dp[i]);  &#x2F;&#x2F;每次把当前值的dp[i]和最大值比较更新res</span><br><span class="line">       &#125;</span><br><span class="line">       return res; &#x2F;&#x2F;res最后就是dp数组最大值</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="结果-39"><a href="#结果-39" class="headerlink" title="结果"></a>结果</h2><p><img src="" alt=""></p>
+<h2 id="结果-39"><a href="#结果-39" class="headerlink" title="结果"></a>结果</h2><p><img src="disishijieguo.png" alt=""></p>
+<hr>
+<h1 id="1-n中整数中1出现的次数"><a href="#1-n中整数中1出现的次数" class="headerlink" title="1-n中整数中1出现的次数"></a>1-n中整数中1出现的次数</h1><h2 id="题目-40"><a href="#题目-40" class="headerlink" title="题目"></a>题目</h2><p><img src="disishiyi.png" alt=""></p>
+<h2 id="分析-40"><a href="#分析-40" class="headerlink" title="分析"></a>分析</h2><h2 id="代码-40"><a href="#代码-40" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="结果-40"><a href="#结果-40" class="headerlink" title="结果"></a>结果</h2><p><img src="" alt=""></p>
 <hr>
 
       
