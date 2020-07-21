@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://larkkkkkkk.github.io/"/>
-  <updated>2020-07-20T14:49:36.655Z</updated>
+  <updated>2020-07-21T09:12:04.733Z</updated>
   <id>https://larkkkkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git复习</title>
+    <link href="https://larkkkkkkk.github.io/2020/07/21/Git%E5%A4%8D%E4%B9%A0/"/>
+    <id>https://larkkkkkkk.github.io/2020/07/21/Git%E5%A4%8D%E4%B9%A0/</id>
+    <published>2020-07-21T09:11:13.000Z</published>
+    <updated>2020-07-21T09:12:04.733Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Git复习"><a href="#Git复习" class="headerlink" title="Git复习"></a>Git复习</h1><h2 id="Git复习框架"><a href="#Git复习框架" class="headerlink" title="Git复习框架"></a>Git复习框架</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Git复习&quot;&gt;&lt;a href=&quot;#Git复习&quot; class=&quot;headerlink&quot; title=&quot;Git复习&quot;&gt;&lt;/a&gt;Git复习&lt;/h1&gt;&lt;h2 id=&quot;Git复习框架&quot;&gt;&lt;a href=&quot;#Git复习框架&quot; class=&quot;headerlink&quot; title=
+      
+    
+    </summary>
+    
+    
+    
+      <category term="git" scheme="https://Larkkkkkkk.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>leetcode剑指offer</title>
@@ -466,32 +490,6 @@
       
       
         &lt;h1 id=&quot;二叉树-任何子节点数-lt-2&quot;&gt;&lt;a href=&quot;#二叉树-任何子节点数-lt-2&quot; class=&quot;headerlink&quot; title=&quot;二叉树(任何子节点数&amp;lt;=2)&quot;&gt;&lt;/a&gt;二叉树(任何子节点数&amp;lt;=2)&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;1. 最大度
-      
-    
-    </summary>
-    
-    
-    
-      <category term="树" scheme="https://Larkkkkkkk.github.io/tags/%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>树</title>
-    <link href="https://larkkkkkkk.github.io/2020/04/18/%E6%A0%91/"/>
-    <id>https://larkkkkkkk.github.io/2020/04/18/%E6%A0%91/</id>
-    <published>2020-04-18T12:15:41.000Z</published>
-    <updated>2020-05-01T15:28:44.130Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="树概念"><a href="#树概念" class="headerlink" title="树概念"></a>树概念</h1><p><img src="gainian.png" alt=""></p><hr><h1 id="特殊树"><a href="#特殊树" class="headerlink" title="特殊树"></a>特殊树</h1><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><pre><code>1. 满二叉树 : (最后一层是满的 很完美)   2. 完全二叉树 : (编号之后中间序号没有断)3. 二叉排序树/二叉查找树/二叉搜索树 : (左子树结点的关键字均&lt;右子树的节点繁荣关键字)4. 平衡二叉树 : (树的任意一个节点的左右子树的深度差不超过1)</code></pre><h2 id="线索二叉树"><a href="#线索二叉树" class="headerlink" title="线索二叉树"></a>线索二叉树</h2><blockquote><p>通过给节点给前后值 能够知道这个节点前后节点是哪个</p></blockquote><h2 id="赫夫曼树"><a href="#赫夫曼树" class="headerlink" title="赫夫曼树"></a>赫夫曼树</h2><blockquote><p>主要用于数据压缩(通过两个最小的值不断生成新节点)</p></blockquote><h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><blockquote><p>一种二叉排序树 + |左子树高度-右子树高度|&lt;1</p></blockquote><h2 id="多路查找树"><a href="#多路查找树" class="headerlink" title="多路查找树"></a>多路查找树</h2><blockquote><p>主要学的是B和B+树</p></blockquote><hr>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;树概念&quot;&gt;&lt;a href=&quot;#树概念&quot; class=&quot;headerlink&quot; title=&quot;树概念&quot;&gt;&lt;/a&gt;树概念&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;gainian.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;特殊树&quot;&gt;&lt;a href=&quot;#特殊树
       
     
     </summary>
