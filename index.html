@@ -359,7 +359,162 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Git复习"><a href="#Git复习" class="headerlink" title="Git复习"></a>Git复习</h1><h2 id="Git复习框架"><a href="#Git复习框架" class="headerlink" title="Git复习框架"></a>Git复习框架</h2>
+        <h1 id="Git复习目录"><a href="#Git复习目录" class="headerlink" title="Git复习目录"></a>Git复习目录</h1><pre><code>1. 版本控制
+2. Git和SVN区别
+3. Git历史
+4. Git安装和环境配置
+5. 常用Linux命令
+6. Git的必要配置
+7. Git的工作原理
+8. Git项目创建和克隆
+9. Git基本操作命令
+10. 码云的注册和使用
+11. 配置SSH公钥以及创建远程仓库
+12. IDEA中集成Git操作
+13. 关于Git中分支说明
+14. Git后续操作说明</code></pre><hr>
+<h1 id="版本控制-Revision-control"><a href="#版本控制-Revision-control" class="headerlink" title="版本控制(Revision control)"></a>版本控制(Revision control)</h1><h2 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h2><blockquote>
+<p>开发过程中用于管理我们对文件/目录/工程等内容的修改历史，方便更改历史记录，备份以便恢复以前的版本的软件工程技术。</p>
+</blockquote>
+<ul>
+<li>实现跨区域多人协同开发</li>
+<li>追踪和记载一个/多个文件的历史记录</li>
+<li>组织和保护你的源代码和文档</li>
+<li>统计工作量</li>
+<li>并行开发、提高开发效率</li>
+<li>跟踪记录整个软件开发过程</li>
+<li>减少开发人员负担,节省时间</li>
+</ul>
+<h2 id="主流版本控制器"><a href="#主流版本控制器" class="headerlink" title="主流版本控制器"></a>主流版本控制器</h2><ul>
+<li>Git(主流)</li>
+<li>SVN(主流)</li>
+<li>CVS</li>
+<li>VSS</li>
+<li>TFS</li>
+<li>visual Studio Online</li>
+</ul>
+<h2 id="版本控制分类"><a href="#版本控制分类" class="headerlink" title="版本控制分类"></a>版本控制分类</h2><blockquote>
+<p><strong>本地版本控制 RCS</strong></p>
+</blockquote>
+<p><img src="bendi.png" alt=""></p>
+<blockquote>
+<p><strong>集中版本控制 SVN</strong></p>
+</blockquote>
+<p><img src="jizhong.png" alt=""></p>
+<pre><code>1. 所有的版本数据都存在服务器上
+2. 用户的本地只有自己以前所同步的版本
+3. 如果不连网的话，用户就看不到历史版本，也无法切换版本验证问题，或在不同分支工作。
+4. 所有数据都保存在单一的服务器上，有很大的风险这个服务器会损坏，这样就会丢失所有的数据
+5. 当然可以定期备份。代表产品：SVN、CVS、VSS</code></pre><blockquote>
+<p><strong>分布式版本控制 Git</strong></p>
+</blockquote>
+<p><img src="fenbushi.png" alt=""></p>
+<pre><code>1. 每个人都拥有全部的代码！安全隐患！
+2.    所有版本信息仓库全部同步到本地的每个用户，这样就可以在本地查看所有版本历史，可以离线在本地提交，
+3.    只需在连网时push到相应的服务器或其他用户那里。
+4.    由于每个用户那里保存的都是所有的版本数据，只要有一个用户的设备没有问题就可以恢复所有的数据，
+5.    缺点就是增加了本地存储空间的占用。</code></pre><p>不会因为服务器损坏或者网络问题，造成不能工作的情况！</p>
+<hr>
+<h1 id="Git和SVN区别"><a href="#Git和SVN区别" class="headerlink" title="Git和SVN区别"></a>Git和SVN区别</h1><h2 id="Git-分布式版本控制系统"><a href="#Git-分布式版本控制系统" class="headerlink" title="Git(分布式版本控制系统)"></a>Git(分布式版本控制系统)</h2><pre><code>1. 没有中央服务器。每个人的电脑就是一个完整的版本库，
+2. 工作的时候不需要联网了，因为版本都在自己电脑上。
+3. 协同的方法：比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。
+4. Git可以直接看到更新了哪些代码和文件！</code></pre><h2 id="SVN-集中式版本控制系统"><a href="#SVN-集中式版本控制系统" class="headerlink" title="SVN(集中式版本控制系统)"></a>SVN(集中式版本控制系统)</h2><pre><code>1. 版本库是集中放在中央服务器的，
+2. 而工作的时候，用的都是自己的电脑，
+3. 所以首先要从中央服务器得到最新的版本，然后工作，完成工作后，需要把自己做完的活推送到中央服务器。
+4. 集中式版本控制系统是必须联网才能工作，对网络带宽要求较高。</code></pre><hr>
+<h1 id="Git历史"><a href="#Git历史" class="headerlink" title="Git历史"></a>Git历史</h1><blockquote>
+<p>Git是免费、开源的，最初Git是为辅助 Linux 内核开发的，来替代 BitKeeper！</p>
+</blockquote>
+<hr>
+<h1 id="Git安装和配置"><a href="#Git安装和配置" class="headerlink" title="Git安装和配置"></a>Git安装和配置</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><pre><code>1. 官网 : https://git-scm.com/
+2. 淘宝镜像 : http://npm.taobao.org/mirrors/git-for-windows/</code></pre><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>1. 无脑下一步即可(换安装路径)</code></pre><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><blockquote>
+<p><strong>分为Bash/CMD/GUI三种图标</strong></p>
+</blockquote>
+<ul>
+<li><p><strong>Git Bash</strong>：Unix与Linux风格的命令行，使用最多，推荐最多</p>
+</li>
+<li><p><strong>Git CMD</strong>：Windows风格的命令行</p>
+</li>
+<li><p><strong>Git GUI</strong>：图形界面的Git，不建议初学者使用，尽量先熟悉常用命令</p>
+</li>
+</ul>
+<p><img src="sanzhong.png" alt=""></p>
+<hr>
+<h1 id="常用的Linux命令"><a href="#常用的Linux命令" class="headerlink" title="常用的Linux命令"></a>常用的Linux命令</h1><blockquote>
+<p><strong>具体的可以参考我的linux博客篇</strong></p>
+</blockquote>
+<p><img src="linux.png" alt=""></p>
+<hr>
+<h1 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h1><h2 id="查看所有配置"><a href="#查看所有配置" class="headerlink" title="查看所有配置"></a>查看所有配置</h2><blockquote>
+<p><strong>git config -l</strong></p>
+</blockquote>
+<p><img src="suoyou.png" alt=""></p>
+<h2 id="查看系统级-system-配置"><a href="#查看系统级-system-配置" class="headerlink" title="查看系统级(system)配置"></a>查看系统级(system)配置</h2><blockquote>
+<p><strong>指令:git config –system –list</strong></p>
+</blockquote>
+<p><img src="system.png" alt=""></p>
+<blockquote>
+<p><strong>配置文件存在位置:</strong>一般是Git安装目录下的gitconfig文件</p>
+</blockquote>
+<p><img src="systemlujing.png" alt=""></p>
+<blockquote>
+<p><strong>文件内容和指令框对比</strong></p>
+</blockquote>
+<p><img src="systemduibi.png" alt=""></p>
+<h2 id="查看当前用户级-global-配置"><a href="#查看当前用户级-global-配置" class="headerlink" title="查看当前用户级(global)配置"></a>查看当前用户级(global)配置</h2><blockquote>
+<p><strong>指令:git config –global –list</strong></p>
+</blockquote>
+<p><img src="global.png" alt=""></p>
+<blockquote>
+<p><strong>配置文件存在位置:</strong>一般是当前用户的目录下的.gitconfig文件</p>
+</blockquote>
+<p><img src="globallujing.png" alt=""></p>
+<blockquote>
+<p><strong>文件内容和指令框对比</strong></p>
+</blockquote>
+<p><img src="globalduibi.png" alt=""></p>
+<hr>
+<h1 id="Git设置用户名和邮箱-必须"><a href="#Git设置用户名和邮箱-必须" class="headerlink" title="Git设置用户名和邮箱(必须!!!)"></a>Git设置用户名和邮箱(必须!!!)</h1><pre><code>1. 安装Git后首先要做的事情是设置你的用户名称和e-mail地址。
+2. Git提交都会使用该信息。它被永远的嵌入到了你的提交中：
+3. 指令格式:
+    git config --global user.name &quot;XXX&quot;  //名称
+    git config --global user.email XXX@qq.com  //邮箱</code></pre><hr>
+<h1 id="Git基本理论-imp"><a href="#Git基本理论-imp" class="headerlink" title="Git基本理论(imp)"></a>Git基本理论(imp)</h1><h2 id="四个区域介绍"><a href="#四个区域介绍" class="headerlink" title="四个区域介绍"></a>四个区域介绍</h2><blockquote>
+<p><strong>1. 工作目录(Working Directory):</strong>平时放代码的地方</p>
+</blockquote>
+<blockquote>
+<p><strong>2. 暂存区(Stage/Index):</strong>临时存放代码改动的一个文件，保存即将提交到文件列表信息</p>
+</blockquote>
+<blockquote>
+<p><strong>3. 资源库(Repository/Git Directory):</strong>安全存放数据的位置(HEAD指向最新的仓库版本)</p>
+</blockquote>
+<blockquote>
+<p><strong>4. 远程的git仓库(Remote Directory):</strong>托管代码的服务器</p>
+</blockquote>
+<blockquote>
+<p><strong>5. 四个区域指令操作图示:</strong></p>
+</blockquote>
+<p><img src="sanqu.png" alt=""></p>
+<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><pre><code>1. git add . : 在文件目录中添加/修改文件
+2. git commit : 将需要进行版本管理的文件放入暂存区域
+3. git push  : 将暂存区域的文件提交到git仓库</code></pre><p><img src="guocheng.png" alt=""></p>
+<hr>
+<h1 id="Git项目搭建"><a href="#Git项目搭建" class="headerlink" title="Git项目搭建"></a>Git项目搭建</h1><h2 id="创建工作目录与常用指令"><a href="#创建工作目录与常用指令" class="headerlink" title="创建工作目录与常用指令"></a>创建工作目录与常用指令</h2><p><img src="chuangjaingongzuo.png" alt=""></p>
+<h2 id="本地仓库搭建-上传项目"><a href="#本地仓库搭建-上传项目" class="headerlink" title="本地仓库搭建(上传项目)"></a>本地仓库搭建(上传项目)</h2><blockquote>
+<p><strong>参考别人的步骤(亲测有用!!)</strong></p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/jf-67/p/7086659.html?utm_source=itdadao&utm_medium=referral" target="_blank" rel="noopener" title="参考">https://www.cnblogs.com/jf-67/p/7086659.html?utm_source=itdadao&amp;utm_medium=referral</a></p>
+<h2 id="克隆远程仓库-下载别人项目"><a href="#克隆远程仓库-下载别人项目" class="headerlink" title="克隆远程仓库(下载别人项目)"></a>克隆远程仓库(下载别人项目)</h2><pre><code>1. 随便位置新建一个文件夹 -- 右键git bash输入git init初始化 -- 输入git clone XXXX  //xxx就是人家项目的路径(项目右上角绿色框)
+2. 去gitee/github克隆一个测试</code></pre><hr>
+<h1 id="Git文件操作"><a href="#Git文件操作" class="headerlink" title="Git文件操作"></a>Git文件操作</h1><hr>
+<h1 id="码云"><a href="#码云" class="headerlink" title="码云"></a>码云</h1><hr>
+<h1 id="IDEA集成Git"><a href="#IDEA集成Git" class="headerlink" title="IDEA集成Git"></a>IDEA集成Git</h1><hr>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><blockquote>
+<p><strong>当时学习时候看的B站狂神的视频</strong></p>
+</blockquote>
+<p><a href="https://mp.weixin.qq.com/s/Bf7uVhGiu47uOELjmC5uXQ" target="_blank" rel="noopener" title="B栈">https://mp.weixin.qq.com/s/Bf7uVhGiu47uOELjmC5uXQ</a></p>
+<hr>
+
       
       
     </div>
