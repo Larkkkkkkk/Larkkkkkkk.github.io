@@ -371,8 +371,7 @@
 10. 码云的注册和使用
 11. 配置SSH公钥以及创建远程仓库
 12. IDEA中集成Git操作
-13. 关于Git中分支说明
-14. Git后续操作说明</code></pre><hr>
+13. Git分支说明</code></pre><hr>
 <h1 id="版本控制-Revision-control"><a href="#版本控制-Revision-control" class="headerlink" title="版本控制(Revision control)"></a>版本控制(Revision control)</h1><h2 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h2><blockquote>
 <p>开发过程中用于管理我们对文件/目录/工程等内容的修改历史，方便更改历史记录，备份以便恢复以前的版本的软件工程技术。</p>
 </blockquote>
@@ -506,11 +505,38 @@
 <p><a href="https://www.cnblogs.com/jf-67/p/7086659.html?utm_source=itdadao&utm_medium=referral" target="_blank" rel="noopener" title="参考">https://www.cnblogs.com/jf-67/p/7086659.html?utm_source=itdadao&amp;utm_medium=referral</a></p>
 <h2 id="克隆远程仓库-下载别人项目"><a href="#克隆远程仓库-下载别人项目" class="headerlink" title="克隆远程仓库(下载别人项目)"></a>克隆远程仓库(下载别人项目)</h2><pre><code>1. 随便位置新建一个文件夹 -- 右键git bash输入git init初始化 -- 输入git clone XXXX  //xxx就是人家项目的路径(项目右上角绿色框)
 2. 去gitee/github克隆一个测试</code></pre><hr>
-<h1 id="Git文件操作"><a href="#Git文件操作" class="headerlink" title="Git文件操作"></a>Git文件操作</h1><hr>
-<h1 id="码云"><a href="#码云" class="headerlink" title="码云"></a>码云</h1><hr>
-<h1 id="IDEA集成Git"><a href="#IDEA集成Git" class="headerlink" title="IDEA集成Git"></a>IDEA集成Git</h1><hr>
+<h1 id="Git文件操作-四种状态"><a href="#Git文件操作-四种状态" class="headerlink" title="Git文件操作(四种状态)"></a>Git文件操作(四种状态)</h1><h2 id="四种状态"><a href="#四种状态" class="headerlink" title="四种状态"></a>四种状态</h2><p><img src="sizhong.png" alt=""></p>
+<h2 id="查看文件状态-git-status"><a href="#查看文件状态-git-status" class="headerlink" title="查看文件状态(git status)"></a>查看文件状态(git status)</h2><p><img src="status.png" alt=""></p>
+<h2 id="忽略文件-主目录新建-gitignore文件"><a href="#忽略文件-主目录新建-gitignore文件" class="headerlink" title="忽略文件(主目录新建.gitignore文件)"></a>忽略文件(主目录新建.gitignore文件)</h2><p><img src="hulue.png" alt=""></p>
+<hr>
+<h1 id="码云"><a href="#码云" class="headerlink" title="码云"></a>码云</h1><blockquote>
+<p><strong>U1S1其实就是中国版的github(不需要翻墙)</strong></p>
+</blockquote>
+<p><strong>具体如何使用参考以下链接(百度也有方法)</strong></p>
+<p><a href="https://mp.weixin.qq.com/s/Bf7uVhGiu47uOELjmC5uXQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Bf7uVhGiu47uOELjmC5uXQ</a></p>
+<hr>
+<h1 id="IDEA集成Git"><a href="#IDEA集成Git" class="headerlink" title="IDEA集成Git"></a>IDEA集成Git</h1><blockquote>
+<p><strong>这里展示的是和码云配套:</strong></p>
+</blockquote>
+<pre><code>1. idea新建项目,绑定git(远程的git文件目录拷贝到项目中即可)
+2. 修改文件(使用Idea操作git)
+    1. 添加到暂存区
+    2. commit提交
+    3. push到远程仓库
+3. 提交测试</code></pre><hr>
+<h1 id="Git分支"><a href="#Git分支" class="headerlink" title="Git分支"></a>Git分支</h1><blockquote>
+<p><strong>git分支指令:</strong></p>
+</blockquote>
+<p><img src="branch.png" alt=""></p>
+<blockquote>
+<p><strong>可能出现的问题:</strong></p>
+</blockquote>
+<pre><code>1. 同文件合并分支都被修改会引起冲突:
+    解决方法:我们可以修改冲突文件后重新提交！选择要保留他的代码还是你的代码
+2. master主分支用来发布新版本
+3. 新建dev分支上工作:dev分支代码稳定后可以合并到主分支master上</code></pre><hr>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><blockquote>
-<p><strong>当时学习时候看的B站狂神的视频</strong></p>
+<p><strong>当时学习时候看的B站狂神的视频:</strong></p>
 </blockquote>
 <p><a href="https://mp.weixin.qq.com/s/Bf7uVhGiu47uOELjmC5uXQ" target="_blank" rel="noopener" title="B栈">https://mp.weixin.qq.com/s/Bf7uVhGiu47uOELjmC5uXQ</a></p>
 <hr>
