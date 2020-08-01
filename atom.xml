@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://larkkkkkkk.github.io/"/>
-  <updated>2020-08-01T14:57:34.893Z</updated>
+  <updated>2020-08-01T15:07:06.100Z</updated>
   <id>https://larkkkkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>腾讯2020校园招聘-后台</title>
+    <link href="https://larkkkkkkk.github.io/2020/08/01/%E8%85%BE%E8%AE%AF2020%E6%A0%A1%E5%9B%AD%E6%8B%9B%E8%81%98-%E5%90%8E%E5%8F%B0/"/>
+    <id>https://larkkkkkkk.github.io/2020/08/01/%E8%85%BE%E8%AE%AF2020%E6%A0%A1%E5%9B%AD%E6%8B%9B%E8%81%98-%E5%90%8E%E5%8F%B0/</id>
+    <published>2020-08-01T15:06:15.000Z</published>
+    <updated>2020-08-01T15:07:06.100Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h1><blockquote><p>虽然只有五道编程题,做完有点怀疑人生</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;结果分析&quot;&gt;&lt;a href=&quot;#结果分析&quot; class=&quot;headerlink&quot; title=&quot;结果分析&quot;&gt;&lt;/a&gt;结果分析&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;虽然只有五道编程题,做完有点怀疑人生&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+      <category term="腾讯" scheme="https://Larkkkkkkk.github.io/tags/%E8%85%BE%E8%AE%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>京东2019校招笔试Java开发工程师笔试题</title>
@@ -477,31 +504,6 @@
     
     
       <category term="面试" scheme="https://Larkkkkkkk.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图</title>
-    <link href="https://larkkkkkkk.github.io/2020/05/02/%E5%9B%BE/"/>
-    <id>https://larkkkkkkk.github.io/2020/05/02/%E5%9B%BE/</id>
-    <published>2020-05-02T15:50:32.000Z</published>
-    <updated>2020-05-06T15:44:25.081Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><p><strong>图的概念：</strong></p><p><a href="https://www.cnblogs.com/songgj/p/9107797.html" target="_blank" rel="noopener" title="图相关知识点">https://www.cnblogs.com/songgj/p/9107797.html</a></p><h2 id="图的展示方式"><a href="#图的展示方式" class="headerlink" title="图的展示方式"></a>图的展示方式</h2><pre><code>1. 邻接表2. 邻接矩阵(相通为1，不通为0)</code></pre><hr><h1 id="邻接矩阵实现"><a href="#邻接矩阵实现" class="headerlink" title="邻接矩阵实现"></a>邻接矩阵实现</h1><h2 id="Graph类-和顶点数组有关"><a href="#Graph类-和顶点数组有关" class="headerlink" title="Graph类(和顶点数组有关)"></a>Graph类(和顶点数组有关)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;顶点数组</span><br><span class="line">public class Graph &#123;</span><br><span class="line">    private Vertex[] vertex;  &#x2F;&#x2F;存放顶点的矩阵</span><br><span class="line">    private int currentSize;  &#x2F;&#x2F;下标</span><br><span class="line">    int[][] adjMat;   &#x2F;&#x2F;二维矩阵存放顶点之间的关系</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public Graph(int size)&#123;</span><br><span class="line">        vertex&#x3D;new Vertex[size];  &#x2F;&#x2F;设置顶点数组大小</span><br><span class="line">        adjMat&#x3D;new int[size][size]; &#x2F;&#x2F;二维数组默认为0</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;向图中添加顶点</span><br><span class="line">    public  void  addVertex(Vertex v)&#123;</span><br><span class="line">        vertex[currentSize++]&#x3D;v;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;向图中添加边</span><br><span class="line">    public void addEdge(String v1,String v2)&#123;</span><br><span class="line">        int index1&#x3D;0;</span><br><span class="line">        int index2&#x3D;0;</span><br><span class="line">        for(int i&#x3D;0;i&lt;vertex.length;i++)&#123;</span><br><span class="line">            if(vertex[i].getValue().equals(v1))&#123;  &#x2F;&#x2F;如果要添加的和v1是相等的 就把下标给index1</span><br><span class="line">                index1&#x3D;i;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i&#x3D;0;i&lt;vertex.length;i++)&#123;</span><br><span class="line">            if (vertex[i].getValue().equals(v2)) &#123;  &#x2F;&#x2F;如果要添加的和v2是相等的 就把下表给index2</span><br><span class="line">                index2&#x3D;i;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;相通给1</span><br><span class="line">        adjMat[index1][index2]&#x3D;1;  &#x2F;&#x2F;把对应的位置变1</span><br><span class="line">        adjMat[index2][index1]&#x3D;1;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Vertex类-顶点类"><a href="#Vertex类-顶点类" class="headerlink" title="Vertex类(顶点类)"></a>Vertex类(顶点类)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;顶点类</span><br><span class="line">public class Vertex &#123;</span><br><span class="line">     private String value;</span><br><span class="line"></span><br><span class="line">    public Vertex(String value) &#123;</span><br><span class="line">        super();</span><br><span class="line">        this.value &#x3D; value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getValue() &#123;</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setValue(String value) &#123;</span><br><span class="line">        this.value &#x3D; value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="TestGraph类-测试类"><a href="#TestGraph类-测试类" class="headerlink" title="TestGraph类(测试类)"></a>TestGraph类(测试类)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class TestGraph &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">     &#x2F;&#x2F;创建五个顶点</span><br><span class="line">        Vertex v1&#x3D;new Vertex(&quot;A&quot;);</span><br><span class="line">        Vertex v2&#x3D;new Vertex(&quot;B&quot;);</span><br><span class="line">        Vertex v3&#x3D;new Vertex(&quot;C&quot;);</span><br><span class="line">        Vertex v4&#x3D;new Vertex(&quot;D&quot;);</span><br><span class="line">        Vertex v5&#x3D;new Vertex(&quot;E&quot;);</span><br><span class="line">        Graph g&#x3D;new Graph(5);</span><br><span class="line">     &#x2F;&#x2F;增加节点</span><br><span class="line">        g.addVertex(v1);</span><br><span class="line">        g.addVertex(v2);</span><br><span class="line">        g.addVertex(v3);</span><br><span class="line">        g.addVertex(v4);</span><br><span class="line">        g.addVertex(v5);</span><br><span class="line">     &#x2F;&#x2F;增加边</span><br><span class="line">        g.addEdge(&quot;A&quot;,&quot;C&quot;);</span><br><span class="line">        g.addEdge(&quot;B&quot;,&quot;C&quot;);</span><br><span class="line">        g.addEdge(&quot;A&quot;,&quot;B&quot;);</span><br><span class="line">        g.addEdge(&quot;B&quot;,&quot;D&quot;);</span><br><span class="line">        g.addEdge(&quot;B&quot;,&quot;E&quot;);</span><br><span class="line">     &#x2F;&#x2F;打印二维矩阵</span><br><span class="line">        for(int[] a:g.adjMat)&#123;</span><br><span class="line">            System.out.println(Arrays.toString(a));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h2><p><strong>结果展示</strong></p><p><img src="wuge.png" alt=""></p><hr><h1 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h1><pre><code>1. 深度优先搜索算法(用栈的方式思考)2. 广度优先搜索算法(用队列的方式思考)</code></pre><h2 id="两种遍历讲解"><a href="#两种遍历讲解" class="headerlink" title="两种遍历讲解"></a>两种遍历讲解</h2><p><strong>举例图：</strong></p><p><img src="julitu.png" alt=""></p><h3 id="深度优先搜索算法-DFS"><a href="#深度优先搜索算法-DFS" class="headerlink" title="深度优先搜索算法(DFS)"></a>深度优先搜索算法(DFS)</h3><blockquote><p><strong>走迷宫一样，当前顶点走到死路就返回一步看能不能再走，把死路位置的顶点弹出去</strong></p></blockquote><pre><code>1. 栈先放入A顶点 (栈内：A)2. 搜索邻接矩阵中第一行A顶点可以到达哪个顶点3. 栈再放入B顶点 (栈内：B A)4. 搜索邻接矩阵中第二行B顶点可以到达哪个顶点5. 栈再放入C顶点 (栈内：C B A)6. 搜索邻接矩阵中第三行C顶点可以到达哪个顶点7. 没有可以到达的顶点因此C顶点从栈弹出 (栈内：B A)  --已经搜索到的C弹出(C)8. 返回到栈顶B顶点查看还可以到达哪个顶点9. 栈再放入D顶点 (栈内: D B A)10. 搜索邻接矩阵中第四行D顶点可以到达哪个顶点11. 没有可以到达的顶点因此D顶点从栈弹出 (栈内：B A) --已经搜索到的D弹出(C D)12. 返回到栈顶B顶点查看还可以到达哪个顶点13. 栈再放入E顶点 (栈内：E B A)14. 搜索邻接矩阵中第五行E顶点可以到达哪个顶点15. 没有可以到达的顶点因此E顶点从栈弹出 (栈内：B A) --已经搜索到的E弹出(C D E)16. 五个顶点都被遍历过后弹出栈内元素(先出B后出A)17. 最终遍历顺序是： A B E D C</code></pre><h3 id="广度优先搜索算法-BFS"><a href="#广度优先搜索算法-BFS" class="headerlink" title="广度优先搜索算法(BFS)"></a>广度优先搜索算法(BFS)</h3><blockquote><p><strong>从当前顶点一条路走到死，走死顶点就出队。让屁股后面的顶点继续走到死</strong></p></blockquote><pre><code>1. 队列先放入A顶点 (队列内：A)2. 搜索邻接矩阵中第一行A顶点可以到达哪个顶点3. 队列再放入B顶点 (队列内：B A)4. 搜索邻接矩阵中第一行A顶点还可以到达哪个顶点 5. 队列再放入C顶点 (队列内：C B A)6. 现在A没有可以到达的顶点因此A顶点出队(队列内：C B) --已经搜索到的A出队(A)7. 现在搜索B还可以到达哪些顶点8. 队列再放入D顶点 (队列内：D C B)9. 在搜索B还可以到达哪些顶点10. 队列再放入E顶点 (队列内：E D C B)11. 五个顶点都被遍历过后弹出栈顶元素(先出B后出C然后D最后E)12. 最终遍历顺序是： A B C D E</code></pre><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><hr>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;图&quot;&gt;&lt;a href=&quot;#图&quot; class=&quot;headerlink&quot; title=&quot;图&quot;&gt;&lt;/a&gt;图&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;图的概念：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/songgj/p/91
-      
-    
-    </summary>
-    
-    
-    
-      <category term="图" scheme="https://Larkkkkkkk.github.io/tags/%E5%9B%BE/"/>
     
   </entry>
   
