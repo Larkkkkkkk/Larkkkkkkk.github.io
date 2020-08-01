@@ -372,7 +372,41 @@ C适用于也是错误的,不应该是只需要客户化的工程项目    </cod
 <p><img src="oneres.png" alt=""></p>
 <hr>
 <h1 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p><img src="two.png" alt=""></p>
-<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><h2 id="知识点总结-1"><a href="#知识点总结-1" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 值类型变量赋值: 数据复制,创建一个同值得新对象
+2. 引用类型变量赋值: 只是把对象引用的指针赋给变量,共用一个内存地址
+3. 值类型一般是基本数据类型,不是封装的 C错误
+4. 值类型没有实例 B错误
+5. 值类型变量可以作为引用类型的成员变量存储在堆里面 D错误</code></pre><h2 id="知识点总结-1"><a href="#知识点总结-1" class="headerlink" title="知识点总结"></a>知识点总结</h2><p><img src="twores.png" alt=""></p>
+<hr>
+<h1 id="操作系统避免死锁"><a href="#操作系统避免死锁" class="headerlink" title="操作系统避免死锁"></a>操作系统避免死锁</h1><h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p><img src="three.png" alt=""></p>
+<h2 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h2><pre><code>说实话我感觉这道题有歧义,我觉得选D(傲娇不承认答案A)</code></pre><h2 id="知识点总结-2"><a href="#知识点总结-2" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
+<li><p><strong>产生死锁</strong></p>
+<ol>
+<li><strong>互斥</strong> :存在一个资源每次只能被一个进程使用，若别的进程也要使用该资源，需要等待知道其占用者用完释放。</li>
+<li><strong>占有并等待</strong> :部分分配，允许进程在不释放其已经分得的资源的情况下请求并等待分配的资源</li>
+<li><strong>不可抢占</strong> :有些系统资源是不可抢占的，系即当某个进程已经获得这种资源后，只能由自身使用完释放。</li>
+<li><strong>循环等待</strong> :若干个进程形成环形链，链中的每一个进程都在等待该链中下一个进程所占用的资源。</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p><strong>避免死锁</strong>    </p>
+<p>  破坏四个条件其中一个就会避免死锁</p>
+</li>
+</ul>
+<hr>
+<h1 id="奇数和算法"><a href="#奇数和算法" class="headerlink" title="奇数和算法"></a>奇数和算法</h1><h2 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h2><p><img src="four.png" alt=""></p>
+<h2 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 计算是1+3+5+7+9+11+..+999
+2. 所以i的计数肯定是i=i+2 然后s和i的变化要看顺序</code></pre><h2 id="知识点总结-3"><a href="#知识点总结-3" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>其实最简单的就是自己写一个对比或者执行一遍即可</code></pre><hr>
+<h1 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h1><h2 id="题目-4"><a href="#题目-4" class="headerlink" title="题目"></a>题目</h2><p><img src="five.png" alt=""></p>
+<h2 id="分析-4"><a href="#分析-4" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 递归法很容易崩 执行不出来所以执行效率肯定比递推法效率低</code></pre><h2 id="知识点总结-4"><a href="#知识点总结-4" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 递归就是一层一层调用 所以代码很简洁清晰
+2. 递归会有很多次重复,然后递归调用占用大量内存空间,一旦执行次数过大就会无法执行
+3. 递归法执行效率低</code></pre><hr>
+<h1 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h1><h2 id="题目-5"><a href="#题目-5" class="headerlink" title="题目"></a>题目</h2><p><img src="six.png" alt=""></p>
+<h2 id="分析-5"><a href="#分析-5" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 这就跟c语言判断一样,一个一个字符对比。
+2. 这道题对比A&lt;D,还要结果是真 所以选择 &lt;</code></pre><h2 id="知识点总结-5"><a href="#知识点总结-5" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>比较的是ASCII码 从第一位开始判断</code></pre><hr>
+<h1 id="看代码判断结果"><a href="#看代码判断结果" class="headerlink" title="看代码判断结果"></a>看代码判断结果</h1><h2 id="题目-6"><a href="#题目-6" class="headerlink" title="题目"></a>题目</h2><p><img src="seven.png" alt=""></p>
+<h2 id="分析-6"><a href="#分析-6" class="headerlink" title="分析"></a>分析</h2><h2 id="知识点总结-6"><a href="#知识点总结-6" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
 
       
       
