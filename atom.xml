@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://larkkkkkkk.github.io/"/>
-  <updated>2020-08-01T15:07:06.100Z</updated>
+  <updated>2020-08-02T03:06:26.539Z</updated>
   <id>https://larkkkkkkk.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://larkkkkkkk.github.io/2020/08/01/%E8%85%BE%E8%AE%AF2020%E6%A0%A1%E5%9B%AD%E6%8B%9B%E8%81%98-%E5%90%8E%E5%8F%B0/"/>
     <id>https://larkkkkkkk.github.io/2020/08/01/%E8%85%BE%E8%AE%AF2020%E6%A0%A1%E5%9B%AD%E6%8B%9B%E8%81%98-%E5%90%8E%E5%8F%B0/</id>
     <published>2020-08-01T15:06:15.000Z</published>
-    <updated>2020-08-01T15:07:06.100Z</updated>
+    <updated>2020-08-02T03:06:26.539Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h1><blockquote><p>虽然只有五道编程题,做完有点怀疑人生</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h1 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h1><blockquote><p>虽然只有五道编程题,做完有点怀疑人生</p></blockquote><hr><h1 id="压缩算法"><a href="#压缩算法" class="headerlink" title="压缩算法"></a>压缩算法</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="one.png" alt=""></p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><pre><code>就是将[m|S]拆开 最后拼接成完整的字符串</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        String s1&#x3D;input.next();</span><br><span class="line">        System.out.println(dik(s1));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static String dik(String s)&#123;</span><br><span class="line">        StringBuilder res&#x3D;new StringBuilder();</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return res.toString(); &#x2F;&#x2F;转字符串</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="" alt=""></p><hr>]]></content>
     
     <summary type="html">
     
@@ -32,7 +32,8 @@
         &lt;h1 id=&quot;结果分析&quot;&gt;&lt;a href=&quot;#结果分析&quot; class=&quot;headerlink&quot; title=&quot;结果分析&quot;&gt;&lt;/a&gt;结果分析&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;虽然只有五道编程题,做完有点怀疑人生&lt;/p&gt;
 &lt;/blockquote&gt;
-
+&lt;hr&gt;
+&lt;h1 id=
       
     
     </summary>
