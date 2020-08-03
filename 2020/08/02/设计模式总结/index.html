@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/interface.png">
 <meta property="og:image" content="https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/classtu.png">
 <meta property="article:published_time" content="2020-08-02T14:27:31.000Z">
-<meta property="article:modified_time" content="2020-08-03T04:42:49.634Z">
+<meta property="article:modified_time" content="2020-08-03T09:51:33.449Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
@@ -406,19 +406,78 @@
         ~ 朋友 friendly
 
 3.操作([可见性]函数名称(函数参数列表)[:返回类型])
-    举例: +display():void</code></pre><blockquote>
-<p>学生类的UML图举例</p>
-</blockquote>
+    举例: +display():void</code></pre><ul>
+<li>学生类的UML图举例</li>
+</ul>
 <p><img src="stu.png" alt=""></p>
 <h2 id="接口-带名称的小圆圈"><a href="#接口-带名称的小圆圈" class="headerlink" title="接口(带名称的小圆圈)"></a>接口(带名称的小圆圈)</h2><p><img src="interface.png" alt=""></p>
 <h2 id="类图-静态模型"><a href="#类图-静态模型" class="headerlink" title="类图(静态模型)"></a>类图(静态模型)</h2><pre><code>1. 类图中的类可以通过某种编程 语言直接实现。
 2. 类图在软件系统开发的整个生命周期都是有效的。
-3. 它是面向对象系统的建模中最常见的图。</code></pre><blockquote>
-<p>计算长方形和圆形的周长与面积</p>
-</blockquote>
+3. 它是面向对象系统的建模中最常见的图。</code></pre><ul>
+<li>举例:(计算长方形和圆形的周长与面积)</li>
+</ul>
 <p><img src="classtu.png" alt=""></p>
-<h2 id="类之间的关系-六个"><a href="#类之间的关系-六个" class="headerlink" title="类之间的关系(六个)"></a>类之间的关系(六个)</h2><hr>
+<h2 id="类之间的关系-六个"><a href="#类之间的关系-六个" class="headerlink" title="类之间的关系(六个)"></a>类之间的关系(六个)</h2><pre><code>1. 依赖关系  - - - -&gt; (带虚线的箭头)
 
+2. 关联关系   
+    2.1 双向关联:  &lt;一一&gt; / 一一
+    2.2 单向关联:  一一&gt;
+    2.3 关联分为一般关联 聚合 组合
+
+3. 聚合关系(强关联)   部分一一◇整体
+    整体和部分之间的关系 -- has a的关系
+    部分离开整体也可以存在
+
+4. 组合关系(更强烈的聚合关系) 部分部分一一◆整体
+    整体和部分之间的关系 -- cxmtains-a的关系
+    组合关系中增加整体对象可以控制部分对象的生命周期(整体死了部分也就死了)
+
+5. 泛化关系(耦合度最大)  一一▷
+    表示一般与特殊的关系 -- is a的关系(继承)
+
+6. 实现关系  - - - ▷
+    表示接口与实现类的关系</code></pre><h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="http://c.biancheng.net/view/1319.html" target="_blank" rel="noopener">http://c.biancheng.net/view/1319.html</a></p>
+<hr>
+<h1 id="UML设计七大原则"><a href="#UML设计七大原则" class="headerlink" title="UML设计七大原则"></a>UML设计七大原则</h1><pre><code>1. 开闭原则 : 是总纲,它告诉我们要对扩展开放，对修改关闭。
+2. 里氏替换原则 : 告诉我们不要破坏继承体系
+3. 依赖倒置原则 : 告诉我们要面向接口编程
+4. 单一职责原则 : 告诉我们实现类要职责单一
+5. 接口隔离原则 : 告诉我们在设计接口的时候要精简单一
+6. 迪米特法则 : 告诉我们要降低耦合度
+7. 合成复用原则 : 告诉我们要优先使用组合或者聚合关系复用,少用继承关系复用。</code></pre><hr>
+<h1 id="创建型模式-怎样创建对象"><a href="#创建型模式-怎样创建对象" class="headerlink" title="创建型模式(怎样创建对象)"></a>创建型模式(怎样创建对象)</h1><blockquote>
+<p><strong>将对象的创建和使用分离,降低系统耦合度,我们不需要关注创建细节,对象的创建由相关的工厂来完成</strong> </p>
+</blockquote>
+<h2 id="创建型模式分类-五个"><a href="#创建型模式分类-五个" class="headerlink" title="创建型模式分类(五个)"></a>创建型模式分类(五个)</h2><pre><code>1. 单例模式(Singleton)            --对象创建型模式
+    1.1 某个类只能生成一个实例,该类提供一个全局访问点供外部获取 (相当于城里面有一个店铺 你要访问店铺必须要通过城门检查)
+    1.2 扩展是有限多例模式
+
+2. 原型模式(Prototype)            --对象创建型模式
+    2.1 将一个对象作为原型,然后通过复制而克隆出多个新实例
+
+3. 工厂方法(FactoryMethod)          --类创建型模式
+    3.1 定义一个创建产品的接口 由子类决定生产什么产品(相当于我定义一个模型样子,具体怎么搞看你子类生产啥)
+
+4. 抽象方法(AbstractFactory)        --对象创建型模式
+    4.1 提供一个创建产品族的接口 其每个子类可以生产一系列相关的产品(相关的接口们都给你了 怎么继承覆盖方法是子类决定的)
+
+5. 建造者方式(Builder)              --对象创建型模式
+    5.1 将复杂对象分解为多个相对简单的部分 然后根据需求分别创建它们然后构成复杂对象(乐高一样组装)</code></pre><hr>
+<h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><h2 id="定义和特点"><a href="#定义和特点" class="headerlink" title="定义和特点"></a>定义和特点</h2><ul>
+<li><p><strong>定义</strong></p>
+<ol>
+<li>一个类只有一个实例，且该类能自行创建这个实例的一种模式</li>
+</ol>
+</li>
+<li><p><strong>特点</strong></p>
+<ol>
+<li>单例类只能有一个实例对象</li>
+<li>该单例对象必须由单例类自行创建</li>
+<li>单例类对外提供一个访问该单例的全局访问点</li>
+</ol>
+</li>
+</ul>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h2 id=""><a href="#" class="headerlink" title="##"></a>##</h2>
       
       
         <div class="page-reward">
@@ -476,7 +535,7 @@
         <p><span>本文标题:</span><a href="/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/">设计模式总结</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2020年08月02日 - 22时27分</p>
-        <p><span>最后更新:</span>2020年08月03日 - 12时42分</p>
+        <p><span>最后更新:</span>2020年08月03日 - 17时51分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/" title="设计模式总结">https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -505,7 +564,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#参考网址"><span class="toc-number">1.</span> <span class="toc-text">参考网址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设计模式分类-三大类二十三种"><span class="toc-number">2.</span> <span class="toc-text">设计模式分类(三大类二十三种)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#统一建模语言-UML"><span class="toc-number">3.</span> <span class="toc-text">统一建模语言(UML)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#类-类名、属性和操作之间有分割线的矩形"><span class="toc-number">3.1.</span> <span class="toc-text">类(类名、属性和操作之间有分割线的矩形)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口-带名称的小圆圈"><span class="toc-number">3.2.</span> <span class="toc-text">接口(带名称的小圆圈)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-静态模型"><span class="toc-number">3.3.</span> <span class="toc-text">类图(静态模型)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类之间的关系-六个"><span class="toc-number">3.4.</span> <span class="toc-text">类之间的关系(六个)</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#参考网址"><span class="toc-number">1.</span> <span class="toc-text">参考网址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设计模式分类-三大类二十三种"><span class="toc-number">2.</span> <span class="toc-text">设计模式分类(三大类二十三种)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#统一建模语言-UML"><span class="toc-number">3.</span> <span class="toc-text">统一建模语言(UML)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#类-类名、属性和操作之间有分割线的矩形"><span class="toc-number">3.1.</span> <span class="toc-text">类(类名、属性和操作之间有分割线的矩形)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口-带名称的小圆圈"><span class="toc-number">3.2.</span> <span class="toc-text">接口(带名称的小圆圈)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-静态模型"><span class="toc-number">3.3.</span> <span class="toc-text">类图(静态模型)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类之间的关系-六个"><span class="toc-number">3.4.</span> <span class="toc-text">类之间的关系(六个)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-number">3.5.</span> <span class="toc-text">参考文章</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UML设计七大原则"><span class="toc-number">4.</span> <span class="toc-text">UML设计七大原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建型模式-怎样创建对象"><span class="toc-number">5.</span> <span class="toc-text">创建型模式(怎样创建对象)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建型模式分类-五个"><span class="toc-number">5.1.</span> <span class="toc-text">创建型模式分类(五个)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单例模式"><span class="toc-number">6.</span> <span class="toc-text">单例模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义和特点"><span class="toc-number">6.1.</span> <span class="toc-text">定义和特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子"><span class="toc-number">6.2.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">6.3.</span> <span class="toc-text">##</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
