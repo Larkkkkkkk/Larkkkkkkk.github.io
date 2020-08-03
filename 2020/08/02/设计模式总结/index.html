@@ -5,18 +5,23 @@
   
   <title>设计模式总结 | Second Homes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考网址 学习参考的网址:  http:&#x2F;&#x2F;c.biancheng.net&#x2F;view&#x2F;1351.html">
+  <meta name="description" content="参考网址 学习参考的网址:  http:&#x2F;&#x2F;c.biancheng.net&#x2F;view&#x2F;1351.html  设计模式分类(三大类二十三种) 创建型模式用于描述怎么创建对象 结构型模式用于描述如何将类&#x2F;对象按某种布局组成更大的结构 行为型模式用于描述类&#x2F;对象之间如何相互协作共同完成单个对象都无法单独完成的任务,如何分配职责    统一建模语言(UML)1. 9类图:     用例图、类图、对象图、状">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式总结">
 <meta property="og:url" content="https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Second Homes">
-<meta property="og:description" content="参考网址 学习参考的网址:  http:&#x2F;&#x2F;c.biancheng.net&#x2F;view&#x2F;1351.html">
+<meta property="og:description" content="参考网址 学习参考的网址:  http:&#x2F;&#x2F;c.biancheng.net&#x2F;view&#x2F;1351.html  设计模式分类(三大类二十三种) 创建型模式用于描述怎么创建对象 结构型模式用于描述如何将类&#x2F;对象按某种布局组成更大的结构 行为型模式用于描述类&#x2F;对象之间如何相互协作共同完成单个对象都无法单独完成的任务,如何分配职责    统一建模语言(UML)1. 9类图:     用例图、类图、对象图、状">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/classify.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/stu.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/interface.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/classtu.png">
 <meta property="article:published_time" content="2020-08-02T14:27:31.000Z">
-<meta property="article:modified_time" content="2020-08-02T14:35:33.204Z">
+<meta property="article:modified_time" content="2020-08-03T04:42:49.634Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/classify.png">
   
     <link rel="alternative" href="/atom.xml" title="Second Homes" type="application/atom+xml">
   
@@ -375,6 +380,44 @@
 </blockquote>
 <p><a href="http://c.biancheng.net/view/1351.html" target="_blank" rel="noopener">http://c.biancheng.net/view/1351.html</a></p>
 <hr>
+<h1 id="设计模式分类-三大类二十三种"><a href="#设计模式分类-三大类二十三种" class="headerlink" title="设计模式分类(三大类二十三种)"></a>设计模式分类(三大类二十三种)</h1><ul>
+<li><strong>创建型模式</strong>用于描述怎么创建对象</li>
+<li><strong>结构型模式</strong>用于描述如何将类/对象按某种布局组成更大的结构</li>
+<li><strong>行为型模式</strong>用于描述类/对象之间如何相互协作共同完成单个对象都无法单独完成的任务,如何分配职责</li>
+</ul>
+<p><img src="classify.png" alt=""></p>
+<hr>
+<h1 id="统一建模语言-UML"><a href="#统一建模语言-UML" class="headerlink" title="统一建模语言(UML)"></a>统一建模语言(UML)</h1><pre><code>1. 9类图:
+    用例图、类图、对象图、状态图、活动图、时序图、协作图、构件图、部署图
+2. 类
+3. 接口
+4. 类之间关系</code></pre><h2 id="类-类名、属性和操作之间有分割线的矩形"><a href="#类-类名、属性和操作之间有分割线的矩形" class="headerlink" title="类(类名、属性和操作之间有分割线的矩形)"></a>类(类名、属性和操作之间有分割线的矩形)</h2><blockquote>
+<p>具有相同属性、方法、关系的对象抽象,封装了数据和行为。</p>
+</blockquote>
+<pre><code>1. 类名(字符串)
+    举例: Student
+
+2. 属性([可见性]属性名:类型[=默认值])
+    举例: -name:String
+    可见性取值:
+        + 公有 public
+        - 私有 private
+        # 受保护 protected
+        ~ 朋友 friendly
+
+3.操作([可见性]函数名称(函数参数列表)[:返回类型])
+    举例: +display():void</code></pre><blockquote>
+<p>学生类的UML图举例</p>
+</blockquote>
+<p><img src="stu.png" alt=""></p>
+<h2 id="接口-带名称的小圆圈"><a href="#接口-带名称的小圆圈" class="headerlink" title="接口(带名称的小圆圈)"></a>接口(带名称的小圆圈)</h2><p><img src="interface.png" alt=""></p>
+<h2 id="类图-静态模型"><a href="#类图-静态模型" class="headerlink" title="类图(静态模型)"></a>类图(静态模型)</h2><pre><code>1. 类图中的类可以通过某种编程 语言直接实现。
+2. 类图在软件系统开发的整个生命周期都是有效的。
+3. 它是面向对象系统的建模中最常见的图。</code></pre><blockquote>
+<p>计算长方形和圆形的周长与面积</p>
+</blockquote>
+<p><img src="classtu.png" alt=""></p>
+<h2 id="类之间的关系-六个"><a href="#类之间的关系-六个" class="headerlink" title="类之间的关系(六个)"></a>类之间的关系(六个)</h2><hr>
 
       
       
@@ -433,7 +476,7 @@
         <p><span>本文标题:</span><a href="/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/">设计模式总结</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2020年08月02日 - 22时27分</p>
-        <p><span>最后更新:</span>2020年08月02日 - 22时35分</p>
+        <p><span>最后更新:</span>2020年08月03日 - 12时42分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/" title="设计模式总结">https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -462,7 +505,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#参考网址"><span class="toc-number">1.</span> <span class="toc-text">参考网址</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#参考网址"><span class="toc-number">1.</span> <span class="toc-text">参考网址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设计模式分类-三大类二十三种"><span class="toc-number">2.</span> <span class="toc-text">设计模式分类(三大类二十三种)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#统一建模语言-UML"><span class="toc-number">3.</span> <span class="toc-text">统一建模语言(UML)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#类-类名、属性和操作之间有分割线的矩形"><span class="toc-number">3.1.</span> <span class="toc-text">类(类名、属性和操作之间有分割线的矩形)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口-带名称的小圆圈"><span class="toc-number">3.2.</span> <span class="toc-text">接口(带名称的小圆圈)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图-静态模型"><span class="toc-number">3.3.</span> <span class="toc-text">类图(静态模型)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类之间的关系-六个"><span class="toc-number">3.4.</span> <span class="toc-text">类之间的关系(六个)</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
