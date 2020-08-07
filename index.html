@@ -359,7 +359,73 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1>
+        <h1 id="数据库指令"><a href="#数据库指令" class="headerlink" title="数据库指令"></a>数据库指令</h1><h2 id="选择数据库-USE指令"><a href="#选择数据库-USE指令" class="headerlink" title="选择数据库(USE指令)"></a>选择数据库(USE指令)</h2><pre><code>输入 : USE crashcourse 
+输出 : Database changed</code></pre><h2 id="展示数据库和表-SHOW指令"><a href="#展示数据库和表-SHOW指令" class="headerlink" title="展示数据库和表(SHOW指令)"></a>展示数据库和表(SHOW指令)</h2><pre><code>1. 数据库、表、列、用户、权限等信息被存储在数据库和表中(一般内部表不让直接访问)
+2. 展示数据库: show databases;
+3. 展示数据库内表: show tables; (返回当前选择的数据库内可用表的列表)
+4. 展示表列: show columns from XXX;
+5. 展示服务器状态信息: show status
+6. 展示特定数据库mysql语句: show create database
+7. 展示特定表mysql语句: show create table
+8. 展示授予用户安全权限: show grants
+9. 展示服务器错误/警告信息: show errors / show warnings </code></pre><hr>
+<h1 id="检索数据-select语句"><a href="#检索数据-select语句" class="headerlink" title="检索数据(select语句)"></a>检索数据(select语句)</h1><h2 id="检索单列"><a href="#检索单列" class="headerlink" title="检索单列"></a>检索单列</h2><pre><code>//检索user表中name列
+    select name 
+    from user      </code></pre><h2 id="检索多列-逗号分隔"><a href="#检索多列-逗号分隔" class="headerlink" title="检索多列(逗号分隔)"></a>检索多列(逗号分隔)</h2><pre><code>//检索user表中name还有id和price列
+    select name,id,price 
+    from user</code></pre><h2 id="检索所有列-通配符"><a href="#检索所有列-通配符" class="headerlink" title="检索所有列(通配符[*])"></a>检索所有列(通配符[*])</h2><pre><code>//检索user表中所有列
+    select * 
+    from user</code></pre><h2 id="检索不同行的值-distinct关键字"><a href="#检索不同行的值-distinct关键字" class="headerlink" title="检索不同行的值(distinct关键字)"></a>检索不同行的值(distinct关键字)</h2><pre><code>//检索user表中不同的name列
+    select distinct name 
+    from user</code></pre><blockquote>
+<p><strong>满足条件</strong></p>
+</blockquote>
+<pre><code>1. 必须放在列名前面  --   distinct 列名    
+2. 只能返回不同的值(唯一)
+3. 应用于所有列</code></pre><h2 id="检索前n行-limit子句"><a href="#检索前n行-limit子句" class="headerlink" title="检索前n行(limit子句)"></a>检索前n行(limit子句)</h2><pre><code>//检索user表中name列的前五行
+    select name
+    from user
+    limit 5  //不多于5行
+
+//为得出下一个5行,可以指定要检索的开始行和行数
+    select name 
+    from user
+    limit 5,5  //从第五行开始检索5行 </code></pre><blockquote>
+<p><strong>注意事项</strong></p>
+</blockquote>
+<pre><code>1. 行0  ---  检索出来的第一行是行0 (limit 1,1将检索出第二行)
+2. 行数不够  ---   有多少输出多少
+3. 替换语句:  limit 4 offset 3 &lt;--&gt; limit 3,4 (从行3开始取4行)</code></pre><h2 id="检索特定表的列"><a href="#检索特定表的列" class="headerlink" title="检索特定表的列"></a>检索特定表的列</h2><pre><code>//检索user表内的name列
+    select user.name
+    from user</code></pre><hr>
+<h1 id="排序检索数据-order-by子句"><a href="#排序检索数据-order-by子句" class="headerlink" title="排序检索数据(order by子句)"></a>排序检索数据(order by子句)</h1><h2 id="单列排序"><a href="#单列排序" class="headerlink" title="单列排序"></a>单列排序</h2><pre><code>//从user表中查name列(根据字母顺序排序)
+    select name
+    from user
+    order by name; //order by子句</code></pre><h2 id="多列排序-逗号分隔"><a href="#多列排序-逗号分隔" class="headerlink" title="多列排序(逗号分隔)"></a>多列排序(逗号分隔)</h2><pre><code>//先对三个列查询出来之后对name和price列进行排序
+    select name,id,price
+    from user
+    order by name,price  //首先根据名字name  然后根据价格price
+
+//注意:
+    对于上述例子输出:仅在多个行具有相同的name值时才对price值进行排序(name列中所有值都是唯一,就不会按照price排序)</code></pre><h2 id="指定排序方向-desc-asc关键字"><a href="#指定排序方向-desc-asc关键字" class="headerlink" title="指定排序方向(desc/asc关键字)"></a>指定排序方向(desc/asc关键字)</h2><pre><code>//desc按照Z到A降序   --  
+//asc按照A到Z升序(默认)
+
+//根据价格降序排序产品(最贵的排在前面)
+    select price,id,name
+    from user
+    order by price desc; //根据price排序 desc说明是降序
+
+//多个列排序
+    select price,id,name
+    from user
+    order by price desc,id; //只有price降序!!!
+
+//找到列中某几个行
+    select price,id,name
+    from user
+    order by price desc  //desc是降序(从高到低)
+    limit 1;  //找到最贵的!!!</code></pre><hr>
+<h1 id="过滤数据-where子句"><a href="#过滤数据-where子句" class="headerlink" title="过滤数据(where子句)"></a>过滤数据(where子句)</h1>
       
       
     </div>
@@ -630,7 +696,38 @@
     2.1 代理模式在客户端与目标对象之间起到一个中介作用和保护目标对象的作用
     2.2 代理对象可以扩展目标对象的功能
     2.3 代理模式能将客户端与目标对象分离，在一定程度上降低了系统的耦合度
-    2.4 但是,会增加系统的复杂度和请求处理速度变慢</code></pre><h2 id="结构-3"><a href="#结构-3" class="headerlink" title="结构"></a>结构</h2><h2 id="举例"><a href="#举例" class="headerlink" title="举例()"></a>举例()</h2><hr>
+    2.4 但是,会增加系统的复杂度和请求处理速度变慢</code></pre><h2 id="结构-3"><a href="#结构-3" class="headerlink" title="结构"></a>结构</h2><p><img src="proxystruct.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F;客户类(执行main方法)</span><br><span class="line">	public class ProxyTest&#123;</span><br><span class="line">		public static void main(String[] args)&#123;</span><br><span class="line">			Proxy p&#x3D;new Proxy();  &#x2F;&#x2F;代理类生成对象</span><br><span class="line">			P.Request(); &#x2F;&#x2F;调用真实主题里存在的方法</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;抽象主题</span><br><span class="line">	interface Subject&#123;</span><br><span class="line">		void Request(); &#x2F;&#x2F;接口只写方法</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;真实主题</span><br><span class="line">	public class RealSubject implements Subject&#123;</span><br><span class="line">		public void Request()&#123;</span><br><span class="line">			System.out.println(&quot;这是访问真实主题方法!!&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;代理</span><br><span class="line">	public class Proxy implements Subject&#123;</span><br><span class="line">		private RealSubject realSubject; &#x2F;&#x2F;生成真实主题对象</span><br><span class="line">		public void Request()&#123;</span><br><span class="line">        	if(realSubject&#x3D;&#x3D;null)&#123;</span><br><span class="line">            	realSubject&#x3D;new RealSubject(); &#x2F;&#x2F;为空新建</span><br><span class="line">        	&#125;</span><br><span class="line">        	preRequest();  &#x2F;&#x2F;调用代理新加的功能</span><br><span class="line">        	realSubject.Request();  &#x2F;&#x2F;调用原有方法</span><br><span class="line">        	postRequest(); &#x2F;&#x2F;调用代理新加的功能</span><br><span class="line">    	&#125;</span><br><span class="line">	&#x2F;&#x2F;新加的功能</span><br><span class="line">		public void preRequest()&#123;</span><br><span class="line">        	System.out.println(&quot;访问真实主题预处理&quot;);</span><br><span class="line">    	&#125;</span><br><span class="line">    	public void postRequest()&#123;</span><br><span class="line">        	System.out.println(&quot;访问真实主题后续处理&quot;);</span><br><span class="line">    	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;执行结果</span><br><span class="line">	访问真实主题预处理</span><br><span class="line">	访问真实主题方法...</span><br><span class="line">	访问真实主题后续处理</span><br></pre></td></tr></table></figure>
+
+<h2 id="举例-原有类上更新功能"><a href="#举例-原有类上更新功能" class="headerlink" title="举例(原有类上更新功能)"></a>举例(原有类上更新功能)</h2><p><img src="proxyexa.png" alt=""></p>
+<h2 id="代理模式应用场景"><a href="#代理模式应用场景" class="headerlink" title="代理模式应用场景"></a>代理模式应用场景</h2><pre><code>1. 以前的功能在不修改基础上/不可看到接口内部 -- 代理模式进行扩展和修改
+2. 远程代理 : 用户申请某些网盘空间时，会在用户的文件系统中建立一个虚拟的硬盘，用户访问虚拟硬盘时实际访问的是网盘空间。
+3. 安全代理 : 控制不同种类客户对真实对象的访问权限。
+4. 延迟加载 : 指为了提高系统的性能，延迟对目标的加载。</code></pre><hr>
+<h1 id="适配器模式-Adapter-–-接口兼容"><a href="#适配器模式-Adapter-–-接口兼容" class="headerlink" title="适配器模式(Adapter – 接口兼容)"></a>适配器模式(Adapter – 接口兼容)</h1><h2 id="定义和特点-6"><a href="#定义和特点-6" class="headerlink" title="定义和特点"></a>定义和特点</h2><pre><code>1. 定义:
+    将一个类的接口A转换成客户希望的另外一个接口B,这样使原来由于接口不兼容而不能一起工作的类能一起工作
+
+2. 特点:
+    2.1 分为类结构型模式(耦合度更高,使用较少)和对象结构性模式
+    2.2 复用现存的类,不需要修改源代码而重用现有的适配者类</code></pre><h2 id="结构-4"><a href="#结构-4" class="headerlink" title="结构"></a>结构</h2><pre><code>1. 类适配器模式: 适配器类 implement 当前系统业务接口 + 适配器类 extends 组件
+2. 对象适配器模式: 适配器类 implement 当前系统业务接口 + 组件引入到适配器类(聚合)
+3. 两种类型的区别:
+    只是客户端和适配器类代码不同!!!    </code></pre><blockquote>
+<p><strong>类适配器模式</strong></p>
+</blockquote>
+<p><img src="adapterclass.png" alt=""></p>
+<blockquote>
+<p><strong>对象适配器模式</strong></p>
+</blockquote>
+<p><img src="adapterduixiang.png" alt=""></p>
+<h2 id="举例-模拟新能源汽车发动机"><a href="#举例-模拟新能源汽车发动机" class="headerlink" title="举例(模拟新能源汽车发动机)"></a>举例(模拟新能源汽车发动机)</h2><p><img src="adapterexample.png" alt=""></p>
+<h2 id="适配器模式应用场景"><a href="#适配器模式应用场景" class="headerlink" title="适配器模式应用场景"></a>适配器模式应用场景</h2><pre><code>1. 以前开发的系统存在满足新系统功能需求的类,但是其接口和新系统接口不一致
+2. 使用第三方提供的组件,但是组件接口定义和自己要求定义不同</code></pre><hr>
+<h1 id="桥接模式-组合替换继承"><a href="#桥接模式-组合替换继承" class="headerlink" title="桥接模式(组合替换继承)"></a>桥接模式(组合替换继承)</h1><h2 id="定义和特点-7"><a href="#定义和特点-7" class="headerlink" title="定义和特点"></a>定义和特点</h2><pre><code>1. 定义:
+
+2. 特点:</code></pre><h2 id="结构-5"><a href="#结构-5" class="headerlink" title="结构"></a>结构</h2><p><img src="" alt=""></p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例()"></a>举例()</h2><p><img src="" alt=""></p>
+<h2 id="桥接模式应用场景"><a href="#桥接模式应用场景" class="headerlink" title="桥接模式应用场景"></a>桥接模式应用场景</h2><hr>
 
       
       
