@@ -425,7 +425,123 @@
     from user
     order by price desc  //desc是降序(从高到低)
     limit 1;  //找到最贵的!!!</code></pre><hr>
-<h1 id="过滤数据-where子句"><a href="#过滤数据-where子句" class="headerlink" title="过滤数据(where子句)"></a>过滤数据(where子句)</h1>
+<h1 id="过滤数据-where子句"><a href="#过滤数据-where子句" class="headerlink" title="过滤数据(where子句)"></a>过滤数据(where子句)</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><pre><code>//语句顺序: select -- from -- where -- order by -- limit 
+    select distinct name //找到不同的name
+    from user
+    where name=&apos;宋亚翔&apos;  //限定找name是宋亚翔
+    order by name desc  //根据name降序排序
+    limit 5,5; //从第五行开始输出五行</code></pre><h2 id="where子句操作符"><a href="#where子句操作符" class="headerlink" title="where子句操作符"></a>where子句操作符</h2><p><img src="wherebiaodashi.png" alt=""></p>
+<h2 id="检查单值"><a href="#检查单值" class="headerlink" title="检查单值"></a>检查单值</h2><pre><code>//检测出name叫宋亚翔的一行
+    select name,price
+    from user
+    where name=&apos;宋亚翔&apos;;</code></pre><h2 id="不匹配检查-不等于操作符"><a href="#不匹配检查-不等于操作符" class="headerlink" title="不匹配检查(不等于操作符)"></a>不匹配检查(不等于操作符)</h2><pre><code>//在user表中找id不是1003的结果
+    select id,name
+    from user
+    where id&lt;&gt;1003; //where id!=1003</code></pre><h2 id="范围值检查-between"><a href="#范围值检查-between" class="headerlink" title="范围值检查(between)"></a>范围值检查(between)</h2><pre><code>//在user标准中找price在5-10的信息 展示名字和对应价格
+    select name,price
+    from user
+    where price between 5 and 10;</code></pre><h2 id="空值检查-is-null"><a href="#空值检查-is-null" class="headerlink" title="空值检查(is null)"></a>空值检查(is null)</h2><pre><code>//检查有没有人的价格是null
+    select name
+    from user
+    where price is null;</code></pre><hr>
+<h1 id="数据过滤-组合where子句"><a href="#数据过滤-组合where子句" class="headerlink" title="数据过滤(组合where子句)"></a>数据过滤(组合where子句)</h1><blockquote>
+<p><strong>多个子句就需要用and/or方式使用</strong></p>
+</blockquote>
+<h2 id="and操作符"><a href="#and操作符" class="headerlink" title="and操作符"></a>and操作符</h2><pre><code>//找到名字为宋亚翔并且购买物品价格小于10的所有产品的名字和价格
+    select name,id
+    from user
+    where id=&apos;宋亚翔&apos; and price&lt;=10;</code></pre><h2 id="or操作符"><a href="#or操作符" class="headerlink" title="or操作符"></a>or操作符</h2><pre><code>//检索名字由任一个指定叫宋亚翔或者刘伟的产品name和id
+    select name,id
+    from user
+    where id=&apos;宋亚翔&apos; or id=&apos;刘伟&apos;;</code></pre><h2 id="or和and优先级"><a href="#or和and优先级" class="headerlink" title="or和and优先级"></a>or和and优先级</h2><blockquote>
+<p><strong>优先级: and &gt; or (适当给与()区分)</strong></p>
+</blockquote>
+<pre><code>//两者共同使用必须用括号()区分
+    select name,price
+    from user
+    where (id=&apos;宋亚翔&apos; or id=&apos;刘伟&apos;) and price&gt;=10;</code></pre><h2 id="in操作符-功能和or一样"><a href="#in操作符-功能和or一样" class="headerlink" title="in操作符(功能和or一样)"></a>in操作符(功能和or一样)</h2><pre><code>//检索名字是宋亚翔或者刘伟的信息根据name升序排序出name和price
+    select name,price
+    from user
+    where id in(&apos;宋亚翔&apos;,&apos;刘伟&apos;)
+    order by name;
+
+//in操作符优点:
+    1. 使用长的合法选项清单时,in操作符的语法更清楚而且直观
+    2. 使用in操作符,计算次序更容易管理
+    3. in操作符速度执行更快
+    4. in能动态建立where子句</code></pre><h2 id="not操作符"><a href="#not操作符" class="headerlink" title="not操作符"></a>not操作符</h2><pre><code>//检索名字除宋亚翔和刘伟之外的所有信息根据name升序排序出name和price
+    select name,price
+    from user
+    where id not in(&apos;宋亚翔&apos;,&apos;刘伟&apos;)
+    order by name;</code></pre><hr>
+<h1 id="通配符过滤-like操作符"><a href="#通配符过滤-like操作符" class="headerlink" title="通配符过滤(like操作符)"></a>通配符过滤(like操作符)</h1><h2 id="0-n个字符"><a href="#0-n个字符" class="headerlink" title="%(0-n个字符)"></a>%(0-n个字符)</h2><blockquote>
+<p><strong>百分号%可以匹配0/1/n个字符(不能匹配null)</strong></p>
+</blockquote>
+<pre><code>//找到jet起头的产品
+    select id,name
+    from user
+    where name like &apos;jet%&apos;; //找到 jetxxxx 形式
+
+//找到jet在中间的产品
+    select id,name
+    from user
+    where name like &apos;%jet%&apos;; //找到 XXXjetxXX 形式</code></pre><h2 id="单个字符"><a href="#单个字符" class="headerlink" title="_(单个字符)"></a>_(单个字符)</h2><blockquote>
+<p><strong>下划线_总能匹配一个字符(不能多也不能少)</strong></p>
+</blockquote>
+<pre><code>//找到jet前面有一个字符的结果  (1jet 2jet等等)
+    select id,name
+    from user
+    where name like &apos;_jet&apos;; //找到 Xjet形式</code></pre><hr>
+<h1 id="正则表达式搜索-regexp"><a href="#正则表达式搜索-regexp" class="headerlink" title="正则表达式搜索(regexp)"></a>正则表达式搜索(regexp)</h1><blockquote>
+<p>正则表达式用来匹配文本特殊的串(字符集合)</p>
+</blockquote>
+<h2 id="基本字符匹配-regexp"><a href="#基本字符匹配-regexp" class="headerlink" title="基本字符匹配(regexp)"></a>基本字符匹配(regexp)</h2><pre><code>//检索列name包含文本1000的所有行
+    select name 
+    from user
+    where name regexp &apos;1000&apos;  //regexp替换了like位置
+   //where name regexp &apos;.1000&apos; //匹配任意一个字符(1000S 2000)
+    order by name;
+
+//总结
+    1. 使用关键字regexp --&gt; like
+    2. 匹配不区分大小写:  可以使用binary区分大小写(默认不区分)
+    3.  . 用于匹配单个字符</code></pre><h2 id="进行or匹配"><a href="#进行or匹配" class="headerlink" title="进行or匹配( | )"></a>进行or匹配( | )</h2><pre><code>//匹配1000或者2000的结果
+    select name
+    from user
+    where name regexp &apos;1000|2000&apos;
+    order by name;</code></pre><h2 id="匹配单个字符-括号"><a href="#匹配单个字符-括号" class="headerlink" title="匹配单个字符([]括号)"></a>匹配单个字符([]括号)</h2><blockquote>
+<p>[] 等价于 | 等价于 or (三者都是)</p>
+</blockquote>
+<pre><code>//匹配1或者2或者3 
+    select name
+    from user
+    where name regexp &apos;[123]Ton&apos; //[123]Ton是[1|2|3]Ton缩写
+    order by name;</code></pre><h2 id="匹配一个-多个字符-x-y"><a href="#匹配一个-多个字符-x-y" class="headerlink" title="匹配一个/多个字符([x-y])"></a>匹配一个/多个字符([x-y])</h2><pre><code>//匹配0到9 [0123456789]等价于[0-9]
+    select name
+    from user
+    where name regexp &apos;[1-9]Ton&apos; //匹配数字0到9
+    order by name;</code></pre><h2 id="匹配特殊字符-前导"><a href="#匹配特殊字符-前导" class="headerlink" title="匹配特殊字符(\前导)"></a>匹配特殊字符(\前导)</h2><pre><code>//  \\-表示查找-
+    select name
+    from user
+    where name regexp &apos;\\-&apos;
+    order by name;   </code></pre><blockquote>
+<p><strong>找特殊字符必须要\转义(表示后面的字符当做普通字符被识别)</strong></p>
+</blockquote>
+<p><img src="emptytable.png" alt=""></p>
+<h2 id="匹配字符类"><a href="#匹配字符类" class="headerlink" title="匹配字符类"></a>匹配字符类</h2><p><img src="charmap.png" alt=""></p>
+<h2 id="匹配多个实例"><a href="#匹配多个实例" class="headerlink" title="匹配多个实例"></a>匹配多个实例</h2><p><img src="chongfu.png" alt=""></p>
+<pre><code>// 第一个\\引导匹配特殊字符 
+// [0-9]就是匹配任意数字 
+// sticks?就是匹配stick或者sticks (?是匹配前面任何字符的0/1次)        
+
+    select name
+    from user
+    where name regexp &apos;\\([0-9] sticks?\\)&apos;
+    order by name; </code></pre><h2 id="定位符-匹配一个串中任意位置文本"><a href="#定位符-匹配一个串中任意位置文本" class="headerlink" title="定位符(匹配一个串中任意位置文本)"></a>定位符(匹配一个串中任意位置文本)</h2><p><img src="leader.png" alt=""></p>
+<pre><code>  //匹配以一个数(包括小数点开始的数字)开始的所有产品
+//简单搜索[0-9\\.]不行  必须要用^定位符
+// where name regexp &apos;^[0-9\\.]&apos;</code></pre><hr>
+<h1 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h1>
       
       
     </div>
