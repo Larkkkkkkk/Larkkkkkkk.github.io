@@ -541,15 +541,80 @@
 <pre><code>  //匹配以一个数(包括小数点开始的数字)开始的所有产品
 //简单搜索[0-9\\.]不行  必须要用^定位符
 // where name regexp &apos;^[0-9\\.]&apos;</code></pre><hr>
-<h1 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h1><blockquote>
+<h1 id="计算字段"><a href="#计算字段" class="headerlink" title="计算字段"></a>计算字段</h1><blockquote>
 <p><strong>运行时在select语句内创建</strong></p>
 </blockquote>
 <pre><code>1. 字段(field) 基本上和列意思相同
 2. 数据库可以区分哪些列是实际的表列,哪些是计算字段
-3. 客户机(应用程序)计算字段的数据和其他列数据相同方式返回</code></pre><h2 id="拼接字段"><a href="#拼接字段" class="headerlink" title="拼接字段"></a>拼接字段</h2><blockquote>
-<hr>
+3. 客户机(应用程序)计算字段的数据和其他列数据相同方式返回</code></pre><h2 id="拼接字段-Concat-函数"><a href="#拼接字段-Concat-函数" class="headerlink" title="拼接字段(Concat()函数)"></a>拼接字段(Concat()函数)</h2><blockquote>
+<p><strong>将值联结到一起构成单个值</strong></p>
 </blockquote>
+<pre><code>//多数DBMS使用 + 或者 || 实现拼接
+//使用拼接从user表根据name升序排序 输出格式是 name(price)
+    select Concat(name,&apos;(&apos;,price,&apos;)&apos;)
+    from user
+    order by name;
 
+//例如:  
+        宋亚翔(1200)
+        张三(230)</code></pre><h2 id="删除数据右侧多余空格-RTrim-函数"><a href="#删除数据右侧多余空格-RTrim-函数" class="headerlink" title="删除数据右侧多余空格(RTrim()函数)"></a>删除数据右侧多余空格(RTrim()函数)</h2><pre><code>//拼接基础上删除右侧多余空格
+    select Concat(RTrim(name),&apos;(&apos;,RTrim(price),&apos;)&apos;)
+    from user
+    order by name;</code></pre><h2 id="别名-导出列-AS关键字"><a href="#别名-导出列-AS关键字" class="headerlink" title="别名/导出列(AS关键字)"></a>别名/导出列(AS关键字)</h2><blockquote>
+<p><strong>一个字段/值的替换名</strong></p>
+</blockquote>
+<pre><code>//拼接之后删除多余空格的字段  给个songyaxiang的别名就可以引用
+    select Concat(RTrim(name),&apos;(&apos;,RTrim(price),&apos;)&apos;) AS songyaxiang
+    from user 
+    order by name;</code></pre><h2 id="算术计算"><a href="#算术计算" class="headerlink" title="算术计算"></a>算术计算</h2><p><img src="suanshu.png" alt=""></p>
+<pre><code>//输出price和num乘积
+    select price*num
+    from user
+    where name=&apos;宋亚翔&apos;;</code></pre><hr>
+<h1 id="数据处理函数"><a href="#数据处理函数" class="headerlink" title="数据处理函数"></a>数据处理函数</h1><h2 id="文本处理函数"><a href="#文本处理函数" class="headerlink" title="文本处理函数"></a>文本处理函数</h2><p><img src="wenbenchuli.png" alt=""></p>
+<pre><code>//Soundex()函数就是匹配发音相似的函数
+//现在user表里面有个人叫宋亚翔 其联络名叫laekkkkkkk(如果输入错误,实际应该是larkkkkkkk)
+    select name,lianluoming
+    from user
+    where Soundex(lianluoming)=Soundex(larkkkkkkk);
+//因为larkkkkkkk和laekkkkkkk发音相似,所以Soundex值匹配</code></pre><h2 id="日期和时间处理函数"><a href="#日期和时间处理函数" class="headerlink" title="日期和时间处理函数"></a>日期和时间处理函数</h2><p><img src="time.png" alt=""></p>
+<h2 id="数值处理函数"><a href="#数值处理函数" class="headerlink" title="数值处理函数"></a>数值处理函数</h2><p><img src="shuzhichuli.png" alt=""></p>
+<hr>
+<h1 id="汇总数据"><a href="#汇总数据" class="headerlink" title="汇总数据"></a>汇总数据</h1><h2 id="聚集函数-5个"><a href="#聚集函数-5个" class="headerlink" title="聚集函数(5个)"></a>聚集函数(5个)</h2><blockquote>
+<p><strong>运行在行组上,计算和返回单值</strong></p>
+</blockquote>
+<p><img src="count.png" alt=""></p>
+<h3 id="avg-某列平均值"><a href="#avg-某列平均值" class="headerlink" title="avg()某列平均值"></a>avg()某列平均值</h3><blockquote>
+<p><strong>通过对表中行数计数并计算特定列值之和,求该列平均值</strong></p>
+</blockquote>
+<pre><code>//从user表中找到价格price列的平均值 结果起个jiage的别名
+    select avg(price) as jiage
+    from user;
+
+//计算特定列/行的平均值(where语句确定)
+//从user表中找到名字叫宋亚翔的所有价格price列的平均值 结果叫jiage别名
+    select avg(price) as jiage
+    from user
+    where id=&apos;宋亚翔&apos;;</code></pre><h3 id="count-某列行数和"><a href="#count-某列行数和" class="headerlink" title="count()某列行数和"></a>count()某列行数和</h3><pre><code>1. 使用count(*)对表中行的数目进行计数(不管列中包含的是null还是非空值)
+2. 使用count(column)对特定列中具有值得行进行计数(忽略null值)
+
+//从user表中记录所有用户总数 结果给zongshu这个别名
+    select count(*) as zongshu
+    from user;</code></pre><h3 id="max-某列最大值"><a href="#max-某列最大值" class="headerlink" title="max()某列最大值"></a>max()某列最大值</h3><pre><code>//从user表中找到最大价格price行 结果给max这个别名
+    select max(price) as max
+    from user;</code></pre><h3 id="min-某列最小值"><a href="#min-某列最小值" class="headerlink" title="min()某列最小值"></a>min()某列最小值</h3><pre><code>//从user表中找到最小价格price行 结果给min这个别名
+    select min(price) as min
+    from user;</code></pre><h3 id="sum-某列总和"><a href="#sum-某列总和" class="headerlink" title="sum()某列总和"></a>sum()某列总和</h3><pre><code>//从user表计算price总和 结果给sum这个别名
+    select sum(price) as sum
+    from user;</code></pre><h2 id="聚集不同值-distinct-all"><a href="#聚集不同值-distinct-all" class="headerlink" title="聚集不同值(distinct/all)"></a>聚集不同值(distinct/all)</h2><pre><code>1. all(默认)  所有的行执行计算
+2. distinct() 只包含不同的值   必须用于列名</code></pre><h2 id="组合聚集函数-select子句"><a href="#组合聚集函数-select子句" class="headerlink" title="组合聚集函数(select子句)"></a>组合聚集函数(select子句)</h2><pre><code>//使用四个函数
+    //从user表中算出行总数 最大最小和平均价格并且给与别名
+        select count(*) as count,
+                min(price) as min,
+                max(price) as max,
+                avg(price) as avg
+        from user;</code></pre><hr>
+<h1 id="分组数据"><a href="#分组数据" class="headerlink" title="分组数据"></a>分组数据</h1>
       
       
     </div>
