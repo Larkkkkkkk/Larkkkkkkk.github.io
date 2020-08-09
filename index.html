@@ -359,7 +359,14 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="数据库指令"><a href="#数据库指令" class="headerlink" title="数据库指令"></a>数据库指令</h1><h2 id="选择数据库-USE指令"><a href="#选择数据库-USE指令" class="headerlink" title="选择数据库(USE指令)"></a>选择数据库(USE指令)</h2><pre><code>输入 : USE crashcourse 
+        <h1 id="数据库指令"><a href="#数据库指令" class="headerlink" title="数据库指令"></a>数据库指令</h1><h2 id="select执行顺序-书写顺序"><a href="#select执行顺序-书写顺序" class="headerlink" title="select执行顺序(书写顺序!!!)"></a>select执行顺序(书写顺序!!!)</h2><p><img src="zhixingshunxu.png" alt=""></p>
+<pre><code>select  要返回的列/表达式  [all(默认)/distinct(找不同)]  
+from    从哪个表里面查
+where   行级过滤
+group by 分组说明
+having  分组过滤(选分组)
+order by 输出排序顺序 [asc(默认)/desc(降序)]
+limit  输出行数   [limit x,y从x行输出y行]</code></pre><h2 id="选择数据库-USE指令"><a href="#选择数据库-USE指令" class="headerlink" title="选择数据库(USE指令)"></a>选择数据库(USE指令)</h2><pre><code>输入 : USE crashcourse 
 输出 : Database changed</code></pre><h2 id="展示数据库和表-SHOW指令"><a href="#展示数据库和表-SHOW指令" class="headerlink" title="展示数据库和表(SHOW指令)"></a>展示数据库和表(SHOW指令)</h2><pre><code>1. 数据库、表、列、用户、权限等信息被存储在数据库和表中(一般内部表不让直接访问)
 2. 展示数据库: show databases;
 3. 展示数据库内表: show tables; (返回当前选择的数据库内可用表的列表)
@@ -614,7 +621,35 @@
                 max(price) as max,
                 avg(price) as avg
         from user;</code></pre><hr>
-<h1 id="分组数据"><a href="#分组数据" class="headerlink" title="分组数据"></a>分组数据</h1>
+<h1 id="分组数据-group-by和having子句"><a href="#分组数据-group-by和having子句" class="headerlink" title="分组数据(group by和having子句)"></a>分组数据(group by和having子句)</h1><h2 id="创建分组-group-by子句"><a href="#创建分组-group-by子句" class="headerlink" title="创建分组(group by子句)"></a>创建分组(group by子句)</h2><blockquote>
+<p><strong>分组在select语句的group by子句中建立</strong></p>
+</blockquote>
+<pre><code>//计算每个id对应的产品个数
+//例如:  宋亚翔有7个产品 刘伟有3个产品
+    select id,count(*) as count
+    from user
+    group by id  //根据id分组
+    order by id; //根据id升序
+
+// 书写顺序:
+     group by
+    having
+    order by
+    limit</code></pre><h2 id="过滤分组-having子句"><a href="#过滤分组-having子句" class="headerlink" title="过滤分组(having子句)"></a>过滤分组(having子句)</h2><pre><code>//where过滤行,having子句过滤分组
+
+//从orders表中查找每个id和总数 然后按照id升序排序 给结果的每行给别名orders 
+//主要是我们只要count大于等于2的结果
+    select id,count(*) as orders
+    from orders
+    group by id
+    having count(*)&gt;=2;</code></pre><h2 id="分组-group-by-和排序-order-by-区别"><a href="#分组-group-by-和排序-order-by-区别" class="headerlink" title="分组(group by)和排序(order by)区别"></a>分组(group by)和排序(order by)区别</h2><p><img src="distinguish.png" alt=""></p>
+<pre><code>//检索总计订单价格大于等于50的订单的订单号和总计订单价格
+    select id,sum(quantity*price) as jiage
+    from user
+    group by num   //根据num分组
+    having sum(quantity*price)&gt;=50  //过滤分组
+    order by price;  //根据价格升序排序</code></pre><hr>
+<h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1>
       
       
     </div>
