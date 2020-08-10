@@ -740,7 +740,10 @@ limit  输出行数   [limit x,y从x行输出y行]</code></pre><h2 id="选择数
     支持全文本搜索(√)
 
 2. 和InnoDB(5.5以后)
-    不支持全文本搜索(×)</code></pre><h2 id="启用全文本搜索支持-fulltext子句"><a href="#启用全文本搜索支持-fulltext子句" class="headerlink" title="启用全文本搜索支持(fulltext子句)"></a>启用全文本搜索支持(fulltext子句)</h2><pre><code>//create table语句接受fulltext子句(给出被索引列的一个逗号分隔的列表)
+    不支持全文本搜索(×)</code></pre><h2 id="启用全文本搜索支持-fulltext子句"><a href="#启用全文本搜索支持-fulltext子句" class="headerlink" title="启用全文本搜索支持(fulltext子句)"></a>启用全文本搜索支持(fulltext子句)</h2><blockquote>
+<p><strong>创建表的时候使用fulltext子句</strong></p>
+</blockquote>
+<pre><code>//create table语句接受fulltext子句(给出被索引列的一个逗号分隔的列表)
 
 create table user
 (
@@ -750,16 +753,106 @@ create table user
     note_text text null,
     primary key(note_id),
     fulltext(note_text)   //mysql根据fulltext子句指示给它进行索引,进行全文本搜索(索引会根据数据改变重新索引)
-)ENGINE=MyISAM;  //myisam引擎支持全文本搜索</code></pre><h2 id="执行全文本搜索-Match-和Against-函数"><a href="#执行全文本搜索-Match-和Against-函数" class="headerlink" title="执行全文本搜索(Match()和Against()函数)"></a>执行全文本搜索(Match()和Against()函数)</h2><pre><code>1. Match()指定被搜索的列 
+)ENGINE=MyISAM;  //myisam引擎支持全文本搜索</code></pre><h2 id="执行全文本搜索-Match-和Against-函数"><a href="#执行全文本搜索-Match-和Against-函数" class="headerlink" title="执行全文本搜索(Match()和Against()函数)"></a>执行全文本搜索(Match()和Against()函数)</h2><blockquote>
+<p><strong>select的时候使用match()和against()函数</strong></p>
+</blockquote>
+<pre><code>1. Match()指定被搜索的列 
 2. Against()指定要使用的搜索表达式     
 
 //检索单列
     select note_text 
     from productnotes
     where match(note_text) against(&apos;rabbit&apos;);    
+
 //match(note_text)表明mysql针对note_text列进行搜索
-//against(&apos;rabbit&apos;)表明对制定此rabbit作为搜索文本搜索</code></pre><p><img src="against.png" alt="">    </p>
-<h2 id="like匹配和全文本搜索对比"><a href="#like匹配和全文本搜索对比" class="headerlink" title="like匹配和全文本搜索对比"></a>like匹配和全文本搜索对比</h2><pre><code>全文本搜索可以对结果进行排序(较高等级的行先返回)</code></pre>
+//against(&apos;rabbit&apos;)表明对制定此rabbit作为搜索文本搜索
+
+注意:
+    match()里面的值必须和fulltext()里面的值相同(指定多列必须列出多列次序也要正确)</code></pre><p><img src="against.png" alt="">    </p>
+<h2 id="like匹配和全文本搜索对比"><a href="#like匹配和全文本搜索对比" class="headerlink" title="like匹配和全文本搜索对比"></a>like匹配和全文本搜索对比</h2><pre><code>1. 全文本搜索可以对结果进行排序(较高等级的行先返回)
+2. 全文本搜索中数据是索引的,速度v更快</code></pre><h2 id="查询扩展-搜索相关结果-with-query-expansion"><a href="#查询扩展-搜索相关结果-with-query-expansion" class="headerlink" title="查询扩展(搜索相关结果 with query expansion)"></a>查询扩展(搜索相关结果 with query expansion)</h2><blockquote>
+<p><strong>能找到可能相关的结果,即使他们并不精确包含所查找的词</strong></p>
+</blockquote>
+<pre><code>//检索note_text列里面和rabbit相关的
+    select note_text 
+    from productnotes
+    where match(note_text) against(&apos;anvils&apos; with query expansion);</code></pre><h2 id="布尔文本搜索-in-boolean-mode"><a href="#布尔文本搜索-in-boolean-mode" class="headerlink" title="布尔文本搜索(in boolean mode)"></a>布尔文本搜索(in boolean mode)</h2><blockquote>
+<p><strong>不需要全文本搜索需要建立fulltext索引</strong></p>
+</blockquote>
+<pre><code>1. 要匹配的词
+2. 要排斥的词(如果某行包含这个词,则不返回该行,即使它包含其他指定的词也是如此)
+3. 排列提示(更重要的词等级更高)
+4. 表达式分组
+5. 另外一些内容</code></pre><blockquote>
+<p><strong>全文本布尔操作符</strong></p>
+</blockquote>
+<p><img src="boolean.png" alt=""></p>
+<pre><code>//匹配包含heavy但不包含任意以rope开始的词 
+    // -排除一个词(词必须不出现!) *是截断操作符
+    select note_text
+    from productnotes
+    where match(note_text) against(&apos;heavy -rope*&apos; in boolean mode)</code></pre><p><img src="juli.png" alt=""></p>
+<h2 id="全文本搜索使用说明"><a href="#全文本搜索使用说明" class="headerlink" title="全文本搜索使用说明"></a>全文本搜索使用说明</h2><pre><code>1. 许多次出现评率很高,搜索他们没有用处(返回太多结果)
+    1.1 所以规定一条50%规则(不用于in boolean mode): 如果一个词出现在50%以上的行,将它作为一个非用词忽略。
+2. 如果表中行数&lt;3:全文本搜索不返回结果
+3. 忽略词中的单引号(don&apos;t索引为dont)
+4. 不具有词分隔符(包括日语和汉语)的语言不能恰当地返回全文本搜索结果
+5. mysql带有一个内建的非用词(stopword)列表,这些词在索引时候被忽略(出现次数50%以上) 如果想用就覆盖这个列表
+6. 在索引全文本数据时,短词被忽略而且要从索引中排除(短语是具有&lt;=3个字符的词)</code></pre><hr>
+<h1 id="插入数据-insert语句"><a href="#插入数据-insert语句" class="headerlink" title="插入数据(insert语句)"></a>插入数据(insert语句)</h1><h2 id="提高整体性能-low-priority"><a href="#提高整体性能-low-priority" class="headerlink" title="提高整体性能(low_priority)"></a>提高整体性能(low_priority)</h2><p><img src="updatexing.png" alt=""></p>
+<h2 id="插入单行"><a href="#插入单行" class="headerlink" title="插入单行"></a>插入单行</h2><pre><code>//不安全(高度依赖于列定义次序)
+    insert into customers
+    values(null,&apos;123&apos;,&apos;15009272737&apos;,null);
+
+//安全但是麻烦(说明自定义的次序和对应值)
+    insert into customers(id,glass,num,country)
+    values(null,&apos;123&apos;,&apos;15009272737&apos;,null);</code></pre><h2 id="插入多行"><a href="#插入多行" class="headerlink" title="插入多行"></a>插入多行</h2><pre><code>1. 第一个insert语句;第二个insert语句;
+    insert into user()
+    values();
+    insert into user()
+    values();
+
+2. values语句(),();   -- 单条insert语句处理多个插入性能更好!!
+    insert into user()
+    values(),();</code></pre><h2 id="插入检索出的数据-insert-select"><a href="#插入检索出的数据-insert-select" class="headerlink" title="插入检索出的数据(insert select)"></a>插入检索出的数据(insert select)</h2><blockquote>
+<p><strong>一条insert语句和一条select语句组成</strong></p>
+</blockquote>
+<pre><code>从另一表中合并客户列表到你的customers表,将它用insert插入
+    insert into customers(id,contact,email,name,address,city,state,zip,country)
+    select id,contact,email,name,address,city,state,zip,country
+    from custnew;</code></pre><hr>
+<h1 id="更新数据-update语句"><a href="#更新数据-update语句" class="headerlink" title="更新数据(update语句)"></a>更新数据(update语句)</h1><pre><code>1. 更新表中特定行(update set where)
+2. 更新表中所有行(update set )</code></pre><h2 id="更新特定行-where子句要有"><a href="#更新特定行-where子句要有" class="headerlink" title="更新特定行(where子句要有)"></a>更新特定行(where子句要有)</h2><h3 id="更新单列信息"><a href="#更新单列信息" class="headerlink" title="更新单列信息"></a>更新单列信息</h3><pre><code>//客户10005现在有了电子邮件地址,因此它的记录需要更新
+    update customers
+    set email=&apos;134506293@qq.com&apos;
+    where id=10005;</code></pre><h3 id="更新多列信息-逗号分隔"><a href="#更新多列信息-逗号分隔" class="headerlink" title="更新多列信息:(逗号分隔)"></a>更新多列信息:(逗号分隔)</h3><blockquote>
+<p><strong>igonre关键字:保证就算发生错误,也继续更新!!!</strong></p>
+</blockquote>
+<pre><code>//客户10005不仅有了电子邮件地址,而且有了班级信息
+    update ignore customers  //ignore保证就算发生错误,也继续更新!!!
+    set email=&apos;134506293@qq.com&apos;,class=&apos;软件工程&apos;;
+    where id=10005;</code></pre><h2 id="更新所有行-where子句没有"><a href="#更新所有行-where子句没有" class="headerlink" title="更新所有行(where子句没有)"></a>更新所有行(where子句没有)</h2><pre><code>//将所有人的邮箱都改成134506293@qq.com
+    update customers
+    set email=&apos;134506293@qq.com&apos;</code></pre><h2 id="删除某个列的值-set设置null"><a href="#删除某个列的值-set设置null" class="headerlink" title="删除某个列的值(set设置null)"></a>删除某个列的值(set设置null)</h2><pre><code>//将10005客户的邮箱一栏删除 就是删除列的信息
+    update customers    
+    set email=null
+    where id=10005;</code></pre><hr>
+<h1 id="删除数据-delete"><a href="#删除数据-delete" class="headerlink" title="删除数据(delete)"></a>删除数据(delete)</h1><blockquote>
+<p><strong>delete从表中删除行(不删除表本身)</strong></p>
+</blockquote>
+<pre><code>1. 从表中删除特定行()
+2. 从表中删除所有行()</code></pre><h2 id="删除特定行"><a href="#删除特定行" class="headerlink" title="删除特定行"></a>删除特定行</h2><pre><code>//删除customers表中客户10005的信息
+    delete 
+    from customers
+    where id=10005;  //删除的是行(删除列是update中set设置null)</code></pre><h2 id="删除所有行"><a href="#删除所有行" class="headerlink" title="删除所有行()"></a>删除所有行()</h2><pre><code>//删除customers表中所有行信息
+    delete 
+    from customers</code></pre><h2 id="更快删除所有行-truncate-table"><a href="#更快删除所有行-truncate-table" class="headerlink" title="更快删除所有行(truncate table)"></a>更快删除所有行(truncate table)</h2><blockquote>
+<p><strong>删除原来表并且重新创建一个表</strong></p>
+</blockquote>
+<pre><code>输入: truncate table
+    速度比delete语句删除所有行速度更快</code></pre><hr>
+<h1 id="表-创建-更新-删除"><a href="#表-创建-更新-删除" class="headerlink" title="表(创建/更新/删除)"></a>表(创建/更新/删除)</h1><h2 id="创建表-2种"><a href="#创建表-2种" class="headerlink" title="创建表(2种)"></a>创建表(2种)</h2><pre><code>1. 使用具有交互式创建和管理表的工具(navicat)
+2. 使用mysql语句操纵</code></pre><h2 id=""><a href="#" class="headerlink" title="##"></a>##</h2>
       
       
     </div>
