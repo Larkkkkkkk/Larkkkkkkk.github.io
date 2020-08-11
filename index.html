@@ -1038,14 +1038,45 @@ add constraint orders foreign key(order_num) references orders(order_num)</code>
 </blockquote>
 <h2 id="触发器定义条件"><a href="#触发器定义条件" class="headerlink" title="触发器定义条件"></a>触发器定义条件</h2><pre><code>1. 只能按照每个表每个事件每次地定义(每次只能有一个)
 2. 每个表最多支持6个触发器(增删改的之前和之后)
-3. 如果需要对一个insert和update操作执行,就必须要定义两个</code></pre><h2 id="创建触发器-create-trigger"><a href="#创建触发器-create-trigger" class="headerlink" title="创建触发器(create trigger)"></a>创建触发器(create trigger)</h2><blockquote>
+3. 如果需要对一个insert和update操作执行,就必须要定义两个
+4. 触发器不能识别执行存储过程的call语句(需要的存储过程代码需要复制到触发器内)</code></pre><h2 id="创建触发器-create-trigger"><a href="#创建触发器-create-trigger" class="headerlink" title="创建触发器(create trigger)"></a>创建触发器(create trigger)</h2><blockquote>
 <p><strong>只有表支持触发器(视图和临时表也不可以)</strong></p>
 </blockquote>
 <pre><code>//创建newproduct的新触发器
     create trigger newproduct //创建触发器名
     after insert on products  //定义是插入语句成功执行后执行 
     for each row  //定义每个插入行执行
-    select &apos;chenggong&apos;; //对每个成功的插入显示成功的消息</code></pre><h2 id="删除触发器-drop-trigger"><a href="#删除触发器-drop-trigger" class="headerlink" title="删除触发器(drop trigger)"></a>删除触发器(drop trigger)</h2>
+    select &apos;chenggong&apos;; //对每个成功的插入显示成功的消息</code></pre><h2 id="删除触发器-drop-trigger"><a href="#删除触发器-drop-trigger" class="headerlink" title="删除触发器(drop trigger)"></a>删除触发器(drop trigger)</h2><pre><code>//删除刚才的newproduct触发器
+    drop trigger new product;</code></pre><h2 id="使用触发器-三类六种"><a href="#使用触发器-三类六种" class="headerlink" title="使用触发器(三类六种)"></a>使用触发器(三类六种)</h2><h3 id="insert触发器-NEW虚拟表"><a href="#insert触发器-NEW虚拟表" class="headerlink" title="insert触发器(NEW虚拟表)"></a>insert触发器(NEW虚拟表)</h3><pre><code>1. insert触发器代码中,可引用一个名字叫NEW的虚拟表(访问被插入的行)
+2. 在before insert触发器中,new的值可以被更新
+3. 对于auto_increment列,new在insert执行之前包含0,insert执行之后包含新的自动生成值
+
+//创建一个名叫neworder的触发器 按照after insert on orders执行
+    create trigger neworder 
+    after insert on orders  //插入一个新订单到orders表
+    for each row
+    select new.order_num;  //mysql生成一个新订单号保存到order_num</code></pre><h3 id="delete触发器-OLD虚拟表"><a href="#delete触发器-OLD虚拟表" class="headerlink" title="delete触发器(OLD虚拟表)"></a>delete触发器(OLD虚拟表)</h3><pre><code>1. delete触发器代码中,可引用一个名字叫OLD的虚拟表(访问被删除的行)
+2. OLD中的值全是只读,不能更新
+
+//创建一个名叫deleteorder的触发器
+    create trigger deleteorder
+    before delete on orders  //插入一个新订单到orders表
+    for each row
+    begin
+        insert into achive_orders(num,data,id)
+        values(OLD.num,OLD.data,OLD.id)
+    end;
+
+//用一条insert将要删除的订单保存到achive_orders表</code></pre><h3 id="update触发器-OLD虚拟表"><a href="#update触发器-OLD虚拟表" class="headerlink" title="update触发器(OLD虚拟表)"></a>update触发器(OLD虚拟表)</h3><pre><code>1. update触发器代码中,可引用一个名字叫OLD的虚拟表访问更新的值
+2. before update触发器中,new的值可能会被更新
+3. OLD中的值全是只读,不能更新</code></pre><hr>
+<h1 id="管理事务处理-commit和rollback语句"><a href="#管理事务处理-commit和rollback语句" class="headerlink" title="管理事务处理(commit和rollback语句)"></a>管理事务处理(commit和rollback语句)</h1><blockquote>
+<p><strong>MYSQL5.5以后支持的InnoDB引擎支持事务管理</strong></p>
+</blockquote>
+<h2 id="事务知识点"><a href="#事务知识点" class="headerlink" title="事务知识点"></a>事务知识点</h2><pre><code>事务(transaction) : 一组sql语句
+回退(rollback) : 撤销指定sql语句的过程
+提交(commit) : 将未存储的sql语句结果写入数据库表
+保留点(savepoint) : 事务处理中设置的临时占位符,你可以对它发布回退</code></pre><h2 id="事务开始"><a href="#事务开始" class="headerlink" title="事务开始"></a>事务开始</h2><pre><code>start transaction</code></pre><h2 id="使用rollback"><a href="#使用rollback" class="headerlink" title="使用rollback"></a>使用rollback</h2>
       
       
     </div>
