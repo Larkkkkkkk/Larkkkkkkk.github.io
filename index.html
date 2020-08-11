@@ -1076,7 +1076,144 @@ add constraint orders foreign key(order_num) references orders(order_num)</code>
 <h2 id="事务知识点"><a href="#事务知识点" class="headerlink" title="事务知识点"></a>事务知识点</h2><pre><code>事务(transaction) : 一组sql语句
 回退(rollback) : 撤销指定sql语句的过程
 提交(commit) : 将未存储的sql语句结果写入数据库表
-保留点(savepoint) : 事务处理中设置的临时占位符,你可以对它发布回退</code></pre><h2 id="事务开始"><a href="#事务开始" class="headerlink" title="事务开始"></a>事务开始</h2><pre><code>start transaction</code></pre><h2 id="使用rollback"><a href="#使用rollback" class="headerlink" title="使用rollback"></a>使用rollback</h2>
+保留点(savepoint) : 事务处理中设置的临时占位符,你可以对它发布回退</code></pre><h2 id="事务开始"><a href="#事务开始" class="headerlink" title="事务开始"></a>事务开始</h2><blockquote>
+<p><strong>会在commit/rollback语句执行后,事务自动关闭</strong></p>
+</blockquote>
+<pre><code>start transaction</code></pre><h2 id="rollback命令回退"><a href="#rollback命令回退" class="headerlink" title="rollback命令回退"></a>rollback命令回退</h2><blockquote>
+<p><strong>只能增删改语句(create/drop不能回滚)</strong></p>
+</blockquote>
+<pre><code>//举例
+
+select *
+from ordertotals;  //展示ordertotals表内信息
+
+start transaction;  //打开事务
+
+delete
+from ordertotals;  //删除ordertotals表中所有行
+
+select *
+from ordertotals;  //检验是否为空
+
+rollback;  //回滚打开事务之后的所有语言
+
+select *
+from ordertotals;  //显示该表不是空(回滚成功!)</code></pre><h2 id="commit语句"><a href="#commit语句" class="headerlink" title="commit语句"></a>commit语句</h2><pre><code>//事务处理块中,必须明确提交(使用commit语句)
+
+start transaction; //事务开始
+
+delete
+from order        //从order表中删除订单20010  
+where num=20010;
+
+delete   
+from orders       //从orders表中删除订单20010
+where num=20010;
+
+commit; //提交</code></pre><h2 id="保留点-savepoint"><a href="#保留点-savepoint" class="headerlink" title="保留点(savepoint)"></a>保留点(savepoint)</h2><blockquote>
+<p><strong>设置保留点进行部分提交/回滚</strong></p>
+</blockquote>
+<pre><code>//设置保留点
+    savepoint d1;
+
+//回滚到d1点
+    rollback to d1;
+
+保留点越多越好:
+    更加灵活地进行回退
+
+释放保留点(事务处理完成后自动释放)
+    release savepoint(mysql5之后)</code></pre><h2 id="更改默认的提交行为-autocommit自动提交"><a href="#更改默认的提交行为-autocommit自动提交" class="headerlink" title="更改默认的提交行为(autocommit自动提交)"></a>更改默认的提交行为(autocommit自动提交)</h2><pre><code>//mysql默认是自动提交所有更改
+
+//为了让mysql不自动提交更改
+    set autocommit=0;</code></pre><hr>
+<h1 id="全球化和本地化"><a href="#全球化和本地化" class="headerlink" title="全球化和本地化"></a>全球化和本地化</h1><h2 id="字符集-character-和校对顺序-collation"><a href="#字符集-character-和校对顺序-collation" class="headerlink" title="字符集(character)和校对顺序(collation)"></a>字符集(character)和校对顺序(collation)</h2><pre><code>//重要术语:
+    字符集: 为字母和符号的集合
+    编码: 为某个字符集成员的内部表示
+    校对    : 为规定字符如何比较的指令(影响排序和搜索)
+
+//决定级别:
+    服务器/数据库/表级进行</code></pre><h2 id="字符集和校对顺序-sql语句"><a href="#字符集和校对顺序-sql语句" class="headerlink" title="字符集和校对顺序(sql语句)"></a>字符集和校对顺序(sql语句)</h2><pre><code>//显示所有可用的字符集和每个字符集的描述和默认校对
+    show character set;
+
+//查看所支持校对的完整列表
+    show collation;
+
+//修改所用的字符集和校对
+    show variables like &apos;character%&apos;;
+    show variables like &apos;collation%&apos;;
+
+//建表时设置字符集和校对
+    create table user
+    (
+        id int,
+        name varchar(10)
+    )default character set hebrew
+     collate hebrew_general_ci;
+
+    //以下三种情况:
+        1. 如果两个都设置,就使用这些设置
+        2. 只设置字符集,则使用字符集默认的校对
+        3. 如果两个都没设置,则使用数据库默认</code></pre><hr>
+<h1 id="安全管理"><a href="#安全管理" class="headerlink" title="安全管理"></a>安全管理</h1><h2 id="管理用户-存储在名mysql数据库中"><a href="#管理用户-存储在名mysql数据库中" class="headerlink" title="管理用户(存储在名mysql数据库中)"></a>管理用户(存储在名mysql数据库中)</h2><pre><code>//需要获取所有用户账号列表
+    use mysql;  //进入mysql数据库
+    selet user
+    from user;  //从user数据库中查找user(结果是root)</code></pre><h2 id="创建用户账号-create-user"><a href="#创建用户账号-create-user" class="headerlink" title="创建用户账号(create user)"></a>创建用户账号(create user)</h2><pre><code>//创建用户名为song
+    create uesr song (identified by &apos;p@$$w0rd&apos;);
+
+//identified by &apos;p@$$w0rd&apos; 纯文本指定口令
+
+//identified by password 散列值指定口令</code></pre><h2 id="重命名用户账号-rename-user"><a href="#重命名用户账号-rename-user" class="headerlink" title="重命名用户账号(rename user)"></a>重命名用户账号(rename user)</h2><pre><code>//将上面的song用户改名为ya
+    rename user song to ya;</code></pre><h2 id="删除用户账号-drop-user"><a href="#删除用户账号-drop-user" class="headerlink" title="删除用户账号(drop user)"></a>删除用户账号(drop user)</h2><pre><code>//删除上面的ya用户(5以后也删除相关权限)
+    drop user ya;
+
+//5之前只能删除用户账号
+    1. 先用revoke删除相关权限
+    2. 然后使用drop user删除账号</code></pre><h2 id="设置访问权限-grants"><a href="#设置访问权限-grants" class="headerlink" title="设置访问权限(grants)"></a>设置访问权限(grants)</h2><pre><code>//查看赋予用户账号的权限
+    show grants for ya;
+
+//设置权限(允许ya用户在user所有表上可以使用select语句)
+    grant select on user to ya;</code></pre><h2 id="撤销访问权限-revoke"><a href="#撤销访问权限-revoke" class="headerlink" title="撤销访问权限(revoke)"></a>撤销访问权限(revoke)</h2><pre><code>//撤销上面设置的权限
+    revoke select on user from ya;</code></pre><h2 id="控制访问权限-层次"><a href="#控制访问权限-层次" class="headerlink" title="控制访问权限(层次)"></a>控制访问权限(层次)</h2><p><img src="grantrevoke.png" alt=""></p>
+<h2 id="更改口令-set-password"><a href="#更改口令-set-password" class="headerlink" title="更改口令(set password)"></a>更改口令(set password)</h2><pre><code>set password for ya=password(&apos;自己的口令&apos;);
+
+set password (不指定用户名,就更新当前登录用户口令)</code></pre><hr>
+<h1 id="数据库维护"><a href="#数据库维护" class="headerlink" title="数据库维护"></a>数据库维护</h1><h2 id="备份数据-flush-tables之后备份"><a href="#备份数据-flush-tables之后备份" class="headerlink" title="备份数据(flush tables之后备份)"></a>备份数据(flush tables之后备份)</h2><pre><code>刷新未写数据(保证所有数据被写到磁盘)
+    1. 先flush tables语句
+    2. 然后备份</code></pre><h2 id="数据库维护-SQL语句"><a href="#数据库维护-SQL语句" class="headerlink" title="数据库维护(SQL语句)"></a>数据库维护(SQL语句)</h2><pre><code>//1. 检查表键是否正确
+    analyze table user;  //返回状态信息
+
+//2. check table 检查许多有问题的表并且修改
+    (MyISAM(5.5以前)表还对索引进行检查)
+
+//3. changed 检查自最后一次检查以来改动过的表
+
+//4. extended 执行最彻底的检查
+
+//5. fast 只检查未正常关闭的表
+
+//6. medium 检查所有被删除的联结并且进行键检查
+
+//7. quick 只进行快速扫描</code></pre><h2 id="MyISAM表访问不一致-repair-table语句修复"><a href="#MyISAM表访问不一致-repair-table语句修复" class="headerlink" title="MyISAM表访问不一致(repair table语句修复)"></a>MyISAM表访问不一致(repair table语句修复)</h2><pre><code>可能需要使用repair table来修复相应的表(不能经常使用,否则会有更大问题需要解决)</code></pre><h2 id="表中删除大量数据-optimize-table回收空间"><a href="#表中删除大量数据-optimize-table回收空间" class="headerlink" title="表中删除大量数据(optimize table回收空间)"></a>表中删除大量数据(optimize table回收空间)</h2><h2 id="诊断启动问题-mysqld命令行"><a href="#诊断启动问题-mysqld命令行" class="headerlink" title="诊断启动问题(mysqld命令行)"></a>诊断启动问题(mysqld命令行)</h2><p><img src="mysqld.png" alt=""></p>
+<h2 id="查看日志文件"><a href="#查看日志文件" class="headerlink" title="查看日志文件"></a>查看日志文件</h2><p><img src="rizhiwenjian.png" alt=""></p>
+<hr>
+<h1 id="改善性能-遵守规则"><a href="#改善性能-遵守规则" class="headerlink" title="改善性能(遵守规则)"></a>改善性能(遵守规则)</h1><pre><code>1. 遵守硬件建议(学习和研究mysql)
+2. 关键的生产DBMS应该放在自己的专用服务器上
+3. Mysql是一系列默认设置预先配置的,过一段时间就需要调整内存大小等
+4. Mysql是一个多用户多线程的DBMS,经常同时执行多个任务,如果出现性能不良等可以使用show processlist 展示所有活动进程/kill命令终结某个进程
+5. 尽量找到最优sql语句
+6. 一般来说,存储过程 &gt; 一条一条执行其中的各条mysql语句
+7. 使用正确的数据类型
+8. 要检索多少就检索多少(不要select *)
+9. 导入数据时,应该关闭自动提交
+10. 必须索引数据库表(提高检索性能)
+11. or条件 ---&gt; 多条select语句和union语句
+12. 索引尽量使用在常用表上</code></pre><hr>
+<h1 id="参考用书"><a href="#参考用书" class="headerlink" title="参考用书"></a>参考用书</h1><blockquote>
+<p><strong>参考《MySQL必知必会》</strong></p>
+</blockquote>
+<hr>
+
       
       
     </div>
