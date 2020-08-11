@@ -884,13 +884,168 @@ add constraint orders foreign key(order_num) references orders(order_num)</code>
 </blockquote>
 <pre><code>//给user表换成usertwo名
     rename table user to usertwo;</code></pre><hr>
-<h1 id="试图-MYSQL5出现"><a href="#试图-MYSQL5出现" class="headerlink" title="试图(MYSQL5出现)"></a>试图(MYSQL5出现)</h1><h2 id="试图规则和限制"><a href="#试图规则和限制" class="headerlink" title="试图规则和限制"></a>试图规则和限制</h2><pre><code>1. 试图必须唯一命名(不能和其他试图/表相同名字)
+<h1 id="视图-MYSQL5出现"><a href="#视图-MYSQL5出现" class="headerlink" title="视图(MYSQL5出现)"></a>视图(MYSQL5出现)</h1><h2 id="视图规则和限制"><a href="#视图规则和限制" class="headerlink" title="视图规则和限制"></a>视图规则和限制</h2><pre><code>1. 试图必须唯一命名(不能和其他试图/表相同名字)
 2. 试图数目没有限制
 3. 创建视图必须由足够访问权限(数据库管理人员授予)
 4. 试图可以嵌套(从其他试图中检索数据的查询来构建)
 5. 试图可以使用order by排序
 6. 试图不能索引/触发器/默认值
-7. 试图可以和表一起使用</code></pre><h2 id="使用试图-create-view"><a href="#使用试图-create-view" class="headerlink" title="使用试图(create view)"></a>使用试图(create view)</h2>
+7. 试图可以和表一起使用</code></pre><h2 id="视图SQL语句-create-view"><a href="#视图SQL语句-create-view" class="headerlink" title="视图SQL语句(create view)"></a>视图SQL语句(create view)</h2><pre><code>1. 创建视图: create view 
+2. 查看创建视图的语句:show create view name
+3. 删除视图: drop view name
+4. 更新视图: 先drop然后再create / create or replace view </code></pre><h2 id="简化联结-查询可从视图找"><a href="#简化联结-查询可从视图找" class="headerlink" title="简化联结(查询可从视图找)"></a>简化联结(查询可从视图找)</h2><pre><code>//创建一个名为productcustomers的视图
+//联结三个表,返回已订购任意产品的所有客户的列表
+    create view productcustomers as
+    select cust_name,cust_contact,prod_id
+    from customers,orders,orderitems
+    where customers.cust_id=orders.cust_id and orderitems.order_num=orders.order_num;
+
+//建立了视图(虚表),可以使用select语句查询任意产品的客户
+    select *
+    from productcustomers //从视图中查询</code></pre><h2 id="存储检索结果方便查找"><a href="#存储检索结果方便查找" class="headerlink" title="存储检索结果方便查找"></a>存储检索结果方便查找</h2><pre><code>//单个组合计算列中返回供应商名和位置
+    //Concat是拼接函数  RTrim删除右边多余空格
+    select Concat(RTrim(name),&apos;(&apos;,RTrim(country),&apos;)&apos;) as hhh  //拼接结果起别名为hhh
+    from vendors  //从vendors表
+    order by name; //根据名字name升序排序
+
+//假设经常需要这个格式的结果,不必每次需要时候执行联结,可以创建一个视图,需要使用的视图即可
+    create view shitu as  //添加视图名shitu
+    select Concat(RTrim(name),&apos;(&apos;,RTrim(country),&apos;)&apos;) as hhh  //拼接结果起别名为hhh
+    from vendors  //从vendors表
+    order by name; //根据名字name升序排序
+
+//之后使用就select查找shitu即可
+    select *
+    from shitu;</code></pre><h2 id="过滤数据"><a href="#过滤数据" class="headerlink" title="过滤数据"></a>过滤数据</h2><pre><code>应用于普通的where子句也很有用
+//过滤没有电子邮件地址的客户
+    create view noemail as
+    select id,name,email
+    from customers
+    where email is not null; //where限定找到没有eamil的用户</code></pre><h2 id="简化计算字段使用"><a href="#简化计算字段使用" class="headerlink" title="简化计算字段使用"></a>简化计算字段使用</h2><pre><code>之前的所有操作得到的结果赋给一个视图,然后每次查找去找视图即可(简化数据处理)</code></pre><hr>
+<h1 id="更新视图-一般用于select语句"><a href="#更新视图-一般用于select语句" class="headerlink" title="更新视图(一般用于select语句)"></a>更新视图(一般用于select语句)</h1><blockquote>
+<p><strong>视图可以更新,更新视图将更新其基表</strong></p>
+</blockquote>
+<h2 id="更新视图条件"><a href="#更新视图条件" class="headerlink" title="更新视图条件"></a>更新视图条件</h2><pre><code>1. 由于视图本身是虚表(没有数据)所以还是对基表进行增删查改
+2. 有以下操作则不能更新:
+    1. 分组(group by和having)
+    2. 联结
+    3. 子查询(嵌套select语句)
+    4. 并(union)
+    5. 聚集函数(min()/max()/count()/avg()/sum())
+    6. distinct(保证唯一)
+    7. 计算列(select语句有计算)</code></pre><hr>
+<h1 id="存储过程-MySQL5出现"><a href="#存储过程-MySQL5出现" class="headerlink" title="存储过程(MySQL5出现)"></a>存储过程(MySQL5出现)</h1><blockquote>
+<p><strong>为以后使用而保存的一条/多条Mysql语句的集合</strong></p>
+</blockquote>
+<h2 id="创建存储过程-create-procedure语句"><a href="#创建存储过程-create-procedure语句" class="headerlink" title="创建存储过程(create procedure语句)"></a>创建存储过程(create procedure语句)</h2><pre><code>//一个返回产品平均价格的存储过程
+    create procedure productpricing()  //创建存储过程名字为productpricing
+    begin
+        select avg(price) as priceaverage  //起别名为priceaverage
+        from products;
+    end;</code></pre><h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><blockquote>
+<p><strong>存储过程并不显示结果,只是把结果返回给你指定的变量</strong></p>
+</blockquote>
+<h3 id="变量-variable"><a href="#变量-variable" class="headerlink" title="变量(variable)"></a>变量(variable)</h3><pre><code>//in    传递给存储过程
+//out   从存储过程传出给调用者
+//inout 对存储过程传入和传出
+
+//创建有参数的存储过程
+    create procedure productpricing(
+        out p1 decimal(8,2),  //out用来从存储过程传出一个值(返回给调用者)
+        out ph decimal(8,2),
+        out pa decimal(8,2),
+    )
+    begin
+        select min(price)  //p1存储产品最低价格
+        into p1            //into插入
+        from products;
+
+        select max(price)  //ph存储产品最高价格
+        into ph
+        from products;
+
+        select avg(price)  //pa存储产品平均价格
+        into pa
+        from products;
+    end;
+
+//调用productpricing存储过程(必须制定三个变量名)
+    //变量必须以@开始!!!!!!!!!!!!
+    call productpricing(@pricelow,@pricehigh,@priceaverage);</code></pre><h2 id="使用存储过程-call语句"><a href="#使用存储过程-call语句" class="headerlink" title="使用存储过程(call语句)"></a>使用存储过程(call语句)</h2><pre><code>//执行刚创建的存储过程并显示返回的结果(存储过程实际上是一种函数,所以调用要有()符号)
+    call productpricing();</code></pre><h2 id="执行存储过程-call语句"><a href="#执行存储过程-call语句" class="headerlink" title="执行存储过程(call语句)"></a>执行存储过程(call语句)</h2><pre><code>//执行名字叫productpricing的存储过程，并且返回产品的最低、最高和平均价格
+    call productipricing(@pricelow,@pricehigh,@priceaverage);</code></pre><h2 id="删除存储过程-drop-procedure语句"><a href="#删除存储过程-drop-procedure语句" class="headerlink" title="删除存储过程(drop procedure语句)"></a>删除存储过程(drop procedure语句)</h2><blockquote>
+<p><strong>创建之后被保存在服务器上以供使用,直到被删除</strong></p>
+</blockquote>
+<pre><code>//删除刚创建的存储过程
+    drop procedure productpricing (if exists);</code></pre><h2 id="建立智能存储过程"><a href="#建立智能存储过程" class="headerlink" title="建立智能存储过程"></a>建立智能存储过程</h2><blockquote>
+<p><strong>目前使用的所有存储过程基本上是封装mysql简单的select语句</strong></p>
+</blockquote>
+<h2 id="检查存储过程-show-create-procedure语句"><a href="#检查存储过程-show-create-procedure语句" class="headerlink" title="检查存储过程(show create procedure语句)"></a>检查存储过程(show create procedure语句)</h2><pre><code>//展示ordertotal存储过程
+    show create procedure ordertotal;
+
+//展示存储过程何时、谁创建等详细信息的存储过程列表
+    show procedure status (like &apos;xxx&apos;);  //like制定过滤模式</code></pre><hr>
+<h1 id="游标-cursor"><a href="#游标-cursor" class="headerlink" title="游标(cursor)"></a>游标(cursor)</h1><blockquote>
+<p><strong>存储在mysql服务器上的数据库查询,是select语句检索出来的结果集</strong></p>
+</blockquote>
+<h2 id="游标适用范围"><a href="#游标适用范围" class="headerlink" title="游标适用范围"></a>游标适用范围</h2><pre><code>1. mysql游标只能用于存储过程(上章讲解)和函数
+2. mysql游标主要用于交互式应用,可以根据需要滚动/浏览其中的数据</code></pre><h2 id="游标使用步骤"><a href="#游标使用步骤" class="headerlink" title="游标使用步骤"></a>游标使用步骤</h2><pre><code>1. 使用前必须定义要使用的select语句
+2. 一旦定义,必须打开游标以供使用(用定义好的select语句把数据实际检索出来)
+3. 对于填有数据的游标,根据需要取出索引各行
+4. 游标使用结束之后,必须关闭游标</code></pre><h2 id="创建游标-declare"><a href="#创建游标-declare" class="headerlink" title="创建游标(declare)"></a>创建游标(declare)</h2><pre><code>//定义名为ordernumbers的游标,使用检索所有订单的select语句
+    create procedure processorders()  //创建processorders存储过程
+    begin
+        declare ordernumbers cursor  //创建游标
+        for
+        select order_num  //select语句
+        from orders;
+    end;</code></pre><h2 id="打开-关闭游标-open-cursor语句"><a href="#打开-关闭游标-open-cursor语句" class="headerlink" title="打开/关闭游标(open cursor语句)"></a>打开/关闭游标(open cursor语句)</h2><pre><code>//打开ordernumbers游标
+    open ordernumbers;
+//关闭ordernumbers游标        
+    close ordernumbers;  //释放游标使用的所有内部内存和资源</code></pre><h2 id="使用游标数据-fetch语句"><a href="#使用游标数据-fetch语句" class="headerlink" title="使用游标数据(fetch语句)"></a>使用游标数据(fetch语句)</h2><pre><code>//从游标中检索单行(第一行)
+    create procedure processorders()  //创建存储过程
+        begin
+            declare o int;  //局部声明的变量
+            declare ordernumbers cursor //创建游标
+            for
+                select order_num  //书写的select语句
+                from orders;
+            open ordernumbers;  //打开游标
+            fetch ordernumbers //检索当前行的order_num列到一个名为0的局部声明的变量中 
+            into o;   //插入o游标
+            close ordernumbers;  //关闭游标
+        end;
+
+//循环检索数据(从第一行到最后一行)
+    create procedure processorders()  //创建存储过程
+        begin
+            declare done boolean default 0;
+            declare o int;
+            declare ordernumbers cursor  //定义游标
+            for
+                select order_num
+                from orders
+            declare cotinue handler for sqlstate &apos;02000&apos; set done=1;
+            open ordernumbers;    //打开游标
+            repeat
+                fetch ordernumbers 
+                into o;
+            until done end repeat;  //反复执行到done为真
+            close ordernumbers;   //关闭游标
+        end;    </code></pre><hr>
+<h1 id="触发器-MYSQL5支持"><a href="#触发器-MYSQL5支持" class="headerlink" title="触发器(MYSQL5支持)"></a>触发器(MYSQL5支持)</h1><blockquote>
+<p><strong>响应增删改三种语句而自动执行的一条mysql语句</strong></p>
+</blockquote>
+<h2 id="触发器定义条件"><a href="#触发器定义条件" class="headerlink" title="触发器定义条件"></a>触发器定义条件</h2><pre><code>1. 只能按照每个表每个事件每次地定义(每次只能有一个)
+2. 每个表最多支持6个触发器(增删改的之前和之后)
+3. 如果需要对一个insert和update操作执行,就必须要定义两个</code></pre><h2 id="创建触发器-create-trigger"><a href="#创建触发器-create-trigger" class="headerlink" title="创建触发器(create trigger)"></a>创建触发器(create trigger)</h2><blockquote>
+<p><strong>只有表支持触发器(视图和临时表也不可以)</strong></p>
+</blockquote>
+<pre><code>//创建newproduct的新触发器
+    create trigger newproduct //创建触发器名
+    after insert on products  //定义是插入语句成功执行后执行 
+    for each row  //定义每个插入行执行
+    select &apos;chenggong&apos;; //对每个成功的插入显示成功的消息</code></pre><h2 id="删除触发器-drop-trigger"><a href="#删除触发器-drop-trigger" class="headerlink" title="删除触发器(drop trigger)"></a>删除触发器(drop trigger)</h2>
       
       
     </div>
