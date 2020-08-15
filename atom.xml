@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://larkkkkkkk.github.io/"/>
-  <updated>2020-08-13T01:22:13.228Z</updated>
+  <updated>2020-08-15T14:11:15.031Z</updated>
   <id>https://larkkkkkkk.github.io/</id>
   
   <author>
@@ -21,16 +21,17 @@
     <link href="https://larkkkkkkk.github.io/2020/08/13/JVM/"/>
     <id>https://larkkkkkkk.github.io/2020/08/13/JVM/</id>
     <published>2020-08-13T01:16:16.000Z</published>
-    <updated>2020-08-13T01:22:13.228Z</updated>
+    <updated>2020-08-15T14:11:15.031Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="内存和垃圾回收"><a href="#内存和垃圾回收" class="headerlink" title="内存和垃圾回收"></a>内存和垃圾回收</h1><hr><h1 id="字节码和类的加载"><a href="#字节码和类的加载" class="headerlink" title="字节码和类的加载"></a>字节码和类的加载</h1><hr><h1 id="性能监控和调优"><a href="#性能监控和调优" class="headerlink" title="性能监控和调优"></a>性能监控和调优</h1><hr>]]></content>
+    <content type="html"><![CDATA[<h1 id="内存和垃圾回收"><a href="#内存和垃圾回收" class="headerlink" title="内存和垃圾回收"></a>内存和垃圾回收</h1><blockquote><p><strong>主要</strong></p></blockquote><hr><h1 id="字节码和类的加载"><a href="#字节码和类的加载" class="headerlink" title="字节码和类的加载"></a>字节码和类的加载</h1><hr><h1 id="性能监控和调优"><a href="#性能监控和调优" class="headerlink" title="性能监控和调优"></a>性能监控和调优</h1><hr>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;内存和垃圾回收&quot;&gt;&lt;a href=&quot;#内存和垃圾回收&quot; class=&quot;headerlink&quot; title=&quot;内存和垃圾回收&quot;&gt;&lt;/a&gt;内存和垃圾回收&lt;/h1&gt;&lt;hr&gt;
-&lt;h1 id=&quot;字节码和类的加载&quot;&gt;&lt;a href=&quot;#字节码和类的加载&quot; class=&quot;hea
+        &lt;h1 id=&quot;内存和垃圾回收&quot;&gt;&lt;a href=&quot;#内存和垃圾回收&quot; class=&quot;headerlink&quot; title=&quot;内存和垃圾回收&quot;&gt;&lt;/a&gt;内存和垃圾回收&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;主要&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
       
     
     </summary>
