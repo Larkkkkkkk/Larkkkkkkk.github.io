@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://larkkkkkkk.github.io/"/>
-  <updated>2020-08-15T14:11:15.031Z</updated>
+  <updated>2020-08-16T13:49:26.782Z</updated>
   <id>https://larkkkkkkk.github.io/</id>
   
   <author>
@@ -21,17 +21,15 @@
     <link href="https://larkkkkkkk.github.io/2020/08/13/JVM/"/>
     <id>https://larkkkkkkk.github.io/2020/08/13/JVM/</id>
     <published>2020-08-13T01:16:16.000Z</published>
-    <updated>2020-08-15T14:11:15.031Z</updated>
+    <updated>2020-08-16T13:49:26.782Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="内存和垃圾回收"><a href="#内存和垃圾回收" class="headerlink" title="内存和垃圾回收"></a>内存和垃圾回收</h1><blockquote><p><strong>主要</strong></p></blockquote><hr><h1 id="字节码和类的加载"><a href="#字节码和类的加载" class="headerlink" title="字节码和类的加载"></a>字节码和类的加载</h1><hr><h1 id="性能监控和调优"><a href="#性能监控和调优" class="headerlink" title="性能监控和调优"></a>性能监控和调优</h1><hr>]]></content>
+    <content type="html"><![CDATA[<h1 id="JVM-Java-Virtual-Machine"><a href="#JVM-Java-Virtual-Machine" class="headerlink" title="JVM(Java Virtual Machine)"></a>JVM(Java Virtual Machine)</h1><h2 id="虚拟机-二进制字节码运行环境"><a href="#虚拟机-二进制字节码运行环境" class="headerlink" title="虚拟机(二进制字节码运行环境)"></a>虚拟机(二进制字节码运行环境)</h2><pre><code>1. 系统虚拟机(完全是对物理计算机的仿真)    提供了可运行完整操作系统的软件平台2. 程序虚拟机(专门为执行单个计算机程序)    典型代表就是java虚拟机,java虚拟机中执行的指令我们称为Java字节码指令3. 作用    3.1 一次编译,到处运行(可移植性)    3.2 自动内存管理    3.3 自动垃圾回收功能</code></pre><h2 id="jvm位置"><a href="#jvm位置" class="headerlink" title="jvm位置"></a>jvm位置</h2><p><img src="jvmres.png" alt=""></p><h2 id="jvm整体结构"><a href="#jvm整体结构" class="headerlink" title="jvm整体结构"></a>jvm整体结构</h2><p><img src="jvmwhole.png" alt=""></p><hr><h1 id="内存和垃圾回收"><a href="#内存和垃圾回收" class="headerlink" title="内存和垃圾回收"></a>内存和垃圾回收</h1><hr><h1 id="字节码和类的加载"><a href="#字节码和类的加载" class="headerlink" title="字节码和类的加载"></a>字节码和类的加载</h1><hr><h1 id="性能监控和调优"><a href="#性能监控和调优" class="headerlink" title="性能监控和调优"></a>性能监控和调优</h1><hr>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;内存和垃圾回收&quot;&gt;&lt;a href=&quot;#内存和垃圾回收&quot; class=&quot;headerlink&quot; title=&quot;内存和垃圾回收&quot;&gt;&lt;/a&gt;内存和垃圾回收&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;主要&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+        &lt;h1 id=&quot;JVM-Java-Virtual-Machine&quot;&gt;&lt;a href=&quot;#JVM-Java-Virtual-Machine&quot; class=&quot;headerlink&quot; title=&quot;JVM(Java Virtual Machine)&quot;&gt;&lt;/a&gt;JVM(Java Virt
       
     
     </summary>
