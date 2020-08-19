@@ -370,11 +370,20 @@
     3.2 自动内存管理
     3.3 自动垃圾回收功能</code></pre><h2 id="jvm位置"><a href="#jvm位置" class="headerlink" title="jvm位置"></a>jvm位置</h2><p><img src="jvmres.png" alt=""></p>
 <h2 id="jvm整体结构-背"><a href="#jvm整体结构-背" class="headerlink" title="jvm整体结构(背)"></a>jvm整体结构(背)</h2><p><img src="jvmwhole.png" alt=""></p>
-<hr>
-<h1 id="内存和垃圾回收"><a href="#内存和垃圾回收" class="headerlink" title="内存和垃圾回收"></a>内存和垃圾回收</h1><hr>
-<h1 id="字节码和类的加载"><a href="#字节码和类的加载" class="headerlink" title="字节码和类的加载"></a>字节码和类的加载</h1><hr>
-<h1 id="性能监控和调优"><a href="#性能监控和调优" class="headerlink" title="性能监控和调优"></a>性能监控和调优</h1><hr>
+<h2 id="java代码执行流程"><a href="#java代码执行流程" class="headerlink" title="java代码执行流程"></a>java代码执行流程</h2><p><img src="javazhixing.png" alt=""></p>
+<h2 id="jvm架构模型-栈-寄存器指令集架构"><a href="#jvm架构模型-栈-寄存器指令集架构" class="headerlink" title="jvm架构模型(栈/寄存器指令集架构)"></a>jvm架构模型(栈/寄存器指令集架构)</h2><pre><code>1. 栈的指令集架构
+2. 寄存器的指令集架构</code></pre><h2 id="jvm生命周期-三个状态"><a href="#jvm生命周期-三个状态" class="headerlink" title="jvm生命周期(三个状态)"></a>jvm生命周期(三个状态)</h2><pre><code>1. 启动
+    通过引导类加载器创建一个初始类完成
 
+2. 执行
+    执行java程序(程序执行时jvm执行,程序结束时jvm结束)
+
+3. 退出
+    1. 程序正常执行结束
+    2. 程序执行中遇到异常/错误而异常终止
+    3. 由于操作系统出现错误/java虚拟机进程终止 
+    4. 某线程调用Runtime类/System类的exit()方法/Runtime类的halt()方法</code></pre><hr>
+<h1 id="内存结构"><a href="#内存结构" class="headerlink" title="内存结构"></a>内存结构</h1>
       
       
     </div>
