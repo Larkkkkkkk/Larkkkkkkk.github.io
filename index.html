@@ -510,10 +510,15 @@
 </blockquote>
 <p><img src="neicun.png" alt=""></p>
 <hr>
-<h1 id="类加载器子系统"><a href="#类加载器子系统" class="headerlink" title="类加载器子系统"></a>类加载器子系统</h1><blockquote>
-<hr>
-</blockquote>
-
+<h1 id="类加载器子系统"><a href="#类加载器子系统" class="headerlink" title="类加载器子系统"></a>类加载器子系统</h1><h2 id="类加载过程-3步"><a href="#类加载过程-3步" class="headerlink" title="类加载过程(3步)"></a>类加载过程(3步)</h2><p><img src="loading.png" alt=""></p>
+<pre><code>1. Loading  加载
+2. Linking  链接
+    2.1 验证 verify
+    2.2 准备 prepare
+    2.3 解析 resolve
+3. Initialization  初始化取        </code></pre><h3 id="Loading-加载"><a href="#Loading-加载" class="headerlink" title="Loading(加载)"></a>Loading(加载)</h3><pre><code>1. 全限定类名 --&gt;(获取)类的二进制字符流
+2. 字节流代表的静态存储结构 --&gt; 方法区的运行时数据结构
+3. 内存中创建一个java.lang.Class对象代表类(对象作为方法区这个类的各种数据访问入口)</code></pre><h3 id="Linking-链接"><a href="#Linking-链接" class="headerlink" title="Linking(链接)"></a>Linking(链接)</h3>
       
       
     </div>
