@@ -557,12 +557,22 @@
     2.1 防止恶意代码干涉善意代码 (双亲委派机制)
     2.2 守护被信任的类库边界  (双亲委派机制)
     2.3 将代码归入保护域  (双亲委派机制)</code></pre><hr>
-<h1 id="Native关键字"><a href="#Native关键字" class="headerlink" title="Native关键字"></a>Native关键字</h1><blockquote>
-<p><strong>用其他语言写的</strong></p>
+<h1 id="Native关键字-底层c语言的库"><a href="#Native关键字-底层c语言的库" class="headerlink" title="Native关键字(底层c语言的库)"></a>Native关键字(底层c语言的库)</h1><blockquote>
+<p><strong>Java的作用范围达不到，要去找C语言的库</strong></p>
 </blockquote>
+<p><img src="navtive.png" alt=""></p>
+<pre><code>1. 进入本地方法栈
+2. 调动本地方法接口 JNI(Java native interface) --扩展java的使用(融合不同编程语言为java所用)</code></pre><hr>
+<h1 id="PC寄存器-Program-Counter-Register"><a href="#PC寄存器-Program-Counter-Register" class="headerlink" title="PC寄存器(Program Counter Register)"></a>PC寄存器(Program Counter Register)</h1><blockquote>
+<p><strong>每个线程都有一个程序计数器,是线程私有的一个指针</strong></p>
+</blockquote>
+<p><img src="pc.png" alt=""></p>
 <hr>
-<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1><p><img src="" alt=""></p>
-<hr>
+<h1 id="方法区-Method-Area"><a href="#方法区-Method-Area" class="headerlink" title="方法区(Method Area)"></a>方法区(Method Area)</h1><blockquote>
+<p><strong>所有线程共享(共享区间)</strong></p>
+</blockquote>
+<pre><code>1. 方法区: 静态变量(Static)  常量(Final)  类信息(构造方法,接口定义)  运行时的常量池
+2. 堆内存: 实例变量</code></pre><hr>
 
       
       
