@@ -459,7 +459,16 @@
 
 <h2 id="结果-13"><a href="#结果-13" class="headerlink" title="结果"></a>结果</h2><p><img src="zhuanhuanliu.png" alt=""></p>
 <hr>
-<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1>
+<h1 id="旅行终点站-找某个路径的终点不是其他的起点"><a href="#旅行终点站-找某个路径的终点不是其他的起点" class="headerlink" title="旅行终点站(找某个路径的终点不是其他的起点)"></a>旅行终点站(找某个路径的终点不是其他的起点)</h1><h2 id="题目-12"><a href="#题目-12" class="headerlink" title="题目"></a>题目</h2><p><img src="lvxing.png" alt=""></p>
+<h2 id="分析-14"><a href="#分析-14" class="headerlink" title="分析"></a>分析</h2><pre><code>1.思路: 如果某个路径的终点不是另一个路径的起点，则该点就是旅行终点.
+2.实现: 
+    2.1 使用map存储所有路径的起点和终点
+    2.2 将所有key转为一个字符串
+    2.3 判断没有一个key有这个值就说明是终点</code></pre><h2 id="代码-14"><a href="#代码-14" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static String destCity(List&lt;List&lt;String&gt;&gt; paths) &#123;</span><br><span class="line">      Map&lt;String,String&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">      &#x2F;&#x2F; 将所有路径的起点与终点存入map</span><br><span class="line">      for(List&lt;String&gt; list : paths)&#123;</span><br><span class="line">          map.put(list.get(0), list.get(1));</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      for(String s : map.keySet())&#123;</span><br><span class="line">          &#x2F;&#x2F; 如果某个路径的终点不是另一个路径的起点，则该点就是旅行终点</span><br><span class="line">          if(map.get(map.get(s)) &#x3D;&#x3D; null)</span><br><span class="line">              return map.get(s);</span><br><span class="line">      &#125;</span><br><span class="line">      &#x2F;&#x2F; 返回默认null，由题意是不会走到这里返回的</span><br><span class="line">      return null;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><img src="lvxingres.png" alt=""></p>
+<hr>
+
       
       
     </div>
