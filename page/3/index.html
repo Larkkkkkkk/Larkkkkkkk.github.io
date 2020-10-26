@@ -590,6 +590,15 @@
 
 <h2 id="结果-7"><a href="#结果-7" class="headerlink" title="结果"></a>结果</h2><p><img src="dibajieguo.png" alt=""></p>
 <hr>
+<h1 id="二叉搜索树范围和-深度优先遍历"><a href="#二叉搜索树范围和-深度优先遍历" class="headerlink" title="二叉搜索树范围和(深度优先遍历)"></a>二叉搜索树范围和(深度优先遍历)</h1><h2 id="题目-8"><a href="#题目-8" class="headerlink" title="题目"></a>题目</h2><p><img src="fanweihe.png" alt=""></p>
+<h2 id="分析-8"><a href="#分析-8" class="headerlink" title="分析"></a>分析</h2><p><a href="https://leetcode-cn.com/problems/range-sum-of-bst/solution/hua-jie-suan-fa-938-er-cha-sou-suo-shu-de-fan-wei-/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/range-sum-of-bst/solution/hua-jie-suan-fa-938-er-cha-sou-suo-shu-de-fan-wei-/</a>    </p>
+<h2 id="代码-8"><a href="#代码-8" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static int rangeSumBST(TreeNode root, int L, int R) &#123;</span><br><span class="line">        if(root&#x3D;&#x3D;null)&#123;  &#x2F;&#x2F;为空</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        if(root.val&lt;L)&#123;</span><br><span class="line">            return rangeSumBST(root.right,L,R);  &#x2F;&#x2F;当前节点&lt;L  返回右子树之和</span><br><span class="line">        &#125;</span><br><span class="line">        if(root.val&gt;R)&#123;</span><br><span class="line">            return rangeSumBST(root.left,L,R);  &#x2F;&#x2F;当前节点&gt;R  返回左子树之和</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;当前节点值+左子树之和+右子树之和</span><br><span class="line">        return root.val + rangeSumBST(root.left, L, R) + rangeSumBST(root.right, L, R);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果-8"><a href="#结果-8" class="headerlink" title="结果"></a>结果</h2><p><img src="fanweiheres.png" alt=""></p>
+<hr>
+<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1><h2 id="题目-9"><a href="#题目-9" class="headerlink" title="题目"></a>题目</h2><p><img src="" alt=""></p>
+<h2 id="分析-9"><a href="#分析-9" class="headerlink" title="分析"></a>分析</h2><h2 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h2><h2 id="结果-9"><a href="#结果-9" class="headerlink" title="结果"></a>结果</h2><p><img src="" alt=""></p>
+<hr>
 
       
       
