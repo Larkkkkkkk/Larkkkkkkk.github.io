@@ -490,6 +490,13 @@
 
 <h2 id="结果-16"><a href="#结果-16" class="headerlink" title="结果"></a>结果</h2><p><img src="teshures.png" alt=""></p>
 <hr>
+<h1 id="非递增顺序的最小子序列-数学问题"><a href="#非递增顺序的最小子序列-数学问题" class="headerlink" title="非递增顺序的最小子序列(数学问题)"></a>非递增顺序的最小子序列(数学问题)</h1><h2 id="题目-16"><a href="#题目-16" class="headerlink" title="题目"></a>题目</h2><p><img src="feidizeng.png" alt=""></p>
+<h2 id="分析-18"><a href="#分析-18" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 其实就是找一段序列是大于总和/2的
+2. 存的话就用list集合存
+3. 先排序之后倒序遍历插入找即可</code></pre><h2 id="代码-18"><a href="#代码-18" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public List&lt;Integer&gt; minSubsequence(int[] nums) &#123;</span><br><span class="line">    Arrays.sort(nums);   &#x2F;&#x2F;排序</span><br><span class="line">    int left&#x3D;0;  &#x2F;&#x2F;左指针</span><br><span class="line">    int right&#x3D;nums.length-1;  &#x2F;&#x2F;右指针</span><br><span class="line">    int sum&#x3D;0, sum_right&#x3D;0;   </span><br><span class="line">    for(int i&#x3D;0; i&lt;nums.length; i++)&#123;</span><br><span class="line">        sum +&#x3D; nums[i];  &#x2F;&#x2F;求总和sum</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Integer&gt; ans &#x3D; new ArrayList&lt;&gt;();  &#x2F;&#x2F;接住结果</span><br><span class="line">    while(sum_right &lt;&#x3D; sum&#x2F;2)&#123;</span><br><span class="line">        ans.add(nums[right]);</span><br><span class="line">        sum_right +&#x3D; nums[right];  &#x2F;&#x2F;倒序相加   超过总和的一半就弹出</span><br><span class="line">        left++;</span><br><span class="line">        right--;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;  &#x2F;&#x2F;返回结果</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果-17"><a href="#结果-17" class="headerlink" title="结果"></a>结果</h2><p><img src="feidizengres.png" alt=""></p>
+<hr>
 
       
       
