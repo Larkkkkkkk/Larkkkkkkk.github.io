@@ -497,6 +497,12 @@
 
 <h2 id="结果-17"><a href="#结果-17" class="headerlink" title="结果"></a>结果</h2><p><img src="feidizengres.png" alt=""></p>
 <hr>
+<h1 id="换酒问题-不断缩小"><a href="#换酒问题-不断缩小" class="headerlink" title="换酒问题(不断缩小)"></a>换酒问题(不断缩小)</h1><h2 id="题目-17"><a href="#题目-17" class="headerlink" title="题目"></a>题目</h2><p><img src="huanjiu.png" alt=""></p>
+<h2 id="分析-19"><a href="#分析-19" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 其实很像进制转换,不过需要考虑换完之后要加上换了的数量
+2. 只要sum剩下的酒瓶 &lt; 要兑换的酒瓶就弹出</code></pre><h2 id="代码-19"><a href="#代码-19" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public int numWaterBottles(int sum, int numExchange) &#123;</span><br><span class="line">int total &#x3D; sum;  &#x2F;&#x2F;首先将sum加入 </span><br><span class="line">while (sum &gt;&#x3D; numExchange) &#123;   &#x2F;&#x2F;手里的酒瓶数 &lt; 要兑换酒瓶数量</span><br><span class="line">    &#x2F;&#x2F;change表示的是兑换成酒的数量</span><br><span class="line">    int change &#x3D; sum &#x2F; numExchange;</span><br><span class="line">    &#x2F;&#x2F;total再加上兑换的酒</span><br><span class="line">    total +&#x3D; change;</span><br><span class="line">    &#x2F;&#x2F;瓶子数量变为兑换成酒的数量加上没有兑换成酒的数量</span><br><span class="line">    sum &#x3D; change + sum % numExchange;   &#x2F;&#x2F;更新手里的总数</span><br><span class="line">&#125;</span><br><span class="line">	return total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果-18"><a href="#结果-18" class="headerlink" title="结果"></a>结果</h2><p><img src="huanjiures.png" alt=""></p>
+<hr>
 
       
       
