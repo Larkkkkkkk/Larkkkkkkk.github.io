@@ -921,6 +921,13 @@
 
 <h2 id="结果-16"><a href="#结果-16" class="headerlink" title="结果"></a>结果</h2><p><img src="maxyinres.png" alt=""></p>
 <hr>
+<h1 id="仅仅反转字母-字母压栈"><a href="#仅仅反转字母-字母压栈" class="headerlink" title="仅仅反转字母(字母压栈)"></a>仅仅反转字母(字母压栈)</h1><h2 id="题目-17"><a href="#题目-17" class="headerlink" title="题目"></a>题目</h2><p><img src="fanzhuanzimu.png" alt=""></p>
+<h2 id="分析-17"><a href="#分析-17" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 个人感觉倒序输入/反向的都需要栈顶
+2. 第一次遍历将所有字符倒序压栈到栈stack  其实就反序放进去
+3. 第二次遍历只要是特殊符号就放到遍历的位置  其他位置就反序出栈即可</code></pre><h2 id="代码-17"><a href="#代码-17" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public String reverseOnlyLetters(String S) &#123;</span><br><span class="line">    Stack&lt;Character&gt; letters &#x3D; new Stack();</span><br><span class="line">    for (char c: S.toCharArray())</span><br><span class="line">        if (Character.isLetter(c))</span><br><span class="line">            letters.push(c);     &#x2F;&#x2F;所有数字反序压栈</span><br><span class="line"></span><br><span class="line">    StringBuilder ans &#x3D; new StringBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;第二次再次遍历  </span><br><span class="line">    for (char c: S.toCharArray()) &#123;</span><br><span class="line">        if (Character.isLetter(c))</span><br><span class="line">            ans.append(letters.pop());  &#x2F;&#x2F;如果当前位是字母 就出栈  刚好是反序</span><br><span class="line">        else</span><br><span class="line">            ans.append(c);   &#x2F;&#x2F;特殊位置继续放入当前位置</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return ans.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果-17"><a href="#结果-17" class="headerlink" title="结果"></a>结果</h2><p><img src="zhuanzimures.png" alt=""></p>
+<hr>
 
       
       
