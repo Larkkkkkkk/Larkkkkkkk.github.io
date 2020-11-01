@@ -1269,7 +1269,17 @@
 
 <h2 id="结果-32"><a href="#结果-32" class="headerlink" title="结果"></a>结果</h2><p><img src="fentangguores.png" alt=""></p>
 <hr>
-<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1>
+<h1 id="数组序号转换-map集合存-lt-数字-序号-gt"><a href="#数组序号转换-map集合存-lt-数字-序号-gt" class="headerlink" title="数组序号转换(map集合存&lt;数字,序号&gt;)"></a>数组序号转换(map集合存&lt;数字,序号&gt;)</h1><h2 id="题目-37"><a href="#题目-37" class="headerlink" title="题目"></a>题目</h2><p><img src="pauxu.png" alt=""></p>
+<h2 id="分析-37"><a href="#分析-37" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 因为有重复的数字 所以直接输出不太好弄
+2. 使用map集合存储每个数字和数字出现的位置(排序sort之后就好弄)
+3. for循环a数组，这样可以顺序填进去</code></pre><h2 id="代码-37"><a href="#代码-37" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static int[] arrayRankTransform(int[] a) &#123;</span><br><span class="line">       int n&#x3D;a.length;  &#x2F;&#x2F;数组长度</span><br><span class="line">       int[] temp&#x3D;a.clone();  &#x2F;&#x2F;赋值a数组生成新的temp数组</span><br><span class="line">       Arrays.sort(temp);  &#x2F;&#x2F;sort排序</span><br><span class="line">       int count&#x3D;1;</span><br><span class="line">       Map&lt;Integer,Integer&gt; map&#x3D;new HashMap&lt;&gt;();  &#x2F;&#x2F;生成map集合</span><br><span class="line">       for(int i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">           if(!map.containsKey(temp[i]))&#123;</span><br><span class="line">               map.put(temp[i],count++);  &#x2F;&#x2F;只将不重复的数字  存入数字和序号</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       for(int i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">           a[i]&#x3D;map.get(a[i]);  &#x2F;&#x2F;遍历a数组 将序号放入</span><br><span class="line">       &#125;</span><br><span class="line">       return a;  &#x2F;&#x2F;输出原数组</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果-33"><a href="#结果-33" class="headerlink" title="结果"></a>结果</h2><p><img src="pauxures.png" alt=""></p>
+<hr>
+<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1><h2 id="题目-38"><a href="#题目-38" class="headerlink" title="题目"></a>题目</h2><p><img src="" alt=""></p>
+<h2 id="分析-38"><a href="#分析-38" class="headerlink" title="分析"></a>分析</h2><h2 id="代码-38"><a href="#代码-38" class="headerlink" title="代码"></a>代码</h2><h2 id="结果-34"><a href="#结果-34" class="headerlink" title="结果"></a>结果</h2><p><img src="" alt=""></p>
+<hr>
+
       
       
     </div>
