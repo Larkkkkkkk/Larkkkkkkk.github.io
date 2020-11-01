@@ -509,7 +509,13 @@
 
 <h2 id="结果-19"><a href="#结果-19" class="headerlink" title="结果"></a>结果</h2><p><img src="tuopures.png" alt=""></p>
 <hr>
-<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1>
+<h1 id="最小移动次数使数组元素相等"><a href="#最小移动次数使数组元素相等" class="headerlink" title="最小移动次数使数组元素相等"></a>最小移动次数使数组元素相等</h1><h2 id="题目-19"><a href="#题目-19" class="headerlink" title="题目"></a>题目</h2><p><img src="yidong.png" alt=""></p>
+<h2 id="分析-21"><a href="#分析-21" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 每次使n-1个元素+1 == 每次使1个元素-1然后所有元素+1
+2. 所以只需要找到:每次让1个元素-1，多少次后让所有元素相等</code></pre><h2 id="代码-21"><a href="#代码-21" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static int minMoves(int[] a) &#123;</span><br><span class="line">      Arrays.sort(a);  &#x2F;&#x2F;对a数组进行排序</span><br><span class="line">      int res&#x3D;0;</span><br><span class="line">      int count&#x3D;a.length-1;  &#x2F;&#x2F;每次能够使n-1个元素增加1</span><br><span class="line">      for (int i &#x3D; 0; i &lt; a.length; i++) &#123;</span><br><span class="line">          res+&#x3D;a[i]-a[0];  &#x2F;&#x2F;计算比a【0】多多少</span><br><span class="line">      &#125;</span><br><span class="line">      return res;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果-20"><a href="#结果-20" class="headerlink" title="结果"></a>结果</h2><p><img src="yidongres.png" alt=""></p>
+<hr>
+
       
       
     </div>
@@ -1263,7 +1269,7 @@
 
 <h2 id="结果-32"><a href="#结果-32" class="headerlink" title="结果"></a>结果</h2><p><img src="fentangguores.png" alt=""></p>
 <hr>
-
+<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1>
       
       
     </div>
