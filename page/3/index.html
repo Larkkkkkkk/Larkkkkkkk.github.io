@@ -934,6 +934,13 @@
 
 <h2 id="结果-17"><a href="#结果-17" class="headerlink" title="结果"></a>结果</h2><p><img src="zhuanzimures.png" alt=""></p>
 <hr>
+<h1 id="翻转数位-只能把1个0改成1"><a href="#翻转数位-只能把1个0改成1" class="headerlink" title="翻转数位(只能把1个0改成1)"></a>翻转数位(只能把1个0改成1)</h1><h2 id="题目-18"><a href="#题目-18" class="headerlink" title="题目"></a>题目</h2><p><img src="fujia.png" alt=""></p>
+<h2 id="分析-18"><a href="#分析-18" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 使用方法将n转成二进制字符串形式s
+2. 使用方法将字符串通过0隔开成字符串数组 每个子数组的长度就是1的长度
+3. 最后通过for循环遍历找到第哪两个之间+1最大即可</code></pre><h2 id="代码-18"><a href="#代码-18" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static int reverseBits(int n) &#123;</span><br><span class="line">       if(n&#x3D;&#x3D;-1)&#123;</span><br><span class="line">           return 32;  &#x2F;&#x2F;负数就是32个</span><br><span class="line">       &#125;</span><br><span class="line">       String s &#x3D; Integer.toBinaryString(n);</span><br><span class="line">       String[] arr &#x3D; s.split(&quot;0&quot;);</span><br><span class="line">       if(arr.length&lt;1) &#123;</span><br><span class="line">           return arr.length+1;  &#x2F;&#x2F;如果没有1就返回+1</span><br><span class="line">       &#125;</span><br><span class="line">       int res&#x3D;arr[0].length()+1;  &#x2F;&#x2F;暂定最终结果</span><br><span class="line">       for (int i &#x3D; 1; i &lt; arr.length; i++) &#123;   &#x2F;&#x2F;从第二位开始</span><br><span class="line">           int temp&#x3D;arr[i-1].length()+arr[i].length()+1;  &#x2F;&#x2F;获取当前值和上一位值+1 就相当于连起来试</span><br><span class="line">           res&#x3D;Math.max(res,temp);  &#x2F;&#x2F;每次找最大的res</span><br><span class="line">       &#125;</span><br><span class="line">       return res;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果-18"><a href="#结果-18" class="headerlink" title="结果"></a>结果</h2><p><img src="fujiares.png" alt=""></p>
+<hr>
 
       
       
