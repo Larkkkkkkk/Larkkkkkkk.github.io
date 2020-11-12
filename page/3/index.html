@@ -755,6 +755,14 @@
 
 <h2 id="结果-10"><a href="#结果-10" class="headerlink" title="结果"></a>结果</h2><p><img src="jiares.png" alt=""></p>
 <hr>
+<h1 id="数字翻译成字符串-递归"><a href="#数字翻译成字符串-递归" class="headerlink" title="数字翻译成字符串(递归)"></a>数字翻译成字符串(递归)</h1><h2 id="题目-11"><a href="#题目-11" class="headerlink" title="题目"></a>题目</h2><p><img src="fanyistring.png" alt=""></p>
+<h2 id="分析-11"><a href="#分析-11" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 这道题其实就是一个递归：递归出口是num是只有一位数，
+2. 以xyzcba为例，先取最后两位（个位和十位）即ba，
+    2.1 如果ba&gt;=26，必然不能分解成f(xyzcb)+f(xyzc)，此时只能分解成f(xyzcb);
+    2.2 但还有一种情况，就是ba&lt;=9,也就是该数十位上为0，此时只能分解成f(xyzcb);</code></pre><h2 id="代码-11"><a href="#代码-11" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public int translateNum(int num) &#123;  &#x2F;&#x2F;递归</span><br><span class="line">      if (num&lt;&#x3D;9) &#123;</span><br><span class="line">         return 1;   &#x2F;&#x2F;最后num是个位数小于等于9</span><br><span class="line">      &#125;</span><br><span class="line">     &#x2F;&#x2F;xyzcba为例</span><br><span class="line">     int ba &#x3D; num%100;  &#x2F;&#x2F;取最后两位</span><br><span class="line">     if (ba&lt;&#x3D;9||ba&gt;&#x3D;26) &#123;</span><br><span class="line">         return translateNum(num&#x2F;10);  &#x2F;&#x2F;如果ba&gt;&#x3D;26，必然不能分解成f(xyzcb)+f(xyzc)，此时只能分解成f(xyzcb)</span><br><span class="line">                                     &#x2F;&#x2F;但还有一种情况，就是ba&lt;&#x3D;9,也就是该数十位上为0 也只能分解成f(xyzcb)</span><br><span class="line">     &#125;</span><br><span class="line">     return translateNum(num&#x2F;10)+translateNum(num&#x2F;100);  &#x2F;&#x2F;其他情况下就是最后一位和倒数第二位</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果-11"><a href="#结果-11" class="headerlink" title="结果"></a>结果</h2><p><img src="fanyistringres.png" alt=""></p>
+<hr>
 
       
       
