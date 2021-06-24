@@ -413,6 +413,42 @@
 <p><strong>执行结果</strong></p>
 <p><img src="3.1.png" alt=""></p>
 <hr>
+<h2 id="例3-3-大小写转换"><a href="#例3-3-大小写转换" class="headerlink" title="例3.3 大小写转换"></a>例3.3 大小写转换</h2><p><strong>具体代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char a;</span><br><span class="line">	a&#x3D;&#39;A&#39;;  &#x2F;&#x2F;赋值 </span><br><span class="line">	a&#x3D;a+32; &#x2F;&#x2F;大写+32&#x3D;小写 </span><br><span class="line">	printf(&quot;%c\n&quot;,a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行结果</strong></p>
+<p><img src="3.3.png" alt=""></p>
+<hr>
+<h2 id="例3-4-求三角形面积-海伦公式"><a href="#例3-4-求三角形面积-海伦公式" class="headerlink" title="例3.4 求三角形面积(海伦公式)"></a>例3.4 求三角形面积(海伦公式)</h2><p><strong>具体代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;  &#x2F;&#x2F;后面要用sqrt开根号的函数</span><br><span class="line">int main()&#123;</span><br><span class="line">	double a; &#x2F;&#x2F;边1 </span><br><span class="line">	double b; &#x2F;&#x2F;边2 </span><br><span class="line">	double c; &#x2F;&#x2F;边3 </span><br><span class="line">	double s; &#x2F;&#x2F;海伦公式里面的s </span><br><span class="line">	double res; &#x2F;&#x2F;获取最终结果 </span><br><span class="line">	scanf(&quot;%lf,%lf,%lf&quot;,&amp;a,&amp;b,&amp;c);  &#x2F;&#x2F;输入三边 </span><br><span class="line">	s&#x3D;(a+b+c)&#x2F;2;</span><br><span class="line">	res&#x3D;sqrt(s*(s-a)*(s-b)*(s-c));  &#x2F;&#x2F;海伦公式</span><br><span class="line">	printf(&quot;%.5f&quot;,res);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行结果</strong></p>
+<p><img src="3.4.png" alt=""></p>
+<hr>
+<h2 id="例3-5-求一元二次方程的根"><a href="#例3-5-求一元二次方程的根" class="headerlink" title="例3.5 求一元二次方程的根"></a>例3.5 求一元二次方程的根</h2><p><strong>具体代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int a; &#x2F;&#x2F;x2的系数 </span><br><span class="line">	int b; &#x2F;&#x2F;x的系数 </span><br><span class="line">	int c; &#x2F;&#x2F;常数的系数 </span><br><span class="line">	double temp;</span><br><span class="line">	double res1;</span><br><span class="line">	double res2;</span><br><span class="line">	scanf(&quot;%d,%d,%d&quot;,&amp;a,&amp;b,&amp;c);  &#x2F;&#x2F;输入一定要用逗号隔开</span><br><span class="line">	temp&#x3D;b*b-4*a*c;</span><br><span class="line">	res1&#x3D;(-b+sqrt(temp))&#x2F;(2.0*a);</span><br><span class="line">	res2&#x3D;(-b-sqrt(temp))&#x2F;(2.0*a);</span><br><span class="line">	printf(&quot;%7.2f&quot;,res1);</span><br><span class="line">	printf(&quot;%7.2f&quot;,res2);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行结果</strong></p>
+<p><img src="3.5.png" alt=""></p>
+<hr>
+<h2 id="例3-9-输入三个字符-然后putchar输出"><a href="#例3-9-输入三个字符-然后putchar输出" class="headerlink" title="例3.9 输入三个字符,然后putchar输出"></a>例3.9 输入三个字符,然后putchar输出</h2><p><strong>具体代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char a&#x3D;&#39;B&#39;;</span><br><span class="line">	char b&#x3D;&#39;O&#39;; </span><br><span class="line">	char c&#x3D;&#39;Y&#39;;</span><br><span class="line">	printf(&quot;输入新的之前%c%c%c\n&quot;,a,b,c); </span><br><span class="line">	scanf(&quot;%c&quot;,&amp;a);</span><br><span class="line">	printf(&quot;输入新的之后&quot;); </span><br><span class="line">	putchar(a);  &#x2F;&#x2F;putchar输出单个字符 </span><br><span class="line">	putchar(b);</span><br><span class="line">	putchar(c);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行结果</strong></p>
+<p><img src="3.9.png" alt=""></p>
+<hr>
+<h2 id="例3-10-输入大写字母输出小写"><a href="#例3-10-输入大写字母输出小写" class="headerlink" title="例3.10 输入大写字母输出小写"></a>例3.10 输入大写字母输出小写</h2><p><strong>具体代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char a&#x3D;&#39;B&#39;;</span><br><span class="line">	char b&#x3D;&#39;O&#39;; </span><br><span class="line">	char c&#x3D;&#39;Y&#39;;</span><br><span class="line">	printf(&quot;输入新的之前%c%c%c\n&quot;,a,b,c); </span><br><span class="line">	scanf(&quot;%c&quot;,&amp;a);</span><br><span class="line">	printf(&quot;输入新的之后&quot;); </span><br><span class="line">	putchar(a);  &#x2F;&#x2F;putchar输出单个字符 </span><br><span class="line">	putchar(b);</span><br><span class="line">	putchar(c);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行结果</strong></p>
+<p><img src="3.10.png" alt=""></p>
+<hr>
+<h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><p><strong>具体代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>执行结果</strong></p>
+<p><img src="" alt=""></p>
+<hr>
 
       
       
