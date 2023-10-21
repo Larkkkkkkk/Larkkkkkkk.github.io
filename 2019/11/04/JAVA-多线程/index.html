@@ -5,13 +5,14 @@
   
   <title>JAVA-多线程 | Larkkkkkkk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第10章_多线程 本章专题与脉络   我们之前学习的程序在没有跳转语句的情况下，都是由上至下沿着一条路径依次执行。现在想要设计一个程序，可以同时有多条执行路径同时执行。比如，一边游戏，一边qq聊天，一边听歌，怎么设计？   要解决上述问题，需要使用多进程 *&#x2F; *多线程来解决。 1. 相关概念1.1 程序、进程与线程 程序（program）：为完成特定任务，用某种语言编写的一组指令的集合。即指一段">
+  <meta name="description" content="第10章_多线程 本章专题与脉络    我们之前学习的程序在没有跳转语句的情况下，都是由上至下沿着一条路径依次执行。现在想要设计一个程序，可以同时有多条执行路径同时执行。比如，一边游戏，一边qq聊天，一边听歌，怎么设计？   要解决上述问题，需要使用多进程 *&#x2F; *多线程来解决。 1. 相关概念1.1 程序、进程与线程 程序（program）：为完成特定任务，用某种语言编写的一组指令的集合。即指一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA-多线程">
 <meta property="og:url" content="https://larkkkkkkk.github.io/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Larkkkkkkk">
-<meta property="og:description" content="第10章_多线程 本章专题与脉络   我们之前学习的程序在没有跳转语句的情况下，都是由上至下沿着一条路径依次执行。现在想要设计一个程序，可以同时有多条执行路径同时执行。比如，一边游戏，一边qq聊天，一边听歌，怎么设计？   要解决上述问题，需要使用多进程 *&#x2F; *多线程来解决。 1. 相关概念1.1 程序、进程与线程 程序（program）：为完成特定任务，用某种语言编写的一组指令的集合。即指一段">
+<meta property="og:description" content="第10章_多线程 本章专题与脉络    我们之前学习的程序在没有跳转语句的情况下，都是由上至下沿着一条路径依次执行。现在想要设计一个程序，可以同时有多条执行路径同时执行。比如，一边游戏，一边qq聊天，一边听歌，怎么设计？   要解决上述问题，需要使用多进程 *&#x2F; *多线程来解决。 1. 相关概念1.1 程序、进程与线程 程序（program）：为完成特定任务，用某种语言编写的一组指令的集合。即指一">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%AC%AC3%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E7%AC%AC10%E7%AB%A0-16977849310392.png">
 <meta property="og:image" content="https://larkkkkkkk.github.io/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%AC%AC3%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E7%AC%AC10%E7%AB%A0-16977849310392.png">
 <meta property="og:image" content="https://larkkkkkkk.github.io/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/.images/c3dcb61e3b-16977849310391.png">
 <meta property="og:image" content="https://larkkkkkkk.github.io/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20220331233204504-16977849310396.png">
@@ -42,7 +43,7 @@
 <meta property="og:image" content="https://larkkkkkkk.github.io/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/.images/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E7%90%86%E8%A7%A3-169778493103928.jpg">
 <meta property="og:image" content="https://larkkkkkkk.github.io/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/.images/image-20231020102356783.png">
 <meta property="article:published_time" content="2019-11-04T11:26:12.000Z">
-<meta property="article:modified_time" content="2023-10-21T09:19:34.229Z">
+<meta property="article:modified_time" content="2023-10-21T10:09:58.698Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -403,6 +404,7 @@
         <h1 id="第10章-多线程"><a href="#第10章-多线程" class="headerlink" title="第10章_多线程"></a>第10章_多线程</h1><hr>
 <h2 id="本章专题与脉络"><a href="#本章专题与脉络" class="headerlink" title="本章专题与脉络"></a>本章专题与脉络</h2><img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%AC%AC3%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E7%AC%AC10%E7%AB%A0-16977849310392.png" alt="第3阶段：Java高级应用-第10章" style="zoom: 50%;">
 
+<p><img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%AC%AC3%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E7%AC%AC10%E7%AB%A0-16977849310392.png" alt></p>
 <hr>
 <p>我们之前学习的程序在没有跳转语句的情况下，都是由上至下沿着一条路径依次执行。现在想要设计一个程序，可以同时有多条执行路径同时执行。比如，<code>一边游戏，一边qq聊天，一边听歌</code>，怎么设计？</p>
 <img src=".images/c3dcb61e3b-16977849310391.png" alt="c3dcb61e3b" style="zoom:50%;">
@@ -1098,7 +1100,7 @@
         <p><span>本文标题:</span><a href="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">JAVA-多线程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2019年11月04日 - 19时26分</p>
-        <p><span>最后更新:</span>2023年10月21日 - 17时19分</p>
+        <p><span>最后更新:</span>2023年10月21日 - 18时09分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="JAVA-多线程">https://larkkkkkkk.github.io/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
