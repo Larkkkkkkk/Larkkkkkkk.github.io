@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Larkkkkkkk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Larkkkkkkk">
+<meta property="og:url" content="https://larkkkkkkk.github.io/page/14/index.html">
+<meta property="og:site_name" content="Larkkkkkkk">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Larkkkkkkk">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
+  
+  
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="img/head.jpg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Larkkkkkkk</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                        
+                            <li><a  href="/archives">文章归档</a></li>
+                        
+                            <li><a  href="/CTFStudy">学习导航</a></li>
+                        
+                            <li><a  href="/PWNABLE">PWNABLE</a></li>
+                        
+                            <li><a  href="/resume">个人简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail"  target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                            
+                                <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Ajax/" style="font-size: 12.22px;">Ajax</a> <a href="/tags/Cookie%E5%92%8CSession/" style="font-size: 14.44px;">Cookie和Session</a> <a href="/tags/DBUtils/" style="font-size: 11.11px;">DBUtils</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">EL表达式</a> <a href="/tags/Filter/" style="font-size: 11.11px;">Filter</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPServletReauest%E5%92%8CHTTPServletResponse/" style="font-size: 10px;">HTTPServletReauest和HTTPServletResponse</a> <a href="/tags/IDEA%E5%AE%89%E8%A3%85%E5%92%8C%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">IDEA安装和破解</a> <a href="/tags/JAVA/" style="font-size: 14.44px;">JAVA</a> <a href="/tags/JAVA-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-Lambda表达式</a> <a href="/tags/JAVA-Set%E9%9B%86%E5%90%88/" style="font-size: 10px;">JAVA-Set集合</a> <a href="/tags/JAVA-%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">JAVA-反射</a> <a href="/tags/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 12.22px;">JAVA-多线程</a> <a href="/tags/JAVA-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-正则表达式</a> <a href="/tags/JAVA-%E6%B3%9B%E5%9E%8B/" style="font-size: 10px;">JAVA-泛型</a> <a href="/tags/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 12.22px;">JAVA-网络编程</a> <a href="/tags/JAVA-%E9%9B%86%E5%90%88/" style="font-size: 12.22px;">JAVA-集合</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0/" style="font-size: 11.11px;">JAVA练习</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">JAVA练习-动态规划</a> <a href="/tags/JQuery/" style="font-size: 13.33px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/LeetCode/" style="font-size: 17.78px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 15.56px;">Linux</a> <a href="/tags/Listener/" style="font-size: 10px;">Listener</a> <a href="/tags/Mybatis/" style="font-size: 18.89px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CJDBC/" style="font-size: 15.56px;">Mysql数据库和JDBC</a> <a href="/tags/Redis/" style="font-size: 11.11px;">Redis</a> <a href="/tags/Servlet/" style="font-size: 11.11px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 16.67px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 15.56px;">SpringMVC</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 20px;">Web前端知识点</a> <a href="/tags/XML/" style="font-size: 11.11px;">XML</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/flask%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">flask框架</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/jsp%E6%A0%87%E5%87%86%E6%A0%87%E7%AD%BE%E5%BA%93/" style="font-size: 10px;">jsp标准标签库</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/python/" style="font-size: 12.22px;">python</a> <a href="/tags/pytorch/" style="font-size: 10px;">pytorch</a> <a href="/tags/ssm%E6%A1%86%E6%9E%B6%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">ssm框架模板</a> <a href="/tags/webserver%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">webserver编程</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E4%BA%AC%E4%B8%9C/" style="font-size: 11.11px;">京东</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91/" style="font-size: 10px;">后缀树</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10px;">哈希表</a> <a href="/tags/%E5%9B%BE/" style="font-size: 10px;">图</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 10px;">复杂度分析</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">学生管理系统</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2-0/" style="font-size: 12.22px;">学生管理系统2.0</a> <a href="/tags/%E6%8B%BC%E5%A4%9A%E5%A4%9A/" style="font-size: 10px;">拼多多</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" style="font-size: 10px;">数据库连接池</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数据结构-稀疏数组</a> <a href="/tags/%E6%96%87%E5%AD%97%E7%AF%87-%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">文字篇-记录</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 12.22px;">机器学习</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%91/" style="font-size: 12.22px;">树</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">注解</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 14.44px;">深度学习</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 11.11px;">爬虫</a> <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" style="font-size: 10px;">生物信息学</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 12.22px;">知识图谱</a> <a href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%88%9D%E8%AF%95/" style="font-size: 12.22px;">研究生初试</a> <a href="/tags/%E7%A7%8B%E6%8B%9B/" style="font-size: 10px;">秋招</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">算法-动态规划</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%BA%AF%E6%B3%95/" style="font-size: 10px;">算法-回溯法</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法-贪心算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 10px;">考研</a> <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 13.33px;">蓝桥杯</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE-%E8%BD%AF%E4%BB%B6%E4%B8%93%E4%B8%9A%E9%A2%98%E7%9B%AE/" style="font-size: 10px;">计算机网络课设(软件专业题目)</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.22px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 10px;">软件体系结构</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">重新部署</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%A1%B5%E9%9D%A2%EF%BC%88H5-CSS%EF%BC%89/" style="font-size: 10px;">页面（H5+CSS）</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0/" style="font-size: 10px;">项目上传</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://ring3.xyz/">Yllen</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://mxny.org/">麦香浓郁</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://whereisk0shl.top/">K0sh1</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.ycjcl.cc/">信鑫</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://bystudent.com/">ByStundet表哥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jarviswang.me/">汪神_Jarvis</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sh3ll.me/">Chu</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.hackfun.org/">4ido10n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/iamstudy">L3m0n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://o0xmuhe.me/">muhe</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.nuptzj.cn/">_画船听雨</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.virzz.com/index.html">Virink</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.sqlsec.com/">国光</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bodkin.ren/">老锥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cizel.cn/">C1zel</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://1phan.cc">1phan</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.liuil.top/">liuil</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/Ox9A82/">Ox9A82</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://burnegg.com/">burnegg</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://jwrsec.cn/">jwr-sec</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sudalover.cn/">苏打</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.binklac.com">VeroFess</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bendawang.site/">bendawang</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://weeklyalgo.codes/">hook</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.flier.net.cn/">Flier&#39;blog</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.mutepig.club">mutepig</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.iret.xyz/list.aspx">Silver</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://simp1e.leanote.com/">Simple</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://processor.pub/">Processor</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一只淹死在二进制海洋里的二进制狗!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Larkkkkkkk</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Larkkkkkkk</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                
+                    <li><a href="/archives">文章归档</a></li>
+                
+                    <li><a href="/CTFStudy">学习导航</a></li>
+                
+                    <li><a href="/PWNABLE">PWNABLE</a></li>
+                
+                    <li><a href="/resume">个人简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-Linux安装软件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/" class="article-date">
+      <time datetime="2020-03-10T15:02:48.000Z" itemprop="datePublished">2020-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">Linux安装软件</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h1><ul>
+<li><strong>1.二进制发布包</strong><br>　　软件已经针对具体平台编译打包发布，只要解压，修改配置即可</li>
+<li><strong>2.RPM包(依赖)</strong><br>　　软件已经按照redhat的包管理工具规范RPM进行打包发布，需要获取到相应的软件RPM发布包，然后用RPM命令进行安装</li>
+<li><strong>3.Yum在线安装(必须有网络)</strong><br>　　软件已经以RPM规范打包，但发布在了网络上的一些服务器上，可用yum在线安装服务器上的rpm软件，并且会自动解决软件安装过程中的库依赖问题</li>
+<li><strong>4.源码编译安装</strong><br>　　软件以源码工程的形式发布，需要获取到源码工程后用相应开发工具进行编译打包部署。</li>
+</ul>
+<hr>
+<h1 id="上传下载文件软件"><a href="#上传下载文件软件" class="headerlink" title="上传下载文件软件"></a>上传下载文件软件</h1><h2 id="FileZilla软件"><a href="#FileZilla软件" class="headerlink" title="FileZilla软件"></a>FileZilla软件</h2><p><strong>1.下载安装之后直接使用</strong></p>
+<p><img src="file.png" alt=""></p>
+<h2 id="lrzsz软件"><a href="#lrzsz软件" class="headerlink" title="lrzsz软件"></a>lrzsz软件</h2><p><strong>1.CRT软件下输入 yum install lrzsz</strong></p>
+<p><strong>2.CRT软件 –&gt; 选项 –&gt; 会话设置 –&gt; 设置上传下载目录</strong></p>
+<p><img src="shezhi.png" alt=""></p>
+<p><strong>3.上传(rz)： CRT软件下输入 rz –&gt; 从uploads上传到linux当前目录下</strong></p>
+<p><img src="chenggong.png" alt=""></p>
+<p><strong>4.下载(sz 文件名)： CRT软件下输入 sz 文件名 –&gt; 下载到downloads目录下</strong></p>
+<p><img src="chenggonger.png" alt=""></p>
+<h2 id="sftp协议-Alt-p"><a href="#sftp协议-Alt-p" class="headerlink" title="sftp协议(Alt+p)"></a>sftp协议(Alt+p)</h2><p><strong>1. 上传(put)：通过Alt+p进入SFTP界面 –&gt; 输入 put F：//song.txt –&gt; 上传到linux当前目录下</strong></p>
+<p><img src="put.png" alt=""></p>
+<p><strong>2.下载(get)：通过Alt+p进入SFTP界面 –&gt; 输入 get song.txt –&gt; 下载到电脑的文档目录下</strong></p>
+<p><img src="get.png" alt=""></p>
+<hr>
+<h1 id="Linux安装JDK"><a href="#Linux安装JDK" class="headerlink" title="Linux安装JDK"></a>Linux安装JDK</h1><p><strong>先确定linux系统的版本 –&gt; 选择JDK版本</strong></p>
+<p><img src="banebn.png" alt=""></p>
+<p><strong>1. 通过sftp进行上传</strong></p>
+<p><img src="shangchuanjdk.png" alt=""></p>
+<p><strong>2. mv指令剪切到usr的local下面的jdk里面</strong></p>
+<p><img src="zhuanyi.png" alt=""></p>
+<p><strong>3. 将原来的java的jdk卸载</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java –version &#x2F;&#x2F;查看java版本</span><br><span class="line">rpm -qa | grep java &#x2F;&#x2F;查看和java有关的内容</span><br><span class="line"></span><br><span class="line">rpm -e --nodeps java-1.6.0-openjdk-1.6.0.35-1.13.7.1.el6_6.i686  &#x2F;&#x2F;rpm -e --nodeps 然后后面跟自己电脑显示出来的java有关的内容</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.79-2.5.5.4.el6.i686</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. 使用tar -zxvf jdk名字的形式 解压</strong></p>
+<p><strong>5. 配置环境变量</strong></p>
+<pre><code>1. 通过vim编辑器进入编译：vim /etc/profile
+2. 在后面添加
+    set java environment
+    JAVA_HOME=/usr/local/jdk/jdk1.7.0_71
+    CLASSPATH=.:$JAVA_HOME/lib.tools.jar
+    PATH=$JAVA_HOME/bin:$PATH
+    export JAVA_HOME CLASSPATH PATH
+3. ESC键之后：wq退出之后重新保存
+    source /etc/profile 使更改的配置立即生效</code></pre><p><strong>流程：</strong></p>
+<p><img src="bianliang.png" alt=""></p>
+<hr>
+<h1 id="Linux安装Mysql"><a href="#Linux安装Mysql" class="headerlink" title="Linux安装Mysql"></a>Linux安装Mysql</h1><p><strong>1. 通过lrzsz的rz方式将uploads的文件上传</strong></p>
+<p><img src="mysql.png" alt=""></p>
+<p><strong>2. 卸载当前已经有的mysql</strong></p>
+<p><img src="mysqlxiezai.png" alt=""></p>
+<p><strong>3. 通tar -xvf(是jar而不是gz压缩包)指令解压</strong></p>
+<p><img src="jarjieya.png" alt=""></p>
+<p><strong>4. rmp -ivh指令 安装服务端 【然后获得随机密码】</strong></p>
+<p><img src="fuwuduan.png" alt=""></p>
+<p><strong>5. rmp -ivh指令 安装服务端</strong></p>
+<p><img src="kehuduan.png" alt=""></p>
+<p><strong>6. 打开mysql服务</strong></p>
+<p><img src="shibai.png" alt=""></p>
+<p><strong>7. 重新登陆数据库mysql</strong></p>
+<p><img src="chong.png" alt=""></p>
+<p><strong>8. 重新设置密码打开数据库</strong></p>
+<p><img src="dakaier.png" alt=""></p>
+<p><strong>9. 远程访问(Navicat访问linux里面安装的mysql)</strong></p>
+<p><strong>在navicat里面尝试新建连接(失败)</strong></p>
+<p><img src="yuanyi.png" alt=""></p>
+<p><strong>需要使用语句打开远程访问并且刷新</strong></p>
+<p><img src="yuaner.png" alt=""></p>
+<p><strong>双击之后即可使用</strong></p>
+<p><img src="liansan.png" alt=""></p>
+<hr>
+<h1 id="Linux安装Tomcat"><a href="#Linux安装Tomcat" class="headerlink" title="Linux安装Tomcat"></a>Linux安装Tomcat</h1><p><strong>1. 通过put上传并且tar -zxvf指令解压文件</strong></p>
+<p><strong>2. 解压之后进入tomcat的bin目录执行start.sh文件</strong></p>
+<p><img src="zhixing.png" alt=""></p>
+<p><strong>3. 打开浏览器输入：linux的地址：8080 (如果能看到tomcat显示正常就ok)</strong></p>
+<p><img src="zhengchang.png" alt=""></p>
+<hr>
+<h1 id="Linux安装redis"><a href="#Linux安装redis" class="headerlink" title="Linux安装redis"></a>Linux安装redis</h1><p><strong>1. 先在local目录下下载gcc编译文件</strong></p>
+<p><img src="gcc.png" alt=""></p>
+<p><strong>2. 去网络远程下载redis</strong></p>
+<p><img src="redisan.png" alt=""></p>
+<p><strong>3. 解压(tar -zxvf redis-3.0.4.tar.gz )</strong></p>
+<p><strong>4. 输入make进行编译</strong></p>
+<p>*<em>5. 安装(make /usr/local/redis install) *</em></p>
+<p><img src="redismake.png" alt=""></p>
+<p><strong>6. 将redis-3.0.4里面的redis.conf 复制到redis/bin目录下</strong></p>
+<p><strong>7. 直接执行./redis-server服务器端</strong> </p>
+<p><img src="zhixingredis.png" alt=""></p>
+<p><strong>8. 可以再执行redis-client服务器端然后查询操作</strong></p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/10/redis/" class="article-date">
+      <time datetime="2020-03-10T15:01:27.000Z" itemprop="datePublished">2020-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/redis/">redis</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Redis学习目录"><a href="#Redis学习目录" class="headerlink" title="Redis学习目录"></a>Redis学习目录</h1><pre><code>1. redis
+    1. 概念
+    2. 下载安装
+    3. 命令操作
+        1. 数据结构
+    4. 持久化操作
+    5. 使用Java客户端操作redis</code></pre><hr>
+<h1 id="Redis概念"><a href="#Redis概念" class="headerlink" title="Redis概念"></a>Redis概念</h1><pre><code>1. 概念： redis是一款高性能的NOSQL系列的非关系型数据库
+
+
+    1.1.什么是NOSQL
+        NoSQL(NoSQL = Not Only SQL)，意即“不仅仅是SQL”，是一项全新的数据库理念，泛指非关系型的数据库。
+        随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了非常迅速的发展。NoSQL数据库的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。
+
+        1.1.1.    NOSQL和关系型数据库比较
+            优点：
+                1）成本：nosql数据库简单易部署，基本都是开源软件，不需要像使用oracle那样花费大量成本购买使用，相比关系型数据库价格便宜。
+                2）查询速度：nosql数据库将数据存储于缓存之中，关系型数据库将数据存储在硬盘中，自然查询速度远不及nosql数据库。
+                3）存储数据的格式：nosql的存储格式是key,value形式、文档形式、图片形式等等，所以可以存储基础类型以及对象或者是集合等各种格式，而数据库则只支持基础类型。
+                4）扩展性：关系型数据库有类似join这样的多表查询机制的限制导致扩展很艰难。
+
+            缺点：
+                1）维护的工具和资料有限，因为nosql是属于新的技术，不能和关系型数据库10几年的技术同日而语。
+                2）不提供对sql的支持，如果不支持sql这样的工业标准，将产生一定用户的学习和使用成本。
+                3）不提供关系型数据库对事务的处理。
+
+        1.1.2.    非关系型数据库的优势：
+            1）性能NOSQL是基于键值对的，可以想象成表中的主键和值的对应关系，而且不需要经过SQL层的解析，所以性能非常高。
+            2）可扩展性同样也是因为基于键值对，数据之间没有耦合性，所以非常容易水平扩展。
+
+        1.1.3.    关系型数据库的优势：
+            1）复杂查询可以用SQL语句方便的在一个表以及多个表之间做非常复杂的数据查询。
+            2）事务支持使得对于安全性能很高的数据访问要求得以实现。对于这两类数据库，对方的优势就是自己的弱势，反之亦然。
+
+        1.1.4.    总结
+            关系型数据库与NoSQL数据库并非对立而是互补的关系，即通常情况下使用关系型数据库，在适合使用NoSQL的时候使用NoSQL数据库，
+            让NoSQL数据库对关系型数据库的不足进行弥补。
+            一般会将数据存储在关系型数据库中，在nosql数据库中备份存储关系型数据库的数据
+
+    1.2.主流的NOSQL产品
+        •    键值(Key-Value)存储数据库
+                相关产品： Tokyo Cabinet/Tyrant、Redis、Voldemort、Berkeley DB
+                典型应用： 内容缓存，主要用于处理大量数据的高访问负载。 
+                数据模型： 一系列键值对
+                优势： 快速查询
+                劣势： 存储的数据缺少结构化
+        •    列存储数据库
+                相关产品：Cassandra, HBase, Riak
+                典型应用：分布式的文件系统
+                数据模型：以列簇式存储，将同一列数据存在一起
+                优势：查找速度快，可扩展性强，更容易进行分布式扩展
+                劣势：功能相对局限
+        •    文档型数据库
+                相关产品：CouchDB、MongoDB
+                典型应用：Web应用（与Key-Value类似，Value是结构化的）
+                数据模型： 一系列键值对
+                优势：数据结构要求不严格
+                劣势： 查询性能不高，而且缺乏统一的查询语法
+        •    图形(Graph)数据库
+                相关数据库：Neo4J、InfoGrid、Infinite Graph
+                典型应用：社交网络
+                数据模型：图结构
+                优势：利用图结构相关算法。
+                劣势：需要对整个图做计算才能得出结果，不容易做分布式的集群方案。
+    1.3 什么是Redis
+        Redis是用C语言开发的一个开源的高性能键值对（key-value）数据库，官方提供测试数据，50个并发执行100000个请求,读的速度是110000次/s,写的速度是81000次/s ，且Redis通过提供多种键值数据类型来适应不同场景下的存储需求，目前为止Redis支持的键值数据类型如下：
+            1) 字符串类型 string
+            2) 哈希类型 hash
+            3) 列表类型 list
+            4) 集合类型 set
+            5) 有序集合类型 sortedset
+        1.3.1 redis的应用场景
+            •    缓存（数据查询、短连接、新闻内容、商品内容等等）
+            •    聊天室的在线好友列表
+            •    任务队列。（秒杀、抢购、12306等等）
+            •    应用排行榜
+            •    网站访问统计
+            •    数据过期处理（可以精确到毫秒
+            •    分布式集群架构中的session分离</code></pre><hr>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><pre><code>1. 官网：https://redis.io（速度太慢）
+2. 中文网：http://www.redis.net.cn/
+3. 解压直接可以使用：
+    * redis.windows.conf： 配置文件
+    * redis-cli.exe：     redis的客户端
+    * redis-server.exe：  redis服务器端</code></pre><p><strong>先打开服务器再打卡客户端操作：</strong></p>
+<p><img src="redisanzhuang.png" alt=""></p>
+<hr>
+<h1 id="命令操作"><a href="#命令操作" class="headerlink" title="命令操作"></a>命令操作</h1><h2 id="redis五种数据结构"><a href="#redis五种数据结构" class="headerlink" title="redis五种数据结构"></a>redis五种数据结构</h2><blockquote>
+<p>存储：key,value的格式数据  (key为字符串，value有五种数据类型)</p>
+</blockquote>
+<pre><code>1) 字符串类型                  string
+2) 哈希类型 hash               map格式
+3) 列表类型 list(可重复有顺序)  linkedlist格式
+4) 集合类型 set(不重复没顺序)
+5) 有序集合类型 sortedset      排序</code></pre><p><strong>五种数据结构的样子：</strong></p>
+<p><img src="gaishu.png" alt=""></p>
+<h2 id="字符串类型-String-mystring"><a href="#字符串类型-String-mystring" class="headerlink" title="字符串类型 String    (mystring)"></a>字符串类型 String    (mystring)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储 set key value</span><br><span class="line"></span><br><span class="line">2. 获取 get key</span><br><span class="line"></span><br><span class="line">3. 删除 del key</span><br></pre></td></tr></table></figure>
+<p><img src="string.png" alt=""></p>
+<h2 id="哈希类型-hash-myhash"><a href="#哈希类型-hash-myhash" class="headerlink" title="哈希类型 hash (myhash)"></a>哈希类型 hash (myhash)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储 hset key filed value</span><br><span class="line"></span><br><span class="line">2. 获取 hget key field   &#x2F;   hgetall field</span><br><span class="line"></span><br><span class="line">3. 删除 hdel key field</span><br></pre></td></tr></table></figure>
+
+<p><img src="hash.png" alt=""></p>
+<h2 id="列表类型-list-mylist"><a href="#列表类型-list-mylist" class="headerlink" title="列表类型 list (mylist)"></a>列表类型 list (mylist)</h2><blockquote>
+<p>可以添加一个元素到列表的<strong>头部（左边）</strong>或者<strong>尾部（右边）</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 存储 </span><br><span class="line">	1.1 添加到左边： lpush key value</span><br><span class="line">	1.2 添加到右边： rpush key value</span><br><span class="line"></span><br><span class="line">2. 获取  lrange key start end 范围获取</span><br><span class="line">	</span><br><span class="line">3. 删除 	</span><br><span class="line">	3.1 lpop key  删除最左边的元素并且返回</span><br><span class="line">	3.2 rpol key  删除最右边的元素并且返回</span><br></pre></td></tr></table></figure>
+
+<p><img src="list.png" alt=""></p>
+<p><strong>对刚才操作的分析：</strong></p>
+<p><img src="listjuli.png" alt=""></p>
+<h2 id="列表类型-set-myset"><a href="#列表类型-set-myset" class="headerlink" title="列表类型 set (myset)"></a>列表类型 set (myset)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储  sadd key value</span><br><span class="line"></span><br><span class="line">2. 获取  smembers key  获取set集合中所有元素</span><br><span class="line">	</span><br><span class="line">3. 删除 	srem key value 删除set集合中某个元素</span><br></pre></td></tr></table></figure>
+
+<p><img src="set.png" alt=""></p>
+<h2 id="有序集合类型-sortedset-mysortedset"><a href="#有序集合类型-sortedset-mysortedset" class="headerlink" title="有序集合类型 sortedset (mysortedset)"></a>有序集合类型 sortedset (mysortedset)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储  zadd key score value  添加数据和数据排序(也可以再次zadd修改score值)</span><br><span class="line">		 </span><br><span class="line">2. 获取  zrange key start end (withscores)</span><br><span class="line">		</span><br><span class="line">3. 删除 	 zrem key value</span><br></pre></td></tr></table></figure>
+
+<p><img src="sortedset.png" alt=""></p>
+<h2 id="通用命令"><a href="#通用命令" class="headerlink" title="通用命令"></a>通用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. keys ：    查询所有键(写过的)</span><br><span class="line">2. type key：  获取键对应的value值(查看哪一类数据结构)</span><br><span class="line">3. del key ：   删除指定的key value</span><br></pre></td></tr></table></figure>
+
+<p><img src="tongyong.png" alt=""></p>
+<hr>
+<h1 id="持久化-缓存"><a href="#持久化-缓存" class="headerlink" title="持久化(缓存)"></a>持久化(缓存)</h1><blockquote>
+<p>redis是一个<strong>内存数据库</strong>，当redis服务器重启，获取电脑重启，数据会丢失，我们可以将redis内存中的数据持久化保存到硬盘的文件中。</p>
+</blockquote>
+<blockquote>
+<p>Redis持久化机制：<br>1.RDB(默认的不配置)：在一定的间隔时间内，检测key的变化情况，然后持久化数据<br>2.AOF(日志记录)：可以记录每一条命令的操作,然后持久化数据(类似于mysql写语句就变化)</p>
+</blockquote>
+<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><p>###1. Redis –&gt; redis.windows.conf –&gt; 找到三行配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#   after 900 sec (15 min) if at least 1 key changed    &#x2F;&#x2F;在15min之内有一个key改变就持久化</span><br><span class="line">		save 900 1</span><br><span class="line">#   after 300 sec (5 min) if at least 10 keys changed   &#x2F;&#x2F;在5min之内有10个key改变就持久化</span><br><span class="line">		save 300 10</span><br><span class="line">#   after 60 sec if at least 10000 keys changed    &#x2F;&#x2F;60秒之内有1w个key改变就持久化</span><br><span class="line">		save 60 10000</span><br></pre></td></tr></table></figure>
+
+<p>###2. 重新启动redis服务器 –&gt; 打开命令窗口 –&gt; 并指定配置文件名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F; 窗口输入服务器.exe   配置文件名字(redis.windows.conf)</span><br><span class="line">	输入  redis-server.exe redis.windows.conf</span><br></pre></td></tr></table></figure>
+<h2 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h2><p>###1. Redis –&gt; redis.windows.conf –&gt; 找到appendonly no</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">appendonly no（关闭aof） --&gt; appendonly yes （开启aof）</span><br><span class="line">						</span><br><span class="line">  &#x2F;&#x2F;在下面不远的地方就有三行类似的：</span><br><span class="line"></span><br><span class="line">		# appendfsync always ： 每一次操作都进行持久化</span><br><span class="line">		appendfsync everysec ： 每隔一秒进行一次持久化</span><br><span class="line">		# appendfsync no	 ： 不进行持久化</span><br></pre></td></tr></table></figure>
+
+<p><img src="aof.png" alt=""></p>
+<hr>
+<h1 id="使用Java客户端操作redis"><a href="#使用Java客户端操作redis" class="headerlink" title="使用Java客户端操作redis"></a>使用Java客户端操作redis</h1><blockquote>
+<p>Jedis：一款java操作redis数据库的工具</p>
+</blockquote>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.导入jar包(commons-pool2-2.3.jar和jedis-2.7.0jar)</span><br><span class="line">2.在web项目中</span><br><span class="line">	&#x2F;&#x2F;1.获取连接</span><br><span class="line">           Jedis jedis&#x3D;new Jedis(&quot;localhost&quot;,6379);  &#x2F;&#x2F;6379是redis的服务器端口(界面有)</span><br><span class="line">       &#x2F;&#x2F;2.操作</span><br><span class="line">           jedis.set(&quot;username&quot;,&quot;zhangsaner&quot;);</span><br><span class="line">       &#x2F;&#x2F;3.关闭连接</span><br><span class="line">           jedis.close();</span><br></pre></td></tr></table></figure>
+
+<h2 id="操作redis中的数据结构"><a href="#操作redis中的数据结构" class="headerlink" title="操作redis中的数据结构"></a>操作redis中的数据结构</h2><h3 id="1-String"><a href="#1-String" class="headerlink" title="1. String"></a>1. String</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储 set key value</span><br><span class="line"></span><br><span class="line">2. 获取 get key</span><br><span class="line"></span><br><span class="line">3. 删除 del key</span><br></pre></td></tr></table></figure>
+
+<p><strong>具体代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.获取连接</span><br><span class="line">      	Jedis jedis&#x3D;new Jedis(&quot;localhost&quot;,6379);  &#x2F;&#x2F;空参数默认   6379是redis的服务器端口(界面有)</span><br><span class="line">&#x2F;&#x2F;2.操作</span><br><span class="line">          &#x2F;&#x2F;存取</span><br><span class="line">              jedis.set(&quot;username&quot;,&quot;zhangsaner&quot;);</span><br><span class="line">          &#x2F;&#x2F;获取</span><br><span class="line">              String username&#x3D;jedis.get(&quot;username&quot;);</span><br><span class="line">                  System.out.println(username);</span><br><span class="line">          &#x2F;&#x2F;可以使用setex()方法存储可以制定过期时间的key value     可以用于写激活码</span><br><span class="line">              jedis.setex(&quot;activecode&quot;, Integer.parseInt(&quot;20&quot;),&quot;hehe&quot;);  &#x2F;&#x2F;将activecode hehe 存入redis  20s后自动删除</span><br><span class="line">&#x2F;&#x2F;3.关闭连接</span><br><span class="line">      	jedis.close();</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-hash"><a href="#2-hash" class="headerlink" title="2. hash"></a>2. hash</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储 hset key filed value</span><br><span class="line"></span><br><span class="line">2. 获取 hget key field   &#x2F;   hgetall field</span><br><span class="line"></span><br><span class="line">3. 删除 hdel key field</span><br></pre></td></tr></table></figure>
+
+<p><strong>具体代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   &#x2F;&#x2F;1.获取连接</span><br><span class="line">   Jedis jedis&#x3D;new Jedis(&quot;localhost&quot;,6379);  &#x2F;&#x2F;空参数默认   6379是redis的服务器端口(界面有)</span><br><span class="line">   &#x2F;&#x2F;2.操作</span><br><span class="line">        &#x2F;&#x2F;存取</span><br><span class="line">           jedis.hset(&quot;user&quot;,&quot;name&quot;,&quot;songyaxiang&quot;);  &#x2F;&#x2F; user: name:songyaxiang</span><br><span class="line">           jedis.hset(&quot;user&quot;,&quot;age&quot;,&quot;19&quot;);            &#x2F;&#x2F;       age:19</span><br><span class="line">           jedis.hset(&quot;user&quot;,&quot;gender&quot;,&quot;male&quot;);       &#x2F;&#x2F;       gender:male</span><br><span class="line">        &#x2F;&#x2F;获取单个</span><br><span class="line">           String name&#x3D;jedis.hget(&quot;user&quot;,&quot;name&quot;);</span><br><span class="line">                System.out.println(name);</span><br><span class="line">        &#x2F;&#x2F;获取hash中所有的map值</span><br><span class="line">        Map&lt;String, String&gt; user &#x3D; jedis.hgetAll(&quot;user&quot;); &#x2F;&#x2F;本来查出来的所有要给map</span><br><span class="line">         </span><br><span class="line">Set&lt;String&gt; kyeSet&#x3D;user.keySet(); &#x2F;&#x2F;然后给set集合</span><br><span class="line">       	for (String field:kyeSet)  &#x2F;&#x2F;增强for循环输出每个filed</span><br><span class="line">       	&#123;</span><br><span class="line">       	    String value&#x3D; user.get(field);  &#x2F;&#x2F;取出每个filed对应的值</span><br><span class="line">       	    System.out.println(field+&quot; &quot;+value);</span><br><span class="line">       	&#125;</span><br><span class="line">   &#x2F;&#x2F;3.关闭连接</span><br><span class="line">   jedis.close();</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-list"><a href="#3-list" class="headerlink" title="3. list"></a>3. list</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 存储 </span><br><span class="line">	1.1 添加到左边： lpush key value</span><br><span class="line">	1.2 添加到右边： rpush key value</span><br><span class="line"></span><br><span class="line">2. 获取  lrange key start end 范围获取</span><br><span class="line">	</span><br><span class="line">3. 删除 	</span><br><span class="line">	3.1 lpop key  删除最左边的元素并且返回</span><br><span class="line">	3.2 rpol key  删除最右边的元素并且返回</span><br></pre></td></tr></table></figure>
+
+<p><strong>具体代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.获取连接</span><br><span class="line">    Jedis jedis&#x3D;new Jedis(&quot;localhost&quot;,6379);  &#x2F;&#x2F;空参数默认   6379是redis的服务器端口(界面有)</span><br><span class="line">    &#x2F;&#x2F;2.操作</span><br><span class="line">        &#x2F;&#x2F;存取</span><br><span class="line">            jedis.lpush(&quot;lister&quot;,&quot;a&quot;,&quot;c&quot;,&quot;B&quot;);  &#x2F;&#x2F;B C a</span><br><span class="line">            jedis.rpush(&quot;lister&quot;,&quot;z&quot;,&quot;s&quot;);  &#x2F;&#x2F; z s</span><br><span class="line">        &#x2F;&#x2F;获取</span><br><span class="line">            List&lt;String&gt; lister&#x3D;jedis.lrange(&quot;lister&quot;,0,-1);   &#x2F;&#x2F;查询 需要确定开始和结尾</span><br><span class="line">                System.out.println(&quot;list集合:&quot;+lister);</span><br><span class="line">        &#x2F;&#x2F;删除</span><br><span class="line">            String tui&#x3D;jedis.lpop(&quot;lister&quot;);   &#x2F;&#x2F;删除 只需要key</span><br><span class="line">                System.out.println(&quot;退出来的是&quot;+tui);</span><br><span class="line">    &#x2F;&#x2F;3.关闭连接</span><br><span class="line">    jedis.close();</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-set"><a href="#4-set" class="headerlink" title="4. set"></a>4. set</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储  sadd key value</span><br><span class="line"></span><br><span class="line">2. 获取  smembers key  获取set集合中所有元素</span><br><span class="line">	</span><br><span class="line">3. 删除 	srem key value 删除set集合中某个元素</span><br></pre></td></tr></table></figure>
+
+<p><strong>具体代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.获取连接</span><br><span class="line">        Jedis jedis&#x3D;new Jedis(&quot;localhost&quot;,6379);  &#x2F;&#x2F;空参数默认   6379是redis的服务器端口(界面有)</span><br><span class="line">        &#x2F;&#x2F;2.操作</span><br><span class="line">            &#x2F;&#x2F;添加</span><br><span class="line">                jedis.sadd(&quot;seter&quot;,&quot;java&quot;,&quot;c++&quot;,&quot;c#&quot;);  &#x2F;&#x2F;添加了 java  c++  c#  三个数据</span><br><span class="line">            &#x2F;&#x2F;查询</span><br><span class="line">                Set&lt;String &gt; er&#x3D;jedis.smembers(&quot;seter&quot;);  &#x2F;&#x2F;查询给set集合</span><br><span class="line">                    System.out.println(er);</span><br><span class="line">            &#x2F;&#x2F;删除</span><br><span class="line">                jedis.srem(&quot;seter&quot;,&quot;java&quot;);  &#x2F;&#x2F;删掉java</span><br><span class="line">        &#x2F;&#x2F;3.关闭连接</span><br><span class="line">        jedis.close();</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-sortedset"><a href="#5-sortedset" class="headerlink" title="5. sortedset"></a>5. sortedset</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储  zadd key score value  添加数据和数据排序(也可以再次zadd修改score值)</span><br><span class="line">		 </span><br><span class="line">2. 获取  zrange key start end (withscores)</span><br><span class="line">		</span><br><span class="line">3. 删除 	 zrem key value</span><br></pre></td></tr></table></figure>
+
+<p><strong>具体代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.获取连接</span><br><span class="line">        Jedis jedis&#x3D;new Jedis(&quot;localhost&quot;,6379);  &#x2F;&#x2F;空参数默认   6379是redis的服务器端口(界面有)</span><br><span class="line">        &#x2F;&#x2F;2.操作</span><br><span class="line">        &#x2F;&#x2F;添加</span><br><span class="line">             jedis.zadd(&quot;yingxiong&quot;, Double.parseDouble(&quot;59.0&quot;),&quot;libai&quot;);   &#x2F;&#x2F;添加 59.0 libai</span><br><span class="line">             jedis.zadd(&quot;yingxiong&quot;, Double.parseDouble(&quot;54.0&quot;),&quot;sunce&quot;);   &#x2F;&#x2F;添加 54.0 sunce</span><br><span class="line">             jedis.zadd(&quot;yingxiong&quot;, Double.parseDouble(&quot;53.0&quot;),&quot;daqiao&quot;);  &#x2F;&#x2F;添加 53.0 daqiao</span><br><span class="line">        &#x2F;&#x2F;查询</span><br><span class="line">        Set&lt;String &gt; ere&#x3D; jedis.zrange(&quot;yingxiong&quot;,0,-1);  &#x2F;&#x2F;给set集合</span><br><span class="line">                System.out.println(ere);</span><br><span class="line">        &#x2F;&#x2F;删除</span><br><span class="line">            jedis.zrem(&quot;yingxiong&quot;,&quot;libai&quot;);</span><br><span class="line">        &#x2F;&#x2F;3.关闭连接</span><br><span class="line">        jedis.close();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Jedis连接池-JedisPool"><a href="#Jedis连接池-JedisPool" class="headerlink" title="Jedis连接池  JedisPool"></a>Jedis连接池  JedisPool</h2><pre><code>1. 创建JedisPool连接池对象
+2. 调用方法 getResource()获取Jedis连接</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;0.创建一个配置对象</span><br><span class="line">           JedisPoolConfig config &#x3D; new JedisPoolConfig();</span><br><span class="line">           config.setMaxTotal(50);  &#x2F;&#x2F;设置数据池最大为50个</span><br><span class="line">           config.setMaxIdle(10);   &#x2F;&#x2F;一次最多取10个</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;1.创建Jedis连接池对象</span><br><span class="line">           JedisPool pool&#x3D; new JedisPool(config,&quot;localhost&quot;,6379);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;2.调用方法 --- 获得连接</span><br><span class="line">           Jedis jedis &#x3D; pool.getResource();</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;3.相当于原来的第二步   ---操作</span><br><span class="line">          jedis.set(&quot;username&quot;,&quot;nimabi&quot;);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;4.关闭   归还到连接池中</span><br><span class="line">          jedis.close();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Jedis连接池工具类-JedisPoolUtils"><a href="#Jedis连接池工具类-JedisPoolUtils" class="headerlink" title="Jedis连接池工具类 JedisPoolUtils"></a>Jedis连接池工具类 JedisPoolUtils</h2><p><img src="buju.png" alt=""></p>
+<pre><code>1.配置文件(里面要有最大数据池数/一次性取最大数/host/post)
+2.数据库连接池工具类(加载配置文件/配置参数/提供获取连接的方法)
+3.测试类</code></pre><p><strong>1. jedis.properties配置文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">host&#x3D;127.0.0.1</span><br><span class="line">port&#x3D;6379</span><br><span class="line">maxTotal&#x3D;50</span><br><span class="line">maxIdle&#x3D;10</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. JedisPoolUtils连接池工具类</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    1.加载配置文件</span><br><span class="line">    2.配置连接池的参数</span><br><span class="line">    3.提供获取连接的方法</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class JedisPoolUtils &#123;</span><br><span class="line">    private static JedisPool jedisPool;</span><br><span class="line">    static&#123;</span><br><span class="line">        &#x2F;&#x2F;读取配置文件</span><br><span class="line">            InputStream is&#x3D;JedisPoolUtils.class.getClassLoader().getResourceAsStream(&quot;jedis.properties&quot;); &#x2F;&#x2F;使用类加载器</span><br><span class="line">        &#x2F;&#x2F;创建properties对象</span><br><span class="line">            Properties pro&#x3D;new Properties();</span><br><span class="line">        &#x2F;&#x2F;关联文件</span><br><span class="line">        try &#123;</span><br><span class="line">            pro.load(is);</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;获取数据 设置到JedisPoolConfig中</span><br><span class="line">            JedisPoolConfig config&#x3D;new JedisPoolConfig();</span><br><span class="line">            config.setMaxTotal(Integer.parseInt(pro.getProperty(&quot;maxTotal&quot;)));</span><br><span class="line">            config.setMaxIdle(Integer.parseInt(pro.getProperty(&quot;maxIdle&quot;)));</span><br><span class="line">         &#x2F;&#x2F;初始化JedisPool</span><br><span class="line">            jedisPool&#x3D;new JedisPool(config,pro.getProperty(&quot;host&quot;), Integer.parseInt(pro.getProperty(&quot;port&quot;)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;获取连接的方法</span><br><span class="line">    public static Jedis getJedis()&#123;</span><br><span class="line">        return jedisPool.getResource();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 测试test类(Junit单元测试)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">  public void test08()&#123;</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;1.现在只需要通过写好的连接池工具类获取连接</span><br><span class="line">          Jedis jedis&#x3D;JedisPoolUtils.getJedis();</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;2.相当于原来的第二步   ---操作</span><br><span class="line">          jedis.set(&quot;hello&quot;,&quot;world&quot;);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;3.关闭   归还到连接池中</span><br><span class="line">          jedis.close();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>最终结果查询：</strong></p>
+<p><img src="jieguo.png" alt=""></p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-谷歌Car引入装饰者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/10/%E8%B0%B7%E6%AD%8CCar%E5%BC%95%E5%85%A5%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/" class="article-date">
+      <time datetime="2020-03-10T06:43:13.000Z" itemprop="datePublished">2020-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/%E8%B0%B7%E6%AD%8CCar%E5%BC%95%E5%85%A5%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/">谷歌Car引入装饰者模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="谷歌增强Car问题"><a href="#谷歌增强Car问题" class="headerlink" title="谷歌增强Car问题"></a>谷歌增强Car问题</h1><blockquote>
+<ul>
+<li>java设计了汽车开发约定<strong>ICar类</strong></li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface ICar &#123;</span><br><span class="line">	public void start();  &#x2F;&#x2F;启动</span><br><span class="line">	public void run();    &#x2F;&#x2F;运行</span><br><span class="line">	public void stop();   &#x2F;&#x2F;停止</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>希望在将<strong>谷歌Car</strong>接入到生态圈平台时,<strong>增强汽车启动功能</strong></li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public  final class GoogleCar implements ICar &#123;   &#x2F;&#x2F;我已经final了 不让任何类继承我去重写方法</span><br><span class="line"> </span><br><span class="line">	@Override</span><br><span class="line">	public void start() &#123;</span><br><span class="line">		System.out.println(&quot;GoogleCar判断天气是否良好&quot;);</span><br><span class="line">		System.out.println(&quot;GoogleCar判断情况是否良好&quot;);</span><br><span class="line">		System.out.println(&quot;GoogleCar控制谷歌汽车启动&quot;);   	&#x2F;&#x2F;调用谷歌汽车提供的c语言函数</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		System.out.println(&quot;控制谷歌汽车运动&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void stop() &#123;</span><br><span class="line">		System.out.println(&quot;控制谷歌汽车停止&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>现在在谷歌Car的基础上去<strong>查天气情况</strong></li>
+</ul>
+</blockquote>
+<pre><code>**1.手动在谷歌Car上自己添加(除非开发的时候把源码给你)
+**2.new一个类继承谷歌Car,重写方法(除非谷歌Car不是final 可以被继承)
+**3.new一个类实现Icar，增强方法(装饰者模式)**</code></pre><hr>
+<h1 id="装饰者模式-实现接口"><a href="#装饰者模式-实现接口" class="headerlink" title="装饰者模式(实现接口)"></a>装饰者模式(实现接口)</h1><ul>
+<li><p><strong>使用环境：</strong>适用于<strong>二次开发</strong>的时候,无法(×)获取到源码(不能在源码更改),无法(×)使用继承(不能重写)前提下,要对已存在对象上的<strong>功能增强</strong>.</p>
+</li>
+<li><p><strong>前提:</strong> 可以获取到被装饰的对象GoogleCar实现的所有接口 ICar</p>
+</li>
+<li><p><strong>实现思路:</strong> new一个类实现ICar接口,然后test测试的时候new的对象是GoogleCar对象</p>
+</li>
+<li><p><strong>弊端:</strong>如果被实现的接口中的方法过多,装饰类中的方法过多冗余(原来的方法不能太多)</p>
+</li>
+</ul>
+<p><img src="jiegou.png" alt=""></p>
+<blockquote>
+<p><strong>MyCar(新创建的类 实现原来的接口)</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class MyCar implements ICar&#123;</span><br><span class="line">	ICar car;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;构造方法</span><br><span class="line">	public MyCar(ICar car) &#123;</span><br><span class="line">		this.car&#x3D;car;   &#x2F;&#x2F;通过TestCar里面new的对象传过来</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void start() &#123;</span><br><span class="line">		System.out.println(&quot;MyCar判断天气是否良好&quot;);  &#x2F;&#x2F;增强的部分</span><br><span class="line">		System.out.println(&quot;MyCar判断路况是否拥堵&quot;);  &#x2F;&#x2F;增强的部分</span><br><span class="line">		car.start();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		car.run();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void stop() &#123;</span><br><span class="line">		car.stop();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>测试类TestCar</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class TestCar &#123;</span><br><span class="line">	public static void main(String[] args) &#123;	</span><br><span class="line">		ICar car&#x3D;new MyCar(new GoogleCar());  &#x2F;&#x2F;面向接口编程   右边new的是GoogleCar对象</span><br><span class="line">		car.start();  </span><br><span class="line">		car.run();</span><br><span class="line">		car.stop();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析：</strong><br>  其实就是test里面new的对象 –&gt; 新写的增强MyCar的构造方法接收 –&gt; 然后调用方法(里面既有新写的方法内容 + 谷歌原来的方法内容)</p>
+<p><img src="fenxi.png" alt=""></p>
+<hr>
+<h1 id="动态代理-字节码"><a href="#动态代理-字节码" class="headerlink" title="动态代理(字节码)"></a>动态代理(字节码)</h1><blockquote>
+<p><strong>解决装饰者模式中实现方法太多接口的冗余问题</strong></p>
+</blockquote>
+<ul>
+<li><p><strong>原理</strong>:通过虚拟机在内存中创建类似MyCar.class文件</p>
+<p>  要创建MyCar.class文件告诉虚拟机:</p>
+<pre><code>1_被创建的字节码文件上应该有多少方法
+2_被创建的字节码上的方法如何来实现</code></pre></li>
+</ul>
+<p><strong>在class类里面本来就有.class的文件用于虚拟机识别的字节码：</strong></p>
+<p><img src="xuniji.png" alt=""></p>
+<p><strong>只是在前面ICar和GoogleCar的基础上直接写test测试用字节码方式：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class TestCar &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;使用字节码 </span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;1param: 固定值: 告诉虚拟机用哪个字节码加载器加载内存中创建出的字节码文件</span><br><span class="line">		&#x2F;&#x2F;2param: 告诉虚拟机内存中正在被创建的字节码文件中应该有哪些方法</span><br><span class="line">		&#x2F;&#x2F;3param: 告诉虚拟机正在被创建的字节码上的各个方法如何处理</span><br><span class="line">		</span><br><span class="line">		ICar car&#x3D;(ICar)Proxy.newProxyInstance(TestCar.class.getClassLoader(), GoogleCar.class.getInterfaces(),new InvocationHandler() &#123;  &#x2F;&#x2F;第三个参数使用匿名内部类</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;method:代表正在执行的方法</span><br><span class="line">			&#x2F;&#x2F;args:代表正在执行的方法中的参数</span><br><span class="line">			&#x2F;&#x2F;Object:代表方法执行完毕之后的返回值</span><br><span class="line">			@Override</span><br><span class="line">			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">				</span><br><span class="line">				if(method.getName().equalsIgnoreCase(&quot;start&quot;))&#123;   &#x2F;&#x2F;让你本来有的方法和要改变的方法对比</span><br><span class="line">					System.out.println(&quot;检查天气是否良好&quot;);		</span><br><span class="line">					method.invoke(new GoogleCar(), args);  &#x2F;&#x2F;这是固定的调用GoogleCar的方法</span><br><span class="line">					System.out.println(&quot;检查路况是否拥堵&quot;);	 &#x2F;&#x2F;增强的方法(位置可以变化)</span><br><span class="line">				&#125;</span><br><span class="line">				else</span><br><span class="line">				&#123;</span><br><span class="line">					method.invoke(new GoogleCar(), args);	&#x2F;&#x2F;这是固定的调用GoogleCar的方法</span><br><span class="line">				&#125;</span><br><span class="line">				return null;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;); </span><br><span class="line">		</span><br><span class="line">		car.start();  &#x2F;&#x2F;调用方法输出结果</span><br><span class="line">		car.run();</span><br><span class="line">		car.stop();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>字节码加载器(3种 – 系统引导加载器)：</strong> jdk有一些程序 – 专门将各种<strong>字节码文件</strong> – &gt; 到<strong>内存</strong>(<strong>IO流技术</strong>) </p>
+<hr>
+<h1 id="动态代理解决全站乱码"><a href="#动态代理解决全站乱码" class="headerlink" title="动态代理解决全站乱码"></a>动态代理解决全站乱码</h1><p><strong>1.项目中新建一个页面Index.html</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;post方式提交中文&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;form action&#x3D;&quot;&#x2F;day18_v3&#x2F;ServletDemo&quot; method&#x3D;&quot;post&quot;&gt;</span><br><span class="line">	User:&lt;input type&#x3D;&quot;&quot; name&#x3D;&quot;username&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">	&lt;input type&#x3D;&quot;submit&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;get方式提交中文&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;form action&#x3D;&quot;&#x2F;day18_v3&#x2F;ServletDemo&quot; method&#x3D;&quot;get&quot;&gt;</span><br><span class="line">	User:&lt;input type&#x3D;&quot;&quot; name&#x3D;&quot;username&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">	&lt;input type&#x3D;&quot;submit&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.servlet代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">无论是在post&#x2F;get方法,执行以下语句不存在中文乱码问题(可以在前面加一句防止乱码的)</span><br><span class="line">String um&#x3D;request.getParameter(&quot;username&quot;);  &#x2F;&#x2F;获取username</span><br><span class="line">	System.out.println(um);</span><br></pre></td></tr></table></figure>
+<p><strong>3.过滤器Filter中,为request上的getParameter()功能进行增强</strong></p>
+<pre><code>判断当前的请求是get/post  
+  request.getMethod();
+如果是post, 
+      设置一句话: request.setCharacterEncoding(“utf-8”); 
+                      放行
+如果是get,
+      调用原先的String v=request.getParameter(name);
+                  将v进行转码,
+                      放行
+</code></pre><hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-date">
+      <time datetime="2020-03-10T06:30:57.000Z" itemprop="datePublished">2020-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><blockquote>
+<p>  软件开发过程中,遇到相似问题,将问题的解决方式抽取<strong>模型(套路)</strong></p>
+</blockquote>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-注解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/10/%E6%B3%A8%E8%A7%A3/" class="article-date">
+      <time datetime="2020-03-10T03:56:33.000Z" itemprop="datePublished">2020-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/%E6%B3%A8%E8%A7%A3/">注解</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="注解-数据类型"><a href="#注解-数据类型" class="headerlink" title="注解(数据类型)"></a>注解(数据类型)</h1><h2 id="注解作用"><a href="#注解作用" class="headerlink" title="注解作用"></a>注解作用</h2><p><strong>1. 编译检查(@Test的junit单元测试)</strong><br><strong>2. 配置(框架 / 例如封装数据库的用户名和密码)</strong><br><strong>3. 生成帮助文档(写好作者、调用的api等)</strong></p>
+<h2 id="注解特点"><a href="#注解特点" class="headerlink" title="注解特点"></a>注解特点</h2><p><strong>1. 可以在变量、方法、类上加载</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	@Test(timeout&#x3D;1000)  &#x2F;&#x2F;方法</span><br><span class="line">	  public void test03()&#123;&#125;</span><br><span class="line"></span><br><span class="line">--------------------------------------</span><br><span class="line"></span><br><span class="line">	@SuppressWarnings(&quot;unused&quot;)  &#x2F;&#x2F;变量</span><br><span class="line">          int i;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 可以有属性也可以没有属性</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Override     @Test(timeout&#x3D;1000)</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 注解有范围(源码,编译期间,运行期间)</strong></p>
+<p><strong>3.1 源码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String类之上</span><br><span class="line"></span><br><span class="line">@Author: 编写代码的作者</span><br><span class="line">@Since ：从哪里调用</span><br><span class="line">@See   ：调用什么api</span><br></pre></td></tr></table></figure>
+<p><strong>3.2 编译期：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Override    声明当前的方法是重写父类的方法</span><br><span class="line">@Deprecated  抑制编译器发生警告信息</span><br><span class="line">@Suppresswarning  抑制编译器发生警告信息(如果有变量未使用,未遵循泛型格式错误不报警告)</span><br></pre></td></tr></table></figure>
+<p><strong>3.3 运行期：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Test  单元测试Junit4(一般)</span><br></pre></td></tr></table></figure>
+
+<h2 id="注解举例"><a href="#注解举例" class="headerlink" title="注解举例"></a>注解举例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;以下注解的含义是:声明当前的方法是重写父类的方法</span><br><span class="line">@Override</span><br><span class="line">public String toString() &#123;</span><br><span class="line">	return super.toString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void test01()&#123;</span><br><span class="line">&#x2F;&#x2F;以下注解的含义是:抑制编译器发生警告信息</span><br><span class="line">	@SuppressWarnings(&quot;unused&quot;)</span><br><span class="line">       int i;</span><br><span class="line">	</span><br><span class="line">&#x2F;&#x2F;以下注解的含义是:抑制编译器发生警告信息(如果有变量未使用,未遵循泛型格式错误不报警告)</span><br><span class="line">	@SuppressWarnings(&#123; &quot;unused&quot;, &quot;rawtypes&quot; &#125;)</span><br><span class="line">	List a&#x3D;new ArrayList();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;以下注解的含义是:声明以下的方法是过时的方法,不建议大家使用</span><br><span class="line">	@Deprecated</span><br><span class="line">	public void test02()&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;以下注解的含义是:如果当前方法的执行时间超过1秒,会报错	</span><br><span class="line">	@Test(timeout&#x3D;1000)  &#x2F;&#x2F;单元测试</span><br><span class="line">	public void test03()&#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			Thread.sleep(1100);</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(&quot;DDDDDDDDDDDDD&quot;);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h1><h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public @interface 注解名称&#123;</span><br><span class="line">   public  属性类型  属性名称1();</span><br><span class="line">   public  属性类型  属性名称2()  default  默认值;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="属性支持的类型"><a href="#属性支持的类型" class="headerlink" title="属性支持的类型"></a>属性支持的类型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.基本数据类型(4类8种)</span><br><span class="line">2.String</span><br><span class="line">3.Class</span><br><span class="line">4.Annotation(注解类型)</span><br><span class="line">5.枚举类型</span><br><span class="line">6.以上类型的一维数组类型</span><br></pre></td></tr></table></figure>
+<p><strong>写一个名为MyAnno01的注解</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public @interface MyAnno01 &#123;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;1  不加默认值 </span><br><span class="line">	public long timeout();</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;2  加默认值</span><br><span class="line">	public long timeout1() default 1000;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B3%A8%E8%A7%A3/" rel="tag">注解</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-自动登录（过滤器）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/" class="article-date">
+      <time datetime="2020-03-08T13:48:46.000Z" itemprop="datePublished">2020-03-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/">自动登录（过滤器）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="自动登录分析"><a href="#自动登录分析" class="headerlink" title="自动登录分析"></a>自动登录分析</h1><p><img src="img05.png" alt=""></p>
+<hr>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="建立数据库"><a href="#建立数据库" class="headerlink" title="建立数据库"></a>建立数据库</h2><p><img src="shujuku.png" alt=""></p>
+<h2 id="建立页面"><a href="#建立页面" class="headerlink" title="建立页面"></a>建立页面</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;form method&#x3D;&quot;post&quot; action&#x3D;&quot;&quot;&gt;</span><br><span class="line">	账号：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line">	密码：&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">	   	  &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;auto_login&quot;&gt;自动登录&lt;br&gt;</span><br><span class="line">		  &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot;&gt;</span><br><span class="line">  &lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="zuichu.png" alt=""></p>
+<h2 id="拷贝jar和JDBCUtils类，C3P0配置文件"><a href="#拷贝jar和JDBCUtils类，C3P0配置文件" class="headerlink" title="拷贝jar和JDBCUtils类，C3P0配置文件"></a>拷贝jar和JDBCUtils类，C3P0配置文件</h2><p><img src="kaobei.png" alt=""></p>
+<hr>
+<h1 id="MVC模型各层实现"><a href="#MVC模型各层实现" class="headerlink" title="MVC模型各层实现"></a>MVC模型各层实现</h1><h2 id="dao层代码-接口写方法"><a href="#dao层代码-接口写方法" class="headerlink" title="dao层代码(接口写方法)"></a>dao层代码(接口写方法)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface UserDao &#123;	</span><br><span class="line">	UserBean login(UserBean user) throws SQLException; &#x2F;&#x2F;将传入的数据封装成一个对象  返回所有信息		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="UserBean层-数据封装"><a href="#UserBean层-数据封装" class="headerlink" title="UserBean层(数据封装)"></a>UserBean层(数据封装)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class UserBean &#123;</span><br><span class="line"></span><br><span class="line">	private int id;    &#x2F;&#x2F;数据库的所有属性</span><br><span class="line">	private String username;</span><br><span class="line">	private String password;</span><br><span class="line">	</span><br><span class="line">	public int getId() &#123;</span><br><span class="line">		return id;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setId(int id) &#123;</span><br><span class="line">		this.id &#x3D; id;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getUsername() &#123;</span><br><span class="line">		return username;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setUsername(String username) &#123;</span><br><span class="line">		this.username &#x3D; username;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getPassword() &#123;</span><br><span class="line">		return password;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setPassword(String password) &#123;</span><br><span class="line">		this.password &#x3D; password;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="UserDaoImpl层-具体实现"><a href="#UserDaoImpl层-具体实现" class="headerlink" title="UserDaoImpl层(具体实现)"></a>UserDaoImpl层(具体实现)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class UserDaoImpl implements UserDao &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public UserBean login(UserBean user) throws SQLException &#123;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;1.调用DBUtils的类</span><br><span class="line">			QueryRunner runner&#x3D;new QueryRunner(JDBCUtil02.getDataSource());</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.写sql语句	</span><br><span class="line">			String sql&#x3D;&quot;select * from t_user where username&#x3D;? and password&#x3D;?&quot;;</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;3.调用query方法	</span><br><span class="line">			return  runner.query(sql,new BeanHandler&lt;UserBean&gt;(UserBean.class),user.getUsername(),user.getPassword());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Servlet层"><a href="#Servlet层" class="headerlink" title="Servlet层"></a>Servlet层</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.获取数据</span><br><span class="line">			String username&#x3D;request.getParameter(&quot;username&quot;);</span><br><span class="line">			String password&#x3D;request.getParameter(&quot;password&quot;);</span><br><span class="line">			String autologin&#x3D;request.getParameter(&quot;auto_login&quot;);</span><br><span class="line">			&#x2F;&#x2F;测试控制台输出一下输入情况： System.out.println(username+&quot;&#x3D;&quot;+password+&quot;&#x3D;&quot;+autologin);</span><br><span class="line">		</span><br><span class="line">			UserBean user&#x3D;new UserBean();  &#x2F;&#x2F;将登陆界面的账号密码封装一下</span><br><span class="line">			user.setUsername(username);</span><br><span class="line">			user.setPassword(password);</span><br><span class="line">			</span><br><span class="line">&#x2F;&#x2F;2.dao层实现</span><br><span class="line">			UserDao dao&#x3D;new UserDaoImpl();</span><br><span class="line">			UserBean userBean&#x3D;dao.login(user);   &#x2F;&#x2F;UserDao存的是</span><br><span class="line">		</span><br><span class="line">&#x2F;&#x2F;3.判断跳转</span><br><span class="line">			if(userBean!&#x3D;null)  &#x2F;&#x2F;成功进入首页</span><br><span class="line">			&#123;</span><br><span class="line">				request.getSession().setAttribute(&quot;userBean&quot;, userBean);</span><br><span class="line">				response.sendRedirect(&quot;index.jsp&quot;);   &#x2F;&#x2F;使用重定位</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			else  &#x2F;&#x2F;输入不正确就还是这个界面</span><br><span class="line">			&#123;</span><br><span class="line">				request.getRequestDispatcher(&quot;login.jsp&quot;).forward(request, response);   &#x2F;&#x2F;使用转发</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="BeanUtils介绍"><a href="#BeanUtils介绍" class="headerlink" title="BeanUtils介绍"></a>BeanUtils介绍</h1><p><strong>使用框架：</strong></p>
+<p><img src="beanUtils.png" alt=""></p>
+<h2 id="主页的jsp页面"><a href="#主页的jsp页面" class="headerlink" title="主页的jsp页面"></a>主页的jsp页面</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;form method&#x3D;&quot;post&quot; action&#x3D;&quot;RegisterServlet&quot;&gt;</span><br><span class="line">	账号：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line">	密码：&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">	邮箱:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;email&quot;&gt;&lt;br&gt;</span><br><span class="line">	电话：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;phone&quot;&gt;&lt;br&gt;</span><br><span class="line">	地址：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;address&quot;&gt;&lt;br&gt;</span><br><span class="line">	生日：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;birthday&quot;&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">		&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;注册&quot;&gt;</span><br><span class="line">  &lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Servlet代码"><a href="#Servlet代码" class="headerlink" title="Servlet代码"></a>Servlet代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注册自己的日期转换器</span><br><span class="line">			ConvertUtils.register(new MyDateConverter(), Date.class);</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;转化数据</span><br><span class="line">			Map map &#x3D; request.getParameterMap();</span><br><span class="line">			UserBean bean &#x3D; new UserBean();</span><br><span class="line">			BeanUtils.populate(bean, map);</span><br><span class="line"></span><br><span class="line">			System.out.println(&quot;22222bean&#x3D;&quot;+bean.toString());</span><br></pre></td></tr></table></figure>
+
+<h2 id="MyDateConverter类-具体用来String转Date"><a href="#MyDateConverter类-具体用来String转Date" class="headerlink" title="MyDateConverter类(具体用来String转Date)"></a>MyDateConverter类(具体用来String转Date)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class MyDateConverter implements Converter &#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	&#x2F;&#x2F; 将value 转换 c 对应类型</span><br><span class="line">	&#x2F;&#x2F; 存在Class参数目的编写通用转换器，如果转换目标类型是确定的，可以不使用c 参数</span><br><span class="line">	public Object convert(Class c, Object value) &#123;</span><br><span class="line">		String strVal &#x3D; (String) value;</span><br><span class="line">		&#x2F;&#x2F; 将String转换为Date --- 需要使用日期格式化</span><br><span class="line">		DateFormat dateFormat &#x3D; new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);</span><br><span class="line">		try &#123;</span><br><span class="line">			Date date &#x3D; dateFormat.parse(strVal);</span><br><span class="line">			return date;</span><br><span class="line">		&#125; catch (ParseException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="kuang.png" alt=""></p>
+<hr>
+<h1 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h1><h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><blockquote>
+<p> 过滤器的<strong>核心</strong> 帮用户完成登录的功能。 </p>
+</blockquote>
+<ul>
+<li><strong>实现思路</strong></li>
+</ul>
+<ol>
+<li><p>先判断session是否有效， 如果有效，就不用取cookie了，直接放行。</p>
+</li>
+<li><p>如果session失效了，那么就取 cookie。</p>
+<ol>
+<li><p>没有cookie  第一次来 放行 </p>
+</li>
+<li><p>有cookie </p>
+<pre><code>1. 取出来cookie的值，然后完成登录
+2. 把这个用户的值存储到session中
+3. 放行。</code></pre></li>
+</ol>
+</li>
+</ol>
+<h2 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h2><p><strong>1. new一个新的Filter的文件，然后需要配置web里面的路径</strong></p>
+<p><img src="genggai.png" alt=""></p>
+<p><strong>2. 编写取出cookie比对的工作类</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class CookieUtil &#123;</span><br><span class="line"></span><br><span class="line">	public static Cookie findCookie(Cookie[] cookies,String name) &#123;  &#x2F;&#x2F;传入已经有的cookie和传进来的name比对</span><br><span class="line">		</span><br><span class="line">		if(cookies!&#x3D;null)</span><br><span class="line">		&#123;</span><br><span class="line">			for(Cookie cookie:cookies)  &#x2F;&#x2F;循环</span><br><span class="line">			&#123;</span><br><span class="line">				if(name.equals(cookie.getName()))</span><br><span class="line">				&#123;</span><br><span class="line">					return cookie;  &#x2F;&#x2F;匹配传过来的和存的有相同的</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.编写思路实现(只实现doFilter()方法)：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">public class AutoLoginFilter implements Filter &#123;</span><br><span class="line">    public AutoLoginFilter() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	public void destroy() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException &#123;</span><br><span class="line">		</span><br><span class="line">					try &#123;</span><br><span class="line">						</span><br><span class="line">						HttpServletRequest r&#x3D;(HttpServletRequest)request;  &#x2F;&#x2F;强转一下</span><br><span class="line">						</span><br><span class="line">						&#x2F;&#x2F;先判断，session中还有没有那个userBean</span><br><span class="line">						UserBean userBean&#x3D;(UserBean) r.getSession().getAttribute(&quot;userBean&quot;);</span><br><span class="line">							if(userBean !&#x3D;null)  &#x2F;&#x2F;还有效</span><br><span class="line">							&#123;</span><br><span class="line">								chain.doFilter(request, response);  &#x2F;&#x2F;放行</span><br><span class="line">							&#125;</span><br><span class="line">							else  &#x2F;&#x2F;会话失效</span><br><span class="line">							&#123;</span><br><span class="line">								</span><br><span class="line">								&#x2F;&#x2F;1.从请求中取出cookie 但是cookie有很多key-value</span><br><span class="line">									Cookie[] cookies&#x3D;r.getCookies();</span><br><span class="line">								</span><br><span class="line">								&#x2F;&#x2F;2.从一堆的cookie里面找到之前的那个cookie</span><br><span class="line">									Cookie cookie&#x3D;CookieUtil.findCookie(cookies,&quot;auto_login&quot;);  &#x2F;&#x2F;servlet里面new的时候给的是 auto_login</span><br><span class="line">									</span><br><span class="line">									if(cookie&#x3D;&#x3D;null) &#x2F;&#x2F;第一次登陆</span><br><span class="line">									&#123;</span><br><span class="line">										chain.doFilter(request, response);  &#x2F;&#x2F;放行</span><br><span class="line">									&#125;</span><br><span class="line">									else    &#x2F;&#x2F;不是第一次</span><br><span class="line">									&#123;</span><br><span class="line">										</span><br><span class="line">												&#x2F;&#x2F;来到这里 表明什么情况</span><br><span class="line">													String value &#x3D; cookie.getValue();</span><br><span class="line">													String username &#x3D; value.split(&quot;#itheima#&quot;)[0];</span><br><span class="line">													String password &#x3D; value.split(&quot;#itheima#&quot;)[1];</span><br><span class="line">												</span><br><span class="line">												&#x2F;&#x2F;完成登录</span><br><span class="line">													UserBean user &#x3D; new UserBean();</span><br><span class="line">													user.setUsername(username);</span><br><span class="line">													user.setPassword(password);</span><br><span class="line"></span><br><span class="line">													UserDao dao &#x3D; new UserDaoImpl();</span><br><span class="line">														userBean &#x3D; dao.login(user);</span><br><span class="line">									</span><br><span class="line">												&#x2F;&#x2F;使用session存这个值到域中，方便下一次未过期前还可以用。</span><br><span class="line">													r.getSession().setAttribute(&quot;userBean&quot;, userBean);</span><br><span class="line">													</span><br><span class="line">													chain.doFilter(request, response); &#x2F;&#x2F;放行	</span><br><span class="line">									&#125;	</span><br><span class="line">							&#125;	</span><br><span class="line">					&#125;</span><br><span class="line">					catch (SQLException e) </span><br><span class="line">					&#123;</span><br><span class="line">						&#x2F;&#x2F; TODO 自动生成的 catch 块</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">						chain.doFilter(request, response);   &#x2F;&#x2F;异常也要放行	</span><br><span class="line">					&#125;							</span><br><span class="line">		&#125;	</span><br><span class="line">	</span><br><span class="line">	public void init(FilterConfig fConfig) throws ServletException &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><strong>展示代码层次</strong></p>
+<p><img src="jieshi.png" alt=""></p>
+<p><strong>尝试使用：</strong></p>
+<p><img src="changshi.png" alt=""></p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Filter/" rel="tag">Filter</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Filter" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/08/Filter/" class="article-date">
+      <time datetime="2020-03-08T09:47:58.000Z" itemprop="datePublished">2020-03-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/08/Filter/">Filter</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Filter-过滤器"><a href="#Filter-过滤器" class="headerlink" title="Filter(过滤器)"></a>Filter(过滤器)</h1><blockquote>
+<p>其实就是对客户端发出来的请求进行<strong>过滤</strong>。 浏览器发出，然后服务器派servlet处理。 在中间就可以过滤，其实过滤器起到的是<strong>拦截</strong>的作用。</p>
+</blockquote>
+<ul>
+<li><strong>作用</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 对一些敏感词汇进行过滤(敏感词汇)</span><br><span class="line">2. 统一设置编码(不用繁琐的设置utf-8)</span><br><span class="line">3. 自动登录</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Filter使用"><a href="#Filter使用" class="headerlink" title="Filter使用"></a>Filter使用</h1><h2 id="定义一个类实现Filter"><a href="#定义一个类实现Filter" class="headerlink" title="定义一个类实现Filter"></a>定义一个类实现Filter</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  &#x2F;&#x2F;构造方法</span><br><span class="line">   public FilterDemo() &#123;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">public void destroy() &#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException &#123;</span><br><span class="line">	System.out.println(&quot;到过滤器了&quot;);</span><br><span class="line">	chain.doFilter(request, response);  &#x2F;&#x2F;放行通过的代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void init(FilterConfig fConfig) throws ServletException &#123;</span><br><span class="line">	&#x2F;&#x2F; FilterConfig可以用于获取filter在注册的名字 以及初始化参数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="new注册过滤器-url-pattern可以更改"><a href="#new注册过滤器-url-pattern可以更改" class="headerlink" title="new注册过滤器(url-pattern可以更改)"></a>new注册过滤器(url-pattern可以更改)</h2><blockquote>
+<p>在<strong>web.xml里面注册</strong>，注册的手法与servlet基本一样。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;filter&gt;</span><br><span class="line">  &lt;display-name&gt;FilterDemo&lt;&#x2F;display-name&gt;</span><br><span class="line">  &lt;filter-name&gt;FilterDemo&lt;&#x2F;filter-name&gt;</span><br><span class="line">  &lt;filter-class&gt;guolvqi.FilterDemo&lt;&#x2F;filter-class&gt;</span><br><span class="line">&lt;&#x2F;filter&gt;</span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">  &lt;filter-name&gt;FilterDemo&lt;&#x2F;filter-name&gt;</span><br><span class="line">  &lt;url-pattern&gt;&#x2F;*&lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="url-pattern-写法格式"><a href="#url-pattern-写法格式" class="headerlink" title="url-pattern 写法格式"></a>url-pattern 写法格式</h2><pre><code>1. 全路径匹配  以 /  开始 
+
+    /LoginServlet
+
+2. 以目录匹配 以 / 开始  以 * 结束
+
+    /demo01/*  
+
+3. 以后缀名匹配  以 * 开始 以后缀名结束
+    *.jsp  *.html *.do </code></pre><h2 id="dispatcher-设置"><a href="#dispatcher-设置" class="headerlink" title="dispatcher 设置"></a>dispatcher 设置</h2><pre><code>REQUEST ： 只要是请求过来，都拦截，默认就是REQUEST 
+FORWARD : 只要是转发都拦截。 
+ERROR ： 页面出错发生跳转 
+INCLUDE ： 包含页面的时候就拦截。</code></pre><hr>
+<h1 id="Filter生命周期"><a href="#Filter生命周期" class="headerlink" title="Filter生命周期"></a>Filter生命周期</h1><ul>
+<li><strong>创建</strong></li>
+</ul>
+<blockquote>
+<p>在服务器<strong>启动</strong>的时候就创建。 </p>
+</blockquote>
+<ul>
+<li><strong>销毁</strong></li>
+</ul>
+<blockquote>
+<p>服务器<strong>停止</strong>的时候。</p>
+</blockquote>
+<hr>
+<h1 id="Filter执行顺序"><a href="#Filter执行顺序" class="headerlink" title="Filter执行顺序"></a>Filter执行顺序</h1><ol>
+<li><p>客户端发出请求，先经过过滤器，如果过滤器放行，那么才能到servlet。</p>
+</li>
+<li><p>如果有<strong>多个过滤器</strong>， 那么他们会按照注册的<strong>映射顺序</strong> 来 排队。只要有一个过滤器,不放行，那么后面排队的过滤器以及咱们的servlet都不会收到请求。</p>
+</li>
+</ol>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Filter/" rel="tag">Filter</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JQuery省市联动" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/07/JQuery%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8/" class="article-date">
+      <time datetime="2020-03-07T04:00:30.000Z" itemprop="datePublished">2020-03-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/JQuery%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8/">JQuery省市联动</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、搭建环境-在仿百度的环境下"><a href="#一、搭建环境-在仿百度的环境下" class="headerlink" title="一、搭建环境(在仿百度的环境下)"></a>一、搭建环境(在仿百度的环境下)</h1><p><strong>1.在之前仿百度的数据库中新建city表</strong></p>
+<p><img src="shujuku.png" alt=""></p>
+<p><strong>2.准备jsp页面</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">		省份: &lt;select name&#x3D;&quot;province&quot; id &#x3D;&quot;province&quot;&gt;</span><br><span class="line">					&lt;option value&#x3D;&quot;&quot; &gt;-请选择 -</span><br><span class="line">					&lt;option value&#x3D;&quot;1&quot; &gt;广东</span><br><span class="line">					&lt;option value&#x3D;&quot;2&quot; &gt;湖南</span><br><span class="line">					&lt;option value&#x3D;&quot;3&quot; &gt;湖北</span><br><span class="line">					&lt;option value&#x3D;&quot;4&quot; &gt;四川</span><br><span class="line">			  &lt;&#x2F;select&gt;</span><br><span class="line">				</span><br><span class="line">		城市: &lt;select name&#x3D;&quot;city&quot; id&#x3D;&quot;city&quot;&gt;</span><br><span class="line">					&lt;option value&#x3D;&quot;&quot; &gt;-请选择 -</span><br><span class="line">			  &lt;&#x2F;select&gt;</span><br><span class="line">			</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>页面结果：</strong></p>
+<p><img src="yemianzhunbei.png" alt=""></p>
+<p><strong>最终框架：</strong></p>
+<p><img src="yuanlai.png" alt=""></p>
+<hr>
+<h1 id="二、dao和impl层实现-需要添加CityBean和list集合"><a href="#二、dao和impl层实现-需要添加CityBean和list集合" class="headerlink" title="二、dao和impl层实现(需要添加CityBean和list集合)"></a>二、dao和impl层实现(需要添加CityBean和list集合)</h1><p><strong>dao接口写方法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface CityDao &#123;</span><br><span class="line">	List&lt;CityBean&gt;  findCity(int pid) throws SQLException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>daoImpl具体实现接口方法:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class CityDaoImpl implements CityDao&#123;</span><br><span class="line">	@Override</span><br><span class="line">	public List&lt;CityBean&gt; findCity(int pid) throws SQLException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.使用DBUtils的对象</span><br><span class="line">		QueryRunner runner&#x3D;new QueryRunner(JDBCUtil02.getDataSource());	</span><br><span class="line">		&#x2F;&#x2F;2.调用方法</span><br><span class="line">		String sql&#x3D;&quot;select * from city where pid&#x3D;?&quot;;  </span><br><span class="line">		return runner.query(sql, new BeanListHandler&lt;CityBean&gt;(CityBean.class),pid);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="三、Servlet实现-使用XStream框架"><a href="#三、Servlet实现-使用XStream框架" class="headerlink" title="三、Servlet实现(使用XStream框架)"></a>三、Servlet实现(使用XStream框架)</h1><p><strong>Servlet三步骤：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.获取省份id  (pid)</span><br><span class="line">			int pid&#x3D;Integer.parseInt(request.getParameter(&quot;pid&quot;));</span><br><span class="line">				</span><br><span class="line">&#x2F;&#x2F;2.dao实现  找到所有符合的城市</span><br><span class="line">			CityDao dao&#x3D;new CityDaoImpl();	</span><br><span class="line">			List&lt;CityBean&gt; list &#x3D; dao.findCity(pid);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;3.返回数据    手动拼  ---&gt; XStream转bean对象成xml</span><br><span class="line">				XStream xStream&#x3D;new XStream();</span><br><span class="line">				</span><br><span class="line">			&#x2F;&#x2F;想把id做成属性</span><br><span class="line">			&#x2F;&#x2F;	xStream.useAttributeFor(CityBean.class,&quot;id&quot;);</span><br><span class="line">								</span><br><span class="line">			&#x2F;&#x2F;设置别名</span><br><span class="line">				xStream.alias(&quot;city&quot;,CityBean.class);</span><br><span class="line">				</span><br><span class="line">			&#x2F;&#x2F;一个对象  ---&gt;  xml字符串	</span><br><span class="line">				String xml&#x3D;xStream.toXML(list);</span><br><span class="line">				</span><br><span class="line">			response.setContentType(&quot;text&#x2F;xml;charset&#x3D;utf-8&quot;);	 &#x2F;&#x2F;返回的是一份有中文的xml文件(小心坑)!!!!!!!</span><br><span class="line">			response.getWriter().write(xml);</span><br></pre></td></tr></table></figure>
+
+<p><strong>第三步需要用Xstream–将bean对象为xml(导入jar包)</strong></p>
+<p><img src="jar.png" alt=""></p>
+<p><strong>尝试手动添加pid，然后看看转换出来的样子：</strong></p>
+<p><img src="xstream.png" alt=""></p>
+<hr>
+<h1 id="四、-完善jsp页面和功能"><a href="#四、-完善jsp页面和功能" class="headerlink" title="四、 完善jsp页面和功能#"></a>四、 完善jsp页面和功能#</h1><p><strong>city.jsp页面引入jq的包和功能实现文件city.js(单独写)</strong></p>
+<p><strong>city.jsp页面：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;jquery-1.11.3.min.js&quot;&gt;&lt;&#x2F;script&gt;  &lt;!-- 调用jq包 --&gt;</span><br><span class="line">			&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;city.js&quot;&gt;&lt;&#x2F;script&gt;    &lt;!-- 具体的jq代码去city.js找 --&gt;			</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">		省份: &lt;select name&#x3D;&quot;province&quot; id &#x3D;&quot;province&quot;&gt;</span><br><span class="line">					&lt;option value&#x3D;&quot;&quot; &gt;-请选择 -</span><br><span class="line">					&lt;option value&#x3D;&quot;1&quot; &gt;广东</span><br><span class="line">					&lt;option value&#x3D;&quot;2&quot; &gt;湖南</span><br><span class="line">					&lt;option value&#x3D;&quot;3&quot; &gt;湖北</span><br><span class="line">					&lt;option value&#x3D;&quot;4&quot; &gt;四川</span><br><span class="line">			  &lt;&#x2F;select&gt;</span><br><span class="line">				</span><br><span class="line">		城市: &lt;select name&#x3D;&quot;city&quot; id&#x3D;&quot;city&quot;&gt;</span><br><span class="line">					&lt;option value&#x3D;&quot;&quot; &gt;-请选择 -</span><br><span class="line">			  &lt;&#x2F;select&gt;		</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>完成功能的city.js文件：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$(function()&#123;</span><br><span class="line">	&#x2F;&#x2F;1.找到省份元素</span><br><span class="line">		$(&quot;#province&quot;).change(function()&#123;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;2.一旦里面的值改变---去找城市数据		</span><br><span class="line">		&#x2F;&#x2F;获取值</span><br><span class="line">			var pid&#x3D;$(this).val();</span><br><span class="line">		</span><br><span class="line">			$.post(&quot;CityServlet&quot;,&#123;pid:pid&#125;,function(data,status)&#123;        &#x2F;&#x2F;pid:pid(省份id值)</span><br><span class="line">				&#x2F;&#x2F;先清空以前的值</span><br><span class="line">				$(&quot;#city&quot;).html(&quot;&lt;option value&#x3D;&#39;&#39;&gt; -请选择-&quot;);</span><br><span class="line">				</span><br><span class="line">				&#x2F;&#x2F;遍历：</span><br><span class="line">				$(data).find(&quot;city&quot;).each(function()&#123;      &#x2F;&#x2F; 从data里面使用find找到xml文件所有city标签---each迭代  </span><br><span class="line">					&#x2F;&#x2F;取city的孩子chidren</span><br><span class="line">					 var id&#x3D;$(this).children(&quot;id&quot;).text();  &#x2F;&#x2F;val是取值  text是转成文本</span><br><span class="line">					 var cname&#x3D;$(this).children(&quot;cname&quot;).text();  &#x2F;&#x2F;val是取值  text是转成文本</span><br><span class="line">					 </span><br><span class="line">					 $(&quot;#city&quot;).append(&quot;&lt;option value&#x3D;&#39;&quot;+id+&quot;&#39;&gt;&quot;+cname);</span><br><span class="line">			&#125;);   </span><br><span class="line">		&#125;);			</span><br><span class="line">	&#125;); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>city.js文件步骤分析：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 先要通过province的id值change获取省份元素</span><br><span class="line">2. 获取pid的值</span><br><span class="line">   2.1 使用post来响应</span><br><span class="line">		2.1.1 通过html()来赋值为0(清空)</span><br><span class="line">		2.1.2 循环取出xml文件内的cname值</span><br><span class="line">			 通过find()来找到所有的cname标---然后each迭代--通过children找到所属的cname值</span><br><span class="line">			 找到之后通过append()添加</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="五、代码框架"><a href="#五、代码框架" class="headerlink" title="五、代码框架"></a>五、代码框架</h1><p><strong>代码框架：</strong></p>
+<p><img src="dati.png" alt=""></p>
+<hr>
+<h1 id="六、Json"><a href="#六、Json" class="headerlink" title="六、Json"></a>六、Json</h1><h2 id="服务器和客户端数据传输方式："><a href="#服务器和客户端数据传输方式：" class="headerlink" title="服务器和客户端数据传输方式："></a>服务器和客户端数据传输方式：</h2><ul>
+<li><strong>xml</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;list&gt;</span><br><span class="line">		&lt;city&gt;</span><br><span class="line">			&lt;id&gt;1&lt;id&gt;</span><br><span class="line">			&lt;pid&gt;1&lt;&#x2F;pid&gt;</span><br><span class="line">			&lt;cname&gt;深圳&lt;&#x2F;cname&gt;</span><br><span class="line">		&lt;&#x2F;city&gt;</span><br><span class="line">		&lt;city &gt;</span><br><span class="line">			&lt;id&gt;2&lt;id&gt;</span><br><span class="line">			&lt;pid&gt;1&lt;&#x2F;pid&gt;</span><br><span class="line">			&lt;cname&gt;东莞&lt;&#x2F;cname&gt;</span><br><span class="line">		&lt;&#x2F;city&gt;</span><br><span class="line">	&lt;&#x2F;list&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>json</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> [</span><br><span class="line">		    &#123;</span><br><span class="line">		        &quot;cname&quot;: &quot;深圳&quot;,</span><br><span class="line">		        &quot;id&quot;: 1,</span><br><span class="line">		        &quot;pid&quot;: 1</span><br><span class="line">		    &#125;,</span><br><span class="line">		    &#123;</span><br><span class="line">		        &quot;cname&quot;: &quot;东莞&quot;,</span><br><span class="line">		        &quot;id&quot;: 2,</span><br><span class="line">		        &quot;pid&quot;: 1</span><br><span class="line">		    &#125;</span><br><span class="line">		    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="使用json格式数据显示省市联动效果"><a href="#使用json格式数据显示省市联动效果" class="headerlink" title="使用json格式数据显示省市联动效果"></a>使用json格式数据显示省市联动效果</h2><p><strong>1. 导入jar包</strong></p>
+<p><img src="json.png" alt=""></p>
+<p><strong>2. 编写servlet代码(第三步不同)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F;1. 获取参数</span><br><span class="line">			int pid &#x3D; Integer.parseInt(request.getParameter(&quot;pid&quot;));</span><br><span class="line">			</span><br><span class="line">&#x2F;&#x2F;2 dao实现--找出所有的城市</span><br><span class="line">			CityDao dao &#x3D; new CityDaoImpl();</span><br><span class="line">			List&lt;CityBean&gt; list &#x3D; dao.findCity(pid);</span><br><span class="line">			</span><br><span class="line">&#x2F;&#x2F;3. 把list ---&gt; json数据</span><br><span class="line">			&#x2F;&#x2F;JSONArray ---&gt; 变成数组 ， 集合  []</span><br><span class="line">			&#x2F;&#x2F;JSONObject ---&gt; 变成简单的数据  &#123; name : zhangsan , age:18&#125;</span><br><span class="line">			</span><br><span class="line">			JSONArray jsonArray &#x3D; JSONArray.fromObject(list);  &#x2F;&#x2F;转成对象</span><br><span class="line">			String json &#x3D; jsonArray.toString();  &#x2F;&#x2F;弄成字符串</span><br><span class="line">					</span><br><span class="line">			response.setContentType(&quot;text&#x2F;html;charset&#x3D;utf-8&quot;);</span><br><span class="line">			response.getWriter().write(json);</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 编写页面</strong></p>
+<p><strong>还是原来的主页面只不过跳转现在的json.js代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;jquery-1.11.3.min.js&quot;&gt;&lt;&#x2F;script&gt;  &lt;!-- 调用jq包 --&gt;</span><br><span class="line">&lt;!-- 	  &lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;city.js&quot;&gt;&lt;&#x2F;script&gt;    具体的jq代码去city.js找 --&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;json.js&quot;&gt;&lt;&#x2F;script&gt;    &lt;!-- 具体的jq代码去json.js找 --&gt;	</span><br><span class="line">&lt;&#x2F;head&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>json.js代码(只是each不同)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$(function() &#123;</span><br><span class="line">	&#x2F;&#x2F;1.找到省份的元素</span><br><span class="line">	$(&quot;#province&quot;).change(function() &#123;</span><br><span class="line">		&#x2F;&#x2F;2. 一旦里面的值发生了改变，那么就去请求该省份的城市数据</span><br><span class="line">		&#x2F;&#x2F;$(&quot;#province&quot;).varl();</span><br><span class="line">		var pid &#x3D; $(this).val();</span><br><span class="line">		</span><br><span class="line">		$.post( &quot;CityServlet02&quot;,&#123;pid:pid&#125; ,function(data,status)&#123;</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;先清空</span><br><span class="line">			$(&quot;#city&quot;).html(&quot;&lt;option value&#x3D;&#39;&#39; &gt;-请选择-&quot;);</span><br><span class="line">			&#x2F;&#x2F;再遍历，追加</span><br><span class="line">			$(data).each(function(index , c) &#123;</span><br><span class="line">				$(&quot;#city&quot;).append(&quot;&lt;option value&#x3D;&#39;&quot;+c.id+&quot;&#39; &gt;&quot;+c.cname)</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;,&quot;json&quot; );</span><br><span class="line">		</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>两者展示的js文件区别(each迭代方式不同)</strong></p>
+<p><img src="butong.png" alt=""></p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Listener" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/06/Listener/" class="article-date">
+      <time datetime="2020-03-06T14:57:55.000Z" itemprop="datePublished">2020-03-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/Listener/">Listener</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、Listener-监听器"><a href="#一、Listener-监听器" class="headerlink" title="一、Listener(监听器)"></a>一、Listener(监听器)</h1><blockquote>
+<p>监听某一个事件发生、状态改变</p>
+<p> 监听器<strong>内部机制</strong>：<strong>接口回调</strong></p>
+</blockquote>
+<h2 id="接口回调"><a href="#接口回调" class="headerlink" title="接口回调"></a>接口回调</h2><ul>
+<li><strong>需求</strong>：</li>
+</ul>
+<blockquote>
+<p>A在执行循环，当循环到5的时候,通知B。</p>
+</blockquote>
+<blockquote>
+<p>事先先把<strong>一个对象传递给A</strong>—当A执行到5的时候，通过这个对象，来调用B中的方法。 但是注意，不是直接传递B的实例，而是<strong>传递一个接口的实例</strong>过去。(所以叫接口回调)</p>
+</blockquote>
+<blockquote>
+<p>就相当于我现在有个A类，但是具体循环之后怎么走的类我现在没有，保不准以后会有，所以我需要写一个<strong>接口传给a类一个对象</strong>，然后有B类的时候就可以实现接口，然后<strong>传递接口实例对象</strong>。</p>
+</blockquote>
+<p><strong>test类调用a，a去找b(继承接口)：</strong></p>
+<p><img src="img01.png" alt=""></p>
+<hr>
+<h1 id="二、8个Web监听器-JSP四个作用域"><a href="#二、8个Web监听器-JSP四个作用域" class="headerlink" title="二、8个Web监听器(JSP四个作用域)#"></a>二、8个Web监听器(JSP四个作用域)#</h1><h2 id="其中三个作用域-JSP共四个"><a href="#其中三个作用域-JSP共四个" class="headerlink" title="其中三个作用域(JSP共四个)"></a>其中三个作用域(JSP共四个)</h2><pre><code>  request     ---httpServletRequest
+  session     ---httpSession
+aapplication  ---ServletContext</code></pre><h2 id="监听器三种类型"><a href="#监听器三种类型" class="headerlink" title="监听器三种类型"></a>监听器三种类型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 监听三个作用域创建和销毁(3个)</span><br><span class="line">2. 监听三个作用域属性状态变更(3个)</span><br><span class="line">3. 监听httpSession里面存值的状态变更(2个)</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><ul>
+<li><p><strong>1. 定义类，实现对应接口(自动给两个方法)</strong></p>
+</li>
+<li><p><strong>2. 注册 | 配置监听器</strong></p>
+</li>
+</ul>
+<hr>
+<h1 id="三、-监听三个作用域创建和销毁"><a href="#三、-监听三个作用域创建和销毁" class="headerlink" title="三、 监听三个作用域创建和销毁"></a>三、 监听三个作用域创建和销毁</h1><h2 id="1-ServletContextListener"><a href="#1-ServletContextListener" class="headerlink" title="1. ServletContextListener"></a>1. ServletContextListener</h2><pre><code>servletcontext创建：
+
+    1. 启动服务器的时候
+
+servletContext销毁：
+
+    2. 关闭服务器. 从服务器移除项目</code></pre><ul>
+<li><strong>1. 定义一个类，实现ServletContextListener接口(自动给两个方法)</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class MyServletContextListener implements ServletContextListener &#123;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;初始化调用</span><br><span class="line">	@Override</span><br><span class="line">	public void contextInitialized(ServletContextEvent sce) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">			System.out.println(&quot;初始化了&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;销毁调用</span><br><span class="line">	@Override</span><br><span class="line">	public void contextDestroyed(ServletContextEvent sce) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">			System.out.println(&quot;销毁了&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>2. Web.xml文件中注册 | 配置监听器</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;listener&gt;</span><br><span class="line">	&lt;listener-class&gt;Listener.MyServletContextListener&lt;&#x2F;listener-class&gt;</span><br><span class="line">&lt;&#x2F;listener&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>点击控制栏Servers中红框</strong></p>
+<p><img src="xiaohui.png" alt=""></p>
+<p><strong>控制台输出结果：</strong></p>
+<p><img src="jieguo.png" alt=""></p>
+<h2 id="2-ServletRequestListener"><a href="#2-ServletRequestListener" class="headerlink" title="2. ServletRequestListener"></a>2. ServletRequestListener</h2><pre><code>request创建:
+
+      访问服务器上的任意资源都会有请求出现。
+
+      访问 html： 会
+      访问 jsp:    会
+      访问 servlet : 会 
+
+request销毁：
+
+      服务器已经对这次请求作出了响应。(打开页面并且刷新一次)</code></pre><ul>
+<li><strong>1. 定义类,实现对应接口(自动给两个方法)</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class MyRequestListener implements ServletRequestListener &#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void requestDestroyed(ServletRequestEvent sre) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		System.out.println(&quot;初始化了&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void requestInitialized(ServletRequestEvent sre) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		System.out.println(&quot;销毁了&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>2. web.xml文件内注册 | 配置监听器</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;listener&gt;</span><br><span class="line">	&lt;listener-class&gt;Listener.MyRequestListener&lt;&#x2F;listener-class&gt;</span><br><span class="line">&lt;&#x2F;listener&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>3.分别建立jsp、h5、servlet文件打开浏览器刷新</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">之后就会在控制台输出初始化和销毁的提示!</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-HttpSessionListener"><a href="#3-HttpSessionListener" class="headerlink" title="3. HttpSessionListener"></a>3. HttpSessionListener</h2><pre><code>session的创建：        
+   只要调用getSession
+     html:        不会
+     jsp:        会      getSession();
+     servlet:     会
+
+session的销毁：
+     1.超时  30分钟(默认时间)        
+     2.非正常关闭 销毁
+     3.正常关闭服务器(序列化)</code></pre><ul>
+<li><strong>1. 定义类,实现对应接口(自动给两个方法)</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class MySessionListener implements HttpSessionListener &#123;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void sessionCreated(HttpSessionEvent se) &#123;</span><br><span class="line">				System.out.println(&quot;创建session了&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		</span><br><span class="line">			@Override</span><br><span class="line">			public void sessionDestroyed(HttpSessionEvent se) &#123;</span><br><span class="line">				System.out.println(&quot;销毁session了&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>2. web.xml文件内注册 | 配置监听器</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;listener&gt;</span><br><span class="line">	&lt;listener-class&gt;Listener.MySessionListener&lt;&#x2F;listener-class&gt;</span><br><span class="line">&lt;&#x2F;listener&gt;</span><br></pre></td></tr></table></figure>
+
+<p>##4. 三个监听器作用 ##</p>
+<pre><code>1.ServletContextListener
+
+    利用它来，在servletcontext创建的时候， 
+
+    1. 完成自己想要的初始化工作
+
+    2. 执行自定义任务调度。 执行某一个任务。 Timer  
+
+2.HttpSessionListener
+
+    统计在线人数(一个回合就是session)</code></pre><hr>
+<h1 id="四、-监听三个作用域属性状态变更"><a href="#四、-监听三个作用域属性状态变更" class="headerlink" title="四、 监听三个作用域属性状态变更"></a>四、 监听三个作用域属性状态变更</h1><blockquote>
+<p>可以监听在作用域中值—<strong>添加|替换|移除</strong>动作。 </p>
+</blockquote>
+<h2 id="1-ServletContextAttributeListener"><a href="#1-ServletContextAttributeListener" class="headerlink" title="1. ServletContextAttributeListener"></a>1. ServletContextAttributeListener</h2><p><img src="img03.png" alt=""></p>
+<h2 id="2-ServletRequestAttributeListener"><a href="#2-ServletRequestAttributeListener" class="headerlink" title="2. ServletRequestAttributeListener"></a>2. ServletRequestAttributeListener</h2><p><img src="img04.png" alt=""></p>
+<h2 id="3-HttpSessionAttributeListener"><a href="#3-HttpSessionAttributeListener" class="headerlink" title="3. HttpSessionAttributeListener"></a>3. HttpSessionAttributeListener</h2><p><img src="img02.png" alt=""></p>
+<h1 id="4-以HttpSessionAttributeListener为例"><a href="#4-以HttpSessionAttributeListener为例" class="headerlink" title="4. 以HttpSessionAttributeListener为例#"></a>4. 以HttpSessionAttributeListener为例#</h1><ul>
+<li><strong>1. 建立类实现对应接口(自动三个方法)</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class MyHttpSession implements HttpSessionAttributeListener &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void attributeAdded(HttpSessionBindingEvent se) &#123;</span><br><span class="line">		System.out.println(&quot;属性被添加了&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void attributeRemoved(HttpSessionBindingEvent se) &#123;</span><br><span class="line">		System.out.println(&quot;属性被移除了&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void attributeReplaced(HttpSessionBindingEvent se) &#123;</span><br><span class="line">		System.out.println(&quot;属性被替换了&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>2. web.xml文件配置</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;listener&gt;</span><br><span class="line">	&lt;listener-class&gt;Listener02.MyHttpSession&lt;&#x2F;listener-class&gt;</span><br><span class="line">&lt;&#x2F;listener&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>3. 新建jsp页面</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">	session.setAttribute(&quot;name&quot;,&quot;abobama&quot;);</span><br><span class="line">	session.setAttribute(&quot;name&quot;,&quot;zhangsan&quot;);	</span><br><span class="line">	session.removeAttribute(&quot;name&quot;);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行jsp页面 然后刷新：</strong></p>
+<p><img src="shuxing.png" alt=""></p>
+<hr>
+<h1 id="五、-监听httpSession里面存值的状态变更"><a href="#五、-监听httpSession里面存值的状态变更" class="headerlink" title="五、 监听httpSession里面存值的状态变更"></a>五、 监听httpSession里面存值的状态变更</h1><blockquote>
+<p>这一类监听器不用注册。(直接继承即可)</p>
+</blockquote>
+<h2 id="1-HttpSessionBindingListener"><a href="#1-HttpSessionBindingListener" class="headerlink" title="1. HttpSessionBindingListener"></a>1. HttpSessionBindingListener</h2><ul>
+<li><strong>1.让javaBean 实现该接口即可</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class Bean01 implements HttpSessionBindingListener&#123;</span><br><span class="line">	 </span><br><span class="line">	&#x2F;&#x2F;自定义属性--可以被修改</span><br><span class="line">	private String name;</span><br><span class="line">	public String getName() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name &#x3D; name;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void valueBound(HttpSessionBindingEvent event) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		System.out.println(&quot;值被绑定进来了&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void valueUnbound(HttpSessionBindingEvent event) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		System.out.println(&quot;解绑了&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-HttpSessionActivationListener-激活"><a href="#2-HttpSessionActivationListener-激活" class="headerlink" title="2. HttpSessionActivationListener(激活)"></a>2. HttpSessionActivationListener(激活)</h2><blockquote>
+<p>用于<strong>监听session的值</strong>  </p>
+</blockquote>
+<ul>
+<li>1.<strong>钝化 （序列化）</strong> </li>
+</ul>
+<blockquote>
+<p>把内存中的数据 存储 到硬盘</p>
+</blockquote>
+<ul>
+<li>2.<strong>活化 （反序列化）</strong></li>
+</ul>
+<blockquote>
+<p>把硬盘中的数据 读取 到内存</p>
+</blockquote>
+<ul>
+<li><strong>1.让javaBean 实现该接口即可</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Bean01 implements HttpSessionActivationListener&#123;</span><br><span class="line">	&#x2F;&#x2F;钝化</span><br><span class="line">	@Override</span><br><span class="line">	public void sessionWillPassivate(HttpSessionEvent se) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		System.out.println(&quot;session被钝化了...&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;活化</span><br><span class="line">	@Override</span><br><span class="line">	public void sessionDidActivate(HttpSessionEvent se) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		System.out.println(&quot;session被活化了...&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-钝化活化作用"><a href="#3-钝化活化作用" class="headerlink" title="3. 钝化活化作用"></a>3. 钝化活化作用</h2><blockquote>
+<p> session中的值可能会很多，并且我们有很长一段时间不使用这个内存中的值，那么可以考虑把session的值可以存储到硬盘上【钝化】，等下一次在使用的时候，在从硬盘上提取出来。 【活化】</p>
+</blockquote>
+<h2 id="4-设置钝化时间-配置"><a href="#4-设置钝化时间-配置" class="headerlink" title="4. 设置钝化时间(配置)"></a>4. 设置钝化时间(配置)</h2><ul>
+<li><p>1.在tomcat里面 conf/context.xml 里面配置</p>
+<pre><code>对所有的运行在这个服务器的项目生效  </code></pre></li>
+<li><p>2.在conf/Catalina/localhost/context.xml 配置</p>
+<pre><code>对 localhost生效。  localhost:8080</code></pre></li>
+<li><p>3.在自己的web工程项目中的 META-INF/context.xml</p>
+<pre><code>只对当前的工程生效。(一般在这设置，因为项目的目录不同)</code></pre></li>
+</ul>
+<p><strong>配置代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Context&gt;</span><br><span class="line">	&lt;Manager className&#x3D;&quot;org.apache.catalina.session.PersistentManager&quot; maxIdleSwap&#x3D;&quot;1&quot;&gt;</span><br><span class="line">		&lt;Store className&#x3D;&quot;org.apache.catalina.session.FileStore&quot; directory&#x3D;&quot;itheima&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;Manager&gt;</span><br><span class="line">&lt;&#x2F;Context&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>   **maxIdleSwap** ： 1分钟不用就钝化
+   **directory**：  钝化后的那个文件存放的目录位置。 
+例如：F:\tomcat\apache-tomcat-7.0.52\work\Catalina\localhost\项目名\文件名</code></pre><hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Listener/" rel="tag">Listener</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JQuery仿百度搜索" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/06/JQuery%E4%BB%BF%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2/" class="article-date">
+      <time datetime="2020-03-06T08:31:45.000Z" itemprop="datePublished">2020-03-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/JQuery%E4%BB%BF%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2/">JQuery仿百度搜索</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、建数据库和jsp页面"><a href="#一、建数据库和jsp页面" class="headerlink" title="一、建数据库和jsp页面"></a>一、建数据库和jsp页面</h1><p><strong>新建的jsp页面：写一个输入框一个按钮一个下拉div表</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;word&quot; id&#x3D;&quot;word&quot; style&#x3D;&quot;width:700px ; height:50px&quot;&gt;</span><br><span class="line">	&lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;查询&quot; style&#x3D;&quot;width:100px ; height:50px&quot;&gt;</span><br><span class="line">	&lt;div id&#x3D;&quot;div01&quot; style&#x3D;&quot;width:700px ; height:200px ; border:1px solid blue ; display:none&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>新建的数据库</strong></p>
+<p><img src="shujuku.png" alt=""></p>
+<hr>
+<h1 id="二、-前期准备"><a href="#二、-前期准备" class="headerlink" title="二、 前期准备#"></a>二、 前期准备#</h1><p><strong>1.导入jar文件</strong></p>
+<p><strong>2.导入数据池的xml配置文件并且更改数据库名字</strong></p>
+<p><strong>3.导入所需要的的JDBCUtil02类</strong></p>
+<p><strong>4.导入之前ajax写验证用户名时候的dao和impl类进行修改</strong></p>
+<p><img src="daoru.png" alt=""></p>
+<hr>
+<h1 id="三、-书写Servlet的前两步操作"><a href="#三、-书写Servlet的前两步操作" class="headerlink" title="三、 书写Servlet的前两步操作#"></a>三、 书写Servlet的前两步操作#</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.获取参数</span><br><span class="line">String word&#x3D;request.getParameter(&quot;word&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;2.让dao实现</span><br><span class="line">WordsDao dao&#x3D;new WordsDaoImpl();</span><br><span class="line">List&lt;WordBean&gt; list &#x3D; dao.findWords(word);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;3.返回数据</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="四、-写jsp页面代码"><a href="#四、-写jsp页面代码" class="headerlink" title="四、 写jsp页面代码"></a>四、 写jsp页面代码</h1><p><strong>导入jq包和heima.js文件(所有操作放里面写)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;jquery-1.11.3.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;heima.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="五、写heima-js文件"><a href="#五、写heima-js文件" class="headerlink" title="五、写heima.js文件"></a>五、写heima.js文件</h1><p><strong>要使用固定格式和JSTL格式(导入jar包)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;捕捉弹起事件  对一个元素进行onkeyup事件监听</span><br><span class="line">		&#x2F;&#x2F; 格式：$(document).reday(function()&#123;&#125;)	</span><br><span class="line"></span><br><span class="line">$(function()&#123;</span><br><span class="line">	$(&quot;#word&quot;).keyup(function()&#123;</span><br><span class="line">		&#x2F;&#x2F;2. 获取输入框的值</span><br><span class="line">			&#x2F;&#x2F;var word&#x3D;$(&quot;#word&quot;).val();</span><br><span class="line">			var word&#x3D;$(this).val();</span><br><span class="line">		</span><br><span class="line">			if(word &#x3D;&#x3D; &quot;&quot;)   &#x2F;&#x2F;查询的为0</span><br><span class="line">			&#123;</span><br><span class="line">				$(&quot;#div01&quot;).hide();</span><br><span class="line">			&#125;		</span><br><span class="line">			else  &#x2F;&#x2F;查询东西要匹配 </span><br><span class="line">			&#123;</span><br><span class="line">				&#x2F;&#x2F;3. 请求数据。</span><br><span class="line">				$.post(&quot;&#x2F;day16_02&#x2F;FindWordsServlet&quot;,&#123;word:word&#125;,function(data,status)&#123;</span><br><span class="line">					&#x2F;&#x2F;alert(data);</span><br><span class="line">					$(&quot;#div01&quot;).show();</span><br><span class="line">					$(&quot;#div01&quot;).html(data);</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;	</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="六、书写servlet第三步"><a href="#六、书写servlet第三步" class="headerlink" title="六、书写servlet第三步"></a>六、书写servlet第三步</h1><p><strong>让servlet跳到list.jsp页面：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;数据存到作用域(因为list.jsp用了JSTL)</span><br><span class="line">				request.setAttribute(&quot;list&quot;,list);</span><br><span class="line">				</span><br><span class="line">&#x2F;&#x2F;3.返回数据</span><br><span class="line">		response.setContentType(&quot;text&#x2F;html;charset&#x3D;utf-8&quot;);	</span><br><span class="line">				request.getRequestDispatcher(&quot;list.jsp&quot;).forward(request, response);  &#x2F;&#x2F;跳转到list.jsp页面</span><br></pre></td></tr></table></figure>
+
+<p><strong>list.jsp页面(用JSTL去遍历出来)：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> &lt;%@ taglib uri&#x3D;&quot;http:&#x2F;&#x2F;java.sun.com&#x2F;jsp&#x2F;jstl&#x2F;core&quot;  prefix&#x3D;&quot;c&quot;%&gt;</span><br><span class="line"></span><br><span class="line">&lt;table style&#x3D;&quot;width: 100%&quot;&gt;</span><br><span class="line">	&lt;c:forEach items&#x3D;&quot;$&#123;list&#125;&quot; var&#x3D;&quot;wordBean&quot;&gt;  &lt;!--一定要去servlet里面将数据存到作用域--&gt;</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">			&lt;td&gt;$&#123;wordBean.words&#125;&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;&#x2F;tr&gt;</span><br><span class="line">	&lt;&#x2F;c:forEach&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="七、代码分析"><a href="#七、代码分析" class="headerlink" title="七、代码分析"></a>七、代码分析</h1><p><strong>代码框架：</strong></p>
+<p><img src="kuangjia.png" alt=""></p>
+<p><strong>分析代码流程：</strong></p>
+<p><img src="fenxi.png" alt=""></p>
+<hr>
+<h1 id="八、具体代码"><a href="#八、具体代码" class="headerlink" title="八、具体代码"></a>八、具体代码</h1><p><strong>dao类代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface WordsDao &#123;</span><br><span class="line">	 &#x2F;&#x2F;假如传入一个a   ---&gt; 返回 aa  abc等    ---&gt;   所以要用list集合</span><br><span class="line">		List&lt;WordBean&gt; findWords(String word) throws SQLException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>daoImpl类代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class WordsDaoImpl implements WordsDao &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public List&lt;WordBean&gt; findWords(String word) throws SQLException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.使用DBUtils的对象</span><br><span class="line">		QueryRunner runner&#x3D;new QueryRunner(JDBCUtil02.getDataSource());</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.调用简便方法</span><br><span class="line">		String sql&#x3D;&quot;select * from words where words like ? limit ?&quot;;  &#x2F;&#x2F;模糊查询  限制只能查出5个</span><br><span class="line">		return runner.query(sql, new BeanListHandler&lt;WordBean&gt;(WordBean.class),word+&quot;%&quot;,5);		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Servlet类代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class FindWordsServlet extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;有中文</span><br><span class="line">			request.setCharacterEncoding(&quot;utf-8&quot;);</span><br><span class="line">		try &#123;</span><br><span class="line">				&#x2F;&#x2F;1.获取参数</span><br><span class="line">				String word&#x3D;request.getParameter(&quot;word&quot;);</span><br><span class="line">				System.out.println(&quot;word&#x3D;&quot;+word);  &#x2F;&#x2F;控制台输出 看我输入的是不是被抓过来了</span><br><span class="line"></span><br><span class="line">				&#x2F;&#x2F;2.让dao实现</span><br><span class="line">				WordsDao dao&#x3D;new WordsDaoImpl();</span><br><span class="line">				List&lt;WordBean&gt; list &#x3D; dao.findWords(word);</span><br><span class="line">				</span><br><span class="line">				&#x2F;&#x2F;循环输出满足条件的结果</span><br><span class="line">				for (WordBean wordBean : list) &#123;</span><br><span class="line">					System.out.println(&quot;&#x3D;&#x3D;&#x3D;&quot;+wordBean.toString());</span><br><span class="line">				&#125;</span><br><span class="line">								</span><br><span class="line">				&#x2F;&#x2F;数据存到作用域</span><br><span class="line">				request.setAttribute(&quot;list&quot;,list);</span><br><span class="line">				</span><br><span class="line">				&#x2F;&#x2F;3.返回数据</span><br><span class="line">				response.setContentType(&quot;text&#x2F;html;charset&#x3D;utf-8&quot;);	</span><br><span class="line">				request.getRequestDispatcher(&quot;list.jsp&quot;).forward(request, response);  &#x2F;&#x2F;跳转到list.jsp页面</span><br><span class="line">				</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO 自动生成的 catch 块</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>domain获取数据库属性类代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class WordBean &#123;</span><br><span class="line"></span><br><span class="line">	private int id;</span><br><span class="line">	private String words;</span><br><span class="line"></span><br><span class="line">	public int getId() &#123;</span><br><span class="line">		return id;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setId(int id) &#123;</span><br><span class="line">		this.id &#x3D; id;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getWords() &#123;</span><br><span class="line">		return words;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setWords(String words) &#123;</span><br><span class="line">		this.words &#x3D; words;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public String toString() &#123;</span><br><span class="line">		return &quot;WordBean [id&#x3D;&quot; + id + &quot;, words&#x3D;&quot; + words + &quot;]&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>heima.js文件：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;捕捉弹起事件  对一个元素进行onkeyup事件监听</span><br><span class="line">		&#x2F;&#x2F; 格式：$(document).reday(function()&#123;&#125;)	</span><br><span class="line"></span><br><span class="line">$(function()&#123;</span><br><span class="line">	$(&quot;#word&quot;).keyup(function()&#123;</span><br><span class="line">		&#x2F;&#x2F;2. 获取输入框的值</span><br><span class="line">			&#x2F;&#x2F;var word&#x3D;$(&quot;#word&quot;).val();</span><br><span class="line">			var word&#x3D;$(this).val();</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">			if(word &#x3D;&#x3D; &quot;&quot;)   &#x2F;&#x2F;查询的为0</span><br><span class="line">			&#123;</span><br><span class="line">				$(&quot;#div01&quot;).hide();</span><br><span class="line">			&#125;		</span><br><span class="line">			else  &#x2F;&#x2F;查询东西要匹配 </span><br><span class="line">			&#123;</span><br><span class="line">				&#x2F;&#x2F;3. 请求数据。</span><br><span class="line">				$.post(&quot;&#x2F;day16_02&#x2F;FindWordsServlet&quot;,&#123;word:word&#125;,function(data,status)&#123;</span><br><span class="line">					&#x2F;&#x2F;alert(data);</span><br><span class="line">					$(&quot;#div01&quot;).show();</span><br><span class="line">					$(&quot;#div01&quot;).html(data);</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;	</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>主页demo08.jsp页面：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language&#x3D;&quot;java&quot; contentType&#x3D;&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;</span><br><span class="line">    pageEncoding&#x3D;&quot;UTF-8&quot;%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-&#x2F;&#x2F;W3C&#x2F;&#x2F;DTD HTML 4.01 Transitional&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;html4&#x2F;loose.dtd&quot;&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;jquery-1.11.3.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;heima.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;center&gt; &lt;!-- 居中--&gt;</span><br><span class="line">&lt;h2&gt;黑马&lt;&#x2F;h2&gt;</span><br><span class="line">	&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;word&quot; id&#x3D;&quot;word&quot; style&#x3D;&quot;width: 600px ; height: 50px  ;font-size: 20px;&quot;&gt;</span><br><span class="line">	&lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;黑马一下&quot;  style&#x3D;&quot;height: 55px ; width: 100px ;&quot;&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;div id&#x3D;&quot;div01&quot; style&#x3D;&quot;position:relative; left:-54px; width:600px; height:200px ; border:1px solid blue; display: none&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;center&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>list.jsp展示页面：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language&#x3D;&quot;java&quot; contentType&#x3D;&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;</span><br><span class="line">    pageEncoding&#x3D;&quot;UTF-8&quot;%&gt;</span><br><span class="line"> &lt;%@ taglib uri&#x3D;&quot;http:&#x2F;&#x2F;java.sun.com&#x2F;jsp&#x2F;jstl&#x2F;core&quot;  prefix&#x3D;&quot;c&quot;%&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;table style&#x3D;&quot;width: 100%&quot;&gt;</span><br><span class="line">	&lt;c:forEach items&#x3D;&quot;$&#123;list&#125;&quot; var&#x3D;&quot;wordBean&quot;&gt;  &lt;!--一定要去servlet里面将数据存到作用域--&gt;</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">			&lt;td&gt;$&#123;wordBean.words&#125;&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;&#x2F;tr&gt;</span><br><span class="line">	&lt;&#x2F;c:forEach&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>JDBCUtil02类(获取数据池对象)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">public class JDBCUtil02 &#123;</span><br><span class="line">	</span><br><span class="line">	static ComboPooledDataSource dataSource &#x3D; null;   &#x2F;&#x2F;使用c3p0开源数据连接池的类</span><br><span class="line">	static&#123;</span><br><span class="line">		dataSource &#x3D; new ComboPooledDataSource();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static DataSource getDataSource()&#123;</span><br><span class="line">		return dataSource;                      &#x2F;&#x2F;返回一个dataSource 方便获取</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * 获取连接对象</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static Connection getConn() throws SQLException&#123;</span><br><span class="line">		return dataSource.getConnection();        &#x2F;&#x2F;返回一个连接</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * 释放资源</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static void release(Connection conn , Statement st , ResultSet rs)&#123;</span><br><span class="line">		closeRs(rs);</span><br><span class="line">		closeSt(st);</span><br><span class="line">		closeConn(conn);</span><br><span class="line">	&#125;</span><br><span class="line">	public static void release(Connection conn , Statement st)&#123;</span><br><span class="line">		closeSt(st);</span><br><span class="line">		closeConn(conn);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	private static void closeRs(ResultSet rs)&#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			if(rs !&#x3D; null)&#123;</span><br><span class="line">				rs.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;finally&#123;</span><br><span class="line">			rs &#x3D; null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	private static void closeSt(Statement st)&#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			if(st !&#x3D; null)&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;finally&#123;</span><br><span class="line">			st &#x3D; null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	private static void closeConn(Connection conn)&#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			if(conn !&#x3D; null)&#123;</span><br><span class="line">				conn.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;finally&#123;</span><br><span class="line">			conn &#x3D; null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>最终结果展示：</strong></p>
+<p><img src="jieguo.png" alt=""></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/13/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/15/">Next &amp;raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 Larkkkkkkk
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="http://bestwing.me" target="_blank">Sw'blog</a> by Swing
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+  </div>
+</body>
+</html>

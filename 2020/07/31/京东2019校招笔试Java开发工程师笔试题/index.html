@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>京东2019校招笔试Java开发工程师笔试题 | Larkkkkkkk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目分析 这套题目考察的方面和深度我感觉都比较棒!!!但是答案错误太多了我吐了!!!    软件开发增量模型题目 分析AD就是互相矛盾 C适用于也是错误的,不应该是只需要客户化的工程项目    知识点总结 瀑布模型(流程实施项目开发)+原型进化模型(系统按照功能分解为许多增量构建,然后不断地添加进系统直到交付给用户)    值类型和引用类型题目 分析1. 值类型变量赋值: 数据复制,创建一个同值得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="京东2019校招笔试Java开发工程师笔试题">
+<meta property="og:url" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Larkkkkkkk">
+<meta property="og:description" content="题目分析 这套题目考察的方面和深度我感觉都比较棒!!!但是答案错误太多了我吐了!!!    软件开发增量模型题目 分析AD就是互相矛盾 C适用于也是错误的,不应该是只需要客户化的工程项目    知识点总结 瀑布模型(流程实施项目开发)+原型进化模型(系统按照功能分解为许多增量构建,然后不断地添加进系统直到交付给用户)    值类型和引用类型题目 分析1. 值类型变量赋值: 数据复制,创建一个同值得">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/chengji.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/one.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/oneres.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/two.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twores.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/three.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/four.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/five.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/six.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/seven.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/eight.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/eightres.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/eightres.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/nine.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/ten.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/tenres.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/tenres.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/eleven.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twelve.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/thirteen.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fourteen.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fourteenres.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fiveteen.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/sixteen.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/seventeen.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/eighteen.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/nineteen.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twenty.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twentyone.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twentyoneres.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twentyoneres.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twentytwo.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twentythree.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twentyfour.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twentyfive.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twentysix.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twentyseven.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twentyeight.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/twentynine.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/thirty.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/thirtyone.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/thirtytwo.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/thirtythree.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/thirtyfour.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/thirtyfive.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/thirtysix.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/thirtyseven.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/thirtyeight.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/thirtynine.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/forty.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fortyone.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fortytwo.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fortythree.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fortyfour.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fortyfive.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fortysix.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fortyseven.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fortyeight.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fortynine.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fifty.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fiftyone.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fiftytwo.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fiftythree.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fiftyfour.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fiftyfive.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fiftysix.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fiftyseven.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fiftyeight.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/fiftynine.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/sixty.png">
+<meta property="article:published_time" content="2020-07-31T14:32:36.000Z">
+<meta property="article:modified_time" content="2020-08-01T14:57:36.000Z">
+<meta property="article:author" content="Larkkkkkkk">
+<meta property="article:tag" content="京东">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/chengji.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
+  
+  
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="img/head.jpg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Larkkkkkkk</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                        
+                            <li><a  href="/archives">文章归档</a></li>
+                        
+                            <li><a  href="/CTFStudy">学习导航</a></li>
+                        
+                            <li><a  href="/PWNABLE">PWNABLE</a></li>
+                        
+                            <li><a  href="/resume">个人简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail"  target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                            
+                                <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Ajax/" style="font-size: 12.22px;">Ajax</a> <a href="/tags/Cookie%E5%92%8CSession/" style="font-size: 14.44px;">Cookie和Session</a> <a href="/tags/DBUtils/" style="font-size: 11.11px;">DBUtils</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">EL表达式</a> <a href="/tags/Filter/" style="font-size: 11.11px;">Filter</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPServletReauest%E5%92%8CHTTPServletResponse/" style="font-size: 10px;">HTTPServletReauest和HTTPServletResponse</a> <a href="/tags/IDEA%E5%AE%89%E8%A3%85%E5%92%8C%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">IDEA安装和破解</a> <a href="/tags/JAVA/" style="font-size: 14.44px;">JAVA</a> <a href="/tags/JAVA-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-Lambda表达式</a> <a href="/tags/JAVA-Set%E9%9B%86%E5%90%88/" style="font-size: 10px;">JAVA-Set集合</a> <a href="/tags/JAVA-%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">JAVA-反射</a> <a href="/tags/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 12.22px;">JAVA-多线程</a> <a href="/tags/JAVA-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-正则表达式</a> <a href="/tags/JAVA-%E6%B3%9B%E5%9E%8B/" style="font-size: 10px;">JAVA-泛型</a> <a href="/tags/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 12.22px;">JAVA-网络编程</a> <a href="/tags/JAVA-%E9%9B%86%E5%90%88/" style="font-size: 12.22px;">JAVA-集合</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0/" style="font-size: 11.11px;">JAVA练习</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">JAVA练习-动态规划</a> <a href="/tags/JQuery/" style="font-size: 13.33px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/LeetCode/" style="font-size: 17.78px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 15.56px;">Linux</a> <a href="/tags/Listener/" style="font-size: 10px;">Listener</a> <a href="/tags/Mybatis/" style="font-size: 18.89px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CJDBC/" style="font-size: 15.56px;">Mysql数据库和JDBC</a> <a href="/tags/Redis/" style="font-size: 11.11px;">Redis</a> <a href="/tags/Servlet/" style="font-size: 11.11px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 16.67px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 15.56px;">SpringMVC</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 20px;">Web前端知识点</a> <a href="/tags/XML/" style="font-size: 11.11px;">XML</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/flask%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">flask框架</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/jsp%E6%A0%87%E5%87%86%E6%A0%87%E7%AD%BE%E5%BA%93/" style="font-size: 10px;">jsp标准标签库</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/python/" style="font-size: 12.22px;">python</a> <a href="/tags/pytorch/" style="font-size: 10px;">pytorch</a> <a href="/tags/ssm%E6%A1%86%E6%9E%B6%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">ssm框架模板</a> <a href="/tags/webserver%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">webserver编程</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E4%BA%AC%E4%B8%9C/" style="font-size: 11.11px;">京东</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91/" style="font-size: 10px;">后缀树</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10px;">哈希表</a> <a href="/tags/%E5%9B%BE/" style="font-size: 10px;">图</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 10px;">复杂度分析</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">学生管理系统</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2-0/" style="font-size: 12.22px;">学生管理系统2.0</a> <a href="/tags/%E6%8B%BC%E5%A4%9A%E5%A4%9A/" style="font-size: 10px;">拼多多</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" style="font-size: 10px;">数据库连接池</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数据结构-稀疏数组</a> <a href="/tags/%E6%96%87%E5%AD%97%E7%AF%87-%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">文字篇-记录</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 12.22px;">机器学习</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%91/" style="font-size: 12.22px;">树</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">注解</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 14.44px;">深度学习</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 11.11px;">爬虫</a> <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" style="font-size: 10px;">生物信息学</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 12.22px;">知识图谱</a> <a href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%88%9D%E8%AF%95/" style="font-size: 12.22px;">研究生初试</a> <a href="/tags/%E7%A7%8B%E6%8B%9B/" style="font-size: 10px;">秋招</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">算法-动态规划</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%BA%AF%E6%B3%95/" style="font-size: 10px;">算法-回溯法</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法-贪心算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 10px;">考研</a> <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 13.33px;">蓝桥杯</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE-%E8%BD%AF%E4%BB%B6%E4%B8%93%E4%B8%9A%E9%A2%98%E7%9B%AE/" style="font-size: 10px;">计算机网络课设(软件专业题目)</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.22px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 10px;">软件体系结构</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">重新部署</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%A1%B5%E9%9D%A2%EF%BC%88H5-CSS%EF%BC%89/" style="font-size: 10px;">页面（H5+CSS）</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0/" style="font-size: 10px;">项目上传</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://ring3.xyz/">Yllen</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://mxny.org/">麦香浓郁</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://whereisk0shl.top/">K0sh1</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.ycjcl.cc/">信鑫</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://bystudent.com/">ByStundet表哥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jarviswang.me/">汪神_Jarvis</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sh3ll.me/">Chu</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.hackfun.org/">4ido10n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/iamstudy">L3m0n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://o0xmuhe.me/">muhe</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.nuptzj.cn/">_画船听雨</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.virzz.com/index.html">Virink</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.sqlsec.com/">国光</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bodkin.ren/">老锥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cizel.cn/">C1zel</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://1phan.cc">1phan</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.liuil.top/">liuil</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/Ox9A82/">Ox9A82</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://burnegg.com/">burnegg</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://jwrsec.cn/">jwr-sec</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sudalover.cn/">苏打</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.binklac.com">VeroFess</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bendawang.site/">bendawang</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://weeklyalgo.codes/">hook</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.flier.net.cn/">Flier&#39;blog</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.mutepig.club">mutepig</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.iret.xyz/list.aspx">Silver</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://simp1e.leanote.com/">Simple</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://processor.pub/">Processor</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一只淹死在二进制海洋里的二进制狗!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Larkkkkkkk</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Larkkkkkkk</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                
+                    <li><a href="/archives">文章归档</a></li>
+                
+                    <li><a href="/CTFStudy">学习导航</a></li>
+                
+                    <li><a href="/PWNABLE">PWNABLE</a></li>
+                
+                    <li><a href="/resume">个人简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-京东2019校招笔试Java开发工程师笔试题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/" class="article-date">
+      <time datetime="2020-07-31T14:32:36.000Z" itemprop="datePublished">2020-07-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      京东2019校招笔试Java开发工程师笔试题
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%AC%E4%B8%9C/" rel="tag">京东</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h1><blockquote>
+<p>这套题目考察的方面和深度我感觉都比较棒!!!但是答案错误太多了我吐了!!!</p>
+</blockquote>
+<p><img src="chengji.png" alt=""></p>
+<hr>
+<h1 id="软件开发增量模型"><a href="#软件开发增量模型" class="headerlink" title="软件开发增量模型"></a>软件开发增量模型</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="one.png" alt=""></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><pre><code>AD就是互相矛盾
+C适用于也是错误的,不应该是只需要客户化的工程项目    </code></pre><h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><blockquote>
+<p>瀑布模型(流程实施项目开发)+原型进化模型(系统按照功能分解为许多增量构建,然后不断地添加进系统直到交付给用户)</p>
+</blockquote>
+<p><img src="oneres.png" alt=""></p>
+<hr>
+<h1 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p><img src="two.png" alt=""></p>
+<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 值类型变量赋值: 数据复制,创建一个同值得新对象
+2. 引用类型变量赋值: 只是把对象引用的指针赋给变量,共用一个内存地址
+3. 值类型一般是基本数据类型,不是封装的 C错误
+4. 值类型没有实例 B错误
+5. 值类型变量可以作为引用类型的成员变量存储在堆里面 D错误</code></pre><h2 id="知识点总结-1"><a href="#知识点总结-1" class="headerlink" title="知识点总结"></a>知识点总结</h2><p><img src="twores.png" alt=""></p>
+<hr>
+<h1 id="操作系统避免死锁"><a href="#操作系统避免死锁" class="headerlink" title="操作系统避免死锁"></a>操作系统避免死锁</h1><h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p><img src="three.png" alt=""></p>
+<h2 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h2><pre><code>说实话我感觉这道题有歧义,我觉得选D(傲娇不承认答案A)</code></pre><h2 id="知识点总结-2"><a href="#知识点总结-2" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
+<li><p><strong>产生死锁</strong></p>
+<ol>
+<li><strong>互斥</strong> :存在一个资源每次只能被一个进程使用，若别的进程也要使用该资源，需要等待知道其占用者用完释放。</li>
+<li><strong>占有并等待</strong> :部分分配，允许进程在不释放其已经分得的资源的情况下请求并等待分配的资源</li>
+<li><strong>不可抢占</strong> :有些系统资源是不可抢占的，系即当某个进程已经获得这种资源后，只能由自身使用完释放。</li>
+<li><strong>循环等待</strong> :若干个进程形成环形链，链中的每一个进程都在等待该链中下一个进程所占用的资源。</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p><strong>避免死锁</strong>    </p>
+<p>  破坏四个条件其中一个就会避免死锁</p>
+</li>
+</ul>
+<hr>
+<h1 id="奇数和算法"><a href="#奇数和算法" class="headerlink" title="奇数和算法"></a>奇数和算法</h1><h2 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h2><p><img src="four.png" alt=""></p>
+<h2 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 计算是1+3+5+7+9+11+..+999
+2. 所以i的计数肯定是i=i+2 然后s和i的变化要看顺序</code></pre><h2 id="知识点总结-3"><a href="#知识点总结-3" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>其实最简单的就是自己写一个对比或者执行一遍即可</code></pre><hr>
+<h1 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h1><h2 id="题目-4"><a href="#题目-4" class="headerlink" title="题目"></a>题目</h2><p><img src="five.png" alt=""></p>
+<h2 id="分析-4"><a href="#分析-4" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 递归法很容易崩 执行不出来所以执行效率肯定比递推法效率低</code></pre><h2 id="知识点总结-4"><a href="#知识点总结-4" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 递归就是一层一层调用 所以代码很简洁清晰
+2. 递归会有很多次重复,然后递归调用占用大量内存空间,一旦执行次数过大就会无法执行
+3. 递归法执行效率低</code></pre><hr>
+<h1 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h1><h2 id="题目-5"><a href="#题目-5" class="headerlink" title="题目"></a>题目</h2><p><img src="six.png" alt=""></p>
+<h2 id="分析-5"><a href="#分析-5" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 这就跟c语言判断一样,一个一个字符对比。
+2. 这道题对比A&lt;D,还要结果是真 所以选择 &lt;</code></pre><h2 id="知识点总结-5"><a href="#知识点总结-5" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>比较的是ASCII码 从第一位开始判断</code></pre><hr>
+<h1 id="看代码判断结果"><a href="#看代码判断结果" class="headerlink" title="看代码判断结果"></a>看代码判断结果</h1><h2 id="题目-6"><a href="#题目-6" class="headerlink" title="题目"></a>题目</h2><p><img src="seven.png" alt=""></p>
+<h2 id="分析-6"><a href="#分析-6" class="headerlink" title="分析"></a>分析</h2><pre><code>不管i取何值 (-1)*i永远是负数，所以ABC错误</code></pre><h2 id="知识点总结-6"><a href="#知识点总结-6" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>取值测试</code></pre><hr>
+<h1 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h1><h2 id="题目-7"><a href="#题目-7" class="headerlink" title="题目"></a>题目</h2><p><img src="eight.png" alt=""></p>
+<h2 id="分析-7"><a href="#分析-7" class="headerlink" title="分析"></a>分析</h2><p><img src="eightres.png" alt=""></p>
+<h2 id="知识点总结-7"><a href="#知识点总结-7" class="headerlink" title="知识点总结"></a>知识点总结</h2><p><img src="eightres.png" alt=""></p>
+<hr>
+<h1 id="如何确定一棵二叉树"><a href="#如何确定一棵二叉树" class="headerlink" title="如何确定一棵二叉树"></a>如何确定一棵二叉树</h1><h2 id="题目-8"><a href="#题目-8" class="headerlink" title="题目"></a>题目</h2><p><img src="nine.png" alt=""></p>
+<h2 id="分析-8"><a href="#分析-8" class="headerlink" title="分析"></a>分析</h2><pre><code>我觉得AB都可以(不知道为啥是单选..)</code></pre><h2 id="知识点总结-8"><a href="#知识点总结-8" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>只要告诉三种遍历其中之二即可</code></pre><hr>
+<h1 id="求小顶堆左子节点"><a href="#求小顶堆左子节点" class="headerlink" title="求小顶堆左子节点"></a>求小顶堆左子节点</h1><h2 id="题目-9"><a href="#题目-9" class="headerlink" title="题目"></a>题目</h2><p><img src="ten.png" alt=""></p>
+<h2 id="分析-9"><a href="#分析-9" class="headerlink" title="分析"></a>分析</h2><p><img src="tenres.png" alt=""></p>
+<h2 id="知识点总结-9"><a href="#知识点总结-9" class="headerlink" title="知识点总结"></a>知识点总结</h2><blockquote>
+<p><strong>小顶堆：</strong> 每个节点的值 &lt;= 左右孩子节点的值</p>
+</blockquote>
+<p><img src="tenres.png" alt=""></p>
+<hr>
+<h1 id="求子串"><a href="#求子串" class="headerlink" title="求子串"></a>求子串</h1><h2 id="题目-10"><a href="#题目-10" class="headerlink" title="题目"></a>题目</h2><p><img src="eleven.png" alt=""></p>
+<h2 id="分析-10"><a href="#分析-10" class="headerlink" title="分析"></a>分析</h2><pre><code>字符串有8个字符
+非空子串数为8+7+...+2+1=8*9/2=36
+加上一个空串，总共的子串数量为37</code></pre><h2 id="知识点总结-10"><a href="#知识点总结-10" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>计算公式: n(n+1)/2+1  (等差数列求和) </code></pre><hr>
+<h1 id="求二叉树总结点数"><a href="#求二叉树总结点数" class="headerlink" title="求二叉树总结点数"></a>求二叉树总结点数</h1><h2 id="题目-11"><a href="#题目-11" class="headerlink" title="题目"></a>题目</h2><p><img src="twelve.png" alt=""></p>
+<h2 id="分析-11"><a href="#分析-11" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 叶子节点个数=度为2的节点个数+1
+2. 所以n2=4 
+3. 所以最终sum=n0+n1+n2=5+3+4=12</code></pre><h2 id="知识点总结-11"><a href="#知识点总结-11" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>叶子节点值和度为2节点个数关系:n0=n2+1</code></pre><hr>
+<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="题目-12"><a href="#题目-12" class="headerlink" title="题目"></a>题目</h2><p><img src="thirteen.png" alt=""></p>
+<h2 id="分析-12"><a href="#分析-12" class="headerlink" title="分析"></a>分析</h2><pre><code>简单选择排序、快速排序、冒泡排序、堆排序</code></pre><h2 id="知识点总结-12"><a href="#知识点总结-12" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="求哈夫曼树带权路径长度"><a href="#求哈夫曼树带权路径长度" class="headerlink" title="求哈夫曼树带权路径长度"></a>求哈夫曼树带权路径长度</h1><h2 id="题目-13"><a href="#题目-13" class="headerlink" title="题目"></a>题目</h2><p><img src="fourteen.png" alt=""></p>
+<h2 id="分析-13"><a href="#分析-13" class="headerlink" title="分析"></a>分析</h2><blockquote>
+<p>根据构造哈夫曼树,然后计算权值</p>
+</blockquote>
+<p><img src="fourteenres.png" alt=""></p>
+<h2 id="知识点总结-13"><a href="#知识点总结-13" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>根据构造哈夫曼树(每次选最小的两个构成新的节点),然后计算权值(节点值*深度)</code></pre><hr>
+<h1 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h1><h2 id="题目-14"><a href="#题目-14" class="headerlink" title="题目"></a>题目</h2><p><img src="fiveteen.png" alt=""></p>
+<h2 id="分析-14"><a href="#分析-14" class="headerlink" title="分析"></a>分析</h2><pre><code>关键字:依次  所以只能选循环链表</code></pre><h2 id="知识点总结-14"><a href="#知识点总结-14" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 双向链表: 从中间一个点,必须先往左一次再掉头往右一次才能遍历
+2. 循环链表: 只要沿着一个方向一直走下遍历</code></pre><hr>
+<h1 id="TCP-IP各层及协议分布"><a href="#TCP-IP各层及协议分布" class="headerlink" title="TCP/IP各层及协议分布"></a>TCP/IP各层及协议分布</h1><h2 id="题目-15"><a href="#题目-15" class="headerlink" title="题目"></a>题目</h2><p><img src="sixteen.png" alt=""></p>
+<h2 id="分析-15"><a href="#分析-15" class="headerlink" title="分析"></a>分析</h2><pre><code>ssh是应用层协议</code></pre><h2 id="知识点总结-15"><a href="#知识点总结-15" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. SSH是secure shell缩写
+2. 建立在应用层基础上的安全协议(比较可靠)</code></pre><hr>
+<h1 id="数据链路层设备"><a href="#数据链路层设备" class="headerlink" title="数据链路层设备"></a>数据链路层设备</h1><h2 id="题目-16"><a href="#题目-16" class="headerlink" title="题目"></a>题目</h2><p><img src="seventeen.png" alt=""></p>
+<h2 id="分析-16"><a href="#分析-16" class="headerlink" title="分析"></a>分析</h2><pre><code>数据链路层是交换机</code></pre><h2 id="知识点总结-16"><a href="#知识点总结-16" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 应用层: 网关
+2. 网络层: 路由器(分组交换)    
+3. 数据链路层: 网桥 交换器
+4. 物理层: 中继器(再生数字信号) 集线器(放大信号)</code></pre><hr>
+<h1 id="分组交换和电路交换"><a href="#分组交换和电路交换" class="headerlink" title="分组交换和电路交换"></a>分组交换和电路交换</h1><h2 id="题目-17"><a href="#题目-17" class="headerlink" title="题目"></a>题目</h2><p><img src="eighteen.png" alt=""></p>
+<h2 id="分析-17"><a href="#分析-17" class="headerlink" title="分析"></a>分析</h2><pre><code>打电话有保证  电路交换
+手机上网无保证 分组交换</code></pre><h2 id="知识点总结-17"><a href="#知识点总结-17" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 电路交换 有预留，且分配一定空间，提供专用的网络资源，提供有保证的服务，应用于电话网；
+2. 分组交换 无预留，且不分配空间，存在网络资源争用，提供有无保证的服务。分组交换可用于数据报网络和虚电路网络。我们常用的Internet就是数据报网络，单位是Bit。</code></pre><hr>
+<h1 id="后退N帧协议"><a href="#后退N帧协议" class="headerlink" title="后退N帧协议"></a>后退N帧协议</h1><h2 id="题目-18"><a href="#题目-18" class="headerlink" title="题目"></a>题目</h2><p><img src="nineteen.png" alt=""></p>
+<h2 id="分析-18"><a href="#分析-18" class="headerlink" title="分析"></a>分析</h2><pre><code>滑动窗口协议有
+    1、停止等待协议，发送窗口=1，接受窗口=1；
+    2、退后N帧协议，发送&gt;1,接收=1;
+    3、选择重传协议，发送&gt;1,接收&gt;1;</code></pre><h2 id="知识点总结-18"><a href="#知识点总结-18" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>滑动窗口协议有
+    1、停止等待协议，发送窗口=1，接受窗口=1；
+    2、退后N帧协议，发送&gt;1,接收=1;
+    3、选择重传协议，发送&gt;1,接收&gt;1;</code></pre><hr>
+<h1 id="避免拥塞控制"><a href="#避免拥塞控制" class="headerlink" title="避免拥塞控制"></a>避免拥塞控制</h1><h2 id="题目-19"><a href="#题目-19" class="headerlink" title="题目"></a>题目</h2><p><img src="twenty.png" alt=""></p>
+<h2 id="分析-19"><a href="#分析-19" class="headerlink" title="分析"></a>分析</h2><pre><code>慢开始
+拥塞避免
+快重传
+快恢复</code></pre><h2 id="知识点总结-19"><a href="#知识点总结-19" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>拥塞控制算法四种:
+    慢开始
+    拥塞避免
+    快重传
+    快恢复</code></pre><hr>
+<h1 id="TCP三次挥手ACK"><a href="#TCP三次挥手ACK" class="headerlink" title="TCP三次挥手ACK"></a>TCP三次挥手ACK</h1><h2 id="题目-20"><a href="#题目-20" class="headerlink" title="题目"></a>题目</h2><p><img src="twentyone.png" alt=""></p>
+<h2 id="分析-20"><a href="#分析-20" class="headerlink" title="分析"></a>分析</h2><p><img src="twentyoneres.png" alt=""></p>
+<h2 id="知识点总结-20"><a href="#知识点总结-20" class="headerlink" title="知识点总结"></a>知识点总结</h2><blockquote>
+<p><strong>每次都要发ack确定</strong></p>
+</blockquote>
+<p><img src="twentyoneres.png" alt=""></p>
+<hr>
+<h1 id="预防Ddos方法"><a href="#预防Ddos方法" class="headerlink" title="预防Ddos方法"></a>预防Ddos方法</h1><h2 id="题目-21"><a href="#题目-21" class="headerlink" title="题目"></a>题目</h2><p><img src="twentytwo.png" alt=""></p>
+<h2 id="分析-21"><a href="#分析-21" class="headerlink" title="分析"></a>分析</h2><pre><code>我感觉选A和B  
+a减少重传次数 b减少半连接重传总时长</code></pre><h2 id="知识点总结-21"><a href="#知识点总结-21" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 半连接:服务器发送SYN-ACK之后，收到客户端的ACK之前的TCP连接称为半连接。
+2. 攻击客户端通过发包器，在短时间内伪造大量不存在的IP地址，
+3. 向服务器不断地发送SYN包，服务器回复确认包SYN/ACK，并等待客户的确认，由于源地址是不存在的，服务器需要不断的重发SYN/ACK直至超时，这些伪造的SYN包将长时间占用未连接队列，正常的SYN请求被丢弃，目标系统运行缓慢，严重者引起网络堵塞甚至系统瘫痪。
+4. SYN攻击是一个典型的DDOS攻击。所以缩短超时时间和半连接数目都可以解决。</code></pre><hr>
+<h1 id="linux加载指令"><a href="#linux加载指令" class="headerlink" title="linux加载指令"></a>linux加载指令</h1><h2 id="题目-22"><a href="#题目-22" class="headerlink" title="题目"></a>题目</h2><p><img src="twentythree.png" alt=""></p>
+<h2 id="分析-22"><a href="#分析-22" class="headerlink" title="分析"></a>分析</h2><pre><code>1. -r: 将文件系统作为只读文件系统进行安装，而不考虑它先前在 /etc/file systems 文件中指定的内容或者先前的任何命令行选项。
+2. ro : 将已安装的文件指定为只读文件，而不考虑它先前在 /etc/file systems 文件中指定的选项或者先前的任何命令行选项。缺省值是 rw。</code></pre><h2 id="知识点总结-22"><a href="#知识点总结-22" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="软连接"><a href="#软连接" class="headerlink" title="软连接"></a>软连接</h1><h2 id="题目-23"><a href="#题目-23" class="headerlink" title="题目"></a>题目</h2><p><img src="twentyfour.png" alt=""></p>
+<h2 id="分析-23"><a href="#分析-23" class="headerlink" title="分析"></a>分析</h2><pre><code>我觉得答案选C 不接受反驳</code></pre><h2 id="知识点总结-23"><a href="#知识点总结-23" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 软连接知识点:
+    1.1 可以有自己的文件属性和权限
+    1.2 可以对不存在的文件/目录创建软连接
+    1.3 软连接可以交叉文件系统
+    1.4 创建软连接,连接计数i_nlink不会增加 </code></pre><hr>
+<h1 id="Ext3日志文件系统特点"><a href="#Ext3日志文件系统特点" class="headerlink" title="Ext3日志文件系统特点"></a>Ext3日志文件系统特点</h1><h2 id="题目-24"><a href="#题目-24" class="headerlink" title="题目"></a>题目</h2><p><img src="twentyfive.png" alt=""></p>
+<h2 id="分析-24"><a href="#分析-24" class="headerlink" title="分析"></a>分析</h2><pre><code>我觉得四个选项都有 所以选ABCD</code></pre><h2 id="知识点总结-24"><a href="#知识点总结-24" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1、高可用性：系统使用了ext3文件系统后，即使在非正常关机后，系统也不需要检查文件系统。
+ 2、数据的完整性：避免了意外宕机对文件系统的破坏。
+ 3、文件系统的速度：因为ext3的日志功能对磁盘的驱动器读写头进行了优化。所以，文件系统的读写性能较之Ext2文件系统并来说，性能并没有降低。 
+4、数据转换 ：“由ext2文件系统转换成ext3文件系统非常容易。
+ 5、多种日志模式</code></pre><hr>
+<h1 id="DHCP协议作用"><a href="#DHCP协议作用" class="headerlink" title="DHCP协议作用"></a>DHCP协议作用</h1><h2 id="题目-25"><a href="#题目-25" class="headerlink" title="题目"></a>题目</h2><p><img src="twentysix.png" alt=""></p>
+<h2 id="分析-25"><a href="#分析-25" class="headerlink" title="分析"></a>分析</h2><pre><code>为网络中主机分配IP地址 </code></pre><h2 id="知识点总结-25"><a href="#知识点总结-25" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. DHCP）是一个局域网的网络协议，使用UDP协议工作，
+2. 主要有两个用途：
+    1. 给内部网络或网络服务供应商自动分配IP地址给用户
+    2. 内部网络管理员作为对所有计算机管理的手段。</code></pre><hr>
+<h1 id="获取本地ip地址"><a href="#获取本地ip地址" class="headerlink" title="获取本地ip地址"></a>获取本地ip地址</h1><h2 id="题目-26"><a href="#题目-26" class="headerlink" title="题目"></a>题目</h2><p><img src="twentyseven.png" alt=""></p>
+<h2 id="分析-26"><a href="#分析-26" class="headerlink" title="分析"></a>分析</h2><pre><code>1. ipconfig 是win10系统
+2. ifconfig 是linux系统</code></pre><h2 id="知识点总结-26"><a href="#知识点总结-26" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. ipconfig 是win10系统
+2. ifconfig 是linux系统</code></pre><hr>
+<h1 id="获取本地cpu使用率"><a href="#获取本地cpu使用率" class="headerlink" title="获取本地cpu使用率"></a>获取本地cpu使用率</h1><h2 id="题目-27"><a href="#题目-27" class="headerlink" title="题目"></a>题目</h2><p><img src="twentyeight.png" alt=""></p>
+<h2 id="分析-27"><a href="#分析-27" class="headerlink" title="分析"></a>分析</h2><pre><code>1. top可以得到本地cpu使用情况</code></pre><h2 id="知识点总结-27"><a href="#知识点总结-27" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>A ifconfig命令 : 被用于配置和显示Linux内核中网络接口的网络参数。
+B uptime命令 : 打印系统总共运行了多长时间和系统的平均负载。
+C top命令 : 可以实时动态地查看系统的整体运行情况，是一个综合了多方信息监测系统性能和运行信息的实用工具。
+D netstat命令 : 用来打印Linux中网络系统的状态信息，可让你得知整个Linux系统的网络情况。</code></pre><hr>
+<h1 id="设置环境变量指令"><a href="#设置环境变量指令" class="headerlink" title="设置环境变量指令"></a>设置环境变量指令</h1><h2 id="题目-28"><a href="#题目-28" class="headerlink" title="题目"></a>题目</h2><p><img src="twentynine.png" alt=""></p>
+<h2 id="分析-28"><a href="#分析-28" class="headerlink" title="分析"></a>分析</h2><pre><code>1. export 设置环境变量
+2. env 创建环境变量
+3. cat 用于连接文件并打印到标准输出设备
+4. echo 显示文字并且修改颜色</code></pre><h2 id="知识点总结-28"><a href="#知识点总结-28" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. export 设置环境变量
+2. env 创建环境变量
+3. cat 用于连接文件并打印到标准输出设备
+4. echo 显示文字并且修改颜色</code></pre><hr>
+<h1 id="第一范式-1NF"><a href="#第一范式-1NF" class="headerlink" title="第一范式(1NF)"></a>第一范式(1NF)</h1><h2 id="题目-29"><a href="#题目-29" class="headerlink" title="题目"></a>题目</h2><p><img src="thirty.png" alt=""></p>
+<h2 id="分析-29"><a href="#分析-29" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 第一范式保证原子性
+2. 第二范式不存在部分依赖 B错误
+3. 第三范式不存在传递依赖 AD错误</code></pre><h2 id="知识点总结-29"><a href="#知识点总结-29" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 第一范式保证原子性 (不可拆分)
+2. 第二范式不存在部分依赖
+3. 第三范式不存在传递依赖 </code></pre><hr>
+<h1 id="Sql语句"><a href="#Sql语句" class="headerlink" title="Sql语句"></a>Sql语句</h1><h2 id="题目-30"><a href="#题目-30" class="headerlink" title="题目"></a>题目</h2><p><img src="thirtyone.png" alt=""></p>
+<h2 id="分析-30"><a href="#分析-30" class="headerlink" title="分析"></a>分析</h2><pre><code>由于结果里面有两个表而且要table1所以要left左连接 AB错误
+而left semi join表示只打印出左边表的key C错误</code></pre><h2 id="知识点总结-30"><a href="#知识点总结-30" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 两个表要找一个表的完全内容只能是 left/right连接
+2. 然后考虑是否是全部输出</code></pre><hr>
+<h1 id="Mysql数据库引擎MyISAM-以前默认的"><a href="#Mysql数据库引擎MyISAM-以前默认的" class="headerlink" title="Mysql数据库引擎MyISAM(以前默认的)"></a>Mysql数据库引擎MyISAM(以前默认的)</h1><h2 id="题目-31"><a href="#题目-31" class="headerlink" title="题目"></a>题目</h2><p><img src="thirtytwo.png" alt=""></p>
+<h2 id="分析-31"><a href="#分析-31" class="headerlink" title="分析"></a>分析</h2><pre><code>1. Innodb支持事务和行级锁 所以A错误    </code></pre><h2 id="知识点总结-31"><a href="#知识点总结-31" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1:不支持事务、不具备AICD特性(原子性、一致性、分离性、永久性);
+2:表级别锁定形式(更新数据时锁定整个表、这样虽然可以让锁定的实现成本很小但是同时大大降低了其并发的性能)；
+3:读写相互阻塞(不仅会在写入的时候阻塞读取、还会在读取的时候阻塞写入、但是读取不会阻塞读取);
+4:只会缓存索引(myisam通过key_buffer_size来设置缓存索引，提高访问性能较少磁盘IO的压力、但是只缓存索引、不缓存数据);
+5:读取速度快、占用资源比较少;
+6:不支持外键约束、只支持全文检索；
+7:是MySQL5.5.5版本之前的默认存储引擎；</code></pre><hr>
+<h1 id="sql语句索引"><a href="#sql语句索引" class="headerlink" title="sql语句索引"></a>sql语句索引</h1><h2 id="题目-32"><a href="#题目-32" class="headerlink" title="题目"></a>题目</h2><p><img src="thirtythree.png" alt=""></p>
+<h2 id="分析-32"><a href="#分析-32" class="headerlink" title="分析"></a>分析</h2><pre><code>b+树的数据项是复合的数据结构
+    比如(name,age,sex)的时候,b+数是按照从左到右的顺序来建立搜索树的
+    比如当(张三,20,F)这样的数据来检索的时候，
+    b+树会优先比较name来确定下一步的所搜方向，如果name相同再依次比较age和sex，最后得到检索的数据
+所以C错误 -- 但当(20,F)这样的没有name的数据来的时候，b+树就不知道下一步该查哪个节点</code></pre><h2 id="知识点总结-32"><a href="#知识点总结-32" class="headerlink" title="知识点总结"></a>知识点总结</h2><blockquote>
+<p><strong>索引的最左匹配特性</strong></p>
+</blockquote>
+<hr>
+<h1 id="Delete和Truncate-table区别"><a href="#Delete和Truncate-table区别" class="headerlink" title="Delete和Truncate table区别"></a>Delete和Truncate table区别</h1><h2 id="题目-33"><a href="#题目-33" class="headerlink" title="题目"></a>题目</h2><p><img src="thirtyfour.png" alt=""></p>
+<h2 id="分析-33"><a href="#分析-33" class="headerlink" title="分析"></a>分析</h2><pre><code>执行速度:  drop&gt; truncate &gt; delete  A对</code></pre><h2 id="知识点总结-33"><a href="#知识点总结-33" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="根据描述写sql语句"><a href="#根据描述写sql语句" class="headerlink" title="根据描述写sql语句"></a>根据描述写sql语句</h1><h2 id="题目-34"><a href="#题目-34" class="headerlink" title="题目"></a>题目</h2><p><img src="thirtyfive.png" alt=""></p>
+<h2 id="分析-34"><a href="#分析-34" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 要查每个国家的用户人数肯定要有限制所以CD错误
+2. B选项只能查到某个国家的人数 所以要用group by语句</code></pre><h2 id="知识点总结-34"><a href="#知识点总结-34" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>考察select语句和分组语句</code></pre><hr>
+<h1 id="备忘录模式"><a href="#备忘录模式" class="headerlink" title="备忘录模式"></a>备忘录模式</h1><h2 id="题目-35"><a href="#题目-35" class="headerlink" title="题目"></a>题目</h2><p><img src="thirtysix.png" alt=""></p>
+<h2 id="分析-35"><a href="#分析-35" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 听着名字就感觉是备忘录模式存放</code></pre><h2 id="知识点总结-35"><a href="#知识点总结-35" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 备忘录模式: 适合恢复某个类的先前状态(类似于快照功能)</code></pre><hr>
+<h1 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h1><h2 id="题目-36"><a href="#题目-36" class="headerlink" title="题目"></a>题目</h2><p><img src="thirtyseven.png" alt=""></p>
+<h2 id="分析-36"><a href="#分析-36" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 建造者模式：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
+2. 适配器模式：将一个类的接口转换成另外一个客户希望的接口。Adapter 模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。
+3. 桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。</code></pre><h2 id="知识点总结-36"><a href="#知识点总结-36" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 建造者模式：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
+2. 适配器模式：将一个类的接口转换成另外一个客户希望的接口。Adapter 模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。
+3. 桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。</code></pre><hr>
+<h1 id="代码执行顺序"><a href="#代码执行顺序" class="headerlink" title="代码执行顺序"></a>代码执行顺序</h1><h2 id="题目-37"><a href="#题目-37" class="headerlink" title="题目"></a>题目</h2><p><img src="thirtyeight.png" alt=""></p>
+<h2 id="分析-37"><a href="#分析-37" class="headerlink" title="分析"></a>分析</h2><pre><code>静态初始化代码块 &gt; 初始化代码块 &gt; 构造函数
+1. 先加载static块 输出D
+2. 然后执行main方法 输出A
+3. 执行代码块 输出C
+4. 执行Main方法 输出B
+5. 有一次执行代码块 输出C
+6. 执行Main方法 输出B
+7. 最终结果为: DACBCB</code></pre><h2 id="知识点总结-37"><a href="#知识点总结-37" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="Integer和int区别"><a href="#Integer和int区别" class="headerlink" title="Integer和int区别"></a>Integer和int区别</h1><h2 id="题目-38"><a href="#题目-38" class="headerlink" title="题目"></a>题目</h2><p><img src="thirtynine.png" alt=""></p>
+<h2 id="分析-38"><a href="#分析-38" class="headerlink" title="分析"></a>分析</h2><pre><code>1. Integer相当于string是写死的 所以值不会变
+2. int值传递不会影响int的结果
+3. 最终结果应该还是10 10</code></pre><h2 id="知识点总结-38"><a href="#知识点总结-38" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. Integer范围是[-128,127]
+2. Integer是写死的 所以值不会变</code></pre><hr>
+<h1 id="String实例问题"><a href="#String实例问题" class="headerlink" title="String实例问题"></a>String实例问题</h1><h2 id="题目-39"><a href="#题目-39" class="headerlink" title="题目"></a>题目</h2><p><img src="forty.png" alt=""></p>
+<h2 id="分析-39"><a href="#分析-39" class="headerlink" title="分析"></a>分析</h2><pre><code>1. s1生成之后 s2生成的时候发现s1已经有了 所以指向了s1位置 所以 s1==s2为true
+2. s3重新生成对象 所以s1==s3为false</code></pre><h2 id="知识点总结-39"><a href="#知识点总结-39" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>考虑生成实例对象的问题</code></pre><hr>
+<h1 id="Java类加载1-0"><a href="#Java类加载1-0" class="headerlink" title="Java类加载1.0"></a>Java类加载1.0</h1><h2 id="题目-40"><a href="#题目-40" class="headerlink" title="题目"></a>题目</h2><p><img src="fortyone.png" alt=""></p>
+<h2 id="分析-40"><a href="#分析-40" class="headerlink" title="分析"></a>分析</h2><pre><code>1. static和final同时修饰的变量,类没初始化的时候就可以访问 所以没有输出OK
+2. 最后直接输出JD</code></pre><h2 id="知识点总结-40"><a href="#知识点总结-40" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>static和final同时修饰的变量,类没初始化的时候就可以访问</code></pre><hr>
+<h1 id="Java类加载2-0"><a href="#Java类加载2-0" class="headerlink" title="Java类加载2.0"></a>Java类加载2.0</h1><h2 id="题目-41"><a href="#题目-41" class="headerlink" title="题目"></a>题目</h2><p><img src="fortytwo.png" alt=""></p>
+<h2 id="分析-41"><a href="#分析-41" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 和上道题区别是JD这次是实例对象
+2. 所以还是需要先打印OK然后打印JD    </code></pre><h2 id="知识点总结-41"><a href="#知识点总结-41" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="Java类加载3-0"><a href="#Java类加载3-0" class="headerlink" title="Java类加载3.0"></a>Java类加载3.0</h1><h2 id="题目-42"><a href="#题目-42" class="headerlink" title="题目"></a>题目</h2><p><img src="fortythree.png" alt=""></p>
+<h2 id="分析-42"><a href="#分析-42" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 和上道题区别就是实例在下面
+2. 其实没啥区别所以还是OKJD</code></pre><h2 id="知识点总结-42"><a href="#知识点总结-42" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="父子继承类1-0"><a href="#父子继承类1-0" class="headerlink" title="父子继承类1.0"></a>父子继承类1.0</h1><h2 id="题目-43"><a href="#题目-43" class="headerlink" title="题目"></a>题目</h2><p><img src="fortyfour.png" alt=""></p>
+<h2 id="分析-43"><a href="#分析-43" class="headerlink" title="分析"></a>分析</h2><pre><code>和上面题一样 static和final修饰的变量不经过类初始化 所以只有C输出</code></pre><h2 id="知识点总结-43"><a href="#知识点总结-43" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="父子继承类2-0"><a href="#父子继承类2-0" class="headerlink" title="父子继承类2.0"></a>父子继承类2.0</h1><h2 id="题目-44"><a href="#题目-44" class="headerlink" title="题目"></a>题目</h2><p><img src="fortyfive.png" alt=""></p>
+<h2 id="分析-44"><a href="#分析-44" class="headerlink" title="分析"></a>分析</h2><pre><code>因为这道题c变量没有static和final共同修饰
+所以先静态代码块输出A然后输出C</code></pre><h2 id="知识点总结-44"><a href="#知识点总结-44" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="类加载器加载原理"><a href="#类加载器加载原理" class="headerlink" title="类加载器加载原理"></a>类加载器加载原理</h1><h2 id="题目-45"><a href="#题目-45" class="headerlink" title="题目"></a>题目</h2><p><img src="fortysix.png" alt=""></p>
+<h2 id="分析-45"><a href="#分析-45" class="headerlink" title="分析"></a>分析</h2><pre><code>其实就是先输出Test然后调用方法输出静态代码快的A</code></pre><h2 id="知识点总结-45"><a href="#知识点总结-45" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="异常try-catch-执行顺序"><a href="#异常try-catch-执行顺序" class="headerlink" title="异常try catch 执行顺序"></a>异常try catch 执行顺序</h1><h2 id="题目-46"><a href="#题目-46" class="headerlink" title="题目"></a>题目</h2><p><img src="fortyseven.png" alt=""></p>
+<h2 id="分析-46"><a href="#分析-46" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 先调用方法执行try语句输出A
+2. 执行fun2()方法 执行之后输出C
+3. 但是还是先不输出D 然后调回finally语句输出B
+4. 最后输出D
+5. 最后的顺序就是: ACBD</code></pre><h2 id="知识点总结-46"><a href="#知识点总结-46" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>try中含有return时，如果return中调用了函数或者表达式，会先执行，如果还有finally的话，会继续执行完finally的内容再返回。</code></pre><hr>
+<h1 id="list集合扩容"><a href="#list集合扩容" class="headerlink" title="list集合扩容"></a>list集合扩容</h1><h2 id="题目-47"><a href="#题目-47" class="headerlink" title="题目"></a>题目</h2><p><img src="fortyeight.png" alt=""></p>
+<h2 id="分析-47"><a href="#分析-47" class="headerlink" title="分析"></a>分析</h2><pre><code>10 15 22 33 49 73 109 所以是6次</code></pre><h2 id="知识点总结-47"><a href="#知识点总结-47" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>初始值为10 只有增长幅度为1.5倍</code></pre><hr>
+<h1 id="Object类方法"><a href="#Object类方法" class="headerlink" title="Object类方法"></a>Object类方法</h1><h2 id="题目-48"><a href="#题目-48" class="headerlink" title="题目"></a>题目</h2><p><img src="fortynine.png" alt=""></p>
+<h2 id="分析-48"><a href="#分析-48" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 应该是equals()方法</code></pre><h2 id="知识点总结-48"><a href="#知识点总结-48" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. clone方法
+2. getClass方法
+3. toString方法
+4. finalize方法
+5. equals方法
+6. hashCode方法
+7. wait方法
+8. notify方法
+9. notifyAll方法</code></pre><hr>
+<h1 id="线程池参数问题"><a href="#线程池参数问题" class="headerlink" title="线程池参数问题"></a>线程池参数问题</h1><h2 id="题目-49"><a href="#题目-49" class="headerlink" title="题目"></a>题目</h2><p><img src="fifty.png" alt=""></p>
+<h2 id="分析-49"><a href="#分析-49" class="headerlink" title="分析"></a>分析</h2><pre><code>前三个参数是 核心线程 最大线程池 保持时间
+所以说一定会有5个线程不会被结束</code></pre><h2 id="知识点总结-49"><a href="#知识点总结-49" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="线程执行"><a href="#线程执行" class="headerlink" title="线程执行"></a>线程执行</h1><h2 id="题目-50"><a href="#题目-50" class="headerlink" title="题目"></a>题目</h2><p><img src="fiftyone.png" alt=""></p>
+<h2 id="分析-50"><a href="#分析-50" class="headerlink" title="分析"></a>分析</h2><pre><code>最终执行顺序是 Thread 1 Thread 2 main</code></pre><h2 id="知识点总结-50"><a href="#知识点总结-50" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="linux文件权限问题"><a href="#linux文件权限问题" class="headerlink" title="linux文件权限问题"></a>linux文件权限问题</h1><h2 id="题目-51"><a href="#题目-51" class="headerlink" title="题目"></a>题目</h2><p><img src="fiftytwo.png" alt=""></p>
+<h2 id="分析-51"><a href="#分析-51" class="headerlink" title="分析"></a>分析</h2><pre><code>说实话我感觉BCD都对</code></pre><h2 id="知识点总结-51"><a href="#知识点总结-51" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="算数运算符的指令形式"><a href="#算数运算符的指令形式" class="headerlink" title="算数运算符的指令形式"></a>算数运算符的指令形式</h1><h2 id="题目-52"><a href="#题目-52" class="headerlink" title="题目"></a>题目</h2><p><img src="fiftythree.png" alt=""></p>
+<h2 id="分析-52"><a href="#分析-52" class="headerlink" title="分析"></a>分析</h2><pre><code>&gt;= 就是 ge greater than or equal</code></pre><h2 id="知识点总结-52"><a href="#知识点总结-52" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>EQ 就是 EQUAL等于 
+NE就是 NOT EQUAL不等于 
+GT 就是 GREATER THAN大于 
+LT 就是 LESS THAN小于 
+GE 就是 GREATER THAN OR EQUAL 大于等于 
+LE 就是 LESS THAN OR EQUAL 小于等于</code></pre><hr>
+<h1 id="指令执行结果"><a href="#指令执行结果" class="headerlink" title="指令执行结果"></a>指令执行结果</h1><h2 id="题目-53"><a href="#题目-53" class="headerlink" title="题目"></a>题目</h2><p><img src="fiftyfour.png" alt=""></p>
+<h2 id="分析-53"><a href="#分析-53" class="headerlink" title="分析"></a>分析</h2><pre><code>echo就是更改输出颜色
+expr是修改环境变量 应该输出的是0</code></pre><h2 id="知识点总结-53"><a href="#知识点总结-53" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="修改权限-春招出过这道题目"><a href="#修改权限-春招出过这道题目" class="headerlink" title="修改权限(春招出过这道题目)"></a>修改权限(春招出过这道题目)</h1><h2 id="题目-54"><a href="#题目-54" class="headerlink" title="题目"></a>题目</h2><p><img src="fiftyfive.png" alt=""></p>
+<h2 id="分析-54"><a href="#分析-54" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 4 2 1 / r w x 就是对应的读 写 执行
+2. 所以应该是 0 5(4+1) 0 </code></pre><h2 id="知识点总结-54"><a href="#知识点总结-54" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="bash脚本文件开头"><a href="#bash脚本文件开头" class="headerlink" title="bash脚本文件开头(#!)"></a>bash脚本文件开头(#!)</h1><h2 id="题目-55"><a href="#题目-55" class="headerlink" title="题目"></a>题目</h2><p><img src="fiftysix.png" alt=""></p>
+<h2 id="分析-55"><a href="#分析-55" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 开头就是 #!</code></pre><h2 id="知识点总结-55"><a href="#知识点总结-55" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="获取上一条命令的返回码"><a href="#获取上一条命令的返回码" class="headerlink" title="获取上一条命令的返回码($?)"></a>获取上一条命令的返回码($?)</h1><h2 id="题目-56"><a href="#题目-56" class="headerlink" title="题目"></a>题目</h2><p><img src="fiftyseven.png" alt=""></p>
+<h2 id="分析-56"><a href="#分析-56" class="headerlink" title="分析"></a>分析</h2><pre><code>$? 可以获取上一条命令的返回码</code></pre><h2 id="知识点总结-56"><a href="#知识点总结-56" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="linux执行文件"><a href="#linux执行文件" class="headerlink" title="linux执行文件"></a>linux执行文件</h1><h2 id="题目-57"><a href="#题目-57" class="headerlink" title="题目"></a>题目</h2><p><img src="fiftyeight.png" alt=""></p>
+<h2 id="分析-57"><a href="#分析-57" class="headerlink" title="分析"></a>分析</h2><pre><code>先../返回到根目录 然后&gt; 找到目录 最后 echo执行结果</code></pre><h2 id="知识点总结-57"><a href="#知识点总结-57" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+<h1 id="标准输出和错误重定向"><a href="#标准输出和错误重定向" class="headerlink" title="标准输出和错误重定向"></a>标准输出和错误重定向</h1><h2 id="题目-58"><a href="#题目-58" class="headerlink" title="题目"></a>题目</h2><p><img src="fiftynine.png" alt=""></p>
+<h2 id="分析-58"><a href="#分析-58" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 错误重定向 2&gt;
+2. 标准输出 &gt;
+3. 同时的话就是 &amp;&gt;</code></pre><h2 id="知识点总结-58"><a href="#知识点总结-58" class="headerlink" title="知识点总结"></a>知识点总结</h2><pre><code>1. 错误重定向 2&gt;
+2. 标准输出 &gt;
+3. 同时的话就是 &amp;&gt;</code></pre><hr>
+<h1 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h1><h2 id="题目-59"><a href="#题目-59" class="headerlink" title="题目"></a>题目</h2><p><img src="sixty.png" alt=""></p>
+<h2 id="分析-59"><a href="#分析-59" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 铁桌子和木桌子的例子印象深刻
+2. 虽然图看不清但是大概看出样子就觉得是A</code></pre><h2 id="知识点总结-59"><a href="#知识点总结-59" class="headerlink" title="知识点总结"></a>知识点总结</h2><hr>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/">京东2019校招笔试Java开发工程师笔试题</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
+        <p><span>发布时间:</span>2020年07月31日 - 22时32分</p>
+        <p><span>最后更新:</span>2020年08月01日 - 22时57分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/" title="京东2019校招笔试Java开发工程师笔试题">https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          设计模式总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/30/%E4%BA%AC%E4%B8%9C2019%E6%98%A5%E6%8B%9B%E4%BA%AC%E4%B8%9CJava%E5%BC%80%E5%8F%91%E8%AF%95%E5%8D%B7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">京东2019春招京东Java开发试卷</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目分析"><span class="toc-number">1.</span> <span class="toc-text">题目分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#软件开发增量模型"><span class="toc-number">2.</span> <span class="toc-text">软件开发增量模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">2.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结"><span class="toc-number">2.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#值类型和引用类型"><span class="toc-number">3.</span> <span class="toc-text">值类型和引用类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-1"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-1"><span class="toc-number">3.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-1"><span class="toc-number">3.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作系统避免死锁"><span class="toc-number">4.</span> <span class="toc-text">操作系统避免死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-2"><span class="toc-number">4.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-2"><span class="toc-number">4.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-2"><span class="toc-number">4.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#奇数和算法"><span class="toc-number">5.</span> <span class="toc-text">奇数和算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-3"><span class="toc-number">5.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-3"><span class="toc-number">5.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-3"><span class="toc-number">5.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#递归法"><span class="toc-number">6.</span> <span class="toc-text">递归法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-4"><span class="toc-number">6.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-4"><span class="toc-number">6.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-4"><span class="toc-number">6.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串比较"><span class="toc-number">7.</span> <span class="toc-text">字符串比较</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-5"><span class="toc-number">7.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-5"><span class="toc-number">7.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-5"><span class="toc-number">7.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#看代码判断结果"><span class="toc-number">8.</span> <span class="toc-text">看代码判断结果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-6"><span class="toc-number">8.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-6"><span class="toc-number">8.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-6"><span class="toc-number">8.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运算符优先级"><span class="toc-number">9.</span> <span class="toc-text">运算符优先级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-7"><span class="toc-number">9.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-7"><span class="toc-number">9.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-7"><span class="toc-number">9.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何确定一棵二叉树"><span class="toc-number">10.</span> <span class="toc-text">如何确定一棵二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-8"><span class="toc-number">10.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-8"><span class="toc-number">10.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-8"><span class="toc-number">10.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#求小顶堆左子节点"><span class="toc-number">11.</span> <span class="toc-text">求小顶堆左子节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-9"><span class="toc-number">11.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-9"><span class="toc-number">11.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-9"><span class="toc-number">11.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#求子串"><span class="toc-number">12.</span> <span class="toc-text">求子串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-10"><span class="toc-number">12.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-10"><span class="toc-number">12.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-10"><span class="toc-number">12.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#求二叉树总结点数"><span class="toc-number">13.</span> <span class="toc-text">求二叉树总结点数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-11"><span class="toc-number">13.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-11"><span class="toc-number">13.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-11"><span class="toc-number">13.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排序算法"><span class="toc-number">14.</span> <span class="toc-text">排序算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-12"><span class="toc-number">14.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-12"><span class="toc-number">14.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-12"><span class="toc-number">14.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#求哈夫曼树带权路径长度"><span class="toc-number">15.</span> <span class="toc-text">求哈夫曼树带权路径长度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-13"><span class="toc-number">15.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-13"><span class="toc-number">15.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-13"><span class="toc-number">15.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#循环链表"><span class="toc-number">16.</span> <span class="toc-text">循环链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-14"><span class="toc-number">16.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-14"><span class="toc-number">16.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-14"><span class="toc-number">16.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP-IP各层及协议分布"><span class="toc-number">17.</span> <span class="toc-text">TCP&#x2F;IP各层及协议分布</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-15"><span class="toc-number">17.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-15"><span class="toc-number">17.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-15"><span class="toc-number">17.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据链路层设备"><span class="toc-number">18.</span> <span class="toc-text">数据链路层设备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-16"><span class="toc-number">18.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-16"><span class="toc-number">18.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-16"><span class="toc-number">18.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分组交换和电路交换"><span class="toc-number">19.</span> <span class="toc-text">分组交换和电路交换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-17"><span class="toc-number">19.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-17"><span class="toc-number">19.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-17"><span class="toc-number">19.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后退N帧协议"><span class="toc-number">20.</span> <span class="toc-text">后退N帧协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-18"><span class="toc-number">20.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-18"><span class="toc-number">20.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-18"><span class="toc-number">20.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#避免拥塞控制"><span class="toc-number">21.</span> <span class="toc-text">避免拥塞控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-19"><span class="toc-number">21.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-19"><span class="toc-number">21.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-19"><span class="toc-number">21.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP三次挥手ACK"><span class="toc-number">22.</span> <span class="toc-text">TCP三次挥手ACK</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-20"><span class="toc-number">22.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-20"><span class="toc-number">22.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-20"><span class="toc-number">22.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#预防Ddos方法"><span class="toc-number">23.</span> <span class="toc-text">预防Ddos方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-21"><span class="toc-number">23.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-21"><span class="toc-number">23.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-21"><span class="toc-number">23.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#linux加载指令"><span class="toc-number">24.</span> <span class="toc-text">linux加载指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-22"><span class="toc-number">24.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-22"><span class="toc-number">24.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-22"><span class="toc-number">24.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#软连接"><span class="toc-number">25.</span> <span class="toc-text">软连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-23"><span class="toc-number">25.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-23"><span class="toc-number">25.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-23"><span class="toc-number">25.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ext3日志文件系统特点"><span class="toc-number">26.</span> <span class="toc-text">Ext3日志文件系统特点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-24"><span class="toc-number">26.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-24"><span class="toc-number">26.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-24"><span class="toc-number">26.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DHCP协议作用"><span class="toc-number">27.</span> <span class="toc-text">DHCP协议作用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-25"><span class="toc-number">27.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-25"><span class="toc-number">27.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-25"><span class="toc-number">27.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#获取本地ip地址"><span class="toc-number">28.</span> <span class="toc-text">获取本地ip地址</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-26"><span class="toc-number">28.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-26"><span class="toc-number">28.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-26"><span class="toc-number">28.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#获取本地cpu使用率"><span class="toc-number">29.</span> <span class="toc-text">获取本地cpu使用率</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-27"><span class="toc-number">29.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-27"><span class="toc-number">29.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-27"><span class="toc-number">29.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设置环境变量指令"><span class="toc-number">30.</span> <span class="toc-text">设置环境变量指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-28"><span class="toc-number">30.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-28"><span class="toc-number">30.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-28"><span class="toc-number">30.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一范式-1NF"><span class="toc-number">31.</span> <span class="toc-text">第一范式(1NF)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-29"><span class="toc-number">31.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-29"><span class="toc-number">31.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-29"><span class="toc-number">31.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sql语句"><span class="toc-number">32.</span> <span class="toc-text">Sql语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-30"><span class="toc-number">32.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-30"><span class="toc-number">32.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-30"><span class="toc-number">32.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mysql数据库引擎MyISAM-以前默认的"><span class="toc-number">33.</span> <span class="toc-text">Mysql数据库引擎MyISAM(以前默认的)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-31"><span class="toc-number">33.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-31"><span class="toc-number">33.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-31"><span class="toc-number">33.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sql语句索引"><span class="toc-number">34.</span> <span class="toc-text">sql语句索引</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-32"><span class="toc-number">34.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-32"><span class="toc-number">34.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-32"><span class="toc-number">34.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Delete和Truncate-table区别"><span class="toc-number">35.</span> <span class="toc-text">Delete和Truncate table区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-33"><span class="toc-number">35.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-33"><span class="toc-number">35.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-33"><span class="toc-number">35.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#根据描述写sql语句"><span class="toc-number">36.</span> <span class="toc-text">根据描述写sql语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-34"><span class="toc-number">36.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-34"><span class="toc-number">36.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-34"><span class="toc-number">36.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#备忘录模式"><span class="toc-number">37.</span> <span class="toc-text">备忘录模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-35"><span class="toc-number">37.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-35"><span class="toc-number">37.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-35"><span class="toc-number">37.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适配器模式"><span class="toc-number">38.</span> <span class="toc-text">适配器模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-36"><span class="toc-number">38.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-36"><span class="toc-number">38.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-36"><span class="toc-number">38.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码执行顺序"><span class="toc-number">39.</span> <span class="toc-text">代码执行顺序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-37"><span class="toc-number">39.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-37"><span class="toc-number">39.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-37"><span class="toc-number">39.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Integer和int区别"><span class="toc-number">40.</span> <span class="toc-text">Integer和int区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-38"><span class="toc-number">40.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-38"><span class="toc-number">40.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-38"><span class="toc-number">40.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String实例问题"><span class="toc-number">41.</span> <span class="toc-text">String实例问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-39"><span class="toc-number">41.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-39"><span class="toc-number">41.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-39"><span class="toc-number">41.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java类加载1-0"><span class="toc-number">42.</span> <span class="toc-text">Java类加载1.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-40"><span class="toc-number">42.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-40"><span class="toc-number">42.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-40"><span class="toc-number">42.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java类加载2-0"><span class="toc-number">43.</span> <span class="toc-text">Java类加载2.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-41"><span class="toc-number">43.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-41"><span class="toc-number">43.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-41"><span class="toc-number">43.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java类加载3-0"><span class="toc-number">44.</span> <span class="toc-text">Java类加载3.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-42"><span class="toc-number">44.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-42"><span class="toc-number">44.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-42"><span class="toc-number">44.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#父子继承类1-0"><span class="toc-number">45.</span> <span class="toc-text">父子继承类1.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-43"><span class="toc-number">45.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-43"><span class="toc-number">45.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-43"><span class="toc-number">45.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#父子继承类2-0"><span class="toc-number">46.</span> <span class="toc-text">父子继承类2.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-44"><span class="toc-number">46.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-44"><span class="toc-number">46.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-44"><span class="toc-number">46.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类加载器加载原理"><span class="toc-number">47.</span> <span class="toc-text">类加载器加载原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-45"><span class="toc-number">47.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-45"><span class="toc-number">47.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-45"><span class="toc-number">47.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异常try-catch-执行顺序"><span class="toc-number">48.</span> <span class="toc-text">异常try catch 执行顺序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-46"><span class="toc-number">48.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-46"><span class="toc-number">48.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-46"><span class="toc-number">48.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#list集合扩容"><span class="toc-number">49.</span> <span class="toc-text">list集合扩容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-47"><span class="toc-number">49.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-47"><span class="toc-number">49.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-47"><span class="toc-number">49.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Object类方法"><span class="toc-number">50.</span> <span class="toc-text">Object类方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-48"><span class="toc-number">50.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-48"><span class="toc-number">50.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-48"><span class="toc-number">50.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程池参数问题"><span class="toc-number">51.</span> <span class="toc-text">线程池参数问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-49"><span class="toc-number">51.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-49"><span class="toc-number">51.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-49"><span class="toc-number">51.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程执行"><span class="toc-number">52.</span> <span class="toc-text">线程执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-50"><span class="toc-number">52.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-50"><span class="toc-number">52.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-50"><span class="toc-number">52.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#linux文件权限问题"><span class="toc-number">53.</span> <span class="toc-text">linux文件权限问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-51"><span class="toc-number">53.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-51"><span class="toc-number">53.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-51"><span class="toc-number">53.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算数运算符的指令形式"><span class="toc-number">54.</span> <span class="toc-text">算数运算符的指令形式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-52"><span class="toc-number">54.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-52"><span class="toc-number">54.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-52"><span class="toc-number">54.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指令执行结果"><span class="toc-number">55.</span> <span class="toc-text">指令执行结果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-53"><span class="toc-number">55.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-53"><span class="toc-number">55.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-53"><span class="toc-number">55.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改权限-春招出过这道题目"><span class="toc-number">56.</span> <span class="toc-text">修改权限(春招出过这道题目)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-54"><span class="toc-number">56.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-54"><span class="toc-number">56.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-54"><span class="toc-number">56.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bash脚本文件开头"><span class="toc-number">57.</span> <span class="toc-text">bash脚本文件开头(#!)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-55"><span class="toc-number">57.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-55"><span class="toc-number">57.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-55"><span class="toc-number">57.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#获取上一条命令的返回码"><span class="toc-number">58.</span> <span class="toc-text">获取上一条命令的返回码($?)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-56"><span class="toc-number">58.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-56"><span class="toc-number">58.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-56"><span class="toc-number">58.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#linux执行文件"><span class="toc-number">59.</span> <span class="toc-text">linux执行文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-57"><span class="toc-number">59.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-57"><span class="toc-number">59.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-57"><span class="toc-number">59.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标准输出和错误重定向"><span class="toc-number">60.</span> <span class="toc-text">标准输出和错误重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-58"><span class="toc-number">60.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-58"><span class="toc-number">60.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-58"><span class="toc-number">60.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#抽象工厂模式"><span class="toc-number">61.</span> <span class="toc-text">抽象工厂模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-59"><span class="toc-number">61.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-59"><span class="toc-number">61.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结-59"><span class="toc-number">61.3.</span> <span class="toc-text">知识点总结</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'swing'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/" title="上一篇: 设计模式总结">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2020/07/30/%E4%BA%AC%E4%B8%9C2019%E6%98%A5%E6%8B%9B%E4%BA%AC%E4%B8%9CJava%E5%BC%80%E5%8F%91%E8%AF%95%E5%8D%B7/" title="下一篇: 京东2019春招京东Java开发试卷">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-JAVA/">代码随想录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">JAVA-面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E5%9F%BA%E7%A1%80%E7%AF%87/">JAVA-基础篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/19/%E5%B0%9A%E7%A1%85%E8%B0%B7java/">尚硅谷JAVA基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/18/pytorch%E5%B0%8F%E5%9C%9F%E5%A0%86/">pytorch小土堆</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/04/python%E6%89%93%E5%8C%85/">python打包</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/25/pytorch/">pytorch</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/23/django/">django</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/flask%E6%8E%A5%E5%8F%A3/">flask接口</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Docker/">Docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/style/">JQ实现表单校验/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/jquery-1.11.0/">JQ实现表单校验/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/style/">JQ实现老黄历/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/laohuangli/">JQ实现老黄历/laohuangli</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/jquery-1.11.0/">JQ实现老黄历/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/data/">JQ实现老黄历/data</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery%E9%80%89%E6%8B%A9%E5%99%A8/style/">JQuery选择器/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/jquery-1.11.3.min/">JQuery基本用法/jquery-1.11.3.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery/jquery-1.11.0/">JQuery/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/npm/">Bootstrap/bootstrap-3.3.5-dist/js/npm</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.min/">Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap/">Bootstrap/bootstrap-3.3.5-dist/js/bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap.min/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme.min/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Larkkkkkkk/">Larkkkkkkk</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/17/py2neo/">py2neo</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/17/neo4j/">neo4j</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/16/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">知识图谱</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/22/%E5%90%8E%E7%BC%80%E6%A0%91/">后缀树</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/11/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/02/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">动手学深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/01/Scrapy%E7%88%AC%E8%99%AB%E8%BF%9B%E9%98%B6/">Scrapy爬虫进阶</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/28/%E7%88%AC%E8%99%AB/">爬虫基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/26/%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB%EF%BC%88Python%EF%BC%89/">算法汇总（Python）</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/15/CS224n%E6%96%AF%E5%9D%A6%E7%A6%8F%E6%B7%B1%E5%BA%A6%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E8%AF%BE/">CS224n斯坦福深度自然语言处理课</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/11/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/10/%E5%8F%8C%E7%A2%B3%E5%A4%A7%E8%B5%9B-%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB/">双碳大赛-垃圾分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/07/PyTorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/">PyTorch深度学习实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/27/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E4%B9%8B%E5%B7%A5%E4%B8%9A%E8%92%B8%E6%B1%BD/">机器学习实战之工业蒸汽</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/17/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/">统计学习方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/06/%E5%88%A9%E7%94%A8python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">利用python进行数据分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/python%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%E8%AF%BE%E6%9C%AC%E8%AF%BE%E5%90%8E%E9%A2%98/">python从入门到实践课本课后题</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/01/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/12/31/python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/28/B%E5%86%8C%E7%BC%96%E7%A8%8B%E9%A2%98/">B册编程题</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/">c语言课本题目</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/04/07/%E5%88%9D%E8%AF%95code/">初试code</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/25/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/">蓝桥杯国赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/23/Linux%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">Linux系统目录结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/">LeetCode链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/">本地项目上传Github</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/">Mysql复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/">设计模式总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/">京东2019校招笔试Java开发工程师笔试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/30/%E4%BA%AC%E4%B8%9C2019%E6%98%A5%E6%8B%9B%E4%BA%AC%E4%B8%9CJava%E5%BC%80%E5%8F%91%E8%AF%95%E5%8D%B7/">京东2019春招京东Java开发试卷</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/29/%E6%8B%BC%E5%A4%9A%E5%A4%9A2020%E6%A0%A1%E6%8B%9B%E9%83%A8%E5%88%86%E7%BC%96%E7%A8%8B%E9%A2%98%E5%90%88%E9%9B%86/">拼多多2020校招部分编程题合集</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/21/Git%E5%A4%8D%E4%B9%A0/">Git复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/16/leetcode%E5%89%91%E6%8C%87offer/">leetcode剑指offer</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/">Hexo博客重装系统重新部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/08/%E5%B0%9A%E5%AD%A6%E5%A0%82CRUD%E6%A8%A1%E6%9D%BF/">尚学堂CRUD模板</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/19/LeetCode%E7%B2%BE%E9%80%89TOP%E9%9D%A2%E8%AF%95%E9%A2%98/">LeetCode精选TOP面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/16/LeetCode%E5%93%88%E5%B8%8C%E8%A1%A8/">LeetCode哈希表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/16/LeetCode%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">LeetCode贪心算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/15/LeetCode%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">LeetCode二分查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/14/LeetCode%E5%8F%8C%E6%8C%87%E9%92%88/">LeetCode双指针</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/LeetCode%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">LeetCode动态规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/12/LeetCode%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/">LeetCode数学问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/11/LeetCode%E9%80%92%E5%BD%92/">LeetCode递归</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/10/LeetCode%E6%8E%92%E5%BA%8F/">LeetCode排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/LeetCode%E5%AD%97%E7%AC%A6%E4%B8%B2/">LeetCode字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/LeetCode%E6%95%B0%E7%BB%84/">LeetCode数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/%E5%89%91%E6%8C%87offer/">剑指offer</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/02/%E5%9B%BE/">图</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/01/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/22/%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91/">哈弗曼树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E6%A0%91/">树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/%E6%8E%92%E5%BA%8F/">排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/">时间复杂度和空间复杂度分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/%E9%80%92%E5%BD%92/">递归</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/SpringBoot/">SpringBoot</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/%E9%93%BE%E8%A1%A8/">链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/%E9%98%9F%E5%88%97/">队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/%E6%A0%88/">栈</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%AF%B9Date%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">SpringMVC对Date类型转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/">SpringMVC原理分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8B%A6%E6%88%AA%E5%99%A8/">SpringMVC实现自定义拦截器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/10/SpringMVC%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">SpringMVC实现文件上传和下载</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/JSP%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9B%9B%E5%A4%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/">JSP九大内置对象和四大作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/SpringMVC%E5%AE%9E%E7%8E%B0%E8%8F%9C%E5%8D%95%E5%8A%9F%E8%83%BD/">SpringMVC实现菜单功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/07/SpringMVC/">SpringMVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/06/Ajax%E6%95%B4%E7%90%86/">Ajax整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/06/Spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/">Spring常用注解整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E4%BA%8B%E5%8A%A1/">Spring事务</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Spring单例设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E5%8A%A0%E8%BD%BD%E5%B1%9E%E6%80%A7%E6%96%87%E4%BB%B6%E5%92%8Cscope%E5%B1%9E%E6%80%A7/">Spring加载属性文件和scope属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/03/Spring%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5/">Spring自动注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/03/Spring%E4%BB%A3%E7%90%86%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Spring代理设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/02/AOP/">AOP</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/Spring%E6%95%B4%E5%90%88Mybatis/">Spring整合Mybatis</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/Spring%E7%BB%99Bean%E6%B3%A8%E5%85%A5/">Spring给Bean注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/Spring/">Spring</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/">Mybatis运行原理总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/30/Mybatis%E6%B3%A8%E8%A7%A3/">Mybatis注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">使用Mybatis的动态Sql实现多表查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Mybatis%E7%BC%93%E5%AD%98/">Mybatis缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/ThreadLocal/">ThreadLocal</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/%E5%8A%A8%E6%80%81SQL/">动态SQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/27/getMapper%E6%8E%A5%E5%8F%A3%E7%BB%91%E5%AE%9A%E5%92%8C%E5%A4%9A%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/">getMapper接口绑定和多参数传递</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/Mybatis%E5%AE%9E%E7%8E%B0%E8%BD%AC%E8%B4%A6/">Mybatis实现转账</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/Mybatis%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E5%8A%9F%E8%83%BD%EF%BC%88%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%EF%BC%89/">Mybatis实现分页功能（完整流程）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Mybatis%E5%AE%9E%E7%8E%B0%E6%96%B0%E5%A2%9E%E5%88%A0%E9%99%A4%E4%BF%AE%E6%94%B9%E5%92%8C%E4%BA%8B%E5%8A%A1%E8%AE%B2%E8%A7%A3/">Mybatis实现新增删除修改和事务讲解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Mybatis%E5%AE%9E%E7%8E%B0mysql%E5%88%86%E9%A1%B5/">Mybatis实现mysql分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/21/Mybatis%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89/">Mybatis查询所有</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/21/Log4J/">Log4J</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">Mybatis全局配置文件详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/">Mybatis（eclipse详细）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/Mybatis%EF%BC%88idea+maven%EF%BC%89/">Mybatis（idea+maven）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/17/Nginx/">Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/17/Linux%E9%83%A8%E7%BD%B2/">Linux部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/">Linux网络知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/Vim/">Vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/maven/">maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/">redis配合ajax实现显示下拉列表省份</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">Linux安装软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/redis/">redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E8%B0%B7%E6%AD%8CCar%E5%BC%95%E5%85%A5%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/">谷歌Car引入装饰者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E6%B3%A8%E8%A7%A3/">注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/">自动登录（过滤器）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/08/Filter/">Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/JQuery%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8/">JQuery省市联动</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/Listener/">Listener</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E4%BB%BF%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2/">JQuery仿百度搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E6%A0%A1%E9%AA%8C%E7%94%A8%E6%88%B7%E5%90%8D/">JQuery校验用户名</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">JQuery基本用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/Ajax%E5%AE%9E%E7%8E%B0%E6%A0%A1%E9%AA%8C%E7%94%A8%E6%88%B7%E5%90%8D/">Ajax实现校验用户名</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/04/Ajax/">Ajax</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%882-0%EF%BC%89/">学生管理系统（2.0）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">三层架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/JSP%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/">JSP开发模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/DBUtils%E9%80%9A%E7%94%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/">DBUtils通用的增删查改</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/DBUtils/">DBUtils</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">数据库连接池</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/27/%E4%BA%8B%E5%8A%A1/">事务</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/27/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">学生管理系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/26/JSTL/">JSTL</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/26/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">EL表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/JSP/">JSP</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/Session%E5%AE%9E%E7%8E%B0%E8%B4%AD%E7%89%A9%E8%BD%A6/">Session实现购物车</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95/">Cookie获取商品浏览记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E7%99%BB%E5%BD%95%E6%97%B6%E9%97%B4/">Cookie获取上次登录时间</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/23/Session/">Session</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/23/Cookie/">Cookie</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/19/Linux/">Linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/18/ServletContext/">ServletContext</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/18/HTTPServletReauest%E5%92%8CHTTPServletResponse/">HTTPServletReauest和HTTPServletResponse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/17/Servlet/">Servlet</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/17/HTTP%E5%8D%8F%E8%AE%AE/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/16/Tomcat/">Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/16/dom4j%E5%85%A5%E9%97%A8/">dom4j入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/XML/">XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93cmd%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BB%A5%E5%90%8E%E5%86%99%EF%BC%89/">数据库cmd的操作（以后写）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA%E6%9F%A5%E7%9C%8B%E5%88%A0%E9%99%A4/">数据库的创建查看删除</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/14/JDBC%E4%B8%AD%E7%9A%84JAVAEE%E7%BB%93%E6%9E%84/">JDBC中的JAVAEE结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/">数据库的CRUD</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/JDBC%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/">JDBC的工具类</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/bootstrap%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5/">bootstrap实现网站首页</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/boostrap%E5%AE%9E%E7%8E%B0%E5%AF%BC%E8%88%AA%E6%9D%A1/">boostrap实现导航条</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/">JQ实现老黄历</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/">JQ实现表单校验</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/Bootstrap/">Bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/">JQ实现商品左右选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8/">JQ实现省市联动</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/">JQ实现表格隔行换色</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4/">JQ实现表单属性过滤</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/08/JQuery%E9%80%89%E6%8B%A9%E5%99%A8/">JQuery选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/08/JQuery%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6%E6%92%AD%E6%94%BE%E5%B9%BF%E5%91%8A/">JQuery实现定时播放广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JQuery/">JQuery</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E6%8E%A7%E5%88%B6%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/">JS控制下拉列表左右选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A3%80%E9%AA%8C%EF%BC%88%E4%BD%BF%E7%94%A8onfoucs%E7%AD%89%E7%84%A6%E7%82%B9%E6%97%B6%E9%97%B4%EF%BC%89/">JS实现表单检验（使用onfoucs等焦点时间）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/">JS实现表格变色和全选问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0DOM%E6%93%8D%E4%BD%9C%EF%BC%88%E5%85%B3%E4%BA%8Eselect%E6%A0%87%E7%AD%BE%E7%9A%84%E4%B8%8B%E6%8B%89%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8%EF%BC%89/">JS实现DOM操作（关于select标签的下拉省市联动）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/JS%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE%E5%B9%BF%E5%91%8A/">JS实现页面表单表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/JS%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD%E5%9B%BE/">JS实现轮播图</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/JS/">JS</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/CSS%E7%BD%91%E7%AB%99%E6%B3%A8%E5%86%8C%E6%A1%88%E4%BE%8B/">CSS网站注册案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/CSS-div%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E4%BC%98%E5%8C%96/">CSS+div实现网站首页优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/CSS/">CSS和DIV</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/HTML%E7%BD%91%E7%AB%99%E5%90%8E%E5%8F%B0%E6%A1%88%E4%BE%8B/">网站后台案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/HTML%E7%BD%91%E7%AB%99%E6%B3%A8%E5%86%8C%E6%A1%88%E4%BE%8B/">网站注册案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/01/HTML%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E6%A1%88%E4%BE%8B/">HTML网站首页案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/01/HTML/">HTML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/30/%E5%8F%8D%E5%B0%84/">反射</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/28/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/">稀疏数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE/">网络课设</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/webserver/">webserver</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/TCP/">TCP编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/17/%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE/">传输协议(UDP)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/13/%E7%AC%AC%E5%8D%81%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9B/">第十届蓝桥杯省赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/11/%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6/">等待唤醒机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A0%A1%E8%B5%9B/">蓝桥杯校赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/">线程状态</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/05/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/List/">List接口</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Set/">Set集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式(regex)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/29/%E8%BF%AD%E4%BB%A3%E5%99%A8/">集合2</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/29/%E6%B3%9B%E5%9E%8B/">泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/">蓝桥杯</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/%E9%9B%86%E5%90%88/">集合1</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/Lambda/">Lambda表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/%E9%A1%B5%E9%9D%A2/">人机交互实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/17/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/%E7%88%AC%E6%A5%BC%E6%A2%AF/">以爬楼梯为例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/idea%E5%AE%89%E8%A3%85/">IntelliJ IDEA</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/%E6%8E%A5%E9%9B%A8%E6%B0%B4(%E5%8F%8C%E6%8C%87%E9%92%88)/">接雨水</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/%E4%B9%98%E6%9B%B4%E5%A4%9A%E7%9A%84%E6%B0%B4(%E5%8F%8C%E6%8C%87%E9%92%88)/">乘更多的水</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/04/wenzipian2/">文字篇2-《码农翻身》</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 Larkkkkkkk
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="http://bestwing.me" target="_blank">Sw'blog</a> by Swing
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+  </div>
+</body>
+</html>

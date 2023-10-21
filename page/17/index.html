@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Larkkkkkkk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Larkkkkkkk">
+<meta property="og:url" content="https://larkkkkkkk.github.io/page/17/index.html">
+<meta property="og:site_name" content="Larkkkkkkk">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Larkkkkkkk">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
+  
+  
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="img/head.jpg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Larkkkkkkk</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                        
+                            <li><a  href="/archives">文章归档</a></li>
+                        
+                            <li><a  href="/CTFStudy">学习导航</a></li>
+                        
+                            <li><a  href="/PWNABLE">PWNABLE</a></li>
+                        
+                            <li><a  href="/resume">个人简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail"  target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                            
+                                <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Ajax/" style="font-size: 12.22px;">Ajax</a> <a href="/tags/Cookie%E5%92%8CSession/" style="font-size: 14.44px;">Cookie和Session</a> <a href="/tags/DBUtils/" style="font-size: 11.11px;">DBUtils</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">EL表达式</a> <a href="/tags/Filter/" style="font-size: 11.11px;">Filter</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPServletReauest%E5%92%8CHTTPServletResponse/" style="font-size: 10px;">HTTPServletReauest和HTTPServletResponse</a> <a href="/tags/IDEA%E5%AE%89%E8%A3%85%E5%92%8C%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">IDEA安装和破解</a> <a href="/tags/JAVA/" style="font-size: 14.44px;">JAVA</a> <a href="/tags/JAVA-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-Lambda表达式</a> <a href="/tags/JAVA-Set%E9%9B%86%E5%90%88/" style="font-size: 10px;">JAVA-Set集合</a> <a href="/tags/JAVA-%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">JAVA-反射</a> <a href="/tags/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 12.22px;">JAVA-多线程</a> <a href="/tags/JAVA-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-正则表达式</a> <a href="/tags/JAVA-%E6%B3%9B%E5%9E%8B/" style="font-size: 10px;">JAVA-泛型</a> <a href="/tags/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 12.22px;">JAVA-网络编程</a> <a href="/tags/JAVA-%E9%9B%86%E5%90%88/" style="font-size: 12.22px;">JAVA-集合</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0/" style="font-size: 11.11px;">JAVA练习</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">JAVA练习-动态规划</a> <a href="/tags/JQuery/" style="font-size: 13.33px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/LeetCode/" style="font-size: 17.78px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 15.56px;">Linux</a> <a href="/tags/Listener/" style="font-size: 10px;">Listener</a> <a href="/tags/Mybatis/" style="font-size: 18.89px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CJDBC/" style="font-size: 15.56px;">Mysql数据库和JDBC</a> <a href="/tags/Redis/" style="font-size: 11.11px;">Redis</a> <a href="/tags/Servlet/" style="font-size: 11.11px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 16.67px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 15.56px;">SpringMVC</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 20px;">Web前端知识点</a> <a href="/tags/XML/" style="font-size: 11.11px;">XML</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/flask%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">flask框架</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/jsp%E6%A0%87%E5%87%86%E6%A0%87%E7%AD%BE%E5%BA%93/" style="font-size: 10px;">jsp标准标签库</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/python/" style="font-size: 12.22px;">python</a> <a href="/tags/pytorch/" style="font-size: 10px;">pytorch</a> <a href="/tags/ssm%E6%A1%86%E6%9E%B6%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">ssm框架模板</a> <a href="/tags/webserver%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">webserver编程</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E4%BA%AC%E4%B8%9C/" style="font-size: 11.11px;">京东</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91/" style="font-size: 10px;">后缀树</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10px;">哈希表</a> <a href="/tags/%E5%9B%BE/" style="font-size: 10px;">图</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 10px;">复杂度分析</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">学生管理系统</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2-0/" style="font-size: 12.22px;">学生管理系统2.0</a> <a href="/tags/%E6%8B%BC%E5%A4%9A%E5%A4%9A/" style="font-size: 10px;">拼多多</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" style="font-size: 10px;">数据库连接池</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数据结构-稀疏数组</a> <a href="/tags/%E6%96%87%E5%AD%97%E7%AF%87-%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">文字篇-记录</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 12.22px;">机器学习</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%91/" style="font-size: 12.22px;">树</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">注解</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 14.44px;">深度学习</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 11.11px;">爬虫</a> <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" style="font-size: 10px;">生物信息学</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 12.22px;">知识图谱</a> <a href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%88%9D%E8%AF%95/" style="font-size: 12.22px;">研究生初试</a> <a href="/tags/%E7%A7%8B%E6%8B%9B/" style="font-size: 10px;">秋招</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">算法-动态规划</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%BA%AF%E6%B3%95/" style="font-size: 10px;">算法-回溯法</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法-贪心算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 10px;">考研</a> <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 13.33px;">蓝桥杯</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE-%E8%BD%AF%E4%BB%B6%E4%B8%93%E4%B8%9A%E9%A2%98%E7%9B%AE/" style="font-size: 10px;">计算机网络课设(软件专业题目)</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.22px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 10px;">软件体系结构</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">重新部署</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%A1%B5%E9%9D%A2%EF%BC%88H5-CSS%EF%BC%89/" style="font-size: 10px;">页面（H5+CSS）</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0/" style="font-size: 10px;">项目上传</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://ring3.xyz/">Yllen</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://mxny.org/">麦香浓郁</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://whereisk0shl.top/">K0sh1</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.ycjcl.cc/">信鑫</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://bystudent.com/">ByStundet表哥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jarviswang.me/">汪神_Jarvis</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sh3ll.me/">Chu</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.hackfun.org/">4ido10n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/iamstudy">L3m0n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://o0xmuhe.me/">muhe</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.nuptzj.cn/">_画船听雨</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.virzz.com/index.html">Virink</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.sqlsec.com/">国光</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bodkin.ren/">老锥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cizel.cn/">C1zel</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://1phan.cc">1phan</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.liuil.top/">liuil</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/Ox9A82/">Ox9A82</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://burnegg.com/">burnegg</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://jwrsec.cn/">jwr-sec</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sudalover.cn/">苏打</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.binklac.com">VeroFess</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bendawang.site/">bendawang</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://weeklyalgo.codes/">hook</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.flier.net.cn/">Flier&#39;blog</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.mutepig.club">mutepig</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.iret.xyz/list.aspx">Silver</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://simp1e.leanote.com/">Simple</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://processor.pub/">Processor</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一只淹死在二进制海洋里的二进制狗!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Larkkkkkkk</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Larkkkkkkk</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                
+                    <li><a href="/archives">文章归档</a></li>
+                
+                    <li><a href="/CTFStudy">学习导航</a></li>
+                
+                    <li><a href="/PWNABLE">PWNABLE</a></li>
+                
+                    <li><a href="/resume">个人简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-Linux" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/19/Linux/" class="article-date">
+      <time datetime="2020-02-19T04:52:35.000Z" itemprop="datePublished">2020-02-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/19/Linux/">Linux</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="前期准备-软件安装管家下载安装步骤"><a href="#前期准备-软件安装管家下载安装步骤" class="headerlink" title="前期准备(软件安装管家下载安装步骤)"></a>前期准备(软件安装管家下载安装步骤)</h1><ol>
+<li>VMware虚拟机(VMware 12)</li>
+<li>CentOs 6 64位</li>
+</ol>
+<h1 id="linux目录结构分析"><a href="#linux目录结构分析" class="headerlink" title="linux目录结构分析"></a>linux目录结构分析</h1><ul>
+<li><strong>Linux目录结构</strong>: 只有1个<strong>根目录</strong></li>
+</ul>
+<p><strong>usr:</strong>：　　　用于存放共享的系统资源(c:program Files)<br><strong>etc:</strong>　　　　存放系统配置文件<br><strong>root：　　　**系统管理员</strong>默认<strong>用户目录(c:用户/root)<br>**home(安装软件目录)：</strong>　　其他用户目录(c:用户/home/其他用户)</p>
+<ul>
+<li><strong>基础命令：</strong></li>
+</ul>
+<p><strong>pwd：</strong>　　打印当前目录<br><strong>cd /：</strong>　　切换当前目录<br><strong>ll：</strong>　　查看当前目录下的内容</p>
+<hr>
+<h1 id="SecureCRT连接linux"><a href="#SecureCRT连接linux" class="headerlink" title="SecureCRT连接linux"></a>SecureCRT连接linux</h1><ol>
+<li>在linux的终端输入：ifconfig(windows是ipconfig)–选择里面的 192.168.21.128</li>
+</ol>
+<p><img src="ifconfig.png" alt=""></p>
+<ol start="2">
+<li>点击SecureCRT.exe–点击文件–连接–快速选择–输入主机名：192.168.21.128(第一步获取的)</li>
+</ol>
+<p><img src="dier.png" alt=""></p>
+<ol start="3">
+<li>提示新建主机密钥点击接收并保存–输入用户名root和linux当时的用户密码</li>
+</ol>
+<p><img src="disan.png" alt=""></p>
+<ol start="4">
+<li>弹出连接成功的框(乱码)–然后关闭之后重启–对网络右键属性–更改外观里面的语言为UTF-8</li>
+</ol>
+<p><img src="disi.png" alt=""></p>
+<ol start="5">
+<li>输入ll显示(无乱码)</li>
+</ol>
+<p><img src="diwu.png" alt=""></p>
+<hr>
+<h1 id="展示目录-ll-ls"><a href="#展示目录-ll-ls" class="headerlink" title="展示目录 ll / ls"></a>展示目录 ll / ls</h1><p><strong>1. ls **　　显示目录下</strong>所有文件名称**</p>
+<p><img src="mingcheng.png" alt=""></p>
+<p><strong>2. ls -a **　　显示目录下</strong>所有文件名称(包括隐藏文件)**</p>
+<p><img src="chengwr.png" alt=""></p>
+<p><strong>3. ls -l  / ll **　　显示目录下</strong>所有文件的详细内容**</p>
+<p><img src="ller.png" alt=""></p>
+<hr>
+<h1 id="切换目录-cd"><a href="#切换目录-cd" class="headerlink" title="切换目录 cd"></a>切换目录 cd</h1><p><strong>1. cd ~ **　　切换到</strong>root目录**</p>
+<p><img src="root.png" alt=""></p>
+<p><strong>2. cd - **　　切换到</strong>上次访问**的目录</p>
+<p><img src="fanhui.png" alt=""></p>
+<p><strong>3. cd .. **　　**回退到上一层目录</strong></p>
+<p><img src="huitiu.png" alt=""></p>
+<p><strong>4. cd /xx/yy **　　可以一次性直接</strong>到xx目录下的yy目录**(也可以一层一层找)</p>
+<p><img src="yici.png" alt=""></p>
+<hr>
+<h1 id="创建目录-mkdir-p"><a href="#创建目录-mkdir-p" class="headerlink" title="创建目录 mkdir (-p)#"></a>创建目录 mkdir (-p)#</h1><p><strong>1. mkdir xxx **　　**创建</strong>一个xxx文件夹</p>
+<p><img src="mkdir.png" alt=""></p>
+<p><strong>2. mkdir -p aaa/bbb **　　**创建多级目录文件</strong></p>
+<p><img src="chuangjianer.png" alt=""></p>
+<hr>
+<h1 id="移除目录-rmdir"><a href="#移除目录-rmdir" class="headerlink" title="移除目录 rmdir"></a>移除目录 rmdir</h1><p><strong>1. rmdir xxx **　　**移除</strong>一个文件夹</p>
+<hr>
+<h1 id="浏览文件-cat-more-less-tail"><a href="#浏览文件-cat-more-less-tail" class="headerlink" title="浏览文件 cat more less tail#"></a>浏览文件 cat more less tail#</h1><h2 id="cat-一次性展示"><a href="#cat-一次性展示" class="headerlink" title="cat(一次性展示)"></a>cat(一次性展示)</h2><p><strong>1.cat xxx ** 文档内容　　**一次性展示</strong></p>
+<h2 id="more-按-展示"><a href="#more-按-展示" class="headerlink" title="more(按%展示)"></a>more(按%展示)</h2><p><strong>1. more install.log **　　文档进行</strong>分页展示**</p>
+<pre><code>空格：一页一页展示
+回车：一行一行
+Q：退出</code></pre><h2 id="less-按照-展示"><a href="#less-按照-展示" class="headerlink" title="less(按照%展示)"></a>less(按照%展示)</h2><p><strong>1. less install.log **　　文档进行</strong>分页展示**</p>
+<pre><code>空格：一页一页展示
+回车：一行一行
+Q/ctrl+c：退出
+键盘上下键：可以上下翻页 (区别于more)</code></pre><h2 id="tail-具体看某几行-n"><a href="#tail-具体看某几行-n" class="headerlink" title="tail(具体看某几行 (-n))"></a>tail(具体看某几行 (-n))</h2><p><strong>1. tail -n install.log **　　查看</strong>倒数n行的文档内容**</p>
+<p><img src="tail.png" alt=""></p>
+<hr>
+<h1 id="复制文件-cp"><a href="#复制文件-cp" class="headerlink" title="复制文件 cp"></a>复制文件 cp</h1><p><strong>1. cp xxx yyy **　　**将xxx复制到yyy目录里面</strong></p>
+<p><strong>2. cp xxx yyy/zzz **　　**将xxx复制到yyy目录的时候更改名为zzz</strong> </p>
+<p><img src="cp.png" alt=""></p>
+<p><img src="cpjieguo.png" alt=""></p>
+<hr>
+<h1 id="拷贝-剪切-文件-mv"><a href="#拷贝-剪切-文件-mv" class="headerlink" title="拷贝(剪切)文件 mv#"></a>拷贝(剪切)文件 mv#</h1><p>*<em>1. mv a.txt /root/bb *</em>　　将当前目录下的a.txt剪切到bb目录</p>
+<p>*<em>2. mv a.txt /root/bb/b.txt *</em>　　将当前目录下的a.txt剪切到bb目录并且命名改为b.txt</p>
+<p><img src="mv.png" alt=""></p>
+<p><img src="mvjieguo.png" alt=""></p>
+<hr>
+<h1 id="删除文件-rm-rf"><a href="#删除文件-rm-rf" class="headerlink" title="删除文件 rm (-rf)"></a>删除文件 rm (-rf)</h1><p><strong>1. rm -r xxx</strong>　　<strong>删除</strong>xxx文件</p>
+<pre><code>rm -f xxx  不询问的删除xxx文件
+rm -r xxx  询问的删除xxx文件
+rm -rf xxx 不询问的删除xxx文件(配合使用)</code></pre><p><img src="rm.png" alt=""></p>
+<hr>
+<h1 id="创建空文件-touch"><a href="#创建空文件-touch" class="headerlink" title="创建空文件 touch#"></a>创建空文件 touch#</h1><p><strong>1. touch xxx.txt</strong>　　<strong>创建一个空文件</strong></p>
+<hr>
+<h1 id="压缩文件-tar-zcvf"><a href="#压缩文件-tar-zcvf" class="headerlink" title="压缩文件 tar -zcvf#"></a>压缩文件 tar -zcvf#</h1><p><strong>压缩和解压文件所需要的属性:</strong></p>
+<pre><code>-c:创建一个新的tar文件
+-v:显示运行过程中的信息
+-f：指定文件名
+-x：解开tar文件
+-z：调用gzip压缩命令进行压缩
+-t：查看压缩文件内容</code></pre><p><strong>1. tar -cvf xxx.tar ./* **　　**打包</strong></p>
+<p><strong>2. tar -zcvf xxx.tar ./* **　　**打包并且压缩</strong></p>
+<hr>
+<h1 id="解压文件-tar-zxvf"><a href="#解压文件-tar-zxvf" class="headerlink" title="解压文件 tar -zxvf"></a>解压文件 tar -zxvf</h1><p><strong>1. tar -xvf xxx.tar</strong>   </p>
+<p><strong>2. tar -zxvf xxx.tar.gz -C /usr/aaa</strong>　　<strong>解压</strong> (linux压缩包后缀是gz) -C是减压到 usr的aaa目录</p>
+<hr>
+<h1 id="查找文件位置-find"><a href="#查找文件位置-find" class="headerlink" title="查找文件位置 find"></a>查找文件位置 find</h1><p><strong>1. find / -name “ins”</strong>　　查找<strong>名字以ins开头的文件</strong></p>
+<p><strong>2. find / -user xxx -ls</strong>　　查找<strong>用户为xxx的目录</strong></p>
+<hr>
+<h1 id="查找文件内容-grep"><a href="#查找文件内容-grep" class="headerlink" title="查找文件内容  grep"></a>查找文件内容  grep</h1><p><strong>1. grep lang xxx</strong>　　<strong>在文件中查找lang</strong></p>
+<p><strong>2. grep lang xxx -color **　　**高亮显示</strong></p>
+<hr>
+<h1 id="重定向输出-gt-覆盖-gt-gt-覆盖"><a href="#重定向输出-gt-覆盖-gt-gt-覆盖" class="headerlink" title="重定向输出 &gt;(覆盖) &gt;&gt;(覆盖)"></a>重定向输出 &gt;(覆盖) &gt;&gt;(覆盖)</h1><p><strong>1. cat aaa &gt; bbb</strong>  aaa的<strong>覆盖</strong>bbb</p>
+<p><strong>2. cat aaa &gt;&gt; bbb</strong> aaa内容<strong>追加</strong>到bbb</p>
+<hr>
+<h1 id="系统管理命令"><a href="#系统管理命令" class="headerlink" title="系统管理命令"></a>系统管理命令</h1><p><strong>1. ps -ef **　　查看</strong>所有**进程</p>
+<p><strong>2. ps -ef | grep ssh **　　查看</strong>某一**进程</p>
+<p><strong>3. kill -9 xxxx **　　**强制杀死</strong>xxxx编号的进程</p>
+<p><strong>4. kill xxxx</strong>　　<strong>杀死</strong>xxxx编号的进程</p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-ServletContext" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/18/ServletContext/" class="article-date">
+      <time datetime="2020-02-18T06:02:28.000Z" itemprop="datePublished">2020-02-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/18/ServletContext/">ServletContext</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、ServletContext-Servlet-上下文"><a href="#一、ServletContext-Servlet-上下文" class="headerlink" title="一、ServletContext(Servlet 上下文)"></a>一、ServletContext(Servlet 上下文)</h1><blockquote>
+<p>每个web工程都只有一个ServletContext对象。 说白了也就是不管在哪个servlet里面，获取到的这个类的对象都是同一个。</p>
+</blockquote>
+<p><strong>举例步骤：</strong>新建一个项目–java Resources–src右键新建Servlet–填写类名和包名</p>
+<p><strong>自动生成代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">package servleter;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Servlet implementation class ServletContext01</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class ServletContext01 extends HttpServlet &#123;</span><br><span class="line">	private static final long serialVersionUID &#x3D; 1L;</span><br><span class="line">       </span><br><span class="line">    &#x2F;**</span><br><span class="line">     * @see HttpServlet#HttpServlet()</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public ServletContext01() &#123;</span><br><span class="line">        super();</span><br><span class="line">        &#x2F;&#x2F; TODO Auto-generated constructor stub</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">		response.getWriter().append(&quot;Served at: &quot;).append(request.getContextPath());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###如何得到对象(和ServletConfig相似)</p>
+<pre><code>//1. 获取对象
+    ServletContext context = getServletContext();</code></pre><hr>
+<h1 id="二、ServletContext获取全局参数"><a href="#二、ServletContext获取全局参数" class="headerlink" title="二、ServletContext获取全局参数"></a>二、ServletContext获取全局参数</h1><pre><code>ServletConfig----在servlet里面对&lt;init-paramd&gt;写具体的参数</code></pre><p><img src="config.png" alt=""></p>
+<pre><code>ServletContext---对根标签servlet外面对&lt;context-param&gt;写全局参数</code></pre><p><img src="context.png" alt=""></p>
+<p><img src="jiegoutu.png" alt=""></p>
+<p><strong>使用了直接右键server所以不用自己配</strong></p>
+<p><strong>web.xml的完整内容：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;web-app xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot; xmlns&#x3D;&quot;http:&#x2F;&#x2F;java.sun.com&#x2F;xml&#x2F;ns&#x2F;javaee&quot; xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;java.sun.com&#x2F;xml&#x2F;ns&#x2F;javaee http:&#x2F;&#x2F;java.sun.com&#x2F;xml&#x2F;ns&#x2F;javaee&#x2F;web-app_2_5.xsd&quot; id&#x3D;&quot;WebApp_ID&quot; version&#x3D;&quot;2.5&quot;&gt;</span><br><span class="line">  &lt;display-name&gt;ServletRegister&lt;&#x2F;display-name&gt;</span><br><span class="line">  &lt;welcome-file-list&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.html&lt;&#x2F;welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.htm&lt;&#x2F;welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.jsp&lt;&#x2F;welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;default.html&lt;&#x2F;welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;default.htm&lt;&#x2F;welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;default.jsp&lt;&#x2F;welcome-file&gt;</span><br><span class="line">  &lt;&#x2F;welcome-file-list&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;context-param&gt;     &#x2F;&#x2F;在这加context-param标签!!!!!!!!!!!!!!!</span><br><span class="line">    &lt;param-name&gt;address&lt;&#x2F;param-name&gt;</span><br><span class="line">    &lt;param-value&gt;shenzhen&lt;&#x2F;param-value&gt;</span><br><span class="line">  &lt;&#x2F;context-param&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;Demo&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;servlet.Demo&lt;&#x2F;servlet-class&gt;</span><br><span class="line">  &lt;&#x2F;servlet&gt;</span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;Demo&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;Demo&lt;&#x2F;url-pattern&gt;</span><br><span class="line">  &lt;&#x2F;servlet-mapping&gt;</span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">    &lt;description&gt;&lt;&#x2F;description&gt;</span><br><span class="line">    &lt;display-name&gt;ServletContext01&lt;&#x2F;display-name&gt;</span><br><span class="line">    &lt;servlet-name&gt;ServletContext01&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;servleter.ServletContext01&lt;&#x2F;servlet-class&gt;</span><br><span class="line">  &lt;&#x2F;servlet&gt;</span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;ServletContext01&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;ServletContext01&lt;&#x2F;url-pattern&gt;</span><br><span class="line">  &lt;&#x2F;servlet-mapping&gt;</span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">    &lt;description&gt;&lt;&#x2F;description&gt;</span><br><span class="line">    &lt;display-name&gt;ServletContext02&lt;&#x2F;display-name&gt;</span><br><span class="line">    &lt;servlet-name&gt;ServletContext02&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;servleter.ServletContext02&lt;&#x2F;servlet-class&gt;</span><br><span class="line">  &lt;&#x2F;servlet&gt;</span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;ServletContext02&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;ServletContext02&lt;&#x2F;url-pattern&gt;</span><br><span class="line">  &lt;&#x2F;servlet-mapping&gt;</span><br><span class="line">&lt;&#x2F;web-app&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>ServletContext01/02代码几乎一样都是创建对象然后输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class ServletContext02 extends HttpServlet &#123;</span><br><span class="line">	</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.获取对象</span><br><span class="line">			ServletContext context&#x3D;getServletContext();</span><br><span class="line">		&#x2F;&#x2F;2.获得address		</span><br><span class="line">			String address&#x3D;context.getInitParameter(&quot;address&quot;);</span><br><span class="line">			System.out.println(&quot;这是ServletContext02的address&#x3D;&quot;+address);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">			doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>01通过浏览器去刷新/02通过eclipse自带的页面浏览器刷新</strong></p>
+<p><img src="duibi.png" alt=""></p>
+<hr>
+<h1 id="三、ServletContext获取Web应用中的资源"><a href="#三、ServletContext获取Web应用中的资源" class="headerlink" title="三、ServletContext获取Web应用中的资源"></a>三、ServletContext获取Web应用中的资源</h1><ol>
+<li>获取资源在tomcat里面的<strong>绝对路径(getRealpath()方法)</strong></li>
+</ol>
+<p><img src="diyijiegou.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Demo04 extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.获取对象</span><br><span class="line">			ServletContext context&#x3D;getServletContext();</span><br><span class="line">			String path&#x3D;context.getRealPath(&quot;file&#x2F;config.properties&quot;);   &#x2F;&#x2F;获取给定的文件在服务器上面的绝对路径 ---如果“”里面没有东西意思就是找到根目录</span><br><span class="line">				System.out.println(&quot;path&#x3D;&quot;+path);</span><br><span class="line">				</span><br><span class="line">				 &#x2F;&#x2F;1.创建属性对象</span><br><span class="line">				Properties properties&#x3D;new Properties(); </span><br><span class="line">				InputStream is&#x3D;new FileInputStream(path);  &#x2F;&#x2F;通过InputStream数据流连接path</span><br><span class="line">				properties.load(is); &#x2F;&#x2F;加载输入流</span><br><span class="line">				</span><br><span class="line">				&#x2F;&#x2F;3.获取name属性的值</span><br><span class="line">				String name&#x3D;properties.getProperty(&quot;name&quot;);</span><br><span class="line">				System.out.println(&quot;name&#x3D;&quot;+name); 			</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="diyi.png" alt=""></p>
+<hr>
+<ol start="2">
+<li><strong>ServletContext对象.getResourceAsStream</strong>获取资源流对象</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Demo04 extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;test01(); </span><br><span class="line">		test02();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private void test02() throws IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.获取对象</span><br><span class="line">		Properties properties&#x3D;new Properties();</span><br><span class="line">		ServletContext context&#x3D;getServletContext();  &#x2F;&#x2F;创建ServletContext对象</span><br><span class="line">		InputStream is&#x3D;context.getResourceAsStream(&quot;file&#x2F;config.properties&quot;);  &#x2F;&#x2F;直接写文件路径(不需要path)</span><br><span class="line">		properties.load(is);	&#x2F;&#x2F;加载文件</span><br><span class="line">		&#x2F;&#x2F;3.获取name属性的值</span><br><span class="line">		String name&#x3D;properties.getProperty(&quot;name&quot;);</span><br><span class="line">		System.out.println(&quot;name22&#x3D;&quot;+name);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<ol>
+<li>通过<strong>classloader</strong>去获取web工程下的资源 </li>
+</ol>
+<ul>
+<li><p><strong>ServletContext：</strong><br>　　<br>a路径：F:\tomcat\apache-tomcat…\wtpwebapps\Demo04</p>
+</li>
+<li><p><strong>ClassLoader：</strong><br>　　<br>a路径：F:\tomcat\apache-tomcat…\wtpwebapps\Demo04\WEB-INF\classes</p>
+</li>
+</ul>
+<p>要想让classloader回到Demo03的位置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;获得该java文件吧内磨机片的class然后获取到加载这个class的虚拟机中的那个类加载器对象</span><br><span class="line">InputStream is&#x3D;this.getClass().getClassLoader().getResourceAsStream(&quot;..&#x2F;..&#x2F;file&#x2F;config.properties&quot;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="四、ServletContext存取数据"><a href="#四、ServletContext存取数据" class="headerlink" title="四、ServletContext存取数据"></a>四、ServletContext存取数据</h1><p><strong>此为web代码框架：</strong></p>
+<p><img src="zuizhong.png" alt=""></p>
+<p><strong>实现界面分析：</strong></p>
+<p><img src="fenxi.png" alt=""></p>
+<p><strong>步骤：</strong></p>
+<ol>
+<li><strong>Client客户端：</strong>主要是要有两个html的客户端代码：<br>login主要是有三个input标签分别是登录、注册、提交按钮；login_success是用来用href标签弹出网站成功登陆次数(通过ServletContext对象的getAttribute()方法获取loginservlet类中的count值)</li>
+<li><strong>server服务器端：</strong>主要是两个类：<br>CountServlet类只是获取LoginServlet类的ServletContext对象获取count输出<br>LoginServlet主要分为两步骤：一是通过request的getParameter方法获取login.html输入的账户密码；二是通过ServletContext()对象的set/getAttribute方法获取和更改登陆成功数字。成功可以通过response的setStatus(302)方法设置状态码，然后通过setHeader方法跳转到预定的login_success.html页面。</li>
+</ol>
+<p><strong>LoginServlet类代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">public class LoginServlet extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.获取数据</span><br><span class="line">		String username&#x3D;request.getParameter(&quot;username&quot;);  &#x2F;&#x2F;request 包括请求的信息</span><br><span class="line">		String password&#x3D;request.getParameter(&quot;password&quot;);</span><br><span class="line">		System.out.println(username+password);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.校验数据</span><br><span class="line">		PrintWriter pw&#x3D;response.getWriter();  &#x2F;&#x2F;response 响应数据给浏览器 </span><br><span class="line">		</span><br><span class="line">		if(&quot;admin&quot;.equals(username)&amp;&amp;&quot;123&quot;.equals(password))</span><br><span class="line">		&#123;</span><br><span class="line">			&#x2F;&#x2F;System.out.println(&quot;登陆成功!&quot;);</span><br><span class="line">			&#x2F;&#x2F;pw.write(&quot;login success..&quot;);</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;1.成功的次数累计加一	</span><br><span class="line">			Object obj&#x3D;getServletContext().getAttribute(&quot;count&quot;);&#x2F;&#x2F;使用ServeletContext对象的getAttribute方法获取count数</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;默认是0次</span><br><span class="line">			int totalCount&#x3D;0; &#x2F;&#x2F;计数用</span><br><span class="line">			if(obj!&#x3D;null)</span><br><span class="line">			&#123;</span><br><span class="line">				totalCount&#x3D;(int) obj;  &#x2F;&#x2F;如果不为0就把obj强转给计数用的totalCount</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(&quot;已经登陆成功的次数是：&quot;+totalCount);</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;给count赋新的值</span><br><span class="line">			getServletContext().setAttribute(&quot;count&quot;,totalCount+1);  &#x2F;&#x2F;输出之后可以使用ServletContext对象的setAttribute方法更改count数字(当前输出的数字加一付给count)</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.跳转到成功的界面</span><br><span class="line">			&#x2F;&#x2F;设置状态码</span><br><span class="line">			response.setStatus(302);</span><br><span class="line">			&#x2F;&#x2F;定位-----&gt;跳转去 login_success.html		</span><br><span class="line">			response.setHeader(&quot;Location&quot;,&quot;login_success.html&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(&quot;登录失败！&quot;);</span><br><span class="line">			pw.write(&quot;login failed..&quot;);</span><br><span class="line">		&#125;	</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">			doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>CountServlet类代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class CountServlet extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;	</span><br><span class="line">		&#x2F;&#x2F;1.取值</span><br><span class="line">		int count&#x3D;(int) getServletContext().getAttribute(&quot;count&quot;);</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;2.输出到界面</span><br><span class="line">		response.getWriter().write(&quot;当前网站成功登录总次数为&quot;+count+&quot;次&quot;);	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>login_success.html代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">	&lt;h2&gt;登录成功了&lt;&#x2F;h2&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;CountServlet&quot;&gt;获取网站登录成功总数 &lt;&#x2F;a&gt;   &lt;!--href找的是xml里面 url标签的内容--&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>login.html代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;h2&gt;请输入以下内容，完成登陆&lt;&#x2F;h2&gt;</span><br><span class="line">	&lt;form action&#x3D;&quot;LoginServlet&quot; method&#x3D;&quot;get&quot;&gt;  &lt;!--action找的是xml里面 url标签的内容--&gt;</span><br><span class="line">		账号:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">		密码:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-HTTPServletReauest和HTTPServletResponse" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/18/HTTPServletReauest%E5%92%8CHTTPServletResponse/" class="article-date">
+      <time datetime="2020-02-18T05:42:39.000Z" itemprop="datePublished">2020-02-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/18/HTTPServletReauest%E5%92%8CHTTPServletResponse/">HTTPServletReauest和HTTPServletResponse</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、HTTPServletRequest-这个对象封装了客户端提交过来的一切数据"><a href="#一、HTTPServletRequest-这个对象封装了客户端提交过来的一切数据" class="headerlink" title="一、HTTPServletRequest(这个对象封装了客户端提交过来的一切数据)"></a>一、HTTPServletRequest(这个对象封装了客户端提交过来的一切数据)</h1><ul>
+<li>获取客户端<strong>http请求头</strong>信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;得到一个枚举集合  </span><br><span class="line">Enumeration&lt;String&gt; headerNames &#x3D; request.getHeaderNames();  &#x2F;&#x2F;用集合去存取所有的http头</span><br><span class="line">while (headerNames.hasMoreElements()) &#123;</span><br><span class="line">	String name &#x3D; (String) headerNames.nextElement();  &#x2F;&#x2F;每次取下一个</span><br><span class="line">	String value &#x3D; request.getHeader(name);  &#x2F;&#x2F;取头就是给它的值</span><br><span class="line">	System.out.println(name+&quot;&#x3D;&quot;+value);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取客户端<strong>提交的数据</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;2.获取所有的参数---一个枚举集合(一个key对应多个value)</span><br><span class="line">	&#x2F;&#x2F;	Enumeration&lt;String&gt; headerNames &#x3D; request.getHeaderNames();  &#x2F;&#x2F;ctrl+1 提示左边的代码  获得所有的http头部</span><br><span class="line">	Map&lt;String, String[]&gt; map &#x3D; request.getParameterMap();</span><br><span class="line">	Set&lt;String&gt; keySet &#x3D; map.keySet(); &#x2F;&#x2F;得到左边的key</span><br><span class="line">	Iterator&lt;String&gt; iterator &#x3D; keySet.iterator();&#x2F;&#x2F;得到加载器iterator</span><br><span class="line">	while(iterator.hasNext()) &#123;</span><br><span class="line">		String key &#x3D; iterator.next(); &#x2F;&#x2F;加载器.get方法获得key值</span><br><span class="line">		String[] value &#x3D; map.get(key); &#x2F;&#x2F;request的对象调用.get方法获取value值</span><br><span class="line">		System.out.println(&quot;key&#x3D;&quot;+key+&quot; value&#x3D;&quot;+value);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>完整代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class Demo01 extends HttpServlet &#123;</span><br><span class="line"></span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.得到一个枚举集合 </span><br><span class="line">		Enumeration&lt;String&gt; headerNames &#x3D; request.getHeaderNames();  &#x2F;&#x2F;ctrl+1 提示左边的代码  获得所有的http头部</span><br><span class="line">		while(headerNames.hasMoreElements())</span><br><span class="line">		&#123;</span><br><span class="line">			String name&#x3D;(String)headerNames.nextElement(); &#x2F;&#x2F;while一次获取一次的http头部	</span><br><span class="line">			String value&#x3D;request.getHeader(name);  &#x2F;&#x2F;获取当对应的http头部的value值</span><br><span class="line">			System.out.println(&quot;name&#x3D;&quot;+name+&quot; value&#x3D;&quot;+value);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(&quot;--------------&quot;);</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;获取的是客户端(html登录写的)提交上来的数据</span><br><span class="line">		String parameter &#x3D; request.getParameter(&quot;name&quot;);</span><br><span class="line">		System.out.println(&quot;name&#x3D;&quot;+parameter);</span><br><span class="line">		System.out.println(&quot;--------------&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.获取所有的参数---一个枚举集合(一个key对应多个value)</span><br><span class="line">		&#x2F;&#x2F;	Enumeration&lt;String&gt; headerNames &#x3D; request.getHeaderNames();  &#x2F;&#x2F;ctrl+1 提示左边的代码  获得所有的http头部</span><br><span class="line">		Map&lt;String, String[]&gt; map &#x3D; request.getParameterMap();</span><br><span class="line">		Set&lt;String&gt; keySet &#x3D; map.keySet(); &#x2F;&#x2F;得到左边的key</span><br><span class="line">		Iterator&lt;String&gt; iterator &#x3D; keySet.iterator();&#x2F;&#x2F;得到加载器iterator</span><br><span class="line">		while(iterator.hasNext()) &#123;</span><br><span class="line">			String key &#x3D; iterator.next(); &#x2F;&#x2F;加载器.get方法获得key值</span><br><span class="line">			String[] value &#x3D; map.get(key); &#x2F;&#x2F;request的对象调用.get方法获取value值</span><br><span class="line">			System.out.println(&quot;key&#x3D;&quot;+key+&quot; value&#x3D;&quot;+value);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>此外需要完成一个loginer.html代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h2&gt;请输入以下内容，完成登陆&lt;&#x2F;h2&gt;</span><br><span class="line">	&lt;form action&#x3D;&quot;LoginServleter&quot; method&#x3D;&quot;get&quot;&gt;  &lt;!--action找的是xml里面 url标签的内容--&gt;</span><br><span class="line">		账号:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">		密码:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>第一个循环出来的是所有的http的头部/然后是输入的账号密码/展示输入的账户密码</strong></p>
+<p><img src="diyige.png" alt=""></p>
+<hr>
+<h1 id="二、HTTPServletRequest的中文乱码问题"><a href="#二、HTTPServletRequest的中文乱码问题" class="headerlink" title="二、HTTPServletRequest的中文乱码问题"></a>二、HTTPServletRequest的中文乱码问题</h1><p>　　由于tomcat收到使用getParameter()方法默认是ISO-8859-1去解码，所以必须要去转换。</p>
+<h2 id="1-get方式-前端代码form表单里面是method-”get”"><a href="#1-get方式-前端代码form表单里面是method-”get”" class="headerlink" title="1.get方式(前端代码form表单里面是method=”get”)"></a>1.get方式(前端代码form表单里面是method=”get”)</h2><ul>
+<li><strong>1.1 通过(username.getBytes(“ISO-8859-1”))去更改</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username &#x3D; new String(username.getBytes(&quot;ISO-8859-1&quot;) , &quot;UTF-8&quot;);</span><br></pre></td></tr></table></figure></li>
+<li><strong>1.2 在tomcat/conf/server.xml 加上URIEncoding=”utf-8”</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Connector connectionTimeout&#x3D;&quot;20000&quot; port&#x3D;&quot;8080&quot; protocol&#x3D;&quot;HTTP&#x2F;1.1&quot; redirectPort&#x3D;&quot;8443&quot; URIEncoding&#x3D;&quot;UTF-8&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>第一种方式的具体代码(还需要上面的loginer.html代码)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class LoginServleter extends HttpServlet &#123;</span><br><span class="line"></span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		String username&#x3D;request.getParameter(&quot;username&quot;);  &#x2F;&#x2F;request 包括请求的信息</span><br><span class="line">		String password&#x3D;request.getParameter(&quot;password&quot;);</span><br><span class="line">		System.out.println(username+&quot; &quot;+password);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;get请求过来的数据，在url地址栏上已经是编码过的，所以取到的是乱码</span><br><span class="line">		&#x2F;&#x2F;tomcat收到使用getParameter()方法默认是ISO-8859-1去解码</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;先让文字回到ISO-8859-1对应的字节数组 ， 然后再按utf-8组拼字符串</span><br><span class="line">			username &#x3D; new String(username.getBytes(&quot;ISO-8859-1&quot;) , &quot;UTF-8&quot;);</span><br><span class="line">			System.out.println(&quot;userName&#x3D;&quot;+username+&quot;&#x3D;&#x3D;password&#x3D;&quot;+password);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-post方式-前端代码form表单里面是method-”post”"><a href="#2-post方式-前端代码form表单里面是method-”post”" class="headerlink" title="2.post方式(前端代码form表单里面是method=”post”)"></a>2.post方式(前端代码form表单里面是method=”post”)</h2><ul>
+<li>2.1 直接在getParameter方法之前使用一个<strong>setCharacterEncoding(“UTF-8”)；</strong></li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request.setCharacterEncoding(&quot;UTF-8&quot;);</span><br><span class="line">		这行设置一定要写在getParameter之前。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h1 id="三、HTTPServletResponse-返回数据给客户端"><a href="#三、HTTPServletResponse-返回数据给客户端" class="headerlink" title="三、HTTPServletResponse(返回数据给客户端)"></a>三、HTTPServletResponse(返回数据给客户端)</h1><p><strong>字符流/字节流方式：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Demo02 extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOExceptio	</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;以字符流getWriter</span><br><span class="line">		response.getWriter().write(&quot;&lt;h1&gt;hello response...&lt;&#x2F;h1&gt;&quot;);	</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;以字节流getOutputStream</span><br><span class="line">		response.getOutputStream().write(&quot;hello response......&quot;.getBytes());</span><br><span class="line">	&#125;</span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="四、HTTPServletResponse-中文乱码问题"><a href="#四、HTTPServletResponse-中文乱码问题" class="headerlink" title="四、HTTPServletResponse 中文乱码问题"></a>四、HTTPServletResponse 中文乱码问题</h1><p>###不管是字节流还是字符流，直接使用一行代码就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">response.setContentType(&quot;text&#x2F;html;charset&#x3D;UTF-8&quot;);</span><br><span class="line"></span><br><span class="line">然后在写数据即可。</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="五、下载资源"><a href="#五、下载资源" class="headerlink" title="五、下载资源"></a>五、下载资源</h1><h2 id="1-使用超链接的方式下载"><a href="#1-使用超链接的方式下载" class="headerlink" title="1.使用超链接的方式下载##"></a>1.使用<strong>超链接</strong>的方式下载##</h2><blockquote>
+<p>tomcat里面有一个默认的Servlet – DefaultServlet –专门用于处理放在tomcat服务器上的静态资源。</p>
+</blockquote>
+<p><strong>代码框架：</strong><br>　　在WebContent里面放需要下载的资源download文件(准备好的文件)。新建的index.html文件去实现超链接下载。</p>
+<p><img src="kuangjia.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;download&#x2F;aa.jpg&quot;&gt;aa.jpg&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;download&#x2F;bb.txt&quot;&gt;bb.tex&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;download&#x2F;cc.rar&quot;&gt;cc.rar&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-手写编码实现"><a href="#2-手写编码实现" class="headerlink" title="2.手写编码实现"></a>2.手写编码实现</h2><p><strong>代码框架：</strong></p>
+<p><img src="jiegou.png" alt=""></p>
+<p><strong>有一个弹窗的操作：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;让浏览器收到资源，弹出提醒！！！</span><br><span class="line">	response.setHeader(&quot;Content-Disposition&quot;, &quot;attachment; filename&#x3D;&quot;+fileName); &#x2F;&#x2F;response调用setHeader方法</span><br></pre></td></tr></table></figure>
+
+<p><strong>index.html(客户端)代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">	这是tomcat默认的servlet区提供下载：&lt;br&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;download&#x2F;aa.jpg&quot;&gt;aa.jpg&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;download&#x2F;bb.txt&quot;&gt;bb.txt&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;download&#x2F;cc.rar&quot;&gt;cc.rar&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	&lt;br&gt;手动编码提供下载。：&lt;br&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;demo01?filename&#x3D;aa.jpg&quot;&gt;aa.jpg&lt;&#x2F;a&gt;&lt;br&gt;  &lt;!--浏览器后面就是--filename&#x3D;xxx--&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;demo01?filename&#x3D;bb.txt&quot;&gt;bb.txt&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;demo01?filename&#x3D;cc.rar&quot;&gt;cc.rar&lt;&#x2F;a&gt;&lt;br&gt;</span><br><span class="line">	</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>demo01代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class demo01 extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.获取要下载的文件</span><br><span class="line">		String fileName &#x3D; request.getParameter(&quot;filename&quot;);  &#x2F;&#x2F;使用getParameter获得filename</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.获取这个文件正在tomcat的绝对路径getRealPath()</span><br><span class="line">		String path &#x3D; getServletContext().getRealPath(&quot;download&#x2F;&quot;+fileName);  &#x2F;&#x2F;使用servletcontext去获得绝对路径(里面写&quot;存放文件的名字&#x2F;&quot;+fileName)</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;让浏览器收到资源，弹出提醒！！！</span><br><span class="line">		response.setHeader(&quot;Content-Disposition&quot;, &quot;attachment; filename&#x3D;&quot;+fileName);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;3.转换成输入流</span><br><span class="line">		InputStream is&#x3D;new FileInputStream(path); &#x2F;&#x2F;输入流获取</span><br><span class="line">		OutputStream os &#x3D; response.getOutputStream(); &#x2F;&#x2F;输出流由response获得		</span><br><span class="line">		</span><br><span class="line">		int len&#x3D;0;</span><br><span class="line">		byte[]buffer &#x3D;new byte[1024]; </span><br><span class="line">		while((len&#x3D;is.read(buffer))!&#x3D;-1)  &#x2F;&#x2F;输入流不为-1</span><br><span class="line">		&#123; </span><br><span class="line">			os.write(buffer,0,len);  &#x2F;&#x2F;有多长写多长</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		os.close(); &#x2F;&#x2F;关闭</span><br><span class="line">		is.close();</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>最终结果(可以弹窗)</strong></p>
+<p><img src="tanchu.png" alt=""></p>
+<hr>
+<h1 id="六、下载资源中文乱码问题"><a href="#六、下载资源中文乱码问题" class="headerlink" title="六、下载资源中文乱码问题"></a>六、下载资源中文乱码问题</h1><blockquote>
+<p>针对浏览器类型，对文件名字做编码处理：</p>
+</blockquote>
+<pre><code>Firefox ---使用的是UBase64 
+IE、Chrome ---使用的是URLEncoder</code></pre><p><strong>代码结构框架:</strong></p>
+<p><img src="liuge.png" alt=""></p>
+<p><strong>1.index.html里面只需要增加一行标签代码即可</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;demo01?filename&#x3D;黑马.png&quot;&gt;黑马.png&lt;&#x2F;a&gt;&lt;br&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.在上面的基础上新增一个DownLoadUtil类写一个帮助火狐firefox浏览器识别的代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package servlet;</span><br><span class="line">import java.io.UnsupportedEncodingException;</span><br><span class="line">import sun.misc.BASE64Encoder;</span><br><span class="line">public class DownLoadUtil &#123;</span><br><span class="line">	public static String base64EncodeFileName(String fileName) &#123;</span><br><span class="line">		BASE64Encoder base64Encoder &#x3D; new BASE64Encoder();</span><br><span class="line">		try &#123;</span><br><span class="line">			return &quot;&#x3D;?UTF-8?B?&quot;+ new String(base64Encoder.encode(fileName.getBytes(&quot;UTF-8&quot;))) + &quot;?&#x3D;&quot;;</span><br><span class="line">		&#125; catch (UnsupportedEncodingException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			throw new RuntimeException(e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.原来的demo01里面需要增加中文编码环节：</strong></p>
+<p><img src="zengjia.png" alt=""></p>
+<p><strong>主要代码分析：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.获取要下载的文件</span><br><span class="line">		String fileName &#x3D; request.getParameter(&quot;filename&quot;);   &#x2F;&#x2F;获取filename</span><br><span class="line">		&#x2F;&#x2F;有中文转成UTF-8格式</span><br><span class="line">		fileName&#x3D;new String(fileName.getBytes(&quot;ISO-8859-1&quot;),&quot;UTF-8&quot;); &#x2F;&#x2F;通过getBytes获得tomcat默认的ISO-8859-1的格式，然后更改为UTF-8</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.获取这个文件正在tomcat的绝对路径getRealPath()</span><br><span class="line">		String path &#x3D; getServletContext().getRealPath(&quot;download&#x2F;&quot;+fileName);</span><br><span class="line">		</span><br><span class="line">		String clientType &#x3D; request.getHeader(&quot;User-Agent&quot;); &#x2F;&#x2F;获取当前的用户端类型</span><br><span class="line">				</span><br><span class="line">				if(clientType.contains(&quot;Firefox&quot;))</span><br><span class="line">				&#123;</span><br><span class="line">					fileName &#x3D; DownLoadUtil.base64EncodeFileName(fileName);  &#x2F;&#x2F;调用DownLoadUtil类(新增的类)的方法</span><br><span class="line">				&#125;</span><br><span class="line">				else    &#x2F;&#x2F;IE ，或者  Chrome （谷歌浏览器） ，</span><br><span class="line">				&#123;	</span><br><span class="line">					fileName &#x3D; URLEncoder.encode(fileName,&quot;UTF-8&quot;);  &#x2F;&#x2F;使用URLEncoder类的encode方法更改</span><br><span class="line">				&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>demo01完整代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">public class demo01 extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;1.获取要下载的文件</span><br><span class="line">		String fileName &#x3D; request.getParameter(&quot;filename&quot;);</span><br><span class="line">		&#x2F;&#x2F;有中文转成UTF-8格式</span><br><span class="line">		fileName&#x3D;new String(fileName.getBytes(&quot;ISO-8859-1&quot;),&quot;UTF-8&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.获取这个文件正在tomcat的绝对路径getRealPath()</span><br><span class="line">		String path &#x3D; getServletContext().getRealPath(&quot;download&#x2F;&quot;+fileName);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;获取来访的客户端类型</span><br><span class="line">				String clientType &#x3D; request.getHeader(&quot;User-Agent&quot;);</span><br><span class="line">				</span><br><span class="line">				if(clientType.contains(&quot;Firefox&quot;))</span><br><span class="line">				&#123;</span><br><span class="line">					fileName &#x3D; DownLoadUtil.base64EncodeFileName(fileName);</span><br><span class="line">				&#125;</span><br><span class="line">				else    &#x2F;&#x2F;IE ，或者  Chrome （谷歌浏览器） ，</span><br><span class="line">				&#123;	</span><br><span class="line">					fileName &#x3D; URLEncoder.encode(fileName,&quot;UTF-8&quot;);</span><br><span class="line">				&#125;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;让浏览器收到资源，弹出提醒！！！</span><br><span class="line">		response.setHeader(&quot;Content-Disposition&quot;, &quot;attachment; filename&#x3D;&quot;+fileName);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;3.转换成输入流</span><br><span class="line">		InputStream is&#x3D;new FileInputStream(path);</span><br><span class="line">		OutputStream os &#x3D; response.getOutputStream();		</span><br><span class="line">		</span><br><span class="line">		int len&#x3D;0;</span><br><span class="line">		byte[]buffer &#x3D;new byte[1024];</span><br><span class="line">		while((len&#x3D;is.read(buffer))!&#x3D;-1)&#123;</span><br><span class="line">			os.write(buffer,0,len);</span><br><span class="line">		&#125;</span><br><span class="line">		os.close();</span><br><span class="line">		is.close();</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>最终黑马.png也可以通过弹窗打开！</strong></p>
+<p><img src="heima.png" alt=""></p>
+<hr>
+<h1 id="七、请求转发-原来的地方-和重定向-去新的地方"><a href="#七、请求转发-原来的地方-和重定向-去新的地方" class="headerlink" title="七、请求转发(原来的地方)和重定向(去新的地方)"></a>七、请求转发(原来的地方)和重定向(去新的地方)</h1><p><strong>主要代码(跳转)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;早期的写法：</span><br><span class="line">  &#x2F;&#x2F;response.setStatus(302);  &#x2F;&#x2F;添加一个状态</span><br><span class="line">  &#x2F;&#x2F;response.setHeader(&quot;Location&quot;, &quot;login_success.html&quot;); &#x2F;&#x2F;成功之后就可以直接跳转到login_success.html页面</span><br><span class="line">		</span><br><span class="line">&#x2F;&#x2F;重定向写法：重新定位方向</span><br><span class="line">  response.sendRedirect(&quot;login_success.html&quot;);	</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;请求转发写法：</span><br><span class="line">  request.getRequestDispatcher(&quot;login_success.html&quot;).forward(request,response);</span><br></pre></td></tr></table></figure>
+
+<p><strong>只展示java代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class LoginServlet extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		</span><br><span class="line">		response.setContentType(&quot;text&#x2F;html;charset&#x3D;utf-8&quot;); &#x2F;&#x2F;解决中文乱码问题</span><br><span class="line">		</span><br><span class="line">		String username&#x3D;request.getParameter(&quot;username&quot;);</span><br><span class="line">		String password&#x3D;request.getParameter(&quot;password&quot;);</span><br><span class="line">		if(&quot;admin&quot;.equals(username)&amp;&amp;&quot;123&quot;.equals(password))</span><br><span class="line">		&#123;</span><br><span class="line">			&#x2F;&#x2F;response.getWriter().write(&quot;yes&quot;); &#x2F;&#x2F;使用字符流 但是要改中文的问题</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;早期的写法：</span><br><span class="line">			  &#x2F;&#x2F;response.setStatus(302);  &#x2F;&#x2F;添加一个状态</span><br><span class="line">			  &#x2F;&#x2F;response.setHeader(&quot;Location&quot;, &quot;login_success.html&quot;); &#x2F;&#x2F;成功之后就可以直接跳转到login_success.html页面</span><br><span class="line">					</span><br><span class="line">			&#x2F;&#x2F;重定向写法：重新定位方向</span><br><span class="line">			response.sendRedirect(&quot;login_success.html&quot;);	</span><br><span class="line"></span><br><span class="line">			&#x2F;&#x2F;请求转发写法：</span><br><span class="line">			request.getRequestDispatcher(&quot;login_success.html&quot;).forward(request,response);	</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			response.getWriter().write(&quot;no&quot;);</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="两者之间的区别和联系"><a href="#两者之间的区别和联系" class="headerlink" title="两者之间的区别和联系"></a><strong>两者之间的区别和联系</strong></h2><table>
+<thead>
+<tr>
+<th align="center"><strong>区分项目</strong></th>
+<th align="center">请求转发(request)</th>
+<th align="center">重定位(response)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>请求次数</strong></td>
+<td align="center">一次(服务器内部帮忙完成)</td>
+<td align="center">两次(服务器在第一次请求后悔返回302和一个地址，然后浏览器根据地址去第二次访问)</td>
+</tr>
+<tr>
+<td align="center"><strong>显示地址</strong></td>
+<td align="center">请求的servlet地址(要去哪里)</td>
+<td align="center">显示的最后的那个资源的地址(最终跳转的)</td>
+</tr>
+<tr>
+<td align="center"><strong>跳转路径</strong></td>
+<td align="center">只能去自己项目的路径</td>
+<td align="center">可以跳转到任意路径</td>
+</tr>
+<tr>
+<td align="center"><strong>效率</strong></td>
+<td align="center">高效(1次)</td>
+<td align="center">低效(2次)</td>
+</tr>
+<tr>
+<td align="center">*<em>后续请求(上一次的request) *</em></td>
+<td align="center">不可以使用(两次不同请求)</td>
+<td align="center">可以使用(同一请求)</td>
+</tr>
+</tbody></table>
+<p><img src="img01.png" alt=""></p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTPServletReauest%E5%92%8CHTTPServletResponse/" rel="tag">HTTPServletReauest和HTTPServletResponse</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Servlet" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/17/Servlet/" class="article-date">
+      <time datetime="2020-02-17T05:37:30.000Z" itemprop="datePublished">2020-02-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/17/Servlet/">Servlet</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、web资源"><a href="#一、web资源" class="headerlink" title="一、web资源"></a>一、web资源</h1><p>在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。 </p>
+<ul>
+<li><strong>静态资源</strong><br>  html 、 js、 css</li>
+<li><strong>动态资源</strong><br>  servlet/jsp</li>
+</ul>
+<hr>
+<h1 id="二、Servlet介绍-创建tomcat配置"><a href="#二、Servlet介绍-创建tomcat配置" class="headerlink" title="二、Servlet介绍+创建tomcat配置"></a>二、Servlet介绍+创建tomcat配置</h1><ul>
+<li><p>其实就是一个<strong>java程序</strong>，运行在我们的web服务器上，用于接收和响应客户端的http请求。 </p>
+</li>
+<li><p>更多的是配合动态资源来做。 当然静态资源也需要使用到servlet，只不过是Tomcat里面已经定义好了一个<strong>DefaultServlet</strong>。</p>
+</li>
+</ul>
+<h2 id="简单使用Web工程"><a href="#简单使用Web工程" class="headerlink" title="简单使用Web工程"></a>简单使用Web工程</h2><ol>
+<li><p><strong>切换工作空间</strong>(左上角文件–切换工作空间)</p>
+</li>
+<li><p>自动打开然后需要配置Tomcat,点开右上角透视图(如图)–JAVAEE</p>
+</li>
+</ol>
+<p><img src="diyi.png" alt=""></p>
+<ol start="3">
+<li>点击下边输出框的Servers–提示一行NO….–然后空白位置右键new</li>
+</ol>
+<p><img src="dier.png" alt=""></p>
+<ol start="4">
+<li>Apache–tomcat版本7.0</li>
+</ol>
+<p><img src="disan.png" alt=""></p>
+<ol start="5">
+<li>选定tomcat–下面的Servers里面的tomcat7–右键open–中间Server Locations选中第二个</li>
+</ol>
+<p><img src="disi.png" alt=""></p>
+<ol start="6">
+<li>新建一个web项目–右键new–other–Web–Dynamic Web Project</li>
+</ol>
+<p><img src="diwu.png" alt=""></p>
+<ol start="7">
+<li>新建一个名字HelloServlet–Dynamic web module version更改为2.5</li>
+</ol>
+<p><img src="diliu.png" alt=""></p>
+<ol start="8">
+<li>在HelloServlet–WebContent新建名为index.html文件</li>
+</ol>
+<p><img src="diqi.png" alt=""></p>
+<ol start="9">
+<li>index里面写一个h标签内容–点run as–选自己的tomcat–稍等一会(提前不要打开tomcat)</li>
+</ol>
+<p><img src="diba.png" alt=""></p>
+<ol start="10">
+<li>可以通过访问网页展示</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;HelloServlet&#x2F;index.html</span><br></pre></td></tr></table></figure>
+
+<p><img src="dijiu.png" alt=""></p>
+<hr>
+<h1 id="三、Servlet操作代码"><a href="#三、Servlet操作代码" class="headerlink" title="三、Servlet操作代码"></a>三、Servlet操作代码</h1><ol>
+<li>在前面的基础上Java Resources–src–<strong>新建HelloServer类</strong>(实现Server接口)–要实现五个方法(只用改service方法)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package server;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import javax.servlet.Servlet;</span><br><span class="line">import javax.servlet.ServletConfig;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.ServletRequest;</span><br><span class="line">import javax.servlet.ServletResponse;</span><br><span class="line">public class HelloServer implements Servlet&#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void destroy() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public ServletConfig getServletConfig() &#123;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public String getServletInfo() &#123;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void init(ServletConfig arg0) throws ServletException &#123;&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void service(ServletRequest arg0, ServletResponse arg1) throws ServletException, IOException &#123;</span><br><span class="line">		System.out.println(&quot;helloServlet...&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>配置Servlet</strong>：告诉服务器我们的应用要这么写个servlet</li>
+</ol>
+<p>点开WebContent–WFB-INF–lib–web.xml–点击下面框的source更改–然后重启tomcat</p>
+<p><img src="genggai.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--1.向tomcat报告 我有一个XXX类，路径是XXX--&gt;</span><br><span class="line">&lt;servlet&gt;   &lt;!--提示报错之后选最后一个servlet-name--&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServer&lt;&#x2F;servlet-name&gt;    &lt;!--提示报错之后选最后一个servlet-class--&gt;</span><br><span class="line">	&lt;servlet-class&gt;server.HelloServer&lt;&#x2F;servlet-class&gt;   &lt;!--需要写包.类名--&gt;</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--2.注册servlet的映射,servletName:找到上面注册的具体servlet,url-pattern:在地址栏上的path--&gt;</span><br><span class="line">	&lt;servlet-mapping&gt;    &lt;!--提示报错之后选最后一个servlet-name--&gt;</span><br><span class="line">		&lt;servlet-name&gt;HelloServer&lt;&#x2F;servlet-name&gt;</span><br><span class="line">		&lt;url-pattern&gt;&#x2F;a&lt;&#x2F;url-pattern&gt;    &lt;!--一定要记得写&#x2F; 实在项目名后写的地址--&gt;</span><br><span class="line">	&lt;&#x2F;servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>地址栏输入</strong>–<a href="http://localhost:8080/项目名称(HelloServlet)/a" target="_blank" rel="noopener">http://localhost:8080/项目名称(HelloServlet)/a</a></li>
+</ol>
+<p><strong>执行框会显示类的结果：</strong></p>
+<p><img src="xiamian.png" alt=""></p>
+<hr>
+<h1 id="四、Servlet-执行过程"><a href="#四、Servlet-执行过程" class="headerlink" title="四、Servlet 执行过程"></a>四、Servlet 执行过程</h1><p><strong>执行分析过程：</strong>tomcat应用(localhost:8080)–找到项目(HelloServlet)–找到web.xml–找下面的url-pattern的/a–找到servlet-mapping中的servlet-name(类名)–找到上面的servlet-class 然后开始创建该类的实例–实现service方法</p>
+<p><img src="img05.png" alt=""></p>
+<hr>
+<h1 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h1><pre><code>Servlet (接口)
+    |
+    |
+GenericServlet
+    |
+    |
+HttpServlet （用于处理http的请求）</code></pre><ul>
+<li>定义一个类—继承HttpServlet—复写doGet 和 doPost</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package server;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line">public class shixian extends HttpServlet &#123;</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;Get请求会来这个方法</span><br><span class="line">		@Override</span><br><span class="line">		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;</span><br><span class="line">			System.out.println(&quot;get---&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;POST请求会来这个方法</span><br><span class="line">		@Override</span><br><span class="line">		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;</span><br><span class="line">			System.out.println(&quot;post----&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="img06.png" alt=""></p>
+<hr>
+<h1 id="六、Servlet-生命周期"><a href="#六、Servlet-生命周期" class="headerlink" title="六、Servlet 生命周期"></a>六、Servlet 生命周期</h1><ul>
+<li><p><strong>init方法</strong></p>
+<pre><code>在创建该servlet的实例时，就执行该方法。
+一个servlet只会初始化一次， init方法只会执行一次
+默认情况下是 ： 初次访问该servlet，才会创建实例。 </code></pre></li>
+<li><p><strong>service方法</strong></p>
+<pre><code>只要客户端来了一个请求，那么就执行这个方法了。
+  该方法可以被执行很多次。 一次请求，对应一次service方法的调用</code></pre></li>
+<li><p><strong>destroy方法</strong></p>
+<pre><code>servlet销毁的时候，就会执行该方法
+
+    1. 该项目从tomcat的里面移除。
+    2. 正常关闭tomcat就会执行 shutdown.bat</code></pre></li>
+</ul>
+<blockquote>
+<p>doGet 和 doPost不算生命周期方法，所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。</p>
+</blockquote>
+<p><strong>完整代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">package server;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import javax.servlet.Servlet;</span><br><span class="line">import javax.servlet.ServletConfig;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.ServletRequest;</span><br><span class="line">import javax.servlet.ServletResponse;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">public class Hello implements Servlet&#123;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;&#x2F;1 (一次)</span><br><span class="line">	&#x2F;&#x2F;在创建servlet实例--&gt;执行的方法</span><br><span class="line">	&#x2F;&#x2F;默认是初次访问servlet,才会创建实例</span><br><span class="line">	@Override</span><br><span class="line">	public void init(ServletConfig config) throws ServletException &#123;</span><br><span class="line">		System.out.println(&quot;Hello初始化...&quot;);	&#x2F;&#x2F;重启tomcat--浏览器输入http:&#x2F;&#x2F;localhost:8080&#x2F;HelloServlet&#x2F;Hello--控制台会输出</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;2 (多次)</span><br><span class="line">	&#x2F;&#x2F;只要客户端来请求，就执行</span><br><span class="line">	@Override</span><br><span class="line">	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException &#123;</span><br><span class="line">		System.out.println(&quot;客户端来请求,service方法已经执行了&quot;);	 &#x2F;&#x2F;重启tomcat--浏览器输入http:&#x2F;&#x2F;localhost:8080&#x2F;HelloServlet&#x2F;Hello--控制台会输出	</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;3</span><br><span class="line">	&#x2F;&#x2F;用于servlet销毁</span><br><span class="line">	&#x2F;&#x2F;&#x2F;1. 该项目从tomcat的里面移除。</span><br><span class="line">	&#x2F;&#x2F;2. 正常关闭tomcat(shutdown.bat)就会执行 </span><br><span class="line">	@Override</span><br><span class="line">	public void destroy() &#123;</span><br><span class="line">		System.out.println(&quot;destroy方法已经执行了&quot;);	 &#x2F;&#x2F;重启tomcat--浏览器输入http:&#x2F;&#x2F;localhost:8080&#x2F;HelloServlet&#x2F;Hello--控制台会输出</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public ServletConfig getServletConfig() &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		return null;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public String getServletInfo() &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		return null;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="七、Servlet创建实例提前-缓解init方法逗留时间太长"><a href="#七、Servlet创建实例提前-缓解init方法逗留时间太长" class="headerlink" title="七、Servlet创建实例提前(缓解init方法逗留时间太长)"></a>七、Servlet创建实例提前(缓解init方法逗留时间太长)</h1><ol>
+<li>默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 </li>
+<li>那么这个时候，初次访问，可能会在init方法中逗留太久的时间。 那么有没有方法可以让这个初始化的时机提前一点。 </li>
+<li>在配置的时候， 使用load-on-startup元素来指定， 给定的数字越小，启动的时机就越早。 一般不写负数， 从2开始即可。</li>
+</ol>
+<p><strong>web.xml里面更改：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">  	&lt;servlet-name&gt;HelloServlet04&lt;&#x2F;servlet-name&gt;</span><br><span class="line">  	&lt;servlet-class&gt;com.itheima.servlet.HelloServlet04&lt;&#x2F;servlet-class&gt;</span><br><span class="line">  	&lt;load-on-startup&gt;2&lt;&#x2F;load-on-startup&gt;  &#x2F;&#x2F;增加这一行</span><br><span class="line">  &lt;&#x2F;servlet&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="八、ServletConfig-API"><a href="#八、ServletConfig-API" class="headerlink" title="八、ServletConfig(API)"></a>八、ServletConfig(API)</h1><blockquote>
+<p>Servlet的配置,—&gt;这个对象,获取servlet配置时的一些信息</p>
+</blockquote>
+<p><strong>完整代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">package server;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.Enumeration;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line">public class ServletConfig extends HttpServlet &#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;ServletConfig  -----&gt;  获取servlet配置的信息</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;1.得到servlet配置对象</span><br><span class="line">		javax.servlet.ServletConfig config&#x3D;getServletConfig();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;获取servlet里面xml的配置名称servletName</span><br><span class="line">		String servletName&#x3D;config.getServletName();</span><br><span class="line">		System.out.println(&quot;servletName&#x3D;&quot;+servletName);</span><br><span class="line">		System.out.println(&quot;-------&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;获取servlet里面具体的某一个参数</span><br><span class="line">		String address&#x3D;config.getInitParameter(&quot;address&quot;); &#x2F;&#x2F;配置文件写的&lt;param-name&gt;address&lt;&#x2F;param-name&gt;</span><br><span class="line">		System.out.println(&quot;address&#x3D;&quot;+address);	</span><br><span class="line">		System.out.println(&quot;-------&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;遍历取出所有的参数名称</span><br><span class="line">		Enumeration&lt;String&gt; names &#x3D; config.getInitParameterNames();     &#x2F;&#x2F;ctrl+1--选“将方法给定指定局部变量 ”</span><br><span class="line">		while (names.hasMoreElements()) &#123;</span><br><span class="line">			String key &#x3D; (String) names.nextElement();</span><br><span class="line">			String value &#x3D; config.getInitParameter(key);</span><br><span class="line">			System.out.println(&quot;key&#x3D;&#x3D;&#x3D;&quot;+key + &quot;   value&#x3D;&quot;+value);	</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;来了post请求，就让它去执行doGet方法</span><br><span class="line">	@Override</span><br><span class="line">	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(req, resp);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>web.xml配置文件加入：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--ServletConfig类的配置文件--&gt;</span><br><span class="line">	</span><br><span class="line"> 	&lt;servlet&gt;   &lt;!--提示报错之后选最后一个servlet-name--&gt;</span><br><span class="line">  		&lt;servlet-name&gt;ServletConfig&lt;&#x2F;servlet-name&gt;    &lt;!--提示报错之后选最后一个servlet-class--&gt;</span><br><span class="line">  		&lt;servlet-class&gt;server.ServletConfig&lt;&#x2F;servlet-class&gt;   &lt;!--需要写包.类名--&gt;</span><br><span class="line">  		</span><br><span class="line">  		&lt;!-- 添加初始化参数 init-param --&gt;</span><br><span class="line">  		</span><br><span class="line">		&lt;init-param&gt;</span><br><span class="line">  				&lt;param-name&gt;address&lt;&#x2F;param-name&gt;</span><br><span class="line">  				&lt;param-value&gt;beijing...&lt;&#x2F;param-value&gt;</span><br><span class="line">  		&lt;&#x2F;init-param&gt;</span><br><span class="line"></span><br><span class="line">		&lt;init-param&gt;</span><br><span class="line">  			&lt;param-name&gt;age&lt;&#x2F;param-name&gt;</span><br><span class="line">  			&lt;param-value&gt;18&lt;&#x2F;param-value&gt;</span><br><span class="line">  		&lt;&#x2F;init-param&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;init-param&gt;</span><br><span class="line">  			&lt;param-name&gt;name&lt;&#x2F;param-name&gt;</span><br><span class="line">  			&lt;param-value&gt;zhangsan&lt;&#x2F;param-value&gt;</span><br><span class="line">  		&lt;&#x2F;init-param&gt;</span><br><span class="line"></span><br><span class="line"> 	 &lt;&#x2F;servlet&gt;</span><br><span class="line"> 	</span><br><span class="line"> 	 &lt;servlet-mapping&gt;    &lt;!--提示报错之后选最后一个servlet-name--&gt;</span><br><span class="line">  		&lt;servlet-name&gt;ServletConfig&lt;&#x2F;servlet-name&gt;</span><br><span class="line">  		&lt;url-pattern&gt;&#x2F;ServletConfig&lt;&#x2F;url-pattern&gt;   </span><br><span class="line">  	&lt;&#x2F;servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>重新打开tomcat–浏览器输入<a href="http://localhost:8080/HelloServlet/ServletConfig--控制台得到结果" target="_blank" rel="noopener">http://localhost:8080/HelloServlet/ServletConfig--控制台得到结果</a></strong></p>
+<p><img src="zuizhong.png" alt=""></p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-HTTP协议" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/17/HTTP%E5%8D%8F%E8%AE%AE/" class="article-date">
+      <time datetime="2020-02-17T03:27:00.000Z" itemprop="datePublished">2020-02-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/17/HTTP%E5%8D%8F%E8%AE%AE/">HTTP协议</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、http协议介绍"><a href="#一、http协议介绍" class="headerlink" title="一、http协议介绍"></a>一、http协议介绍</h1><blockquote>
+<p>针对网络上的客户端与服务器端在执行http请求的时候，遵守的一种规范。 其实就是规定了客户端在访问服务器端的时候，要带上哪些东西， 服务器端返回数据的时候，也要带上什么东西。 </p>
+</blockquote>
+<ul>
+<li>版本<br> <strong>1.0</strong>—请求数据，服务器返回后，将会断开连接<br> <strong>1.1</strong>—请求数据，服务器返回后，连接还会保持着。 除非服务器|客户端关掉。有一定的时间限制，如果都空着这个连接，那么后面会自己断掉。</li>
+</ul>
+<hr>
+<h1 id="二、演示客户端—服务器端通讯"><a href="#二、演示客户端—服务器端通讯" class="headerlink" title="二、演示客户端—服务器端通讯"></a>二、演示客户端—服务器端通讯</h1><ol>
+<li><p>安装抓包工具 HttpWatch (IE插件)</p>
+</li>
+<li><p>打开tomcat. 输入localhost:8080 打开首页</p>
+</li>
+<li><p>在首页中间找到Example-Servlet Examples-点击Request  Parameters 的 Execute超链接 </p>
+</li>
+</ol>
+<p><img src="img02.png" alt=""></p>
+<ol start="4">
+<li>输入一个例子，然后查看浏览器和 tomcat服务器的对接细节</li>
+</ol>
+<p><img src="img03.png" alt=""></p>
+<hr>
+<h1 id="三、http请求数据-左侧"><a href="#三、http请求数据-左侧" class="headerlink" title="三、http请求数据(左侧)"></a>三、http请求数据(左侧)</h1><blockquote>
+<p>请求的数据(三部分):请求行、请求头、请求体</p>
+</blockquote>
+<ul>
+<li><strong>1.请求行(左侧第一行)</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;examples&#x2F;servlets&#x2F;servlet&#x2F;RequestParamExample HTTP&#x2F;1.1</span><br></pre></td></tr></table></figure>
+<pre><code>POST-----请求方式,以post去提交数据    
+/examples/servlets/servlet/RequestParamExample----请求的地址路径(访问到哪里) 
+HTTP/1.1-----协议版本</code></pre><ul>
+<li><strong>2.请求头(左侧中间部分)</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Accept: application&#x2F;x-ms-application, image&#x2F;jpeg, application&#x2F;xaml+xml, image&#x2F;gif, image&#x2F;pjpeg, application&#x2F;x-ms-xbap, *&#x2F;*</span><br><span class="line">Referer: http:&#x2F;&#x2F;localhost:8080&#x2F;examples&#x2F;servlets&#x2F;servlet&#x2F;RequestParamExample</span><br><span class="line">Accept-Language: zh-CN</span><br><span class="line">User-Agent: Mozilla&#x2F;4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident&#x2F;4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)</span><br><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Host: localhost:8080</span><br><span class="line">Content-Length: 31</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Cache-Control: no-cache</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Accept-----客户端向服务器端表示，我能支持什么类型的数据</span><br><span class="line">Referer----真正请求的地址路径，全路径</span><br><span class="line">Accept-Language----支持的语言格式</span><br><span class="line">User-Agent----用户代理 向服务器表明当前来访的客户端信息</span><br><span class="line">Content-Type----提交的数据类型(经过urlencoding编码的form表单的数据)	</span><br><span class="line">Accept-Encoding：gzip, deflate----压缩算法。 </span><br><span class="line">Host----主机地址</span><br><span class="line">Content-Length----数据长度</span><br><span class="line">Connectio----Keep-Alive 保持连接</span><br><span class="line">Cache-Control---对缓存的操作</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><strong>3.请求体(左侧最后一行)</strong><br>浏览器<strong>真正</strong>发送给服务器的数据(发送的数据呈现的是key=value,多个数据，那么使用 &amp;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firstname&#x3D;zhang&amp;lastname&#x3D;sansan</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="四、http响应数据-右侧"><a href="#四、http响应数据-右侧" class="headerlink" title="四、http响应数据(右侧)"></a>四、http响应数据(右侧)</h1><blockquote>
+<p>请求的数据(三部分):响应行、响应头、响应体</p>
+</blockquote>
+<p><strong>右侧全部代码如下</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP&#x2F;1.1 200 OK</span><br><span class="line">Server: Apache-Coyote&#x2F;1.1</span><br><span class="line">Content-Type: text&#x2F;html;charset&#x3D;ISO-8859-1</span><br><span class="line">Content-Length: 673</span><br><span class="line">Date: Fri, 17 Feb 2017 02:53:02 GMT</span><br><span class="line">...这里还有很多数据...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>1.响应行(右侧第一行)</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP&#x2F;1.1 200 OK</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP&#x2F;1.1----协议版本  </span><br><span class="line">状态码(咱们这次交互到底是什么样结果的一个code)</span><br><span class="line">		200 : ok  正确</span><br><span class="line">		403 : for bidden  拒绝</span><br><span class="line">		404 ： Not Found</span><br><span class="line">		500 ： 服务器异常</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>2.响应头(右侧第一行)</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server: Apache-Coyote&#x2F;1.1</span><br><span class="line">Content-Type: text&#x2F;html;charset&#x3D;ISO-8859-1</span><br><span class="line">Content-Length: 673</span><br><span class="line">Date: Fri, 17 Feb 2017 02:53:02 GMT</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server----服务器是哪一种类型。(Tomcat)</span><br><span class="line">Content-Type----服务器返回给客户端你的内容类型</span><br><span class="line">Content-Length----返回的数据长度</span><br><span class="line">Date----通讯的日期，响应的时间</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="五、HTTP协议的Get和Post区别"><a href="#五、HTTP协议的Get和Post区别" class="headerlink" title="五、HTTP协议的Get和Post区别"></a>五、HTTP协议的Get和Post区别</h1><p><img src="img04.png" alt=""></p>
+<ul>
+<li><p><strong>post</strong></p>
+<pre><code>1. 数据是以**流(stream)**的方式写过去，不会在地址栏上面显示。 现在一般提交数据---&gt;服务器使用的都是POST
+2. 以流的方式写数据，所以数据没有大小限制。</code></pre></li>
+<li><p><strong>get</strong></p>
+<pre><code>1. 会在地址栏后面拼接数据(暴露隐私)。一般从服务器获取数据，并且客户端也不用提交上面数据的时候，可以使用GET
+2. 能够带的数据有限, 1kb大小</code></pre></li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Tomcat" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/16/Tomcat/" class="article-date">
+      <time datetime="2020-02-16T05:17:42.000Z" itemprop="datePublished">2020-02-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/16/Tomcat/">Tomcat</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、程序架构"><a href="#一、程序架构" class="headerlink" title="一、程序架构"></a>一、程序架构</h1><ul>
+<li><strong>C/S(client/server)</strong></li>
+</ul>
+<blockquote>
+<p>QQ 微信 LOL</p>
+</blockquote>
+<p>优点：</p>
+<pre><code>有一部分代码写在客户端， 用户体验比较好。 </code></pre><p>缺点： </p>
+<pre><code>服务器更新，客户端也要随着更新。 占用资源大。 </code></pre><ul>
+<li><strong>B/S(browser/server)</strong></li>
+</ul>
+<blockquote>
+<p>网页游戏 ， WebQQ …</p>
+</blockquote>
+<p>优点： </p>
+<pre><code>客户端只要有浏览器就可以了。     占用资源小， 不用更新。 </code></pre><p>缺点：</p>
+<pre><code>用户体验不佳。 </code></pre><hr>
+<h1 id="二、Web应用-服务器支撑-index-html"><a href="#二、Web应用-服务器支撑-index-html" class="headerlink" title="二、Web应用(服务器支撑 index.html)"></a>二、Web应用(服务器支撑 index.html)</h1><ul>
+<li><p><strong>服务器(配置好一点的电脑)：</strong>处理客户端的请求，返回资源/信息。</p>
+</li>
+<li><p><strong>服务器软件：</strong>客户端在浏览器的地址栏上输入地址 ，然后<strong>web服务器软件</strong>—接收请求—响应消息。</p>
+</li>
+</ul>
+<pre><code>服务器软件：
+1.Tomcat      apache
+2.WebLogic    BEA(收费)
+3.Websphere   IBM(收费)
+4.IIS         微软</code></pre><hr>
+<h1 id="三、Tomcat安装"><a href="#三、Tomcat安装" class="headerlink" title="三、Tomcat安装"></a>三、Tomcat安装</h1><p><strong>安装步骤：</strong></p>
+<pre><code>1.直接解压 ，然后找到bin/startup.bat
+2.启动之后，如果能够正常看到黑窗口，表明已经成功安装。 为了确保万无一失， 最好在浏览器的地址栏上输入 http://localhost:8080 , 如果有看到内容 就表明成功了。
+3.如果双击了startup.bat,  看到一闪而过的情形，一般都是 JDK的环境变量没有配置。 
+4.配置环境-编辑setclasspath.bat文件，然后更改环境(百度有解决方案)。</code></pre><p><strong>目录介绍：</strong></p>
+<p><strong>bin：</strong>包含了一些jar ,  bat文件 。  startup.bat<br><strong>conf：</strong>tomcat的配置     server.xml  web.xml<br><strong>lib：</strong>tomcat运行所需的jar文件<br><strong>logs：</strong>运行的日志文件<br><strong>temp：</strong>临时文件<br><strong>webapps：</strong>发布到tomcat服务器上的项目，就存放在这个目录。<br><strong>work：</strong>(目前不用管)jsp翻译成class文件存放地</p>
+<hr>
+<h1 id="四、把一个项目发布到tomcat中"><a href="#四、把一个项目发布到tomcat中" class="headerlink" title="四、把一个项目发布到tomcat中"></a>四、把一个项目发布到tomcat中</h1><blockquote>
+<p>需求： 如何能让其他的电脑访问我这台电脑上的资源。 hello.xml</p>
+</blockquote>
+<p>###1. 拷贝这个文件到webapps/ROOT里 ///在webapps新建一个xml将文档拷贝进去<br>    在浏览器里面访问<br>    一、<a href="http://localhost:8080/hello.xml" target="_blank" rel="noopener">http://localhost:8080/hello.xml</a><br>    二、<a href="http://localhost:8080/xml/hello.xml" target="_blank" rel="noopener">http://localhost:8080/xml/hello.xml</a><br>    三、<a href="http://192.168.245.1:8080/xml/hello.xml(通过ip地址)" target="_blank" rel="noopener">http://192.168.245.1:8080/xml/hello.xml(通过ip地址)</a></p>
+<p><img src="rootlimian.png" alt=""></p>
+<p><img src="xmllimian.png" alt=""></p>
+<hr>
+<p>###2. 配置虚拟路径(更改conf/server.xml文件)</p>
+<ol>
+<li>使用localhost：8080 打开tomcat首页, 在左侧找到tomcat的文档入口，点击进去后，在左侧接着找到 Context入口，点击进入。    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;docs&#x2F;config&#x2F;context.html</span><br></pre></td></tr></table></figure>
+
+
+<ol start="2">
+<li>在conf/server.xml 找到host元素节点，然后在下面添加一行标签内容docBase存放的是xmlzancun文件夹(里面有一个hello.xml文件),然后路径写/a。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Context docBase&#x3D;&quot;F:\xmlzancun&quot; path&#x3D;&quot;&#x2F;a&quot;&gt;&lt;&#x2F;Context&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="buzhou.png" alt=""></p>
+<ol start="3">
+<li>之后关闭tomcat重启之后，在地址栏输入：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;a&#x2F;hello.xml</span><br></pre></td></tr></table></figure>
+<hr>
+<p><img src="dierzhong.png" alt=""></p>
+<hr>
+<p>###3. 配置虚拟路径(conf/catalina/localhost新建xml文件)</p>
+<ol>
+<li>新建一个xml，在这个文件里面写入以下内容</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&#39;1.0&#39; encoding&#x3D;&#39;utf-8&#39;?&gt;</span><br><span class="line">&lt;Context docBase&#x3D;&quot;F:\xmlzancun&quot;&gt;&lt;&#x2F;Context&gt;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>之后关闭tomcat重启之后，在地址栏输入：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;hello&#x2F;xml   (比较第二种少了&#x2F;a)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="五、给Eclipse配置Tomcat"><a href="#五、给Eclipse配置Tomcat" class="headerlink" title="五、给Eclipse配置Tomcat"></a>五、给Eclipse配置Tomcat</h1><ol>
+<li>在server里面 右键新建一个服务器,选择到apache分类,找到对应的tomcat版本,接着一步一步配置即可,在左侧里面找WebContent下定义html文件。</li>
+</ol>
+<p><img src="xinjian.png" alt=""></p>
+<ol start="2">
+<li>配置完毕后,关闭index文件,在控制台的server里面,右键刚才的服务器,然后open,找到上面的Server Location,选择中间的 Use Tomcat installation…</li>
+</ol>
+<p><img src="zhongjian.png" alt=""></p>
+<ol start="3">
+<li>创建web工程,在左侧里面找WebContent下定义html文件，然后执行会在tomcat文件下多一个wtpwebapps文件(里面存放新建的web项目)：</li>
+</ol>
+<p><img src="duode.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以通过这个网址进行查看：http:&#x2F;&#x2F;localhost:8080&#x2F;HelloWeba&#x2F;index.html</span><br></pre></td></tr></table></figure>
+
+<p><strong>页面展示：</strong></p>
+<p><img src="zuizhong.png" alt=""></p>
+<p>​    </p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-dom4j入门" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/16/dom4j%E5%85%A5%E9%97%A8/" class="article-date">
+      <time datetime="2020-02-16T03:05:31.000Z" itemprop="datePublished">2020-02-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/16/dom4j%E5%85%A5%E9%97%A8/">dom4j入门</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、XML解析方式-面试考点"><a href="#一、XML解析方式-面试考点" class="headerlink" title="一、XML解析方式(面试考点)"></a>一、XML解析方式(面试考点)</h1><blockquote>
+<p>其实就是获取元素里面的字符数据或者属性数据</p>
+</blockquote>
+<p><strong>其中常用的两种解析方式：</strong></p>
+<ul>
+<li><strong>DOM</strong></li>
+<li><strong>SAX</strong></li>
+</ul>
+<h2 id="DOM-document-object-model"><a href="#DOM-document-object-model" class="headerlink" title="DOM(document object model)"></a>DOM(document object model)</h2><blockquote>
+<p>将整个xml全部读到内存当中，形成树形结构(所有的对象都叫做Node节点。)</p>
+</blockquote>
+<pre><code>整个文档---document对象
+属性(标签内描述属性)---attribute对象
+所有元素节点(stu/name/age等标签)---element对象
+文本(文字等描述)---text对象</code></pre><p><img src="dom.png" alt=""></p>
+<h2 id="SAX-simple-API-for-Xml"><a href="#SAX-simple-API-for-Xml" class="headerlink" title="SAX(simple API for Xml)"></a>SAX(simple API for Xml)</h2><blockquote>
+<p>基于事件驱动(读一行解析一行)</p>
+</blockquote>
+<hr>
+<h1 id="二、针对两种解析方式的API-Dom4j-入门"><a href="#二、针对两种解析方式的API-Dom4j-入门" class="headerlink" title="二、针对两种解析方式的API(Dom4j 入门)"></a>二、针对两种解析方式的API(Dom4j 入门)</h1><ul>
+<li>jaxp  sun公司(比较繁琐)</li>
+<li>jdom</li>
+<li>dom4j  使用广泛</li>
+</ul>
+<h2 id="Dom4j-基本用法-导入jar"><a href="#Dom4j-基本用法-导入jar" class="headerlink" title="Dom4j 基本用法(导入jar)"></a>Dom4j 基本用法(导入jar)</h2><p><strong>1.创建SAXReader对象</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SAXReader reader&#x3D;new SAXReader();</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.指定解析的xml原地址(SAXReader调用read方法)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Document document&#x3D;reader.read(new File(&quot;src&#x2F;xml&#x2F;demo.xml&quot;));  &#x2F;&#x2F;整个文档叫做document对象</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.获取根元素(文档document对象调用getRootElement方法)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Element rootElement&#x3D;document.getRootElement();</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.根据根元素—下面的元素</strong></p>
+<pre><code>element.element  //一个stu元素
+element.elements();  //所有stu元素</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;得到根元素的子元素 age (找两层element)</span><br><span class="line">		  rootElement.element(&quot;stu&quot;).element(&quot;age&quot;);</span><br><span class="line">		  </span><br><span class="line">		  &#x2F;&#x2F;得到根元素下面的所有子元素(所有的stu)</span><br><span class="line">		  List&lt;Element&gt; elements&#x3D;rootElement.elements();  &#x2F;&#x2F;泛型(stu&#x2F;name&#x2F;age)返回子元素stu</span><br><span class="line">		  </span><br><span class="line">		  &#x2F;&#x2F;遍历所有的stu元素</span><br><span class="line">		  for(Element element :elements)</span><br><span class="line">		  &#123;</span><br><span class="line">			  &#x2F;&#x2F;获取stu元素下面的name元素</span><br><span class="line">			  String name &#x3D; element.element(&quot;name&quot;).getText();</span><br><span class="line">			  String age &#x3D; element.element(&quot;age&quot;).getText();</span><br><span class="line">			  String desc &#x3D; element.element(&quot;desc&quot;).getText();</span><br><span class="line">			  System.out.println(&quot;name&#x3D;&quot;+name+&quot;  age+&quot;+age+&quot;  desc&#x3D;&quot;+desc);</span><br><span class="line">		  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>具体实现：：</strong></p>
+<p><img src="jiegou.png" alt=""></p>
+<p><strong>demo.xml内容：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;stus&gt;</span><br><span class="line">  &lt;stu&gt;</span><br><span class="line">	&lt;name&gt;李四&lt;&#x2F;name&gt;</span><br><span class="line">	&lt;age&gt;15&lt;&#x2F;age&gt;</span><br><span class="line">	&lt;desc&gt;我是老大&lt;&#x2F;desc&gt;</span><br><span class="line">  &lt;&#x2F;stu&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;stu&gt;</span><br><span class="line">	&lt;name&gt;网名&lt;&#x2F;name&gt;</span><br><span class="line">	&lt;age&gt;15&lt;&#x2F;age&gt;</span><br><span class="line">	&lt;desc&gt;我是老大&lt;&#x2F;desc&gt;</span><br><span class="line">  &lt;&#x2F;stu&gt;</span><br><span class="line">  </span><br><span class="line">&lt;&#x2F;stus&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>MainTest.java实现类内容：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">package xml;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.util.List;</span><br><span class="line">import org.dom4j.DocumentException;</span><br><span class="line">import org.dom4j.Element;</span><br><span class="line">import org.dom4j.io.SAXReader;</span><br><span class="line">import com.sun.xml.internal.txw2.Document;</span><br><span class="line">public class MainTest &#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		&#x2F;&#x2F;1.创建sax读取对象</span><br><span class="line">		SAXReader reader&#x3D;new SAXReader();</span><br><span class="line">	</span><br><span class="line">		try &#123;</span><br><span class="line">			&#x2F;&#x2F;2.指定解析的xml源</span><br><span class="line">			org.dom4j.Document document&#x3D;reader.read(new File(&quot;src&#x2F;xml&#x2F;demo.xml&quot;));  &#x2F;&#x2F;整个文档叫做document对象</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;3.得到元素(element)</span><br><span class="line">			</span><br><span class="line">			  &#x2F;&#x2F;得到根元素 getRootElement</span><br><span class="line">			  Element rootElement&#x3D;document.getRootElement();</span><br><span class="line">			  </span><br><span class="line">			  &#x2F;&#x2F;得到根元素的子元素 age (找两层element)</span><br><span class="line">			  rootElement.element(&quot;stu&quot;).element(&quot;age&quot;);</span><br><span class="line">			  </span><br><span class="line">			  &#x2F;&#x2F;得到根元素下面的所有子元素(所有的stu)</span><br><span class="line">			  List&lt;Element&gt; elements&#x3D;rootElement.elements();  &#x2F;&#x2F;泛型(stu&#x2F;name&#x2F;age)返回子元素stu</span><br><span class="line">			  </span><br><span class="line">			  &#x2F;&#x2F;遍历所有的stu元素</span><br><span class="line">			  for(Element element :elements)</span><br><span class="line">			  &#123;</span><br><span class="line">				  &#x2F;&#x2F;获取stu元素下面的name元素</span><br><span class="line">				  String name &#x3D; element.element(&quot;name&quot;).getText();</span><br><span class="line">				  String age &#x3D; element.element(&quot;age&quot;).getText();</span><br><span class="line">				  String desc &#x3D; element.element(&quot;desc&quot;).getText();</span><br><span class="line">				  System.out.println(&quot;name&#x3D;&quot;+name+&quot;  age+&quot;+age+&quot;  desc&#x3D;&quot;+desc);</span><br><span class="line">			  &#125;</span><br><span class="line">			</span><br><span class="line">		&#125; catch (DocumentException e) &#123;</span><br><span class="line">			</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过泛型遍历所有的文本text内容(getText())</strong></p>
+<p><img src="jieguo.png" alt=""></p>
+<hr>
+<h1 id="三-、Dom4j中的Xpath入门-导入jar"><a href="#三-、Dom4j中的Xpath入门-导入jar" class="headerlink" title="三 、Dom4j中的Xpath入门(导入jar)"></a>三 、Dom4j中的Xpath入门(导入jar)</h1><blockquote>
+<p> dom4j里面支持Xpath的写法。 xpath其实是xml的路径语言，支持我们在解析xml的时候，能够<strong>快速定位</strong>到具体的某一个元素。</p>
+</blockquote>
+<ul>
+<li><strong>不同之处：</strong></li>
+</ul>
+<p><strong>如果需要获得单个的name：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Dom4j里面是根节点.element()方法：</span><br><span class="line"> 	rootElement.element(&quot;stu&quot;).element(&quot;age&quot;);</span><br><span class="line"></span><br><span class="line">Xpath里面是根节点.selectSingleNode(&quot;具体的&#x2F;&#x2F;或者&#x2F;行为&quot;)方法;</span><br><span class="line"> 	Element nameElement&#x3D;(Element) rootElement.selectSingleNode(&quot;&#x2F;&#x2F;name&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果需要获得所有的name：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Dom4j里面是根节点.elements()方法：</span><br><span class="line">	 List&lt;Element&gt; elements&#x3D;rootElement.elements();  &#x2F;&#x2F;泛型(stu&#x2F;name&#x2F;age)返回子元素stu</span><br><span class="line"></span><br><span class="line">Xpath里面是根节点.selectNodes(&quot;具体的&#x2F;&#x2F;或者&#x2F;行为&quot;)方法;</span><br><span class="line">	List&lt;Element&gt; elements&#x3D; rootElement.selectNodes(&quot;&#x2F;&#x2F;name&quot;); &#x2F;&#x2F;泛型(stu&#x2F;name&#x2F;age)返回子元素stu</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>完整代码如下(xml一样只是展示Xpath的不同)：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package xml;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.util.List;</span><br><span class="line">import org.dom4j.DocumentException;</span><br><span class="line">import org.dom4j.Element;</span><br><span class="line">import org.dom4j.io.SAXReader;</span><br><span class="line">public class XpathTest &#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">	&#x2F;&#x2F;1.创建sax读取对象</span><br><span class="line">	SAXReader reader&#x3D;new SAXReader();</span><br><span class="line">	</span><br><span class="line">	try &#123;</span><br><span class="line">		&#x2F;&#x2F;2.指定解析的xml源</span><br><span class="line">		org.dom4j.Document document&#x3D;reader.read(new File(&quot;src&#x2F;xml&#x2F;demo.xml&quot;));  &#x2F;&#x2F;整个文档叫做document对象</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;3.得到元素(element)</span><br><span class="line">		</span><br><span class="line">		  &#x2F;&#x2F;得到根元素 getRootElement</span><br><span class="line">		  Element rootElement&#x3D;document.getRootElement();</span><br><span class="line">		  </span><br><span class="line">		  &#x2F;&#x2F;要想使用Xpath,还需要支持的jar(获取的是第一个,只返回一个)</span><br><span class="line">		  Element nameElement&#x3D;(Element) rootElement.selectSingleNode(&quot;&#x2F;&#x2F;name&quot;);</span><br><span class="line">		  System.out.println(nameElement.getText());</span><br><span class="line">		  </span><br><span class="line">		  System.out.println(&quot;-----------&quot;);</span><br><span class="line">		  </span><br><span class="line">		  List&lt;Element&gt; elements&#x3D; rootElement.selectNodes(&quot;&#x2F;&#x2F;name&quot;); &#x2F;&#x2F;泛型(stu&#x2F;name&#x2F;age)返回子元素stu</span><br><span class="line">		  &#x2F;&#x2F;遍历所有的stu元素</span><br><span class="line">		  for(Element element :elements)</span><br><span class="line">		  &#123;</span><br><span class="line">			  System.out.println(element.getText());</span><br><span class="line">		  &#125;</span><br><span class="line">		  </span><br><span class="line">		  </span><br><span class="line">		&#125; catch (DocumentException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>两者对比如下：</strong><br><img src="jieguode.png" alt=""></p>
+<hr>
+<h1 id="四、XML约束"><a href="#四、XML约束" class="headerlink" title="四、XML约束"></a>四、XML约束</h1><ul>
+<li><strong>DTD</strong></li>
+<li><strong>Schema</strong></li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XML/" rel="tag">XML</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-XML" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/15/XML/" class="article-date">
+      <time datetime="2020-02-15T09:03:58.000Z" itemprop="datePublished">2020-02-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/15/XML/">XML</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p><strong>eXtendsible markup language</strong> <strong>可扩展的标记语言</strong></p>
+</blockquote>
+<h1 id="一、Xml简述和作用"><a href="#一、Xml简述和作用" class="headerlink" title="一、Xml简述和作用"></a>一、Xml简述和作用</h1><p><strong>作用：</strong></p>
+<blockquote>
+<ol>
+<li>可以用来保存数据</li>
+<li>做配置文件(Tomcat)</li>
+<li>可以传输载体(客户端和服务器端之间)</li>
+</ol>
+</blockquote>
+<p><strong>结构分析：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;stus&gt;</span><br><span class="line">  &lt;stu&gt;</span><br><span class="line">	&lt;name&gt;lisi&lt;&#x2F;name&gt;</span><br><span class="line">	&lt;age&gt;15&lt;&#x2F;age&gt;</span><br><span class="line">	&lt;desc&gt;我是老大&lt;&#x2F;desc&gt;</span><br><span class="line">  &lt;&#x2F;stu&gt;</span><br><span class="line">&lt;&#x2F;stus&gt;</span><br><span class="line"></span><br><span class="line">&lt;stus&gt;</span><br><span class="line">  &lt;stu&gt;</span><br><span class="line">	&lt;name&gt;liming&lt;&#x2F;name&gt;</span><br><span class="line">	&lt;age&gt;17&lt;&#x2F;age&gt;</span><br><span class="line">	&lt;desc&gt;我是老二&lt;&#x2F;desc&gt;</span><br><span class="line">  &lt;&#x2F;stu&gt;</span><br><span class="line">&lt;&#x2F;stus&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="gaishu.png" alt=""></p>
+<hr>
+<h1 id="二、定义xml"><a href="#二、定义xml" class="headerlink" title="二、定义xml"></a>二、定义xml</h1><blockquote>
+<p>其实就是一个文件，文件的后缀为 .xml</p>
+</blockquote>
+<pre><code>version : 解析这个xml的时候，使用什么版本的解析器解析
+               &lt;?xml version=&quot;1.0&quot; ?&gt;
+
+encoding : 解析xml中的文字的时候，使用什么编码来翻译
+               &lt;?xml version=&quot;1.0&quot; encoding=&quot;gbk/UTF-8/big5&quot; ?&gt;
+
+   standalone  : no - 该文档会依赖关联其他文档 ，  yes-- 这是一个独立的文档
+               &lt;?xml version=&quot;1.0&quot; encoding=&quot;gbk&quot; standalone=&quot;no&quot; ?&gt;</code></pre><hr>
+<h1 id="三、encoding详解-UTF-8-万岁！"><a href="#三、encoding详解-UTF-8-万岁！" class="headerlink" title="三、encoding详解(UTF-8 万岁！)"></a>三、encoding详解(UTF-8 万岁！)</h1><blockquote>
+<p>默认文件保存的时候，使用的是GBK的编码保存。 </p>
+</blockquote>
+<p>所以要想让我们的xml能够正常的<strong>显示中文</strong>，有两种解决办法</p>
+<ol>
+<li><p>让encoding也是GBK 或者 gb2312 . </p>
+</li>
+<li><p>如果encoding是 utf-8 ， 那么保存文件的时候也必须使用utf-8</p>
+</li>
+<li><p>保存的时候见到的ANSI 对应的其实是我们的本地编码 GBK。</p>
+</li>
+</ol>
+<p>为了通用，建议使用UTF-8编码保存，以及encoding 都是 utf-8</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;stus&gt;</span><br><span class="line">  &lt;stu&gt;</span><br><span class="line">	&lt;name&gt;lisi&lt;&#x2F;name&gt;</span><br><span class="line">	&lt;age&gt;15&lt;&#x2F;age&gt;</span><br><span class="line">	&lt;desc&gt;我是老大&lt;&#x2F;desc&gt;</span><br><span class="line">  &lt;&#x2F;stu&gt;</span><br><span class="line">&lt;&#x2F;stus&gt;</span><br><span class="line"></span><br><span class="line">&lt;stus&gt;</span><br><span class="line">  &lt;stu&gt;</span><br><span class="line">	&lt;name&gt;liming&lt;&#x2F;name&gt;</span><br><span class="line">	&lt;age&gt;17&lt;&#x2F;age&gt;</span><br><span class="line">	&lt;desc&gt;我是老二&lt;&#x2F;desc&gt;</span><br><span class="line">  &lt;&#x2F;stu&gt;</span><br><span class="line">&lt;&#x2F;stus&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="四、XML元素定义-标签"><a href="#四、XML元素定义-标签" class="headerlink" title="四、XML元素定义(标签)"></a>四、XML元素定义(标签)</h1><pre><code>类似于h5的标签(&lt;&gt;里面的),但是可以**自己写标签！**(可扩展)。</code></pre><p>  XML 命名规则：</p>
+<pre><code>名称可以含字母、数字以及其他的字符 
+名称不能以数字或者标点符号开始 
+名称不能以字符 “xml”（或者 XML、Xml）开始 
+名称不能包含空格 </code></pre><hr>
+<h1 id="五、XML属性定义"><a href="#五、XML属性定义" class="headerlink" title="五、XML属性定义"></a>五、XML属性定义</h1><blockquote>
+<p>定义在元素里面， &lt;元素名称  属性名称=”属性的值”&gt;&lt;/元素名称&gt;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">&lt;stus&gt;</span><br><span class="line">			&lt;stu id&#x3D;&quot;10086&quot;&gt;</span><br><span class="line">				&lt;name&gt;张三&lt;&#x2F;name&gt;</span><br><span class="line">				&lt;age&gt;18&lt;&#x2F;age&gt;</span><br><span class="line">			&lt;&#x2F;stu&gt;</span><br><span class="line"></span><br><span class="line">			&lt;stu id&#x3D;&quot;10087&quot;&gt;</span><br><span class="line">				&lt;name&gt;李四&lt;&#x2F;name&gt;</span><br><span class="line">				&lt;age&gt;28&lt;&#x2F;age&gt;</span><br><span class="line">			&lt;&#x2F;stu&gt;</span><br><span class="line">&lt;&#x2F;stus&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="六、注释"><a href="#六、注释" class="headerlink" title="六、注释"></a>六、注释</h1><blockquote>
+<p>与html的注释一样。 </p>
+</blockquote>
+<pre><code>&lt;!-- --&gt; 
+如： 
+
+    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+    &lt;!-- 
+        //这里有两个学生
+        //一个学生，名字叫张三， 年龄18岁， 学号：10086
+        //另外一个学生叫李四  。。。
+     --&gt;</code></pre><blockquote>
+<p>xml的注释，不允许放置在文档的第一行。 必须在<strong>文档声明的下面</strong>。</p>
+</blockquote>
+<hr>
+<h1 id="七、CDATA区-服务器给客户端返回"><a href="#七、CDATA区-服务器给客户端返回" class="headerlink" title="七、CDATA区(服务器给客户端返回)"></a>七、CDATA区(服务器给客户端返回)</h1><ul>
+<li><p><strong>非法字符</strong></p>
+<p>严格地讲，在 XML 中仅有字符 “&lt;”和”&amp;” 是非法的。<br>  所以用以下两种方式来代替(&lt;&amp;)<br>&lt;   &lt;<br>&amp;   &amp;</p>
+</li>
+</ul>
+<p>如果某段字符串里面有过多的字符， 并且里面包含了类似标签或者关键字的这种文字，不想让xml的解析器去解析。 那么可以使用CDATA.</p>
+<p>使用    <strong>！[CDATA[]]</strong><code>让&lt;a href=&quot;http://www.baidu.com&quot;&gt;我爱黑马训练营&lt;/a&gt;</code>变为普通字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;des&gt;&lt;![CDATA[&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot;&gt;我爱黑马训练营&lt;&#x2F;a&gt;]]&gt;&lt;&#x2F;des&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XML/" rel="tag">XML</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-数据库cmd的操作（以后写）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93cmd%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BB%A5%E5%90%8E%E5%86%99%EF%BC%89/" class="article-date">
+      <time datetime="2020-02-15T05:19:41.000Z" itemprop="datePublished">2020-02-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93cmd%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BB%A5%E5%90%8E%E5%86%99%EF%BC%89/">数据库cmd的操作（以后写）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、数据库sql语句"><a href="#一、数据库sql语句" class="headerlink" title="一、数据库sql语句"></a>一、数据库sql语句</h1>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CJDBC/" rel="tag">Mysql数据库和JDBC</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-数据库的创建查看删除" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA%E6%9F%A5%E7%9C%8B%E5%88%A0%E9%99%A4/" class="article-date">
+      <time datetime="2020-02-15T04:52:18.000Z" itemprop="datePublished">2020-02-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA%E6%9F%A5%E7%9C%8B%E5%88%A0%E9%99%A4/">数据库的创建查看删除</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CJDBC/" rel="tag">Mysql数据库和JDBC</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/16/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/18/">Next &amp;raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 Larkkkkkkk
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="http://bestwing.me" target="_blank">Sw'blog</a> by Swing
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+  </div>
+</body>
+</html>

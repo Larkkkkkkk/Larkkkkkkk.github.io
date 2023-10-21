@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>蓝桥杯 | Larkkkkkkk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="小目标：从今天开始争取每天做一道蓝桥杯题目(用JAVA做！)，希望今年能够进国赛！！！ 一、矩阵相乘（去年校赛卡住的题目）问题描述　　给定一个N阶矩阵A，输出A的M次幂（M是非负整数）　　例如：　　A &#x3D;　　1 2　　3 4　　A的2次幂　　7 10　　15 22　　输入格式　　第一行是一个正整数N、M（1&lt;&#x3D;N&lt;&#x3D;30, 0&lt;&#x3D;M&lt;&#x3D;5），表示矩阵A的阶数和要求的幂数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝桥杯">
+<meta property="og:url" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Larkkkkkkk">
+<meta property="og:description" content="小目标：从今天开始争取每天做一道蓝桥杯题目(用JAVA做！)，希望今年能够进国赛！！！ 一、矩阵相乘（去年校赛卡住的题目）问题描述　　给定一个N阶矩阵A，输出A的M次幂（M是非负整数）　　例如：　　A &#x3D;　　1 2　　3 4　　A的2次幂　　7 10　　15 22　　输入格式　　第一行是一个正整数N、M（1&lt;&#x3D;N&lt;&#x3D;30, 0&lt;&#x3D;M&lt;&#x3D;5），表示矩阵A的阶数和要求的幂数">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/juzhenxiangcheng.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/feibo.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/feibo.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/zumutuxing.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/jihe.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/jihe2.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/wanquanpingfangshu.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/feiling.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/jiechengmowei.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/mingmingdesuijishu.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/heisexingqiwu.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/shenfenzhengshengji.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/butongdancigeshutongji.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/panduanhuiwen.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/jinzhizhuanhuan.png">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/yuansuchongfu.png">
+<meta property="article:published_time" content="2019-10-26T15:08:52.000Z">
+<meta property="article:modified_time" content="2020-01-13T12:40:30.000Z">
+<meta property="article:author" content="Larkkkkkkk">
+<meta property="article:tag" content="蓝桥杯">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/juzhenxiangcheng.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
+  
+  
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="img/head.jpg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Larkkkkkkk</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                        
+                            <li><a  href="/archives">文章归档</a></li>
+                        
+                            <li><a  href="/CTFStudy">学习导航</a></li>
+                        
+                            <li><a  href="/PWNABLE">PWNABLE</a></li>
+                        
+                            <li><a  href="/resume">个人简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail"  target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                            
+                                <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Ajax/" style="font-size: 12.22px;">Ajax</a> <a href="/tags/Cookie%E5%92%8CSession/" style="font-size: 14.44px;">Cookie和Session</a> <a href="/tags/DBUtils/" style="font-size: 11.11px;">DBUtils</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">EL表达式</a> <a href="/tags/Filter/" style="font-size: 11.11px;">Filter</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPServletReauest%E5%92%8CHTTPServletResponse/" style="font-size: 10px;">HTTPServletReauest和HTTPServletResponse</a> <a href="/tags/IDEA%E5%AE%89%E8%A3%85%E5%92%8C%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">IDEA安装和破解</a> <a href="/tags/JAVA/" style="font-size: 14.44px;">JAVA</a> <a href="/tags/JAVA-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-Lambda表达式</a> <a href="/tags/JAVA-Set%E9%9B%86%E5%90%88/" style="font-size: 10px;">JAVA-Set集合</a> <a href="/tags/JAVA-%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">JAVA-反射</a> <a href="/tags/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 12.22px;">JAVA-多线程</a> <a href="/tags/JAVA-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-正则表达式</a> <a href="/tags/JAVA-%E6%B3%9B%E5%9E%8B/" style="font-size: 10px;">JAVA-泛型</a> <a href="/tags/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 12.22px;">JAVA-网络编程</a> <a href="/tags/JAVA-%E9%9B%86%E5%90%88/" style="font-size: 12.22px;">JAVA-集合</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0/" style="font-size: 11.11px;">JAVA练习</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">JAVA练习-动态规划</a> <a href="/tags/JQuery/" style="font-size: 13.33px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/LeetCode/" style="font-size: 17.78px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 15.56px;">Linux</a> <a href="/tags/Listener/" style="font-size: 10px;">Listener</a> <a href="/tags/Mybatis/" style="font-size: 18.89px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CJDBC/" style="font-size: 15.56px;">Mysql数据库和JDBC</a> <a href="/tags/Redis/" style="font-size: 11.11px;">Redis</a> <a href="/tags/Servlet/" style="font-size: 11.11px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 16.67px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 15.56px;">SpringMVC</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 20px;">Web前端知识点</a> <a href="/tags/XML/" style="font-size: 11.11px;">XML</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/flask%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">flask框架</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/jsp%E6%A0%87%E5%87%86%E6%A0%87%E7%AD%BE%E5%BA%93/" style="font-size: 10px;">jsp标准标签库</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/python/" style="font-size: 12.22px;">python</a> <a href="/tags/pytorch/" style="font-size: 10px;">pytorch</a> <a href="/tags/ssm%E6%A1%86%E6%9E%B6%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">ssm框架模板</a> <a href="/tags/webserver%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">webserver编程</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E4%BA%AC%E4%B8%9C/" style="font-size: 11.11px;">京东</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91/" style="font-size: 10px;">后缀树</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10px;">哈希表</a> <a href="/tags/%E5%9B%BE/" style="font-size: 10px;">图</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 10px;">复杂度分析</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">学生管理系统</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2-0/" style="font-size: 12.22px;">学生管理系统2.0</a> <a href="/tags/%E6%8B%BC%E5%A4%9A%E5%A4%9A/" style="font-size: 10px;">拼多多</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" style="font-size: 10px;">数据库连接池</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数据结构-稀疏数组</a> <a href="/tags/%E6%96%87%E5%AD%97%E7%AF%87-%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">文字篇-记录</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 12.22px;">机器学习</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%91/" style="font-size: 12.22px;">树</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">注解</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 14.44px;">深度学习</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 11.11px;">爬虫</a> <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" style="font-size: 10px;">生物信息学</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 12.22px;">知识图谱</a> <a href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%88%9D%E8%AF%95/" style="font-size: 12.22px;">研究生初试</a> <a href="/tags/%E7%A7%8B%E6%8B%9B/" style="font-size: 10px;">秋招</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">算法-动态规划</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%BA%AF%E6%B3%95/" style="font-size: 10px;">算法-回溯法</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法-贪心算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 10px;">考研</a> <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 13.33px;">蓝桥杯</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE-%E8%BD%AF%E4%BB%B6%E4%B8%93%E4%B8%9A%E9%A2%98%E7%9B%AE/" style="font-size: 10px;">计算机网络课设(软件专业题目)</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.22px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 10px;">软件体系结构</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">重新部署</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%A1%B5%E9%9D%A2%EF%BC%88H5-CSS%EF%BC%89/" style="font-size: 10px;">页面（H5+CSS）</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0/" style="font-size: 10px;">项目上传</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://ring3.xyz/">Yllen</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://mxny.org/">麦香浓郁</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://whereisk0shl.top/">K0sh1</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.ycjcl.cc/">信鑫</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://bystudent.com/">ByStundet表哥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jarviswang.me/">汪神_Jarvis</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sh3ll.me/">Chu</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.hackfun.org/">4ido10n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/iamstudy">L3m0n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://o0xmuhe.me/">muhe</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.nuptzj.cn/">_画船听雨</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.virzz.com/index.html">Virink</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.sqlsec.com/">国光</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bodkin.ren/">老锥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cizel.cn/">C1zel</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://1phan.cc">1phan</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.liuil.top/">liuil</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/Ox9A82/">Ox9A82</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://burnegg.com/">burnegg</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://jwrsec.cn/">jwr-sec</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sudalover.cn/">苏打</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.binklac.com">VeroFess</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bendawang.site/">bendawang</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://weeklyalgo.codes/">hook</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.flier.net.cn/">Flier&#39;blog</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.mutepig.club">mutepig</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.iret.xyz/list.aspx">Silver</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://simp1e.leanote.com/">Simple</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://processor.pub/">Processor</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一只淹死在二进制海洋里的二进制狗!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Larkkkkkkk</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Larkkkkkkk</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                
+                    <li><a href="/archives">文章归档</a></li>
+                
+                    <li><a href="/CTFStudy">学习导航</a></li>
+                
+                    <li><a href="/PWNABLE">PWNABLE</a></li>
+                
+                    <li><a href="/resume">个人简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-蓝桥杯练习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/" class="article-date">
+      <time datetime="2019-10-26T15:08:52.000Z" itemprop="datePublished">2019-10-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      蓝桥杯
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" rel="tag">蓝桥杯</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>　　小目标：从今天开始争取每天做一道蓝桥杯题目(用JAVA做！)，希望今年能够进国赛！！！</p>
+<p>一、<strong>矩阵相乘（去年校赛卡住的题目）</strong><br><strong>问题描述</strong><br>　　给定一个N阶矩阵A，输出A的M次幂（M是非负整数）<br>　　例如：<br>　　A =<br>　　1 2<br>　　3 4<br>　　A的2次幂<br>　　7 10<br>　　15 22<br>　　输入格式<br>　　第一行是一个正整数N、M（1&lt;=N&lt;=30, 0&lt;=M&lt;=5），表示矩阵A的阶数和要求的幂数<br>　　接下来N行，每行N个绝对值不超过10的非负整数，描述矩阵A的值<br>　　输出格式<br>　　输出共N行，每行N个整数，表示A的M次幂所对应的矩阵。相邻的数之间用一个空格隔开<br>　　样例输入<br>　　2 2<br>　　1 2<br>　　3 4<br>　　样例输出<br>　　7 10<br>　　15 22</p>
+<p><strong>思路</strong>：<br>　　我先定义两个数组，a数组用来存放一开始的值，然后通过定义num不断地将更新的值放入后面的t数组之中，就可以减少不断的用新的数组去存旧数组的值，保证减少算法时间和空间复杂度。</p>
+<p><strong>代码实现</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class Collection &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">       Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">       int n&#x3D;input.nextInt(); &#x2F;&#x2F;定义矩阵的行和列</span><br><span class="line">       int m&#x3D;input.nextInt(); &#x2F;&#x2F;定义矩阵乘方次数</span><br><span class="line">       int[][] a&#x3D;new int[n][n]; &#x2F;&#x2F;定义原始数组</span><br><span class="line">       for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">       &#123;</span><br><span class="line">           for(int j&#x3D;0;j&lt;n;j++)</span><br><span class="line">           &#123;</span><br><span class="line">               a[i][j] &#x3D; input.nextInt(); &#x2F;&#x2F;输入数组元素</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">        int[][] t&#x3D;new int[n][n]; &#x2F;&#x2F;最终存放的数组</span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j&#x3D;0;j&lt;n;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                int num&#x3D;0;</span><br><span class="line">                for(int k&#x3D;0;k&lt;n;k++)</span><br><span class="line">                &#123;</span><br><span class="line">                    num+&#x3D;a[i][k]*a[k][j]; &#x2F;&#x2F;利用矩阵相乘原理得到新的数组所对应的位置的值</span><br><span class="line">                &#125;</span><br><span class="line">                t[i][j]&#x3D;num; &#x2F;&#x2F;将相乘结果传给数组t</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j&#x3D;0;j&lt;n;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                    System.out.print(t[i][j]+&quot; &quot;); </span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(); &#x2F;&#x2F;保证每行分割</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下</strong>：<br><img src="juzhenxiangcheng.png" alt=""></p>
+<hr>
+<p>二、<strong>斐波拉契数列(基础题)</strong><br><strong>问题描述</strong><br>　　Fn除以10007的余数是多少。<br>　　说明：在本题中，答案是要求Fn除以10007的余数，因此我们只要能算出这个余数即可，而不需要先计算出Fn的准确值，再将计算的结果除以10007取余数，直接计算余数往往比先算出原数再取余简单。<br>　　样例1输入<br>　　10<br>　　样例1输出<br>　　55<br>　　样例2输入<br>　　22<br>　　样例2输出<br>　　7704　<br>　　数据规模与约定<br>1 &lt;= n &lt;= 1,000,000。</p>
+<p><strong>思路：</strong><br>①<strong>递归(不推荐)</strong>：<br>Fibonacci数列的递推公式为：Fn=Fn-1+Fn-2，其中F1=F2=1。<br><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class Collection &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">       Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">       int n&#x3D;input.nextInt();</span><br><span class="line">       int[] a&#x3D;new int[n];</span><br><span class="line">       a[1]&#x3D;a[2]&#x3D;1;</span><br><span class="line">       int m&#x3D;feibo(n)%10007;  &#x2F;&#x2F;最终的值除以10007求余数</span><br><span class="line">        System.out.println(m);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static int  feibo(int n)&#123;</span><br><span class="line">        if(n&#x3D;&#x3D;1||n&#x3D;&#x3D;2)  &#x2F;&#x2F;前两个的值需要给出，才能依次算出后面的值</span><br><span class="line">            return 1;</span><br><span class="line">        else</span><br><span class="line">            return (feibo(n-1)+feibo(n-2));  &#x2F;&#x2F;递归主要思路</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下:</strong></p>
+<p><img src="feibo.png" alt=""></p>
+<p>②<strong>动态规划</strong>：<br>动态规划和递归有很大的相同处，但是动态规划而言，起码性能很高，不会出现提交代码系统超时的问题，而且很容易想到和实现。<br>将前两项赋值为1，然后从第三项开始是前两项加，假设算前三项，第一项为l，第二项为r，第三项为l+r。然后要计算第四项的时候，我们需要将第二项的r就成了计算第四项的l，那么第三项的sum就成了第四项计算时候的r，因此不断地替换计算，动态规划的思路就是往前推，求上一个结果的答案，然后依次推出接下来答案的结果。<br><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class Collection &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">       Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">       int n&#x3D;input.nextInt();</span><br><span class="line">       int[] a&#x3D;new int[n];</span><br><span class="line">       int m&#x3D;feibo(n-1,a)%10007;  &#x2F;&#x2F;题目要求对10007取余</span><br><span class="line">        System.out.println(m);</span><br><span class="line">    &#125;</span><br><span class="line">    public static int  feibo(int n,int[] a)&#123;</span><br><span class="line">        int l&#x3D;1,r&#x3D;1,sum&#x3D;0;</span><br><span class="line">        if(n&lt;&#x3D;1)</span><br><span class="line">            return n;</span><br><span class="line">           for(int i&#x3D;2;i&lt;&#x3D;n;i++)</span><br><span class="line">           &#123;</span><br><span class="line">               sum&#x3D;l+r;  &#x2F;&#x2F;前两项之和</span><br><span class="line">                l&#x3D;r;   &#x2F;&#x2F;将现在的第二项变成计算下一项的左边值</span><br><span class="line">               r&#x3D;sum;  &#x2F;&#x2F;将现在的和变成计算下一项的右边值</span><br><span class="line">           &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下:</strong></p>
+<p><img src="feibo.png" alt=""></p>
+<hr>
+<p><strong>三、字母图形</strong><br><strong>问题描述</strong><br>　　利用字母可以组成一些美丽的图形，下面给出了一个例子：<br>　　ABCDEFG<br>　　BABCDEF<br>　　CBABCDE<br>　　DCBABCD<br>　　EDCBABC<br>这是一个5行7列的图形，请找出这个图形的规律，并输出一个n行m列的图形。<br>　　<br>输入格式<br>　　输入一行，包含两个整数n和m，分别表示你要输出的图形的行数的列数。<br>输出格式<br>　　输出n行，每个m个字符，为你的图形。<br>　　<br>　　样例输入<br>　　5 7<br>　　样例输出<br>　　ABCDEFG<br>　　BABCDEF<br>　　CBABCDE<br>　　DCBABCD<br>　　EDCBABC<br>数据规模与约定<br>1 &lt;= n, m &lt;= 26。</p>
+<p><strong>思路：</strong><br> 　　肯定需要使用二维数组去存放最后的字母图形，使用二重循环去遍历每一个位置。通过规律可以得到只要i和j的差的绝对值为哪个数就对应字母表中和A的差距位置，因此<strong>利用数组下标</strong>去判断绝对值为1就输出B，2就输出C，以此类推。<br>　　假设i为2，j为3：<br>　　则判断a[2][3]的位置存放的应该就是 2-3的绝对值为1所以存放B。</p>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">        int n&#x3D;input.nextInt();</span><br><span class="line">        int m&#x3D;input.nextInt();</span><br><span class="line">        int[][] a&#x3D;new int[n][m];</span><br><span class="line">        char[] b&#x3D;&#123;&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;,&#39;H&#39;,&#39;I&#39;,&#39;J&#39;,&#39;K&#39;,&#39;L&#39;,&#39;M&#39;,&#39;N&#39;,&#39;O&#39;,&#39;P&#39;,&#39;Q&#39;,&#39;R&#39;,&#39;S&#39;,&#39;T&#39;,&#39;U&#39;,&#39;V&#39;,&#39;W&#39;,&#39;X&#39;,&#39;Y&#39;,&#39;Z&#39;&#125;;  &#x2F;&#x2F;用下标方便的放入相对于的值</span><br><span class="line"></span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                int c&#x3D;i-j;  &#x2F;&#x2F;求下标之差（可能有负数）</span><br><span class="line">              int d&#x3D;(Math.abs(c))%26;  &#x2F;&#x2F;求下标之差的绝对值（如果大于26行就需要求余）</span><br><span class="line">              System.out.print(b[d]);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="zumutuxing.png" alt=""></p>
+<p><strong>编程出现的问题：</strong></p>
+<ol>
+<li>定义26个字母的数组的时候写错了，导致只有百分之30的准确性。</li>
+<li>这个题目限制了行数为26，但是如果行数太多的话下标的d就需要对26取余数(int d=(Math.abs(c))%26;)。</li>
+<li>输出格式之间没有空格，当时打了空格，只有百分之10的准确性。</li>
+</ol>
+<hr>
+<p><strong>四、十进制转十六进制</strong><br><strong>问题描述</strong><br>　　十六进制数是在程序设计时经常要使用到的一种整数的表示方式。它有0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F共16个符号，分别表示十进制数的0至15。十六进制的计数方法是满16进1，所以十进制数16在十六进制中是10，而十进制的17在十六进制中是11，以此类推，十进制的30在十六进制中是1E。<br>　　给出一个非负整数，将它表示成十六进制的形式。<br>输入格式<br>　　输入包含一个非负整数a，表示要转换的数。0&lt;=a&lt;=2147483647<br>输出格式<br>　　输出这个整数的16进制表示<br>样例输入<br>30<br>样例输出<br>1E</p>
+<p><strong>思路：</strong><br>不再像c语言那样手写，我们可以考虑直接通过使用<strong>toHexString()方法</strong>转换成十六进制、使用<strong>toUpperCase()方法</strong>将小写字母转换为大写字母。</p>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input&#x3D;new Scanner(System.in);  </span><br><span class="line">        long n&#x3D;input.nextLong();  &#x2F;&#x2F;定义了一个long型的数字</span><br><span class="line">        System.out.printf(Long.toHexString(n).toUpperCase());  &#x2F;&#x2F;转换为十六进制数并且为大写字母</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p>！<a href="shizhuanshiliu.png"></a></p>
+<hr>
+<p><strong>五、十六进制转十进制</strong><br><strong>问题描述</strong><br>　　从键盘输入一个不超过8位的正的十六进制数字符串，将它转换为正的十进制数后输出。<br>　　注：十六进制数中的10~15分别用大写的英文字母A、B、C、D、E、F表示。<br>样例输入<br>FFFF<br>样例输出<br>65535</p>
+<p><strong>思路：</strong><br>    利用JAVA中<strong>parseLong(要被转换的数,被转换的数位几进制)方法</strong>。<br>  例如要将16进制的FFFF转换就需要输入n=FFFF然后调用praseLong函数(num,16)。</p>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">        String num&#x3D;input.nextLine();</span><br><span class="line">        Long da&#x3D;Long.parseLong(num,16);</span><br><span class="line">        System.out.println(da);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>代码结果如下：</strong></p>
+<p>！<a href="shiliuzhuanshi.png"></a></p>
+<hr>
+<p><strong>六、集合运算</strong><br><strong>问题描述</strong><br>给出两个整数集合A、B，求出他们的交集、并集以及B在A中的余集。<br>输入格式<br>　　第一行为一个整数n，表示集合A中的元素个数。<br>　　第二行有n个互不相同的用空格隔开的整数，表示集合A中的元素。<br>　　第三行为一个整数m，表示集合B中的元素个数。<br>　　第四行有m个互不相同的用空格隔开的整数，表示集合B中的元素。<br>　　集合中的所有元素均为int范围内的整数，n、m&lt;=1000。<br>输出格式<br>　　第一行按从小到大的顺序输出A、B交集中的所有元素。<br>　　第二行按从小到大的顺序输出A、B并集中的所有元素。<br>　　第三行按从小到大的顺序输出B在A中的余集中的所有元素。<br>样例输入<br>5<br>1 2 3 4 5<br>5<br>2 4 6 8 10<br>样例输出<br>2 4<br>1 2 3 4 5 6 8 10<br>1 3 5<br>样例输入<br>4<br>1 2 3 4<br>3<br>5 6 7<br>样例输出<br>1 2 3 4 5 6 7<br>1 2 3 4</p>
+<p><strong>思路：</strong><br>　　一开始没想到集合!!想着暴力循环找到的相同的就是交集，然后A里面有的B没有的就是差集，并就是A和差集之和。<br>　　最后看大佬的思路才发现用<strong>集合</strong>，我选择使用<code>Set集合</code>(set存放的是不重复的元素)。</p>
+<ol>
+<li><code>add()</code>增加元素</li>
+<li><code>retain（）</code>求交集</li>
+<li><code>remove</code>求差集</li>
+<li><code>add两次</code>求并集(存放不重复的元素！)</li>
+</ol>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">import java.util.HashSet;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.Set;</span><br><span class="line">public class Main&#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">	  Set&lt;Integer&gt; result&#x3D;new HashSet&lt;Integer&gt;();&#x2F;&#x2F;存放最终结果</span><br><span class="line">	  Set&lt;Integer&gt; set1&#x3D;new HashSet&lt;Integer&gt;();&#x2F;&#x2F;第一个</span><br><span class="line">	  Set&lt;Integer&gt; set2&#x3D;new HashSet&lt;Integer&gt;();&#x2F;&#x2F;第二个</span><br><span class="line">	  int n&#x3D;input.nextInt();&#x2F;&#x2F;输入第一个集合的长度</span><br><span class="line">	  for (int i &#x3D; 0; i &lt; n; i++)</span><br><span class="line">	  &#123;</span><br><span class="line">		  set1.add(input.nextInt());&#x2F;&#x2F;add输入集合的元素</span><br><span class="line">	  &#125;</span><br><span class="line">	  int m&#x3D;input.nextInt(); &#x2F;&#x2F;输入第二个集合的长度</span><br><span class="line">	  for (int i &#x3D; 0; i &lt; m; i++) </span><br><span class="line">	  &#123;	 </span><br><span class="line">		  set2.add(input.nextInt());&#x2F;&#x2F;add输入集合的元素</span><br><span class="line">	  &#125;  </span><br><span class="line">	  </span><br><span class="line">	  result.clear();   &#x2F;&#x2F;清空结果集合</span><br><span class="line">	  result.addAll(set1);&#x2F;&#x2F;将第一个集合的元素放进去</span><br><span class="line">	  result.retainAll(set2);&#x2F;&#x2F;retain求两个的交集</span><br><span class="line">	  System.out.println(&quot;交集 &#x3D; &quot; + result);</span><br><span class="line">	  </span><br><span class="line">      result.clear();&#x2F;&#x2F;清空(为下一个要求服务)</span><br><span class="line">      result.addAll(set1);&#x2F;&#x2F;将第一个集合的元素放进去</span><br><span class="line">      result.addAll(set2);&#x2F;&#x2F;将第二个集合的元素放进去(不会把重复的放进去)</span><br><span class="line">      System.out.println(&quot;并集 &#x3D; &quot; + result);</span><br><span class="line">      </span><br><span class="line">	  result.clear();&#x2F;&#x2F;清空(防止上面的过程干扰)</span><br><span class="line">      result.addAll(set1);&#x2F;&#x2F;将第一个集合的元素放进来</span><br><span class="line">      result.removeAll(set2);&#x2F;&#x2F;将相同的元素排除掉</span><br><span class="line">      System.out.println(&quot;差集 &#x3D; &quot;+result);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="jihe.png" alt=""></p>
+<ul>
+<li>因为这个题目需要让集合中的元素一个一个输出，因此需要<strong>增强for循环</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">	  result.clear();   &#x2F;&#x2F;清空结果集合</span><br><span class="line">	  result.addAll(set1);&#x2F;&#x2F;将第一个集合的元素放进去</span><br><span class="line">	  result.retainAll(set2);&#x2F;&#x2F;retain求两个的交集</span><br><span class="line">	  </span><br><span class="line">      for(int i:result)</span><br><span class="line">      System.out.print(i+&quot; &quot;);</span><br><span class="line"></span><br><span class="line">      System.out.println();</span><br><span class="line">	  </span><br><span class="line">	  </span><br><span class="line">      result.clear();&#x2F;&#x2F;清空(为下一个要求服务)</span><br><span class="line">      result.addAll(set1);&#x2F;&#x2F;将第一个集合的元素放进去</span><br><span class="line">      result.addAll(set2);&#x2F;&#x2F;将第二个集合的元素放进去(不会把重复的放进去)</span><br><span class="line">      </span><br><span class="line">      for(int i:result)</span><br><span class="line">      System.out.print(i+&quot; &quot;);</span><br><span class="line"></span><br><span class="line">      System.out.println();</span><br><span class="line">	  </span><br><span class="line">      </span><br><span class="line">	  result.clear();&#x2F;&#x2F;清空(防止上面的过程干扰)</span><br><span class="line">      result.addAll(set1);&#x2F;&#x2F;将第一个集合的元素放进来</span><br><span class="line">      result.removeAll(set2);&#x2F;&#x2F;将相同的元素排除掉</span><br><span class="line">      </span><br><span class="line">	  for(int i:result)</span><br><span class="line">      System.out.print(i+&quot; &quot;);</span><br><span class="line"></span><br><span class="line">      System.out.println();</span><br><span class="line">	  </span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="jihe2.png" alt=""></p>
+<hr>
+<p><strong>七、报时助手</strong><br><strong>问题描述</strong><br>　　给定当前的时间，请用英文的读法将它读出来。<br>　　时间用时h和分m表示，在英文的读法中，读一个时间的方法是：<br>　　如果m为0，则将时读出来，然后加上“o’clock”，如3:00读作“three o’clock”。<br>　　如果m不为0，则将时读出来，然后将分读出来，如5:30读作“five thirty”。<br>　　时和分的读法使用的是英文数字的读法，其中0~20读作：<br>　　0:zero, 1: one, 2:two, 3:three, 4:four, 5:five, 6:six, 7:seven, 8:eight, 9:nine, 10:ten, 11:eleven, 12:twelve, 13:thirteen, 14:fourteen, 15:fifteen, 16:sixteen, 17:seventeen, 18:eighteen, 19:nineteen, 20:twenty。<br>　　30读作thirty，40读作forty，50读作fifty。<br>　　对于大于20小于60的数字，首先读整十的数，然后再加上个位数。如31首先读30再加1的读法，读作“thirty one”。<br>　　按上面的规则21:54读作“twenty one fifty four”，9:07读作“nine seven”，0:15读作“zero fifteen”。<br>输入格式<br>　　输入包含两个非负整数h和m，表示时间的时和分。非零的数字前没有前导0。h小于24，m小于60。<br>输出格式<br>　　输出时间时刻的英文。<br>样例输入<br>0 15<br>样例输出<br>zero fifteen</p>
+<p><strong>思路：</strong><br>　　分为判断分钟是否为0的情况：如果为0就直接判断小时输出“小时+o’clock”；如果不为0就要分为判断小时和分钟然后依次输出。主要是提前要用String数组分别存放好0-20 和 20 30 40 50的英文字母。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class ReflectTest &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;用a和b的字符串数组存放时刻时间</span><br><span class="line">		String a[]&#x3D;&#123;&quot;zero&quot;,&quot;one&quot;,&quot;two&quot;,&quot;three&quot;,&quot;four&quot;,&quot;five&quot;,&quot;six&quot;,&quot;seven&quot;,&quot;eight&quot;,&quot;nine&quot;,&quot;ten&quot;,&quot;eleven&quot;,&quot;twelve&quot;,&quot;thirteen&quot;,&quot;fourteen&quot;,&quot;fifteen&quot;,&quot;sixteen&quot;,&quot;seventeen&quot;,&quot;eighteen&quot;,&quot;nineteen&quot;,&quot;twenty&quot;&#125;;</span><br><span class="line">		String b[]&#x3D;&#123;&quot;twenty&quot;,&quot;thirty&quot;,&quot;forty&quot;,&quot;fifty&quot;&#125;;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;设置h和m为输入的分钟和小时数</span><br><span class="line">		Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">		int h&#x3D;input.nextInt();</span><br><span class="line">		int m&#x3D;input.nextInt();</span><br><span class="line">		</span><br><span class="line">		if(m&#x3D;&#x3D;0)&#x2F;&#x2F;如果分钟为0的话就是只有小时 后面加o&#39;clock</span><br><span class="line">		&#123;</span><br><span class="line">			switch(h&#x2F;10)&#x2F;&#x2F;判断输出</span><br><span class="line">			&#123;</span><br><span class="line">			case 0:System.out.println(a[h%10]+&quot; &quot;+&quot;o&#39;clock&quot;);break; &#x2F;&#x2F;直接在a数组找</span><br><span class="line">			case 1:System.out.println(a[h]+&quot; &quot;+&quot; &quot;+&quot;o&#39;clock&quot;);break;&#x2F;&#x2F;直接在a数组找</span><br><span class="line">			case 2:System.out.println(b[0]+&quot; &quot;+a[h%10]+&quot; &quot;+&quot;o&#39;clock&quot;);break; &#x2F;&#x2F;twenty+个位的</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			switch(h&#x2F;10)&#x2F;&#x2F;和if条件里面的相同</span><br><span class="line">			&#123;</span><br><span class="line">			case 0:System.out.print(a[h%10]);break;</span><br><span class="line">			case 1:System.out.print(a[h]);break;</span><br><span class="line">			case 2:System.out.print(b[0]+&quot; &quot;+a[h%10]);break;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			switch(m&#x2F;10)</span><br><span class="line">			&#123;</span><br><span class="line">			case 0:System.out.print(&quot; &quot;+a[m%10]);break;</span><br><span class="line">			case 1:System.out.print(&quot; &quot;+a[m]);break;&#x2F;&#x2F;直接在a数组找</span><br><span class="line">			case 2:System.out.print(&quot; &quot;+b[0]+&quot; &quot;+a[m%10]);break;</span><br><span class="line">			case 3:System.out.print(&quot; &quot;+b[1]+&quot; &quot;+a[m%10]);break;</span><br><span class="line">			case 4:System.out.print(&quot; &quot;+b[2]+&quot; &quot;+a[m%10]);break;</span><br><span class="line">			case 5:System.out.print(&quot; &quot;+b[3]+&quot; &quot;+a[m%10]);break;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;	</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>八、集合运算</strong><br><strong>问题描述</strong><br>给出两个整数集合A、B，求出他们的交集、并集以及B在A中的余集。<br>输入格式<br>第一行为一个整数n，表示集合A中的元素个数。<br>第二行有n个互不相同的用空格隔开的整数，表示集合A中的元素。<br>第三行为一个整数m，表示集合B中的元素个数。<br>第四行有m个互不相同的用空格隔开的整数，表示集合B中的元素。<br>集合中的所有元素均为int范围内的整数，n、m&lt;=1000。<br>输出格式<br>第一行按从小到大的顺序输出A、B交集中的所有元素。<br>第二行按从小到大的顺序输出A、B并集中的所有元素。<br>第三行按从小到大的顺序输出B在A中的余集中的所有元素。<br>样例输入<br>5<br>1 2 3 4 5<br>5<br>2 4 6 8 10<br>样例输出<br>2 4<br>1 2 3 4 5 6 8 10<br>1 3 5<br>样例输入<br>4<br>1 2 3 4<br>3<br>5 6 7<br>样例输出<br>1 2 3 4 5 6 7<br>1 2 3 4</p>
+<p><strong>解题思路：</strong><br>　　本来打算使用数组去做，发现一排序之后相同的数字不一样在一个位置而且比较麻烦。所以我选择了用<strong>集合(TreeSet)</strong><br>–&gt;<strong>交集</strong>：使用一个tempA复制了a-&gt;然后用a移除所有b中和a相同的，然后用tempA把剩下的移除之后就剩下交集。<br>–&gt;<strong>并集</strong>：使用addALL(b)就可以吧不重复的b放进去<br>–&gt;<strong>差集</strong>：使用removeALL(b)把A和B相同的移过以外的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">package lianxi;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.TreeSet;</span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">	TreeSet&lt;Integer&gt; treeSetA&#x3D;new TreeSet&lt;Integer&gt;();&#x2F;&#x2F;第一个集合A</span><br><span class="line">	int n&#x3D;input.nextInt();</span><br><span class="line">	for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		treeSetA.add(input.nextInt());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	TreeSet&lt;Integer&gt; treeSetB&#x3D;new TreeSet&lt;Integer&gt;();&#x2F;&#x2F;第二个集合B</span><br><span class="line">	int m&#x3D;input.nextInt();</span><br><span class="line">	for(int i&#x3D;0;i&lt;m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		treeSetB.add(input.nextInt());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	input.close();</span><br><span class="line">	printDivide(treeSetA, treeSetB);</span><br><span class="line">    printAdd(treeSetA, treeSetB);</span><br><span class="line">    printRemain(treeSetA, treeSetB);</span><br><span class="line">&#125;</span><br><span class="line">	public static void printDivide(TreeSet&lt;Integer&gt; a,TreeSet&lt;Integer&gt; b) </span><br><span class="line">	&#123;</span><br><span class="line">			TreeSet&lt;Integer&gt; tempA&#x3D;(TreeSet&lt;Integer&gt;) a.clone();&#x2F;&#x2F;第三个集合是复制a集合的</span><br><span class="line">			a.removeAll(b);</span><br><span class="line">			tempA.removeAll(a);</span><br><span class="line">			for (int i : tempA) &#123;</span><br><span class="line">	            System.out.print(i + &quot; &quot;);</span><br><span class="line">	        &#125;</span><br><span class="line">	        System.out.println();</span><br><span class="line">	 &#125;</span><br><span class="line">	</span><br><span class="line">	public static void printAdd(TreeSet&lt;Integer&gt; a,TreeSet&lt;Integer&gt; b)</span><br><span class="line">	&#123;</span><br><span class="line">		a.addAll(b);</span><br><span class="line">		for(int i:a)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.print(i+&quot; &quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">		</span><br><span class="line">	public static void printRemain(TreeSet&lt;Integer&gt; a, TreeSet&lt;Integer&gt; b) </span><br><span class="line">	&#123;</span><br><span class="line">        a.removeAll(b);</span><br><span class="line">        for (int i : a) &#123;</span><br><span class="line">            System.out.print(i + &quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码结果如下：</p>
+<p>！<a href="jiheyunsuan.png"></a></p>
+<hr>
+<p><strong>九、大等于n的最小完全平方数 **<br>**问题描述</strong><br>　　输出大等于n的最小的完全平方数。<br>　　若一个数能表示成某个自然数的平方的形式，则称这个数为完全平方数<br>　　Tips：注意数据范围<br>输入格式<br>　　一个整数n<br>输出格式<br>　　大等于n的最小的完全平方数<br>样例输入<br>71711<br>样例输出<br>71824<br>数据规模和约定<br>　　n是32位有符号整数</p>
+<p><strong>思路：</strong><br>　　这道题目主要是将n先分为小于等于0和大于0的数两类，小于等于0的数最小的完全平方数就是0；而大于等于0的数需要让x转换成long型去比对。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">   public static void main(String[] args) &#123;</span><br><span class="line">	Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">	int n&#x3D;input.nextInt();</span><br><span class="line">	double x&#x3D;Math.sqrt(n);&#x2F;&#x2F;取double类型的x</span><br><span class="line">	long j&#x3D;0;</span><br><span class="line">	if(n&lt;&#x3D;0)  &#x2F;&#x2F;第一种情况结果为0</span><br><span class="line">	&#123;</span><br><span class="line">		j&#x3D;0;</span><br><span class="line">		System.out.println(j*j);</span><br><span class="line">	&#125;	</span><br><span class="line">	else&#x2F;&#x2F;第二种情况结果要从x转换为long之后一个一个挪直到结果</span><br><span class="line">	&#123;</span><br><span class="line">		if((long)x*(long)x&#x3D;&#x3D;n)</span><br><span class="line">			j&#x3D; (long)x;</span><br><span class="line">		else</span><br><span class="line">			j&#x3D;(long)x+1;</span><br><span class="line">		System.out.println(j*j);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="wanquanpingfangshu.png" alt=""></p>
+<hr>
+<p><strong>十、阿尔法乘积</strong><br><strong>问题描述</strong><br>　　计算一个整数的阿尔法乘积。对于一个整数x来说，它的阿尔法乘积是这样来计算的：如果x是一个个位数，那么它的阿尔法乘积就是它本身；否则的话，x的阿尔法乘积就等于它的各位非0的数字相乘所得到的那个整数的阿尔法乘积。例如：4018224312的阿尔法乘积等于8，它是按照以下的步骤来计算的：<br>　　4018224312 → 4<em>1</em>8<em>2</em>2<em>4</em>3<em>1</em>2 → 3072 → 3<em>7</em>2 → 42 → 4*2 → 8<br>　　编写一个程序，输入一个正整数（该整数不会超过6,000,000），输出它的阿尔法乘积。<br>　　输入格式：输入只有一行，即一个正整数。<br>　　输出格式：输出相应的阿尔法乘积。<br>　　输入输出样例<br>样例输入<br>4018224312<br>样例输出<br>8</p>
+<p><strong>思路如下：</strong><br>　　发现这个题目就是不停的乘不停的乘，一开始本来用数组但是发现两个while循环之后答案只有70%的准确率(就是因为int不能满足题意，所以改用函数+定义long型)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">   public static void main(String[] args) &#123;</span><br><span class="line">	Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">	long n&#x3D;input.nextLong();&#x2F;&#x2F;输入的数定义为long型</span><br><span class="line">	System.out.println(f(n));</span><br><span class="line">  &#125;</span><br><span class="line">   </span><br><span class="line">   public static long f(long n) &#123;&#x2F;&#x2F;不断地输入n</span><br><span class="line">	   if(n&lt;10)  &#x2F;&#x2F;满足乘积最终为个位数</span><br><span class="line">		   return n;</span><br><span class="line">	   long sum&#x3D;1;</span><br><span class="line">	   while(n&gt;0)</span><br><span class="line">	   &#123;</span><br><span class="line">		   if(n%10!&#x3D;0) &#x2F;&#x2F;拆开的目前位数字不为0</span><br><span class="line">		   sum*&#x3D;n%10;  &#x2F;&#x2F;不断乘积得到目前阶段的积</span><br><span class="line">		    n&#x2F;&#x3D;10;  &#x2F;&#x2F;拆数（拆的更小）</span><br><span class="line">	   &#125;</span><br><span class="line">	   return f(sum);&#x2F;&#x2F;不停地递归找答案</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong><br>！<a href="aerfachengji.png"></a></p>
+<hr>
+<p><strong>十一、求阶乘最右边的第一个非0数(BigDecimal)</strong><br>一个整数n的阶乘可以写成n!，它表示从1到n这n个整数的乘积。阶乘的增长速度非常快，例如，13！就已经比较大了，已经无法存放在一个整型变量中；而35！就更大了，它已经无法存放在一个浮点型变量中。因此，当n比较大时，去计算n!是非常困难的。幸运的是，在本题中，我们的任务不是去计算n!，而是去计算n!最右边的那个非0的数字是多少。例如，5！=1<em>2</em>3<em>4</em>5=120，因此5!最右边的那个非0的数字是2。再如，7！=5040，因此7！最右边的那个非0的数字是4。再如，15！= 1307674368000，因此15！最右边的那个非0的数字是8。请编写一个程序，输入一个整数n(0&lt;n&lt;=100)，然后输出n!最右边的那个非0的数字是多少。<br>输入：<br>　　7<br>输出：<br>　　4</p>
+<p><strong>思路如下：</strong><br>　　使用BigDecimal类定义一个sum得出结果用。<br>然后通过 <strong><code>valueof()</code></strong> 方法制造BigDecimal类的对象，通过multiply方法从1乘到n的结果返回给sum。<br>然后将结果通过<strong><code>toString()</code></strong>方法转成字符串，倒序判断是不是为0最后得出结果。</p>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import java.math.BigDecimal;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        int n&#x3D;input.nextInt();</span><br><span class="line">        BigDecimal sum&#x3D;BigDecimal.ONE;&#x2F;&#x2F;设置为1</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum&#x3D;sum.multiply(BigDecimal.valueOf(i));&#x2F;&#x2F;1*2*3*...*n就是一直到n(阶乘)</span><br><span class="line">        &#125;</span><br><span class="line">        String s&#x3D;sum.toString();  &#x2F;&#x2F;转为字符串</span><br><span class="line">        for(int i&#x3D;s.length()-1;i&gt;&#x3D;0;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            if(s.charAt(i)!&#x3D;&#39;0&#39;)</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.println(s.charAt(i));</span><br><span class="line">                break ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="feiling.png" alt=""></p>
+<hr>
+<p><strong>十二、二进制—&gt;十进制</strong><br><strong>问题描述</strong><br>　　编写一个程序，输入一个二进制的字符串（长度不超过32），然后计算出相应的十进制整数，并把它打印出来。<br>　　输入格式：输入为一个字符串，每个字符都是’0’或’1’，字符串的长度不超过32。<br>　　输出格式：输出一个整数。<br>　　输入输出样例<br>样例输入<br>1101<br>样例输出<br>13</p>
+<p><strong>思路：</strong><br><strong>方法1.</strong>使用字符串n输入一连串2进制数字，然后通过BigInteger类对象创建BigInteger(n,2)即可得到答案。<br><strong>方法2.</strong>通过字符串转字符数组，然后从最后面到最前面循环，不断地sum求和就可以了。</p>
+<p><strong>方法1代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import java.math.BigInteger;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">        String n&#x3D;input.next();</span><br><span class="line">        BigInteger s&#x3D;new BigInteger(n,2);&#x2F;&#x2F;使用new就行</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法2代码实现：</strong><br>注意：<br>1.一定要将字符1转为数字1！！！  ——-<code>(int)a[i]-48</code><br>2.<code>pow()</code>用于求2的多少次方</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">        String n&#x3D;input.next();&#x2F;&#x2F;输入一个字符串</span><br><span class="line">        int sum&#x3D;0;</span><br><span class="line">        char[] a&#x3D;n.toCharArray();&#x2F;&#x2F;字符串转成字符数组(相反就用valueOf()方法)</span><br><span class="line">        for(int i&#x3D;a.length-1;i&gt;&#x3D;0;i--)&#x2F;&#x2F;倒序寻找(方便2的0次方增大)</span><br><span class="line">        &#123;</span><br><span class="line">            sum+&#x3D;((int)a[i]-48)*Math.pow(2,a.length-i-1);&#x2F;&#x2F;一定要记得将字符1强制类型转换后减去48(0的ASCII码)*2的对应次方</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>十三、阶乘末尾(求末尾len位)</strong><br><strong>问题描述</strong><br>　　给定n和len，输出n!末尾len位。<br>输入格式<br>　　一行两个正整数n和len。<br>输出格式<br>　　一行一个字符串，表示答案。长度不足用前置零补全。<br>样例输入<br>6 5<br>样例输出<br>00720<br>数据规模和约定<br>　　n&lt;=30, len&lt;=10。</p>
+<p><strong>思路：</strong><br>　　和之前的题目一样需要考虑用BigDecimal类定义一个s大数，然后调用multiply方法计算阶乘，可以直接通过输出s得到阶乘的结果。但是这个题目需要将其转换为字符串然后转换为字符数组对比长度和len大小。如果长度&gt;len就直接输出就行，如果小于的话需要在前面输出cha这么多个0才行。  </p>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import java.math.BigDecimal;</span><br><span class="line">import java.util.*;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">        int n&#x3D;input.nextInt();</span><br><span class="line">        int len&#x3D;input.nextInt();</span><br><span class="line">        BigDecimal s&#x3D;BigDecimal.ONE;&#x2F;&#x2F;设定一个大数s</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            s&#x3D;s.multiply(s.valueOf(i));&#x2F;&#x2F;利用乘法方法 然后从1*2*...n</span><br><span class="line">        &#125;</span><br><span class="line">        String s1&#x3D;s.toString();&#x2F;&#x2F;转成字符串s1</span><br><span class="line">        char[] a&#x3D;s1.toCharArray();&#x2F;&#x2F;转为字符数组a</span><br><span class="line">        int cha&#x3D;a.length-len;</span><br><span class="line">        if(cha&lt;0)</span><br><span class="line">        &#123;</span><br><span class="line">            int jueduizhi&#x3D;Math.abs(cha);</span><br><span class="line">            while(jueduizhi--!&#x3D;0)</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.print(&quot;0&quot;);  &#x2F;&#x2F;差记为补几个0在前面</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            for(int i&#x3D;0;i&lt;a.length;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                    System.out.print(a[i]);  &#x2F;&#x2F;补了0之后再输出其他的数字</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else  &#x2F;&#x2F;如果长度够长</span><br><span class="line">        &#123;</span><br><span class="line">            for (int i&#x3D;cha;i&lt;a.length;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                    System.out.print(a[i]); &#x2F;&#x2F;直接从cha的位置正序输出</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="jiechengmowei.png" alt=""></p>
+<hr>
+<p><strong>十四题、明明的随机数</strong><br><strong>问题描述</strong><br>　　明明想在学校中请一些同学一起做一项问卷调查，为了实验的客观性，他先用计算机生成了N个1到1000之间的随机整数（N≤100），对于其中重复的数字，只保留一个，把其余相同的数去掉，不同的数对应着不同的学生的学号。然后再把这些数从小到大排序，按照排好的顺序去找同学做调查。请你协助明明完成“去重”与“排序”的工作。<br>输入格式<br>　　输入有2行，第1行为1个正整数，表示所生成的随机数的个数：<br>　　N<br>　　第2行有N个用空格隔开的正整数，为所产生的随机数。<br>输出格式<br>　　输出也是2行，第1行为1个正整数M，表示不相同的随机数的个数。第2行为M个用空格隔开的正整数，为从小到大排好序的不相同的随机数。<br>样例输入<br>10<br>20 40 32 67 40 20 89 300 400 15<br>样例输出<br>8<br>15 20 32 40 67 89 300 400</p>
+<p><strong>思路：</strong><br>　　我发现动态的和数据有关的一定要去使用<strong><code>集合</code></strong>！！！集合的动态变换比较方便！这道题目就用TreeSet集合(可以自动排序加减少重读的内容)。<br>　　然后使用while循环不断地判断是不是有下一个，用add方法去添加内容，然后添加之后size方法输出不重复的排序之后的集合长度，for循环输出每一个内容。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        while(input.hasNext())  &#x2F;&#x2F;判断是否有下一个</span><br><span class="line">        &#123;</span><br><span class="line">            int num&#x3D;input.nextInt();</span><br><span class="line">            TreeSet&lt;Integer&gt; set&#x3D;new TreeSet&lt;&gt;();  &#x2F;&#x2F;TreeSet集合存储</span><br><span class="line">            for(int i&#x3D;0;i&lt;num;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                set.add(input.nextInt());  &#x2F;&#x2F;输入内容</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(set.size());  &#x2F;&#x2F;自动排序然后删除重复值之后的长度</span><br><span class="line"></span><br><span class="line">            for(int i:set)</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.print(i+&quot; &quot;);  &#x2F;&#x2F;增强for循环去输出结果</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="mingmingdesuijishu.png" alt=""></p>
+<hr>
+<p><strong>十五、 黑色星期五(使用Calendar)</strong><br><strong>问题描述</strong><br>　　有些西方人比较迷信，如果某个月的13号正好是星期五，他们就会觉得不太吉利，用古人的说法，就是“诸事不宜”。请你编写一个程序，统计出在某个特定的年份中，出现了多少次既是13号又是星期五的情形，以帮助你的迷信朋友解决难题。<br>　　输入输出样例<br>　　样例输入<br>　　1998<br>　　样例输出<br>　　3</p>
+<p><strong>思路：</strong><br>使用JAVA中Calendar类可以很方便的得出结果，使用getInstance()方法获取一个默认时区的日历，通过set方法寻找第一个条件某个月的13号，然后通过对比Calendar类中固定的DAT_OF_WEEK==6(周五)从而满足两个条件。</p>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        int n&#x3D;input.nextInt();</span><br><span class="line">        int sum&#x3D;0;&#x2F;&#x2F;计数</span><br><span class="line">        Calendar c&#x3D;Calendar.getInstance();&#x2F;&#x2F;获得一个时区默认的日历</span><br><span class="line">        for(int i&#x3D;1;i&lt;13;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            c.set(n,i,13);  &#x2F;&#x2F;寻找每个月的13号日子</span><br><span class="line">            if(c.get(Calendar.DAY_OF_WEEK)&#x3D;&#x3D;6) &#x2F;&#x2F;1是周日 2是周一 3是周二...6是周五</span><br><span class="line">                sum++;  &#x2F;&#x2F;如果c获得的是周五就增加一个</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="heisexingqiwu.png" alt=""></p>
+<hr>
+<p><strong>十六、身份证号码升级</strong><br><strong>问题描述</strong><br>　　从1999年10月1日开始，公民身份证号码由15位数字增至18位。(18位身份证号码简介)。升级方法为：<br>　　1、把15位身份证号码中的年份由2位(7,8位)改为四位。<br>　　2、最后添加一位验证码。验证码的计算方案：<br>　　将前 17 位分别乘以对应系数 (7 9 10 5 8 4 2 1 6 3 7 9 10 5 8 4 2) 并相加，然后除以 11 取余数，0-10 分别对应 1 0 x 9 8 7 6 5 4 3 2。<br>　　请编写一个程序，用户输入15位身份证号码，程序生成18位身份证号码。假设所有要升级的身份证的四位年份都是19××年<br>输入格式<br>　　一个15位的数字串，作为身份证号码<br>输出格式<br>　　一个18位的字符串，作为升级后的身份证号码<br>样例输入<br>110105491231002<br>样例输出<br>11010519491231002x<br>数据规模和约定<br>　　不用判断输入的15位字符串是否合理</p>
+<p><strong>思路：</strong><br>　　考虑要用字符串s将15位身份证号码输入进去，然后转成字符数组a，设置一个数组b去一个一个从a拿到(赋值-48)。然后例如：49-1949我就是将4直接加190转换成194之后每一位去乘相应的系数得到最后一位，然后switch语句判断得到答案(x先用-1替换掉)，最后依次输出b数组。</p>
+<p><strong>代码实现如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        String s&#x3D;input.next();&#x2F;&#x2F;用字符串输入15位身份证</span><br><span class="line">        char[] a&#x3D;s.toCharArray();&#x2F;&#x2F;转成字符数组</span><br><span class="line">        int[] b&#x3D;new int[16];&#x2F;&#x2F;用16位去表示结果(17-1917只把1编程191)</span><br><span class="line">        for(int i&#x3D;0;i&lt;a.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            b[i]&#x3D;a[i];&#x2F;&#x2F;把每一位传给int型数组b</span><br><span class="line">            b[i]&#x3D;b[i]-48;&#x2F;&#x2F;必须减48才能从字符转为数字的0&#x2F;1...9</span><br><span class="line">        &#125;</span><br><span class="line">        b[6]&#x3D;b[6]+190;&#x2F;&#x2F;将第一位x直接变成19x</span><br><span class="line">        b[15]&#x3D;(b[0]*7)+(b[1]*9)+(b[2]*10)+(b[3]*5)+(b[4]*8)+(b[5]*4)+2+9+((b[6]%10)*6)+(b[7]*3)+(b[8]*7)+(b[9]*9)+(b[10]*10)+(b[11]*5)+(b[12]*8)+(b[13]*4)+(b[14]*2);&#x2F;&#x2F;注意我现在的只有16位(每一位对应的乘要变化)</span><br><span class="line">        b[15]&#x3D;b[15]%11;&#x2F;&#x2F;计算出来之后对11取余</span><br><span class="line">        switch (b[15])&#x2F;&#x2F;依次判断出最后一位是什么</span><br><span class="line">        &#123;</span><br><span class="line">            case 0:b[15]&#x3D;1;break;</span><br><span class="line">            case 1:b[15]&#x3D;0;break;</span><br><span class="line">            case 2:b[15]&#x3D;-1;break;  &#x2F;&#x2F;先用-1代替x</span><br><span class="line">            case 3:b[15]&#x3D;9;break;</span><br><span class="line">            case 4:b[15]&#x3D;8;break;</span><br><span class="line">            case 5:b[15]&#x3D;7;break;</span><br><span class="line">            case 6:b[15]&#x3D;6;break;</span><br><span class="line">            case 7:b[15]&#x3D;5;break;</span><br><span class="line">            case 8:b[15]&#x3D;4;break;</span><br><span class="line">            case 9:b[15]&#x3D;3;break;</span><br><span class="line">            case 10:b[15]&#x3D;2;break;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i&#x3D;0;i&lt;b.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(i!&#x3D;15)</span><br><span class="line">            System.out.print(b[i]);&#x2F;&#x2F;输出除过最后一位的数字</span><br><span class="line">            else  &#x2F;&#x2F;判断最后一位</span><br><span class="line">                if(b[15]&#x3D;&#x3D;-1)</span><br><span class="line">                System.out.print(&quot;x&quot;);&#x2F;&#x2F;这里将-1换成x</span><br><span class="line">                else</span><br><span class="line">                    System.out.println(b[15]);&#x2F;&#x2F;其他的就按照switch语句的答案输出</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="shenfenzhengshengji.png" alt=""></p>
+<hr>
+<p><strong>十七、不同单词个数统计(split()方法)</strong><br><strong>问题描述</strong><br>　　编写一个程序，输入一个句子，然后统计出这个句子当中不同的单词个数。例如：对于句子“one little two little three little boys”，总共有5个不同的单词：one, little, two, three, boys。<br>　　说明：（1）由于句子当中包含有空格，所以应该用gets函数来输入这个句子；（2）输入的句子当中只包含英文字符和空格，单词之间用一个空格隔开；（3）不用考虑单词的大小写，假设输入的都是小写字符；（4）句子长度不超过100个字符。<br>　　输入格式：输入只有一行，即一个英文句子。<br>　　输出格式：输出只有一行，是一个整数，表示句子中不同单词的个数。<br>输入输出样例<br>样例输入<br>one little two little three little boys<br>样例输出<br>5</p>
+<p><strong>思路：</strong><br>　　主要是用<strong>nextLine()输入</strong>！！！(next会把单词之间的空格当做结束符)，然后通过<strong><code>split()</code>方法</strong>将s隔开成一个一个单词存放在String字符串数组之中，这一步其实可以输出a.length得到长度。但是这个题目必须要输出不重复单词的个数，可以<strong>通过二重循环将相同的单词其中一个变成空格</strong>(可以二次使用split方法)<br>　　然后只要数组不为空就可以sum加一个，最终sum值就是答案。<br><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        String s &#x3D; input.nextLine();&#x2F;&#x2F;用nextLine格式输入要判断的字符串</span><br><span class="line">        String[] a &#x3D; s.split(&quot; &quot;);&#x2F;&#x2F;用split方法得到每个单词</span><br><span class="line">        int sum &#x3D; 0;&#x2F;&#x2F;计数</span><br><span class="line">        for (int i &#x3D; 0; i &lt; a.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j &#x3D; i + 1; j &lt; a.length; j++)&#x2F;&#x2F;二重循环依次判断</span><br><span class="line">            &#123;</span><br><span class="line">                if (a[i].equals(a[j]))</span><br><span class="line">                &#123;</span><br><span class="line">                    a[j] &#x3D; &quot; &quot;;&#x2F;&#x2F;将相同的其中一个单词换成空格</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; a.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(a[i]!&#x3D;&quot; &quot;)</span><br><span class="line">                sum++;&#x2F;&#x2F;输出不是空格的位置的单词数量</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="butongdancigeshutongji.png" alt=""></p>
+<hr>
+<p><strong>十八、判断回文(字符串)</strong><br><strong>问题描述：</strong><br>  编程判断一个字符串是否是回文，当字符串是回文时，输出字符串：yes!，否则输出字符串：no!。所谓回文即正向与反向的拼写都一样，如adgda。　　长度在100以内，且全为小写字母<br>样例输入<br>adgda<br>样例输出<br>yes!</p>
+<p><strong>思路：</strong><br>　　我考虑的是输入字符串s1和s2对比，s1就用字符串转字符串数组的方式转成字符串数组a，然后反序得到b，从而字符串数组转字符串s2，然后进行对比。<br><strong>字符串—-&gt;字符串数组/字符数组：</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s&#x3D;input.next();</span><br><span class="line">char[] a&#x3D;s.toCharArray();&#x2F;&#x2F;字符数组</span><br><span class="line">String[] a&#x3D;s.split(&quot;&quot;);&#x2F;&#x2F;字符串数组(&quot;里面随自己&quot;)</span><br></pre></td></tr></table></figure>
+<p><strong>字符串数组—-&gt;字符串</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String[] b&#x3D;new String[n];</span><br><span class="line">StringBuffer s&#x3D;new StringBuffer();</span><br><span class="line">for(String i：b)</span><br><span class="line">&#123;</span><br><span class="line">	s.append(i);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(s.toString());&#x2F;&#x2F;要用toString方法才能转成字符串</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        String s1 &#x3D; input.next();&#x2F;&#x2F;输入要判断的字符串s1</span><br><span class="line">        String[] a &#x3D; s1.split(&quot;&quot;);&#x2F;&#x2F;利用split方法隔成字符串数组a</span><br><span class="line">        String[] b &#x3D; new String[a.length];&#x2F;&#x2F;创建一个字符串数组b</span><br><span class="line">        int j &#x3D; 0;</span><br><span class="line">        for (int i &#x3D; a.length - 1; i &gt;&#x3D; 0; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            b[j++] &#x3D; a[i]; &#x2F;&#x2F;反序把a输入到b里面</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        StringBuffer s2 &#x3D; new StringBuffer();&#x2F;&#x2F;使用StringBuffer 创建一个字符串s2</span><br><span class="line">        for (String i : b)</span><br><span class="line">        &#123;</span><br><span class="line">               s2.append(i);&#x2F;&#x2F;增强for循环将字符串数组转成字符串</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        if(s1.equals(s2.toString()))&#x2F;&#x2F;必须将s2.toString才可以判断</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;yes!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;no!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong><br><img src="panduanhuiwen.png" alt=""></p>
+<hr>
+<p><strong>十九、十六进制转10/8进制</strong><br>　　用户输入三个字符，每个字符取值范围是0-9，A-F。然后程序会把这三个字符转化为相应的十六进制整数，并分别以十六进制，十进制，八进制输出，十六进制表示成3位，八进制表示成4位，若不够前面补0。（不考虑输入不合法的情况）<br>输入<br>　　1D5<br>输出<br>（注意冒号后面有一个空格）<br>　　Hex: 0x1D5<br>　　Decimal: 469<br>　　Octal: 0725<br><strong>思路：</strong><br>  16进制就是直接输出；10进制就是用Long型的<code>parseLong</code>方法；8进制就是使用Integer的<code>toOctalString()</code>方法，但是里面的属性是Integer的valueOf方法(s，16)。</p>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        String s &#x3D; input.next();</span><br><span class="line">        System.out.println(&quot;Hex: Ox&quot; + s);</span><br><span class="line"></span><br><span class="line">        Long shi &#x3D; Long.parseLong(s, 16);&#x2F;&#x2F;转成十进制</span><br><span class="line">        System.out.println(&quot;Decimal: &quot; + shi);</span><br><span class="line"></span><br><span class="line">        String ba &#x3D; Integer.toOctalString(Integer.valueOf(s, 16));&#x2F;&#x2F;转成8进制</span><br><span class="line">        char[] a &#x3D; ba.toCharArray();</span><br><span class="line">        int cha &#x3D; 4 - a.length;</span><br><span class="line">        if (cha &#x3D;&#x3D; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;Octal: &quot; +ba);</span><br><span class="line">        &#125;</span><br><span class="line">        if (cha &#x3D;&#x3D; 1)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;Octal: 0&quot; +ba);</span><br><span class="line">        &#125;</span><br><span class="line">        if (cha &#x3D;&#x3D; 2)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;Octal: 00&quot; +ba);</span><br><span class="line">        &#125;</span><br><span class="line">        if (cha &#x3D;&#x3D; 3)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;Octal: 000&quot; +ba);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="jinzhizhuanhuan.png" alt=""></p>
+<hr>
+<p><strong>二十、删除重复元素(使用数组下标)</strong><br><strong>问题描述</strong><br>　　为库设计新函数DelPack，删除输入字符串中所有的重复元素。不连续的重复元素也要删除。<br>　　要求写成函数，函数内部使用指针操作。<br>样例输入<br>1223445667889<br>样例输出<br>13579<br>样例输入<br>else<br>样例输出<br>ls<br>数据规模和约定<br>　　字符串数组最大长度为100。</p>
+<p><strong>思路分析：</strong><br>　　通过数组下标，所有的先为0而后面将字符串出现一次增加一次，当最后为1就输出(可以去掉出现两次以上的元素)</p>
+<p><strong>代码结果：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        String s&#x3D;input.next();</span><br><span class="line">        int[] a&#x3D;new int[10001];</span><br><span class="line">        for(int i&#x3D;0;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">         a[s.charAt(i)]++;&#x2F;&#x2F;字符串的每一次为字符对应的下标数组元素从1变</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i&#x3D;0;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(a[s.charAt(i)]&#x3D;&#x3D;1)&#x2F;&#x2F;只让出现一次的元素输出</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.print(s.charAt(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong><br><img src="yuansuchongfu.png" alt=""></p>
+<hr>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/">蓝桥杯</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
+        <p><span>发布时间:</span>2019年10月26日 - 23时08分</p>
+        <p><span>最后更新:</span>2020年01月13日 - 20时40分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/" title="蓝桥杯">https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2019/10/29/%E6%B3%9B%E5%9E%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          泛型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/26/%E9%9B%86%E5%90%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">集合1</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'swing'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/10/29/%E6%B3%9B%E5%9E%8B/" title="上一篇: 泛型">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2019/10/26/%E9%9B%86%E5%90%88/" title="下一篇: 集合1">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-JAVA/">代码随想录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">JAVA-面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E5%9F%BA%E7%A1%80%E7%AF%87/">JAVA-基础篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/19/%E5%B0%9A%E7%A1%85%E8%B0%B7java/">尚硅谷JAVA基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/18/pytorch%E5%B0%8F%E5%9C%9F%E5%A0%86/">pytorch小土堆</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/04/python%E6%89%93%E5%8C%85/">python打包</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/25/pytorch/">pytorch</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/23/django/">django</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/flask%E6%8E%A5%E5%8F%A3/">flask接口</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Docker/">Docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/style/">JQ实现表单校验/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/jquery-1.11.0/">JQ实现表单校验/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/style/">JQ实现老黄历/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/laohuangli/">JQ实现老黄历/laohuangli</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/jquery-1.11.0/">JQ实现老黄历/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/data/">JQ实现老黄历/data</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery%E9%80%89%E6%8B%A9%E5%99%A8/style/">JQuery选择器/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/jquery-1.11.3.min/">JQuery基本用法/jquery-1.11.3.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery/jquery-1.11.0/">JQuery/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/npm/">Bootstrap/bootstrap-3.3.5-dist/js/npm</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.min/">Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap/">Bootstrap/bootstrap-3.3.5-dist/js/bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap.min/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme.min/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Larkkkkkkk/">Larkkkkkkk</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/17/py2neo/">py2neo</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/17/neo4j/">neo4j</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/16/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">知识图谱</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/22/%E5%90%8E%E7%BC%80%E6%A0%91/">后缀树</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/11/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/02/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">动手学深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/01/Scrapy%E7%88%AC%E8%99%AB%E8%BF%9B%E9%98%B6/">Scrapy爬虫进阶</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/28/%E7%88%AC%E8%99%AB/">爬虫基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/26/%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB%EF%BC%88Python%EF%BC%89/">算法汇总（Python）</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/15/CS224n%E6%96%AF%E5%9D%A6%E7%A6%8F%E6%B7%B1%E5%BA%A6%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E8%AF%BE/">CS224n斯坦福深度自然语言处理课</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/11/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/10/%E5%8F%8C%E7%A2%B3%E5%A4%A7%E8%B5%9B-%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB/">双碳大赛-垃圾分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/07/PyTorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/">PyTorch深度学习实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/27/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E4%B9%8B%E5%B7%A5%E4%B8%9A%E8%92%B8%E6%B1%BD/">机器学习实战之工业蒸汽</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/17/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/">统计学习方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/06/%E5%88%A9%E7%94%A8python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">利用python进行数据分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/python%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%E8%AF%BE%E6%9C%AC%E8%AF%BE%E5%90%8E%E9%A2%98/">python从入门到实践课本课后题</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/01/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/12/31/python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/28/B%E5%86%8C%E7%BC%96%E7%A8%8B%E9%A2%98/">B册编程题</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/">c语言课本题目</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/04/07/%E5%88%9D%E8%AF%95code/">初试code</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/25/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/">蓝桥杯国赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/23/Linux%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">Linux系统目录结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/">LeetCode链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/">本地项目上传Github</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/">Mysql复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/">设计模式总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/">京东2019校招笔试Java开发工程师笔试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/30/%E4%BA%AC%E4%B8%9C2019%E6%98%A5%E6%8B%9B%E4%BA%AC%E4%B8%9CJava%E5%BC%80%E5%8F%91%E8%AF%95%E5%8D%B7/">京东2019春招京东Java开发试卷</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/29/%E6%8B%BC%E5%A4%9A%E5%A4%9A2020%E6%A0%A1%E6%8B%9B%E9%83%A8%E5%88%86%E7%BC%96%E7%A8%8B%E9%A2%98%E5%90%88%E9%9B%86/">拼多多2020校招部分编程题合集</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/21/Git%E5%A4%8D%E4%B9%A0/">Git复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/16/leetcode%E5%89%91%E6%8C%87offer/">leetcode剑指offer</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/">Hexo博客重装系统重新部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/08/%E5%B0%9A%E5%AD%A6%E5%A0%82CRUD%E6%A8%A1%E6%9D%BF/">尚学堂CRUD模板</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/19/LeetCode%E7%B2%BE%E9%80%89TOP%E9%9D%A2%E8%AF%95%E9%A2%98/">LeetCode精选TOP面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/16/LeetCode%E5%93%88%E5%B8%8C%E8%A1%A8/">LeetCode哈希表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/16/LeetCode%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">LeetCode贪心算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/15/LeetCode%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">LeetCode二分查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/14/LeetCode%E5%8F%8C%E6%8C%87%E9%92%88/">LeetCode双指针</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/LeetCode%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">LeetCode动态规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/12/LeetCode%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/">LeetCode数学问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/11/LeetCode%E9%80%92%E5%BD%92/">LeetCode递归</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/10/LeetCode%E6%8E%92%E5%BA%8F/">LeetCode排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/LeetCode%E5%AD%97%E7%AC%A6%E4%B8%B2/">LeetCode字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/LeetCode%E6%95%B0%E7%BB%84/">LeetCode数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/%E5%89%91%E6%8C%87offer/">剑指offer</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/02/%E5%9B%BE/">图</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/01/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/22/%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91/">哈弗曼树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E6%A0%91/">树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/%E6%8E%92%E5%BA%8F/">排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/">时间复杂度和空间复杂度分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/%E9%80%92%E5%BD%92/">递归</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/SpringBoot/">SpringBoot</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/%E9%93%BE%E8%A1%A8/">链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/%E9%98%9F%E5%88%97/">队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/%E6%A0%88/">栈</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%AF%B9Date%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">SpringMVC对Date类型转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/">SpringMVC原理分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8B%A6%E6%88%AA%E5%99%A8/">SpringMVC实现自定义拦截器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/10/SpringMVC%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">SpringMVC实现文件上传和下载</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/JSP%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9B%9B%E5%A4%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/">JSP九大内置对象和四大作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/SpringMVC%E5%AE%9E%E7%8E%B0%E8%8F%9C%E5%8D%95%E5%8A%9F%E8%83%BD/">SpringMVC实现菜单功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/07/SpringMVC/">SpringMVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/06/Ajax%E6%95%B4%E7%90%86/">Ajax整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/06/Spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/">Spring常用注解整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E4%BA%8B%E5%8A%A1/">Spring事务</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Spring单例设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E5%8A%A0%E8%BD%BD%E5%B1%9E%E6%80%A7%E6%96%87%E4%BB%B6%E5%92%8Cscope%E5%B1%9E%E6%80%A7/">Spring加载属性文件和scope属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/03/Spring%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5/">Spring自动注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/03/Spring%E4%BB%A3%E7%90%86%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Spring代理设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/02/AOP/">AOP</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/Spring%E6%95%B4%E5%90%88Mybatis/">Spring整合Mybatis</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/Spring%E7%BB%99Bean%E6%B3%A8%E5%85%A5/">Spring给Bean注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/Spring/">Spring</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/">Mybatis运行原理总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/30/Mybatis%E6%B3%A8%E8%A7%A3/">Mybatis注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">使用Mybatis的动态Sql实现多表查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Mybatis%E7%BC%93%E5%AD%98/">Mybatis缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/ThreadLocal/">ThreadLocal</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/%E5%8A%A8%E6%80%81SQL/">动态SQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/27/getMapper%E6%8E%A5%E5%8F%A3%E7%BB%91%E5%AE%9A%E5%92%8C%E5%A4%9A%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/">getMapper接口绑定和多参数传递</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/Mybatis%E5%AE%9E%E7%8E%B0%E8%BD%AC%E8%B4%A6/">Mybatis实现转账</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/Mybatis%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E5%8A%9F%E8%83%BD%EF%BC%88%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%EF%BC%89/">Mybatis实现分页功能（完整流程）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Mybatis%E5%AE%9E%E7%8E%B0%E6%96%B0%E5%A2%9E%E5%88%A0%E9%99%A4%E4%BF%AE%E6%94%B9%E5%92%8C%E4%BA%8B%E5%8A%A1%E8%AE%B2%E8%A7%A3/">Mybatis实现新增删除修改和事务讲解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Mybatis%E5%AE%9E%E7%8E%B0mysql%E5%88%86%E9%A1%B5/">Mybatis实现mysql分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/21/Mybatis%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89/">Mybatis查询所有</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/21/Log4J/">Log4J</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">Mybatis全局配置文件详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/">Mybatis（eclipse详细）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/Mybatis%EF%BC%88idea+maven%EF%BC%89/">Mybatis（idea+maven）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/17/Nginx/">Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/17/Linux%E9%83%A8%E7%BD%B2/">Linux部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/">Linux网络知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/Vim/">Vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/maven/">maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/">redis配合ajax实现显示下拉列表省份</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">Linux安装软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/redis/">redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E8%B0%B7%E6%AD%8CCar%E5%BC%95%E5%85%A5%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/">谷歌Car引入装饰者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E6%B3%A8%E8%A7%A3/">注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/">自动登录（过滤器）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/08/Filter/">Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/JQuery%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8/">JQuery省市联动</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/Listener/">Listener</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E4%BB%BF%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2/">JQuery仿百度搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E6%A0%A1%E9%AA%8C%E7%94%A8%E6%88%B7%E5%90%8D/">JQuery校验用户名</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">JQuery基本用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/Ajax%E5%AE%9E%E7%8E%B0%E6%A0%A1%E9%AA%8C%E7%94%A8%E6%88%B7%E5%90%8D/">Ajax实现校验用户名</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/04/Ajax/">Ajax</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%882-0%EF%BC%89/">学生管理系统（2.0）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">三层架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/JSP%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/">JSP开发模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/DBUtils%E9%80%9A%E7%94%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/">DBUtils通用的增删查改</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/DBUtils/">DBUtils</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">数据库连接池</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/27/%E4%BA%8B%E5%8A%A1/">事务</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/27/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">学生管理系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/26/JSTL/">JSTL</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/26/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">EL表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/JSP/">JSP</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/Session%E5%AE%9E%E7%8E%B0%E8%B4%AD%E7%89%A9%E8%BD%A6/">Session实现购物车</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95/">Cookie获取商品浏览记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E7%99%BB%E5%BD%95%E6%97%B6%E9%97%B4/">Cookie获取上次登录时间</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/23/Session/">Session</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/23/Cookie/">Cookie</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/19/Linux/">Linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/18/ServletContext/">ServletContext</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/18/HTTPServletReauest%E5%92%8CHTTPServletResponse/">HTTPServletReauest和HTTPServletResponse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/17/Servlet/">Servlet</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/17/HTTP%E5%8D%8F%E8%AE%AE/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/16/Tomcat/">Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/16/dom4j%E5%85%A5%E9%97%A8/">dom4j入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/XML/">XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93cmd%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BB%A5%E5%90%8E%E5%86%99%EF%BC%89/">数据库cmd的操作（以后写）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA%E6%9F%A5%E7%9C%8B%E5%88%A0%E9%99%A4/">数据库的创建查看删除</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/14/JDBC%E4%B8%AD%E7%9A%84JAVAEE%E7%BB%93%E6%9E%84/">JDBC中的JAVAEE结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/">数据库的CRUD</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/JDBC%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/">JDBC的工具类</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/bootstrap%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5/">bootstrap实现网站首页</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/boostrap%E5%AE%9E%E7%8E%B0%E5%AF%BC%E8%88%AA%E6%9D%A1/">boostrap实现导航条</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/">JQ实现老黄历</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/">JQ实现表单校验</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/Bootstrap/">Bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/">JQ实现商品左右选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8/">JQ实现省市联动</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/">JQ实现表格隔行换色</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4/">JQ实现表单属性过滤</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/08/JQuery%E9%80%89%E6%8B%A9%E5%99%A8/">JQuery选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/08/JQuery%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6%E6%92%AD%E6%94%BE%E5%B9%BF%E5%91%8A/">JQuery实现定时播放广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JQuery/">JQuery</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E6%8E%A7%E5%88%B6%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/">JS控制下拉列表左右选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A3%80%E9%AA%8C%EF%BC%88%E4%BD%BF%E7%94%A8onfoucs%E7%AD%89%E7%84%A6%E7%82%B9%E6%97%B6%E9%97%B4%EF%BC%89/">JS实现表单检验（使用onfoucs等焦点时间）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/">JS实现表格变色和全选问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0DOM%E6%93%8D%E4%BD%9C%EF%BC%88%E5%85%B3%E4%BA%8Eselect%E6%A0%87%E7%AD%BE%E7%9A%84%E4%B8%8B%E6%8B%89%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8%EF%BC%89/">JS实现DOM操作（关于select标签的下拉省市联动）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/JS%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE%E5%B9%BF%E5%91%8A/">JS实现页面表单表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/JS%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD%E5%9B%BE/">JS实现轮播图</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/JS/">JS</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/CSS%E7%BD%91%E7%AB%99%E6%B3%A8%E5%86%8C%E6%A1%88%E4%BE%8B/">CSS网站注册案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/CSS-div%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E4%BC%98%E5%8C%96/">CSS+div实现网站首页优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/CSS/">CSS和DIV</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/HTML%E7%BD%91%E7%AB%99%E5%90%8E%E5%8F%B0%E6%A1%88%E4%BE%8B/">网站后台案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/HTML%E7%BD%91%E7%AB%99%E6%B3%A8%E5%86%8C%E6%A1%88%E4%BE%8B/">网站注册案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/01/HTML%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E6%A1%88%E4%BE%8B/">HTML网站首页案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/01/HTML/">HTML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/30/%E5%8F%8D%E5%B0%84/">反射</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/28/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/">稀疏数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE/">网络课设</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/webserver/">webserver</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/TCP/">TCP编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/17/%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE/">传输协议(UDP)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/13/%E7%AC%AC%E5%8D%81%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9B/">第十届蓝桥杯省赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/11/%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6/">等待唤醒机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A0%A1%E8%B5%9B/">蓝桥杯校赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/">线程状态</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/05/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/List/">List接口</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Set/">Set集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式(regex)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/29/%E8%BF%AD%E4%BB%A3%E5%99%A8/">集合2</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/29/%E6%B3%9B%E5%9E%8B/">泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/">蓝桥杯</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/%E9%9B%86%E5%90%88/">集合1</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/Lambda/">Lambda表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/%E9%A1%B5%E9%9D%A2/">人机交互实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/17/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/%E7%88%AC%E6%A5%BC%E6%A2%AF/">以爬楼梯为例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/idea%E5%AE%89%E8%A3%85/">IntelliJ IDEA</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/%E6%8E%A5%E9%9B%A8%E6%B0%B4(%E5%8F%8C%E6%8C%87%E9%92%88)/">接雨水</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/%E4%B9%98%E6%9B%B4%E5%A4%9A%E7%9A%84%E6%B0%B4(%E5%8F%8C%E6%8C%87%E9%92%88)/">乘更多的水</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/04/wenzipian2/">文字篇2-《码农翻身》</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 Larkkkkkkk
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="http://bestwing.me" target="_blank">Sw'blog</a> by Swing
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+  </div>
+</body>
+</html>

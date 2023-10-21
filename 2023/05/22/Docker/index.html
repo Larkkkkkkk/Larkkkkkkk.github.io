@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Docker | Larkkkkkkk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="参考文件1231.第一个是我用chatgpt生成的手册2.第二个是我在开发过程中自己写的一个手册  Docker介绍Docker的由来1.1.1    Docker是一个开源的应用容器引擎，是基于Go语言+Apache2.0协议开源。 1.1.2    Docker可以让开发者直接打包他们的应用和依赖包到一个容器之中。 1.1.3  Docker分为CE(社区版本)和EE(企业版本)两个版本。 D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker">
+<meta property="og:url" content="https://larkkkkkkk.github.io/2023/05/22/Docker/index.html">
+<meta property="og:site_name" content="Larkkkkkkk">
+<meta property="og:description" content="参考文件1231.第一个是我用chatgpt生成的手册2.第二个是我在开发过程中自己写的一个手册  Docker介绍Docker的由来1.1.1    Docker是一个开源的应用容器引擎，是基于Go语言+Apache2.0协议开源。 1.1.2    Docker可以让开发者直接打包他们的应用和依赖包到一个容器之中。 1.1.3  Docker分为CE(社区版本)和EE(企业版本)两个版本。 D">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2023/05/22/Docker/.images/clip_image002.jpg">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2023/05/22/Docker/.images/clip_image004.jpg">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2023/05/22/Docker/.images/clip_image006.jpg">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2023/05/22/Docker/.images/clip_image008.jpg">
+<meta property="og:image" content="https://larkkkkkkk.github.io/2023/05/22/Docker/.images/clip_image010.jpg">
+<meta property="og:image" content="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image012.jpg">
+<meta property="og:image" content="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image014.png">
+<meta property="og:image" content="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image016.jpg">
+<meta property="og:image" content="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image018.jpg">
+<meta property="og:image" content="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image020.jpg">
+<meta property="og:image" content="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image022.jpg">
+<meta property="og:image" content="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image024.jpg">
+<meta property="article:published_time" content="2023-05-22T11:43:54.000Z">
+<meta property="article:modified_time" content="2023-10-09T08:16:34.512Z">
+<meta property="article:author" content="Larkkkkkkk">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://larkkkkkkk.github.io/2023/05/22/Docker/.images/clip_image002.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
+  
+  
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="img/head.jpg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Larkkkkkkk</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                        
+                            <li><a  href="/archives">文章归档</a></li>
+                        
+                            <li><a  href="/CTFStudy">学习导航</a></li>
+                        
+                            <li><a  href="/PWNABLE">PWNABLE</a></li>
+                        
+                            <li><a  href="/resume">个人简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail"  target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                            
+                                <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Ajax/" style="font-size: 12.22px;">Ajax</a> <a href="/tags/Cookie%E5%92%8CSession/" style="font-size: 14.44px;">Cookie和Session</a> <a href="/tags/DBUtils/" style="font-size: 11.11px;">DBUtils</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">EL表达式</a> <a href="/tags/Filter/" style="font-size: 11.11px;">Filter</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPServletReauest%E5%92%8CHTTPServletResponse/" style="font-size: 10px;">HTTPServletReauest和HTTPServletResponse</a> <a href="/tags/IDEA%E5%AE%89%E8%A3%85%E5%92%8C%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">IDEA安装和破解</a> <a href="/tags/JAVA/" style="font-size: 14.44px;">JAVA</a> <a href="/tags/JAVA-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-Lambda表达式</a> <a href="/tags/JAVA-Set%E9%9B%86%E5%90%88/" style="font-size: 10px;">JAVA-Set集合</a> <a href="/tags/JAVA-%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">JAVA-反射</a> <a href="/tags/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 12.22px;">JAVA-多线程</a> <a href="/tags/JAVA-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-正则表达式</a> <a href="/tags/JAVA-%E6%B3%9B%E5%9E%8B/" style="font-size: 10px;">JAVA-泛型</a> <a href="/tags/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 12.22px;">JAVA-网络编程</a> <a href="/tags/JAVA-%E9%9B%86%E5%90%88/" style="font-size: 12.22px;">JAVA-集合</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0/" style="font-size: 11.11px;">JAVA练习</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">JAVA练习-动态规划</a> <a href="/tags/JQuery/" style="font-size: 13.33px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/LeetCode/" style="font-size: 17.78px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 15.56px;">Linux</a> <a href="/tags/Listener/" style="font-size: 10px;">Listener</a> <a href="/tags/Mybatis/" style="font-size: 18.89px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CJDBC/" style="font-size: 15.56px;">Mysql数据库和JDBC</a> <a href="/tags/Redis/" style="font-size: 11.11px;">Redis</a> <a href="/tags/Servlet/" style="font-size: 11.11px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 16.67px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 15.56px;">SpringMVC</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 20px;">Web前端知识点</a> <a href="/tags/XML/" style="font-size: 11.11px;">XML</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/flask%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">flask框架</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/jsp%E6%A0%87%E5%87%86%E6%A0%87%E7%AD%BE%E5%BA%93/" style="font-size: 10px;">jsp标准标签库</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/python/" style="font-size: 12.22px;">python</a> <a href="/tags/pytorch/" style="font-size: 10px;">pytorch</a> <a href="/tags/ssm%E6%A1%86%E6%9E%B6%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">ssm框架模板</a> <a href="/tags/webserver%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">webserver编程</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E4%BA%AC%E4%B8%9C/" style="font-size: 11.11px;">京东</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91/" style="font-size: 10px;">后缀树</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10px;">哈希表</a> <a href="/tags/%E5%9B%BE/" style="font-size: 10px;">图</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 10px;">复杂度分析</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">学生管理系统</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2-0/" style="font-size: 12.22px;">学生管理系统2.0</a> <a href="/tags/%E6%8B%BC%E5%A4%9A%E5%A4%9A/" style="font-size: 10px;">拼多多</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" style="font-size: 10px;">数据库连接池</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数据结构-稀疏数组</a> <a href="/tags/%E6%96%87%E5%AD%97%E7%AF%87-%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">文字篇-记录</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 12.22px;">机器学习</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%91/" style="font-size: 12.22px;">树</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">注解</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 14.44px;">深度学习</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 11.11px;">爬虫</a> <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" style="font-size: 10px;">生物信息学</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 12.22px;">知识图谱</a> <a href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%88%9D%E8%AF%95/" style="font-size: 12.22px;">研究生初试</a> <a href="/tags/%E7%A7%8B%E6%8B%9B/" style="font-size: 10px;">秋招</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">算法-动态规划</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%BA%AF%E6%B3%95/" style="font-size: 10px;">算法-回溯法</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法-贪心算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 10px;">考研</a> <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 13.33px;">蓝桥杯</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE-%E8%BD%AF%E4%BB%B6%E4%B8%93%E4%B8%9A%E9%A2%98%E7%9B%AE/" style="font-size: 10px;">计算机网络课设(软件专业题目)</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.22px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 10px;">软件体系结构</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">重新部署</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%A1%B5%E9%9D%A2%EF%BC%88H5-CSS%EF%BC%89/" style="font-size: 10px;">页面（H5+CSS）</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0/" style="font-size: 10px;">项目上传</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://ring3.xyz/">Yllen</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://mxny.org/">麦香浓郁</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://whereisk0shl.top/">K0sh1</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.ycjcl.cc/">信鑫</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://bystudent.com/">ByStundet表哥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jarviswang.me/">汪神_Jarvis</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sh3ll.me/">Chu</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.hackfun.org/">4ido10n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/iamstudy">L3m0n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://o0xmuhe.me/">muhe</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.nuptzj.cn/">_画船听雨</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.virzz.com/index.html">Virink</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.sqlsec.com/">国光</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bodkin.ren/">老锥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cizel.cn/">C1zel</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://1phan.cc">1phan</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.liuil.top/">liuil</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/Ox9A82/">Ox9A82</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://burnegg.com/">burnegg</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://jwrsec.cn/">jwr-sec</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sudalover.cn/">苏打</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.binklac.com">VeroFess</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bendawang.site/">bendawang</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://weeklyalgo.codes/">hook</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.flier.net.cn/">Flier&#39;blog</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.mutepig.club">mutepig</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.iret.xyz/list.aspx">Silver</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://simp1e.leanote.com/">Simple</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://processor.pub/">Processor</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一只淹死在二进制海洋里的二进制狗!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Larkkkkkkk</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Larkkkkkkk</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                
+                    <li><a href="/archives">文章归档</a></li>
+                
+                    <li><a href="/CTFStudy">学习导航</a></li>
+                
+                    <li><a href="/PWNABLE">PWNABLE</a></li>
+                
+                    <li><a href="/resume">个人简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Docker" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/05/22/Docker/" class="article-date">
+      <time datetime="2023-05-22T11:43:54.000Z" itemprop="datePublished">2023-05-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Docker
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="参考文件"><a href="#参考文件" class="headerlink" title="参考文件"></a>参考文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1.第一个是我用chatgpt生成的手册</span><br><span class="line">2.第二个是我在开发过程中自己写的一个手册</span><br></pre></td></tr></table></figure>
+
+<h1 id="Docker介绍"><a href="#Docker介绍" class="headerlink" title="Docker介绍"></a>Docker介绍</h1><h2 id="Docker的由来"><a href="#Docker的由来" class="headerlink" title="Docker的由来"></a>Docker的由来</h2><p>1.1.1    Docker是一个开源的应用容器引擎，是基于Go语言+Apache2.0协议开源。</p>
+<p>1.1.2    Docker可以让开发者直接打包他们的应用和依赖包到一个容器之中。</p>
+<p>1.1.3  Docker分为CE(社区版本)和EE(企业版本)两个版本。</p>
+<h2 id="Docker的应用场景"><a href="#Docker的应用场景" class="headerlink" title="Docker的应用场景"></a>Docker的应用场景</h2><p><img src=".images/clip_image002.jpg" alt="img"></p>
+<h2 id="Docker的优势"><a href="#Docker的优势" class="headerlink" title="Docker的优势"></a>Docker的优势</h2><p>1.1.3    能够快速、一致地交付应用程序</p>
+<p>Docker能够让开发人员使用我提供的应用程序/本地的容器在标准化环境中工作，能够减少开发的时间。</p>
+<p>1.1.4    能够响应式部署和扩展</p>
+<p>Docker能够在开发人员的本机上，数据中心的物理/虚拟机上/云服务上/混合环境中运行。</p>
+<p>Docker还可以根据业务需求指示，动态拆除和扩展应用程序和服务。</p>
+<p>1.1.5    在同一个硬件上运行更多工作负载</p>
+<p>   Docker能够减少资源做更多的事情。</p>
+<h2 id="Docker的架构"><a href="#Docker的架构" class="headerlink" title="Docker的架构"></a>Docker的架构</h2><p><img src=".images/clip_image004.jpg" alt="img"></p>
+<p>1.1.6    镜像(image):相当于一个root文件夹，或者说是java语言中的类。（静态的定义）</p>
+<p>1.1.7    容器(container):相当于一个文件，或者说是java语言中的实例。(镜像运行时的实体)。容器可以被创建、启动、停止、删除、暂停等。</p>
+<p>1.1.8    仓库(repository):仓库可以看作是像github一样代码托管中心，可以用来保存镜像。</p>
+<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><p>Docker可以安装在Ubuntu/linux/windows/MacOS/CentOS等等上面。</p>
+<p>可以参考本篇博客<a href="https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP" target="_blank" rel="noopener">🎉 Docker 简介和安装 - Docker 快速入门 - 易文档 (easydoc.net)</a> 桌面版: <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener">https://www.docker.com/products/docker-desktop</a></p>
+<h1 id="Docker操作"><a href="#Docker操作" class="headerlink" title="Docker操作"></a>Docker操作</h1><h2 id="Docker容器"><a href="#Docker容器" class="headerlink" title="Docker容器"></a>Docker容器</h2><p>1.1.9    启动容器 <strong>docker run</strong></p>
+<p>docker run -itd –name 容器名 镜像名</p>
+<p>按照顺序加一个可有的参数</p>
+<table>
+<thead>
+<tr>
+<th>-i</th>
+<th>交互式操作</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-t</td>
+<td>终端</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-d</td>
+<td>定义docker网络类型</td>
+<td>Bridge/overlay</td>
+<td></td>
+</tr>
+<tr>
+<td>-P/p</td>
+<td>-P大写</td>
+<td>随机映射</td>
+<td></td>
+</tr>
+<tr>
+<td>-p小写</td>
+<td>5000:5000</td>
+<td>Docker开放5000端口映射到主机端口5000上</td>
+<td></td>
+</tr>
+<tr>
+<td>-p小写</td>
+<td>127.0.0.1:5001:5000</td>
+<td>绑定网络地址和端口</td>
+<td></td>
+</tr>
+<tr>
+<td>-p小写</td>
+<td>127.0.0.1:5001:5000/udp</td>
+<td>可以更改默认的tcp</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>–name</td>
+<td>给容器设定名称</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>–network</td>
+<td>设定网络(可以用于容器连接)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>1.1.10  停止容器 <strong>docker stop</strong></p>
+<p>docker stop 容器名</p>
+<p>1.1.11  启动已经停止运行的一个/多个容器 <strong>docker start</strong> </p>
+<p>docker start 容器名</p>
+<p><strong>1.1.12</strong>  删除容器 <strong>docker rm(容器必须是stop状态)</strong></p>
+<p>docker rm -f 容器名</p>
+<p>1.1.13  重启已经停止运行的一个容器 <strong>docker restart</strong></p>
+<p>docker restart 容器名</p>
+<p>1.1.14  导出容器 <strong>docker import</strong></p>
+<p>docker import 容器名/http地址名</p>
+<p>1.1.15  导入容器 <strong>docker export</strong></p>
+<p>docker export 容器名 </p>
+<p>1.1.16  进入容器 </p>
+<p><strong>1.1.16.1</strong>    <strong>docker exec</strong></p>
+<p> docker exec -it ID /bin/bash </p>
+<p> ls(查看容器目录)</p>
+<p>1.1.16.2 <strong>docker cp</strong>(只能将文件复制到容器对应位置，但是镜像不更新!)</p>
+<p>  docker cp 本地文件路径 容器名/ID：容器路径</p>
+<p>1.1.16.3 <strong>docker -v挂载</strong>(可以将本地主机上的文件直接暴露给容器使用)</p>
+<p>  (将/aaa目录映射到主机的/a/b/c目录)</p>
+<p>docker run -it -v /a/b/c:/aaa –name test image </p>
+<p>1.1.17  容器常用指令</p>
+<p><strong>1.1.17.1</strong>    查看容器<strong>docker ps</strong></p>
+<p>docker ps -a(所有的容器)</p>
+<p>​            docker ps (正在运行的容器)</p>
+<p>docker ps -l (最后一次创建的容器)</p>
+<p>docker port 容器名(查看容器的端口)</p>
+<p>docker logs -f 容器名(查看容器的日志文件)</p>
+<p>docker inspect 容器名(查看容器的底层信息json文件)</p>
+<h2 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h2><p>1.1.18  获取镜像 <strong>docker pull</strong></p>
+<p>docker pull 镜像名:tag(不写默认是latest标签)</p>
+<p>1.1.19  查询镜像 <strong>docker search</strong></p>
+<p>docker search 镜像名</p>
+<p>1.1.20  删除镜像 <strong>docker rmi</strong></p>
+<p>docker rmi 镜像名</p>
+<p>1.1.21  创建镜像</p>
+<p>1.1.21.1 从已有的容器中更新镜像，并且提交这个镜像 <strong>docker commit</strong></p>
+<p>先创建一个容器</p>
+<p>docker run -it ubuntu:15.10 /bin/bash</p>
+<p>docker commit -m=”提交的描述信息” -a=”指定镜像作者” 容器ID 目标镜像名</p>
+<p><strong>1.1.21.2</strong>    <strong>docker build</strong></p>
+<p> docker build -t 镜像名 . (一定注意最后有一个.表示这个dockerfile文件的绝对路径)     </p>
+<h2 id="Docker仓库"><a href="#Docker仓库" class="headerlink" title="Docker仓库"></a>Docker仓库</h2><p>1.1.22  登录账号 docker login</p>
+<p>1.1.23  注销账号 docker logout </p>
+<h1 id="Dockerfile使用-封装tar文件"><a href="#Dockerfile使用-封装tar文件" class="headerlink" title="Dockerfile使用(封装tar文件)"></a>Dockerfile使用(封装tar文件)</h1><p>参考本篇博客<a href="https://blog.csdn.net/u010095372/article/details/125961361" target="_blank" rel="noopener">简单Win10版Docker+Python封装_docker封装python程序_赫凯的博客-CSDN博客</a></p>
+<h2 id="在执行代码路径下创建Dockerfile文件-一定要是文件而不是其他类型-和requirements文件"><a href="#在执行代码路径下创建Dockerfile文件-一定要是文件而不是其他类型-和requirements文件" class="headerlink" title="在执行代码路径下创建Dockerfile文件(一定要是文件而不是其他类型)和requirements文件"></a>在执行代码路径下创建Dockerfile文件(一定要是文件而不是其他类型)和requirements文件</h2><p><img src=".images/clip_image006.jpg" alt="img"></p>
+<p>然后根据自己的需求编写dockerfile内容和代码所需的requirements内容</p>
+<h2 id="其中dockerfile内容的格式如下"><a href="#其中dockerfile内容的格式如下" class="headerlink" title="其中dockerfile内容的格式如下:"></a>其中dockerfile内容的格式如下:</h2><p>步骤可以参考本篇博客<a href="https://blog.csdn.net/sinat_37935727/article/details/125875287" target="_blank" rel="noopener">将把python项目打包成Docker镜像（linux版）_python打包docker镜像_monkey_susu的博客-CSDN博客</a></p>
+<p><img src=".images/clip_image008.jpg" alt="img"></p>
+<p>例如：</p>
+<p><img src=".images/clip_image010.jpg" alt="img"></p>
+<h2 id="Requirements内容可以根据如下步骤得出"><a href="#Requirements内容可以根据如下步骤得出" class="headerlink" title="Requirements内容可以根据如下步骤得出:"></a>Requirements内容可以根据如下步骤得出:</h2><p>步骤可以参考本篇博客<a href="https://blog.csdn.net/COCO56/article/details/117452383" target="_blank" rel="noopener">如何使用PyCharm自动生成requirements.txt_pycharm requirements_COCO56（徐可可）的博客-CSDN博客</a></p>
+<p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image012.jpg" alt="img"></p>
+<h2 id="在Dockerfile文件目录下右键选择在终端中打开："><a href="#在Dockerfile文件目录下右键选择在终端中打开：" class="headerlink" title="在Dockerfile文件目录下右键选择在终端中打开："></a>在Dockerfile文件目录下右键选择在终端中打开：</h2><p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image014.png" alt="img"></p>
+<h2 id="使用docker-build语句生成docker镜像"><a href="#使用docker-build语句生成docker镜像" class="headerlink" title="使用docker build语句生成docker镜像"></a>使用docker build语句生成docker镜像</h2><p>docker build -t demo_leida2:v0 .</p>
+<p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image016.jpg" alt="img"></p>
+<h2 id="docker-images-查看是否生成成功"><a href="#docker-images-查看是否生成成功" class="headerlink" title="docker images 查看是否生成成功"></a>docker images 查看是否生成成功</h2><p>docker images </p>
+<p> <img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image018.jpg" alt="img"></p>
+<h2 id="docker-run-it-–name-容器名-镜像名-启动一下"><a href="#docker-run-it-–name-容器名-镜像名-启动一下" class="headerlink" title="docker run -it -–name 容器名 镜像名 启动一下"></a>docker run -it -–name 容器名 镜像名 启动一下</h2><p>docker run -it –name testleida demo_leida2:V0 </p>
+<p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image020.jpg" alt="img"></p>
+<p>​       要想退出就按Ctrl+v</p>
+<h2 id="docker-save-o-自定名-tar-镜像名"><a href="#docker-save-o-自定名-tar-镜像名" class="headerlink" title="docker save -o 自定名.tar 镜像名"></a>docker save -o 自定名.tar 镜像名</h2><p>docker save -o leida.tar demo_leida2:v0 </p>
+<p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image022.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image024.jpg" alt="img"></p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2023/05/22/Docker/">Docker</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
+        <p><span>发布时间:</span>2023年05月22日 - 19时43分</p>
+        <p><span>最后更新:</span>2023年10月09日 - 16时16分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2023/05/22/Docker/" title="Docker">https://larkkkkkkk.github.io/2023/05/22/Docker/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2023/05/22/Docker/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2023/05/22/flask%E6%8E%A5%E5%8F%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          flask接口
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/style/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JQ实现表单校验/style</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文件"><span class="toc-number">1.</span> <span class="toc-text">参考文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker介绍"><span class="toc-number">2.</span> <span class="toc-text">Docker介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker的由来"><span class="toc-number">2.1.</span> <span class="toc-text">Docker的由来</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker的应用场景"><span class="toc-number">2.2.</span> <span class="toc-text">Docker的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker的优势"><span class="toc-number">2.3.</span> <span class="toc-text">Docker的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker的架构"><span class="toc-number">2.4.</span> <span class="toc-text">Docker的架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker安装"><span class="toc-number">2.5.</span> <span class="toc-text">Docker安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker操作"><span class="toc-number">3.</span> <span class="toc-text">Docker操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker容器"><span class="toc-number">3.1.</span> <span class="toc-text">Docker容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker镜像"><span class="toc-number">3.2.</span> <span class="toc-text">Docker镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker仓库"><span class="toc-number">3.3.</span> <span class="toc-text">Docker仓库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dockerfile使用-封装tar文件"><span class="toc-number">4.</span> <span class="toc-text">Dockerfile使用(封装tar文件)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在执行代码路径下创建Dockerfile文件-一定要是文件而不是其他类型-和requirements文件"><span class="toc-number">4.1.</span> <span class="toc-text">在执行代码路径下创建Dockerfile文件(一定要是文件而不是其他类型)和requirements文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其中dockerfile内容的格式如下"><span class="toc-number">4.2.</span> <span class="toc-text">其中dockerfile内容的格式如下:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements内容可以根据如下步骤得出"><span class="toc-number">4.3.</span> <span class="toc-text">Requirements内容可以根据如下步骤得出:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Dockerfile文件目录下右键选择在终端中打开："><span class="toc-number">4.4.</span> <span class="toc-text">在Dockerfile文件目录下右键选择在终端中打开：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用docker-build语句生成docker镜像"><span class="toc-number">4.5.</span> <span class="toc-text">使用docker build语句生成docker镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-images-查看是否生成成功"><span class="toc-number">4.6.</span> <span class="toc-text">docker images 查看是否生成成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-run-it-–name-容器名-镜像名-启动一下"><span class="toc-number">4.7.</span> <span class="toc-text">docker run -it -–name 容器名 镜像名 启动一下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-save-o-自定名-tar-镜像名"><span class="toc-number">4.8.</span> <span class="toc-text">docker save -o 自定名.tar 镜像名</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'swing'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2023/05/22/flask%E6%8E%A5%E5%8F%A3/" title="上一篇: flask接口">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/style/" title="下一篇: JQ实现表单校验/style">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-JAVA/">代码随想录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">JAVA-面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E5%9F%BA%E7%A1%80%E7%AF%87/">JAVA-基础篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/19/%E5%B0%9A%E7%A1%85%E8%B0%B7java/">尚硅谷JAVA基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/18/pytorch%E5%B0%8F%E5%9C%9F%E5%A0%86/">pytorch小土堆</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/04/python%E6%89%93%E5%8C%85/">python打包</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/25/pytorch/">pytorch</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/23/django/">django</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/flask%E6%8E%A5%E5%8F%A3/">flask接口</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Docker/">Docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/style/">JQ实现表单校验/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/jquery-1.11.0/">JQ实现表单校验/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/style/">JQ实现老黄历/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/laohuangli/">JQ实现老黄历/laohuangli</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/jquery-1.11.0/">JQ实现老黄历/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/data/">JQ实现老黄历/data</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery%E9%80%89%E6%8B%A9%E5%99%A8/style/">JQuery选择器/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/jquery-1.11.3.min/">JQuery基本用法/jquery-1.11.3.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery/jquery-1.11.0/">JQuery/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/npm/">Bootstrap/bootstrap-3.3.5-dist/js/npm</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.min/">Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap/">Bootstrap/bootstrap-3.3.5-dist/js/bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap.min/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme.min/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Larkkkkkkk/">Larkkkkkkk</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/17/py2neo/">py2neo</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/17/neo4j/">neo4j</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/16/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">知识图谱</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/22/%E5%90%8E%E7%BC%80%E6%A0%91/">后缀树</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/11/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/02/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">动手学深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/01/Scrapy%E7%88%AC%E8%99%AB%E8%BF%9B%E9%98%B6/">Scrapy爬虫进阶</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/28/%E7%88%AC%E8%99%AB/">爬虫基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/26/%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB%EF%BC%88Python%EF%BC%89/">算法汇总（Python）</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/15/CS224n%E6%96%AF%E5%9D%A6%E7%A6%8F%E6%B7%B1%E5%BA%A6%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E8%AF%BE/">CS224n斯坦福深度自然语言处理课</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/11/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/10/%E5%8F%8C%E7%A2%B3%E5%A4%A7%E8%B5%9B-%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB/">双碳大赛-垃圾分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/07/PyTorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/">PyTorch深度学习实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/27/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E4%B9%8B%E5%B7%A5%E4%B8%9A%E8%92%B8%E6%B1%BD/">机器学习实战之工业蒸汽</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/17/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/">统计学习方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/06/%E5%88%A9%E7%94%A8python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">利用python进行数据分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/python%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%E8%AF%BE%E6%9C%AC%E8%AF%BE%E5%90%8E%E9%A2%98/">python从入门到实践课本课后题</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/01/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/12/31/python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/28/B%E5%86%8C%E7%BC%96%E7%A8%8B%E9%A2%98/">B册编程题</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/">c语言课本题目</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/04/07/%E5%88%9D%E8%AF%95code/">初试code</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/25/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/">蓝桥杯国赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/23/Linux%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">Linux系统目录结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/">LeetCode链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/">本地项目上传Github</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/">Mysql复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/">设计模式总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/">京东2019校招笔试Java开发工程师笔试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/30/%E4%BA%AC%E4%B8%9C2019%E6%98%A5%E6%8B%9B%E4%BA%AC%E4%B8%9CJava%E5%BC%80%E5%8F%91%E8%AF%95%E5%8D%B7/">京东2019春招京东Java开发试卷</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/29/%E6%8B%BC%E5%A4%9A%E5%A4%9A2020%E6%A0%A1%E6%8B%9B%E9%83%A8%E5%88%86%E7%BC%96%E7%A8%8B%E9%A2%98%E5%90%88%E9%9B%86/">拼多多2020校招部分编程题合集</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/21/Git%E5%A4%8D%E4%B9%A0/">Git复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/16/leetcode%E5%89%91%E6%8C%87offer/">leetcode剑指offer</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/">Hexo博客重装系统重新部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/08/%E5%B0%9A%E5%AD%A6%E5%A0%82CRUD%E6%A8%A1%E6%9D%BF/">尚学堂CRUD模板</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/19/LeetCode%E7%B2%BE%E9%80%89TOP%E9%9D%A2%E8%AF%95%E9%A2%98/">LeetCode精选TOP面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/16/LeetCode%E5%93%88%E5%B8%8C%E8%A1%A8/">LeetCode哈希表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/16/LeetCode%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">LeetCode贪心算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/15/LeetCode%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">LeetCode二分查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/14/LeetCode%E5%8F%8C%E6%8C%87%E9%92%88/">LeetCode双指针</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/LeetCode%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">LeetCode动态规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/12/LeetCode%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/">LeetCode数学问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/11/LeetCode%E9%80%92%E5%BD%92/">LeetCode递归</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/10/LeetCode%E6%8E%92%E5%BA%8F/">LeetCode排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/LeetCode%E5%AD%97%E7%AC%A6%E4%B8%B2/">LeetCode字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/LeetCode%E6%95%B0%E7%BB%84/">LeetCode数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/%E5%89%91%E6%8C%87offer/">剑指offer</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/02/%E5%9B%BE/">图</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/01/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/22/%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91/">哈弗曼树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E6%A0%91/">树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/%E6%8E%92%E5%BA%8F/">排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/">时间复杂度和空间复杂度分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/%E9%80%92%E5%BD%92/">递归</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/SpringBoot/">SpringBoot</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/%E9%93%BE%E8%A1%A8/">链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/%E9%98%9F%E5%88%97/">队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/%E6%A0%88/">栈</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%AF%B9Date%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">SpringMVC对Date类型转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/">SpringMVC原理分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8B%A6%E6%88%AA%E5%99%A8/">SpringMVC实现自定义拦截器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/10/SpringMVC%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">SpringMVC实现文件上传和下载</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/JSP%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9B%9B%E5%A4%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/">JSP九大内置对象和四大作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/SpringMVC%E5%AE%9E%E7%8E%B0%E8%8F%9C%E5%8D%95%E5%8A%9F%E8%83%BD/">SpringMVC实现菜单功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/07/SpringMVC/">SpringMVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/06/Ajax%E6%95%B4%E7%90%86/">Ajax整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/06/Spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/">Spring常用注解整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E4%BA%8B%E5%8A%A1/">Spring事务</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Spring单例设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E5%8A%A0%E8%BD%BD%E5%B1%9E%E6%80%A7%E6%96%87%E4%BB%B6%E5%92%8Cscope%E5%B1%9E%E6%80%A7/">Spring加载属性文件和scope属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/03/Spring%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5/">Spring自动注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/03/Spring%E4%BB%A3%E7%90%86%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Spring代理设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/02/AOP/">AOP</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/Spring%E6%95%B4%E5%90%88Mybatis/">Spring整合Mybatis</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/Spring%E7%BB%99Bean%E6%B3%A8%E5%85%A5/">Spring给Bean注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/Spring/">Spring</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/">Mybatis运行原理总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/30/Mybatis%E6%B3%A8%E8%A7%A3/">Mybatis注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">使用Mybatis的动态Sql实现多表查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Mybatis%E7%BC%93%E5%AD%98/">Mybatis缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/ThreadLocal/">ThreadLocal</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/%E5%8A%A8%E6%80%81SQL/">动态SQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/27/getMapper%E6%8E%A5%E5%8F%A3%E7%BB%91%E5%AE%9A%E5%92%8C%E5%A4%9A%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/">getMapper接口绑定和多参数传递</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/Mybatis%E5%AE%9E%E7%8E%B0%E8%BD%AC%E8%B4%A6/">Mybatis实现转账</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/Mybatis%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E5%8A%9F%E8%83%BD%EF%BC%88%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%EF%BC%89/">Mybatis实现分页功能（完整流程）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Mybatis%E5%AE%9E%E7%8E%B0%E6%96%B0%E5%A2%9E%E5%88%A0%E9%99%A4%E4%BF%AE%E6%94%B9%E5%92%8C%E4%BA%8B%E5%8A%A1%E8%AE%B2%E8%A7%A3/">Mybatis实现新增删除修改和事务讲解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Mybatis%E5%AE%9E%E7%8E%B0mysql%E5%88%86%E9%A1%B5/">Mybatis实现mysql分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/21/Mybatis%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89/">Mybatis查询所有</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/21/Log4J/">Log4J</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">Mybatis全局配置文件详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/">Mybatis（eclipse详细）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/Mybatis%EF%BC%88idea+maven%EF%BC%89/">Mybatis（idea+maven）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/17/Nginx/">Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/17/Linux%E9%83%A8%E7%BD%B2/">Linux部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/">Linux网络知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/Vim/">Vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/maven/">maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/">redis配合ajax实现显示下拉列表省份</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">Linux安装软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/redis/">redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E8%B0%B7%E6%AD%8CCar%E5%BC%95%E5%85%A5%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/">谷歌Car引入装饰者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E6%B3%A8%E8%A7%A3/">注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/">自动登录（过滤器）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/08/Filter/">Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/JQuery%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8/">JQuery省市联动</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/Listener/">Listener</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E4%BB%BF%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2/">JQuery仿百度搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E6%A0%A1%E9%AA%8C%E7%94%A8%E6%88%B7%E5%90%8D/">JQuery校验用户名</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">JQuery基本用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/Ajax%E5%AE%9E%E7%8E%B0%E6%A0%A1%E9%AA%8C%E7%94%A8%E6%88%B7%E5%90%8D/">Ajax实现校验用户名</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/04/Ajax/">Ajax</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%882-0%EF%BC%89/">学生管理系统（2.0）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">三层架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/JSP%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/">JSP开发模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/DBUtils%E9%80%9A%E7%94%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/">DBUtils通用的增删查改</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/DBUtils/">DBUtils</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">数据库连接池</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/27/%E4%BA%8B%E5%8A%A1/">事务</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/27/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">学生管理系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/26/JSTL/">JSTL</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/26/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">EL表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/JSP/">JSP</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/Session%E5%AE%9E%E7%8E%B0%E8%B4%AD%E7%89%A9%E8%BD%A6/">Session实现购物车</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95/">Cookie获取商品浏览记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E7%99%BB%E5%BD%95%E6%97%B6%E9%97%B4/">Cookie获取上次登录时间</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/23/Session/">Session</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/23/Cookie/">Cookie</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/19/Linux/">Linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/18/ServletContext/">ServletContext</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/18/HTTPServletReauest%E5%92%8CHTTPServletResponse/">HTTPServletReauest和HTTPServletResponse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/17/Servlet/">Servlet</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/17/HTTP%E5%8D%8F%E8%AE%AE/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/16/Tomcat/">Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/16/dom4j%E5%85%A5%E9%97%A8/">dom4j入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/XML/">XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93cmd%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BB%A5%E5%90%8E%E5%86%99%EF%BC%89/">数据库cmd的操作（以后写）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA%E6%9F%A5%E7%9C%8B%E5%88%A0%E9%99%A4/">数据库的创建查看删除</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/14/JDBC%E4%B8%AD%E7%9A%84JAVAEE%E7%BB%93%E6%9E%84/">JDBC中的JAVAEE结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/">数据库的CRUD</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/JDBC%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/">JDBC的工具类</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/bootstrap%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5/">bootstrap实现网站首页</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/boostrap%E5%AE%9E%E7%8E%B0%E5%AF%BC%E8%88%AA%E6%9D%A1/">boostrap实现导航条</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/">JQ实现老黄历</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/">JQ实现表单校验</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/Bootstrap/">Bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/">JQ实现商品左右选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8/">JQ实现省市联动</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/">JQ实现表格隔行换色</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4/">JQ实现表单属性过滤</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/08/JQuery%E9%80%89%E6%8B%A9%E5%99%A8/">JQuery选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/08/JQuery%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6%E6%92%AD%E6%94%BE%E5%B9%BF%E5%91%8A/">JQuery实现定时播放广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JQuery/">JQuery</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E6%8E%A7%E5%88%B6%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/">JS控制下拉列表左右选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A3%80%E9%AA%8C%EF%BC%88%E4%BD%BF%E7%94%A8onfoucs%E7%AD%89%E7%84%A6%E7%82%B9%E6%97%B6%E9%97%B4%EF%BC%89/">JS实现表单检验（使用onfoucs等焦点时间）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/">JS实现表格变色和全选问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0DOM%E6%93%8D%E4%BD%9C%EF%BC%88%E5%85%B3%E4%BA%8Eselect%E6%A0%87%E7%AD%BE%E7%9A%84%E4%B8%8B%E6%8B%89%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8%EF%BC%89/">JS实现DOM操作（关于select标签的下拉省市联动）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/JS%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE%E5%B9%BF%E5%91%8A/">JS实现页面表单表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/JS%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD%E5%9B%BE/">JS实现轮播图</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/JS/">JS</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/CSS%E7%BD%91%E7%AB%99%E6%B3%A8%E5%86%8C%E6%A1%88%E4%BE%8B/">CSS网站注册案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/CSS-div%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E4%BC%98%E5%8C%96/">CSS+div实现网站首页优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/CSS/">CSS和DIV</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/HTML%E7%BD%91%E7%AB%99%E5%90%8E%E5%8F%B0%E6%A1%88%E4%BE%8B/">网站后台案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/HTML%E7%BD%91%E7%AB%99%E6%B3%A8%E5%86%8C%E6%A1%88%E4%BE%8B/">网站注册案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/01/HTML%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E6%A1%88%E4%BE%8B/">HTML网站首页案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/01/HTML/">HTML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/30/%E5%8F%8D%E5%B0%84/">反射</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/28/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/">稀疏数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE/">网络课设</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/webserver/">webserver</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/TCP/">TCP编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/17/%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE/">传输协议(UDP)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/13/%E7%AC%AC%E5%8D%81%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9B/">第十届蓝桥杯省赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/11/%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6/">等待唤醒机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A0%A1%E8%B5%9B/">蓝桥杯校赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/">线程状态</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/05/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/List/">List接口</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Set/">Set集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式(regex)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/29/%E8%BF%AD%E4%BB%A3%E5%99%A8/">集合2</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/29/%E6%B3%9B%E5%9E%8B/">泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/">蓝桥杯</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/%E9%9B%86%E5%90%88/">集合1</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/Lambda/">Lambda表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/%E9%A1%B5%E9%9D%A2/">人机交互实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/17/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/%E7%88%AC%E6%A5%BC%E6%A2%AF/">以爬楼梯为例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/idea%E5%AE%89%E8%A3%85/">IntelliJ IDEA</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/%E6%8E%A5%E9%9B%A8%E6%B0%B4(%E5%8F%8C%E6%8C%87%E9%92%88)/">接雨水</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/%E4%B9%98%E6%9B%B4%E5%A4%9A%E7%9A%84%E6%B0%B4(%E5%8F%8C%E6%8C%87%E9%92%88)/">乘更多的水</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/04/wenzipian2/">文字篇2-《码农翻身》</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 Larkkkkkkk
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="http://bestwing.me" target="_blank">Sw'blog</a> by Swing
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+  </div>
+</body>
+</html>

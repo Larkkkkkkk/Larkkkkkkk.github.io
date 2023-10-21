@@ -1,0 +1,132 @@
+Docker 用户手册
+
+本手册将向您介绍 Docker 的安装、使用和维护。Docker 是一个开源的容器化平台，它能够将应用程序与其依赖项打包为轻量级、可移植的容器。通过 Docker，您可以更轻松地部署、扩展和管理应用程序。请按照以下步骤进行操作：
+
+一、安装 Docker
+
+1. 在操作系统上安装 Docker：
+   - 对于 Windows 和 macOS 用户，请前往 Docker 官方网站（https://www.docker.com）下载 Docker Desktop，并按照安装向导进行安装。
+   - 对于 Linux 用户，请根据您的发行版选择适当的安装方式。您可以在 Docker 官方网站上找到相关指南。
+
+2. 安装完成后，启动 Docker。
+
+二、Docker 基本概念
+
+1. 镜像（Images）：
+   镜像是 Docker 的基本构建块。它是一个只读的模板，可以用于创建容器。您可以从 Docker Hub 或者自己构建镜像。
+
+2. 容器（Containers）：
+   容器是由镜像创建的运行实例。它是一个独立的、可执行的应用程序，具有自己的文件系统、网络和进程空间。
+
+3. 仓库（Repositories）：
+   仓库是用于存储和分享镜像的地方。Docker Hub 是 Docker 官方的公共仓库，您也可以搭建私有仓库。
+
+三、使用 Docker
+
+1. 拉取镜像：
+   使用以下命令从仓库中拉取镜像：
+   ```
+   docker pull <镜像名>:<标签>
+   ```
+
+2. 运行容器：
+   使用以下命令创建并运行容器：
+   ```
+   docker run <选项> <镜像名>
+   ```
+
+3. 列出容器：
+   使用以下命令列出正在运行的容器：
+   ```
+   docker ps
+   ```
+
+4. 停止容器：
+   使用以下命令停止正在运行的容器：
+   ```
+   docker stop <容器ID>
+   ```
+
+5. 进入容器：
+   使用以下命令进入正在运行的容器：
+   ```
+   docker exec -it <容器ID> /bin/bash
+   ```
+
+6. 构建镜像：
+   使用 Dockerfile 来构建自定义镜像。Dockerfile 是一个包含构建指令的文本文件，它描述了镜像的构建过程。
+
+四、Docker 网络
+
+1. 创建网络：
+   使用以下命令创建网络：
+   ```
+   docker network create <网络名>
+   ```
+
+2. 运行容器时指定网络：
+   使用以下命令创建容器并指定网络：
+   ```
+   docker run --network=<网络名> <镜像名>
+   ```
+
+五、Docker Compose
+
+Docker Compose 是一个工具，用于定义和管理多容器的 Docker 应用环境。您可以使用 Docker Compose 文件来定义应用程序的各个组件、网络和存储卷，并通过一条命令轻松地启动、停止和管理整个应用。
+
+1. 定义 Docker Compose 文件：
+   创建一个名为 docker-compose.yml 的文件，并在其中定义您的应用程序的组件、网络和存储卷。
+
+2. 启动应用程序：
+   使用以下命令在 Docker Compose 中定义的环境中启动应用程序：
+   ```
+   docker-compose up
+   ```
+
+3. 停止应用程序：
+   使用以下命令停止正在运行的 Docker Compose 环境中的应用程序：
+   ```
+   docker-compose down
+   ```
+
+六、Docker 的维护
+
+1. 更新镜像：
+   使用以下命令更新本地镜像：
+   ```
+   docker pull <镜像名>:<新标签>
+   ```
+
+2. 清理资源：
+   使用以下命令清理停止的容器、未使用的镜像和无效的资源：
+   ```
+   docker system prune
+   ```
+
+3. 监控容器：
+   使用以下命令查看正在运行的容器的状态和统计信息：
+   ```
+   docker stats
+   ```
+
+4. 查看日志：
+   使用以下命令查看容器的日志输出：
+   ```
+   docker logs <容器ID>
+   ```
+
+5. 进入容器维护模式：
+   有时，您可能需要进入容器进行调试或维护操作。使用以下命令进入正在运行的容器：
+   ```
+   docker exec -it <容器ID> /bin/bash
+   ```
+
+七、学习资源
+
+除了本手册，还有许多资源可供学习和深入了解 Docker。以下是一些有用的资源：
+
+- Docker 官方文档（https://docs.docker.com）：包含详细的 Docker 文档和指南。
+- Docker Hub（https://hub.docker.com）：Docker 的公共镜像仓库，您可以在其中找到各种常用的镜像。
+- Docker 社区（https://www.docker.com/community）：一个活跃的社区，您可以在其中获取帮助、参与讨论和分享经验。
+
+本手册提供了 Docker 的基本安装、使用和维护步骤的概述。通过深入学习 Docker 的各个方面，您可以更好地利用容器化技术来管理和部署应用程序。祝您在使用 Docker 的过程中取得成功！
