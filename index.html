@@ -797,8 +797,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="第06章-面向对象编程（基础）"><a href="#第06章-面向对象编程（基础）" class="headerlink" title="第06章_面向对象编程（基础）"></a>第06章_面向对象编程（基础）</h1><h2 id="本章专题与脉络"><a href="#本章专题与脉络" class="headerlink" title="本章专题与脉络"></a>本章专题与脉络</h2><p><img src="/2023/10/20/JAVA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/clip_image002.gif" alt></p>
-<p><strong>学习面向对象内容的三条主线</strong></p>
+        <h1 id="第06章-面向对象编程（基础）"><a href="#第06章-面向对象编程（基础）" class="headerlink" title="第06章_面向对象编程（基础）"></a>第06章_面向对象编程（基础）</h1><p><strong>学习面向对象内容的三条主线</strong></p>
 <p>•     Java类及类的成员：（重点）属性、方法、构造器；（熟悉）代码块、内部类</p>
 <p>•     面向对象的特征：封装、继承、多态、（抽象）</p>
 <p>•     其他关键字的使用：this、super、package、import、static、final、interface、abstract等</p>
@@ -832,18 +831,16 @@
 <p>因此，<strong>面向对象可以帮助我们从宏观上把握、从整体上分析整个系统。</strong> 但是，具体到实现部分的微观操作（就是一个个方法），仍然需要面向过程的思路去处理。注意：</p>
 <p>我们千万不要把面向过程和面向对象对立起来。他们是相辅相成的。面向对象离不开面向过程！</p>
 <p><strong>类比举例1：</strong></p>
-<p><img src=".images/clip_image010-16977861610621.jpg" alt="img"></p>
+<p><img src="/2023/10/20/JAVA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/clip_image010-16977861610621.jpg" alt="img"></p>
 <p>当需求单一，或者简单时，我们一步步去操作没问题，并且效率也挺高。</p>
 <p>可随着需求的更改，功能的增多，发现需要面对每一个步骤很麻烦了，这时就开始思索，<strong>能不能把这些步骤和功能进行封装，封装时根据不同的功能，进行不同的封装，功能类似的封装在一起。</strong>这样结构就清晰了很多。用的时候，找到对应的类就可以了。这就是面向对象的思想。</p>
 <p><strong>类比举例2：人把大象装进冰箱</strong></p>
 <p><strong>面向过程：</strong></p>
-<p>   1.打开冰箱</p>
-<p> 2.把大象装进冰箱</p>
-<p> 3.把冰箱门关住</p>
-<p>​      面向对象</p>
-<p>   人{<br>   打开（冰箱）{<br>   冰箱.开门();<br>   }<br>   操作(大象){<br>       大象.进入(冰箱);<br>   }<br>   关闭(冰箱){<br>      冰箱.关门();<br>   }<br> }</p>
-<p> 冰箱{<br>   开门(){ }<br>   关门(){ }<br> }</p>
-<p> 大象{<br>   进入(冰箱){ }<br> }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.打开冰箱</span><br><span class="line">2.把大象装进冰箱</span><br><span class="line">3.把冰箱门关住</span><br></pre></td></tr></table></figure>
+
+<p>面向对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;分为三个类</span><br><span class="line">人&#123;</span><br><span class="line">   打开（冰箱）&#123;</span><br><span class="line">   冰箱.开门();  </span><br><span class="line">   &#125;</span><br><span class="line">   操作(大象)&#123;</span><br><span class="line">       大象.进入(冰箱);</span><br><span class="line">   &#125;</span><br><span class="line">   关闭(冰箱)&#123;  </span><br><span class="line">      冰箱.关门();   </span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">冰箱&#123;</span><br><span class="line">   开门()&#123; &#125; </span><br><span class="line">   关门()&#123; &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">大象&#123;</span><br><span class="line">   进入(冰箱)&#123; </span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>练习：</strong>抽象出下面系统中的“类”及其关系</p>
 <p><img src=".images/clip_image012.gif" alt="image-20220319180839009"></p>
 <h3 id="1-3-如何掌握这种思想？"><a href="#1-3-如何掌握这种思想？" class="headerlink" title="1.3 如何掌握这种思想？"></a>1.3 如何掌握这种思想？</h3><p><img src=".images/clip_image014.gif" alt="image-20220319180301856"></p>
@@ -1706,7 +1703,7 @@ System.out.println(s2.getInfo());</code></pre><p>   }<br> }</p>
 <p><img src=".images/clip_image100.gif" alt="image-20220321232230831"></p>
 <p><img src=".images/clip_image102.gif" alt="img"></p>
 <h1 id="第07章-面向对象编程-进阶"><a href="#第07章-面向对象编程-进阶" class="headerlink" title="第07章_面向对象编程(进阶)"></a>第07章_面向对象编程(进阶)</h1><hr>
-<h2 id="本章专题与脉络-1"><a href="#本章专题与脉络-1" class="headerlink" title="本章专题与脉络"></a>本章专题与脉络</h2><img src=".images/%E7%AC%AC2%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-%E7%AC%AC07%E7%AB%A0.png" alt="第2阶段：Java面向对象编程-第07章" style="zoom: 67%;">
+<h2 id="本章专题与脉络"><a href="#本章专题与脉络" class="headerlink" title="本章专题与脉络"></a>本章专题与脉络</h2><img src=".images/%E7%AC%AC2%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-%E7%AC%AC07%E7%AB%A0.png" alt="第2阶段：Java面向对象编程-第07章" style="zoom: 67%;">
 
 <h2 id="1-关键字：this"><a href="#1-关键字：this" class="headerlink" title="1. 关键字：this"></a>1. 关键字：this</h2><h3 id="1-1-this是什么？"><a href="#1-1-this是什么？" class="headerlink" title="1.1 this是什么？"></a>1.1 this是什么？</h3><ul>
 <li><p>在Java中，this关键字不算难理解，它的作用和其词义很接近。</p>
@@ -2508,7 +2505,7 @@ System.out.println(s2.getInfo());</code></pre><p>   }<br> }</p>
 <p><strong>2. native声明的方法，对于调用者，可以当做和其他Java方法一样使用</strong></p>
 <p>native method的存在并不会对其他类调用这些本地方法产生任何影响，实际上调用这些方法的其他类甚至不知道它所调用的是一个本地方法。JVM将控制调用本地方法的所有细节。</p>
 <h1 id="第08章-面向对象编程-高级"><a href="#第08章-面向对象编程-高级" class="headerlink" title="第08章_面向对象编程(高级)"></a>第08章_面向对象编程(高级)</h1><hr>
-<h2 id="本章专题与脉络-2"><a href="#本章专题与脉络-2" class="headerlink" title="本章专题与脉络"></a>本章专题与脉络</h2><img src=".images/%E7%AC%AC2%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-%E7%AC%AC08%E7%AB%A0.png" alt="第2阶段：Java面向对象编程-第08章" style="zoom: 40%;">
+<h2 id="本章专题与脉络-1"><a href="#本章专题与脉络-1" class="headerlink" title="本章专题与脉络"></a>本章专题与脉络</h2><img src=".images/%E7%AC%AC2%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-%E7%AC%AC08%E7%AB%A0.png" alt="第2阶段：Java面向对象编程-第08章" style="zoom: 40%;">
 
 <h2 id="1-关键字：static"><a href="#1-关键字：static" class="headerlink" title="1. 关键字：static"></a>1. 关键字：static</h2><p><strong>回顾类中的实例变量（即非static的成员变量）</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span></span>&#123;</span><br><span class="line">    <span class="comment">//私有属性radius</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">double</span> radius;</span><br><span class="line">    <span class="comment">//有参构造器</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Circle</span><span class="params">(<span class="keyword">double</span> radius)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.radius=radius;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//findArea()方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findArea</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Math.PI*radius*radius;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
