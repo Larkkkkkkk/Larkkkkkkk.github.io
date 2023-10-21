@@ -753,7 +753,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+      <a class="article-title" href="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">JAVA-多线程</a>
     </h1>
   
 
@@ -764,11 +764,11 @@
       
           
         <h1 id="第10章-多线程"><a href="#第10章-多线程" class="headerlink" title="第10章_多线程"></a>第10章_多线程</h1><hr>
-<h2 id="本章专题与脉络"><a href="#本章专题与脉络" class="headerlink" title="本章专题与脉络"></a>本章专题与脉络</h2><img src=".images/%E7%AC%AC3%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E7%AC%AC10%E7%AB%A0-16977849310392.png" alt="第3阶段：Java高级应用-第10章" style="zoom: 50%;" />
+<h2 id="本章专题与脉络"><a href="#本章专题与脉络" class="headerlink" title="本章专题与脉络"></a>本章专题与脉络</h2><img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%AC%AC3%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E7%AC%AC10%E7%AB%A0-16977849310392.png" alt="第3阶段：Java高级应用-第10章" style="zoom: 50%;">
 
 <hr>
 <p>我们之前学习的程序在没有跳转语句的情况下，都是由上至下沿着一条路径依次执行。现在想要设计一个程序，可以同时有多条执行路径同时执行。比如，<code>一边游戏，一边qq聊天，一边听歌</code>，怎么设计？</p>
-<img src=".images/c3dcb61e3b-16977849310391.png" alt="c3dcb61e3b" style="zoom:50%;" />
+<img src=".images/c3dcb61e3b-16977849310391.png" alt="c3dcb61e3b" style="zoom:50%;">
 
 <p>要解决上述问题，需要使用<strong>多进程 *<em>/ *</em>多线程</strong>来解决。</p>
 <h2 id="1-相关概念"><a href="#1-相关概念" class="headerlink" title="1. 相关概念"></a>1. 相关概念</h2><h3 id="1-1-程序、进程与线程"><a href="#1-1-程序、进程与线程" class="headerlink" title="1.1 程序、进程与线程"></a>1.1 程序、进程与线程</h3><ul>
@@ -785,7 +785,7 @@
 <li><p><strong>线程（thread）</strong>：进程可进一步细化为线程，是<strong>程序内部的一条执行路径</strong>。一个进程中至少有一个线程。</p>
 <ul>
 <li><p><strong>一个进程</strong>同一时间若<strong>并行</strong>执行<strong>多个线程</strong>，就是支持多线程的。</p>
-<img src=".images/image-20220331233204504-16977849310396.png" alt="image-20220331233204504" style="zoom:67%;" />
+<img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20220331233204504-16977849310396.png" alt="image-20220331233204504" style="zoom:67%;">
 </li>
 <li><p><strong>线程</strong>作为<strong>CPU调度和执行的最小单位</strong>。</p>
 </li>
@@ -794,7 +794,7 @@
 <li><p>下图中，红框的蓝色区域为线程独享，黄色区域为线程共享。</p>
 </li>
 </ul>
-<img src=".images/image-20220514175737426-16977849310395.png" alt="image-20220514175737426" style="zoom:80%;" />
+<img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20220514175737426-16977849310395.png" alt="image-20220514175737426" style="zoom:80%;">
 
 <blockquote>
 <p>注意：</p>
@@ -805,13 +805,13 @@
 </ul>
 <h3 id="1-2-查看进程和线程"><a href="#1-2-查看进程和线程" class="headerlink" title="1.2 查看进程和线程"></a>1.2 查看进程和线程</h3><p>我们可以在电脑底部任务栏，右键—–&gt;打开任务管理器，可以查看当前任务的进程：</p>
 <p>1、每个应用程序的运行都是一个进程</p>
-<img src=".images/%E8%BF%9B%E7%A8%8B%E6%A6%82%E5%BF%B5-16977849310393.png" style="zoom:80%;" />
+<img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E8%BF%9B%E7%A8%8B%E6%A6%82%E5%BF%B5-16977849310393.png" style="zoom:80%;">
 
 <p>2、一个应用程序的多次运行，就是多个进程</p>
-<img src=".images/1563267431480-16977849310394.png" alt="1563267431480" style="zoom:80%;" />
+<img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/1563267431480-16977849310394.png" alt="1563267431480" style="zoom:80%;">
 
 <p>3、一个进程中包含多个线程</p>
-<img src=".images/1563270525077-16977849310397.png" alt="1563270525077" style="zoom:80%;" />
+<img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/1563270525077-16977849310397.png" alt="1563270525077" style="zoom:80%;">
 
 <h3 id="1-3-线程调度"><a href="#1-3-线程调度" class="headerlink" title="1.3 线程调度"></a>1.3 线程调度</h3><ul>
 <li><p><strong>分时调度</strong></p>
@@ -819,7 +819,7 @@
 </li>
 <li><p><strong>抢占式调度</strong></p>
 <p>让<strong>优先级高的线程</strong>以<strong>较大概率</strong>优先使用 CPU。如果线程的优先级相同，那么会随机选择一个(线程随机性)，<strong>Java使用抢占式调度</strong>。</p>
-<p><img src=".images/%E6%8A%A2%E5%8D%A0%E5%BC%8F%E8%B0%83%E5%BA%A6-16977849310398.bmp" alt="抢占式调度"></p>
+<p><img src=".images/%E6%8A%A2%E5%8D%A0%E5%BC%8F%E8%B0%83%E5%BA%A6-16977849310398-16978796117091-16978798355996.bmp" alt></p>
 </li>
 </ul>
 <h3 id="1-4-多线程程序的优点"><a href="#1-4-多线程程序的优点" class="headerlink" title="1.4 多线程程序的优点"></a>1.4 多线程程序的优点</h3><p><strong>背景：</strong>以单核CPU为例，只使用单个线程先后完成多个任务（调用多个方法），肯定比用多个线程来完成用的时间更短，为何仍需多线程呢？</p>
@@ -841,12 +841,12 @@
 </ul>
 <h4 id="1-5-2-并行与并发"><a href="#1-5-2-并行与并发" class="headerlink" title="1.5.2 并行与并发"></a>1.5.2 并行与并发</h4><ul>
 <li><p><strong>并行（parallel）</strong>：指两个或多个事件在<code>同一时刻</code>发生（同时发生）。指在同一时刻，<strong>有<code>多条指令</code>在<code>多个CPU</code>上<code>同时</code>执行</strong>。比如：多个人同时做不同的事。</p>
-<p><img src=".images/image-20231017195504293-169778493103911.png" alt="image-20231017195504293"></p>
-<img src=".images/image-20220513181758585-16977849310399.png" alt="image-20220513181758585" style="zoom: 50%;" />
+<p><img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20231017195504293-169778493103911.png" alt="image-20231017195504293"></p>
+<img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20220513181758585-16977849310399.png" alt="image-20220513181758585" style="zoom: 50%;">
 </li>
 <li><p><strong>并发（concurrency）</strong>：指两个或多个事件在<code>同一个时间段内</code>发生。即在一段时间内，<strong>有<code>多条指令</code>在<code>单个CPU</code>上<code>快速轮换、交替</code>执行</strong>，使得在宏观上具有多个进程同时执行的效果。</p>
-<p><img src=".images/image-20231017195518282-169778493103913.png" alt=""></p>
-<img src=".images/image-20220513181815978-169778493103912.png" alt="image-20220513181815978" style="zoom:50%;" />
+<p><img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20220406003340258.png" alt></p>
+<img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20220513181815978-169778493103912.png" alt="image-20220513181815978" style="zoom:50%;">
 
 
 </li>
@@ -876,7 +876,7 @@
 <p>测试类：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMyThread</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建自定义线程对象1</span></span><br><span class="line">        MyThread mt1 = <span class="keyword">new</span> MyThread(<span class="string">"子线程1"</span>);</span><br><span class="line">        <span class="comment">//开启子线程1</span></span><br><span class="line">        mt1.start();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//创建自定义线程对象2</span></span><br><span class="line">        MyThread mt2 = <span class="keyword">new</span> MyThread(<span class="string">"子线程2"</span>);</span><br><span class="line">        <span class="comment">//开启子线程2</span></span><br><span class="line">        mt2.start();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//在主方法中执行for循环</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"main线程！"</span>+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<img src=".images/image-20220401221215860-169778493103910.png" alt="image-20220401221215860" style="zoom:67%;" />
+<img src="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20220401221215860-169778493103910.png" alt="image-20220401221215860" style="zoom:67%;">
 
 <blockquote>
 <p>注意：</p>
@@ -911,7 +911,7 @@
 <p>在启动的多线程的时候，需要先通过Thread类的构造方法Thread(Runnable target) 构造出对象，然后调用Thread对象的start()方法来运行多线程代码。</p>
 <p>实际上，所有的多线程代码都是通过运行Thread的start()方法来运行的。因此，不管是继承Thread类还是实现<br>Runnable接口来实现多线程，最终还是通过Thread的对象的API来控制线程的，熟悉Thread类的API是进行多线程编程的基础。</p>
 <p>说明：Runnable对象仅仅作为Thread对象的target，Runnable实现类里包含的run()方法仅作为线程执行体。<br>而实际的线程对象依然是Thread实例，只是该Thread线程负责执行其target的run()方法。</p>
-<img src=".images/image-20220401222212377-169778493103914.png" alt="image-20220401222212377"  />
+<img src=".images/image-20220401222212377-169778493103914.png" alt="image-20220401222212377">
 
 <h3 id="2-4-变形写法"><a href="#2-4-变形写法" class="headerlink" title="2.4 变形写法"></a>2.4 变形写法</h3><p><strong>使用匿名内部类对象来实现线程的创建和启动</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种方式</span></span><br><span class="line"><span class="keyword">new</span> Thread(<span class="string">"新的线程！"</span>)&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			System.out.println(getName()+<span class="string">"：正在执行！"</span>+i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;.start();</span><br></pre></td></tr></table></figure>
@@ -1007,7 +1007,7 @@
 <p><img src=".images/image-20231019100823015-169778493103920.png" alt="image-20231019100823015"></p>
 <h2 id="4-多线程的生命周期"><a href="#4-多线程的生命周期" class="headerlink" title="4. 多线程的生命周期"></a>4. 多线程的生命周期</h2><p>Java语言使用Thread类及其子类的对象来表示线程，在它的一个完整的生命周期中通常要经历如下一些状态：</p>
 <h3 id="4-1-JDK1-5之前：5种状态"><a href="#4-1-JDK1-5之前：5种状态" class="headerlink" title="4.1 JDK1.5之前：5种状态"></a>4.1 JDK1.5之前：5种状态</h3><p>线程的生命周期有五种状态：新建（New）、就绪（Runnable）、运行（Running）、阻塞（Blocked）、死亡（Dead）。CPU需要在多条线程之间切换，于是线程状态会多次在运行、阻塞、就绪之间切换。</p>
-<img src=".images/image-20220401002307038-169778493103918.png" alt="image-20220401002307038" style="zoom: 67%;" />
+<img src=".images/image-20220401002307038-169778493103918.png" alt="image-20220401002307038" style="zoom: 67%;">
 
 
 
@@ -1090,12 +1090,12 @@
 <p><img src=".images/image-20220524195035355-169778493103922.png" alt="image-20220524195035355"></p>
 <h2 id="5-线程安全问题及解决"><a href="#5-线程安全问题及解决" class="headerlink" title="5. 线程安全问题及解决"></a>5. 线程安全问题及解决</h2><p>当我们使用多个线程访问<strong>同一资源</strong>（可以是同一个变量、同一个文件、同一条记录等）的时候，若多个线程<code>只有读操作</code>，那么不会发生线程安全问题。但是如果多个线程中对资源有<code>读和写</code>的操作，就容易出现线程安全问题。</p>
 <p>举例：</p>
-<img src=".images/image-20220401233218326-169778493103921.png" alt="image-20220401233218326" style="zoom:67%;" />
+<img src=".images/image-20220401233218326-169778493103921.png" alt="image-20220401233218326" style="zoom:67%;">
 
 
 
 <p>类比：</p>
-<p><img src=".images/%E5%BD%93%E6%88%91%E4%BB%A5%E4%B8%BA%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81%E5%BE%88%E5%AE%89%E5%85%A8%E6%97%B6%EF%BC%8C%E7%AD%89%E7%AD%89-169778493103923.gif" alt=""></p>
+<p><img src=".images/%E5%BD%93%E6%88%91%E4%BB%A5%E4%B8%BA%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81%E5%BE%88%E5%AE%89%E5%85%A8%E6%97%B6%EF%BC%8C%E7%AD%89%E7%AD%89-169778493103923.gif" alt></p>
 <h3 id="5-1-同一个资源问题和线程安全问题"><a href="#5-1-同一个资源问题和线程安全问题" class="headerlink" title="5.1 同一个资源问题和线程安全问题"></a>5.1 同一个资源问题和线程安全问题</h3><p>案例：</p>
 <p>火车站要卖票，我们模拟火车站的卖票过程。因为疫情期间，本次列车的座位共100个（即，只能出售100张火车票）。我们来模拟车站的售票窗口，实现多个窗口同时售票的过程。注意：不能出现错票、重票。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">方式一:实现接口</span><br><span class="line">&#x2F;&#x2F;实现接口</span><br><span class="line">class SaleTicket implements Runnable&#123;</span><br><span class="line">    int ticket&#x3D;100;</span><br><span class="line">    &#x2F;&#x2F;实现接口的run方法</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        while(true)&#123;</span><br><span class="line">            if(ticket&gt;0)&#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    Thread.sleep(10); &#x2F;&#x2F;要让线程休眠10毫秒</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    throw new RuntimeException(e);</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+&quot;售票,票号为&quot;+ticket);</span><br><span class="line">                ticket--; &#x2F;&#x2F;卖出去就少一张余额</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                break; &#x2F;&#x2F;卖完了</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class WindowTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SaleTicket s&#x3D;new SaleTicket();</span><br><span class="line">        Thread t1&#x3D;new Thread(s);</span><br><span class="line">        Thread t2&#x3D;new Thread(s);</span><br><span class="line">        Thread t3&#x3D;new Thread(s);</span><br><span class="line">        &#x2F;&#x2F;给线程设置名称</span><br><span class="line">        t1.setName(&quot;窗口1&quot;);</span><br><span class="line">        t2.setName(&quot;窗口2&quot;);</span><br><span class="line">        t3.setName(&quot;窗口3&quot;);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t3.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

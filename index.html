@@ -403,7 +403,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/20/JAVA-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">异常处理</a>
+      <a class="article-title" href="/2023/10/20/JAVA-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">JAVA-异常处理</a>
     </h1>
   
 
@@ -414,12 +414,12 @@
       
           
         <h1 id="第09章-异常处理"><a href="#第09章-异常处理" class="headerlink" title="第09章_异常处理"></a>第09章_异常处理</h1><hr>
-<h2 id="本章专题与脉络"><a href="#本章专题与脉络" class="headerlink" title="本章专题与脉络"></a>本章专题与脉络</h2><img src=".images/%E7%AC%AC3%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E7%AC%AC09%E7%AB%A0.png" alt="第3阶段：Java高级应用-第09章" style="zoom: 50%;" />
+<h2 id="本章专题与脉络"><a href="#本章专题与脉络" class="headerlink" title="本章专题与脉络"></a>本章专题与脉络</h2><img src=".images/%E7%AC%AC3%E9%98%B6%E6%AE%B5%EF%BC%9AJava%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8-%E7%AC%AC09%E7%AB%A0.png" alt="第3阶段：Java高级应用-第09章" style="zoom: 50%;">
 
 <h2 id="1-异常概述"><a href="#1-异常概述" class="headerlink" title="1. 异常概述"></a>1. 异常概述</h2><h3 id="1-1-什么是生活的异常"><a href="#1-1-什么是生活的异常" class="headerlink" title="1.1 什么是生活的异常"></a>1.1 什么是生活的异常</h3><p>男主角小明每天开车上班，正常车程1小时。但是，不出意外的话，可能会出现意外。</p>
 <p><img src=".images/image-20220814203918560.png" alt="image-20220814203918560"></p>
 <p>出现意外，即为异常情况。我们会做相应的处理。如果不处理，到不了公司。处理完了，就可以正常开车去公司。</p>
-<img src=".images/image-20220520210320301.png" alt="image-20220520210320301" style="zoom:70%;" />
+<img src=".images/image-20220520210320301.png" alt="image-20220520210320301" style="zoom:70%;">
 
 <h3 id="1-2-什么是程序的异常"><a href="#1-2-什么是程序的异常" class="headerlink" title="1.2 什么是程序的异常"></a>1.2 什么是程序的异常</h3><p>在使用计算机语言进行项目开发的过程中，即使程序员把代码写得<code>尽善尽美</code>，在系统的运行过程中仍然会遇到一些问题，因为很多问题不是靠代码能够避免的，比如：<code>客户输入数据的格式问题</code>，<code>读取文件是否存在</code>，<code>网络是否始终保持通畅</code>等等。</p>
 <ul>
@@ -440,7 +440,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = &#123; <span class="number">34</span>, <span class="number">12</span>, <span class="number">67</span> &#125;;</span><br><span class="line">        intnum = ArrayTools.getElement(arr, <span class="number">4</span>)</span><br><span class="line">        System.out.println(<span class="string">"num="</span> + num);</span><br><span class="line">        System.out.println(<span class="string">"over"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上述程序执行过程图解：</p>
-<p><img src=".images/%E5%BC%82%E5%B8%B8%E4%BA%A7%E7%94%9F%E8%BF%87%E7%A8%8B.png" alt=""></p>
+<p><img src=".images/%E5%BC%82%E5%B8%B8%E4%BA%A7%E7%94%9F%E8%BF%87%E7%A8%8B.png" alt></p>
 <h3 id="1-4-如何对待异常"><a href="#1-4-如何对待异常" class="headerlink" title="1.4 如何对待异常"></a>1.4 如何对待异常</h3><p> 对于程序出现的异常，一般有两种解决方法：一是遇到错误就终止程序的运行。另一种方法是程序员在编写程序时，就充分考虑到各种可能发生的异常和错误，极力预防和避免。实在无法避免的，要编写相应的代码进行异常的检测、以及<code>异常的处理</code>，保证代码的<code>健壮性</code>。</p>
 <h2 id="2-Java异常体系"><a href="#2-Java异常体系" class="headerlink" title="2. Java异常体系"></a>2. Java异常体系</h2><h3 id="2-1-Throwable"><a href="#2-1-Throwable" class="headerlink" title="2.1 Throwable"></a>2.1 Throwable</h3><p><code>java.lang.Throwable</code> 类是Java程序执行过程中发生的异常事件对应的类的根父类。</p>
 <p><strong>Throwable中的常用方法：</strong></p>
@@ -470,10 +470,10 @@
 <li>我们本章讲的异常处理，其实针对的就是Exception。</li>
 </ol>
 </blockquote>
-<img src=".images/image-20220511161910951.png" alt="image-20220511161910951" style="zoom:67%;" />
+<img src=".images/image-20220511161910951.png" alt="image-20220511161910951" style="zoom:67%;">
 
 <h3 id="2-3-编译时异常和运行时异常"><a href="#2-3-编译时异常和运行时异常" class="headerlink" title="2.3 编译时异常和运行时异常"></a>2.3 编译时异常和运行时异常</h3><p>Java程序的执行分为编译时过程和运行时过程。有的错误只有在<code>运行时</code>才会发生。比如：除数为0，数组下标越界等。</p>
-<img src=".images/image-20220330002449526.png" alt="image-20220330002449526" style="zoom:80%;" />
+<img src=".images/image-20220330002449526.png" alt="image-20220330002449526" style="zoom:80%;">
 
 <p>因此，根据异常可能出现的阶段，可以将异常分为：</p>
 <ul>
@@ -515,7 +515,7 @@
 <li>如果在程序运行时，try块中的代码发生了异常，根据异常对象的类型，将从上到下选择第一个匹配的catch分支执行。此时try中发生异常的语句下面的代码将不执行，而整个try…catch之后的代码可以继续运行。</li>
 <li>如果在程序运行时，try块中的代码发生了异常，但是所有catch分支都无法匹配（捕获）这个异常，那么JVM将会终止当前方法的执行，并把异常对象“抛”给调用者。如果调用者不处理，程序就挂了。</li>
 </ul>
-<img src=".images/image-20220503122722605.png" alt="image-20220503122722605" style="zoom:67%;" />
+<img src=".images/image-20220503122722605.png" alt="image-20220503122722605" style="zoom:67%;">
 
 <p><strong>2、try</strong></p>
 <ul>
@@ -539,7 +539,7 @@
 <li><p><code>public void printStackTrace()</code>：打印异常的跟踪栈信息并输出到控制台。包含了异常的类型、异常的原因、还包括异常出现的位置，在开发和调试阶段，都得使用printStackTrace()。</p>
 </li>
 </ul>
-<img src=".images/image-20220331180736381.png" alt="image-20220331180736381" style="zoom:80%;" />
+<img src=".images/image-20220331180736381.png" alt="image-20220331180736381" style="zoom:80%;">
 
 </li>
 </ul>
@@ -552,7 +552,7 @@
 <p>举例3：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">		String str1 = <span class="string">"atguigu.com"</span>;</span><br><span class="line">		str1 = <span class="keyword">null</span>;</span><br><span class="line">		System.out.println(str1.charAt(<span class="number">0</span>));</span><br><span class="line">	&#125;<span class="keyword">catch</span>(NullPointerException e)&#123;</span><br><span class="line">		<span class="comment">//异常的处理方式1</span></span><br><span class="line">		System.out.println(<span class="string">"不好意思，亲~出现了小问题，正在加紧解决..."</span>);	</span><br><span class="line">	&#125;<span class="keyword">catch</span>(ClassCastException e)&#123;</span><br><span class="line">		<span class="comment">//异常的处理方式2</span></span><br><span class="line">		System.out.println(<span class="string">"出现了类型转换的异常"</span>);</span><br><span class="line">	&#125;<span class="keyword">catch</span>(RuntimeException e)&#123;</span><br><span class="line">		<span class="comment">//异常的处理方式3</span></span><br><span class="line">		System.out.println(<span class="string">"出现了运行时异常"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//此处的代码，在异常被处理了以后，是可以正常执行的</span></span><br><span class="line">	System.out.println(<span class="string">"hello"</span>);</span><br><span class="line">&#125;</span><br><span class="line">最终输出:</span><br><span class="line">不好意思，亲~出现了小问题，正在加紧解决...</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
 
-<h4 id="4-2-3-finally使用及举例"><a href="#4-2-3-finally使用及举例" class="headerlink" title="4.2.3 finally使用及举例"></a>4.2.3 finally使用及举例</h4><img src=".images/image-20220331215517077.png" alt="image-20220331215517077" style="zoom: 80%;" />
+<h4 id="4-2-3-finally使用及举例"><a href="#4-2-3-finally使用及举例" class="headerlink" title="4.2.3 finally使用及举例"></a>4.2.3 finally使用及举例</h4><img src=".images/image-20220331215517077.png" alt="image-20220331215517077" style="zoom: 80%;">
 
 <ul>
 <li><p>因为异常会引发程序跳转，从而会导致有些语句执行不到。而程序中有一些特定的代码无论异常是否发生，都<code>需要执行</code>。例如，数据库连接、输入流输出流、Socket连接、Lock锁的关闭等，这样的代码通常就会放到finally块中。所以，我们通常将一定要被执行的代码声明在finally中。</p>
@@ -605,7 +605,7 @@
 </ul>
 <h3 id="4-3-方式2：声明抛出异常类型（throws）"><a href="#4-3-方式2：声明抛出异常类型（throws）" class="headerlink" title="4.3 方式2：声明抛出异常类型（throws）"></a>4.3 方式2：声明抛出异常类型（throws）</h3><ul>
 <li><p>如果在编写方法体的代码时，某句代码可能发生某个<strong>编译时异常</strong>，不处理编译不通过，但是在当前方法体中可能<code>不适合处理</code>或<code>无法给出合理的处理方式</code>，则此方法应<code>显示地</code>声明抛出异常，表明该方法将不对这些异常进行处理，而由该方法的调用者负责处理。</p>
-<img src=".images/image-20220331112000671.png" alt="image-20220331112000671" style="zoom:67%;" />
+<img src=".images/image-20220331112000671.png" alt="image-20220331112000671" style="zoom:67%;">
 </li>
 <li><p>具体方式：在方法声明中用<code>throws语句</code>可以声明抛出异常的列表，throws后面的异常类型可以是方法中产生的异常类型，也可以是它的父类。</p>
 </li>
@@ -678,7 +678,7 @@
 <p>（2）建议大家提供至少<strong>两个构造器</strong>，一个是无参构造，一个是(String message)构造器。</p>
 <p>（3）自定义异常需要提供<strong>一个全局常量</strong>，—&gt; <strong>static final long</strong> <strong>serialVersionUID</strong></p>
 <p>例如:</p>
-<p><img src=".images/image-20231016164453930.png" alt=""></p>
+<p><img src=".images/image-20231016164453930.png" alt></p>
 <h3 id="6-3-注意点"><a href="#6-3-注意点" class="headerlink" title="6.3 注意点"></a>6.3 注意点</h3><ol>
 <li><p><strong>自定义的异常</strong>只能通过<strong>throw抛出</strong>。</p>
 </li>
@@ -726,7 +726,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public class EcmDef &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;写try-catch-finally块</span><br><span class="line">        try&#123;</span><br><span class="line">           if(args.length!&#x3D;2)&#123;</span><br><span class="line">               System.out.println(&quot;没有获取两个命令行参数&quot;);</span><br><span class="line">               throw new ArrayIndexOutOfBoundsException(&quot;需要提供两个命令行参数&quot;);</span><br><span class="line">           &#125;</span><br><span class="line">           &#x2F;&#x2F;因为main里面是字符串数组&#x2F;&#x2F;要对比数据类型不一致  那么就要将String转为包装类对比</span><br><span class="line">           int num1&#x3D;Integer.parseInt(args[0]);</span><br><span class="line">           int num2&#x3D;Integer.parseInt(args[1]);</span><br><span class="line">           &#x2F;&#x2F;做除法</span><br><span class="line">           getChu(num1,num2);</span><br><span class="line">        &#125;catch(NumberFormatException e)&#123;</span><br><span class="line">            System.out.println(&quot;发生的是NumberFormatException(数据类型不一致)异常类&quot;);</span><br><span class="line">            e.getMessage();</span><br><span class="line">        &#125;catch(ArrayIndexOutOfBoundsException e)&#123;</span><br><span class="line">            System.out.println(&quot;发生的是ArrayIndexOutOfBoundsException(缺少命令行参数)异常类&quot;);</span><br><span class="line">            e.getMessage();</span><br><span class="line">        &#125;catch(ArithmeticException e)&#123;</span><br><span class="line">            System.out.println(&quot;发生的是ArithmeticException(除0)异常类&quot;);</span><br><span class="line">            e.getMessage();</span><br><span class="line">        &#125;catch(EcmDefTest e)&#123;</span><br><span class="line">            System.out.println(&quot;发生的是EcmDefTest(输入负数)自定义异常类&quot;);</span><br><span class="line">            e.getMessage();</span><br><span class="line">        &#125;finally&#123;</span><br><span class="line">            System.out.println(&quot;finally语句&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public static void getChu(int num1,int num2) throws EcmDefTest &#123;</span><br><span class="line">        if(num1&lt;0||num2&lt;0)&#123;</span><br><span class="line">            throw new EcmDefTest(&quot;输入不能为负数&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        if(num2&#x3D;&#x3D;0)&#123;</span><br><span class="line">            throw new ArithmeticException(&quot;被除数为0&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        int res&#x3D;num1&#x2F;num2;</span><br><span class="line">        System.out.println(&quot;res&quot;+res);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img src=".images/image-20231017102148928.png" alt="image-20231017102148928"></p>
-<h2 id="8-小结与小悟"><a href="#8-小结与小悟" class="headerlink" title="8. 小结与小悟"></a>8. 小结与小悟</h2><h3 id="8-1-小结：异常处理5个关键字"><a href="#8-1-小结：异常处理5个关键字" class="headerlink" title="8.1 小结：异常处理5个关键字"></a>8.1 小结：异常处理5个关键字</h3><img src=".images/image-20220330003738109.png" alt="image-20220330003738109" style="zoom: 67%;" />
+<h2 id="8-小结与小悟"><a href="#8-小结与小悟" class="headerlink" title="8. 小结与小悟"></a>8. 小结与小悟</h2><h3 id="8-1-小结：异常处理5个关键字"><a href="#8-1-小结：异常处理5个关键字" class="headerlink" title="8.1 小结：异常处理5个关键字"></a>8.1 小结：异常处理5个关键字</h3><img src=".images/image-20220330003738109.png" alt="image-20220330003738109" style="zoom: 67%;">
 
 <blockquote>
 <p>类比：上游排污，下游治污</p>
@@ -736,7 +736,7 @@
 <p>世界上最痴心的<code>等待</code>，是我当<code>case</code>你是<code>switch</code>，或许永远都选不上自己；</p>
 <p>世界上最真情的<code>相依</code>，是你在<code>try</code>我在<code>catch</code>。无论你发神马脾气，我都默默承受，静静处理。到那时，再来期待我们的<code>finally</code>。</p>
 <p><strong>歌词：</strong></p>
-<img src=".images/image-20220511163035280.png" alt="image-20220511163035280" style="zoom:67%;" />
+<img src=".images/image-20220511163035280.png" alt="image-20220511163035280" style="zoom:67%;">
 
 <p><img src="images/try.png" alt="try"></p>
 
