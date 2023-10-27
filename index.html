@@ -837,9 +837,11 @@
 <li><p>Map 中的 <code>key用Set来存放</code>，<code>不允许重复</code>，即同一个 Map 对象所对应的类，须重写hashCode()和equals()方法</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202310242029512.png" alt="image-20220514190412763" style="zoom:67%;">
 </li>
-<li><p>key 和 value 之间存在单向一对一关系，即通过指定的 key 总能找到唯一的、确定的 value，不同key对应的<code>value可以重复</code>。value所在的类要重写equals()方法。</p>
+<li><p>key 和 value 之间存在单向一对一关系，通过指定 key 总能找到唯一的、确定的 value【<strong>根据key存放value</strong>】，不同key对应的<code>value可以重复</code>。value所在的类要重写equals()方法。</p>
 </li>
 <li><p>key和value构成一个entry。所有的entry彼此之间是<code>无序的</code>、<code>不可重复的</code>。</p>
+</li>
+<li><p><strong>总结</strong>:<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202310271033778.png" alt="image-20231027103310700"></p>
 </li>
 </ul>
 <h3 id="6-2-Map接口的常用方法"><a href="#6-2-Map接口的常用方法" class="headerlink" title="6.2 Map接口的常用方法"></a>6.2 Map接口的常用方法</h3><ul>
