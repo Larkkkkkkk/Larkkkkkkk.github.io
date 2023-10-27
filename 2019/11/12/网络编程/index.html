@@ -425,7 +425,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import java.net.InetAddress;</span><br><span class="line">import java.net.UnknownHostException;</span><br><span class="line">public class JiaNLi &#123;</span><br><span class="line">	public static void main(String[] args) throws UnknownHostException &#123;</span><br><span class="line">	&#x2F;&#x2F;创建getLocalHost方法创建一个InetAddress对象</span><br><span class="line">	InetAddress addr&#x3D;InetAddress.getLocalHost();</span><br><span class="line">	System.out.println(addr.getHostAddress());&#x2F;&#x2F;返回：10.2.41.239</span><br><span class="line">	System.out.println(addr.getHostName());&#x2F;&#x2F;DESKTOP-VMNQVVJ</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;根据域名可以得到netAddress对象</span><br><span class="line">	addr&#x3D;InetAddress.getByName(&quot;www.baidu.com&quot;);&#x2F;&#x2F;使用域名www.baidu.com</span><br><span class="line">	System.out.println(addr.getHostAddress());&#x2F;&#x2F;返回百度服务器的ip:39.156.66.18</span><br><span class="line">	System.out.println(addr.getHostName());&#x2F;&#x2F;www.baidu.com</span><br><span class="line">	</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>代码结果如下：</p>
-<p><img src="zhuji.png" alt=""></p>
+<p><img src="/2019/11/12/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/zhuji.png" alt></p>
 <hr>
 <p><strong>三、端口(区分软件)</strong></p>
 <ul>
@@ -454,13 +454,13 @@
 <li><strong>查看端口情况：</strong></li>
 </ul>
 <p>查看<strong>所有</strong>端口：netstat -ano</p>
-<p><img src="diyi.png" alt=""></p>
+<p><img src="/2019/11/12/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/diyi.png" alt></p>
 <p>查看<strong>指定</strong>端口：netstat -aon|findstr “xxx”</p>
-<p><img src="dier.png" alt=""></p>
+<p><img src="/2019/11/12/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/dier.png" alt></p>
 <p>查看指定<strong>进程</strong>：tasklist|findstr “xxx”</p>
-<p><img src="disan.png" alt=""></p>
+<p><img src="/2019/11/12/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/disan.png" alt></p>
 <p>查看<strong>具体程序</strong>：使用任务管理器查看PID</p>
-<p><img src="disi.png" alt=""></p>
+<p><img src="/2019/11/12/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/disi.png" alt></p>
 <hr>
 <p><strong>四、InetSocketAddress类</strong><br><code>java.net.InetSocketAddress</code>—&gt;实现<strong>IP套接字地址(IP地址+端口号)</strong>，可以是一对(主机号+端口号)，在这种情况下主机号要DNS一下IP地址。</p>
 <ul>
@@ -476,7 +476,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import java.net.InetAddress;</span><br><span class="line">import java.net.InetSocketAddress;</span><br><span class="line">public class JiaNLi &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	&#x2F;&#x2F;构造器：new InetSocketAddress(&quot;地址|域名&quot;,端口)</span><br><span class="line">		InetSocketAddress socketAddress&#x3D;new InetSocketAddress(&quot;127.0.0.1&quot;,8080);</span><br><span class="line">		InetSocketAddress socketAddress2&#x3D;new InetSocketAddress(&quot;localhost&quot;,9000);</span><br><span class="line">		System.out.println(socketAddress.getHostName()); &#x2F;&#x2F;返回主机名--127.0.0.1</span><br><span class="line">		System.out.println(socketAddress2.getAddress());&#x2F;&#x2F;返回地址--localhost&#x2F;127.0.0.1</span><br><span class="line">		System.out.println(socketAddress2.getPort());&#x2F;&#x2F;获取端口号--9000</span><br><span class="line">		System.out.println(socketAddress2.getHostString());返回主机名&#x2F;地址的String形式--localhost</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>代码结果如下：</strong></p>
-<p><img src="socket.png" alt=""></p>
+<p><img src="/2019/11/12/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket.png" alt></p>
 <hr>
 <p><strong>五、URL(区分软件资源)</strong><br>　　<strong>URI(统一资源标志符)分类：</strong></p>
 <table>
@@ -505,7 +505,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import java.net.MalformedURLException;</span><br><span class="line">import java.net.URL;</span><br><span class="line">public class JiaNLi &#123;</span><br><span class="line">	public static void main(String[] args)throws MalformedURLException &#123;</span><br><span class="line">		URL url&#x3D;new URL(&quot;http:&#x2F;&#x2F;www.baidu.com:80&#x2F;index.html?uname&#x3D;shsxt&amp;age&#x3D;18#a&quot;);</span><br><span class="line">		&#x2F;&#x2F;获取四个值</span><br><span class="line">		System.out.println(&quot;协议&quot;+url.getProtocol());&#x2F;&#x2F;协议http</span><br><span class="line">		System.out.println(&quot;域名&quot;+url.getHost());&#x2F;&#x2F;域名www.baidu.com</span><br><span class="line">		System.out.println(&quot;请求资源&quot;+url.getFile());&#x2F;&#x2F;请求资源&#x2F;index.html?uname&#x3D;shsxt&amp;age&#x3D;18</span><br><span class="line">		System.out.println(&quot;请求资源&quot;+url.getPath());&#x2F;&#x2F;请求资源&#x2F;index.html</span><br><span class="line">		System.out.println(&quot;端口&quot;+url.getPort());&#x2F;&#x2F;端口80</span><br><span class="line">		&#96;&#96;&#x2F;&#x2F;参数</span><br><span class="line">		System.out.println(&quot;参数&quot;+url.getQuery());&#x2F;&#x2F;参数uname&#x3D;shsxt&amp;age&#x3D;18</span><br><span class="line">		&#x2F;&#x2F;锚点</span><br><span class="line">		System.out.println(&quot;锚点&quot;+url.getRef());&#x2F;&#x2F;锚点a</span><br><span class="line"></span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>代码结果如下：</strong></p>
-<p><img src="url.png" alt=""></p>
+<p><img src="/2019/11/12/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/url.png" alt></p>
 
       
       

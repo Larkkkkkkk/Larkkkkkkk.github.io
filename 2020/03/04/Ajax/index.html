@@ -398,7 +398,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;获取传入的信息</span><br><span class="line">		String name &#x3D; request.getParameter(&quot;name&quot;);</span><br><span class="line">		String age &#x3D; request.getParameter(&quot;age&quot;);</span><br><span class="line">		System.out.println(name+&quot;  &quot;+age);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;通过alert的方式弹出</span><br><span class="line">		response.setContentType(&quot;text&#x2F;html;charset&#x3D;utf-8&quot;);  &#x2F;&#x2F;response解决方法加一行代码  而request可以加代码&#x2F;tomcat永久更改(之前博客写过方法)</span><br><span class="line">		response.getWriter().write(&quot;啊啊&quot;);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>最终点击jsp页面的一行弹出alert提示：java控制台输出获取的信息</strong></p>
-<p><img src="get.png" alt=""></p>
+<p><img src="/2020/03/04/Ajax/get.png" alt></p>
 <hr>
 <h1 id="三、数据请求-Post"><a href="#三、数据请求-Post" class="headerlink" title="三、数据请求 Post"></a>三、数据请求 Post</h1><p><strong>跟get的差距:</strong></p>
 <ol>
@@ -432,9 +432,9 @@
 <h2 id="onreadystatechange-function-–判断状态"><a href="#onreadystatechange-function-–判断状态" class="headerlink" title="onreadystatechange=function(){}–判断状态##"></a>onreadystatechange=function(){}–判断状态##</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;固定的格式：</span><br><span class="line">request.onreadystatechange&#x3D;function()&#123;</span><br><span class="line">					if(request.readyState&#x3D;&#x3D;4&amp;&amp;request.status&#x3D;&#x3D;200)  &#x2F;&#x2F; 已经能够正常处理 &amp;&amp; 判断状态码是不是200</span><br><span class="line">						&#123;</span><br><span class="line">							alert(request.responseText);  &#x2F;&#x2F;配合request.responseText使用</span><br><span class="line">						&#125;</span><br><span class="line">				&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>readystate状态集：</strong></p>
-<p><img src="readyState.png" alt=""></p>
+<p><img src="/2020/03/04/Ajax/readyState.png" alt></p>
 <p><strong>status的状态集：</strong></p>
-<p><img src="status.png" alt=""></p>
+<p><img src="/2020/03/04/Ajax/status.png" alt></p>
 <h2 id="send-方法"><a href="#send-方法" class="headerlink" title="send()方法"></a>send()方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	&#x2F;&#x2F;如果是post方式就必须要添加头  --说明提交的数据类型是一个经过url编码的form表单数据</span><br><span class="line">		request.setRequestHeader(&quot;Content-type&quot;,&quot;application&#x2F;x-www-form-urlencoded&quot;);	</span><br><span class="line">			</span><br><span class="line">	&#x2F;&#x2F;post不能根据open带过去 </span><br><span class="line">		request.send(&quot;name&#x3D;aa&amp;age&#x3D;18&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; -----------------------------------------------</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;get方式</span><br><span class="line">		request.send();</span><br></pre></td></tr></table></figure>
 <hr>
 

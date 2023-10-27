@@ -380,17 +380,17 @@
 <ul>
 <li>IP协议(首部格式)：</li>
 </ul>
-<p><img src="ipxieyi.png" alt=""></p>
+<p><img src="/2019/12/30/%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE/ipxieyi.png" alt></p>
 <p>  IP协议，又译为网际协议或互联网协议，是用在TCP/IP协议簇中的网络层协议。IP协议位于TCP/IP协议的网络层，位于同一层次的协议还有下面的ARP和RARP以及上面的ICMP(Internet控制报文协议)和IGMP(Internet组管理协议)。除了ARP和RARP报文以外的几乎所有的数据都要经过IP协议进行传送。ARP和RARP报文没有封装在IP数据报中，而ICMP和IGMP的数据则要封装在IP数据报中进行传输。由于IP协议在网络层中具有重要的地位，TCP/IP协议的网络层又被称为IP层。</p>
 <ul>
 <li>TCP协议(首部格式)：</li>
 </ul>
-<p><img src="tcpxieyi.png" alt=""></p>
+<p><img src="/2019/12/30/%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE/tcpxieyi.png" alt></p>
 <p>  传输控制协议（TCP，Transmission Control Protocol）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由IETF的RFC 793定义。<br>TCP旨在适应支持多网络应用的分层协议层次结构。 连接到不同但互连的计算机通信网络的主计算机中的成对进程之间依靠TCP提供可靠的通信服务。TCP假设它可以从较低级别的协议获得简单的，可能不可靠的数据报服务。 原则上，TCP应该能够在从硬线连接到分组交换或电路交换网络的各种通信系统之上操作。<br>当应用层向TCP层发送用于网间传输的、用8位字节表示的数据流，TCP则把数据流分割成适当长度的报文段，最大传输段大小（MSS）通常受该计算机连接的网络的数据链路层的最大传送单元（MTU）限制。之后TCP把数据包传给IP层，由它来通过网络将包传送给接收端实体的TCP层。 </p>
 <ul>
 <li>UDP协议(首部格式)： </li>
 </ul>
-<p><img src="udpxieyi.png" alt=""></p>
+<p><img src="/2019/12/30/%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE/udpxieyi.png" alt></p>
 <p>　　UDP协议概述：一种无连接协议，提供无连接服务，在传送数据之前不需要先建立连接；传送的数据单位协议是 UDP 报文或用户数据报。对方的运输层在收到 UDP 报文后，不需要给出任何确认。虽然 UDP 不提供可靠交付，但在某些情况下 UDP 是一种最有效的工作方式。UDP 用户数据报是在运输层的端到端抽象的逻辑信道中传送的。</p>
 <hr>
 <p><strong>三、实现思路</strong></p>

@@ -406,25 +406,25 @@
 </ul>
 <hr>
 <h1 id="上传下载文件软件"><a href="#上传下载文件软件" class="headerlink" title="上传下载文件软件"></a>上传下载文件软件</h1><h2 id="FileZilla软件"><a href="#FileZilla软件" class="headerlink" title="FileZilla软件"></a>FileZilla软件</h2><p><strong>1.下载安装之后直接使用</strong></p>
-<p><img src="file.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/file.png" alt></p>
 <h2 id="lrzsz软件"><a href="#lrzsz软件" class="headerlink" title="lrzsz软件"></a>lrzsz软件</h2><p><strong>1.CRT软件下输入 yum install lrzsz</strong></p>
 <p><strong>2.CRT软件 –&gt; 选项 –&gt; 会话设置 –&gt; 设置上传下载目录</strong></p>
-<p><img src="shezhi.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/shezhi.png" alt></p>
 <p><strong>3.上传(rz)： CRT软件下输入 rz –&gt; 从uploads上传到linux当前目录下</strong></p>
-<p><img src="chenggong.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/chenggong.png" alt></p>
 <p><strong>4.下载(sz 文件名)： CRT软件下输入 sz 文件名 –&gt; 下载到downloads目录下</strong></p>
-<p><img src="chenggonger.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/chenggonger.png" alt></p>
 <h2 id="sftp协议-Alt-p"><a href="#sftp协议-Alt-p" class="headerlink" title="sftp协议(Alt+p)"></a>sftp协议(Alt+p)</h2><p><strong>1. 上传(put)：通过Alt+p进入SFTP界面 –&gt; 输入 put F：//song.txt –&gt; 上传到linux当前目录下</strong></p>
-<p><img src="put.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/put.png" alt></p>
 <p><strong>2.下载(get)：通过Alt+p进入SFTP界面 –&gt; 输入 get song.txt –&gt; 下载到电脑的文档目录下</strong></p>
-<p><img src="get.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/get.png" alt></p>
 <hr>
 <h1 id="Linux安装JDK"><a href="#Linux安装JDK" class="headerlink" title="Linux安装JDK"></a>Linux安装JDK</h1><p><strong>先确定linux系统的版本 –&gt; 选择JDK版本</strong></p>
-<p><img src="banebn.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/banebn.png" alt></p>
 <p><strong>1. 通过sftp进行上传</strong></p>
-<p><img src="shangchuanjdk.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/shangchuanjdk.png" alt></p>
 <p><strong>2. mv指令剪切到usr的local下面的jdk里面</strong></p>
-<p><img src="zhuanyi.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhuanyi.png" alt></p>
 <p><strong>3. 将原来的java的jdk卸载</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java –version &#x2F;&#x2F;查看java版本</span><br><span class="line">rpm -qa | grep java &#x2F;&#x2F;查看和java有关的内容</span><br><span class="line"></span><br><span class="line">rpm -e --nodeps java-1.6.0-openjdk-1.6.0.35-1.13.7.1.el6_6.i686  &#x2F;&#x2F;rpm -e --nodeps 然后后面跟自己电脑显示出来的java有关的内容</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.79-2.5.5.4.el6.i686</span><br></pre></td></tr></table></figure>
 
@@ -439,49 +439,49 @@
     export JAVA_HOME CLASSPATH PATH
 3. ESC键之后：wq退出之后重新保存
     source /etc/profile 使更改的配置立即生效</code></pre><p><strong>流程：</strong></p>
-<p><img src="bianliang.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/bianliang.png" alt></p>
 <hr>
 <h1 id="Linux安装Mysql"><a href="#Linux安装Mysql" class="headerlink" title="Linux安装Mysql"></a>Linux安装Mysql</h1><p><strong>1. 通过lrzsz的rz方式将uploads的文件上传</strong></p>
-<p><img src="mysql.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/mysql.png" alt></p>
 <p><strong>2. 卸载当前已经有的mysql</strong></p>
-<p><img src="mysqlxiezai.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/mysqlxiezai.png" alt></p>
 <p><strong>3. 通tar -xvf(是jar而不是gz压缩包)指令解压</strong></p>
-<p><img src="jarjieya.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/jarjieya.png" alt></p>
 <p><strong>4. rmp -ivh指令 安装服务端 【然后获得随机密码】</strong></p>
-<p><img src="fuwuduan.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/fuwuduan.png" alt></p>
 <p><strong>5. rmp -ivh指令 安装服务端</strong></p>
-<p><img src="kehuduan.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/kehuduan.png" alt></p>
 <p><strong>6. 打开mysql服务</strong></p>
-<p><img src="shibai.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/shibai.png" alt></p>
 <p><strong>7. 重新登陆数据库mysql</strong></p>
-<p><img src="chong.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/chong.png" alt></p>
 <p><strong>8. 重新设置密码打开数据库</strong></p>
-<p><img src="dakaier.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/dakaier.png" alt></p>
 <p><strong>9. 远程访问(Navicat访问linux里面安装的mysql)</strong></p>
 <p><strong>在navicat里面尝试新建连接(失败)</strong></p>
-<p><img src="yuanyi.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/yuanyi.png" alt></p>
 <p><strong>需要使用语句打开远程访问并且刷新</strong></p>
-<p><img src="yuaner.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/yuaner.png" alt></p>
 <p><strong>双击之后即可使用</strong></p>
-<p><img src="liansan.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/liansan.png" alt></p>
 <hr>
 <h1 id="Linux安装Tomcat"><a href="#Linux安装Tomcat" class="headerlink" title="Linux安装Tomcat"></a>Linux安装Tomcat</h1><p><strong>1. 通过put上传并且tar -zxvf指令解压文件</strong></p>
 <p><strong>2. 解压之后进入tomcat的bin目录执行start.sh文件</strong></p>
-<p><img src="zhixing.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhixing.png" alt></p>
 <p><strong>3. 打开浏览器输入：linux的地址：8080 (如果能看到tomcat显示正常就ok)</strong></p>
-<p><img src="zhengchang.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhengchang.png" alt></p>
 <hr>
 <h1 id="Linux安装redis"><a href="#Linux安装redis" class="headerlink" title="Linux安装redis"></a>Linux安装redis</h1><p><strong>1. 先在local目录下下载gcc编译文件</strong></p>
-<p><img src="gcc.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/gcc.png" alt></p>
 <p><strong>2. 去网络远程下载redis</strong></p>
-<p><img src="redisan.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/redisan.png" alt></p>
 <p><strong>3. 解压(tar -zxvf redis-3.0.4.tar.gz )</strong></p>
 <p><strong>4. 输入make进行编译</strong></p>
 <p>*<em>5. 安装(make /usr/local/redis install) *</em></p>
-<p><img src="redismake.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/redismake.png" alt></p>
 <p><strong>6. 将redis-3.0.4里面的redis.conf 复制到redis/bin目录下</strong></p>
 <p><strong>7. 直接执行./redis-server服务器端</strong> </p>
-<p><img src="zhixingredis.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhixingredis.png" alt></p>
 <p><strong>8. 可以再执行redis-client服务器端然后查询操作</strong></p>
 <hr>
 

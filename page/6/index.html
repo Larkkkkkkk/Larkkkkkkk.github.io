@@ -363,18 +363,18 @@
 
 <h2 id="第一个输出"><a href="#第一个输出" class="headerlink" title="第一个输出"></a>第一个输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.文件-新建-新建项目</span><br><span class="line">   2.选择项目右键新建-文件名为first.py</span><br><span class="line">3.书写print(&quot;hello world&quot;);</span><br><span class="line">4.点击空白位置右键run first</span><br></pre></td></tr></table></figure>
 
-<p><img src="hello.png" alt=""></p>
+<p><img src="/2021/12/31/python/hello.png" alt></p>
 <hr>
 <h1 id="输出-print"><a href="#输出-print" class="headerlink" title="输出(print)"></a>输出(print)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#输出数字</span><br><span class="line">print(520);</span><br><span class="line">print(98.5);</span><br><span class="line"></span><br><span class="line">#输出字符串</span><br><span class="line">print(&quot;123s&quot;);</span><br><span class="line">print(&#39;123as&#39;);</span><br><span class="line"></span><br><span class="line">#输出含有运算符的表达式</span><br><span class="line">print(3+1); #输出4</span><br><span class="line"></span><br><span class="line">#输出到文件中</span><br><span class="line">fp&#x3D;open(&#39;D:&#x2F;test.txt&#39;,&#39;a+&#39;); #输出到d盘下面</span><br><span class="line">print(&#39;helloworld&#39;,file&#x3D;fp);  #输出内容为 helloworld</span><br><span class="line">fp.close(); </span><br><span class="line"></span><br><span class="line">#不进行换行输出(输出内容在一行)  --用逗号隔开</span><br><span class="line">print(&#39;hello&#39;,&#39;world&#39;,&#39;Python&#39;);</span><br></pre></td></tr></table></figure>
 
 <p><strong>输出其他内容</strong></p>
-<p><img src="print.png" alt=""></p>
+<p><img src="/2021/12/31/python/print.png" alt></p>
 <p><strong>输出到文件里面</strong></p>
-<p><img src="print2.png" alt=""></p>
+<p><img src="/2021/12/31/python/print2.png" alt></p>
 <hr>
 <h1 id="转义字符和原字符-r-R-字符串"><a href="#转义字符和原字符-r-R-字符串" class="headerlink" title="转义字符和原字符(r/R+字符串)"></a>转义字符和原字符(r/R+字符串)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">print(&#39;--1.转行(分行)-------------&#39;);</span><br><span class="line">print(&#39;hello\nworld&#39;);</span><br><span class="line"></span><br><span class="line">print(&#39;--2.制表(四个字符为一个)-------------&#39;);</span><br><span class="line">print(&#39;hello\tworld&#39;);</span><br><span class="line">print(&#39;helloooo\tworld&#39;);  #四个字符是一个\t</span><br><span class="line"></span><br><span class="line">print(&#39;--3.回车功能(覆盖符号之前的所有内容)---&#39;);</span><br><span class="line">print(&#39;hello\rworld&#39;);  #hello输入之后回车world会把hello挤掉</span><br><span class="line"></span><br><span class="line">print(&#39;--4.退一个格功能--------------&#39;);</span><br><span class="line">print(&#39;hello\bworld&#39;);</span><br><span class="line"></span><br><span class="line">print(&#39;--5.将字符串里面的单引号不被识别为转义字符---------------------------&#39;);</span><br><span class="line">print(&#39;老师说:\&#39;给我考满分\&#39;&#39;);</span><br><span class="line"></span><br><span class="line">print(&#39;--不希望转义字符起作用，使用原字符(字符串前面加r&#x2F;R)------&#39;);</span><br><span class="line">print(r&#39;hello\nworld&#39;);</span><br><span class="line">print(r&#39;hello\nworld\\&#39;); #注意:最后两个是\\          √</span><br><span class="line">print(r&#39;hello\nworld\&#39;);  #注意:最后一个字符不能是\    ×</span><br></pre></td></tr></table></figure>
 
-<p><img src="zhuanyi.png" alt=""></p>
+<p><img src="/2021/12/31/python/zhuanyi.png" alt></p>
 <hr>
 <h1 id="标识符和保留字"><a href="#标识符和保留字" class="headerlink" title="标识符和保留字"></a>标识符和保留字</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类似于java和c语言</span><br></pre></td></tr></table></figure>
 
@@ -441,43 +441,43 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	double x,y;</span><br><span class="line">	double c,s; </span><br><span class="line">	scanf(&quot;%lf,%lf&quot;,&amp;x,&amp;y);  &#x2F;&#x2F;逗号隔开输入长x和宽y</span><br><span class="line">	c&#x3D;2*x+2*y;  &#x2F;&#x2F;周长</span><br><span class="line">	s&#x3D;x*y;  &#x2F;&#x2F;面积</span><br><span class="line">	printf(&quot;周长是%.5f\n&quot;,c);</span><br><span class="line">	printf(&quot;面积是%.5f\n&quot;,s);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="1.1.png" alt=""></p>
+<p><img src="/2021/06/28/B%E5%86%8C%E7%BC%96%E7%A8%8B%E9%A2%98/1.1.png" alt></p>
 <hr>
 <h2 id="1-2-计算两者取余-和整除"><a href="#1-2-计算两者取余-和整除" class="headerlink" title="1.2 计算两者取余(%)和整除(/)"></a>1.2 计算两者取余(%)和整除(/)</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int a,b; </span><br><span class="line">	scanf(&quot;%d %d&quot;,&amp;a,&amp;b);  &#x2F;&#x2F;题目要求输入两个整数</span><br><span class="line">	printf(&quot;整除结果是%d\n&quot;,a&#x2F;b);  &#x2F;&#x2F;因为都是整数 所以结果也是整数</span><br><span class="line">	printf(&quot;取余结果是%d\n&quot;,a%b);  &#x2F;&#x2F;因为都是整数 所以结果也是整数</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="1.2.png" alt=""></p>
+<p><img src="/2021/06/28/B%E5%86%8C%E7%BC%96%E7%A8%8B%E9%A2%98/1.2.png" alt></p>
 <hr>
 <h2 id="1-3-分割浮点数的整数和小数部分"><a href="#1-3-分割浮点数的整数和小数部分" class="headerlink" title="1.3 分割浮点数的整数和小数部分"></a>1.3 分割浮点数的整数和小数部分</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	double a;</span><br><span class="line">	double xiao&#x3D;0; </span><br><span class="line">	scanf(&quot;%lf&quot;,&amp;a); &#x2F;&#x2F;输入一个浮点数a </span><br><span class="line">	int n&#x3D;(int)(a); &#x2F;&#x2F;强转为int就是整数部分 </span><br><span class="line">	xiao&#x3D;a-n;  &#x2F;&#x2F;然后用原始数据-整数部分  </span><br><span class="line">	printf(&quot;整数部分是%d\n&quot;,n);</span><br><span class="line">	printf(&quot;小数部分是%f\n&quot;,xiao);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="1.3.png" alt=""></p>
+<p><img src="/2021/06/28/B%E5%86%8C%E7%BC%96%E7%A8%8B%E9%A2%98/1.3.png" alt></p>
 <hr>
 <h2 id="1-4-大小写互换"><a href="#1-4-大小写互换" class="headerlink" title="1.4 大小写互换"></a>1.4 大小写互换</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char n;</span><br><span class="line">	char n1;</span><br><span class="line">	scanf(&quot;%c&quot;,&amp;n);</span><br><span class="line">	n1&#x3D;n-32;  &#x2F;&#x2F;小写转大写需要减少32</span><br><span class="line">	printf(&quot;大写对应的ASCII码为：%d\n&quot;,n1);</span><br><span class="line">	printf(&quot;小写对应的ASCII码为：%d\n&quot;,n);</span><br><span class="line">	printf(&quot;大写的字符为:%c\n&quot;,n1);</span><br><span class="line">	printf(&quot;小写的字符为:%c\n&quot;,n);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="1.4.png" alt=""></p>
+<p><img src="/2021/06/28/B%E5%86%8C%E7%BC%96%E7%A8%8B%E9%A2%98/1.4.png" alt></p>
 <hr>
 <h2 id="1-5-华室温度转摄氏温度"><a href="#1-5-华室温度转摄氏温度" class="headerlink" title="1.5 华室温度转摄氏温度"></a>1.5 华室温度转摄氏温度</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	double hua; &#x2F;&#x2F;华氏温度 </span><br><span class="line">	double she; &#x2F;&#x2F;摄氏温度 </span><br><span class="line">	scanf(&quot;%lf&quot;,&amp;hua);  &#x2F;&#x2F;输入华氏温度 </span><br><span class="line">	she&#x3D;5*(hua-32)&#x2F;9.0;   &#x2F;&#x2F;公式</span><br><span class="line">	printf(&quot;%f&quot;,she);  &#x2F;&#x2F;使用默认格式长度输出</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="1.5.png" alt=""></p>
+<p><img src="/2021/06/28/B%E5%86%8C%E7%BC%96%E7%A8%8B%E9%A2%98/1.5.png" alt></p>
 <hr>
 <h1 id="第2章-顺序结构"><a href="#第2章-顺序结构" class="headerlink" title="第2章 顺序结构"></a>第2章 顺序结构</h1><h2 id="2-1-输入圆半径-得到半径相关数据"><a href="#2-1-输入圆半径-得到半径相关数据" class="headerlink" title="2.1 输入圆半径,得到半径相关数据"></a>2.1 输入圆半径,得到半径相关数据</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define PI 3.1415926</span><br><span class="line">int main()&#123;</span><br><span class="line">	double r;</span><br><span class="line">	double zc,mj,tj;</span><br><span class="line">	scanf(&quot;%lf&quot;,&amp;r);   &#x2F;&#x2F;输入格式lf 老忘记 </span><br><span class="line">	printf(&quot;输入的圆的半径为%.3f\n&quot;,r);</span><br><span class="line">	zc&#x3D;2*PI*r; &#x2F;&#x2F;周长是2*πr </span><br><span class="line">	mj&#x3D;PI*r*r; &#x2F;&#x2F;面积是π*r*r</span><br><span class="line">	tj&#x3D;(PI*r*r*r*4)&#x2F;3; &#x2F;&#x2F;体积是三分之四的π*r*r*r </span><br><span class="line">	printf(&quot;原的周长是:%.3f\n&quot;,zc);</span><br><span class="line">	printf(&quot;原的面积是:%.3f\n&quot;,mj);</span><br><span class="line">	printf(&quot;原的体积是:%.3f\n&quot;,tj);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="2.1.png" alt=""></p>
+<p><img src="/2021/06/28/B%E5%86%8C%E7%BC%96%E7%A8%8B%E9%A2%98/2.1.png" alt></p>
 <hr>
 <h2 id="2-2-成绩信息统计"><a href="#2-2-成绩信息统计" class="headerlink" title="2.2 成绩信息统计"></a>2.2 成绩信息统计</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	double c1,c2,c3,c4;  &#x2F;&#x2F;四门课 </span><br><span class="line">	double ag;  &#x2F;&#x2F;四门课平均值  </span><br><span class="line">	&#x2F;&#x2F;题目要求输入四门课成绩	</span><br><span class="line">	printf(&quot;请输入四门课成绩，并间隔逗号:\n&quot;);</span><br><span class="line">	scanf(&quot;%lf,%lf,%lf,%lf&quot;,&amp;c1,&amp;c2,&amp;c3,&amp;c4);  </span><br><span class="line">	ag&#x3D;(c1+c2+c3+c4)&#x2F;4;  &#x2F;&#x2F;计算平均值</span><br><span class="line">	printf(&quot;第一门课成绩c1为:%.2f\n&quot;,c1); </span><br><span class="line">	printf(&quot;第二门课成绩c2为:%.2f\n&quot;,c2); </span><br><span class="line">	printf(&quot;第三门课成绩c3为:%.2f\n&quot;,c3); </span><br><span class="line">	printf(&quot;第四门课成绩c4为:%.2f\n&quot;,c4); </span><br><span class="line">	printf(&quot;平均值为%.2f&quot;,ag);   &#x2F;&#x2F;题目要求保留两位小数 </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="2.2.png" alt=""></p>
+<p><img src="/2021/06/28/B%E5%86%8C%E7%BC%96%E7%A8%8B%E9%A2%98/2.2.png" alt></p>
 <hr>
 
       
@@ -541,209 +541,209 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	printf(&quot;hello world&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="1.1.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/1.1.png" alt></p>
 <hr>
 <h2 id="例1-2-求两个整数之和"><a href="#例1-2-求两个整数之和" class="headerlink" title="例1.2 求两个整数之和"></a>例1.2 求两个整数之和</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int a,b,sum;</span><br><span class="line">	a&#x3D;123;</span><br><span class="line">	b&#x3D;456;</span><br><span class="line">	sum&#x3D;a+b;</span><br><span class="line">	printf(&quot;sum 之和是:%d\n&quot;,sum); </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="1.2.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/1.2.png" alt></p>
 <hr>
 <h2 id="例1-3-求最大值"><a href="#例1-3-求最大值" class="headerlink" title="例1.3 求最大值"></a>例1.3 求最大值</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int a,b,sum;</span><br><span class="line">	int da(int a,int b);  &#x2F;&#x2F;一定要定义方法 而且里面要有数据类型</span><br><span class="line">	scanf(&quot;%d,%d&quot;,&amp;a,&amp;b);  &#x2F;&#x2F;&#x2F;scanf输入</span><br><span class="line">	sum&#x3D;da(a,b);  &#x2F;&#x2F;调用方法返回max给sum</span><br><span class="line">	printf(&quot;两个之中最大的是:%d\n&quot;,sum); </span><br><span class="line">	return 0;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">int da(int a,int b)&#123;</span><br><span class="line">	int max;  &#x2F;&#x2F;存储最后的最大值</span><br><span class="line">	if(a&gt;b)&#123;</span><br><span class="line">	  max&#x3D;a;  &#x2F;&#x2F;a大</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">	  max&#x3D;b;  &#x2F;&#x2F;b大	</span><br><span class="line">	&#125;</span><br><span class="line">	return max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="1.3.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/1.3.png" alt></p>
 <hr>
 <h2 id="习题5-输出-图形"><a href="#习题5-输出-图形" class="headerlink" title="习题5 输出*****图形"></a>习题5 输出*****图形</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	printf(&quot;*****\n&quot;);</span><br><span class="line">	printf(&quot;  *****\n&quot;);</span><br><span class="line">	printf(&quot;    *****\n&quot;);</span><br><span class="line">	printf(&quot;      *****\n&quot;); </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="xiti5.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/xiti5.png" alt></p>
 <hr>
 <h1 id="第二章-算法"><a href="#第二章-算法" class="headerlink" title="第二章 算法"></a>第二章 算法</h1><h2 id="例2-1-求1到5乘积"><a href="#例2-1-求1到5乘积" class="headerlink" title="例2.1 求1到5乘积"></a>例2.1 求1到5乘积</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int sum&#x3D;1;</span><br><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;5;i++)&#123;  &#x2F;&#x2F;循环乘1*2*3*4*5</span><br><span class="line">		sum*&#x3D;i;</span><br><span class="line">	&#125; </span><br><span class="line">	printf(&quot;%d&quot;,sum); &#x2F;&#x2F;输出结果</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="2.1.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/2.1.png" alt></p>
 <hr>
 <h2 id="例2-3-判断闰年"><a href="#例2-3-判断闰年" class="headerlink" title="例2.3 判断闰年"></a>例2.3 判断闰年</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	for(int i&#x3D;2000;i&lt;&#x3D;2500;i++)&#123;</span><br><span class="line">		if(i%400&#x3D;&#x3D;0||(i%4&#x3D;&#x3D;0&amp;&amp;i%100!&#x3D;0))&#123;  &#x2F;&#x2F;符合条件输出</span><br><span class="line">			printf(&quot;%d &quot;,i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="2.3.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/2.3.png" alt></p>
 <hr>
 <h2 id="例2-4-求1-1-2-1-3-1-4-到-1-100"><a href="#例2-4-求1-1-2-1-3-1-4-到-1-100" class="headerlink" title="例2.4 求1-(1/2)+(1/3)-(1/4)到-(1/100)"></a>例2.4 求1-(1/2)+(1/3)-(1/4)到-(1/100)</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	double sum&#x3D;0; &#x2F;&#x2F;得到最后结果 </span><br><span class="line">	double temp&#x3D;0; &#x2F;&#x2F;获取每次的值 </span><br><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;100;i++)&#123;  &#x2F;&#x2F;相加100次 </span><br><span class="line">		temp&#x3D;1.0&#x2F;i;  &#x2F;&#x2F;一定是1.0 不然就是整除为0了 </span><br><span class="line">		if(i%2&#x3D;&#x3D;0)&#123;</span><br><span class="line">		temp&#x3D;temp*(-1);  &#x2F;&#x2F;奇数都是负的 </span><br><span class="line">		&#125;</span><br><span class="line">		sum+&#x3D;temp;  &#x2F;&#x2F;每次相加 </span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%.10f&quot;,sum);  &#x2F;&#x2F;输出小数点后10位</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="2.4.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/2.4.png" alt></p>
 <hr>
 <h2 id="例2-5-判断素数"><a href="#例2-5-判断素数" class="headerlink" title="例2.5 判断素数"></a>例2.5 判断素数</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);  &#x2F;&#x2F;输入一个整数 </span><br><span class="line">	if(n&gt;&#x3D;3)&#123;</span><br><span class="line">	  for(int i&#x3D;2;i&lt;n;i++)&#123;  &#x2F;&#x2F;从2开始依次</span><br><span class="line">	  	if(n%i!&#x3D;0)&#123;  &#x2F;&#x2F;如果不能被整除就不是素数 </span><br><span class="line">		  printf(&quot;%d&quot;,n);</span><br><span class="line">		  break;</span><br><span class="line">	  	&#125;else&#123;</span><br><span class="line">		  break;  &#x2F;&#x2F;如果可以被整除那就不是 </span><br><span class="line">	  	&#125;</span><br><span class="line">	  &#125; </span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">	  printf(&quot;输入的数字不比3大，输入错误请重新输入!&quot;);   </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="2.5.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/2.5.png" alt></p>
 <hr>
 <h1 id="第三章-顺序程序设计"><a href="#第三章-顺序程序设计" class="headerlink" title="第三章 顺序程序设计"></a>第三章 顺序程序设计</h1><h2 id="例3-1-温度转换"><a href="#例3-1-温度转换" class="headerlink" title="例3.1 温度转换"></a>例3.1 温度转换</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	double n;  &#x2F;&#x2F;华氏法 </span><br><span class="line">	double res; &#x2F;&#x2F;转换结果 </span><br><span class="line">	scanf(&quot;%lf&quot;,&amp;n); &#x2F;&#x2F;一定是lf </span><br><span class="line">	res&#x3D;5.0*(n-32)&#x2F;9;  &#x2F;&#x2F;转化公式 </span><br><span class="line">	printf(&quot;%f\n&quot;,res); &#x2F;&#x2F;输出结果 </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="3.1.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/3.1.png" alt></p>
 <hr>
 <h2 id="例3-3-大小写转换"><a href="#例3-3-大小写转换" class="headerlink" title="例3.3 大小写转换"></a>例3.3 大小写转换</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char a;</span><br><span class="line">	a&#x3D;&#39;A&#39;;  &#x2F;&#x2F;赋值 </span><br><span class="line">	a&#x3D;a+32; &#x2F;&#x2F;大写+32&#x3D;小写 </span><br><span class="line">	printf(&quot;%c\n&quot;,a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="3.3.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/3.3.png" alt></p>
 <hr>
 <h2 id="例3-4-求三角形面积-海伦公式"><a href="#例3-4-求三角形面积-海伦公式" class="headerlink" title="例3.4 求三角形面积(海伦公式)"></a>例3.4 求三角形面积(海伦公式)</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;  &#x2F;&#x2F;后面要用sqrt开根号的函数</span><br><span class="line">int main()&#123;</span><br><span class="line">	double a; &#x2F;&#x2F;边1 </span><br><span class="line">	double b; &#x2F;&#x2F;边2 </span><br><span class="line">	double c; &#x2F;&#x2F;边3 </span><br><span class="line">	double s; &#x2F;&#x2F;海伦公式里面的s </span><br><span class="line">	double res; &#x2F;&#x2F;获取最终结果 </span><br><span class="line">	scanf(&quot;%lf,%lf,%lf&quot;,&amp;a,&amp;b,&amp;c);  &#x2F;&#x2F;输入三边 </span><br><span class="line">	s&#x3D;(a+b+c)&#x2F;2;</span><br><span class="line">	res&#x3D;sqrt(s*(s-a)*(s-b)*(s-c));  &#x2F;&#x2F;海伦公式</span><br><span class="line">	printf(&quot;%.5f&quot;,res);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="3.4.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/3.4.png" alt></p>
 <hr>
 <h2 id="例3-5-求一元二次方程的根"><a href="#例3-5-求一元二次方程的根" class="headerlink" title="例3.5 求一元二次方程的根"></a>例3.5 求一元二次方程的根</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int a; &#x2F;&#x2F;x2的系数 </span><br><span class="line">	int b; &#x2F;&#x2F;x的系数 </span><br><span class="line">	int c; &#x2F;&#x2F;常数的系数 </span><br><span class="line">	double temp;</span><br><span class="line">	double res1;</span><br><span class="line">	double res2;</span><br><span class="line">	scanf(&quot;%d,%d,%d&quot;,&amp;a,&amp;b,&amp;c);  &#x2F;&#x2F;输入一定要用逗号隔开</span><br><span class="line">	temp&#x3D;b*b-4*a*c;</span><br><span class="line">	res1&#x3D;(-b+sqrt(temp))&#x2F;(2.0*a);</span><br><span class="line">	res2&#x3D;(-b-sqrt(temp))&#x2F;(2.0*a);</span><br><span class="line">	printf(&quot;%7.2f&quot;,res1);</span><br><span class="line">	printf(&quot;%7.2f&quot;,res2);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="3.5.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/3.5.png" alt></p>
 <hr>
 <h2 id="例3-9-输入三个字符-然后putchar输出"><a href="#例3-9-输入三个字符-然后putchar输出" class="headerlink" title="例3.9 输入三个字符,然后putchar输出"></a>例3.9 输入三个字符,然后putchar输出</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char a&#x3D;&#39;B&#39;;</span><br><span class="line">	char b&#x3D;&#39;O&#39;; </span><br><span class="line">	char c&#x3D;&#39;Y&#39;;</span><br><span class="line">	printf(&quot;输入新的之前%c%c%c\n&quot;,a,b,c); </span><br><span class="line">	scanf(&quot;%c&quot;,&amp;a);</span><br><span class="line">	printf(&quot;输入新的之后&quot;); </span><br><span class="line">	putchar(a);  &#x2F;&#x2F;putchar输出单个字符 </span><br><span class="line">	putchar(b);</span><br><span class="line">	putchar(c);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="3.9.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/3.9.png" alt></p>
 <hr>
 <h2 id="例3-10-输入大写字母输出小写"><a href="#例3-10-输入大写字母输出小写" class="headerlink" title="例3.10 输入大写字母输出小写"></a>例3.10 输入大写字母输出小写</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char a&#x3D;&#39;B&#39;;</span><br><span class="line">	char b&#x3D;&#39;O&#39;; </span><br><span class="line">	char c&#x3D;&#39;Y&#39;;</span><br><span class="line">	printf(&quot;输入新的之前%c%c%c\n&quot;,a,b,c); </span><br><span class="line">	scanf(&quot;%c&quot;,&amp;a);</span><br><span class="line">	printf(&quot;输入新的之后&quot;); </span><br><span class="line">	putchar(a);  &#x2F;&#x2F;putchar输出单个字符 </span><br><span class="line">	putchar(b);</span><br><span class="line">	putchar(c);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="3.10.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/3.10.png" alt></p>
 <hr>
 <h2 id="习题3-4-输入不同类型的c1和c2字符"><a href="#习题3-4-输入不同类型的c1和c2字符" class="headerlink" title="习题3.4 输入不同类型的c1和c2字符"></a>习题3.4 输入不同类型的c1和c2字符</h2><h3 id="1-输入字符类型范围内c1和c2"><a href="#1-输入字符类型范围内c1和c2" class="headerlink" title="1.输入字符类型范围内c1和c2"></a>1.输入字符类型范围内c1和c2</h3><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char c1,c2;</span><br><span class="line">	c1&#x3D;97;  &#x2F;&#x2F;char范围是-127到128</span><br><span class="line">	c2&#x3D;98;</span><br><span class="line">	printf(&quot;c1&#x3D;%c,c2&#x3D;%c\n&quot;,c1,c2);</span><br><span class="line">	printf(&quot;c1&#x3D;%d,c2&#x3D;%d\n&quot;,c1,c2);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="3.4.1.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/3.4.1.png" alt></p>
 <h3 id="2-输入字符类型范围外c1和c2"><a href="#2-输入字符类型范围外c1和c2" class="headerlink" title="2.输入字符类型范围外c1和c2"></a>2.输入字符类型范围外c1和c2</h3><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char c1,c2;</span><br><span class="line">	c1&#x3D;197;   &#x2F;&#x2F;char范围是-127到128  所以输入的是范围外</span><br><span class="line">	c2&#x3D;198;</span><br><span class="line">	printf(&quot;c1&#x3D;%c,c2&#x3D;%c\n&quot;,c1,c2);</span><br><span class="line">	printf(&quot;c1&#x3D;%d,c2&#x3D;%d\n&quot;,c1,c2);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="3.4.2.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/3.4.2.png" alt></p>
 <h3 id="3-输入整数类型范围内c1和c2"><a href="#3-输入整数类型范围内c1和c2" class="headerlink" title="3.输入整数类型范围内c1和c2"></a>3.输入整数类型范围内c1和c2</h3><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int c1,c2;  &#x2F;&#x2F;整数类型c1和c2</span><br><span class="line">	c1&#x3D;97;</span><br><span class="line">	c2&#x3D;98;</span><br><span class="line">	printf(&quot;c1&#x3D;%c,c2&#x3D;%c\n&quot;,c1,c2);   &#x2F;&#x2F;整数类型赋给字符类型 可能存在截取</span><br><span class="line">	printf(&quot;c1&#x3D;%d,c2&#x3D;%d\n&quot;,c1,c2);  &#x2F;&#x2F;本来输入的就是int类型  所以就输出原样</span><br><span class="line">	return 0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="3.4.3.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/3.4.3.png" alt></p>
 <hr>
 <h2 id="习题3-5-多种类型输入和输出"><a href="#习题3-5-多种类型输入和输出" class="headerlink" title="习题3.5 多种类型输入和输出"></a>习题3.5 多种类型输入和输出</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Math.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int a,b;</span><br><span class="line">	float x,y;</span><br><span class="line">	char c1,c2;</span><br><span class="line">	scanf(&quot;a&#x3D;%db&#x3D;%d&quot;,&amp;a,&amp;b);</span><br><span class="line">	scanf(&quot;%f%e&quot;,&amp;x,&amp;y);</span><br><span class="line">	scanf(&quot;%c%c&quot;,&amp;c1,&amp;c2);</span><br><span class="line">	printf(&quot;a&#x3D;%d,b&#x3D;%d&quot;,a,b);</span><br><span class="line">	printf(&quot;x&#x3D;%f,y&#x3D;%e&quot;,x,y);</span><br><span class="line">	printf(&quot;a&#x3D;%c,b&#x3D;%c&quot;,c1,c2);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="3.5.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/3.5.png" alt></p>
 <hr>
 <h2 id="习题3-6-China译成密码"><a href="#习题3-6-China译成密码" class="headerlink" title="习题3.6 China译成密码"></a>习题3.6 China译成密码</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char c1,c2,c3,c4,c5;  &#x2F;&#x2F;定义五个字符</span><br><span class="line">	c1&#x3D;&#39;C&#39;;  &#x2F;&#x2F;给五个字符赋初值</span><br><span class="line">	c2&#x3D;&#39;h&#39;;</span><br><span class="line">	c3&#x3D;&#39;i&#39;;</span><br><span class="line">	c4&#x3D;&#39;n&#39;;</span><br><span class="line">	c5&#x3D;&#39;a&#39;;</span><br><span class="line">	c1&#x3D;c1+4;  &#x2F;&#x2F;直接加4就行</span><br><span class="line">	c2&#x3D;c2+4;</span><br><span class="line">	c3&#x3D;c3+4;</span><br><span class="line">	c4&#x3D;c4+4;</span><br><span class="line">	c5&#x3D;c5+4;</span><br><span class="line">	putchar(c1);  &#x2F;&#x2F;使用输出单个字符函数输出</span><br><span class="line">	putchar(c2);</span><br><span class="line">	putchar(c3);</span><br><span class="line">	putchar(c4);</span><br><span class="line">	putchar(c5);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	printf(&quot;%c&quot;,c1);  &#x2F;&#x2F;使用printf输出</span><br><span class="line">	printf(&quot;%c&quot;,c2);</span><br><span class="line">	printf(&quot;%c&quot;,c3);</span><br><span class="line">	printf(&quot;%c&quot;,c4);</span><br><span class="line">	printf(&quot;%c&quot;,c5);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="3.6.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/3.6.png" alt></p>
 <hr>
 <h1 id="第4章-选择结构程序设计"><a href="#第4章-选择结构程序设计" class="headerlink" title="第4章 选择结构程序设计"></a>第4章 选择结构程序设计</h1><h2 id="例4-2-输入两个数排序"><a href="#例4-2-输入两个数排序" class="headerlink" title="例4.2 输入两个数排序"></a>例4.2 输入两个数排序</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	double a,b; &#x2F;&#x2F;要排序的a和b </span><br><span class="line">	double t;  &#x2F;&#x2F;中间变量 </span><br><span class="line">	scanf(&quot;%lf,%lf&quot;,&amp;a,&amp;b);</span><br><span class="line">	if(a&lt;b)&#123;   &#x2F;&#x2F;两个数交换 一定要有个中间变量t </span><br><span class="line">		t&#x3D;a;  </span><br><span class="line">		a&#x3D;b;</span><br><span class="line">		b&#x3D;t;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;最大的是%.5f,最小的是%.5f\n&quot;,a,b);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="4.2.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/4.2.png" alt></p>
 <hr>
 <h2 id="例4-3-输入三个数排序"><a href="#例4-3-输入三个数排序" class="headerlink" title="例4.3 输入三个数排序"></a>例4.3 输入三个数排序</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	double a,b,c; &#x2F;&#x2F;要排序的三个数 </span><br><span class="line">	double t;  &#x2F;&#x2F;中间变量 </span><br><span class="line">	scanf(&quot;%lf,%lf,%lf&quot;,&amp;a,&amp;b,&amp;c);  &#x2F;&#x2F;double要用lf输入 </span><br><span class="line">	if(a&gt;b)&#123;  &#x2F;&#x2F;b小 放前面 </span><br><span class="line">		t&#x3D;a;</span><br><span class="line">		a&#x3D;b;</span><br><span class="line">		b&#x3D;t;</span><br><span class="line">	&#125;</span><br><span class="line">	if(a&gt;c)&#123; &#x2F;&#x2F;说明a&lt;b 如果c小 交换a和c </span><br><span class="line">		t&#x3D;a;</span><br><span class="line">		a&#x3D;c;</span><br><span class="line">		c&#x3D;t; </span><br><span class="line">	&#125;</span><br><span class="line">	if(b&gt;c)&#123; &#x2F;&#x2F;前面都不符合说明a是最小的 要比较b和c </span><br><span class="line">		t&#x3D;b;</span><br><span class="line">		b&#x3D;c;</span><br><span class="line">		c&#x3D;t;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%.5f,%.5f,%.5f\n&quot;,a,b,c);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="4.3.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/4.3.png" alt></p>
 <hr>
 <h2 id="例4-4-大小写转换"><a href="#例4-4-大小写转换" class="headerlink" title="例4.4 大小写转换"></a>例4.4 大小写转换</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char a;</span><br><span class="line">	scanf(&quot;%c&quot;,&amp;a); &#x2F;&#x2F;a&#x3D;getchar();</span><br><span class="line">	if(a&gt;&#x3D;&#39;A&#39;&amp;&amp;a&lt;&#x3D;&#39;Z&#39;)&#123;  &#x2F;&#x2F;大写转小写 </span><br><span class="line">		a&#x3D;a+32;</span><br><span class="line">	&#125;else&#123;  &#x2F;&#x2F;小写不用转换 </span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%c\n&quot;,a);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="4.4.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/4.4.png" alt></p>
 <hr>
 <h2 id="例4-5-分段函数"><a href="#例4-5-分段函数" class="headerlink" title="例4.5 分段函数"></a>例4.5 分段函数</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F;1.简单的if语句</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int x,y; &#x2F;&#x2F;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;x);  &#x2F;&#x2F;输入x 对应输出y </span><br><span class="line">	if(x&lt;0)&#123;</span><br><span class="line">		y&#x3D;-1;</span><br><span class="line">	&#125;</span><br><span class="line">	if(x&#x3D;0)&#123;</span><br><span class="line">		y&#x3D;0;</span><br><span class="line">	&#125;</span><br><span class="line">	if(x&gt;0)&#123;</span><br><span class="line">		y&#x3D;1;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d&quot;,y);  &#x2F;&#x2F;输出对应y </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="4.5.1.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/4.5.1.png" alt></p>
 <hr>
 <h2 id="例4-6-按照等级输出成绩"><a href="#例4-6-按照等级输出成绩" class="headerlink" title="例4.6 按照等级输出成绩"></a>例4.6 按照等级输出成绩</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	char grade; </span><br><span class="line">	scanf(&quot;%c&quot;,&amp;grade);  &#x2F;&#x2F;输入分数 </span><br><span class="line">	switch(grade)</span><br><span class="line">	&#123;</span><br><span class="line">		case &#39;A&#39;:printf(&quot;85-100分\n&quot;);break;</span><br><span class="line">		case &#39;B&#39;:printf(&quot;70-84分\n&quot;);break;</span><br><span class="line">		case &#39;C&#39;:printf(&quot;60-69分\n&quot;);break;</span><br><span class="line">		case &#39;D&#39;:printf(&quot;&lt;60分\n&quot;);break;</span><br><span class="line">		default:printf(&quot;重新输入成绩等级!&quot;); </span><br><span class="line">	&#125; </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="4.6.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/4.6.png" alt></p>
 <hr>
 <h2 id="例4-7-switch语句处理菜单命令"><a href="#例4-7-switch语句处理菜单命令" class="headerlink" title="例4.7 switch语句处理菜单命令"></a>例4.7 switch语句处理菜单命令</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	void action1(int a,int b);  &#x2F;&#x2F;声明两个函数 </span><br><span class="line">	void action2(int a,int b);</span><br><span class="line">	char ch; &#x2F;&#x2F;要判断的字符 </span><br><span class="line">	int a&#x3D;15; </span><br><span class="line">	int b&#x3D;23;</span><br><span class="line">	ch&#x3D;getchar(); &#x2F;&#x2F;输入一个字符 </span><br><span class="line">	switch(ch)</span><br><span class="line">	&#123;</span><br><span class="line">		case &#39;A&#39;:</span><br><span class="line">		case &#39;a&#39;:action1(a,b);break; &#x2F;&#x2F;A和a同时跳转action1方法 </span><br><span class="line">		case &#39;B&#39;:</span><br><span class="line">		case &#39;b&#39;:action2(a,b);break; &#x2F;&#x2F;B和b同时跳转action1方法 </span><br><span class="line">		default:printf(&quot;不符合题意,重新登陆!&quot;); </span><br><span class="line">	&#125; </span><br><span class="line">	return 0;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">void action1(int a,int b)&#123;</span><br><span class="line">	printf(&quot;执行action1方法之后结果是%d\n&quot;,a+b);  &#x2F;&#x2F;加法 </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">void action2(int a,int b)&#123;</span><br><span class="line">	printf(&quot;执行action2方法之后结果是%d\n&quot;,a*b);  &#x2F;&#x2F;乘法 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="4.7.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/4.7.png" alt></p>
 <hr>
 <h2 id="习题4-4-输出三个数最大数"><a href="#习题4-4-输出三个数最大数" class="headerlink" title="习题4.4 输出三个数最大数"></a>习题4.4 输出三个数最大数</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int a,b,c;</span><br><span class="line">	int t; &#x2F;&#x2F;作为中间值 </span><br><span class="line">	scanf(&quot;%d,%d,%d&quot;,&amp;a,&amp;b,&amp;c);  &#x2F;&#x2F;输入三个整数 </span><br><span class="line">	if(a&gt;b)&#123;  &#x2F;&#x2F;a大 往后放 </span><br><span class="line">		t&#x3D;a;</span><br><span class="line">		a&#x3D;b;</span><br><span class="line">		b&#x3D;t;</span><br><span class="line">	&#125;</span><br><span class="line">	if(a&gt;c)&#123;  &#x2F;&#x2F;a&lt;b 看看a和c的大小 </span><br><span class="line">		&#x2F;&#x2F;a大 往后放  这样的话就是 c&lt;a&lt;b </span><br><span class="line">		t&#x3D;a;</span><br><span class="line">		a&#x3D;c;</span><br><span class="line">		c&#x3D;t; </span><br><span class="line">	&#125; </span><br><span class="line">	if(b&gt;c)&#123;  &#x2F;&#x2F;a&lt;b a&lt;c 但是b和c的大小要排序 </span><br><span class="line">		&#x2F;&#x2F;b&gt;c&gt;a 要把b和c换一下</span><br><span class="line">		t&#x3D;b;</span><br><span class="line">		b&#x3D;c;</span><br><span class="line">		c&#x3D;t; </span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;三个数中最大的是:%d&quot;,c);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="xiti4.4.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/xiti4.4.png" alt></p>
 <hr>
 <h2 id="习题4-5-输出平方根"><a href="#习题4-5-输出平方根" class="headerlink" title="习题4.5 输出平方根"></a>习题4.5 输出平方根</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;  &#x2F;&#x2F;使用sqrt函数 </span><br><span class="line">int main()&#123;</span><br><span class="line">	int a;</span><br><span class="line">	int res;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;a);  &#x2F;&#x2F;输入一个&lt;1000的正数</span><br><span class="line">	if(a&gt;&#x3D;1000)&#123;</span><br><span class="line">		printf(&quot;输入有误，请重新输入!!!&quot;);</span><br><span class="line">	&#125; </span><br><span class="line">	res&#x3D;(int)sqrt(a);  &#x2F;&#x2F;强转为int 这样输出整数部分 </span><br><span class="line">	printf(&quot;平方根为:%d&quot;,res);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="xiti4.5.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/xiti4.5.png" alt></p>
 <hr>
 <h2 id="习题4-5-分段函数输出y值"><a href="#习题4-5-分段函数输出y值" class="headerlink" title="习题4.5 分段函数输出y值"></a>习题4.5 分段函数输出y值</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt; </span><br><span class="line">int main()&#123;</span><br><span class="line">	int x,y;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;x); &#x2F;&#x2F;输入整数x </span><br><span class="line">	if(x&lt;1)&#123;</span><br><span class="line">		y&#x3D;x;</span><br><span class="line">	&#125;else if(x&gt;&#x3D;1&amp;&amp;x&lt;10)&#123;</span><br><span class="line">		y&#x3D;2*x-1;</span><br><span class="line">	&#125;else if(x&gt;&#x3D;10)&#123;</span><br><span class="line">		y&#x3D;3*x-11;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;输入的x值是:%d\n&quot;,x);</span><br><span class="line">	printf(&quot;对应的y值是:%d&quot;,y);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="xiti4.6.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/xiti4.6.png" alt></p>
 <hr>
 <h2 id="习题4-9-拆每位数字"><a href="#习题4-9-拆每位数字" class="headerlink" title="习题4.9 拆每位数字"></a>习题4.9 拆每位数字</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt; </span><br><span class="line">int main()&#123;</span><br><span class="line">	int x;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;x);  &#x2F;&#x2F;输入一个整数</span><br><span class="line">	int n&#x3D;0;</span><br><span class="line">	int ge&#x3D;0; &#x2F;&#x2F;统计多少位 </span><br><span class="line">	while(x!&#x3D;0)&#123;  &#x2F;&#x2F;每一位都拆完就结束 </span><br><span class="line">		n&#x3D;x%10; &#x2F;&#x2F;取出每一位</span><br><span class="line">		printf(&quot;第%d位是%d\n&quot;,ge+1,n); </span><br><span class="line">		ge++; </span><br><span class="line">		x&#x3D;x&#x2F;10;</span><br><span class="line">	&#125; </span><br><span class="line">	printf(&quot;一共是%d位&quot;,ge);  &#x2F;&#x2F;输出多少位 </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="xiti4.9.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/xiti4.9.png" alt></p>
 <hr>
 <h2 id="习题4-11-输入4个整数按序输出"><a href="#习题4-11-输入4个整数按序输出" class="headerlink" title="习题4.11 输入4个整数按序输出"></a>习题4.11 输入4个整数按序输出</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">		int a,b,c,d,t;</span><br><span class="line">		scanf(&quot;%d,%d,%d,%d&quot;,&amp;a,&amp;b,&amp;c,&amp;d);</span><br><span class="line">		if(a&gt;b)&#123;</span><br><span class="line">			t&#x3D;a;</span><br><span class="line">			a&#x3D;b;</span><br><span class="line">			b&#x3D;t;</span><br><span class="line">		&#125;</span><br><span class="line">		if(a&gt;c)&#123;</span><br><span class="line">			t&#x3D;a;</span><br><span class="line">			a&#x3D;c;</span><br><span class="line">			c&#x3D;t;</span><br><span class="line">		&#125;</span><br><span class="line">		if(a&gt;d)&#123;</span><br><span class="line">			t&#x3D;a;</span><br><span class="line">			a&#x3D;d;</span><br><span class="line">			d&#x3D;t;</span><br><span class="line">		&#125;</span><br><span class="line">		if(b&gt;c)&#123;</span><br><span class="line">			t&#x3D;b;</span><br><span class="line">			b&#x3D;c;</span><br><span class="line">			c&#x3D;t;</span><br><span class="line">		&#125;</span><br><span class="line">		if(b&gt;d)&#123;</span><br><span class="line">			t&#x3D;b;</span><br><span class="line">			b&#x3D;d;</span><br><span class="line">			d&#x3D;t;</span><br><span class="line">		&#125;</span><br><span class="line">		if(c&gt;d)&#123;</span><br><span class="line">			t&#x3D;c;</span><br><span class="line">			c&#x3D;d;</span><br><span class="line">			d&#x3D;t;</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;%d,%d,%d,%d\n&quot;,a,b,c,d);  &#x2F;&#x2F;输出四个数字</span><br><span class="line">		return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="xiti4.11.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/xiti4.11.png" alt></p>
 <hr>
 <h1 id="第5章-循环结构程序设计"><a href="#第5章-循环结构程序设计" class="headerlink" title="第5章 循环结构程序设计"></a>第5章 循环结构程序设计</h1><h2 id="例5-8-斐波拉契数列"><a href="#例5-8-斐波拉契数列" class="headerlink" title="例5.8 斐波拉契数列"></a>例5.8 斐波拉契数列</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a,b,c;</span><br><span class="line">	int flag&#x3D;2; &#x2F;&#x2F;记录是第几个数 </span><br><span class="line">	a&#x3D;1;</span><br><span class="line">	b&#x3D;1;</span><br><span class="line">	printf(&quot;第1位的数字是:%d\n&quot;,a);  &#x2F;&#x2F;先输出前两个数 </span><br><span class="line">	printf(&quot;第2位的数字是:%d\n&quot;,b);</span><br><span class="line">	for(int i&#x3D;1;i&lt;39;i++)&#123;  &#x2F;&#x2F;循环40次 </span><br><span class="line">		c&#x3D;a+b;  &#x2F;&#x2F;当前值是前两者之和 </span><br><span class="line">		flag++;  &#x2F;&#x2F;成功计算一次+1 </span><br><span class="line">		printf(&quot;第%d位的数字是:%d\n&quot;,flag,c);</span><br><span class="line">		&#x2F;&#x2F;替换新的a和b </span><br><span class="line">			a&#x3D;b;  &#x2F;&#x2F;递推方式 </span><br><span class="line">			b&#x3D;c;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="5.8.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/5.8.png" alt></p>
 <hr>
 <h2 id="例5-10-100-200之内素数"><a href="#例5-10-100-200之内素数" class="headerlink" title="例5.10 100-200之内素数"></a>例5.10 100-200之内素数</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;math.h&gt; &#x2F;&#x2F;要用sqrt函数 </span><br><span class="line">int main()</span><br><span class="line">&#123; </span><br><span class="line"> &#x2F;&#x2F;求100-200所有素数</span><br><span class="line">	for(int i&#x3D;100;i&lt;200;i++)&#123;   </span><br><span class="line">		int k&#x3D;sqrt(i); &#x2F;&#x2F;开根号</span><br><span class="line">		int flag&#x3D;0; &#x2F;&#x2F;标志位 </span><br><span class="line">		for(int j&#x3D;2;j&lt;&#x3D;k;j++)&#123;  &#x2F;&#x2F;从2-k就可以 </span><br><span class="line">			if(i%j&#x3D;&#x3D;0)&#123;</span><br><span class="line">				flag&#x3D;1;  &#x2F;&#x2F;能被整除就不是素数设置为1 </span><br><span class="line">			&#125; </span><br><span class="line">		&#125;	</span><br><span class="line">		if(flag&#x3D;&#x3D;0)&#123;</span><br><span class="line">			printf(&quot;%d\n&quot;,i); &#x2F;&#x2F;flag没变就是素数 </span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="5.10.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/5.10.png" alt></p>
 <hr>
 <h2 id="习题5-3-求最大公约数和最小公倍数"><a href="#习题5-3-求最大公约数和最小公倍数" class="headerlink" title="习题5.3 求最大公约数和最小公倍数"></a>习题5.3 求最大公约数和最小公倍数</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="xiti5.3.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/xiti5.3.png" alt></p>
 <hr>
 <h2 id="习题5-4-分析字符串组成"><a href="#习题5-4-分析字符串组成" class="headerlink" title="习题5.4 分析字符串组成"></a>习题5.4 分析字符串组成</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123; </span><br><span class="line"> 	int a&#x3D;0; &#x2F;&#x2F;统计英文字母个数 </span><br><span class="line">	int b&#x3D;0; &#x2F;&#x2F;统计空格个数 </span><br><span class="line">	int c&#x3D;0; &#x2F;&#x2F;统计数字个数 </span><br><span class="line">	int d&#x3D;0; &#x2F;&#x2F;统计其他字符个数 </span><br><span class="line">	char temp;  &#x2F;&#x2F;c语言没有字符串string类 所以用char输入</span><br><span class="line">	while((temp&#x3D;getchar())!&#x3D;&#39;\n&#39;)&#123; &#x2F;&#x2F;换行键就结束</span><br><span class="line">		if((temp&gt;&#x3D;&#39;a&#39;&amp;&amp;temp&lt;&#x3D;&#39;z&#39;)||(temp&gt;&#x3D;&#39;A&#39;&amp;&amp;temp&lt;&#x3D;&#39;Z&#39;))&#123;</span><br><span class="line">			a++;  </span><br><span class="line">		&#125;else if(temp&gt;&#x3D;&#39;0&#39;&amp;&amp;temp&lt;&#x3D;&#39;9&#39;)&#123;</span><br><span class="line">			c++;</span><br><span class="line">		&#125;else if(temp&#x3D;&#x3D;&#39; &#39;)&#123;</span><br><span class="line">			b++;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			d++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	printf(&quot;英文字符的个数是:%d\n&quot;,a);  &#x2F;&#x2F;输出对应个数 </span><br><span class="line">	printf(&quot;空格字符的个数是:%d\n&quot;,b);</span><br><span class="line">	printf(&quot;数字的个数是:%d\n&quot;,c);</span><br><span class="line">	printf(&quot;其他字符的个数是:%d\n&quot;,d);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="xiti5.4.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/xiti5.4.png" alt></p>
 <hr>
 <h2 id="习题5-8-水仙花数"><a href="#习题5-8-水仙花数" class="headerlink" title="习题5.8 水仙花数"></a>习题5.8 水仙花数</h2><p><strong>具体代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123; </span><br><span class="line">    &#x2F;&#x2F;水仙花数只能在3位数中出现</span><br><span class="line">	for(int i&#x3D;100;i&lt;999;i++)&#123;  </span><br><span class="line">		int a&#x3D;i&#x2F;100;      &#x2F;&#x2F; 假以187为例 187&#x2F;100&#x3D;1 </span><br><span class="line">		int b&#x3D;i&#x2F;10%10;  &#x2F;&#x2F; 187&#x2F;10&#x3D;18 18%10&#x3D;8 </span><br><span class="line">		int c&#x3D;i%10;    &#x2F;&#x2F; 187%10&#x3D;7 </span><br><span class="line">		if(a*a*a+b*b*b+c*c*c&#x3D;&#x3D;i)&#123;  &#x2F;&#x2F;每位的立方次&#x3D;&#x3D;原数</span><br><span class="line">			printf(&quot;%d\n&quot;,i);</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行结果</strong></p>
-<p><img src="xiti5.8.png" alt=""></p>
+<p><img src="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/xiti5.8.png" alt></p>
 <hr>
 
       
@@ -922,26 +922,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="平方十位数"><a href="#平方十位数" class="headerlink" title="平方十位数"></a>平方十位数</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="shiweishu.png" alt=""></p>
+        <h1 id="平方十位数"><a href="#平方十位数" class="headerlink" title="平方十位数"></a>平方十位数</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="/2020/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/shiweishu.png" alt></p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 其实就是找最大的平方十位数
 2. 从开方最大数倒序找开发最小数中符合平方并且每一位只用过一次的数字
     2.1 最大的数就是10000000000-1 所以平方开始循环从10000(100000*100000=10000000000)开始
     2.2 最小的数就是100000000  所以开方从根号1000000000(31,622.77660168379≈31623)开始</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">       for(long i&#x3D;100000;i&gt;32000;i--)&#123;</span><br><span class="line">            long temp&#x3D;i*i;  &#x2F;&#x2F;找10位的平方数</span><br><span class="line">            String s&#x3D;String.valueOf(temp);  &#x2F;&#x2F;将temp转字符串</span><br><span class="line">            boolean flag&#x3D;true;  &#x2F;&#x2F;设置布尔值  如果不符合题意就退出</span><br><span class="line">            for(int j&#x3D;0;j&lt;10;j++)&#123;</span><br><span class="line">                if(s.indexOf(&quot;&quot;+j)&#x3D;&#x3D;-1)&#123;   &#x2F;&#x2F;如果0-9不重复的使用 那么就不会有-1出现(每个数字都出现过)</span><br><span class="line">                    flag&#x3D;false;</span><br><span class="line">                    break;  &#x2F;&#x2F;不符合就退出</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">           if(flag)&#123;  &#x2F;&#x2F;符合题意就弹出i*i&#x3D;temp</span><br><span class="line">               System.out.println(temp);</span><br><span class="line">               break;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="oneres.png" alt=""></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="/2020/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/oneres.png" alt></p>
 <hr>
-<h1 id="三角形面积-海伦公式"><a href="#三角形面积-海伦公式" class="headerlink" title="三角形面积(海伦公式)"></a>三角形面积(海伦公式)</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p><img src="hailun.png" alt=""></p>
+<h1 id="三角形面积-海伦公式"><a href="#三角形面积-海伦公式" class="headerlink" title="三角形面积(海伦公式)"></a>三角形面积(海伦公式)</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p><img src="/2020/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/hailun.png" alt></p>
 <h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 通过把三角形凑成正方形，利用差计算结果
 2. 海伦公式:
     2.1 s=(a+b+c)/2   (必须先计算出a和b和c)
     2.2 area=sqrt(s*(s-a)*(s-b)*(s-c));</code></pre><h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F; 海伦公式</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        double a &#x3D; Math.sqrt((6.4 - 2.3) * (6.4 - 2.3) + (3.1 - 2.5) * (3.1 - 2.5));   &#x2F;&#x2F;分别计算三个边的长度</span><br><span class="line">        double b &#x3D; Math.sqrt((5.1 - 2.3) * (5.1 - 2.3) + (7.2 - 2.5) * (7.2 - 2.5));</span><br><span class="line">        double c &#x3D; Math.sqrt((6.4 - 5.1) * (6.4 - 5.1) + (7.2 - 3.1) * (7.2 - 3.1));</span><br><span class="line">        double s &#x3D; (a + b + c) &#x2F; 2.0;  &#x2F;&#x2F;计算s</span><br><span class="line">        double area &#x3D; Math.sqrt(s * (s - a) * (s - b) * (s - c));</span><br><span class="line">        System.out.println(area);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h2><p><img src="hailunres.png" alt=""></p>
+<h2 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h2><p><img src="/2020/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/hailunres.png" alt></p>
 <hr>
-<h1 id="最大乘积-dfs"><a href="#最大乘积-dfs" class="headerlink" title="最大乘积(dfs)"></a>最大乘积(dfs)</h1><h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p><img src="zuidachengji.png" alt=""></p>
+<h1 id="最大乘积-dfs"><a href="#最大乘积-dfs" class="headerlink" title="最大乘积(dfs)"></a>最大乘积(dfs)</h1><h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p><img src="/2020/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/zuidachengji.png" alt></p>
 <h2 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 一定是结果</code></pre><h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="结果-2"><a href="#结果-2" class="headerlink" title="结果"></a>结果</h2><p><img src="" alt=""></p>
+<h2 id="结果-2"><a href="#结果-2" class="headerlink" title="结果"></a>结果</h2><p><img src alt></p>
 <hr>
 
       
@@ -1004,7 +1004,7 @@
         <h1 id="Linux系统目录结构"><a href="#Linux系统目录结构" class="headerlink" title="Linux系统目录结构"></a>Linux系统目录结构</h1><blockquote>
 <p><strong>层次:</strong></p>
 </blockquote>
-<p><img src="linuxmulu.png" alt=""></p>
+<p><img src="/2020/10/23/Linux%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/linuxmulu.png" alt></p>
 <hr>
 <h1 id="规范路径-栈stack"><a href="#规范路径-栈stack" class="headerlink" title="规范路径(栈stack)"></a>规范路径(栈stack)</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Unix 风格的文件系统中:</span><br><span class="line">  一个点(.):当前目录本身</span><br><span class="line">  两个点(..):将目录切换到上一级(指向父目录)</span><br><span class="line"></span><br><span class="line">1.必须始终以斜杠 &#x2F; 开头，并且两个目录名之间必须只有一个斜杠 &#x2F;。</span><br><span class="line">2.最后一个目录名（如果存在）不能以 &#x2F; 结尾。</span><br><span class="line">3.必须是表示绝对路径的最短字符串。</span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line">输入：&quot;&#x2F;home&#x2F;&quot;</span><br><span class="line">输出：&quot;&#x2F;home&quot;</span><br><span class="line">解释：注意，最后一个目录名后面没有斜杠。</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入：&quot;&#x2F;..&#x2F;&quot;</span><br><span class="line">输出：&quot;&#x2F;&quot;</span><br><span class="line">解释：从根目录向上一级是不可行的，因为根是你可以到达的最高级。</span><br><span class="line"></span><br><span class="line">示例 3：</span><br><span class="line">输入：&quot;&#x2F;home&#x2F;&#x2F;foo&#x2F;&quot;</span><br><span class="line">输出：&quot;&#x2F;home&#x2F;foo&quot;</span><br><span class="line">解释：在规范路径中，多个连续斜杠需要用一个斜杠替换。</span><br><span class="line"></span><br><span class="line">示例 4：</span><br><span class="line">输入：&quot;&#x2F;a&#x2F;.&#x2F;b&#x2F;..&#x2F;..&#x2F;c&#x2F;&quot;</span><br><span class="line">输出：&quot;&#x2F;c&quot;</span><br><span class="line"></span><br><span class="line">示例 5：</span><br><span class="line">输入：&quot;&#x2F;a&#x2F;..&#x2F;..&#x2F;b&#x2F;..&#x2F;c&#x2F;&#x2F;.&#x2F;&#x2F;&quot;</span><br><span class="line">输出：&quot;&#x2F;c&quot;</span><br><span class="line"></span><br><span class="line">示例 6：</span><br><span class="line">输入：&quot;&#x2F;a&#x2F;&#x2F;bc&#x2F;d&#x2F;&#x2F;.&#x2F;.&#x2F;&#x2F;..&quot;</span><br><span class="line">输出：&quot;&#x2F;a&#x2F;b&#x2F;c&quot;</span><br></pre></td></tr></table></figure>
 
@@ -1016,7 +1016,7 @@
 4.如果栈空,直接返回&quot;/&quot;
   如果栈非空,使用StringBuffer连接栈元素</code></pre><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class Main&#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">        String s&#x3D;input.next();  &#x2F;&#x2F;输入字符串</span><br><span class="line">        System.out.println(simplifyPath(s));  &#x2F;&#x2F;调用方法返回结果</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static String simplifyPath(String s)&#123;</span><br><span class="line">        int len&#x3D;s.length(); &#x2F;&#x2F;获取字符串长度</span><br><span class="line">        String[] str&#x3D;s.split(&quot;&#x2F;&quot;);  &#x2F;&#x2F;根据&#x2F;生成字符串数组</span><br><span class="line">        StringBuilder sb&#x3D;new StringBuilder();  &#x2F;&#x2F;最终转字符串</span><br><span class="line">        Stack&lt;String&gt; stack&#x3D;new Stack&lt;&gt;(); &#x2F;&#x2F;生成stack栈</span><br><span class="line"></span><br><span class="line">        for(int i&#x3D;0;i&lt;str.length;i++)&#123;</span><br><span class="line">            if(str[i].equals(&quot;..&quot;)&amp;&amp;!stack.isEmpty())&#123;</span><br><span class="line">                stack.pop();  &#x2F;&#x2F;如果是..就返回父目录 就要出栈</span><br><span class="line">            &#125;else if(!str[i].equals(&quot;&quot;)&amp;&amp;!str[i].equals(&quot;.&quot;)&amp;&amp;!str[i].equals(&quot;..&quot;))&#123;</span><br><span class="line">                stack.push(str[i]);  &#x2F;&#x2F;如果是路径 &#x2F;abc中的abc就要入栈</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(stack.isEmpty())&#123;</span><br><span class="line">            return &quot;&#x2F;&quot;;  &#x2F;&#x2F;如果最终没有目录 就要返回&#x2F;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i&#x3D;0;i&lt;stack.size();i++)&#123;</span><br><span class="line">            sb.append(&quot;&#x2F;&quot;+stack.get(i));  &#x2F;&#x2F;sb拼接即可</span><br><span class="line">        &#125;</span><br><span class="line">        return sb.toString();  &#x2F;&#x2F;转字符串</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="实现结果"><a href="#实现结果" class="headerlink" title="实现结果"></a>实现结果</h2><p><img src="resone.png" alt=""></p>
+<h2 id="实现结果"><a href="#实现结果" class="headerlink" title="实现结果"></a>实现结果</h2><p><img src="/2020/10/23/Linux%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/resone.png" alt></p>
 <hr>
 
       
@@ -1076,18 +1076,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="删除排序链表的重复元素-改变指向"><a href="#删除排序链表的重复元素-改变指向" class="headerlink" title="删除排序链表的重复元素(改变指向)"></a>删除排序链表的重复元素(改变指向)</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="delduoyu.png" alt=""></p>
+        <h1 id="删除排序链表的重复元素-改变指向"><a href="#删除排序链表的重复元素-改变指向" class="headerlink" title="删除排序链表的重复元素(改变指向)"></a>删除排序链表的重复元素(改变指向)</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/delduoyu.png" alt></p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 新建current链表指向head，方便后面移动
 2. 只要当前节点值和下一个结点值相同就指向跳过下一个节点
 3. 只要不相同就正常挪到下个节点判断</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static ListNode deleteDuplicates(ListNode head) &#123;</span><br><span class="line">       ListNode current &#x3D; head;  &#x2F;&#x2F;要判断的链表给current</span><br><span class="line">       while (current !&#x3D; null &amp;&amp; current.next !&#x3D; null) &#123;  &#x2F;&#x2F;没到结尾</span><br><span class="line">           if (current.next.val &#x3D;&#x3D; current.val) &#123;  &#x2F;&#x2F;当前节点和下一个结点值相同</span><br><span class="line">               current.next &#x3D; current.next.next;  &#x2F;&#x2F;直接跳过下一个节点</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">               current &#x3D; current.next; &#x2F;&#x2F;不相同的话挪下一个结点判断</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       return head;  &#x2F;&#x2F;最后返回head即可</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="二进制链表转整数-倒序累积"><a href="#二进制链表转整数-倒序累积" class="headerlink" title="二进制链表转整数(倒序累积)"></a>二进制链表转整数(倒序累积)</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p><img src="zhuanzhengshutimu.png" alt=""></p>
+<h1 id="二进制链表转整数-倒序累积"><a href="#二进制链表转整数-倒序累积" class="headerlink" title="二进制链表转整数(倒序累积)"></a>二进制链表转整数(倒序累积)</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p><img src="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/zhuanzhengshutimu.png" alt></p>
 <h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 使用while循环测试出多少个节点(数组方便给大小)
 2. 使用while循环将每一位给数组
 3. 倒序将二进制累计!!</code></pre><h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.util.*;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        ListNode head1&#x3D;new ListNode(1);</span><br><span class="line">        ListNode head2&#x3D;new ListNode(0);</span><br><span class="line">        ListNode head3&#x3D;new ListNode(1);</span><br><span class="line">        head1.next&#x3D;head2;    &#x2F;&#x2F;生成三个节点 然后相连</span><br><span class="line">        head2.next&#x3D;head3;</span><br><span class="line">        System.out.println(getDecimalValue(head1));  &#x2F;&#x2F;调用方法返回结果</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static int getDecimalValue(ListNode head) &#123;</span><br><span class="line">        int res&#x3D;0;</span><br><span class="line">        int flag&#x3D;0; &#x2F;&#x2F;统计有几个节点</span><br><span class="line">        ListNode temp&#x3D;head;</span><br><span class="line">        while(temp!&#x3D;null)&#123;</span><br><span class="line">            flag++;  &#x2F;&#x2F;+1</span><br><span class="line">            temp&#x3D;temp.next;  &#x2F;&#x2F;节点往后遍历</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        temp&#x3D;head;  &#x2F;&#x2F;重新指向head</span><br><span class="line">        int[] a&#x3D;new int[flag];  &#x2F;&#x2F;存每一位</span><br><span class="line">        int t&#x3D;0; &#x2F;&#x2F;控制a数组下标</span><br><span class="line">        while(temp!&#x3D;null)&#123;</span><br><span class="line">            a[t++]&#x3D;temp.val;  &#x2F;&#x2F;记录当前值</span><br><span class="line">            temp&#x3D;temp.next;  &#x2F;&#x2F;节点往后遍历</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;a数组&quot;+Arrays.toString(a));</span><br><span class="line"></span><br><span class="line">        int zs&#x3D;0; &#x2F;&#x2F;控制每一位数字乘2的倍数</span><br><span class="line">        for(int i&#x3D;a.length-1;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">           System.out.println(&quot;a[i]是:&quot;+a[i]+&quot; 当前倍数乘的是:&quot;+Math.pow(2,zs));</span><br><span class="line">            res+&#x3D;a[i]*Math.pow(2,zs);</span><br><span class="line">            zs++;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="zhuanzhengshu.png" alt=""></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/zhuanzhengshu.png" alt></p>
 <hr>
 
       
@@ -1159,52 +1159,52 @@
 <h1 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h1><blockquote>
 <p><strong>鼠标右键单击桌面空白处，打开git Gui Here，选择 Create New Repository（在本地创建一个仓库），如下</strong></p>
 </blockquote>
-<p><img src="create.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/create.png" alt></p>
 <blockquote>
 <p><strong>选择要托管项目本地存放位置(即本地新建仓库的位置)</strong></p>
 </blockquote>
-<p><img src="change.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/change.png" alt></p>
 <blockquote>
 <p><strong>点击Remote里面的Add</strong></p>
 </blockquote>
-<p><img src="add.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/add.png" alt></p>
 <blockquote>
 <p><strong>下一步之前需要github创建一个仓库用来存放</strong></p>
 </blockquote>
-<p><img src="newrepository.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/newrepository.png" alt></p>
 <blockquote>
 <p><strong>新建名字为department的仓库</strong></p>
 </blockquote>
-<p><img src="department.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/department.png" alt></p>
 <blockquote>
 <p><strong>继续add进入之后填写信息(成功后会提示success的绿色横线)</strong></p>
 </blockquote>
-<p><img src="addgit.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/addgit.png" alt></p>
 <blockquote>
 <p><strong>Rescan(刷新显示未缓存的demo文件)</strong></p>
 </blockquote>
-<p><img src="rescan.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/rescan.png" alt></p>
 <blockquote>
 <p><strong>Stage Changed(将未缓存文件缓存到)</strong></p>
 </blockquote>
-<p><img src="stagechanged.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/stagechanged.png" alt></p>
 <blockquote>
 <p><strong>Sign Off标志(右侧会提示一行信息)</strong></p>
 </blockquote>
-<p><img src="signoff.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/signoff.png" alt></p>
 <blockquote>
 <p><strong>Commit(提交命令)</strong></p>
 </blockquote>
-<p><img src="commit.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/commit.png" alt></p>
 <blockquote>
 <p><strong>上传到github(需要填写github用户密码)</strong></p>
 </blockquote>
-<p><img src="puto.png" alt=""></p>
-<p><img src="success.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/puto.png" alt></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/success.png" alt></p>
 <blockquote>
 <p><strong>查看github</strong></p>
 </blockquote>
-<p><img src="github.png" alt=""></p>
+<p><img src="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/github.png" alt></p>
 <hr>
 <h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><blockquote>
 <p><strong>按照步骤即可</strong></p>
@@ -1278,9 +1278,9 @@
 3. 作用
     3.1 一次编译,到处运行(java语言的可移植性)
     3.2 自动内存管理
-    3.3 自动垃圾回收功能</code></pre><h2 id="jvm位置"><a href="#jvm位置" class="headerlink" title="jvm位置"></a>jvm位置</h2><p><img src="jvmres.png" alt=""></p>
-<h2 id="jvm整体结构-背"><a href="#jvm整体结构-背" class="headerlink" title="jvm整体结构(背)"></a>jvm整体结构(背)</h2><p><img src="jvmwhole.png" alt=""></p>
-<h2 id="java代码执行流程"><a href="#java代码执行流程" class="headerlink" title="java代码执行流程"></a>java代码执行流程</h2><p><img src="javazhixing.png" alt=""></p>
+    3.3 自动垃圾回收功能</code></pre><h2 id="jvm位置"><a href="#jvm位置" class="headerlink" title="jvm位置"></a>jvm位置</h2><p><img src="/2020/08/13/JVM/jvmres.png" alt></p>
+<h2 id="jvm整体结构-背"><a href="#jvm整体结构-背" class="headerlink" title="jvm整体结构(背)"></a>jvm整体结构(背)</h2><p><img src="/2020/08/13/JVM/jvmwhole.png" alt></p>
+<h2 id="java代码执行流程"><a href="#java代码执行流程" class="headerlink" title="java代码执行流程"></a>java代码执行流程</h2><p><img src="/2020/08/13/JVM/javazhixing.png" alt></p>
 <h2 id="jvm架构模型-栈-寄存器指令集架构"><a href="#jvm架构模型-栈-寄存器指令集架构" class="headerlink" title="jvm架构模型(栈/寄存器指令集架构)"></a>jvm架构模型(栈/寄存器指令集架构)</h2><pre><code>1. 栈的指令集架构
 2. 寄存器的指令集架构</code></pre><h2 id="jvm生命周期-三个状态"><a href="#jvm生命周期-三个状态" class="headerlink" title="jvm生命周期(三个状态)"></a>jvm生命周期(三个状态)</h2><pre><code>1. 启动
     通过引导类加载器创建一个初始类完成
@@ -1296,9 +1296,9 @@
 <h1 id="内存结构"><a href="#内存结构" class="headerlink" title="内存结构"></a>内存结构</h1><blockquote>
 <p><strong>类加载器子系统+虚拟机栈+执行引擎</strong></p>
 </blockquote>
-<p><img src="neicun.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/neicun.png" alt></p>
 <hr>
-<h1 id="类加载器子系统"><a href="#类加载器子系统" class="headerlink" title="类加载器子系统"></a>类加载器子系统</h1><h2 id="垃圾存在区域"><a href="#垃圾存在区域" class="headerlink" title="垃圾存在区域"></a>垃圾存在区域</h2><pre><code>方法区和堆(99%)  栈会弹出所以不会有垃圾</code></pre><h2 id="类加载过程-3步"><a href="#类加载过程-3步" class="headerlink" title="类加载过程(3步)"></a>类加载过程(3步)</h2><p><img src="loading.png" alt=""></p>
+<h1 id="类加载器子系统"><a href="#类加载器子系统" class="headerlink" title="类加载器子系统"></a>类加载器子系统</h1><h2 id="垃圾存在区域"><a href="#垃圾存在区域" class="headerlink" title="垃圾存在区域"></a>垃圾存在区域</h2><pre><code>方法区和堆(99%)  栈会弹出所以不会有垃圾</code></pre><h2 id="类加载过程-3步"><a href="#类加载过程-3步" class="headerlink" title="类加载过程(3步)"></a>类加载过程(3步)</h2><p><img src="/2020/08/13/JVM/loading.png" alt></p>
 <pre><code>1. Loading  加载
 2. Linking  链接
     2.1 验证 verify
@@ -1319,7 +1319,7 @@
 <h1 id="双亲委派机制-类加载器机制"><a href="#双亲委派机制-类加载器机制" class="headerlink" title="双亲委派机制(类加载器机制)"></a>双亲委派机制(类加载器机制)</h1><h2 id="举例-Car类"><a href="#举例-Car类" class="headerlink" title="举例(Car类)"></a>举例(Car类)</h2><blockquote>
 <p><strong>引用在栈,具体存在堆</strong></p>
 </blockquote>
-<p><img src="example.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/example.png" alt></p>
 <h2 id="加载器分类-4个"><a href="#加载器分类-4个" class="headerlink" title="加载器分类(4个)"></a>加载器分类(4个)</h2><pre><code>1. 虚拟机自带的加载器
 2. 启动类(根)加载器
 3. 扩展类加载器
@@ -1348,13 +1348,13 @@
 <h1 id="Native关键字-底层c语言的库"><a href="#Native关键字-底层c语言的库" class="headerlink" title="Native关键字(底层c语言的库)"></a>Native关键字(底层c语言的库)</h1><blockquote>
 <p><strong>Java的作用范围达不到，要去找C语言的库</strong></p>
 </blockquote>
-<p><img src="navtive.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/navtive.png" alt></p>
 <pre><code>1. 进入本地方法栈
 2. 调动本地方法接口 JNI(Java native interface) --扩展java的使用(融合不同编程语言为java所用)</code></pre><hr>
 <h1 id="PC寄存器-Program-Counter-Register"><a href="#PC寄存器-Program-Counter-Register" class="headerlink" title="PC寄存器(Program Counter Register)"></a>PC寄存器(Program Counter Register)</h1><blockquote>
 <p><strong>每个线程都有一个程序计数器,是线程私有的一个指针</strong></p>
 </blockquote>
-<p><img src="pc.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/pc.png" alt></p>
 <hr>
 <h1 id="方法区-Method-Area"><a href="#方法区-Method-Area" class="headerlink" title="方法区(Method Area)"></a>方法区(Method Area)</h1><blockquote>
 <p><strong>所有线程共享(共享区间)</strong></p>
@@ -1370,7 +1370,7 @@
 3. IBM J9 VM</code></pre><blockquote>
 <p><strong>HotSpot虚拟机的查看:</strong></p>
 </blockquote>
-<p><img src="javazhiling.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/javazhiling.png" alt></p>
 <hr>
 <h1 id="堆-Heap"><a href="#堆-Heap" class="headerlink" title="堆(Heap)"></a>堆(Heap)</h1><blockquote>
 <p><strong>一个JVM只有一个堆内存</strong></p>
@@ -1380,9 +1380,9 @@
 3. 永久区(Jdk8之后叫元空间)  Perm  </code></pre><blockquote>
 <p><strong>GC主要在新生区和养老区</strong></p>
 </blockquote>
-<p><img src="GC.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/GC.png" alt></p>
 <h2 id="新生区-类诞生、成长、死亡"><a href="#新生区-类诞生、成长、死亡" class="headerlink" title="新生区(类诞生、成长、死亡)"></a>新生区(类诞生、成长、死亡)</h2><pre><code>1. 伊甸园区   --所有对象都在这new
-2. 幸存区(幸存区0,幸存区1) </code></pre><p><img src="ed.png" alt=""></p>
+2. 幸存区(幸存区0,幸存区1) </code></pre><p><img src="/2020/08/13/JVM/ed.png" alt></p>
 <h2 id="养老区"><a href="#养老区" class="headerlink" title="养老区"></a>养老区</h2><blockquote>
 <p><strong>新生区没有被淘汰清除的活下来了</strong></p>
 </blockquote>
@@ -1395,17 +1395,17 @@ jdk1.8      无永久代 常量池在元空间</code></pre><hr>
 <h1 id="GC-垃圾回收"><a href="#GC-垃圾回收" class="headerlink" title="GC(垃圾回收)"></a>GC(垃圾回收)</h1><h2 id="复制算法-新生代使用"><a href="#复制算法-新生代使用" class="headerlink" title="复制算法(新生代使用)"></a>复制算法(新生代使用)</h2><blockquote>
 <p><strong>谁空了谁就是to区域</strong></p>
 </blockquote>
-<p><img src="fuzhi.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/fuzhi.png" alt></p>
 <blockquote>
 <p><strong>从一个区域复制到另外一个(from和to的交换)</strong></p>
 </blockquote>
-<p><img src="fuzhizui.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/fuzhizui.png" alt></p>
 <h2 id="标记清除算法-标记-清除"><a href="#标记清除算法-标记-清除" class="headerlink" title="标记清除算法(标记-清除)"></a>标记清除算法(标记-清除)</h2><blockquote>
 <p><strong>先标记,然后没有标记的进行清除,最后会造成内存碎片</strong></p>
 </blockquote>
-<p><img src="biaojiqingchu.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/biaojiqingchu.png" alt></p>
 <h2 id="标记压缩算法-标记-清除-压缩"><a href="#标记压缩算法-标记-清除-压缩" class="headerlink" title="标记压缩算法(标记-清除-压缩)"></a>标记压缩算法(标记-清除-压缩)</h2><pre><code>1. 标记 - 清除 - 压缩(重复步骤好几次，但是消耗大)
-2. 标记清除几次 - 压缩(一次性将碎片整理)</code></pre><p><img src="biaojiyasuo.png" alt=""></p>
+2. 标记清除几次 - 压缩(一次性将碎片整理)</code></pre><p><img src="/2020/08/13/JVM/biaojiyasuo.png" alt></p>
 <h2 id="分代收集算法-分代不同的解决方案"><a href="#分代收集算法-分代不同的解决方案" class="headerlink" title="分代收集算法(分代不同的解决方案)"></a>分代收集算法(分代不同的解决方案)</h2><pre><code>1. 年轻代 : 存活率低 -&gt; 复制算法
 2. 老年代 : 存活率大 -&gt; 标记清除(内存碎片不多) + 标记压缩混合 </code></pre><h2 id="算法总结"><a href="#算法总结" class="headerlink" title="算法总结"></a>算法总结</h2><pre><code>1. 内存效率    
     复制算法 &gt; 标记清除算法 &gt; 标记压缩算法(时间复杂度)
@@ -1420,7 +1420,7 @@ jdk1.8      无永久代 常量池在元空间</code></pre><hr>
 </blockquote>
 <p><a href="https://www.bilibili.com/video/BV1iJ411d7jS" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1iJ411d7jS</a></p>
 <hr>
-<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1><hr>
+<h1 id><a href="#" class="headerlink" title="#"></a>#</h1><hr>
 
       
       

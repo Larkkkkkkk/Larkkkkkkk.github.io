@@ -376,9 +376,9 @@
       
           
         <h1 id="Linux权限"><a href="#Linux权限" class="headerlink" title="Linux权限"></a>Linux权限</h1><p><strong>以root目录下的文件为例：</strong></p>
-<p><img src="quanxian.png" alt=""></p>
+<p><img src="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/quanxian.png" alt></p>
 <p><strong>权限分为四部分(- — — —(1333))</strong></p>
-<p><img src="fenlei.png" alt=""></p>
+<p><img src="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/fenlei.png" alt></p>
 <h2 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型(-)"></a>文件类型(-)</h2><pre><code>- 表示 文件
 d 表示 文件夹
 l 表示 连接</code></pre><h2 id="当前用户对该文件拥有的权限-—"><a href="#当前用户对该文件拥有的权限-—" class="headerlink" title="当前用户对该文件拥有的权限(—)"></a>当前用户对该文件拥有的权限(—)</h2><pre><code>r 表示 读(read)
@@ -417,7 +417,7 @@ x: 1
           1. vim /etc/sysconfig/network-scripts/ifcfg-eth0
           2. 修改两个参数(ONBOOT改为yes/ BOOTPROTO改为static)
           3. 添加四行(IP地址/子网掩码/网络地址/广播地址)</code></pre><p><strong>例如我将我的ip为192.168.209.128：</strong></p>
-<p><img src="xiugaiip.png" alt=""></p>
+<p><img src="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/xiugaiip.png" alt></p>
 <hr>
 <h1 id="域名映射-本机生效"><a href="#域名映射-本机生效" class="headerlink" title="域名映射(本机生效)"></a>域名映射(本机生效)</h1><blockquote>
 <p><strong>/etc/hosts</strong>文件用于在<strong>通过主机名进行访问</strong>时做ip地址解析<br>相当于windows的  C:\Windows\System3\drivers\etc\hosts文件</p>
@@ -425,7 +425,7 @@ x: 1
 <p><strong>1. vim etc/homes 进入文件</strong></p>
 <p><strong>2. 按i插入 192.168.209.128 itcast01 一行</strong>             </p>
 <p><strong>3. 通过ping itcast也可以进行(以前都是ping192.168.209.128的一行)</strong>    </p>
-<p><img src="yinshe.png" alt="">    </p>
+<p><img src="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/yinshe.png" alt>    </p>
 <hr>
 <h1 id="网络服务管理-service"><a href="#网络服务管理-service" class="headerlink" title="网络服务管理 service"></a>网络服务管理 service</h1><h2 id="指定服务-service-network"><a href="#指定服务-service-network" class="headerlink" title="指定服务 service network"></a>指定服务 service network</h2><pre><code>service network status   查看指定服务的状态
 service network stop     停止指定服务

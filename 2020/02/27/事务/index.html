@@ -389,11 +389,11 @@
 <ol>
 <li><strong>关闭自动提交</strong>功能。</li>
 </ol>
-<p><img src="img01.png" alt=""></p>
+<p><img src="/2020/02/27/%E4%BA%8B%E5%8A%A1/img01.png" alt></p>
 <ol start="2">
 <li><strong>演示</strong>事务</li>
 </ol>
-<p><img src="img02.png" alt=""></p>
+<p><img src="/2020/02/27/%E4%BA%8B%E5%8A%A1/img02.png" alt></p>
 <h2 id="使用代码方式演示事务-针对连接"><a href="#使用代码方式演示事务-针对连接" class="headerlink" title="使用代码方式演示事务(针对连接)"></a>使用代码方式演示事务(针对连接)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 关闭自动提交的设置  conn.setAutoCommit（false ）</span><br><span class="line"></span><br><span class="line">2. 提交事务  conn.commit();</span><br><span class="line"></span><br><span class="line">3. 回滚事务  conn.rollback();</span><br></pre></td></tr></table></figure>
 
 <p><strong>单元测试代码(只是在连接前关闭自动提交，然后操作结束后关闭事务，然后错误的时候提示回滚)</strong></p>
@@ -445,14 +445,14 @@
 </blockquote>
 </li>
 </ol>
-<p><img src="img09.png" alt=""></p>
+<p><img src="/2020/02/27/%E4%BA%8B%E5%8A%A1/img09.png" alt></p>
 <ol start="2">
 <li><strong>乐观锁</strong><blockquote>
 <p>要求程序员自己控制(添加version版本)</p>
 </blockquote>
 </li>
 </ol>
-<p><img src="img10.png" alt=""></p>
+<p><img src="/2020/02/27/%E4%BA%8B%E5%8A%A1/img10.png" alt></p>
 <h2 id="可串行化-顺序"><a href="#可串行化-顺序" class="headerlink" title="可串行化(顺序)"></a>可串行化(顺序)</h2><p>　　如果有一个连接的隔离级别设置为了串行化 ，那么谁先打开了事务， 谁就有了先执行的权利， 谁后打开事务，谁就只能得着，等前面的那个事务，提交或者回滚后，才能执行。<br>　　但是这种隔离级别一般比较少用。 容易造成性能上的问题。 效率比较低。</p>
 <ul>
 <li>按<strong>效率</strong>划分，从高到低</li>

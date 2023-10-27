@@ -380,15 +380,15 @@
 <li>在WebContent新建一个product_list.jsp的jsp文件，然后拷贝原来product_list.html的html标签内容替换掉jsp里面的html。<strong>(方便后面可以进行实现和消除浏览记录的操作)</strong></li>
 <li>将product_info.html的手机数码的超链接改为product_list.jsp<strong>(为了能够点进去商品之后退出到刚才的很多商品列表)</strong></li>
 </ol>
-<p><img src="disanbu.png" alt=""></p>
+<p><img src="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95/disanbu.png" alt></p>
 <ol start="4">
 <li>将首页index.html里面的手机数码的跳转位置改为product_list.jsp</li>
 </ol>
-<p><img src="disibu.png" alt=""></p>
+<p><img src="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95/disibu.png" alt></p>
 <h1 id="二、servlet代码编写"><a href="#二、servlet代码编写" class="headerlink" title="二、servlet代码编写"></a>二、servlet代码编写</h1><ol>
 <li>将商品列表里面的product_list.jsp每个class下面的herf改成<code>&lt;a href=&quot;ProductInfoServlet?id=1/2/3/4/5/6&quot;&gt;</code><strong>(其中每个ProductInfoServlet是xml注解里面url路径)</strong></li>
 </ol>
-<p><img src="chuangyi.png" alt=""></p>
+<p><img src="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95/chuangyi.png" alt></p>
 <ol start="2">
 <li>去写一个关于存储浏览过哪些的页面的类：</li>
 </ol>
@@ -406,7 +406,7 @@
 3.在jsp页面上，显示a和b的值
     &lt;%=a %&gt;
     &lt;%=b %&gt;</code></pre><p><strong>更改的位置大概在(product_list.jsp的商品浏览记录左右)：</strong></p>
-<p><img src="liulan.png" alt=""></p>
+<p><img src="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95/liulan.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style&#x3D;&quot;overflow: hidden;&quot;&gt;</span><br><span class="line">				&lt;ul style&#x3D;&quot;list-style: none;&quot;&gt;	</span><br><span class="line">				&lt;%</span><br><span class="line">					Cookie[] cookie&#x3D;request.getCookies();</span><br><span class="line">					Cookie cook&#x3D;CookieUtil.findCookie(cookie,&quot;history&quot;);</span><br><span class="line">					if(cookie&#x3D;&#x3D;null)</span><br><span class="line">					&#123;</span><br><span class="line">				%&gt;</span><br><span class="line">						&lt;h2&gt;你还没有浏览商品!&lt;&#x2F;h2&gt; </span><br><span class="line">				&lt;% </span><br><span class="line">					&#125;</span><br><span class="line">					else</span><br><span class="line">					&#123;</span><br><span class="line">						String[] id&#x3D;cook.getValue().split(&quot;#&quot;);  &#x2F;&#x2F;将1#2#3#4#5 拆分成 1 2 3 4 5 </span><br><span class="line">						for(String i:id)</span><br><span class="line">						&#123;</span><br><span class="line">							%&gt;</span><br><span class="line">								&#x2F;&#x2F;后面把图片改成&lt;%&#x3D;i %&gt;形式可以弹出对应的的图片</span><br><span class="line">							   &lt;li style&#x3D;&quot;width: 150px;height: 216;float: left;margin: 0 8px 0 0;padding: 0 18px 15px;text-align: center;&quot;&gt;&lt;img src&#x3D;&quot;products&#x2F;1&#x2F;cs1000&lt;%&#x3D;i %&gt;.jpg&quot; width&#x3D;&quot;130px&quot; height&#x3D;&quot;130px&quot; &#x2F;&gt;&lt;&#x2F;li&gt;</span><br><span class="line">							&lt;% </span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				%&gt;					</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="四、清除浏览记录"><a href="#四、清除浏览记录" class="headerlink" title="四、清除浏览记录"></a>四、清除浏览记录</h1><ol>

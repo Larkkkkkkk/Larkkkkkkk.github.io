@@ -383,7 +383,7 @@
         <h1 id="数据库-sql-—-增删查改-CRUD"><a href="#数据库-sql-—-增删查改-CRUD" class="headerlink" title="数据库(sql)—-增删查改(CRUD)"></a>数据库(sql)—-增删查改(CRUD)</h1><ul>
 <li>开始的数据库：</li>
 </ul>
-<p><img src="yuanshi.png" alt=""></p>
+<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/yuanshi.png" alt></p>
 <p><strong>其中四个增删查改的操作</strong></p>
 <ul>
 <li><p><strong>insert(插入)</strong></p>
@@ -413,7 +413,7 @@ where age=5;</code></pre></li>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">package CRUDlianxi;</span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import com.mysql.jdbc.Connection;</span><br><span class="line">import com.mysql.jdbc.Statement;</span><br><span class="line">public class MainTest &#123;</span><br><span class="line">	public static void main(String[] args) throws SQLException &#123;</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;1.获得连接对象</span><br><span class="line">		java.sql.Connection conn&#x3D;JDBC.getConn();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.根据连接对象，得到statement</span><br><span class="line">		java.sql.Statement st&#x3D;conn.createStatement();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">		String sql&#x3D;&quot;select * from s_stu where name&#x3D;&#39;lisi&#39;&quot;;  &#x2F;&#x2F;写sql语句</span><br><span class="line">		ResultSet rs&#x3D;st.executeQuery(sql);	&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;4.遍历</span><br><span class="line">		while(rs.next())  &#x2F;&#x2F;判断是不是有下一个</span><br><span class="line">		&#123;</span><br><span class="line">			int id&#x3D;rs.getInt(&quot;id&quot;);</span><br><span class="line">			String name&#x3D;rs.getString(&quot;name&quot;);</span><br><span class="line">			int age&#x3D;rs.getInt(&quot;age&quot;);</span><br><span class="line">			System.out.println(&quot;id&#x3D;&quot;+id+&quot; name&#x3D;&quot;+name+&quot; age&#x3D;&quot;+age);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>查询结果如下：</strong></p>
-<p><img src="diyige.png" alt=""></p>
+<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/diyige.png" alt></p>
 <hr>
 <h1 id="二、修改"><a href="#二、修改" class="headerlink" title="二、修改"></a>二、修改</h1><p>　　主要是更改为st调用<code>executeUpdate(sql)</code>方法，结果返回给一个整数rs,判断rs得知结果修改正确与否</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">String sql&#x3D;&quot;update s_stu set id&#x3D;22 where age&#x3D;18&quot;;  &#x2F;&#x2F;写sql语句</span><br><span class="line">int rs&#x3D;st.executeUpdate(sql);	&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;4判断是不是修改正确</span><br><span class="line">if(rs &gt;0 )&#123;</span><br><span class="line">	System.out.println(&quot;更新成功&quot;);</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">	System.out.println(&quot;更新失败&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -422,9 +422,9 @@ where age=5;</code></pre></li>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">package CRUDlianxi;</span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import com.mysql.jdbc.Connection;</span><br><span class="line">import com.mysql.jdbc.Statement;</span><br><span class="line">public class MainTest &#123;</span><br><span class="line">	public static void main(String[] args) throws SQLException &#123;</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;1.获得连接对象</span><br><span class="line">		java.sql.Connection conn&#x3D;JDBC.getConn();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.根据连接对象，得到statement</span><br><span class="line">		java.sql.Statement st&#x3D;conn.createStatement();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">		String sql&#x3D;&quot;update s_stu set id&#x3D;22 where age&#x3D;18&quot;;  &#x2F;&#x2F;写sql语句</span><br><span class="line">		int rs&#x3D;st.executeUpdate(sql);	&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;4判断是不是修改正确</span><br><span class="line">		if(rs &gt;0 )&#123;</span><br><span class="line">			System.out.println(&quot;更新成功&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(&quot;更新失败&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>修改结果如下：</strong></p>
-<p><img src="dierge.png" alt=""></p>
+<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/dierge.png" alt></p>
 <p><strong>修改之后数据库的样子：</strong></p>
-<p><img src="diergede.png" alt=""></p>
+<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/diergede.png" alt></p>
 <hr>
 <h1 id="三、删除"><a href="#三、删除" class="headerlink" title="三、删除"></a>三、删除</h1><p>　　和修改操作相比只是sql语句不同，调用的方法都相同。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">String sql&#x3D;&quot;delete from s_stu where id&#x3D;22&quot;;  &#x2F;&#x2F;写sql语句		</span><br><span class="line">int result &#x3D; st.executeUpdate(sql);&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;4判断是不是删除正确</span><br><span class="line">if(result &gt;0 )&#123;</span><br><span class="line">	System.out.println(&quot;删除成功&quot;);</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">	System.out.println(&quot;删除失败&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -434,9 +434,9 @@ where age=5;</code></pre></li>
 
 
 <p><strong>删除结果如下：</strong></p>
-<p><img src="disange.png" alt=""></p>
+<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/disange.png" alt></p>
 <p><strong>删除之后数据库的样子：</strong></p>
-<p><img src="disangede.png" alt=""></p>
+<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/disangede.png" alt></p>
 <hr>
 <h1 id="四、插入"><a href="#四、插入" class="headerlink" title="四、插入"></a>四、插入</h1><p>　　和修改操作相比只是sql语句不同，调用的方法都相同。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">String sql&#x3D;&quot;insert into s_stu (id,name,age) values (66,&#39;wangqiang&#39;,28)&quot;;  &#x2F;&#x2F;写sql语句		</span><br><span class="line">int result &#x3D; st.executeUpdate(sql);&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;4判断是不是删除正确	</span><br><span class="line">if(result &gt;0 )&#123;</span><br><span class="line">	System.out.println(&quot;添加成功&quot;);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	System.out.println(&quot;添加失败&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -446,14 +446,14 @@ where age=5;</code></pre></li>
 
 
 <p><strong>插入结果如下：</strong></p>
-<p><img src="disige.png" alt=""></p>
+<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/disige.png" alt></p>
 <p><strong>插入之后数据库的样子：</strong></p>
-<p><img src="disigede.png" alt=""></p>
+<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/disigede.png" alt></p>
 <hr>
 <h1 id="代码步骤总结："><a href="#代码步骤总结：" class="headerlink" title="代码步骤总结："></a>代码步骤总结：</h1><ol>
 <li>需要去拷贝JDBC文件内的JDBC类还有properties文件(有url/name/password等)，之后导入mysql和java的jar连接包。</li>
 </ol>
-<p><img src="zongjie.png" alt=""></p>
+<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/zongjie.png" alt></p>
 <ol start="2">
 <li>根据类.getConn()方法—&gt;连接对象conn<br> <code>java.sql.Connection conn=JDBC.getConn();</code></li>
 <li>根据对象调取createStatement()方法—&gt;关键对象st<br> <code>java.sql.Statement st=conn.createStatement();</code></li>

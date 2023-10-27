@@ -376,7 +376,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="一、JavaEE结构"><a href="#一、JavaEE结构" class="headerlink" title="一、JavaEE结构"></a>一、JavaEE结构</h1><p><strong>客户端-服务器端</strong><br><img src="gaishu.png" alt=""></p>
+        <h1 id="一、JavaEE结构"><a href="#一、JavaEE结构" class="headerlink" title="一、JavaEE结构"></a>一、JavaEE结构</h1><p><strong>客户端-服务器端</strong><br><img src="/2020/02/14/JDBC%E4%B8%AD%E7%9A%84JAVAEE%E7%BB%93%E6%9E%84/gaishu.png" alt></p>
 <hr>
 <h1 id="二、Dao模式-Data-Access-Object-数据访问对象"><a href="#二、Dao模式-Data-Access-Object-数据访问对象" class="headerlink" title="二、Dao模式(Data Access Object 数据访问对象)"></a>二、Dao模式(Data Access Object 数据访问对象)</h1><ul>
 <li><strong>1.现将数据库和java连接的外接jar导入。将第一讲的类JDBC放入util包内，并且导入properties文件(student改为新的数据库user)。</strong></li>
@@ -384,7 +384,7 @@
 <ul>
 <li><strong>2.新建数据库为user，建立一个属性有id/name/password的表t_user</strong></li>
 </ul>
-<p><img src="shujuku.png" alt=""></p>
+<p><img src="/2020/02/14/JDBC%E4%B8%AD%E7%9A%84JAVAEE%E7%BB%93%E6%9E%84/shujuku.png" alt></p>
 <ul>
 <li><strong>3.建立四个包：dao(里面声明数据库访问规则) impl(具体实现早前定义的规则) test(直接使用实现) util</strong></li>
 </ul>
@@ -402,7 +402,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package test;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import org.junit.Test;</span><br><span class="line">import dao.UserDao;</span><br><span class="line">import impl.UserDaoImp;</span><br><span class="line">public class testUserDaoImpl &#123;</span><br><span class="line">	</span><br><span class="line">	@Test  &#x2F;&#x2F;点击项目右键选择Junit单元测试的(4)---然后@Test即可</span><br><span class="line">		public void testFindAll() throws SQLException</span><br><span class="line">		&#123;</span><br><span class="line">			UserDao dao&#x3D;new UserDaoImp();  &#x2F;&#x2F;面向接口编程</span><br><span class="line">			dao.findAll();  &#x2F;&#x2F;对象调用方法</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="danyuanceshi.png" alt=""></p>
+<p><img src="/2020/02/14/JDBC%E4%B8%AD%E7%9A%84JAVAEE%E7%BB%93%E6%9E%84/danyuanceshi.png" alt></p>
 <ul>
 <li><strong>7.util包内存放的就是原来写好的JDBC类</strong></li>
 </ul>
@@ -414,7 +414,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">driverClass&#x3D;com.mysql.jdbc.Driver</span><br><span class="line">url&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost&#x2F;user</span><br><span class="line">name&#x3D;root</span><br><span class="line">password&#x3D;njdxrjgc7777777.</span><br></pre></td></tr></table></figure>
 
 <p><strong>代码实现框架：</strong></p>
-<p><img src="kuangjia.png" alt=""></p>
+<p><img src="/2020/02/14/JDBC%E4%B8%AD%E7%9A%84JAVAEE%E7%BB%93%E6%9E%84/kuangjia.png" alt></p>
 <hr>
 <h1 id="三、增加登录界面"><a href="#三、增加登录界面" class="headerlink" title="三、增加登录界面"></a>三、增加登录界面</h1><p><strong>1. Dao包的UserDao类增加一个 login方法</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void login(String username,String password) throws SQLException;</span><br></pre></td></tr></table></figure>
@@ -424,7 +424,7 @@
 <p><strong>3. test包内的testUserDaoImpl类增加一个调用方法(dao.login(“xxx”,”yyy”))</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dao.login(&quot;admin&quot;,&quot;10086&quot;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="denglu.png" alt=""></p>
+<p><img src="/2020/02/14/JDBC%E4%B8%AD%E7%9A%84JAVAEE%E7%BB%93%E6%9E%84/denglu.png" alt></p>
 <hr>
 <h1 id="四、statement安全问题"><a href="#四、statement安全问题" class="headerlink" title="四、statement安全问题"></a>四、statement安全问题</h1><p><strong>执行原理：</strong>是进行拼接sql语句的过程(先拼接，后执行)</p>
 <hr>

@@ -388,42 +388,42 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="深度学习入门路线"><a href="#深度学习入门路线" class="headerlink" title="深度学习入门路线"></a>深度学习入门路线</h1><p><img src="1.png" alt=""></p>
-<h1 id="深度学习实战路线"><a href="#深度学习实战路线" class="headerlink" title="深度学习实战路线"></a>深度学习实战路线</h1><p><img src="2.1.png" alt=""></p>
-<h1 id="深度学习必看书籍"><a href="#深度学习必看书籍" class="headerlink" title="深度学习必看书籍"></a>深度学习必看书籍</h1><p><img src="2.png" alt=""></p>
+        <h1 id="深度学习入门路线"><a href="#深度学习入门路线" class="headerlink" title="深度学习入门路线"></a>深度学习入门路线</h1><p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/1.png" alt></p>
+<h1 id="深度学习实战路线"><a href="#深度学习实战路线" class="headerlink" title="深度学习实战路线"></a>深度学习实战路线</h1><p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/2.1.png" alt></p>
+<h1 id="深度学习必看书籍"><a href="#深度学习必看书籍" class="headerlink" title="深度学习必看书籍"></a>深度学习必看书籍</h1><p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/2.png" alt></p>
 <h1 id="前馈神经网络"><a href="#前馈神经网络" class="headerlink" title="前馈神经网络"></a>前馈神经网络</h1><p><strong>总体框架</strong></p>
-<p><img src="3.png" alt=""></p>
+<p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/3.png" alt></p>
 <h2 id="神经元"><a href="#神经元" class="headerlink" title="神经元"></a>神经元</h2><p><strong>人工神经元:</strong></p>
-<p><img src="4.png" alt=""></p>
+<p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/4.png" alt></p>
 <p><strong>激活函数性质</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.连续并可导的非线性函数</span><br><span class="line">2.激活函数及其导数要尽可能简单,有利于提高网络计算效率</span><br><span class="line">3.激活函数的导函数的值域要在一个合适的空间(不能太大也不能太小,否则会影响训练的效率和稳定性)</span><br></pre></td></tr></table></figure>
 
 <h3 id="Sigmoid函数-S型曲线函数"><a href="#Sigmoid函数-S型曲线函数" class="headerlink" title="Sigmoid函数(S型曲线函数)"></a>Sigmoid函数(S型曲线函数)</h3><p><strong>sigmoid函数的公式</strong></p>
-<p><img src="7.png" alt=""></p>
+<p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/7.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.分为logistic函数和Tanh函数</span><br><span class="line">	1.1 logistic函数(值域&gt;0):</span><br><span class="line">	1.2 Tanh函数(值域(-1,1)):</span><br><span class="line">2.sigmoid函数的性质:</span><br><span class="line">  2.1 sigmoid函数是饱和函数[x&gt;-∞和x-&gt;+∞时,其f&#39;(x)-&gt;0]</span><br><span class="line">  2.2 Tanh函数是零中心化的,logistic函数输出恒大于0的</span><br></pre></td></tr></table></figure>
 
 <p><strong>sigmoid两种函数的图像:</strong></p>
-<p><img src="5.png" alt=""></p>
+<p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/5.png" alt></p>
 <h3 id="ReLU函数-斜坡函数-修正线性单元"><a href="#ReLU函数-斜坡函数-修正线性单元" class="headerlink" title="ReLU函数(斜坡函数/修正线性单元)"></a>ReLU函数(斜坡函数/修正线性单元)</h3><p><strong>ReLU函数公式</strong></p>
-<p><img src="8.png" alt=""></p>
+<p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/8.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.优点:</span><br><span class="line">  1.1 计算更加高效(采用ReLU的神经元只需要进行加、乘、比较操作) </span><br><span class="line">  1.2 具有生物学合理性(单侧抑制、宽兴奋边界) -- 能够保证大约50%的神经元会处于激活状态</span><br><span class="line">  1.3 ReLU函数为左饱和函数+x&gt;0时f&#39;(x)&#x3D;1,在一定程度上缓解了神经网络的梯度消失问题,加速梯度下降的收敛速度</span><br><span class="line">2.缺点:</span><br><span class="line">  2.1 输出是非零中心化的,给后一层的神经网络引入偏置偏移,会影响梯度下降的速度 </span><br><span class="line">	  2.2 死亡ReLU问题:ReLU神经元在训练时比较容易&quot;死亡&quot;(如果有一次不恰当的更新后,第一个隐藏层中的某个ReLU神经元在所有训练数据上都不能被激活,在以后的训练过程中永远不能被激活)</span><br></pre></td></tr></table></figure>
 
-<h4 id="带泄露的ReLU"><a href="#带泄露的ReLU" class="headerlink" title="带泄露的ReLU"></a>带泄露的ReLU</h4><p><img src="10.png" alt=""></p>
-<h4 id="带参数的ReLU"><a href="#带参数的ReLU" class="headerlink" title="带参数的ReLU"></a>带参数的ReLU</h4><p><img src="11.png" alt=""></p>
-<h4 id="ELU函数"><a href="#ELU函数" class="headerlink" title="ELU函数"></a>ELU函数</h4><p><img src="12.png" alt=""></p>
-<h4 id="Softplus函数"><a href="#Softplus函数" class="headerlink" title="Softplus函数"></a>Softplus函数</h4><p><img src="13.png" alt=""></p>
+<h4 id="带泄露的ReLU"><a href="#带泄露的ReLU" class="headerlink" title="带泄露的ReLU"></a>带泄露的ReLU</h4><p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/10.png" alt></p>
+<h4 id="带参数的ReLU"><a href="#带参数的ReLU" class="headerlink" title="带参数的ReLU"></a>带参数的ReLU</h4><p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/11.png" alt></p>
+<h4 id="ELU函数"><a href="#ELU函数" class="headerlink" title="ELU函数"></a>ELU函数</h4><p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/12.png" alt></p>
+<h4 id="Softplus函数"><a href="#Softplus函数" class="headerlink" title="Softplus函数"></a>Softplus函数</h4><p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/13.png" alt></p>
 <p><strong>四种函数图对比:</strong></p>
-<p><img src="9.png" alt=""></p>
+<p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/9.png" alt></p>
 <h3 id="Swish函数"><a href="#Swish函数" class="headerlink" title="Swish函数"></a>Swish函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.自门控激活函数</span><br><span class="line">2.通过设置得到1&#x2F;0 --&gt; 门的状态为&quot;开&quot;&#x2F;&quot;关&quot;</span><br></pre></td></tr></table></figure>
 
-<p><img src="14.png" alt=""></p>
+<p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/14.png" alt></p>
 <h3 id="GELU函数"><a href="#GELU函数" class="headerlink" title="GELU函数"></a>GELU函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.高斯误差线性单元 --&gt; 通过门控机制来调整其输出值的激活函数</span><br><span class="line">2.特殊的Swish函数</span><br></pre></td></tr></table></figure>
 
-<p><img src="15.png" alt=""></p>
-<h3 id="Maxout单元"><a href="#Maxout单元" class="headerlink" title="Maxout单元"></a>Maxout单元</h3><p><img src="16.png" alt=""></p>
+<p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/15.png" alt></p>
+<h3 id="Maxout单元"><a href="#Maxout单元" class="headerlink" title="Maxout单元"></a>Maxout单元</h3><p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/16.png" alt></p>
 <h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p><strong>三种网络结构:</strong></p>
-<p><img src="17.png" alt=""></p>
-<h3 id="前馈神经网络-1"><a href="#前馈神经网络-1" class="headerlink" title="前馈神经网络"></a>前馈神经网络</h3><h1 id="反向传播算法"><a href="#反向传播算法" class="headerlink" title="反向传播算法"></a>反向传播算法</h1><h2 id=""><a href="#" class="headerlink" title="##"></a>##</h2>
+<p><img src="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/17.png" alt></p>
+<h3 id="前馈神经网络-1"><a href="#前馈神经网络-1" class="headerlink" title="前馈神经网络"></a>前馈神经网络</h3><h1 id="反向传播算法"><a href="#反向传播算法" class="headerlink" title="反向传播算法"></a>反向传播算法</h1><h2 id><a href="#" class="headerlink" title="##"></a>##</h2>
       
       
         <div class="page-reward">

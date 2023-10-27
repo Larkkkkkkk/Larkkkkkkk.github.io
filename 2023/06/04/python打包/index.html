@@ -380,33 +380,33 @@
 
 <h2 id="pyinstaller遇到的问题"><a href="#pyinstaller遇到的问题" class="headerlink" title="pyinstaller遇到的问题"></a>pyinstaller遇到的问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1.conda自带的pathlib包和pyinstaller冲突 --&gt;直接 conda remove pathlib</span><br></pre></td></tr></table></figure>
 
-<p><img src="remove.png" alt=""></p>
+<p><img src="/2023/06/04/python%E6%89%93%E5%8C%85/remove.png" alt></p>
 <h2 id="打包单个文件步骤"><a href="#打包单个文件步骤" class="headerlink" title="打包单个文件步骤"></a>打包单个文件步骤</h2><ul>
 <li>1.进入代码路径 –&gt;打开终端输入  pyinstaller -F -w API.py</li>
 </ul>
-<p><img src="step1.png" alt=""></p>
+<p><img src="/2023/06/04/python%E6%89%93%E5%8C%85/step1.png" alt></p>
 <ul>
 <li>2.更新出一个dist文件夹，打开之后出现一个exe文件</li>
 </ul>
-<p><img src="step2.png" alt=""></p>
+<p><img src="/2023/06/04/python%E6%89%93%E5%8C%85/step2.png" alt></p>
 <h2 id="打包整个项目步骤"><a href="#打包整个项目步骤" class="headerlink" title="打包整个项目步骤"></a>打包整个项目步骤</h2><ul>
 <li>1.进入代码路径 –&gt;打开终端输入  pyi-makespec 要执行的.py</li>
 </ul>
-<p><img src="step21.png" alt=""></p>
+<p><img src="/2023/06/04/python%E6%89%93%E5%8C%85/step21.png" alt></p>
 <ul>
 <li>2.打开app.spec文件，进行参数修改，主要修改a = Analysis的模块即可，说明如下</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">a &#x3D; Analysis(</span><br><span class="line">   [&#39;app.py&#39;,&#39;app_rating.py&#39;,&#39;config.py&#39;,&#39;exts.py&#39;,&#39;models.py&#39;], </span><br><span class="line">   #要打包的.py文件列表，同级文件不需要添加</span><br><span class="line">   pathex&#x3D;[&#39;D:\Project Management System\Program\beta1.2_Problems&#39;], </span><br><span class="line">   #项目路径</span><br><span class="line">   binaries&#x3D;[],</span><br><span class="line">   datas&#x3D;[(&#39;.&#x2F;templates&#39;,&#39;templates&#39;),(&#39;.&#x2F;static&#39;,&#39;static&#39;)],</span><br><span class="line">   # 程序调用外部pyd、dll文件（二进制文件路径）以数组形式传入,数组第一个参数传本地文件的绝对路径，第二参数传打包文件夹所在路径,打点为根目录;</span><br><span class="line">   hiddenimports&#x3D;[],</span><br><span class="line">   hookspath&#x3D;[],</span><br><span class="line">   hooksconfig&#x3D;&#123;&#125;,</span><br><span class="line">   runtime_hooks&#x3D;[],</span><br><span class="line">   excludes&#x3D;[],</span><br><span class="line">   win_no_prefer_redirects&#x3D;False,</span><br><span class="line">   win_private_assemblies&#x3D;False,</span><br><span class="line">   cipher&#x3D;block_cipher,</span><br><span class="line">   noarchive&#x3D;False,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
-<p><img src="step22.png" alt=""></p>
+<p><img src="/2023/06/04/python%E6%89%93%E5%8C%85/step22.png" alt></p>
 <ul>
 <li>3.终端执行 pyinstaller 要执行的.spec</li>
 </ul>
-<p><img src="step23.png" alt=""></p>
+<p><img src="/2023/06/04/python%E6%89%93%E5%8C%85/step23.png" alt></p>
 <ul>
 <li>4.在与要执行的.py相同的文件路径下，找到dist文件夹，即可找到打包好的app.exe</li>
 </ul>
-<p><img src="step24.png" alt=""></p>
+<p><img src="/2023/06/04/python%E6%89%93%E5%8C%85/step24.png" alt></p>
 
       
       

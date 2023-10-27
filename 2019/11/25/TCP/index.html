@@ -382,7 +382,7 @@
 <li>逻辑连接含有<strong>客户端提供</strong>的** <code>IO对象</code> **(字节流对象)</li>
 </ol>
 <p>** <code>IO对象</code> **<br>TCP连接的示意图：</p>
-<p><img src="shiyitu1.png" alt=""></p>
+<p><img src="/2019/11/25/TCP/shiyitu1.png" alt></p>
 <ul>
 <li><strong>注意：</strong></li>
 </ul>
@@ -415,9 +415,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import java.io.DataInputStream;</span><br><span class="line">import java.io.DataOutputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.net.ServerSocket;</span><br><span class="line">import java.net.Socket;</span><br><span class="line">public class Server &#123;</span><br><span class="line">	public static void main(String[] args)throws IOException &#123;</span><br><span class="line">		System.out.println(&quot;----Server(服务器)----&quot;);</span><br><span class="line">		&#x2F;&#x2F;1.指定端口 使用ServerSocket创建服务器</span><br><span class="line">		ServerSocket server&#x3D;new ServerSocket(8088);</span><br><span class="line">		&#x2F;&#x2F;2.阻塞式等待连接accept</span><br><span class="line">		Socket client&#x3D;server.accept();</span><br><span class="line">		System.out.println(&quot;一个客户端建立了连接&quot;);</span><br><span class="line">		&#x2F;&#x2F;3.操作：使用输入输出流操作</span><br><span class="line">		DataInputStream shuru&#x3D;new DataInputStream(client.getInputStream());&#x2F;&#x2F;输入流</span><br><span class="line">		String datas&#x3D;shuru.readUTF();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;分析数据</span><br><span class="line">		String[] dataArray&#x3D;datas.split(&quot;&amp;&quot;);&#x2F;&#x2F;用&amp;分割</span><br><span class="line">		for(String  info:dataArray)&#x2F;&#x2F;增强型for循环输出</span><br><span class="line">		&#123;</span><br><span class="line">			String[] userinfo&#x3D;info.split(&quot;&#x3D;&quot;);</span><br><span class="line">			System.out.println(userinfo[0]+&quot;--&gt;&quot;+userinfo[1]);</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;4.释放资源</span><br><span class="line">		shuru.close();</span><br><span class="line">		client.close();</span><br><span class="line">		server.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>代码结果如下：</strong></p>
 <ul>
-<li><p>客户端的截图：<br><img src="3client.png" alt=""></p>
+<li><p>客户端的截图：<br><img src="/2019/11/25/TCP/3client.png" alt></p>
 </li>
-<li><p>服务器的截图：<br><img src="3server.png" alt=""></p>
+<li><p>服务器的截图：<br><img src="/2019/11/25/TCP/3server.png" alt></p>
 </li>
 </ul>
 

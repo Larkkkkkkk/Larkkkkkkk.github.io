@@ -385,10 +385,10 @@
 <blockquote>
 <p>2.一开始现在内存中开辟一块空间（集合） ， 一开先往池子里面放置 多个连接对象。  后面需要连接的话，直接从池子里面去。不要去自己创建连接了。  使用完毕，要记得归还连接。确保连接对象能循环利用。</p>
 </blockquote>
-<p><img src="img11.png" alt=""></p>
+<p><img src="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/img11.png" alt></p>
 <hr>
 <h1 id="二、自定义数据库连接池"><a href="#二、自定义数据库连接池" class="headerlink" title="二、自定义数据库连接池"></a>二、自定义数据库连接池</h1><h2 id="步骤分析："><a href="#步骤分析：" class="headerlink" title="步骤分析："></a>步骤分析：</h2><p><strong>使用单元Junit测试</strong></p>
-<p><img src="jiegou.png" alt=""></p>
+<p><img src="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/jiegou.png" alt></p>
 <ol>
 <li><p>首先导入之前写好的JDBCUtil类和外部文件jdbc.properties还有jar文件。</p>
 </li>
@@ -414,7 +414,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">package util;</span><br><span class="line">import java.sql.Connection;</span><br><span class="line">import java.sql.PreparedStatement;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import org.junit.Test;</span><br><span class="line">public class TestPool &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void testPool()&#123;	</span><br><span class="line">		Connection conn&#x3D;null;</span><br><span class="line">		PreparedStatement ps &#x3D;null;</span><br><span class="line">		MyDataSource my&#x3D;new MyDataSource(); &#x2F;&#x2F;调用我们写好的MyDataPool类</span><br><span class="line">	</span><br><span class="line">		try &#123;</span><br><span class="line">			  conn &#x3D; my.getConnection();  &#x2F;&#x2F;第一步获取连接</span><br><span class="line">			  String sql&#x3D;&quot;insert into account values(4,&#39;xilali&#39;,10)&quot;; &#x2F;&#x2F;第二步写sql语句</span><br><span class="line">			   ps &#x3D; conn.prepareStatement(sql); &#x2F;&#x2F;第三步调用方法检测sql语句</span><br><span class="line">			   ps.executeUpdate(); &#x2F;&#x2F;调用方法对sql执行</span><br><span class="line">			</span><br><span class="line">		&#125; catch (SQLException e) &#123;</span><br><span class="line">			&#x2F;&#x2F; TODO 自动生成的 catch 块</span><br><span class="line">			e.printStackTrace(); </span><br><span class="line">		&#125;finally &#123;</span><br><span class="line">			try &#123;</span><br><span class="line">				ps.close(); &#x2F;&#x2F;关闭对象   替换了之前的JDBCUtil.release(conn,ps,rs);</span><br><span class="line">			&#125; catch (SQLException e) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO 自动生成的 catch 块</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F;归还连接</span><br><span class="line">				my.addBack(conn);  &#x2F;&#x2F;用完之后一定要记得addBack归还连接</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>单元测试只是显示绿色/红色不通过—具体结果去看看数据库：</strong></p>
-<p><img src="ceshi.png" alt=""></p>
+<p><img src="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/ceshi.png" alt></p>
 <hr>
 <h1 id="三、自定义数据库连接池存在的问题"><a href="#三、自定义数据库连接池存在的问题" class="headerlink" title="三、自定义数据库连接池存在的问题"></a>三、自定义数据库连接池存在的问题</h1><ul>
 <li><p>因为sun公司针对数据库连接池的定义没有用完返回的解决方案—-&gt;需要额外记住写addBack()方法</p>
@@ -447,7 +447,7 @@
 </li>
 </ol>
 <p>　　先是一个接口Waiter里面有service()方法，最后有一个Waitress类实现刚才的接口输出方法内容，但是现在可以通过建立WaitressWrap()方法去用构造方法获取接口对象，this获取对象，然后通过实现接口方法更改以前的操作。</p>
-<p><img src="zhuangshizhe.png" alt=""></p>
+<p><img src="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/zhuangshizhe.png" alt></p>
 <hr>
 <h1 id="六、装饰者模式–具体操作"><a href="#六、装饰者模式–具体操作" class="headerlink" title="六、装饰者模式–具体操作"></a>六、装饰者模式–具体操作</h1><p> 我们新建ConnectionWrap类实现Connection接口的方法，但是只需要去更改close()和prepareStatement()方法。</p>
 <p><strong>1.只展示实现类ConnectionWrap类部分代码：</strong></p>
@@ -456,13 +456,13 @@
 <p><strong>2.在MyDataSource类里面在取连接之前对connection对象进行调用COnnectionWrap类包装，</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;抛出前，对对象进行包装</span><br><span class="line">	Connection connection&#x3D;new ConnectionWrap(conn,list);</span><br><span class="line">	return connection;</span><br></pre></td></tr></table></figure>
 
-<p><img src="baozhuang.png" alt=""></p>
+<p><img src="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/baozhuang.png" alt></p>
 <p><strong>3.在测试类之中以后就不用写归还的方法，而是直接写JDBCUtil的方法：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;归还连接</span><br><span class="line">			JDBCUtil.release(conn,ps);</span><br></pre></td></tr></table></figure>
 <hr>
-<h1 id="七、开源连接池-DBCP-C3PO"><a href="#七、开源连接池-DBCP-C3PO" class="headerlink" title="七、开源连接池(DBCP/C3PO)"></a>七、开源连接池(DBCP/C3PO)</h1><h2 id="DBCP使用步骤："><a href="#DBCP使用步骤：" class="headerlink" title="DBCP使用步骤："></a>DBCP使用步骤：</h2><p><img src="jiegouer.png" alt=""></p>
+<h1 id="七、开源连接池-DBCP-C3PO"><a href="#七、开源连接池-DBCP-C3PO" class="headerlink" title="七、开源连接池(DBCP/C3PO)"></a>七、开源连接池(DBCP/C3PO)</h1><h2 id="DBCP使用步骤："><a href="#DBCP使用步骤：" class="headerlink" title="DBCP使用步骤："></a>DBCP使用步骤：</h2><p><img src="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/jiegouer.png" alt></p>
 <p>###<strong>1. 导入对应的dbcp和pool的jar文件：</strong></p>
-<p><img src="jar.png" alt=""></p>
+<p><img src="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/jar.png" alt></p>
 <p>###<strong>2.1 不使用配置文件( BasicDataSource类)：</strong></p>
 <p><strong>思路：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.通过BasicDataSource类构件数据源对象</span><br><span class="line">	BasicDataSource dataSource &#x3D; new BasicDataSource();</span><br><span class="line"></span><br><span class="line">2.不使用配置文件---使用set方法添加那四行材料</span><br><span class="line">	dataSource.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">       dataSource.setUrl(&quot;jdbc:mysql:&#x2F;&#x2F;localhost&#x2F;bank&quot;);  &#x2F;&#x2F;jdbc:mysql:&#x2F;&#x2F;localhost&#x2F;bank 主协议：子协议 :&#x2F;&#x2F;本地&#x2F;数据库</span><br><span class="line">       dataSource.setUsername(&quot;root&quot;);</span><br><span class="line">       dataSource.setPassword(&quot;njdxrjgc7777777.&quot;);</span><br><span class="line"></span><br><span class="line">3.通过对象调用连接</span><br><span class="line">	 conn &#x3D; dataSource.getConnection();  &#x2F;&#x2F;使用dataSource调用连接</span><br><span class="line"></span><br><span class="line">4.书写SQL语句，然后去检验，添加，方法上传</span><br><span class="line">	String sql &#x3D; &quot;insert into account values(null , ? , ?)&quot;; &#x2F;&#x2F;sql插入语句</span><br><span class="line">           ps &#x3D; conn.prepareStatement(sql);  &#x2F;&#x2F;检验sql语句</span><br><span class="line">           </span><br><span class="line">		ps.setString(1, &quot;admin&quot;);  &#x2F;&#x2F;给下标1和2的设定具体的值</span><br><span class="line">           ps.setInt(2, 1000);</span><br><span class="line">           </span><br><span class="line">		ps.executeUpdate();  &#x2F;&#x2F;调用插入操作方法</span><br><span class="line"></span><br><span class="line">5.finally最后使用JDBCUtil类的方法抓异常</span><br><span class="line">	JDBCUtil.release(conn, ps);  &#x2F;&#x2F;调用JDBCUtil类的方法</span><br></pre></td></tr></table></figure>
@@ -482,7 +482,7 @@
 
 
 <h2 id="J3P0使用步骤："><a href="#J3P0使用步骤：" class="headerlink" title="J3P0使用步骤："></a>J3P0使用步骤：</h2><p>###<strong>1. 导入对应的c3p0-0.9.1.2.jar文件：</strong></p>
-<p><img src="jarer.png" alt=""></p>
+<p><img src="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/jarer.png" alt></p>
 <p>###<strong>2.1 不使用配置文件方式(ComboPooledDataSource类)</strong></p>
 <p><strong>思路：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">和DBCP数据池的不实用配置文件方式一样，只不过一个是BasicDataSource类、另外一个是ComboPooledDataSource类</span><br></pre></td></tr></table></figure>

@@ -395,7 +395,7 @@
 <p>就相当于我现在有个A类，但是具体循环之后怎么走的类我现在没有，保不准以后会有，所以我需要写一个<strong>接口传给a类一个对象</strong>，然后有B类的时候就可以实现接口，然后<strong>传递接口实例对象</strong>。</p>
 </blockquote>
 <p><strong>test类调用a，a去找b(继承接口)：</strong></p>
-<p><img src="img01.png" alt=""></p>
+<p><img src="/2020/03/06/Listener/img01.png" alt></p>
 <hr>
 <h1 id="二、8个Web监听器-JSP四个作用域"><a href="#二、8个Web监听器-JSP四个作用域" class="headerlink" title="二、8个Web监听器(JSP四个作用域)#"></a>二、8个Web监听器(JSP四个作用域)#</h1><h2 id="其中三个作用域-JSP共四个"><a href="#其中三个作用域-JSP共四个" class="headerlink" title="其中三个作用域(JSP共四个)"></a>其中三个作用域(JSP共四个)</h2><pre><code>  request     ---httpServletRequest
   session     ---httpSession
@@ -424,9 +424,9 @@ servletContext销毁：
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;listener&gt;</span><br><span class="line">	&lt;listener-class&gt;Listener.MyServletContextListener&lt;&#x2F;listener-class&gt;</span><br><span class="line">&lt;&#x2F;listener&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>点击控制栏Servers中红框</strong></p>
-<p><img src="xiaohui.png" alt=""></p>
+<p><img src="/2020/03/06/Listener/xiaohui.png" alt></p>
 <p><strong>控制台输出结果：</strong></p>
-<p><img src="jieguo.png" alt=""></p>
+<p><img src="/2020/03/06/Listener/jieguo.png" alt></p>
 <h2 id="2-ServletRequestListener"><a href="#2-ServletRequestListener" class="headerlink" title="2. ServletRequestListener"></a>2. ServletRequestListener</h2><pre><code>request创建:
 
       访问服务器上的任意资源都会有请求出现。
@@ -484,9 +484,9 @@ session的销毁：
 <h1 id="四、-监听三个作用域属性状态变更"><a href="#四、-监听三个作用域属性状态变更" class="headerlink" title="四、 监听三个作用域属性状态变更"></a>四、 监听三个作用域属性状态变更</h1><blockquote>
 <p>可以监听在作用域中值—<strong>添加|替换|移除</strong>动作。 </p>
 </blockquote>
-<h2 id="1-ServletContextAttributeListener"><a href="#1-ServletContextAttributeListener" class="headerlink" title="1. ServletContextAttributeListener"></a>1. ServletContextAttributeListener</h2><p><img src="img03.png" alt=""></p>
-<h2 id="2-ServletRequestAttributeListener"><a href="#2-ServletRequestAttributeListener" class="headerlink" title="2. ServletRequestAttributeListener"></a>2. ServletRequestAttributeListener</h2><p><img src="img04.png" alt=""></p>
-<h2 id="3-HttpSessionAttributeListener"><a href="#3-HttpSessionAttributeListener" class="headerlink" title="3. HttpSessionAttributeListener"></a>3. HttpSessionAttributeListener</h2><p><img src="img02.png" alt=""></p>
+<h2 id="1-ServletContextAttributeListener"><a href="#1-ServletContextAttributeListener" class="headerlink" title="1. ServletContextAttributeListener"></a>1. ServletContextAttributeListener</h2><p><img src="/2020/03/06/Listener/img03.png" alt></p>
+<h2 id="2-ServletRequestAttributeListener"><a href="#2-ServletRequestAttributeListener" class="headerlink" title="2. ServletRequestAttributeListener"></a>2. ServletRequestAttributeListener</h2><p><img src="/2020/03/06/Listener/img04.png" alt></p>
+<h2 id="3-HttpSessionAttributeListener"><a href="#3-HttpSessionAttributeListener" class="headerlink" title="3. HttpSessionAttributeListener"></a>3. HttpSessionAttributeListener</h2><p><img src="/2020/03/06/Listener/img02.png" alt></p>
 <h1 id="4-以HttpSessionAttributeListener为例"><a href="#4-以HttpSessionAttributeListener为例" class="headerlink" title="4. 以HttpSessionAttributeListener为例#"></a>4. 以HttpSessionAttributeListener为例#</h1><ul>
 <li><strong>1. 建立类实现对应接口(自动三个方法)</strong></li>
 </ul>
@@ -503,7 +503,7 @@ session的销毁：
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">	session.setAttribute(&quot;name&quot;,&quot;abobama&quot;);</span><br><span class="line">	session.setAttribute(&quot;name&quot;,&quot;zhangsan&quot;);	</span><br><span class="line">	session.removeAttribute(&quot;name&quot;);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>运行jsp页面 然后刷新：</strong></p>
-<p><img src="shuxing.png" alt=""></p>
+<p><img src="/2020/03/06/Listener/shuxing.png" alt></p>
 <hr>
 <h1 id="五、-监听httpSession里面存值的状态变更"><a href="#五、-监听httpSession里面存值的状态变更" class="headerlink" title="五、 监听httpSession里面存值的状态变更"></a>五、 监听httpSession里面存值的状态变更</h1><blockquote>
 <p>这一类监听器不用注册。(直接继承即可)</p>

@@ -447,7 +447,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;![CDATA[内容]]&gt;</span><br></pre></td></tr></table></figure>
 <hr>
-<h1 id="mysql语句分页演示"><a href="#mysql语句分页演示" class="headerlink" title="mysql语句分页演示"></a>mysql语句分页演示</h1><p><img src="shujukuzhanshi.png" alt=""></p>
+<h1 id="mysql语句分页演示"><a href="#mysql语句分页演示" class="headerlink" title="mysql语句分页演示"></a>mysql语句分页演示</h1><p><img src="/2020/03/24/Mybatis%E5%AE%9E%E7%8E%B0mysql%E5%88%86%E9%A1%B5/shujukuzhanshi.png" alt></p>
 <hr>
 <h1 id="mybaitis中实现mysql分页写法"><a href="#mybaitis中实现mysql分页写法" class="headerlink" title="mybaitis中实现mysql分页写法"></a>mybaitis中实现mysql分页写法</h1><ul>
 <li><p>*<em>1. ? 不允许(×)出现在关键字前后进行数字运算 (因为原来查出来log4j返回出来sql语句是 id=?的形式) *</em></p>
@@ -538,7 +538,7 @@
       
           
         <h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><h2 id="准备数据库"><a href="#准备数据库" class="headerlink" title="准备数据库"></a>准备数据库</h2><p><strong>最终结果：</strong></p>
-<p><img src="shujuku.png" alt=""></p>
+<p><img src="/2020/03/21/Mybatis%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89/shujuku.png" alt></p>
 <p><strong>sql语句:</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create table people(</span><br><span class="line">id int(10) primary key auto_increment comment &#39;编号&#39;,</span><br><span class="line">name varchar(20) comment &#39;姓名&#39;,</span><br><span class="line">age int(3) comment &#39;年龄&#39;</span><br><span class="line">)comment &#39;人员信息表&#39;;</span><br><span class="line"></span><br><span class="line">insert into people values(default,&#39;张三&#39;,21);</span><br><span class="line">insert into people values(default,&#39;李四&#39;,22);</span><br></pre></td></tr></table></figure>
 
@@ -547,7 +547,7 @@
 <h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><ul>
 <li>*<em>1. 导入mybatis的jar包 + 依赖包 + mysql的jar包 + jstl的jar包 *</em></li>
 </ul>
-<p><img src="jar.png" alt=""></p>
+<p><img src="/2020/03/21/Mybatis%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89/jar.png" alt></p>
 <ul>
 <li><p><strong>2. 搭建全局配置文件</strong></p>
 <pre><code>1. 中文chm文档dtd文件找约束
@@ -648,7 +648,7 @@
 <p>在mybatis全局配置文件中通过settings标签控制mybatis全局开关</p>
 </blockquote>
 <p><strong>我们鼠标放到configuration上面就会弹出下面标签的顺序和使用个数</strong></p>
-<p><img src="set.png" alt=""></p>
+<p><img src="/2020/03/21/Log4J/set.png" alt></p>
 <h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><pre><code>1. 准备好jar包 + 实体类 + mybatis全局配置文件 + log4j.properties配置文件
 2. configuration标签下写settings标签
     &lt;settings&gt;
@@ -656,7 +656,7 @@
     &lt;/settings&gt;
 
 3. log4j可以配置指定内容日志(可以控制输出检查错误)</code></pre><p><strong>配置步骤第三步分析：</strong></p>
-<p><img src="disan.png" alt=""></p>
+<p><img src="/2020/03/21/Log4J/disan.png" alt></p>
 <hr>
 <h1 id="parameterType-属性-mapper包内配置"><a href="#parameterType-属性-mapper包内配置" class="headerlink" title="parameterType 属性(mapper包内配置)"></a>parameterType 属性(mapper包内配置)</h1><blockquote>
 <p>在mapper包里的xml配置文件中 select delete等标签的parameterType可以控制参数类型</p>
@@ -761,19 +761,19 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
 <ul>
 <li><strong>图示</strong></li>
 </ul>
-<p><img src="chizi.png" alt=""></p>
+<p><img src="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/chizi.png" alt></p>
 <h2 id="实现JDBC-tomcat-Pool步骤"><a href="#实现JDBC-tomcat-Pool步骤" class="headerlink" title="实现JDBC tomcat Pool步骤"></a>实现JDBC tomcat Pool步骤</h2><ol>
 <li><strong>在web项目的WebContent/META-INF存放context.xml文件</strong></li>
 </ol>
-<p><img src="diyi.png" alt=""></p>
+<p><img src="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/diyi.png" alt></p>
 <ol start="2">
 <li><strong>书写十个属性(前四个是数据库属性)</strong></li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;    </span><br><span class="line">&lt;Context&gt;</span><br><span class="line">  	&lt;Resoure</span><br><span class="line">  		driverClassName&#x3D;&quot;com.mysql.jdbc.Driver&quot;</span><br><span class="line">  		url&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;eesy&quot;</span><br><span class="line">  		username&#x3D;&quot;root&quot;</span><br><span class="line">  		password&#x3D;&quot;njdxrjgc7777777.&quot;</span><br><span class="line">		maxActive&#x3D;&quot;50&quot;  &#x2F;&#x2F;运行的最大数字</span><br><span class="line">		maxIdle&#x3D;&quot;10&quot;   &#x2F;&#x2F;等待的最大数字</span><br><span class="line">		name&#x3D;&quot;test&quot;</span><br><span class="line">		auth&#x3D;&quot;Container&quot; &#x2F;&#x2F;由tomcat自动启动</span><br><span class="line">		maxWait&#x3D;&quot;10000&quot;  &#x2F;&#x2F;等待最大实现</span><br><span class="line">		type&#x3D;&quot;java.sql.DataSoure&quot;   &#x2F;&#x2F;我去name找到数据库连接池的时候对象什么样子   </span><br><span class="line">		</span><br><span class="line">  	&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;Context&gt;</span><br></pre></td></tr></table></figure>
 <hr>
-<h1 id="三种查询方式-session-方法"><a href="#三种查询方式-session-方法" class="headerlink" title="三种查询方式  session.方法"></a>三种查询方式  session.方法</h1><h2 id="selectList-结果需要遍历"><a href="#selectList-结果需要遍历" class="headerlink" title="selectList()结果需要遍历"></a>selectList()结果需要遍历</h2><p><img src="chayi.png" alt=""></p>
-<h2 id="selectOne-结果只是变量-一行数据"><a href="#selectOne-结果只是变量-一行数据" class="headerlink" title="selectOne()结果只是变量/一行数据"></a>selectOne()结果只是变量/一行数据</h2><p><img src="chaer.png" alt=""></p>
-<h2 id="selectMap-结果只查某列的值"><a href="#selectMap-结果只查某列的值" class="headerlink" title="selectMap()结果只查某列的值"></a>selectMap()结果只查某列的值</h2><p><img src="chasna.png" alt=""></p>
+<h1 id="三种查询方式-session-方法"><a href="#三种查询方式-session-方法" class="headerlink" title="三种查询方式  session.方法"></a>三种查询方式  session.方法</h1><h2 id="selectList-结果需要遍历"><a href="#selectList-结果需要遍历" class="headerlink" title="selectList()结果需要遍历"></a>selectList()结果需要遍历</h2><p><img src="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/chayi.png" alt></p>
+<h2 id="selectOne-结果只是变量-一行数据"><a href="#selectOne-结果只是变量-一行数据" class="headerlink" title="selectOne()结果只是变量/一行数据"></a>selectOne()结果只是变量/一行数据</h2><p><img src="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/chaer.png" alt></p>
+<h2 id="selectMap-结果只查某列的值"><a href="#selectMap-结果只查某列的值" class="headerlink" title="selectMap()结果只查某列的值"></a>selectMap()结果只查某列的值</h2><p><img src="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/chasna.png" alt></p>
 <hr>
 
       
@@ -833,7 +833,7 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="用eclipse配置环境"><a href="#用eclipse配置环境" class="headerlink" title="用eclipse配置环境"></a>用eclipse配置环境</h1><h2 id="导入相关的jar包"><a href="#导入相关的jar包" class="headerlink" title="导入相关的jar包"></a>导入相关的jar包</h2><p><img src="jar.png" alt=""></p>
+        <h1 id="用eclipse配置环境"><a href="#用eclipse配置环境" class="headerlink" title="用eclipse配置环境"></a>用eclipse配置环境</h1><h2 id="导入相关的jar包"><a href="#导入相关的jar包" class="headerlink" title="导入相关的jar包"></a>导入相关的jar包</h2><p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/jar.png" alt></p>
 <h2 id="src下新建全局配置mybatis-xml文件-编写JDBC的四个变量"><a href="#src下新建全局配置mybatis-xml文件-编写JDBC的四个变量" class="headerlink" title="src下新建全局配置mybatis.xml文件(编写JDBC的四个变量)"></a>src下新建全局配置mybatis.xml文件(编写JDBC的四个变量)</h2><blockquote>
 <p><strong>2.1 xml引入DTD(在mybatis.chm找)</strong></p>
 </blockquote>
@@ -842,7 +842,7 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
 <blockquote>
 <p> <strong>2.2 如果导入DTD后续没有自动提示</strong></p>
 </blockquote>
-<p><img src="dtd.png" alt=""></p>
+<p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/dtd.png" alt></p>
 <blockquote>
 <p><strong>2.3 编写和jdbc以及连接数据库有关的资源(自动提示)</strong></p>
 </blockquote>
@@ -863,15 +863,15 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
 <blockquote>
 <p>2.然后我们知道要用<strong>工厂设计模式</strong>–所以使用对应的<strong>SqlSessionFactory接口</strong></p>
 </blockquote>
-<p><img src="chakan.png" alt=""></p>
+<p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/chakan.png" alt></p>
 <blockquote>
 <p>3.我们通过ctrl+t打开查看<strong>接口实现类</strong>–需要<strong>关联外部文件夹</strong>–选择<strong>mybatis-3-mybatis-3.2.7文件的src</strong></p>
 </blockquote>
-<p><img src="duole.png" alt=""></p>
+<p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/duole.png" alt></p>
 <blockquote>
 <p>4.通过分析接口实现类发现是有参构造方法–需要新建Configuration类</p>
 </blockquote>
-<p><img src="chakan.png" alt=""></p>
+<p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/chakan.png" alt></p>
 <blockquote>
 <p>5.因为<strong>实例化比较麻烦</strong> –使用<strong>构建者模式</strong>快速构建对象 – 然后build需要字节流 –所以要用字节流去加载写好的主配置文件</p>
 </blockquote>
@@ -886,7 +886,7 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
 <h2 id="相当于实现类的xml需要加载到主配置文件内"><a href="#相当于实现类的xml需要加载到主配置文件内" class="headerlink" title="相当于实现类的xml需要加载到主配置文件内"></a>相当于实现类的xml需要加载到主配置文件内</h2><p><strong>要在mybatis.xml里面加载我们的相当于实现类的xml的全路径</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span><br><span class="line"> 		&lt;mapper resource&#x3D;&quot;com&#x2F;bjsxt&#x2F;mapper&#x2F;FlowerMapper.xml&quot;&gt;&lt;&#x2F;mapper&gt;</span><br><span class="line"> 	&lt;&#x2F;mappers&gt;</span><br></pre></td></tr></table></figure>
 <hr>
-<h1 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h1><p><img src="jiea.png" alt=""></p>
+<h1 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h1><p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/jiea.png" alt></p>
 <pre><code>1： mapper包:存放xml配置文件(相当于实现类的那个xml)
     功能：
          1.1 mapper里面存放namespace自己的全路径
@@ -968,7 +968,7 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
       
           
         <h1 id="框架概念"><a href="#框架概念" class="headerlink" title="框架概念"></a>框架概念</h1><h2 id="使用框架前后对比"><a href="#使用框架前后对比" class="headerlink" title="使用框架前后对比"></a>使用框架前后对比</h2><p><strong>之前的MVC结构与框架对比：</strong></p>
-<p><img src="diying.png" alt=""></p>
+<p><img src="/2020/03/18/Mybatis%EF%BC%88idea+maven%EF%BC%89/diying.png" alt></p>
 <h2 id="持久层-Dao-技术解决方案"><a href="#持久层-Dao-技术解决方案" class="headerlink" title="持久层(Dao)技术解决方案"></a>持久层(Dao)技术解决方案</h2><pre><code>1. JDBC技术：
            Connection        获取连接
         PreparedStatement   提前处理sql语句
@@ -996,13 +996,13 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
 </blockquote>
 <hr>
 <h1 id="Mybatis环境搭建"><a href="#Mybatis环境搭建" class="headerlink" title="Mybatis环境搭建"></a>Mybatis环境搭建</h1><h2 id="前期环境准备"><a href="#前期环境准备" class="headerlink" title="前期环境准备"></a>前期环境准备</h2><p><strong>1.新建数据库</strong></p>
-<p><img src="shujuku.png" alt=""></p>
+<p><img src="/2020/03/18/Mybatis%EF%BC%88idea+maven%EF%BC%89/shujuku.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;user&#96; (</span><br><span class="line">  &#96;id&#96; int(11) NOT NULL auto_increment,</span><br><span class="line">  &#96;username&#96; varchar(32) NOT NULL COMMENT &#39;用户名称&#39;,</span><br><span class="line">  &#96;birthday&#96; datetime default NULL COMMENT &#39;生日&#39;,</span><br><span class="line">  &#96;sex&#96; char(1) default NULL COMMENT &#39;性别&#39;,</span><br><span class="line">  &#96;address&#96; varchar(256) default NULL COMMENT &#39;地址&#39;,</span><br><span class="line">  PRIMARY KEY  (&#96;id&#96;)</span><br><span class="line">) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8;</span><br><span class="line"></span><br><span class="line">insert  into &#96;user&#96;(&#96;id&#96;,&#96;username&#96;,&#96;birthday&#96;,&#96;sex&#96;,&#96;address&#96;) values (41,&#39;老王&#39;,&#39;2018-02-27 17:47:08&#39;,&#39;男&#39;,&#39;北京&#39;),(42,&#39;小二王&#39;,&#39;2018-03-02 15:09:37&#39;,&#39;女&#39;,&#39;北京金燕龙&#39;),(43,&#39;小二王&#39;,&#39;2018-03-04 11:34:34&#39;,&#39;女&#39;,&#39;北京金燕龙&#39;),(45,&#39;传智播客&#39;,&#39;2018-03-04 12:04:06&#39;,&#39;男&#39;,&#39;北京金燕龙&#39;),(46,&#39;老王&#39;,&#39;2018-03-07 17:37:26&#39;,&#39;男&#39;,&#39;北京&#39;),(48,&#39;小马宝莉&#39;,&#39;2018-03-08 11:44:00&#39;,&#39;女&#39;,&#39;北京修正&#39;);</span><br></pre></td></tr></table></figure>
 
 <p><strong>2.通过无骨架的创建方式创建maven工程</strong></p>
-<p><img src="wugujia.png" alt=""></p>
+<p><img src="/2020/03/18/Mybatis%EF%BC%88idea+maven%EF%BC%89/wugujia.png" alt></p>
 <p><strong>3.通过pom.xml文件去添加mybatis和mysql的jar包</strong></p>
-<p><img src="zhunbeijar.png" alt=""></p>
+<p><img src="/2020/03/18/Mybatis%EF%BC%88idea+maven%EF%BC%89/zhunbeijar.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project xmlns&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0&quot;</span><br><span class="line">         xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0 http:&#x2F;&#x2F;maven.apache.org&#x2F;xsd&#x2F;maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;&#x2F;modelVersion&gt;</span><br><span class="line"></span><br><span class="line">    &lt;groupId&gt;com.itheima&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;day01_easy_01mybatis&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0-SNAPSHOT&lt;&#x2F;version&gt;</span><br><span class="line"></span><br><span class="line">    &lt;packaging&gt;jar&lt;&#x2F;packaging&gt; &lt;!--通过jar包--&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.mybatis&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mybatis&lt;&#x2F;artifactId&gt;    &lt;!--通过Mybatis官网找到的框架 只需要更改版本号--&gt;</span><br><span class="line">            &lt;version&gt;3.4.5&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;    &lt;!--需要mysql--&gt;</span><br><span class="line">            &lt;version&gt;5.1.6&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;log4j&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;log4j&lt;&#x2F;artifactId&gt;    &lt;!--日志文件--&gt;</span><br><span class="line">            &lt;version&gt;1.2.12&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;junit&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;junit&lt;&#x2F;artifactId&gt;    &lt;!--单元测试--&gt;</span><br><span class="line">            &lt;version&gt;4.10&lt;&#x2F;version&gt;</span><br><span class="line">            &lt;scope&gt;test&lt;&#x2F;scope&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;&#x2F;dependencies&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;project&gt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="书写代码框架"><a href="#书写代码框架" class="headerlink" title="书写代码框架"></a>书写代码框架</h2><p><strong>1.main/java里书写domain和dao层代码</strong></p>
@@ -1026,13 +1026,13 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
 <h2 id="更改IUserDao-xml映射文件-增加结果封装到哪里"><a href="#更改IUserDao-xml映射文件-增加结果封装到哪里" class="headerlink" title="更改IUserDao.xml映射文件(增加结果封装到哪里)"></a>更改IUserDao.xml映射文件(增加结果封装到哪里)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id&#x3D;&quot;findAll&quot; resultType&#x3D;&quot;com.itheima.domain.User&quot;&gt;   &lt;!--我们要把结果封装到User才可以--&gt;</span><br><span class="line">       select * from user;</span><br><span class="line">   &lt;&#x2F;select&gt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="测试执行"><a href="#测试执行" class="headerlink" title="测试执行"></a>测试执行</h2><p><strong>1.最终的入门程序格式：</strong></p>
-<p><img src="geshi.png" alt=""></p>
+<p><img src="/2020/03/18/Mybatis%EF%BC%88idea+maven%EF%BC%89/geshi.png" alt></p>
 <p><strong>2.代码执行结果：</strong></p>
-<p><img src="xing.png" alt=""></p>
+<p><img src="/2020/03/18/Mybatis%EF%BC%88idea+maven%EF%BC%89/xing.png" alt></p>
 <hr>
 <h1 id="xml开发方式中设计模式分析"><a href="#xml开发方式中设计模式分析" class="headerlink" title="xml开发方式中设计模式分析"></a>xml开发方式中设计模式分析</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.读取配置文件</span><br><span class="line">         InputStream in&#x3D; Resources.getResourceAsStream(&quot;SqlMapConfig.xml&quot;);  &#x2F;&#x2F;读取我们的mybatis主配置文件</span><br><span class="line"></span><br><span class="line">     &#x2F;&#x2F;2.创建SqlSessionFactory工厂</span><br><span class="line">         SqlSessionFactoryBuilder builder&#x3D;new SqlSessionFactoryBuilder();</span><br><span class="line">         SqlSessionFactory factory&#x3D;builder.build(in);  &#x2F;&#x2F;构建者模式</span><br><span class="line"></span><br><span class="line">     &#x2F;&#x2F;3.使用工厂生产SqlSession对象</span><br><span class="line">         SqlSession session&#x3D;factory.openSession();    &#x2F;&#x2F;工厂模式</span><br><span class="line"></span><br><span class="line">     &#x2F;&#x2F;4.使用SqlSession创建Dao接口的代理对象</span><br><span class="line">         IUserDao userDao&#x3D;session.getMapper(IUserDao.class);  &#x2F;&#x2F;没有实现类 我们用代理对象去做</span><br><span class="line"></span><br><span class="line">     &#x2F;&#x2F;5.使用代理对象执行方法</span><br><span class="line">         List&lt;User&gt; users &#x3D; userDao.findAll();</span><br><span class="line">         for (User user:users)</span><br><span class="line">         &#123;</span><br><span class="line">             System.out.println(user);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">     &#x2F;&#x2F;6.释放资源</span><br><span class="line">         session.close();</span><br><span class="line">         in.close();</span><br></pre></td></tr></table></figure>
 <p><strong>每一步的解析：</strong></p>
-<p><img src="jiexi.png" alt=""></p>
+<p><img src="/2020/03/18/Mybatis%EF%BC%88idea+maven%EF%BC%89/jiexi.png" alt></p>
 <hr>
 <h1 id="Mybatis注解开发"><a href="#Mybatis注解开发" class="headerlink" title="Mybatis注解开发"></a>Mybatis注解开发</h1><h2 id="准备之前的所有东西"><a href="#准备之前的所有东西" class="headerlink" title="准备之前的所有东西"></a>准备之前的所有东西</h2><p><strong>1.将pom导入的jar文件写在新的项目的pom.xml里面</strong></p>
 <p><strong>2.将上面用xml配置方式的src/java和resource以及test测试类全部拷贝进新项目</strong></p>
@@ -1102,7 +1102,7 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
       
           
         <h1 id="Nginx-反向代理"><a href="#Nginx-反向代理" class="headerlink" title="Nginx(反向代理)"></a>Nginx(反向代理)</h1><h2 id="场景需求"><a href="#场景需求" class="headerlink" title="场景需求"></a>场景需求</h2><p>　　<br>　　原来是1w个访问要去使用tomcat会导致并发太高，然后我们可以通过多开Tomcat服务器从而来分担。所以引入了nginx来分配tomcat。这种方式也叫做<strong>反向代理</strong></p>
-<p><img src="gainian.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/gainian.png" alt></p>
 <h2 id="Nginx概述"><a href="#Nginx概述" class="headerlink" title="Nginx概述"></a>Nginx概述</h2><p>　　<br>　　Nginx是一款<strong>高性能</strong>的<strong>http服务器/反向代理服务器/电子邮件(IMAP/POP3)代理服务器</strong>。官方测试nginx能支撑5w的并发连接，而且cpu和内存等资源消耗比较低。        </p>
 <h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><p><strong>1. 网页静态服务器</strong></p>
 <p><strong>2. 动态服务器(部署在tomcat里面，通过nginx反向代理搭建集群)</strong></p>
@@ -1124,65 +1124,65 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
 </li>
 </ul>
 <h2 id="上传解压"><a href="#上传解压" class="headerlink" title="上传解压"></a>上传解压</h2><p><strong>3. 通过rz 上传nginx文件并且tar -zxvf解压</strong></p>
-<p><img src="jieya.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/jieya.png" alt></p>
 <p><strong>4. 当面目录下输入以下文字  会生成makeFile文件</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure \</span><br><span class="line">--prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;nginx \</span><br><span class="line">--pid-path&#x3D;&#x2F;var&#x2F;run&#x2F;nginx&#x2F;nginx.pid \</span><br><span class="line">--lock-path&#x3D;&#x2F;var&#x2F;lock&#x2F;nginx.lock \</span><br><span class="line">--error-log-path&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;error.log \</span><br><span class="line">--http-log-path&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log \</span><br><span class="line">--with-http_gzip_static_module \</span><br><span class="line">--http-client-body-temp-path&#x3D;&#x2F;var&#x2F;temp&#x2F;nginx&#x2F;client \</span><br><span class="line">--http-proxy-temp-path&#x3D;&#x2F;var&#x2F;temp&#x2F;nginx&#x2F;proxy \</span><br><span class="line">--http-fastcgi-temp-path&#x3D;&#x2F;var&#x2F;temp&#x2F;nginx&#x2F;fastcgi \</span><br><span class="line">--http-uwsgi-temp-path&#x3D;&#x2F;var&#x2F;temp&#x2F;nginx&#x2F;uwsgi \</span><br><span class="line">--http-scgi-temp-path&#x3D;&#x2F;var&#x2F;temp&#x2F;nginx&#x2F;scgi</span><br></pre></td></tr></table></figure>
 
-<p><img src="make.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/make.png" alt></p>
 <p><strong>5. 执行make指令编译  执行make install指令下载</strong></p>
-<p><img src="cai.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/cai.png" alt></p>
 <hr>
 <h1 id="Nginx启动"><a href="#Nginx启动" class="headerlink" title="Nginx启动"></a>Nginx启动</h1><h2 id="启动步骤"><a href="#启动步骤" class="headerlink" title="启动步骤"></a>启动步骤</h2><p><strong>1. mkdir /var/temp/nginx/client -p 创建子目录</strong></p>
 <p><strong>2. 进入到Nginx目录下的sbin目录 然后执行nginx即可</strong></p>
-<p><img src="zhix.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/zhix.png" alt></p>
 <p><strong>3.打开nginx之后浏览器打开(直接输入linux里面的ip地址)</strong></p>
-<p><img src="duankou.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/duankou.png" alt></p>
 <p><strong>4.通过 ps aux|grep nginx 查看进程</strong></p>
-<p><img src="gengxin.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/gengxin.png" alt></p>
 <h2 id="其他操作指令-目录站在nginx-sbin里面"><a href="#其他操作指令-目录站在nginx-sbin里面" class="headerlink" title="其他操作指令(目录站在nginx/sbin里面)"></a>其他操作指令(目录站在nginx/sbin里面)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 启动Nginx   .&#x2F;nginx</span><br><span class="line"></span><br><span class="line">2. 查看进程     ps aux|grep nginx</span><br><span class="line"></span><br><span class="line">3. 关闭Nginx    .&#x2F;nginx -s stop  &#x2F;&#x2F;  .&#x2F;nginx -s quit</span><br><span class="line"></span><br><span class="line">4. 重启Nginx   1.先关闭后启动 2.刷新配置文件 .&#x2F;nginx -s reload</span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="静态资源部署"><a href="#静态资源部署" class="headerlink" title="静态资源部署"></a>静态资源部署</h1><h2 id="更改nginx-conf-nginx-conf配置文件"><a href="#更改nginx-conf-nginx-conf配置文件" class="headerlink" title="更改nginx/conf/nginx.conf配置文件"></a>更改nginx/conf/nginx.conf配置文件</h2><blockquote>
 <p><strong>通过EditPlus5去进行设置ftp</strong></p>
 </blockquote>
 <p><strong>1. 打开文件-FTP-设置FTP服务器-然后输入信息</strong></p>
-<p><img src="ftp.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/ftp.png" alt></p>
 <p><strong>2. 根据左上角目录去找左下角对应的目录文件然后右边更改</strong></p>
-<p><img src="ftp02.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/ftp02.png" alt></p>
 <p><strong>3. 每次更新之后弹窗选择确定就可以提交更新</strong></p>
-<p><img src="ftp03.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/ftp03.png" alt></p>
 <p><strong>4. 更改后的信息解析：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application&#x2F;octet-stream;</span><br><span class="line"></span><br><span class="line">  sendfile        on;</span><br><span class="line">    </span><br><span class="line">   keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen       80; </span><br><span class="line">        server_name  localhost; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location &#x2F; &#123;	</span><br><span class="line">            root   index;</span><br><span class="line">            index  index.html index.htm; </span><br><span class="line">        &#125;</span><br><span class="line">        error_page   500 502 503 504  &#x2F;50x.html;	</span><br><span class="line">        location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="准备好index文件复制到nginx目录下"><a href="#准备好index文件复制到nginx目录下" class="headerlink" title="准备好index文件复制到nginx目录下"></a>准备好index文件复制到nginx目录下</h2><p><strong>1.使用FileZilla软件也可以使用ftp上传</strong></p>
-<p><img src="zilla.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/zilla.png" alt></p>
 <p><strong>2.更改nginx.conf配置里面的root</strong></p>
-<p><img src="index.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/index.png" alt></p>
 <p><strong>3. 重启nginx之后(./nginx -s reload)浏览器打开就自动跳转到了index页面</strong></p>
-<p><img src="zidong.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/zidong.png" alt></p>
 <hr>
 <h1 id="虚拟主机-端口绑定"><a href="#虚拟主机-端口绑定" class="headerlink" title="虚拟主机-端口绑定"></a>虚拟主机-端口绑定</h1><h2 id="配置文件解析"><a href="#配置文件解析" class="headerlink" title="配置文件解析"></a>配置文件解析</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application&#x2F;octet-stream;</span><br><span class="line"></span><br><span class="line">  	sendfile on;</span><br><span class="line">    </span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">	server &#123;</span><br><span class="line">        listen       81;          # 默认端口号码</span><br><span class="line">        server_name  localhost;   # 写的是域名或者ip地址配置</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location &#x2F; &#123;	     </span><br><span class="line">            root   index;	               # 默认访问资源的目录</span><br><span class="line">            index  index.html index.htm;   # 默认访问资源名称 </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page   500 502 503 504  &#x2F;50x.html;	 # 错误页面</span><br><span class="line">        location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     server &#123;</span><br><span class="line">        listen       82;</span><br><span class="line">        server_name  localhost; </span><br><span class="line"></span><br><span class="line">        location &#x2F; &#123;	</span><br><span class="line">            root   regist;</span><br><span class="line">            index  regist.html; </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page   500 502 503 504  &#x2F;50x.html;	</span><br><span class="line">        location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">	</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="往linux再上传需要的静态网页文件"><a href="#往linux再上传需要的静态网页文件" class="headerlink" title="往linux再上传需要的静态网页文件"></a>往linux再上传需要的静态网页文件</h2><p><strong>1.还是跟之前一样通过filezilla软件上传到nginx文件下面</strong></p>
-<p><img src="register.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/register.png" alt></p>
 <p><strong>2.通过浏览器(记得输入不同的端口号)即可</strong></p>
-<p><img src="duankouer.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/duankouer.png" alt></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">其实就是刚才的静态资源配置多配置一个server&#123;&#125; 然后要多有一个端口(我一个是81&#x2F;一个是82)</span><br><span class="line">然后就可以通过IP地址+不同的端口就可以进行访问</span><br></pre></td></tr></table></figure>
 
 <p><strong>配置文件内部需要增加一个server{}</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">      listen       82;</span><br><span class="line">      server_name  localhost; </span><br><span class="line"></span><br><span class="line">      location &#x2F; &#123;	</span><br><span class="line">          root   regist;</span><br><span class="line">          index  regist.html; </span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      error_page   500 502 503 504  &#x2F;50x.html;	</span><br><span class="line">      location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">          root   html;</span><br><span class="line">      &#125;</span><br><span class="line">	</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="虚拟主机-域名绑定"><a href="#虚拟主机-域名绑定" class="headerlink" title="虚拟主机 域名绑定"></a>虚拟主机 域名绑定</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p><strong>1.按上面81和82端口的例子：去hosts文件加一个域名绑定</strong></p>
-<p><img src="yinshe.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/yinshe.png" alt></p>
 <p><strong>2.我们就可以通过<a href="http://www.ceshi.com然后加上端口访问" target="_blank" rel="noopener">www.ceshi.com然后加上端口访问</a></strong></p>
-<p><img src="ceshi.png" alt=""></p>
-<h2 id="更改server里的server-name"><a href="#更改server里的server-name" class="headerlink" title="更改server里的server_name"></a>更改server里的server_name</h2><p><img src="geng.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/ceshi.png" alt></p>
+<h2 id="更改server里的server-name"><a href="#更改server里的server-name" class="headerlink" title="更改server里的server_name"></a>更改server里的server_name</h2><p><img src="/2020/03/17/Nginx/geng.png" alt></p>
 <p><strong>我们就可以通过<a href="http://www.ceshi.com然后加上端口访问" target="_blank" rel="noopener">www.ceshi.com然后加上端口访问</a></strong></p>
-<p><img src="ceshi.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/ceshi.png" alt></p>
 <hr>
-<h1 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h1><h2 id="正向代理-针对客户端"><a href="#正向代理-针对客户端" class="headerlink" title="正向代理(针对客户端)"></a>正向代理(针对客户端)</h2><pre><code>需求：学生通过主机去找网络连接(VPN)</code></pre><p><img src="zhengxiang.png" alt=""></p>
+<h1 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h1><h2 id="正向代理-针对客户端"><a href="#正向代理-针对客户端" class="headerlink" title="正向代理(针对客户端)"></a>正向代理(针对客户端)</h2><pre><code>需求：学生通过主机去找网络连接(VPN)</code></pre><p><img src="/2020/03/17/Nginx/zhengxiang.png" alt></p>
 <h2 id="反向代理-针对服务器端"><a href="#反向代理-针对服务器端" class="headerlink" title="反向代理(针对服务器端)"></a>反向代理(针对服务器端)</h2><pre><code>需求：通过网络去找部署在linux上的tomcat服务器
     1. 直接访问：tomcat并发低(负载大)
-    2. 反向代理：搭建tomcat集群，出现反向代理服务器。由服务器分发到tomcat去，还可以增加在给tomcat时候防火墙提高安全性</code></pre><p><img src="fanxiang.png" alt=""></p>
+    2. 反向代理：搭建tomcat集群，出现反向代理服务器。由服务器分发到tomcat去，还可以增加在给tomcat时候防火墙提高安全性</code></pre><p><img src="/2020/03/17/Nginx/fanxiang.png" alt></p>
 <h2 id="反向代理准备"><a href="#反向代理准备" class="headerlink" title="反向代理准备"></a>反向代理准备</h2><p><strong>1.将需要的项目打包成war上传(rz)到tomcat的webapps目录下</strong></p>
 <p><strong>2.执行tomcat/bin里面的startup.sh 能够通过浏览器打开即可</strong></p>
 <h2 id="配置反向代理"><a href="#配置反向代理" class="headerlink" title="配置反向代理"></a>配置反向代理</h2><p><strong>1.修改Nginx配置(server{}之前写)</strong></p>
@@ -1194,7 +1194,7 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
 <p><strong>3.访问</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 浏览器输入：server里面的server_name(一般是localhost 但是也可以通过绑定域名(hosts文件改))</span><br><span class="line">2. 然后他这个网络internet会去找nginx代理主机(proxy_pass)</span><br><span class="line">3. 代理主机就去找upstream里面的tomcat</span><br></pre></td></tr></table></figure>
 
-<p><img src="xunhzao.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/xunhzao.png" alt></p>
 <h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><pre><code>1. 之前的演示：将静态网页直接放在nginx文件夹下 我们通过配置server{}端口和域名然后直接从浏览器访问到了tomcat
 2. 反向代理：
     2.1 准备：
@@ -1203,7 +1203,7 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
         现在就是浏览器写server里面的域名 --&gt;  因为nginx里面配备了proxy_pass所以会到nginx --&gt; http://后面的会去找upstream里面的tomcat --&gt;  从而反向回来反馈到浏览器。
 3. 总结：
      因为域名输入后他不知道到底是nginx还是tomcat给的回应，所以后面的两个相当于封装起来提供了安全性</code></pre><p><strong>访问时候的分析：</strong></p>
-<p><img src="xunhzao.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/xunhzao.png" alt></p>
 <hr>
 <h1 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h1><blockquote>
 <p>我们搭建很多的tomcat形成tomcat集群(使得nginx寻找的几率相等)</p>
@@ -1212,7 +1212,7 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
 <p><strong>2.(将tomcat文件复制两份然后依次进去更改其他两个的端口)</strong></p>
 <p><strong>3.启动每个linux的tomcat(启动三个tomcat服务器)</strong></p>
 <p><strong>4.然后每个linux上的nginx配置反向代理(更改nginx配置文件内部upstream加server(因为端口不一样))</strong></p>
-<p><img src="quanzhong.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/quanzhong.png" alt></p>
 <p><strong>5.通过访问器访问就会不同几率的访问不同的tomcat(配置文件里面可以改浏览器title名称来区别)</strong></p>
 <hr>
 
@@ -1333,9 +1333,9 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
       
           
         <h1 id="Linux权限"><a href="#Linux权限" class="headerlink" title="Linux权限"></a>Linux权限</h1><p><strong>以root目录下的文件为例：</strong></p>
-<p><img src="quanxian.png" alt=""></p>
+<p><img src="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/quanxian.png" alt></p>
 <p><strong>权限分为四部分(- — — —(1333))</strong></p>
-<p><img src="fenlei.png" alt=""></p>
+<p><img src="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/fenlei.png" alt></p>
 <h2 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型(-)"></a>文件类型(-)</h2><pre><code>- 表示 文件
 d 表示 文件夹
 l 表示 连接</code></pre><h2 id="当前用户对该文件拥有的权限-—"><a href="#当前用户对该文件拥有的权限-—" class="headerlink" title="当前用户对该文件拥有的权限(—)"></a>当前用户对该文件拥有的权限(—)</h2><pre><code>r 表示 读(read)
@@ -1374,7 +1374,7 @@ x: 1
           1. vim /etc/sysconfig/network-scripts/ifcfg-eth0
           2. 修改两个参数(ONBOOT改为yes/ BOOTPROTO改为static)
           3. 添加四行(IP地址/子网掩码/网络地址/广播地址)</code></pre><p><strong>例如我将我的ip为192.168.209.128：</strong></p>
-<p><img src="xiugaiip.png" alt=""></p>
+<p><img src="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/xiugaiip.png" alt></p>
 <hr>
 <h1 id="域名映射-本机生效"><a href="#域名映射-本机生效" class="headerlink" title="域名映射(本机生效)"></a>域名映射(本机生效)</h1><blockquote>
 <p><strong>/etc/hosts</strong>文件用于在<strong>通过主机名进行访问</strong>时做ip地址解析<br>相当于windows的  C:\Windows\System3\drivers\etc\hosts文件</p>
@@ -1382,7 +1382,7 @@ x: 1
 <p><strong>1. vim etc/homes 进入文件</strong></p>
 <p><strong>2. 按i插入 192.168.209.128 itcast01 一行</strong>             </p>
 <p><strong>3. 通过ping itcast也可以进行(以前都是ping192.168.209.128的一行)</strong>    </p>
-<p><img src="yinshe.png" alt="">    </p>
+<p><img src="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/yinshe.png" alt>    </p>
 <hr>
 <h1 id="网络服务管理-service"><a href="#网络服务管理-service" class="headerlink" title="网络服务管理 service"></a>网络服务管理 service</h1><h2 id="指定服务-service-network"><a href="#指定服务-service-network" class="headerlink" title="指定服务 service network"></a>指定服务 service network</h2><pre><code>service network status   查看指定服务的状态
 service network stop     停止指定服务

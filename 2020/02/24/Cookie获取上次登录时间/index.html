@@ -374,9 +374,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="一、Cookie获取上次登录时间"><a href="#一、Cookie获取上次登录时间" class="headerlink" title="一、Cookie获取上次登录时间#"></a>一、Cookie获取上次登录时间#</h1><p><img src="fenxi.png" alt=""></p>
+        <h1 id="一、Cookie获取上次登录时间"><a href="#一、Cookie获取上次登录时间" class="headerlink" title="一、Cookie获取上次登录时间#"></a>一、Cookie获取上次登录时间#</h1><p><img src="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E7%99%BB%E5%BD%95%E6%97%B6%E9%97%B4/fenxi.png" alt></p>
 <p>　　主要是由一个index.html的前端浏览器代码写出登录需要的用户密码提交按钮，然后通过servlet提交到另外一个Demo03程序(新建CookieUtil完成所有cookies和所要的cookie对比的功能)之中。</p>
-<p><img src="kuangjia.png" alt=""></p>
+<p><img src="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E7%99%BB%E5%BD%95%E6%97%B6%E9%97%B4/kuangjia.png" alt></p>
 <p>　　由Demo03先去写由request得到用户名和密码然后if判断用户名是否正确：<br>　　1.如果不正确弹出密码错误，由于输出中文需要提前写好response.setContenType那行文字编码。<br>　　2.如果是正确进入之后获取所有的cookies值，调用方法判断是不是所要的cookie，<br>　　　　2.1如果是null那么就是没有cookie需要完成的是设置一个名为last，值为当前时间的cookie，然后将它添加到客户端，输出语句。<br>　　　　2.2如果cookie存在，那就只需要输出上一次最近的访问时间。</p>
 <p><strong>客户端用于写按钮的index.html代码如下：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">		&lt;form action&#x3D;&quot;Demo03&quot;&gt;</span><br><span class="line">		账号: &lt;input type&#x3D;&quot;text&quot;  name&#x3D;&quot;username&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">		密码: &lt;input type&#x3D;&quot;text&quot;  name&#x3D;&quot;password&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;submit&quot;  value&#x3D;&quot;登录&quot;&#x2F;&gt;&lt;br&gt;	</span><br><span class="line">	&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
@@ -389,7 +389,7 @@
 
 
 <p><strong>用户admin和密码123第一次进入是欢迎界面，第二次界面为弹出上次登录时间：</strong></p>
-<p><img src="dierci.png" alt=""></p>
+<p><img src="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E7%99%BB%E5%BD%95%E6%97%B6%E9%97%B4/dierci.png" alt></p>
 <hr>
 
       

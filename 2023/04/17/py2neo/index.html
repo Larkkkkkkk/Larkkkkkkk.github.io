@@ -374,10 +374,10 @@
 
 <h2 id="创建图对象"><a href="#创建图对象" class="headerlink" title="创建图对象"></a>创建图对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#1.创建图对象</span><br><span class="line">graph &#x3D; Graph(&#39;http:&#x2F;&#x2F;localhost:7474&#39;, auth&#x3D;(&quot;neo4j&quot;, &quot;123456&quot;))</span><br></pre></td></tr></table></figure>
 
-<p><img src="" alt=""></p>
+<p><img src alt></p>
 <h2 id="创建数据对象"><a href="#创建数据对象" class="headerlink" title="创建数据对象"></a>创建数据对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#2.创建数据对象</span><br><span class="line">a&#x3D;Node(&#39;person&#39;,name&#x3D;&#39;Alice&#39;)  #创建a节点</span><br><span class="line">b&#x3D;Node(&#39;person&#39;,name&#x3D;&#39;Bob&#39;)  #创建b节点</span><br><span class="line">ab&#x3D;Relationship(a,&#39;KNOWS&#39;,b)  #创建节点a和b的关系 (a)-[KNOWS]-(b)</span><br><span class="line">graph.create(ab)</span><br></pre></td></tr></table></figure>
 
-<p><img src="" alt=""></p>
+<p><img src alt></p>
 
       
       

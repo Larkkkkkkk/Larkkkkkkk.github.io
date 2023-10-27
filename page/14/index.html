@@ -451,19 +451,19 @@ O  当前行之前插入一行</code></pre></li>
 
 3.调试测试
     cmd输入 mvn -v</code></pre><p><strong>配置MAVEN_HOME变量：</strong></p>
-<p><img src="xitonghuanjing.png" alt=""></p>
+<p><img src="/2020/03/14/maven/xitonghuanjing.png" alt></p>
 <p><strong>添加path里面</strong></p>
-<p><img src="huanjigner.png" alt=""></p>
+<p><img src="/2020/03/14/maven/huanjigner.png" alt></p>
 <p><strong>cmd里面调试</strong></p>
-<p><img src="cmd.png" alt=""></p>
+<p><img src="/2020/03/14/maven/cmd.png" alt></p>
 <hr>
 <h1 id="仓库种类和关系"><a href="#仓库种类和关系" class="headerlink" title="仓库种类和关系"></a>仓库种类和关系</h1><pre><code>1. 本地仓库(默认本地仓库有jar包,没有就去中央仓库下载jar包)
 2. 远程仓库(私服)：如果没有可以从中央仓库和本地仓库上传
-3. 中央仓库(最大的几个T的jar包)：要使用必须有网！！</code></pre><p><img src="fenlei.png" alt=""></p>
+3. 中央仓库(最大的几个T的jar包)：要使用必须有网！！</code></pre><p><img src="/2020/03/14/maven/fenlei.png" alt></p>
 <p><strong>初次安装maven需要配置仓库和jar包</strong></p>
-<p><img src="chushi.png" alt=""></p>
+<p><img src="/2020/03/14/maven/chushi.png" alt></p>
 <p><strong>直接导入一个maven仓库解压</strong></p>
-<p><img src="genggai.png" alt=""></p>
+<p><img src="/2020/03/14/maven/genggai.png" alt></p>
 <hr>
 <h1 id="maven标准目录结构"><a href="#maven标准目录结构" class="headerlink" title="maven标准目录结构"></a>maven标准目录结构</h1><blockquote>
 <p><strong>有规则的管理项目：</strong></p>
@@ -478,45 +478,45 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 3. mvn test       进行测试   target目录下生成test测试类的文件
 4. mvn package    进行打包   java工程执行package成jar包 web工程成war包
 5. mvn install    进行安装   将上述的步骤整合之后将war包发布到本地仓库</code></pre><hr>
-<h1 id="maven生命周期"><a href="#maven生命周期" class="headerlink" title="maven生命周期"></a>maven生命周期</h1><p><img src="zhouqi.png" alt=""></p>
+<h1 id="maven生命周期"><a href="#maven生命周期" class="headerlink" title="maven生命周期"></a>maven生命周期</h1><p><img src="/2020/03/14/maven/zhouqi.png" alt></p>
 <hr>
-<h1 id="maven概念模型图"><a href="#maven概念模型图" class="headerlink" title="maven概念模型图"></a>maven概念模型图</h1><p><img src="gongneng.png" alt=""></p>
+<h1 id="maven概念模型图"><a href="#maven概念模型图" class="headerlink" title="maven概念模型图"></a>maven概念模型图</h1><p><img src="/2020/03/14/maven/gongneng.png" alt></p>
 <hr>
 <h1 id="maven使用步骤"><a href="#maven使用步骤" class="headerlink" title="maven使用步骤"></a>maven使用步骤</h1><h2 id="idea继承maven插件"><a href="#idea继承maven插件" class="headerlink" title="idea继承maven插件"></a>idea继承maven插件</h2><p><strong>1. 一定要在创建项目的地方更改</strong></p>
-<p><img src="peizhiyi.png" alt=""></p>
+<p><img src="/2020/03/14/maven/peizhiyi.png" alt></p>
 <p><strong>2. 第一步改配置的环境和xml文件</strong></p>
-<p><img src="cha1.png" alt=""></p>
+<p><img src="/2020/03/14/maven/cha1.png" alt></p>
 <p><strong>3. 加属性防止因为断网不能创建maven</strong></p>
-<p><img src="chuang2.png" alt=""></p>
+<p><img src="/2020/03/14/maven/chuang2.png" alt></p>
 <h2 id="使用骨架创建maven的java工程"><a href="#使用骨架创建maven的java工程" class="headerlink" title="使用骨架创建maven的java工程"></a>使用骨架创建maven的java工程</h2><p><strong>1. 新建项目 –&gt; maven –&gt; 选择骨架的quickstart</strong></p>
-<p><img src="gu1.png" alt=""></p>
+<p><img src="/2020/03/14/maven/gu1.png" alt></p>
 <p><strong>2. 选择填写公司/项目名/版本信息</strong></p>
-<p><img src="gu2.png" alt=""></p>
+<p><img src="/2020/03/14/maven/gu2.png" alt></p>
 <p><strong>3. 确定信息</strong></p>
-<p><img src="gu3.png" alt=""></p>
+<p><img src="/2020/03/14/maven/gu3.png" alt></p>
 <p><strong>4. 然后进入之后第一次需要配置环境  选择右下角第二个的自动导入的英文</strong></p>
-<p><img src="wancheng.png" alt=""></p>
+<p><img src="/2020/03/14/maven/wancheng.png" alt></p>
 <p><strong>5. 自己新建resources文件  去右键更新为资源root</strong></p>
-<p><img src="gengxin.png" alt=""></p>
+<p><img src="/2020/03/14/maven/gengxin.png" alt></p>
 <h2 id="不使用骨架创建maven的java工程"><a href="#不使用骨架创建maven的java工程" class="headerlink" title="不使用骨架创建maven的java工程"></a>不使用骨架创建maven的java工程</h2><p><strong>1. 只是不选择骨架 其他的都一样</strong></p>
 <p><strong>2. 创建后直接有框架不需要更多的添加</strong></p>
-<p><img src="buyonggujia.png" alt=""></p>
+<p><img src="/2020/03/14/maven/buyonggujia.png" alt></p>
 <h2 id="使用骨架创建maven的web工程"><a href="#使用骨架创建maven的web工程" class="headerlink" title="使用骨架创建maven的web工程"></a>使用骨架创建maven的web工程</h2><p><strong>1. 还是选择maven –&gt; 选择webapp的骨架</strong></p>
-<p><img src="web1.png" alt=""></p>
+<p><img src="/2020/03/14/maven/web1.png" alt></p>
 <p><strong>2. 其他的和java步骤一样 –&gt; 自己手动建立java文件并且右键改为source root</strong></p>
-<p><img src="webzhanshi.png" alt=""></p>
+<p><img src="/2020/03/14/maven/webzhanshi.png" alt></p>
 <hr>
 <h1 id="maven工程servlet实例"><a href="#maven工程servlet实例" class="headerlink" title="maven工程servlet实例"></a>maven工程servlet实例</h1><p><strong>1. 更改java的配置 让java也可以创建jsp文件</strong></p>
-<p><img src="jsp.png" alt=""></p>
+<p><img src="/2020/03/14/maven/jsp.png" alt></p>
 <p><strong>2. 新建servlet包 –&gt; 新建servlet类 –&gt; 配置路径</strong></p>
-<p><img src="servlet.png" alt=""></p>
+<p><img src="/2020/03/14/maven/servlet.png" alt></p>
 <p><strong>3. servlet报错需要导入jar包 –&gt; pom配置相关的jar</strong></p>
-<p><img src="pom.png" alt=""></p>
+<p><img src="/2020/03/14/maven/pom.png" alt></p>
 <p><strong>4. 如果本地仓库没有就百度maven中央仓库 –&gt; 找要的jar下载弹出界面拷贝里面的代码即可</strong></p>
 <p><strong>5. 编写代码 –&gt; 最右边列选择Maven –&gt; 选择m的符号输入 tomcat:run执行tomcat</strong></p>
-<p><img src="tomcat.png" alt=""></p>
+<p><img src="/2020/03/14/maven/tomcat.png" alt></p>
 <p><strong>6. tomcat出现jar冲突 –&gt; 添加scope范围 让jsp和servlet的只是在写代码时候有用 执行时使用tomcat插件</strong></p>
-<p><img src="geng.png" alt=""></p>
+<p><img src="/2020/03/14/maven/geng.png" alt></p>
 <p><strong>7. pom里面添加设置(设置成我们的tomcat7)</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;plugins&gt;</span><br><span class="line">      &lt;plugin&gt;</span><br><span class="line">        &lt;groupId&gt;org.apache.tomcat.maven&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;tomcat7-maven-plugin&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.2&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;configuration&gt;</span><br><span class="line">          &lt;port&gt;9999&lt;&#x2F;port&gt;</span><br><span class="line">          &lt;uriEncoding&gt;UTF-8&lt;&#x2F;uriEncoding&gt;</span><br><span class="line">        &lt;&#x2F;configuration&gt;</span><br><span class="line">      &lt;&#x2F;plugin&gt;</span><br><span class="line">    &lt;&#x2F;plugins&gt;</span><br><span class="line">  &lt;&#x2F;build&gt;</span><br></pre></td></tr></table></figure>
 
@@ -524,10 +524,10 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">       &lt;groupId&gt;org.apache.maven.plugins&lt;&#x2F;groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;maven-compiler-plugin&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;configuration&gt;</span><br><span class="line">         &lt;target&gt;1.8&lt;&#x2F;target&gt;</span><br><span class="line">         &lt;source&gt;1.8&lt;&#x2F;source&gt;</span><br><span class="line">         &lt;encoding&gt;UTF-8&lt;&#x2F;encoding&gt;</span><br><span class="line">       &lt;&#x2F;configuration&gt;</span><br><span class="line">     &lt;&#x2F;plugin&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>9. 类似于7和8的步骤可以创建模板</strong></p>
-<p><img src="dingzhi.png" alt=""></p>
-<p><img src="dingzhier.png" alt=""></p>
+<p><img src="/2020/03/14/maven/dingzhi.png" alt></p>
+<p><img src="/2020/03/14/maven/dingzhier.png" alt></p>
 <hr>
-<h1 id="maven的jave工程取mysql数据"><a href="#maven的jave工程取mysql数据" class="headerlink" title="maven的jave工程取mysql数据"></a>maven的jave工程取mysql数据</h1><h2 id="准备数据库"><a href="#准备数据库" class="headerlink" title="准备数据库"></a>准备数据库</h2><p><img src="shujukuer.png" alt=""></p>
+<h1 id="maven的jave工程取mysql数据"><a href="#maven的jave工程取mysql数据" class="headerlink" title="maven的jave工程取mysql数据"></a>maven的jave工程取mysql数据</h1><h2 id="准备数据库"><a href="#准备数据库" class="headerlink" title="准备数据库"></a>准备数据库</h2><p><img src="/2020/03/14/maven/shujukuer.png" alt></p>
 <h2 id="准备domain包的类去接里面的属性"><a href="#准备domain包的类去接里面的属性" class="headerlink" title="准备domain包的类去接里面的属性"></a>准备domain包的类去接里面的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Items &#123;</span><br><span class="line">    private Integer id;</span><br><span class="line">    private String name;</span><br><span class="line">    public Integer getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setId(Integer id) &#123;</span><br><span class="line">        this.id &#x3D; id;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="pom里面写需要的mysql和junit的jar包"><a href="#pom里面写需要的mysql和junit的jar包" class="headerlink" title="pom里面写需要的mysql和junit的jar包"></a>pom里面写需要的mysql和junit的jar包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;5.1.6&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;scope&gt;runtime&lt;&#x2F;scope&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;junit&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;junit&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;4.12&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
@@ -540,9 +540,9 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 
 <h2 id="准备test层代码"><a href="#准备test层代码" class="headerlink" title="准备test层代码"></a>准备test层代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class ItemsTest &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void findAll() throws Exception &#123;</span><br><span class="line">        ItemsDao dao&#x3D;new ItemsDaoImpl();   &#x2F;&#x2F;面向接口编程</span><br><span class="line">        List&lt;Items&gt; list&#x3D;dao.findAll();  &#x2F;&#x2F;得到结果给list集合</span><br><span class="line">        for (Items items:list)</span><br><span class="line">        &#123; </span><br><span class="line">            System.out.println(items.getId());   &#x2F;&#x2F;增强for循环输出结果</span><br><span class="line">            System.out.println(items.getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="jieguo.png" alt=""></p>
+<p><img src="/2020/03/14/maven/jieguo.png" alt></p>
 <hr>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="zongti.png" alt=""></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2020/03/14/maven/zongti.png" alt></p>
 <pre><code>1.实现类必须要有的四要素：
     数据库驱动(看你用的oracle还是mysql)
     连接数据库的地址 url
@@ -614,8 +614,8 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
           
         <h1 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h1><pre><code>1. 提供：index.html页面，页面中有一个省份 下拉列表
 2. 页面加载完成后 发送ajax请求，加载所有省份</code></pre><hr>
-<h1 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h1><h2 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h2><p><img src="shujuku.png" alt=""></p>
-<h2 id="导入jar和配置文件以及各种包"><a href="#导入jar和配置文件以及各种包" class="headerlink" title="导入jar和配置文件以及各种包"></a>导入jar和配置文件以及各种包</h2><p><img src="gezhong.png" alt=""></p>
+<h1 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h1><h2 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h2><p><img src="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/shujuku.png" alt></p>
+<h2 id="导入jar和配置文件以及各种包"><a href="#导入jar和配置文件以及各种包" class="headerlink" title="导入jar和配置文件以及各种包"></a>导入jar和配置文件以及各种包</h2><p><img src="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/gezhong.png" alt></p>
 <h2 id="druid连接池配置文件"><a href="#druid连接池配置文件" class="headerlink" title="druid连接池配置文件"></a>druid连接池配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">driverClassName&#x3D;com.mysql.jdbc.Driver</span><br><span class="line">url&#x3D;jdbc:mysql:&#x2F;&#x2F;&#x2F;day23</span><br><span class="line">username&#x3D;root</span><br><span class="line">password&#x3D;njdxrjgc7777777.</span><br><span class="line">initialSize&#x3D;5</span><br><span class="line">maxActive&#x3D;10</span><br><span class="line">maxWait&#x3D;3000</span><br></pre></td></tr></table></figure>
 <h2 id="jedis-properties配置redis文件"><a href="#jedis-properties配置redis文件" class="headerlink" title="jedis.properties配置redis文件"></a>jedis.properties配置redis文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">host&#x3D;127.0.0.1</span><br><span class="line">port&#x3D;6379</span><br><span class="line">maxTotal&#x3D;50</span><br><span class="line">maxIdle&#x3D;10</span><br></pre></td></tr></table></figure>
 
@@ -639,7 +639,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <h2 id="前端index-html"><a href="#前端index-html" class="headerlink" title="前端index.html"></a>前端index.html</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;js&#x2F;jquery-3.3.1.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function()&#123;</span><br><span class="line">            &#x2F;&#x2F;发送ajax请求 加载所有省份数据</span><br><span class="line">            $.get(&quot;provinceServlet&quot;,&#123;&#125;,function (data) &#123;</span><br><span class="line">                &#x2F;&#x2F;[&#123;&quot;id&quot;:1,&quot;name&quot;:&quot;北京&quot;&#125;,&#123;&quot;id&quot;:2,&quot;name&quot;:&quot;上海&quot;&#125;,&#123;&quot;id&quot;:3,&quot;name&quot;:&quot;广州&quot;&#125;,&#123;&quot;id&quot;:4,&quot;name&quot;:&quot;陕西&quot;&#125;]</span><br><span class="line">                &#x2F;&#x2F;1.获取select</span><br><span class="line">                    var province&#x3D;$(&quot;#province&quot;);</span><br><span class="line">                &#x2F;&#x2F;2.遍历json数组</span><br><span class="line">                    $(data).each(function () &#123;</span><br><span class="line">                        &#x2F;&#x2F;3.创建&lt;option&gt;</span><br><span class="line">                            var option&#x3D;&quot;&lt;option name&#x3D;&#39;&quot;+this.id+&quot;&#39;&gt;&quot;+this.name+&quot;&lt;&#x2F;option&gt;&quot;;  &#x2F;&#x2F;相当于&lt;option name&#x3D;‘1’&gt;北京&lt;option&gt;需要动态变化  ‘’拼接字符串</span><br><span class="line">                        &#x2F;&#x2F;4.使用select的append追加option</span><br><span class="line">                            province.append(option);</span><br><span class="line">                    &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;select id&#x3D;&quot;province&quot;&gt;</span><br><span class="line">    &lt;option&gt;--请选择省份--&lt;&#x2F;option&gt;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="kuangjia.png" alt=""></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/kuangjia.png" alt></p>
 <p>###注意</p>
 <pre><code>1.使用redis缓存比较适合：一些不经常发生变化的数据。
 2.数据库的数据一旦发生改变，则需要更新缓存。
@@ -649,9 +649,9 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.先从redis中查询数据</span><br><span class="line">           &#x2F;&#x2F;1.1先获取redis客户端连接</span><br><span class="line">              Jedis jedis &#x3D; JedisPoolUtils.getJedis();  &#x2F;&#x2F;调用写好的数据池工具类</span><br><span class="line">                  String province_json &#x3D; jedis.get(&quot;province&quot;);  &#x2F;&#x2F;获取key值为province</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;2.判断json数据是否为null</span><br><span class="line">           if(province_json&#x3D;&#x3D;null||province_json.length()&#x3D;&#x3D;0)  &#x2F;&#x2F;redis里面没有数据</span><br><span class="line">           &#123;</span><br><span class="line">               &#x2F;&#x2F;2.1从数据中查询</span><br><span class="line">                   List&lt;Province&gt; ps &#x3D; dao.findAll();</span><br><span class="line">               &#x2F;&#x2F;2.将list序列化为json</span><br><span class="line">                    ObjectMapper mapper&#x3D;new ObjectMapper();    &#x2F;&#x2F;调用jar里面的ObjectMapper类</span><br><span class="line">                   province_json&#x3D;mapper.writeValueAsString(ps);	 &#x2F;&#x2F;调用方法直接转为json</span><br><span class="line">               &#x2F;&#x2F;2.3将json数据存入redis</span><br><span class="line">                   jedis.set(&quot;province&quot;,province_json); &#x2F;&#x2F;获取key值为province</span><br><span class="line">               &#x2F;&#x2F;2.4归还连接</span><br><span class="line">                   jedis.close();</span><br><span class="line">  			&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>执行demo(我用的tomcat7.0版本一定要在web.xml里面改成2.5)</strong></p>
-<p><img src="jieguo.png" alt=""></p>
+<p><img src="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/jieguo.png" alt></p>
 <p><strong>打开服务器–客户端–查询</strong></p>
-<p><img src="redisjieguo.png" alt=""></p>
+<p><img src="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/redisjieguo.png" alt></p>
 <hr>
 
       
@@ -719,25 +719,25 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 </ul>
 <hr>
 <h1 id="上传下载文件软件"><a href="#上传下载文件软件" class="headerlink" title="上传下载文件软件"></a>上传下载文件软件</h1><h2 id="FileZilla软件"><a href="#FileZilla软件" class="headerlink" title="FileZilla软件"></a>FileZilla软件</h2><p><strong>1.下载安装之后直接使用</strong></p>
-<p><img src="file.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/file.png" alt></p>
 <h2 id="lrzsz软件"><a href="#lrzsz软件" class="headerlink" title="lrzsz软件"></a>lrzsz软件</h2><p><strong>1.CRT软件下输入 yum install lrzsz</strong></p>
 <p><strong>2.CRT软件 –&gt; 选项 –&gt; 会话设置 –&gt; 设置上传下载目录</strong></p>
-<p><img src="shezhi.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/shezhi.png" alt></p>
 <p><strong>3.上传(rz)： CRT软件下输入 rz –&gt; 从uploads上传到linux当前目录下</strong></p>
-<p><img src="chenggong.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/chenggong.png" alt></p>
 <p><strong>4.下载(sz 文件名)： CRT软件下输入 sz 文件名 –&gt; 下载到downloads目录下</strong></p>
-<p><img src="chenggonger.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/chenggonger.png" alt></p>
 <h2 id="sftp协议-Alt-p"><a href="#sftp协议-Alt-p" class="headerlink" title="sftp协议(Alt+p)"></a>sftp协议(Alt+p)</h2><p><strong>1. 上传(put)：通过Alt+p进入SFTP界面 –&gt; 输入 put F：//song.txt –&gt; 上传到linux当前目录下</strong></p>
-<p><img src="put.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/put.png" alt></p>
 <p><strong>2.下载(get)：通过Alt+p进入SFTP界面 –&gt; 输入 get song.txt –&gt; 下载到电脑的文档目录下</strong></p>
-<p><img src="get.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/get.png" alt></p>
 <hr>
 <h1 id="Linux安装JDK"><a href="#Linux安装JDK" class="headerlink" title="Linux安装JDK"></a>Linux安装JDK</h1><p><strong>先确定linux系统的版本 –&gt; 选择JDK版本</strong></p>
-<p><img src="banebn.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/banebn.png" alt></p>
 <p><strong>1. 通过sftp进行上传</strong></p>
-<p><img src="shangchuanjdk.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/shangchuanjdk.png" alt></p>
 <p><strong>2. mv指令剪切到usr的local下面的jdk里面</strong></p>
-<p><img src="zhuanyi.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhuanyi.png" alt></p>
 <p><strong>3. 将原来的java的jdk卸载</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java –version &#x2F;&#x2F;查看java版本</span><br><span class="line">rpm -qa | grep java &#x2F;&#x2F;查看和java有关的内容</span><br><span class="line"></span><br><span class="line">rpm -e --nodeps java-1.6.0-openjdk-1.6.0.35-1.13.7.1.el6_6.i686  &#x2F;&#x2F;rpm -e --nodeps 然后后面跟自己电脑显示出来的java有关的内容</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.79-2.5.5.4.el6.i686</span><br></pre></td></tr></table></figure>
 
@@ -752,49 +752,49 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
     export JAVA_HOME CLASSPATH PATH
 3. ESC键之后：wq退出之后重新保存
     source /etc/profile 使更改的配置立即生效</code></pre><p><strong>流程：</strong></p>
-<p><img src="bianliang.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/bianliang.png" alt></p>
 <hr>
 <h1 id="Linux安装Mysql"><a href="#Linux安装Mysql" class="headerlink" title="Linux安装Mysql"></a>Linux安装Mysql</h1><p><strong>1. 通过lrzsz的rz方式将uploads的文件上传</strong></p>
-<p><img src="mysql.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/mysql.png" alt></p>
 <p><strong>2. 卸载当前已经有的mysql</strong></p>
-<p><img src="mysqlxiezai.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/mysqlxiezai.png" alt></p>
 <p><strong>3. 通tar -xvf(是jar而不是gz压缩包)指令解压</strong></p>
-<p><img src="jarjieya.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/jarjieya.png" alt></p>
 <p><strong>4. rmp -ivh指令 安装服务端 【然后获得随机密码】</strong></p>
-<p><img src="fuwuduan.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/fuwuduan.png" alt></p>
 <p><strong>5. rmp -ivh指令 安装服务端</strong></p>
-<p><img src="kehuduan.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/kehuduan.png" alt></p>
 <p><strong>6. 打开mysql服务</strong></p>
-<p><img src="shibai.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/shibai.png" alt></p>
 <p><strong>7. 重新登陆数据库mysql</strong></p>
-<p><img src="chong.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/chong.png" alt></p>
 <p><strong>8. 重新设置密码打开数据库</strong></p>
-<p><img src="dakaier.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/dakaier.png" alt></p>
 <p><strong>9. 远程访问(Navicat访问linux里面安装的mysql)</strong></p>
 <p><strong>在navicat里面尝试新建连接(失败)</strong></p>
-<p><img src="yuanyi.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/yuanyi.png" alt></p>
 <p><strong>需要使用语句打开远程访问并且刷新</strong></p>
-<p><img src="yuaner.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/yuaner.png" alt></p>
 <p><strong>双击之后即可使用</strong></p>
-<p><img src="liansan.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/liansan.png" alt></p>
 <hr>
 <h1 id="Linux安装Tomcat"><a href="#Linux安装Tomcat" class="headerlink" title="Linux安装Tomcat"></a>Linux安装Tomcat</h1><p><strong>1. 通过put上传并且tar -zxvf指令解压文件</strong></p>
 <p><strong>2. 解压之后进入tomcat的bin目录执行start.sh文件</strong></p>
-<p><img src="zhixing.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhixing.png" alt></p>
 <p><strong>3. 打开浏览器输入：linux的地址：8080 (如果能看到tomcat显示正常就ok)</strong></p>
-<p><img src="zhengchang.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhengchang.png" alt></p>
 <hr>
 <h1 id="Linux安装redis"><a href="#Linux安装redis" class="headerlink" title="Linux安装redis"></a>Linux安装redis</h1><p><strong>1. 先在local目录下下载gcc编译文件</strong></p>
-<p><img src="gcc.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/gcc.png" alt></p>
 <p><strong>2. 去网络远程下载redis</strong></p>
-<p><img src="redisan.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/redisan.png" alt></p>
 <p><strong>3. 解压(tar -zxvf redis-3.0.4.tar.gz )</strong></p>
 <p><strong>4. 输入make进行编译</strong></p>
 <p>*<em>5. 安装(make /usr/local/redis install) *</em></p>
-<p><img src="redismake.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/redismake.png" alt></p>
 <p><strong>6. 将redis-3.0.4里面的redis.conf 复制到redis/bin目录下</strong></p>
 <p><strong>7. 直接执行./redis-server服务器端</strong> </p>
-<p><img src="zhixingredis.png" alt=""></p>
+<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhixingredis.png" alt></p>
 <p><strong>8. 可以再执行redis-client服务器端然后查询操作</strong></p>
 <hr>
 
@@ -940,7 +940,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
     * redis.windows.conf： 配置文件
     * redis-cli.exe：     redis的客户端
     * redis-server.exe：  redis服务器端</code></pre><p><strong>先打开服务器再打卡客户端操作：</strong></p>
-<p><img src="redisanzhuang.png" alt=""></p>
+<p><img src="/2020/03/10/redis/redisanzhuang.png" alt></p>
 <hr>
 <h1 id="命令操作"><a href="#命令操作" class="headerlink" title="命令操作"></a>命令操作</h1><h2 id="redis五种数据结构"><a href="#redis五种数据结构" class="headerlink" title="redis五种数据结构"></a>redis五种数据结构</h2><blockquote>
 <p>存储：key,value的格式数据  (key为字符串，value有五种数据类型)</p>
@@ -950,29 +950,29 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 3) 列表类型 list(可重复有顺序)  linkedlist格式
 4) 集合类型 set(不重复没顺序)
 5) 有序集合类型 sortedset      排序</code></pre><p><strong>五种数据结构的样子：</strong></p>
-<p><img src="gaishu.png" alt=""></p>
+<p><img src="/2020/03/10/redis/gaishu.png" alt></p>
 <h2 id="字符串类型-String-mystring"><a href="#字符串类型-String-mystring" class="headerlink" title="字符串类型 String    (mystring)"></a>字符串类型 String    (mystring)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储 set key value</span><br><span class="line"></span><br><span class="line">2. 获取 get key</span><br><span class="line"></span><br><span class="line">3. 删除 del key</span><br></pre></td></tr></table></figure>
-<p><img src="string.png" alt=""></p>
+<p><img src="/2020/03/10/redis/string.png" alt></p>
 <h2 id="哈希类型-hash-myhash"><a href="#哈希类型-hash-myhash" class="headerlink" title="哈希类型 hash (myhash)"></a>哈希类型 hash (myhash)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储 hset key filed value</span><br><span class="line"></span><br><span class="line">2. 获取 hget key field   &#x2F;   hgetall field</span><br><span class="line"></span><br><span class="line">3. 删除 hdel key field</span><br></pre></td></tr></table></figure>
 
-<p><img src="hash.png" alt=""></p>
+<p><img src="/2020/03/10/redis/hash.png" alt></p>
 <h2 id="列表类型-list-mylist"><a href="#列表类型-list-mylist" class="headerlink" title="列表类型 list (mylist)"></a>列表类型 list (mylist)</h2><blockquote>
 <p>可以添加一个元素到列表的<strong>头部（左边）</strong>或者<strong>尾部（右边）</strong></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 存储 </span><br><span class="line">	1.1 添加到左边： lpush key value</span><br><span class="line">	1.2 添加到右边： rpush key value</span><br><span class="line"></span><br><span class="line">2. 获取  lrange key start end 范围获取</span><br><span class="line">	</span><br><span class="line">3. 删除 	</span><br><span class="line">	3.1 lpop key  删除最左边的元素并且返回</span><br><span class="line">	3.2 rpol key  删除最右边的元素并且返回</span><br></pre></td></tr></table></figure>
 
-<p><img src="list.png" alt=""></p>
+<p><img src="/2020/03/10/redis/list.png" alt></p>
 <p><strong>对刚才操作的分析：</strong></p>
-<p><img src="listjuli.png" alt=""></p>
+<p><img src="/2020/03/10/redis/listjuli.png" alt></p>
 <h2 id="列表类型-set-myset"><a href="#列表类型-set-myset" class="headerlink" title="列表类型 set (myset)"></a>列表类型 set (myset)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储  sadd key value</span><br><span class="line"></span><br><span class="line">2. 获取  smembers key  获取set集合中所有元素</span><br><span class="line">	</span><br><span class="line">3. 删除 	srem key value 删除set集合中某个元素</span><br></pre></td></tr></table></figure>
 
-<p><img src="set.png" alt=""></p>
+<p><img src="/2020/03/10/redis/set.png" alt></p>
 <h2 id="有序集合类型-sortedset-mysortedset"><a href="#有序集合类型-sortedset-mysortedset" class="headerlink" title="有序集合类型 sortedset (mysortedset)"></a>有序集合类型 sortedset (mysortedset)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 存储  zadd key score value  添加数据和数据排序(也可以再次zadd修改score值)</span><br><span class="line">		 </span><br><span class="line">2. 获取  zrange key start end (withscores)</span><br><span class="line">		</span><br><span class="line">3. 删除 	 zrem key value</span><br></pre></td></tr></table></figure>
 
-<p><img src="sortedset.png" alt=""></p>
+<p><img src="/2020/03/10/redis/sortedset.png" alt></p>
 <h2 id="通用命令"><a href="#通用命令" class="headerlink" title="通用命令"></a>通用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. keys ：    查询所有键(写过的)</span><br><span class="line">2. type key：  获取键对应的value值(查看哪一类数据结构)</span><br><span class="line">3. del key ：   删除指定的key value</span><br></pre></td></tr></table></figure>
 
-<p><img src="tongyong.png" alt=""></p>
+<p><img src="/2020/03/10/redis/tongyong.png" alt></p>
 <hr>
 <h1 id="持久化-缓存"><a href="#持久化-缓存" class="headerlink" title="持久化(缓存)"></a>持久化(缓存)</h1><blockquote>
 <p>redis是一个<strong>内存数据库</strong>，当redis服务器重启，获取电脑重启，数据会丢失，我们可以将redis内存中的数据持久化保存到硬盘的文件中。</p>
@@ -988,7 +988,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <h2 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h2><p>###1. Redis –&gt; redis.windows.conf –&gt; 找到appendonly no</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">appendonly no（关闭aof） --&gt; appendonly yes （开启aof）</span><br><span class="line">						</span><br><span class="line">  &#x2F;&#x2F;在下面不远的地方就有三行类似的：</span><br><span class="line"></span><br><span class="line">		# appendfsync always ： 每一次操作都进行持久化</span><br><span class="line">		appendfsync everysec ： 每隔一秒进行一次持久化</span><br><span class="line">		# appendfsync no	 ： 不进行持久化</span><br></pre></td></tr></table></figure>
 
-<p><img src="aof.png" alt=""></p>
+<p><img src="/2020/03/10/redis/aof.png" alt></p>
 <hr>
 <h1 id="使用Java客户端操作redis"><a href="#使用Java客户端操作redis" class="headerlink" title="使用Java客户端操作redis"></a>使用Java客户端操作redis</h1><blockquote>
 <p>Jedis：一款java操作redis数据库的工具</p>
@@ -1023,7 +1023,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <h2 id="Jedis连接池-JedisPool"><a href="#Jedis连接池-JedisPool" class="headerlink" title="Jedis连接池  JedisPool"></a>Jedis连接池  JedisPool</h2><pre><code>1. 创建JedisPool连接池对象
 2. 调用方法 getResource()获取Jedis连接</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;0.创建一个配置对象</span><br><span class="line">           JedisPoolConfig config &#x3D; new JedisPoolConfig();</span><br><span class="line">           config.setMaxTotal(50);  &#x2F;&#x2F;设置数据池最大为50个</span><br><span class="line">           config.setMaxIdle(10);   &#x2F;&#x2F;一次最多取10个</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;1.创建Jedis连接池对象</span><br><span class="line">           JedisPool pool&#x3D; new JedisPool(config,&quot;localhost&quot;,6379);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;2.调用方法 --- 获得连接</span><br><span class="line">           Jedis jedis &#x3D; pool.getResource();</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;3.相当于原来的第二步   ---操作</span><br><span class="line">          jedis.set(&quot;username&quot;,&quot;nimabi&quot;);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;4.关闭   归还到连接池中</span><br><span class="line">          jedis.close();</span><br></pre></td></tr></table></figure>
 
-<h2 id="Jedis连接池工具类-JedisPoolUtils"><a href="#Jedis连接池工具类-JedisPoolUtils" class="headerlink" title="Jedis连接池工具类 JedisPoolUtils"></a>Jedis连接池工具类 JedisPoolUtils</h2><p><img src="buju.png" alt=""></p>
+<h2 id="Jedis连接池工具类-JedisPoolUtils"><a href="#Jedis连接池工具类-JedisPoolUtils" class="headerlink" title="Jedis连接池工具类 JedisPoolUtils"></a>Jedis连接池工具类 JedisPoolUtils</h2><p><img src="/2020/03/10/redis/buju.png" alt></p>
 <pre><code>1.配置文件(里面要有最大数据池数/一次性取最大数/host/post)
 2.数据库连接池工具类(加载配置文件/配置参数/提供获取连接的方法)
 3.测试类</code></pre><p><strong>1. jedis.properties配置文件</strong></p>
@@ -1036,7 +1036,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">  public void test08()&#123;</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;1.现在只需要通过写好的连接池工具类获取连接</span><br><span class="line">          Jedis jedis&#x3D;JedisPoolUtils.getJedis();</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;2.相当于原来的第二步   ---操作</span><br><span class="line">          jedis.set(&quot;hello&quot;,&quot;world&quot;);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F;3.关闭   归还到连接池中</span><br><span class="line">          jedis.close();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>最终结果查询：</strong></p>
-<p><img src="jieguo.png" alt=""></p>
+<p><img src="/2020/03/10/redis/jieguo.png" alt></p>
 <hr>
 
       
@@ -1127,7 +1127,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <li><p><strong>弊端:</strong>如果被实现的接口中的方法过多,装饰类中的方法过多冗余(原来的方法不能太多)</p>
 </li>
 </ul>
-<p><img src="jiegou.png" alt=""></p>
+<p><img src="/2020/03/10/%E8%B0%B7%E6%AD%8CCar%E5%BC%95%E5%85%A5%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/jiegou.png" alt></p>
 <blockquote>
 <p><strong>MyCar(新创建的类 实现原来的接口)</strong></p>
 </blockquote>
@@ -1139,7 +1139,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class TestCar &#123;</span><br><span class="line">	public static void main(String[] args) &#123;	</span><br><span class="line">		ICar car&#x3D;new MyCar(new GoogleCar());  &#x2F;&#x2F;面向接口编程   右边new的是GoogleCar对象</span><br><span class="line">		car.start();  </span><br><span class="line">		car.run();</span><br><span class="line">		car.stop();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>分析：</strong><br>  其实就是test里面new的对象 –&gt; 新写的增强MyCar的构造方法接收 –&gt; 然后调用方法(里面既有新写的方法内容 + 谷歌原来的方法内容)</p>
-<p><img src="fenxi.png" alt=""></p>
+<p><img src="/2020/03/10/%E8%B0%B7%E6%AD%8CCar%E5%BC%95%E5%85%A5%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/fenxi.png" alt></p>
 <hr>
 <h1 id="动态代理-字节码"><a href="#动态代理-字节码" class="headerlink" title="动态代理(字节码)"></a>动态代理(字节码)</h1><blockquote>
 <p><strong>解决装饰者模式中实现方法太多接口的冗余问题</strong></p>
@@ -1151,7 +1151,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 2_被创建的字节码上的方法如何来实现</code></pre></li>
 </ul>
 <p><strong>在class类里面本来就有.class的文件用于虚拟机识别的字节码：</strong></p>
-<p><img src="xuniji.png" alt=""></p>
+<p><img src="/2020/03/10/%E8%B0%B7%E6%AD%8CCar%E5%BC%95%E5%85%A5%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/xuniji.png" alt></p>
 <p><strong>只是在前面ICar和GoogleCar的基础上直接写test测试用字节码方式：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class TestCar &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;使用字节码 </span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;1param: 固定值: 告诉虚拟机用哪个字节码加载器加载内存中创建出的字节码文件</span><br><span class="line">		&#x2F;&#x2F;2param: 告诉虚拟机内存中正在被创建的字节码文件中应该有哪些方法</span><br><span class="line">		&#x2F;&#x2F;3param: 告诉虚拟机正在被创建的字节码上的各个方法如何处理</span><br><span class="line">		</span><br><span class="line">		ICar car&#x3D;(ICar)Proxy.newProxyInstance(TestCar.class.getClassLoader(), GoogleCar.class.getInterfaces(),new InvocationHandler() &#123;  &#x2F;&#x2F;第三个参数使用匿名内部类</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;method:代表正在执行的方法</span><br><span class="line">			&#x2F;&#x2F;args:代表正在执行的方法中的参数</span><br><span class="line">			&#x2F;&#x2F;Object:代表方法执行完毕之后的返回值</span><br><span class="line">			@Override</span><br><span class="line">			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">				</span><br><span class="line">				if(method.getName().equalsIgnoreCase(&quot;start&quot;))&#123;   &#x2F;&#x2F;让你本来有的方法和要改变的方法对比</span><br><span class="line">					System.out.println(&quot;检查天气是否良好&quot;);		</span><br><span class="line">					method.invoke(new GoogleCar(), args);  &#x2F;&#x2F;这是固定的调用GoogleCar的方法</span><br><span class="line">					System.out.println(&quot;检查路况是否拥堵&quot;);	 &#x2F;&#x2F;增强的方法(位置可以变化)</span><br><span class="line">				&#125;</span><br><span class="line">				else</span><br><span class="line">				&#123;</span><br><span class="line">					method.invoke(new GoogleCar(), args);	&#x2F;&#x2F;这是固定的调用GoogleCar的方法</span><br><span class="line">				&#125;</span><br><span class="line">				return null;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;); </span><br><span class="line">		</span><br><span class="line">		car.start();  &#x2F;&#x2F;调用方法输出结果</span><br><span class="line">		car.run();</span><br><span class="line">		car.stop();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1374,13 +1374,13 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="自动登录分析"><a href="#自动登录分析" class="headerlink" title="自动登录分析"></a>自动登录分析</h1><p><img src="img05.png" alt=""></p>
+        <h1 id="自动登录分析"><a href="#自动登录分析" class="headerlink" title="自动登录分析"></a>自动登录分析</h1><p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/img05.png" alt></p>
 <hr>
-<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="建立数据库"><a href="#建立数据库" class="headerlink" title="建立数据库"></a>建立数据库</h2><p><img src="shujuku.png" alt=""></p>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="建立数据库"><a href="#建立数据库" class="headerlink" title="建立数据库"></a>建立数据库</h2><p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/shujuku.png" alt></p>
 <h2 id="建立页面"><a href="#建立页面" class="headerlink" title="建立页面"></a>建立页面</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;form method&#x3D;&quot;post&quot; action&#x3D;&quot;&quot;&gt;</span><br><span class="line">	账号：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line">	密码：&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">	   	  &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;auto_login&quot;&gt;自动登录&lt;br&gt;</span><br><span class="line">		  &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot;&gt;</span><br><span class="line">  &lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="zuichu.png" alt=""></p>
-<h2 id="拷贝jar和JDBCUtils类，C3P0配置文件"><a href="#拷贝jar和JDBCUtils类，C3P0配置文件" class="headerlink" title="拷贝jar和JDBCUtils类，C3P0配置文件"></a>拷贝jar和JDBCUtils类，C3P0配置文件</h2><p><img src="kaobei.png" alt=""></p>
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/zuichu.png" alt></p>
+<h2 id="拷贝jar和JDBCUtils类，C3P0配置文件"><a href="#拷贝jar和JDBCUtils类，C3P0配置文件" class="headerlink" title="拷贝jar和JDBCUtils类，C3P0配置文件"></a>拷贝jar和JDBCUtils类，C3P0配置文件</h2><p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/kaobei.png" alt></p>
 <hr>
 <h1 id="MVC模型各层实现"><a href="#MVC模型各层实现" class="headerlink" title="MVC模型各层实现"></a>MVC模型各层实现</h1><h2 id="dao层代码-接口写方法"><a href="#dao层代码-接口写方法" class="headerlink" title="dao层代码(接口写方法)"></a>dao层代码(接口写方法)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface UserDao &#123;	</span><br><span class="line">	UserBean login(UserBean user) throws SQLException; &#x2F;&#x2F;将传入的数据封装成一个对象  返回所有信息		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="UserBean层-数据封装"><a href="#UserBean层-数据封装" class="headerlink" title="UserBean层(数据封装)"></a>UserBean层(数据封装)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class UserBean &#123;</span><br><span class="line"></span><br><span class="line">	private int id;    &#x2F;&#x2F;数据库的所有属性</span><br><span class="line">	private String username;</span><br><span class="line">	private String password;</span><br><span class="line">	</span><br><span class="line">	public int getId() &#123;</span><br><span class="line">		return id;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setId(int id) &#123;</span><br><span class="line">		this.id &#x3D; id;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getUsername() &#123;</span><br><span class="line">		return username;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setUsername(String username) &#123;</span><br><span class="line">		this.username &#x3D; username;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getPassword() &#123;</span><br><span class="line">		return password;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setPassword(String password) &#123;</span><br><span class="line">		this.password &#x3D; password;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1391,14 +1391,14 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 
 <hr>
 <h1 id="BeanUtils介绍"><a href="#BeanUtils介绍" class="headerlink" title="BeanUtils介绍"></a>BeanUtils介绍</h1><p><strong>使用框架：</strong></p>
-<p><img src="beanUtils.png" alt=""></p>
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/beanUtils.png" alt></p>
 <h2 id="主页的jsp页面"><a href="#主页的jsp页面" class="headerlink" title="主页的jsp页面"></a>主页的jsp页面</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;form method&#x3D;&quot;post&quot; action&#x3D;&quot;RegisterServlet&quot;&gt;</span><br><span class="line">	账号：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line">	密码：&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">	邮箱:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;email&quot;&gt;&lt;br&gt;</span><br><span class="line">	电话：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;phone&quot;&gt;&lt;br&gt;</span><br><span class="line">	地址：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;address&quot;&gt;&lt;br&gt;</span><br><span class="line">	生日：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;birthday&quot;&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">		&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;注册&quot;&gt;</span><br><span class="line">  &lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Servlet代码"><a href="#Servlet代码" class="headerlink" title="Servlet代码"></a>Servlet代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注册自己的日期转换器</span><br><span class="line">			ConvertUtils.register(new MyDateConverter(), Date.class);</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;转化数据</span><br><span class="line">			Map map &#x3D; request.getParameterMap();</span><br><span class="line">			UserBean bean &#x3D; new UserBean();</span><br><span class="line">			BeanUtils.populate(bean, map);</span><br><span class="line"></span><br><span class="line">			System.out.println(&quot;22222bean&#x3D;&quot;+bean.toString());</span><br></pre></td></tr></table></figure>
 
 <h2 id="MyDateConverter类-具体用来String转Date"><a href="#MyDateConverter类-具体用来String转Date" class="headerlink" title="MyDateConverter类(具体用来String转Date)"></a>MyDateConverter类(具体用来String转Date)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class MyDateConverter implements Converter &#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	&#x2F;&#x2F; 将value 转换 c 对应类型</span><br><span class="line">	&#x2F;&#x2F; 存在Class参数目的编写通用转换器，如果转换目标类型是确定的，可以不使用c 参数</span><br><span class="line">	public Object convert(Class c, Object value) &#123;</span><br><span class="line">		String strVal &#x3D; (String) value;</span><br><span class="line">		&#x2F;&#x2F; 将String转换为Date --- 需要使用日期格式化</span><br><span class="line">		DateFormat dateFormat &#x3D; new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);</span><br><span class="line">		try &#123;</span><br><span class="line">			Date date &#x3D; dateFormat.parse(strVal);</span><br><span class="line">			return date;</span><br><span class="line">		&#125; catch (ParseException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="kuang.png" alt=""></p>
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/kuang.png" alt></p>
 <hr>
 <h1 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h1><h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><blockquote>
 <p> 过滤器的<strong>核心</strong> 帮用户完成登录的功能。 </p>
@@ -1421,7 +1421,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 </li>
 </ol>
 <h2 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h2><p><strong>1. new一个新的Filter的文件，然后需要配置web里面的路径</strong></p>
-<p><img src="genggai.png" alt=""></p>
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/genggai.png" alt></p>
 <p><strong>2. 编写取出cookie比对的工作类</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class CookieUtil &#123;</span><br><span class="line"></span><br><span class="line">	public static Cookie findCookie(Cookie[] cookies,String name) &#123;  &#x2F;&#x2F;传入已经有的cookie和传进来的name比对</span><br><span class="line">		</span><br><span class="line">		if(cookies!&#x3D;null)</span><br><span class="line">		&#123;</span><br><span class="line">			for(Cookie cookie:cookies)  &#x2F;&#x2F;循环</span><br><span class="line">			&#123;</span><br><span class="line">				if(name.equals(cookie.getName()))</span><br><span class="line">				&#123;</span><br><span class="line">					return cookie;  &#x2F;&#x2F;匹配传过来的和存的有相同的</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1430,9 +1430,9 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 
 <hr>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><strong>展示代码层次</strong></p>
-<p><img src="jieshi.png" alt=""></p>
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/jieshi.png" alt></p>
 <p><strong>尝试使用：</strong></p>
-<p><img src="changshi.png" alt=""></p>
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/changshi.png" alt></p>
 <hr>
 
       

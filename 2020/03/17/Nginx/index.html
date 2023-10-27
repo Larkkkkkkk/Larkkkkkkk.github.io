@@ -396,7 +396,7 @@
       
           
         <h1 id="Nginx-反向代理"><a href="#Nginx-反向代理" class="headerlink" title="Nginx(反向代理)"></a>Nginx(反向代理)</h1><h2 id="场景需求"><a href="#场景需求" class="headerlink" title="场景需求"></a>场景需求</h2><p>　　<br>　　原来是1w个访问要去使用tomcat会导致并发太高，然后我们可以通过多开Tomcat服务器从而来分担。所以引入了nginx来分配tomcat。这种方式也叫做<strong>反向代理</strong></p>
-<p><img src="gainian.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/gainian.png" alt></p>
 <h2 id="Nginx概述"><a href="#Nginx概述" class="headerlink" title="Nginx概述"></a>Nginx概述</h2><p>　　<br>　　Nginx是一款<strong>高性能</strong>的<strong>http服务器/反向代理服务器/电子邮件(IMAP/POP3)代理服务器</strong>。官方测试nginx能支撑5w的并发连接，而且cpu和内存等资源消耗比较低。        </p>
 <h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><p><strong>1. 网页静态服务器</strong></p>
 <p><strong>2. 动态服务器(部署在tomcat里面，通过nginx反向代理搭建集群)</strong></p>
@@ -418,65 +418,65 @@
 </li>
 </ul>
 <h2 id="上传解压"><a href="#上传解压" class="headerlink" title="上传解压"></a>上传解压</h2><p><strong>3. 通过rz 上传nginx文件并且tar -zxvf解压</strong></p>
-<p><img src="jieya.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/jieya.png" alt></p>
 <p><strong>4. 当面目录下输入以下文字  会生成makeFile文件</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure \</span><br><span class="line">--prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;nginx \</span><br><span class="line">--pid-path&#x3D;&#x2F;var&#x2F;run&#x2F;nginx&#x2F;nginx.pid \</span><br><span class="line">--lock-path&#x3D;&#x2F;var&#x2F;lock&#x2F;nginx.lock \</span><br><span class="line">--error-log-path&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;error.log \</span><br><span class="line">--http-log-path&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log \</span><br><span class="line">--with-http_gzip_static_module \</span><br><span class="line">--http-client-body-temp-path&#x3D;&#x2F;var&#x2F;temp&#x2F;nginx&#x2F;client \</span><br><span class="line">--http-proxy-temp-path&#x3D;&#x2F;var&#x2F;temp&#x2F;nginx&#x2F;proxy \</span><br><span class="line">--http-fastcgi-temp-path&#x3D;&#x2F;var&#x2F;temp&#x2F;nginx&#x2F;fastcgi \</span><br><span class="line">--http-uwsgi-temp-path&#x3D;&#x2F;var&#x2F;temp&#x2F;nginx&#x2F;uwsgi \</span><br><span class="line">--http-scgi-temp-path&#x3D;&#x2F;var&#x2F;temp&#x2F;nginx&#x2F;scgi</span><br></pre></td></tr></table></figure>
 
-<p><img src="make.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/make.png" alt></p>
 <p><strong>5. 执行make指令编译  执行make install指令下载</strong></p>
-<p><img src="cai.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/cai.png" alt></p>
 <hr>
 <h1 id="Nginx启动"><a href="#Nginx启动" class="headerlink" title="Nginx启动"></a>Nginx启动</h1><h2 id="启动步骤"><a href="#启动步骤" class="headerlink" title="启动步骤"></a>启动步骤</h2><p><strong>1. mkdir /var/temp/nginx/client -p 创建子目录</strong></p>
 <p><strong>2. 进入到Nginx目录下的sbin目录 然后执行nginx即可</strong></p>
-<p><img src="zhix.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/zhix.png" alt></p>
 <p><strong>3.打开nginx之后浏览器打开(直接输入linux里面的ip地址)</strong></p>
-<p><img src="duankou.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/duankou.png" alt></p>
 <p><strong>4.通过 ps aux|grep nginx 查看进程</strong></p>
-<p><img src="gengxin.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/gengxin.png" alt></p>
 <h2 id="其他操作指令-目录站在nginx-sbin里面"><a href="#其他操作指令-目录站在nginx-sbin里面" class="headerlink" title="其他操作指令(目录站在nginx/sbin里面)"></a>其他操作指令(目录站在nginx/sbin里面)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 启动Nginx   .&#x2F;nginx</span><br><span class="line"></span><br><span class="line">2. 查看进程     ps aux|grep nginx</span><br><span class="line"></span><br><span class="line">3. 关闭Nginx    .&#x2F;nginx -s stop  &#x2F;&#x2F;  .&#x2F;nginx -s quit</span><br><span class="line"></span><br><span class="line">4. 重启Nginx   1.先关闭后启动 2.刷新配置文件 .&#x2F;nginx -s reload</span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="静态资源部署"><a href="#静态资源部署" class="headerlink" title="静态资源部署"></a>静态资源部署</h1><h2 id="更改nginx-conf-nginx-conf配置文件"><a href="#更改nginx-conf-nginx-conf配置文件" class="headerlink" title="更改nginx/conf/nginx.conf配置文件"></a>更改nginx/conf/nginx.conf配置文件</h2><blockquote>
 <p><strong>通过EditPlus5去进行设置ftp</strong></p>
 </blockquote>
 <p><strong>1. 打开文件-FTP-设置FTP服务器-然后输入信息</strong></p>
-<p><img src="ftp.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/ftp.png" alt></p>
 <p><strong>2. 根据左上角目录去找左下角对应的目录文件然后右边更改</strong></p>
-<p><img src="ftp02.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/ftp02.png" alt></p>
 <p><strong>3. 每次更新之后弹窗选择确定就可以提交更新</strong></p>
-<p><img src="ftp03.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/ftp03.png" alt></p>
 <p><strong>4. 更改后的信息解析：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application&#x2F;octet-stream;</span><br><span class="line"></span><br><span class="line">  sendfile        on;</span><br><span class="line">    </span><br><span class="line">   keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen       80; </span><br><span class="line">        server_name  localhost; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location &#x2F; &#123;	</span><br><span class="line">            root   index;</span><br><span class="line">            index  index.html index.htm; </span><br><span class="line">        &#125;</span><br><span class="line">        error_page   500 502 503 504  &#x2F;50x.html;	</span><br><span class="line">        location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="准备好index文件复制到nginx目录下"><a href="#准备好index文件复制到nginx目录下" class="headerlink" title="准备好index文件复制到nginx目录下"></a>准备好index文件复制到nginx目录下</h2><p><strong>1.使用FileZilla软件也可以使用ftp上传</strong></p>
-<p><img src="zilla.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/zilla.png" alt></p>
 <p><strong>2.更改nginx.conf配置里面的root</strong></p>
-<p><img src="index.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/index.png" alt></p>
 <p><strong>3. 重启nginx之后(./nginx -s reload)浏览器打开就自动跳转到了index页面</strong></p>
-<p><img src="zidong.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/zidong.png" alt></p>
 <hr>
 <h1 id="虚拟主机-端口绑定"><a href="#虚拟主机-端口绑定" class="headerlink" title="虚拟主机-端口绑定"></a>虚拟主机-端口绑定</h1><h2 id="配置文件解析"><a href="#配置文件解析" class="headerlink" title="配置文件解析"></a>配置文件解析</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application&#x2F;octet-stream;</span><br><span class="line"></span><br><span class="line">  	sendfile on;</span><br><span class="line">    </span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">	server &#123;</span><br><span class="line">        listen       81;          # 默认端口号码</span><br><span class="line">        server_name  localhost;   # 写的是域名或者ip地址配置</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location &#x2F; &#123;	     </span><br><span class="line">            root   index;	               # 默认访问资源的目录</span><br><span class="line">            index  index.html index.htm;   # 默认访问资源名称 </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page   500 502 503 504  &#x2F;50x.html;	 # 错误页面</span><br><span class="line">        location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     server &#123;</span><br><span class="line">        listen       82;</span><br><span class="line">        server_name  localhost; </span><br><span class="line"></span><br><span class="line">        location &#x2F; &#123;	</span><br><span class="line">            root   regist;</span><br><span class="line">            index  regist.html; </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page   500 502 503 504  &#x2F;50x.html;	</span><br><span class="line">        location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">	</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="往linux再上传需要的静态网页文件"><a href="#往linux再上传需要的静态网页文件" class="headerlink" title="往linux再上传需要的静态网页文件"></a>往linux再上传需要的静态网页文件</h2><p><strong>1.还是跟之前一样通过filezilla软件上传到nginx文件下面</strong></p>
-<p><img src="register.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/register.png" alt></p>
 <p><strong>2.通过浏览器(记得输入不同的端口号)即可</strong></p>
-<p><img src="duankouer.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/duankouer.png" alt></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">其实就是刚才的静态资源配置多配置一个server&#123;&#125; 然后要多有一个端口(我一个是81&#x2F;一个是82)</span><br><span class="line">然后就可以通过IP地址+不同的端口就可以进行访问</span><br></pre></td></tr></table></figure>
 
 <p><strong>配置文件内部需要增加一个server{}</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">      listen       82;</span><br><span class="line">      server_name  localhost; </span><br><span class="line"></span><br><span class="line">      location &#x2F; &#123;	</span><br><span class="line">          root   regist;</span><br><span class="line">          index  regist.html; </span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      error_page   500 502 503 504  &#x2F;50x.html;	</span><br><span class="line">      location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">          root   html;</span><br><span class="line">      &#125;</span><br><span class="line">	</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="虚拟主机-域名绑定"><a href="#虚拟主机-域名绑定" class="headerlink" title="虚拟主机 域名绑定"></a>虚拟主机 域名绑定</h1><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p><strong>1.按上面81和82端口的例子：去hosts文件加一个域名绑定</strong></p>
-<p><img src="yinshe.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/yinshe.png" alt></p>
 <p><strong>2.我们就可以通过<a href="http://www.ceshi.com然后加上端口访问" target="_blank" rel="noopener">www.ceshi.com然后加上端口访问</a></strong></p>
-<p><img src="ceshi.png" alt=""></p>
-<h2 id="更改server里的server-name"><a href="#更改server里的server-name" class="headerlink" title="更改server里的server_name"></a>更改server里的server_name</h2><p><img src="geng.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/ceshi.png" alt></p>
+<h2 id="更改server里的server-name"><a href="#更改server里的server-name" class="headerlink" title="更改server里的server_name"></a>更改server里的server_name</h2><p><img src="/2020/03/17/Nginx/geng.png" alt></p>
 <p><strong>我们就可以通过<a href="http://www.ceshi.com然后加上端口访问" target="_blank" rel="noopener">www.ceshi.com然后加上端口访问</a></strong></p>
-<p><img src="ceshi.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/ceshi.png" alt></p>
 <hr>
-<h1 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h1><h2 id="正向代理-针对客户端"><a href="#正向代理-针对客户端" class="headerlink" title="正向代理(针对客户端)"></a>正向代理(针对客户端)</h2><pre><code>需求：学生通过主机去找网络连接(VPN)</code></pre><p><img src="zhengxiang.png" alt=""></p>
+<h1 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h1><h2 id="正向代理-针对客户端"><a href="#正向代理-针对客户端" class="headerlink" title="正向代理(针对客户端)"></a>正向代理(针对客户端)</h2><pre><code>需求：学生通过主机去找网络连接(VPN)</code></pre><p><img src="/2020/03/17/Nginx/zhengxiang.png" alt></p>
 <h2 id="反向代理-针对服务器端"><a href="#反向代理-针对服务器端" class="headerlink" title="反向代理(针对服务器端)"></a>反向代理(针对服务器端)</h2><pre><code>需求：通过网络去找部署在linux上的tomcat服务器
     1. 直接访问：tomcat并发低(负载大)
-    2. 反向代理：搭建tomcat集群，出现反向代理服务器。由服务器分发到tomcat去，还可以增加在给tomcat时候防火墙提高安全性</code></pre><p><img src="fanxiang.png" alt=""></p>
+    2. 反向代理：搭建tomcat集群，出现反向代理服务器。由服务器分发到tomcat去，还可以增加在给tomcat时候防火墙提高安全性</code></pre><p><img src="/2020/03/17/Nginx/fanxiang.png" alt></p>
 <h2 id="反向代理准备"><a href="#反向代理准备" class="headerlink" title="反向代理准备"></a>反向代理准备</h2><p><strong>1.将需要的项目打包成war上传(rz)到tomcat的webapps目录下</strong></p>
 <p><strong>2.执行tomcat/bin里面的startup.sh 能够通过浏览器打开即可</strong></p>
 <h2 id="配置反向代理"><a href="#配置反向代理" class="headerlink" title="配置反向代理"></a>配置反向代理</h2><p><strong>1.修改Nginx配置(server{}之前写)</strong></p>
@@ -488,7 +488,7 @@
 <p><strong>3.访问</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 浏览器输入：server里面的server_name(一般是localhost 但是也可以通过绑定域名(hosts文件改))</span><br><span class="line">2. 然后他这个网络internet会去找nginx代理主机(proxy_pass)</span><br><span class="line">3. 代理主机就去找upstream里面的tomcat</span><br></pre></td></tr></table></figure>
 
-<p><img src="xunhzao.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/xunhzao.png" alt></p>
 <h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><pre><code>1. 之前的演示：将静态网页直接放在nginx文件夹下 我们通过配置server{}端口和域名然后直接从浏览器访问到了tomcat
 2. 反向代理：
     2.1 准备：
@@ -497,7 +497,7 @@
         现在就是浏览器写server里面的域名 --&gt;  因为nginx里面配备了proxy_pass所以会到nginx --&gt; http://后面的会去找upstream里面的tomcat --&gt;  从而反向回来反馈到浏览器。
 3. 总结：
      因为域名输入后他不知道到底是nginx还是tomcat给的回应，所以后面的两个相当于封装起来提供了安全性</code></pre><p><strong>访问时候的分析：</strong></p>
-<p><img src="xunhzao.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/xunhzao.png" alt></p>
 <hr>
 <h1 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h1><blockquote>
 <p>我们搭建很多的tomcat形成tomcat集群(使得nginx寻找的几率相等)</p>
@@ -506,7 +506,7 @@
 <p><strong>2.(将tomcat文件复制两份然后依次进去更改其他两个的端口)</strong></p>
 <p><strong>3.启动每个linux的tomcat(启动三个tomcat服务器)</strong></p>
 <p><strong>4.然后每个linux上的nginx配置反向代理(更改nginx配置文件内部upstream加server(因为端口不一样))</strong></p>
-<p><img src="quanzhong.png" alt=""></p>
+<p><img src="/2020/03/17/Nginx/quanzhong.png" alt></p>
 <p><strong>5.通过访问器访问就会不同几率的访问不同的tomcat(配置文件里面可以改浏览器title名称来区别)</strong></p>
 <hr>
 

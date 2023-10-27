@@ -391,7 +391,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="数据库指令"><a href="#数据库指令" class="headerlink" title="数据库指令"></a>数据库指令</h1><h2 id="select执行顺序-书写顺序"><a href="#select执行顺序-书写顺序" class="headerlink" title="select执行顺序(书写顺序!!!)"></a>select执行顺序(书写顺序!!!)</h2><p><img src="zhixingshunxu.png" alt=""></p>
+        <h1 id="数据库指令"><a href="#数据库指令" class="headerlink" title="数据库指令"></a>数据库指令</h1><h2 id="select执行顺序-书写顺序"><a href="#select执行顺序-书写顺序" class="headerlink" title="select执行顺序(书写顺序!!!)"></a>select执行顺序(书写顺序!!!)</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/zhixingshunxu.png" alt></p>
 <pre><code>select  要返回的列/表达式  [all(默认)/distinct(找不同)]  
 from    从哪个表里面查
 where   行级过滤
@@ -469,7 +469,7 @@ limit  输出行数   [limit x,y从x行输出y行]</code></pre><h2 id="选择数
     from user
     where name=&apos;宋亚翔&apos;  //限定找name是宋亚翔
     order by name desc  //根据name降序排序
-    limit 5,5; //从第五行开始输出五行</code></pre><h2 id="where子句操作符"><a href="#where子句操作符" class="headerlink" title="where子句操作符"></a>where子句操作符</h2><p><img src="wherebiaodashi.png" alt=""></p>
+    limit 5,5; //从第五行开始输出五行</code></pre><h2 id="where子句操作符"><a href="#where子句操作符" class="headerlink" title="where子句操作符"></a>where子句操作符</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/wherebiaodashi.png" alt></p>
 <h2 id="检查单值"><a href="#检查单值" class="headerlink" title="检查单值"></a>检查单值</h2><pre><code>//检测出name叫宋亚翔的一行
     select name,price
     from user
@@ -566,9 +566,9 @@ limit  输出行数   [limit x,y从x行输出y行]</code></pre><h2 id="选择数
     order by name;   </code></pre><blockquote>
 <p><strong>找特殊字符必须要\转义(表示后面的字符当做普通字符被识别)</strong></p>
 </blockquote>
-<p><img src="emptytable.png" alt=""></p>
-<h2 id="匹配字符类"><a href="#匹配字符类" class="headerlink" title="匹配字符类"></a>匹配字符类</h2><p><img src="charmap.png" alt=""></p>
-<h2 id="匹配多个实例"><a href="#匹配多个实例" class="headerlink" title="匹配多个实例"></a>匹配多个实例</h2><p><img src="chongfu.png" alt=""></p>
+<p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/emptytable.png" alt></p>
+<h2 id="匹配字符类"><a href="#匹配字符类" class="headerlink" title="匹配字符类"></a>匹配字符类</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/charmap.png" alt></p>
+<h2 id="匹配多个实例"><a href="#匹配多个实例" class="headerlink" title="匹配多个实例"></a>匹配多个实例</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/chongfu.png" alt></p>
 <pre><code>// 第一个\\引导匹配特殊字符 
 // [0-9]就是匹配任意数字 
 // sticks?就是匹配stick或者sticks (?是匹配前面任何字符的0/1次)        
@@ -576,7 +576,7 @@ limit  输出行数   [limit x,y从x行输出y行]</code></pre><h2 id="选择数
     select name
     from user
     where name regexp &apos;\\([0-9] sticks?\\)&apos;
-    order by name; </code></pre><h2 id="定位符-匹配一个串中任意位置文本"><a href="#定位符-匹配一个串中任意位置文本" class="headerlink" title="定位符(匹配一个串中任意位置文本)"></a>定位符(匹配一个串中任意位置文本)</h2><p><img src="leader.png" alt=""></p>
+    order by name; </code></pre><h2 id="定位符-匹配一个串中任意位置文本"><a href="#定位符-匹配一个串中任意位置文本" class="headerlink" title="定位符(匹配一个串中任意位置文本)"></a>定位符(匹配一个串中任意位置文本)</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/leader.png" alt></p>
 <pre><code>  //匹配以一个数(包括小数点开始的数字)开始的所有产品
 //简单搜索[0-9\\.]不行  必须要用^定位符
 // where name regexp &apos;^[0-9\\.]&apos;</code></pre><hr>
@@ -605,24 +605,24 @@ limit  输出行数   [limit x,y从x行输出y行]</code></pre><h2 id="选择数
 <pre><code>//拼接之后删除多余空格的字段  给个songyaxiang的别名就可以引用
     select Concat(RTrim(name),&apos;(&apos;,RTrim(price),&apos;)&apos;) AS songyaxiang
     from user 
-    order by name;</code></pre><h2 id="算术计算"><a href="#算术计算" class="headerlink" title="算术计算"></a>算术计算</h2><p><img src="suanshu.png" alt=""></p>
+    order by name;</code></pre><h2 id="算术计算"><a href="#算术计算" class="headerlink" title="算术计算"></a>算术计算</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/suanshu.png" alt></p>
 <pre><code>//输出price和num乘积
     select price*num
     from user
     where name=&apos;宋亚翔&apos;;</code></pre><hr>
-<h1 id="数据处理函数"><a href="#数据处理函数" class="headerlink" title="数据处理函数"></a>数据处理函数</h1><h2 id="文本处理函数"><a href="#文本处理函数" class="headerlink" title="文本处理函数"></a>文本处理函数</h2><p><img src="wenbenchuli.png" alt=""></p>
+<h1 id="数据处理函数"><a href="#数据处理函数" class="headerlink" title="数据处理函数"></a>数据处理函数</h1><h2 id="文本处理函数"><a href="#文本处理函数" class="headerlink" title="文本处理函数"></a>文本处理函数</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/wenbenchuli.png" alt></p>
 <pre><code>//Soundex()函数就是匹配发音相似的函数
 //现在user表里面有个人叫宋亚翔 其联络名叫laekkkkkkk(如果输入错误,实际应该是larkkkkkkk)
     select name,lianluoming
     from user
     where Soundex(lianluoming)=Soundex(larkkkkkkk);
-//因为larkkkkkkk和laekkkkkkk发音相似,所以Soundex值匹配</code></pre><h2 id="日期和时间处理函数"><a href="#日期和时间处理函数" class="headerlink" title="日期和时间处理函数"></a>日期和时间处理函数</h2><p><img src="time.png" alt=""></p>
-<h2 id="数值处理函数"><a href="#数值处理函数" class="headerlink" title="数值处理函数"></a>数值处理函数</h2><p><img src="shuzhichuli.png" alt=""></p>
+//因为larkkkkkkk和laekkkkkkk发音相似,所以Soundex值匹配</code></pre><h2 id="日期和时间处理函数"><a href="#日期和时间处理函数" class="headerlink" title="日期和时间处理函数"></a>日期和时间处理函数</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/time.png" alt></p>
+<h2 id="数值处理函数"><a href="#数值处理函数" class="headerlink" title="数值处理函数"></a>数值处理函数</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/shuzhichuli.png" alt></p>
 <hr>
 <h1 id="汇总数据"><a href="#汇总数据" class="headerlink" title="汇总数据"></a>汇总数据</h1><h2 id="聚集函数-5个"><a href="#聚集函数-5个" class="headerlink" title="聚集函数(5个)"></a>聚集函数(5个)</h2><blockquote>
 <p><strong>运行在行组上,计算和返回单值</strong></p>
 </blockquote>
-<p><img src="count.png" alt=""></p>
+<p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/count.png" alt></p>
 <h3 id="avg-某列平均值"><a href="#avg-某列平均值" class="headerlink" title="avg()某列平均值"></a>avg()某列平均值</h3><blockquote>
 <p><strong>通过对表中行数计数并计算特定列值之和,求该列平均值</strong></p>
 </blockquote>
@@ -674,7 +674,7 @@ limit  输出行数   [limit x,y从x行输出y行]</code></pre><h2 id="选择数
     select id,count(*) as orders
     from orders
     group by id
-    having count(*)&gt;=2;</code></pre><h2 id="分组-group-by-和排序-order-by-区别"><a href="#分组-group-by-和排序-order-by-区别" class="headerlink" title="分组(group by)和排序(order by)区别"></a>分组(group by)和排序(order by)区别</h2><p><img src="distinguish.png" alt=""></p>
+    having count(*)&gt;=2;</code></pre><h2 id="分组-group-by-和排序-order-by-区别"><a href="#分组-group-by-和排序-order-by-区别" class="headerlink" title="分组(group by)和排序(order by)区别"></a>分组(group by)和排序(order by)区别</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/distinguish.png" alt></p>
 <pre><code>//检索总计订单价格大于等于50的订单的订单号和总计订单价格
     select id,sum(quantity*price) as jiage
     from user
@@ -763,7 +763,7 @@ limit  输出行数   [limit x,y从x行输出y行]</code></pre><h2 id="选择数
 <h2 id="组合查询结果排序-必须在最后一条select语句之后"><a href="#组合查询结果排序-必须在最后一条select语句之后" class="headerlink" title="组合查询结果排序(必须在最后一条select语句之后)"></a>组合查询结果排序(必须在最后一条select语句之后)</h2><blockquote>
 <p><strong>只能使用一条order by子句(但是排序却在所有select语句中起作用)</strong></p>
 </blockquote>
-<p><img src="union.png" alt=""></p>
+<p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/union.png" alt></p>
 <hr>
 <h1 id="全文本搜索-比like和正则表达式更好"><a href="#全文本搜索-比like和正则表达式更好" class="headerlink" title="全文本搜索(比like和正则表达式更好!)"></a>全文本搜索(比like和正则表达式更好!)</h1><h2 id="全文本搜索-建表时启用"><a href="#全文本搜索-建表时启用" class="headerlink" title="全文本搜索(建表时启用)"></a>全文本搜索(建表时启用)</h2><blockquote>
 <p><strong>并非所有引擎都支持全文本搜索</strong></p>
@@ -800,7 +800,7 @@ create table user
 //against(&apos;rabbit&apos;)表明对制定此rabbit作为搜索文本搜索
 
 注意:
-    match()里面的值必须和fulltext()里面的值相同(指定多列必须列出多列次序也要正确)</code></pre><p><img src="against.png" alt="">    </p>
+    match()里面的值必须和fulltext()里面的值相同(指定多列必须列出多列次序也要正确)</code></pre><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/against.png" alt>    </p>
 <h2 id="like匹配和全文本搜索对比"><a href="#like匹配和全文本搜索对比" class="headerlink" title="like匹配和全文本搜索对比"></a>like匹配和全文本搜索对比</h2><pre><code>1. 全文本搜索可以对结果进行排序(较高等级的行先返回)
 2. 全文本搜索中数据是索引的,速度v更快</code></pre><h2 id="查询扩展-搜索相关结果-with-query-expansion"><a href="#查询扩展-搜索相关结果-with-query-expansion" class="headerlink" title="查询扩展(搜索相关结果 with query expansion)"></a>查询扩展(搜索相关结果 with query expansion)</h2><blockquote>
 <p><strong>能找到可能相关的结果,即使他们并不精确包含所查找的词</strong></p>
@@ -818,12 +818,12 @@ create table user
 5. 另外一些内容</code></pre><blockquote>
 <p><strong>全文本布尔操作符</strong></p>
 </blockquote>
-<p><img src="boolean.png" alt=""></p>
+<p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/boolean.png" alt></p>
 <pre><code>//匹配包含heavy但不包含任意以rope开始的词 
     // -排除一个词(词必须不出现!) *是截断操作符
     select note_text
     from productnotes
-    where match(note_text) against(&apos;heavy -rope*&apos; in boolean mode)</code></pre><p><img src="juli.png" alt=""></p>
+    where match(note_text) against(&apos;heavy -rope*&apos; in boolean mode)</code></pre><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/juli.png" alt></p>
 <h2 id="全文本搜索使用说明"><a href="#全文本搜索使用说明" class="headerlink" title="全文本搜索使用说明"></a>全文本搜索使用说明</h2><pre><code>1. 许多次出现评率很高,搜索他们没有用处(返回太多结果)
     1.1 所以规定一条50%规则(不用于in boolean mode): 如果一个词出现在50%以上的行,将它作为一个非用词忽略。
 2. 如果表中行数&lt;3:全文本搜索不返回结果
@@ -831,7 +831,7 @@ create table user
 4. 不具有词分隔符(包括日语和汉语)的语言不能恰当地返回全文本搜索结果
 5. mysql带有一个内建的非用词(stopword)列表,这些词在索引时候被忽略(出现次数50%以上) 如果想用就覆盖这个列表
 6. 在索引全文本数据时,短词被忽略而且要从索引中排除(短语是具有&lt;=3个字符的词)</code></pre><hr>
-<h1 id="插入数据-insert语句"><a href="#插入数据-insert语句" class="headerlink" title="插入数据(insert语句)"></a>插入数据(insert语句)</h1><h2 id="提高整体性能-low-priority"><a href="#提高整体性能-low-priority" class="headerlink" title="提高整体性能(low_priority)"></a>提高整体性能(low_priority)</h2><p><img src="updatexing.png" alt=""></p>
+<h1 id="插入数据-insert语句"><a href="#插入数据-insert语句" class="headerlink" title="插入数据(insert语句)"></a>插入数据(insert语句)</h1><h2 id="提高整体性能-low-priority"><a href="#提高整体性能-low-priority" class="headerlink" title="提高整体性能(low_priority)"></a>提高整体性能(low_priority)</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/updatexing.png" alt></p>
 <h2 id="插入单行"><a href="#插入单行" class="headerlink" title="插入单行"></a>插入单行</h2><pre><code>//不安全(高度依赖于列定义次序)
     insert into customers
     values(null,&apos;123&apos;,&apos;15009272737&apos;,null);
@@ -1206,7 +1206,7 @@ commit; //提交</code></pre><h2 id="保留点-savepoint"><a href="#保留点-sa
 
 //设置权限(允许ya用户在user所有表上可以使用select语句)
     grant select on user to ya;</code></pre><h2 id="撤销访问权限-revoke"><a href="#撤销访问权限-revoke" class="headerlink" title="撤销访问权限(revoke)"></a>撤销访问权限(revoke)</h2><pre><code>//撤销上面设置的权限
-    revoke select on user from ya;</code></pre><h2 id="控制访问权限-层次"><a href="#控制访问权限-层次" class="headerlink" title="控制访问权限(层次)"></a>控制访问权限(层次)</h2><p><img src="grantrevoke.png" alt=""></p>
+    revoke select on user from ya;</code></pre><h2 id="控制访问权限-层次"><a href="#控制访问权限-层次" class="headerlink" title="控制访问权限(层次)"></a>控制访问权限(层次)</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/grantrevoke.png" alt></p>
 <h2 id="更改口令-set-password"><a href="#更改口令-set-password" class="headerlink" title="更改口令(set password)"></a>更改口令(set password)</h2><pre><code>set password for ya=password(&apos;自己的口令&apos;);
 
 set password (不指定用户名,就更新当前登录用户口令)</code></pre><hr>
@@ -1226,8 +1226,8 @@ set password (不指定用户名,就更新当前登录用户口令)</code></pre>
 
 //6. medium 检查所有被删除的联结并且进行键检查
 
-//7. quick 只进行快速扫描</code></pre><h2 id="MyISAM表访问不一致-repair-table语句修复"><a href="#MyISAM表访问不一致-repair-table语句修复" class="headerlink" title="MyISAM表访问不一致(repair table语句修复)"></a>MyISAM表访问不一致(repair table语句修复)</h2><pre><code>可能需要使用repair table来修复相应的表(不能经常使用,否则会有更大问题需要解决)</code></pre><h2 id="表中删除大量数据-optimize-table回收空间"><a href="#表中删除大量数据-optimize-table回收空间" class="headerlink" title="表中删除大量数据(optimize table回收空间)"></a>表中删除大量数据(optimize table回收空间)</h2><h2 id="诊断启动问题-mysqld命令行"><a href="#诊断启动问题-mysqld命令行" class="headerlink" title="诊断启动问题(mysqld命令行)"></a>诊断启动问题(mysqld命令行)</h2><p><img src="mysqld.png" alt=""></p>
-<h2 id="查看日志文件"><a href="#查看日志文件" class="headerlink" title="查看日志文件"></a>查看日志文件</h2><p><img src="rizhiwenjian.png" alt=""></p>
+//7. quick 只进行快速扫描</code></pre><h2 id="MyISAM表访问不一致-repair-table语句修复"><a href="#MyISAM表访问不一致-repair-table语句修复" class="headerlink" title="MyISAM表访问不一致(repair table语句修复)"></a>MyISAM表访问不一致(repair table语句修复)</h2><pre><code>可能需要使用repair table来修复相应的表(不能经常使用,否则会有更大问题需要解决)</code></pre><h2 id="表中删除大量数据-optimize-table回收空间"><a href="#表中删除大量数据-optimize-table回收空间" class="headerlink" title="表中删除大量数据(optimize table回收空间)"></a>表中删除大量数据(optimize table回收空间)</h2><h2 id="诊断启动问题-mysqld命令行"><a href="#诊断启动问题-mysqld命令行" class="headerlink" title="诊断启动问题(mysqld命令行)"></a>诊断启动问题(mysqld命令行)</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/mysqld.png" alt></p>
+<h2 id="查看日志文件"><a href="#查看日志文件" class="headerlink" title="查看日志文件"></a>查看日志文件</h2><p><img src="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/rizhiwenjian.png" alt></p>
 <hr>
 <h1 id="改善性能-遵守规则"><a href="#改善性能-遵守规则" class="headerlink" title="改善性能(遵守规则)"></a>改善性能(遵守规则)</h1><pre><code>1. 遵守硬件建议(学习和研究mysql)
 2. 关键的生产DBMS应该放在自己的专用服务器上

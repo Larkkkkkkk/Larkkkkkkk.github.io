@@ -381,15 +381,15 @@
 <p><strong>带权路径长度最小(WPL)的树(权值越大的节点离根节点越近)</strong></p>
 </blockquote>
 <h2 id="WPL-带权路径长度"><a href="#WPL-带权路径长度" class="headerlink" title="WPL(带权路径长度)"></a>WPL(带权路径长度)</h2><pre><code>WPL(带权路径长度):树中所有叶子节点的带权路径长度之和</code></pre><p><strong>WPL计算举例(X的系数就是从这个节点到根节点的有几个节点)</strong></p>
-<p><img src="wpl.png" alt=""></p>
+<p><img src="/2020/04/22/%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91/wpl.png" alt></p>
 <hr>
 <h1 id="流程分析"><a href="#流程分析" class="headerlink" title="流程分析"></a>流程分析</h1><p><strong>步骤:</strong></p>
 <pre><code>1. 排序
 2. 挑选最小的两个 生成新的节点
 3. 两个步骤不停的交替执行(排序之后就选最小的两个生成新的然后把新的节点放到以前的序列排序)</code></pre><p><strong>手写流程:</strong></p>
-<p><img src="guocheng.png" alt=""></p>
+<p><img src="/2020/04/22/%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91/guocheng.png" alt></p>
 <hr>
-<h1 id="哈弗曼树代码实现-List范型"><a href="#哈弗曼树代码实现-List范型" class="headerlink" title="哈弗曼树代码实现(List范型)"></a>哈弗曼树代码实现(List<Node>范型)</h1><h2 id="步骤分析"><a href="#步骤分析" class="headerlink" title="步骤分析"></a>步骤分析</h2><pre><code>//先使用数组中所有元素创建若干个二叉树(只有一个节点)
+<h1 id="哈弗曼树代码实现-List范型"><a href="#哈弗曼树代码实现-List范型" class="headerlink" title="哈弗曼树代码实现(List范型)"></a>哈弗曼树代码实现(List<Node>范型)</Node></h1><h2 id="步骤分析"><a href="#步骤分析" class="headerlink" title="步骤分析"></a>步骤分析</h2><pre><code>//先使用数组中所有元素创建若干个二叉树(只有一个节点)
 //排序
 //取出来权值最小的两个二叉树
 //创建一颗新的二叉树
@@ -406,7 +406,7 @@
 6. 通过remove方法移除
 7. 通过add添加第五步新创建的二叉树
 8. 可以直接输出nodes(最后只剩下结果的那个二叉树)</code></pre><p><strong>执行过程分析:</strong></p>
-<p><img src="guochegnsan.png" alt=""></p>
+<p><img src="/2020/04/22/%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91/guochegnsan.png" alt></p>
 <hr>
 <h1 id="哈弗曼编码原理分析"><a href="#哈弗曼编码原理分析" class="headerlink" title="哈弗曼编码原理分析"></a>哈弗曼编码原理分析</h1><h2 id="通讯领域信息处理的三种方式"><a href="#通讯领域信息处理的三种方式" class="headerlink" title="通讯领域信息处理的三种方式"></a>通讯领域信息处理的三种方式</h2><pre><code>1. 定长编码(将对应的数字用ASCII码替换)
 2. 不定长编码(将字母的出现频率计算出来 然后给固定的数字代表)
@@ -415,15 +415,15 @@
     然后左边的路权值给0 / 右边的给1</code></pre><h2 id="三种方式举例"><a href="#三种方式举例" class="headerlink" title="三种方式举例"></a>三种方式举例</h2><h3 id="定长编码"><a href="#定长编码" class="headerlink" title="定长编码"></a>定长编码</h3><blockquote>
 <p><strong>将对应的字母的翻译成ASCII码 – ASCII码翻译对应二进制</strong></p>
 </blockquote>
-<p><img src="dinghcang.png" alt=""></p>
+<p><img src="/2020/04/22/%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91/dinghcang.png" alt></p>
 <h3 id="不定长编码"><a href="#不定长编码" class="headerlink" title="不定长编码"></a>不定长编码</h3><blockquote>
 <p><strong>将对应单词的出现频率排序 – 出现最多的给0(依次给二进制)</strong></p>
 </blockquote>
-<p><img src="budingchang.png" alt=""></p>
+<p><img src="/2020/04/22/%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91/budingchang.png" alt></p>
 <h3 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h3><blockquote>
 <p><strong>将对应单词的出现频率排序 – 出现最多的给0(依次给二进制) – 编写哈弗曼树(左路径给0/右路径给1) – 不同路径找到不同单词的值</strong></p>
 </blockquote>
-<p><img src="hafumanbianma.png" alt=""></p>
+<p><img src="/2020/04/22/%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91/hafumanbianma.png" alt></p>
 <hr>
 <h1 id="哈弗曼编码代码实现"><a href="#哈弗曼编码代码实现" class="headerlink" title="哈弗曼编码代码实现"></a>哈弗曼编码代码实现</h1><h2 id="步骤分析-1"><a href="#步骤分析-1" class="headerlink" title="步骤分析"></a>步骤分析</h2><pre><code>1. 统计字符数并且排序
 2. 创建哈夫曼树

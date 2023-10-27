@@ -403,41 +403,41 @@
 <li><p>自动打开然后需要配置Tomcat,点开右上角透视图(如图)–JAVAEE</p>
 </li>
 </ol>
-<p><img src="diyi.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/diyi.png" alt></p>
 <ol start="3">
 <li>点击下边输出框的Servers–提示一行NO….–然后空白位置右键new</li>
 </ol>
-<p><img src="dier.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/dier.png" alt></p>
 <ol start="4">
 <li>Apache–tomcat版本7.0</li>
 </ol>
-<p><img src="disan.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/disan.png" alt></p>
 <ol start="5">
 <li>选定tomcat–下面的Servers里面的tomcat7–右键open–中间Server Locations选中第二个</li>
 </ol>
-<p><img src="disi.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/disi.png" alt></p>
 <ol start="6">
 <li>新建一个web项目–右键new–other–Web–Dynamic Web Project</li>
 </ol>
-<p><img src="diwu.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/diwu.png" alt></p>
 <ol start="7">
 <li>新建一个名字HelloServlet–Dynamic web module version更改为2.5</li>
 </ol>
-<p><img src="diliu.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/diliu.png" alt></p>
 <ol start="8">
 <li>在HelloServlet–WebContent新建名为index.html文件</li>
 </ol>
-<p><img src="diqi.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/diqi.png" alt></p>
 <ol start="9">
 <li>index里面写一个h标签内容–点run as–选自己的tomcat–稍等一会(提前不要打开tomcat)</li>
 </ol>
-<p><img src="diba.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/diba.png" alt></p>
 <ol start="10">
 <li>可以通过访问网页展示</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;HelloServlet&#x2F;index.html</span><br></pre></td></tr></table></figure>
 
-<p><img src="dijiu.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/dijiu.png" alt></p>
 <hr>
 <h1 id="三、Servlet操作代码"><a href="#三、Servlet操作代码" class="headerlink" title="三、Servlet操作代码"></a>三、Servlet操作代码</h1><ol>
 <li>在前面的基础上Java Resources–src–<strong>新建HelloServer类</strong>(实现Server接口)–要实现五个方法(只用改service方法)</li>
@@ -448,17 +448,17 @@
 <li><strong>配置Servlet</strong>：告诉服务器我们的应用要这么写个servlet</li>
 </ol>
 <p>点开WebContent–WFB-INF–lib–web.xml–点击下面框的source更改–然后重启tomcat</p>
-<p><img src="genggai.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/genggai.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--1.向tomcat报告 我有一个XXX类，路径是XXX--&gt;</span><br><span class="line">&lt;servlet&gt;   &lt;!--提示报错之后选最后一个servlet-name--&gt;</span><br><span class="line">	&lt;servlet-name&gt;HelloServer&lt;&#x2F;servlet-name&gt;    &lt;!--提示报错之后选最后一个servlet-class--&gt;</span><br><span class="line">	&lt;servlet-class&gt;server.HelloServer&lt;&#x2F;servlet-class&gt;   &lt;!--需要写包.类名--&gt;</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--2.注册servlet的映射,servletName:找到上面注册的具体servlet,url-pattern:在地址栏上的path--&gt;</span><br><span class="line">	&lt;servlet-mapping&gt;    &lt;!--提示报错之后选最后一个servlet-name--&gt;</span><br><span class="line">		&lt;servlet-name&gt;HelloServer&lt;&#x2F;servlet-name&gt;</span><br><span class="line">		&lt;url-pattern&gt;&#x2F;a&lt;&#x2F;url-pattern&gt;    &lt;!--一定要记得写&#x2F; 实在项目名后写的地址--&gt;</span><br><span class="line">	&lt;&#x2F;servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
 
 <ol start="3">
 <li><strong>地址栏输入</strong>–<a href="http://localhost:8080/项目名称(HelloServlet)/a" target="_blank" rel="noopener">http://localhost:8080/项目名称(HelloServlet)/a</a></li>
 </ol>
 <p><strong>执行框会显示类的结果：</strong></p>
-<p><img src="xiamian.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/xiamian.png" alt></p>
 <hr>
 <h1 id="四、Servlet-执行过程"><a href="#四、Servlet-执行过程" class="headerlink" title="四、Servlet 执行过程"></a>四、Servlet 执行过程</h1><p><strong>执行分析过程：</strong>tomcat应用(localhost:8080)–找到项目(HelloServlet)–找到web.xml–找下面的url-pattern的/a–找到servlet-mapping中的servlet-name(类名)–找到上面的servlet-class 然后开始创建该类的实例–实现service方法</p>
-<p><img src="img05.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/img05.png" alt></p>
 <hr>
 <h1 id="五、Servlet的通用写法"><a href="#五、Servlet的通用写法" class="headerlink" title="五、Servlet的通用写法"></a>五、Servlet的通用写法</h1><pre><code>Servlet (接口)
     |
@@ -471,7 +471,7 @@ HttpServlet （用于处理http的请求）</code></pre><ul>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package server;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line">public class shixian extends HttpServlet &#123;</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;Get请求会来这个方法</span><br><span class="line">		@Override</span><br><span class="line">		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;</span><br><span class="line">			System.out.println(&quot;get---&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;POST请求会来这个方法</span><br><span class="line">		@Override</span><br><span class="line">		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;</span><br><span class="line">			System.out.println(&quot;post----&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="img06.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/img06.png" alt></p>
 <hr>
 <h1 id="六、Servlet-生命周期"><a href="#六、Servlet-生命周期" class="headerlink" title="六、Servlet 生命周期"></a>六、Servlet 生命周期</h1><ul>
 <li><p><strong>init方法</strong></p>
@@ -511,7 +511,7 @@ HttpServlet （用于处理http的请求）</code></pre><ul>
 <p><strong>web.xml配置文件加入：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--ServletConfig类的配置文件--&gt;</span><br><span class="line">	</span><br><span class="line"> 	&lt;servlet&gt;   &lt;!--提示报错之后选最后一个servlet-name--&gt;</span><br><span class="line">  		&lt;servlet-name&gt;ServletConfig&lt;&#x2F;servlet-name&gt;    &lt;!--提示报错之后选最后一个servlet-class--&gt;</span><br><span class="line">  		&lt;servlet-class&gt;server.ServletConfig&lt;&#x2F;servlet-class&gt;   &lt;!--需要写包.类名--&gt;</span><br><span class="line">  		</span><br><span class="line">  		&lt;!-- 添加初始化参数 init-param --&gt;</span><br><span class="line">  		</span><br><span class="line">		&lt;init-param&gt;</span><br><span class="line">  				&lt;param-name&gt;address&lt;&#x2F;param-name&gt;</span><br><span class="line">  				&lt;param-value&gt;beijing...&lt;&#x2F;param-value&gt;</span><br><span class="line">  		&lt;&#x2F;init-param&gt;</span><br><span class="line"></span><br><span class="line">		&lt;init-param&gt;</span><br><span class="line">  			&lt;param-name&gt;age&lt;&#x2F;param-name&gt;</span><br><span class="line">  			&lt;param-value&gt;18&lt;&#x2F;param-value&gt;</span><br><span class="line">  		&lt;&#x2F;init-param&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;init-param&gt;</span><br><span class="line">  			&lt;param-name&gt;name&lt;&#x2F;param-name&gt;</span><br><span class="line">  			&lt;param-value&gt;zhangsan&lt;&#x2F;param-value&gt;</span><br><span class="line">  		&lt;&#x2F;init-param&gt;</span><br><span class="line"></span><br><span class="line"> 	 &lt;&#x2F;servlet&gt;</span><br><span class="line"> 	</span><br><span class="line"> 	 &lt;servlet-mapping&gt;    &lt;!--提示报错之后选最后一个servlet-name--&gt;</span><br><span class="line">  		&lt;servlet-name&gt;ServletConfig&lt;&#x2F;servlet-name&gt;</span><br><span class="line">  		&lt;url-pattern&gt;&#x2F;ServletConfig&lt;&#x2F;url-pattern&gt;   </span><br><span class="line">  	&lt;&#x2F;servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
 <p><strong>重新打开tomcat–浏览器输入<a href="http://localhost:8080/HelloServlet/ServletConfig--控制台得到结果" target="_blank" rel="noopener">http://localhost:8080/HelloServlet/ServletConfig--控制台得到结果</a></strong></p>
-<p><img src="zuizhong.png" alt=""></p>
+<p><img src="/2020/02/17/Servlet/zuizhong.png" alt></p>
 <hr>
 
       

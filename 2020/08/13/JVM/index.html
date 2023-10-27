@@ -395,9 +395,9 @@
 3. 作用
     3.1 一次编译,到处运行(java语言的可移植性)
     3.2 自动内存管理
-    3.3 自动垃圾回收功能</code></pre><h2 id="jvm位置"><a href="#jvm位置" class="headerlink" title="jvm位置"></a>jvm位置</h2><p><img src="jvmres.png" alt=""></p>
-<h2 id="jvm整体结构-背"><a href="#jvm整体结构-背" class="headerlink" title="jvm整体结构(背)"></a>jvm整体结构(背)</h2><p><img src="jvmwhole.png" alt=""></p>
-<h2 id="java代码执行流程"><a href="#java代码执行流程" class="headerlink" title="java代码执行流程"></a>java代码执行流程</h2><p><img src="javazhixing.png" alt=""></p>
+    3.3 自动垃圾回收功能</code></pre><h2 id="jvm位置"><a href="#jvm位置" class="headerlink" title="jvm位置"></a>jvm位置</h2><p><img src="/2020/08/13/JVM/jvmres.png" alt></p>
+<h2 id="jvm整体结构-背"><a href="#jvm整体结构-背" class="headerlink" title="jvm整体结构(背)"></a>jvm整体结构(背)</h2><p><img src="/2020/08/13/JVM/jvmwhole.png" alt></p>
+<h2 id="java代码执行流程"><a href="#java代码执行流程" class="headerlink" title="java代码执行流程"></a>java代码执行流程</h2><p><img src="/2020/08/13/JVM/javazhixing.png" alt></p>
 <h2 id="jvm架构模型-栈-寄存器指令集架构"><a href="#jvm架构模型-栈-寄存器指令集架构" class="headerlink" title="jvm架构模型(栈/寄存器指令集架构)"></a>jvm架构模型(栈/寄存器指令集架构)</h2><pre><code>1. 栈的指令集架构
 2. 寄存器的指令集架构</code></pre><h2 id="jvm生命周期-三个状态"><a href="#jvm生命周期-三个状态" class="headerlink" title="jvm生命周期(三个状态)"></a>jvm生命周期(三个状态)</h2><pre><code>1. 启动
     通过引导类加载器创建一个初始类完成
@@ -413,9 +413,9 @@
 <h1 id="内存结构"><a href="#内存结构" class="headerlink" title="内存结构"></a>内存结构</h1><blockquote>
 <p><strong>类加载器子系统+虚拟机栈+执行引擎</strong></p>
 </blockquote>
-<p><img src="neicun.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/neicun.png" alt></p>
 <hr>
-<h1 id="类加载器子系统"><a href="#类加载器子系统" class="headerlink" title="类加载器子系统"></a>类加载器子系统</h1><h2 id="垃圾存在区域"><a href="#垃圾存在区域" class="headerlink" title="垃圾存在区域"></a>垃圾存在区域</h2><pre><code>方法区和堆(99%)  栈会弹出所以不会有垃圾</code></pre><h2 id="类加载过程-3步"><a href="#类加载过程-3步" class="headerlink" title="类加载过程(3步)"></a>类加载过程(3步)</h2><p><img src="loading.png" alt=""></p>
+<h1 id="类加载器子系统"><a href="#类加载器子系统" class="headerlink" title="类加载器子系统"></a>类加载器子系统</h1><h2 id="垃圾存在区域"><a href="#垃圾存在区域" class="headerlink" title="垃圾存在区域"></a>垃圾存在区域</h2><pre><code>方法区和堆(99%)  栈会弹出所以不会有垃圾</code></pre><h2 id="类加载过程-3步"><a href="#类加载过程-3步" class="headerlink" title="类加载过程(3步)"></a>类加载过程(3步)</h2><p><img src="/2020/08/13/JVM/loading.png" alt></p>
 <pre><code>1. Loading  加载
 2. Linking  链接
     2.1 验证 verify
@@ -436,7 +436,7 @@
 <h1 id="双亲委派机制-类加载器机制"><a href="#双亲委派机制-类加载器机制" class="headerlink" title="双亲委派机制(类加载器机制)"></a>双亲委派机制(类加载器机制)</h1><h2 id="举例-Car类"><a href="#举例-Car类" class="headerlink" title="举例(Car类)"></a>举例(Car类)</h2><blockquote>
 <p><strong>引用在栈,具体存在堆</strong></p>
 </blockquote>
-<p><img src="example.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/example.png" alt></p>
 <h2 id="加载器分类-4个"><a href="#加载器分类-4个" class="headerlink" title="加载器分类(4个)"></a>加载器分类(4个)</h2><pre><code>1. 虚拟机自带的加载器
 2. 启动类(根)加载器
 3. 扩展类加载器
@@ -465,13 +465,13 @@
 <h1 id="Native关键字-底层c语言的库"><a href="#Native关键字-底层c语言的库" class="headerlink" title="Native关键字(底层c语言的库)"></a>Native关键字(底层c语言的库)</h1><blockquote>
 <p><strong>Java的作用范围达不到，要去找C语言的库</strong></p>
 </blockquote>
-<p><img src="navtive.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/navtive.png" alt></p>
 <pre><code>1. 进入本地方法栈
 2. 调动本地方法接口 JNI(Java native interface) --扩展java的使用(融合不同编程语言为java所用)</code></pre><hr>
 <h1 id="PC寄存器-Program-Counter-Register"><a href="#PC寄存器-Program-Counter-Register" class="headerlink" title="PC寄存器(Program Counter Register)"></a>PC寄存器(Program Counter Register)</h1><blockquote>
 <p><strong>每个线程都有一个程序计数器,是线程私有的一个指针</strong></p>
 </blockquote>
-<p><img src="pc.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/pc.png" alt></p>
 <hr>
 <h1 id="方法区-Method-Area"><a href="#方法区-Method-Area" class="headerlink" title="方法区(Method Area)"></a>方法区(Method Area)</h1><blockquote>
 <p><strong>所有线程共享(共享区间)</strong></p>
@@ -487,7 +487,7 @@
 3. IBM J9 VM</code></pre><blockquote>
 <p><strong>HotSpot虚拟机的查看:</strong></p>
 </blockquote>
-<p><img src="javazhiling.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/javazhiling.png" alt></p>
 <hr>
 <h1 id="堆-Heap"><a href="#堆-Heap" class="headerlink" title="堆(Heap)"></a>堆(Heap)</h1><blockquote>
 <p><strong>一个JVM只有一个堆内存</strong></p>
@@ -497,9 +497,9 @@
 3. 永久区(Jdk8之后叫元空间)  Perm  </code></pre><blockquote>
 <p><strong>GC主要在新生区和养老区</strong></p>
 </blockquote>
-<p><img src="GC.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/GC.png" alt></p>
 <h2 id="新生区-类诞生、成长、死亡"><a href="#新生区-类诞生、成长、死亡" class="headerlink" title="新生区(类诞生、成长、死亡)"></a>新生区(类诞生、成长、死亡)</h2><pre><code>1. 伊甸园区   --所有对象都在这new
-2. 幸存区(幸存区0,幸存区1) </code></pre><p><img src="ed.png" alt=""></p>
+2. 幸存区(幸存区0,幸存区1) </code></pre><p><img src="/2020/08/13/JVM/ed.png" alt></p>
 <h2 id="养老区"><a href="#养老区" class="headerlink" title="养老区"></a>养老区</h2><blockquote>
 <p><strong>新生区没有被淘汰清除的活下来了</strong></p>
 </blockquote>
@@ -512,17 +512,17 @@ jdk1.8      无永久代 常量池在元空间</code></pre><hr>
 <h1 id="GC-垃圾回收"><a href="#GC-垃圾回收" class="headerlink" title="GC(垃圾回收)"></a>GC(垃圾回收)</h1><h2 id="复制算法-新生代使用"><a href="#复制算法-新生代使用" class="headerlink" title="复制算法(新生代使用)"></a>复制算法(新生代使用)</h2><blockquote>
 <p><strong>谁空了谁就是to区域</strong></p>
 </blockquote>
-<p><img src="fuzhi.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/fuzhi.png" alt></p>
 <blockquote>
 <p><strong>从一个区域复制到另外一个(from和to的交换)</strong></p>
 </blockquote>
-<p><img src="fuzhizui.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/fuzhizui.png" alt></p>
 <h2 id="标记清除算法-标记-清除"><a href="#标记清除算法-标记-清除" class="headerlink" title="标记清除算法(标记-清除)"></a>标记清除算法(标记-清除)</h2><blockquote>
 <p><strong>先标记,然后没有标记的进行清除,最后会造成内存碎片</strong></p>
 </blockquote>
-<p><img src="biaojiqingchu.png" alt=""></p>
+<p><img src="/2020/08/13/JVM/biaojiqingchu.png" alt></p>
 <h2 id="标记压缩算法-标记-清除-压缩"><a href="#标记压缩算法-标记-清除-压缩" class="headerlink" title="标记压缩算法(标记-清除-压缩)"></a>标记压缩算法(标记-清除-压缩)</h2><pre><code>1. 标记 - 清除 - 压缩(重复步骤好几次，但是消耗大)
-2. 标记清除几次 - 压缩(一次性将碎片整理)</code></pre><p><img src="biaojiyasuo.png" alt=""></p>
+2. 标记清除几次 - 压缩(一次性将碎片整理)</code></pre><p><img src="/2020/08/13/JVM/biaojiyasuo.png" alt></p>
 <h2 id="分代收集算法-分代不同的解决方案"><a href="#分代收集算法-分代不同的解决方案" class="headerlink" title="分代收集算法(分代不同的解决方案)"></a>分代收集算法(分代不同的解决方案)</h2><pre><code>1. 年轻代 : 存活率低 -&gt; 复制算法
 2. 老年代 : 存活率大 -&gt; 标记清除(内存碎片不多) + 标记压缩混合 </code></pre><h2 id="算法总结"><a href="#算法总结" class="headerlink" title="算法总结"></a>算法总结</h2><pre><code>1. 内存效率    
     复制算法 &gt; 标记清除算法 &gt; 标记压缩算法(时间复杂度)
@@ -537,7 +537,7 @@ jdk1.8      无永久代 常量池在元空间</code></pre><hr>
 </blockquote>
 <p><a href="https://www.bilibili.com/video/BV1iJ411d7jS" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1iJ411d7jS</a></p>
 <hr>
-<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1><hr>
+<h1 id><a href="#" class="headerlink" title="#"></a>#</h1><hr>
 
       
       

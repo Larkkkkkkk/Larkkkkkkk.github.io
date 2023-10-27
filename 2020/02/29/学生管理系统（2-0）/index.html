@@ -380,22 +380,22 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE stus;</span><br><span class="line">USE stus;</span><br><span class="line">CREATE TABLE stu (</span><br><span class="line">	sid INT PRIMARY KEY  AUTO_INCREMENT,</span><br><span class="line">	sname VARCHAR (20),</span><br><span class="line">	gender VARCHAR (5),</span><br><span class="line">	phone VARCHAR (20),</span><br><span class="line">	birthday DATE,</span><br><span class="line">	hobby VARCHAR(50),</span><br><span class="line">	info VARCHAR(200)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <p><strong>Navicat配合mysql直接可视化：</strong></p>
-<p><img src="shujuku.png" alt=""></p>
+<p><img src="/2020/02/29/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%882-0%EF%BC%89/shujuku.png" alt></p>
 <hr>
-<h1 id="二、环境搭建-Dao"><a href="#二、环境搭建-Dao" class="headerlink" title="二、环境搭建(Dao)#"></a>二、环境搭建(Dao)#</h1><p><img src="daohuanjing.png" alt=""></p>
+<h1 id="二、环境搭建-Dao"><a href="#二、环境搭建-Dao" class="headerlink" title="二、环境搭建(Dao)#"></a>二、环境搭建(Dao)#</h1><p><img src="/2020/02/29/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%882-0%EF%BC%89/daohuanjing.png" alt></p>
 <p><strong>1. 先写index.jsp页面</strong> </p>
 <p><strong>2. 写一个StudentListServlet类去进行查询学生信息—弹出到list.jsp页面</strong></p>
 <p><strong>3. 写一个Student类(封装)：里面写所有数据库的属性以及set和get方法</strong></p>
 <p><strong>4. 写dao层里面的StudentDao类：里面去写要完成什么方法</strong></p>
 <p><strong>5. 写dao.impl里面的StudentDaoImpl类：具体去写连接数据库等操作</strong></p>
 <hr>
-<h1 id="三、环境搭建-Dao实现"><a href="#三、环境搭建-Dao实现" class="headerlink" title="三、环境搭建(Dao实现)"></a>三、环境搭建(Dao实现)</h1><p><img src="huanjinger.png" alt=""></p>
+<h1 id="三、环境搭建-Dao实现"><a href="#三、环境搭建-Dao实现" class="headerlink" title="三、环境搭建(Dao实现)"></a>三、环境搭建(Dao实现)</h1><p><img src="/2020/02/29/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%882-0%EF%BC%89/huanjinger.png" alt></p>
 <p><strong>1.需要连接开源数据池和连接数据库：</strong><br>  所以要引入c3p0和DBUtils的jar以及连接数据库的jar包，还有就是要有c3p0开源数据池的配置文件。</p>
 <p><strong>2. 建立Util包，里面放写好的JDBCUtil02(简化的JDBC连接类)</strong></p>
 <p><strong>3. StudentDaoImpl类里面去完成写当时的连接数据库查询的三步</strong></p>
-<p><img src="sanbu.png" alt=""></p>
+<p><img src="/2020/02/29/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%882-0%EF%BC%89/sanbu.png" alt></p>
 <hr>
-<h1 id="四、环境搭建-Service层"><a href="#四、环境搭建-Service层" class="headerlink" title="四、环境搭建(Service层)"></a>四、环境搭建(Service层)</h1><p><img src="sancengjiegou.png" alt=""></p>
+<h1 id="四、环境搭建-Service层"><a href="#四、环境搭建-Service层" class="headerlink" title="四、环境搭建(Service层)"></a>四、环境搭建(Service层)</h1><p><img src="/2020/02/29/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%882-0%EF%BC%89/sancengjiegou.png" alt></p>
 <p><strong>1. 新建service接口和实现类–和dao以及daoimpl代码一样(为了service去找dao)</strong></p>
 <p><strong>2. 在Serlvet代码内增加<code>StudentService service=new StudentServiceImpl()</code>(为了servlet找service)</strong></p>
 <hr>

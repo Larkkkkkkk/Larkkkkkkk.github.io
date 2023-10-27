@@ -413,19 +413,19 @@
 
 3.调试测试
     cmd输入 mvn -v</code></pre><p><strong>配置MAVEN_HOME变量：</strong></p>
-<p><img src="xitonghuanjing.png" alt=""></p>
+<p><img src="/2020/03/14/maven/xitonghuanjing.png" alt></p>
 <p><strong>添加path里面</strong></p>
-<p><img src="huanjigner.png" alt=""></p>
+<p><img src="/2020/03/14/maven/huanjigner.png" alt></p>
 <p><strong>cmd里面调试</strong></p>
-<p><img src="cmd.png" alt=""></p>
+<p><img src="/2020/03/14/maven/cmd.png" alt></p>
 <hr>
 <h1 id="仓库种类和关系"><a href="#仓库种类和关系" class="headerlink" title="仓库种类和关系"></a>仓库种类和关系</h1><pre><code>1. 本地仓库(默认本地仓库有jar包,没有就去中央仓库下载jar包)
 2. 远程仓库(私服)：如果没有可以从中央仓库和本地仓库上传
-3. 中央仓库(最大的几个T的jar包)：要使用必须有网！！</code></pre><p><img src="fenlei.png" alt=""></p>
+3. 中央仓库(最大的几个T的jar包)：要使用必须有网！！</code></pre><p><img src="/2020/03/14/maven/fenlei.png" alt></p>
 <p><strong>初次安装maven需要配置仓库和jar包</strong></p>
-<p><img src="chushi.png" alt=""></p>
+<p><img src="/2020/03/14/maven/chushi.png" alt></p>
 <p><strong>直接导入一个maven仓库解压</strong></p>
-<p><img src="genggai.png" alt=""></p>
+<p><img src="/2020/03/14/maven/genggai.png" alt></p>
 <hr>
 <h1 id="maven标准目录结构"><a href="#maven标准目录结构" class="headerlink" title="maven标准目录结构"></a>maven标准目录结构</h1><blockquote>
 <p><strong>有规则的管理项目：</strong></p>
@@ -440,45 +440,45 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 3. mvn test       进行测试   target目录下生成test测试类的文件
 4. mvn package    进行打包   java工程执行package成jar包 web工程成war包
 5. mvn install    进行安装   将上述的步骤整合之后将war包发布到本地仓库</code></pre><hr>
-<h1 id="maven生命周期"><a href="#maven生命周期" class="headerlink" title="maven生命周期"></a>maven生命周期</h1><p><img src="zhouqi.png" alt=""></p>
+<h1 id="maven生命周期"><a href="#maven生命周期" class="headerlink" title="maven生命周期"></a>maven生命周期</h1><p><img src="/2020/03/14/maven/zhouqi.png" alt></p>
 <hr>
-<h1 id="maven概念模型图"><a href="#maven概念模型图" class="headerlink" title="maven概念模型图"></a>maven概念模型图</h1><p><img src="gongneng.png" alt=""></p>
+<h1 id="maven概念模型图"><a href="#maven概念模型图" class="headerlink" title="maven概念模型图"></a>maven概念模型图</h1><p><img src="/2020/03/14/maven/gongneng.png" alt></p>
 <hr>
 <h1 id="maven使用步骤"><a href="#maven使用步骤" class="headerlink" title="maven使用步骤"></a>maven使用步骤</h1><h2 id="idea继承maven插件"><a href="#idea继承maven插件" class="headerlink" title="idea继承maven插件"></a>idea继承maven插件</h2><p><strong>1. 一定要在创建项目的地方更改</strong></p>
-<p><img src="peizhiyi.png" alt=""></p>
+<p><img src="/2020/03/14/maven/peizhiyi.png" alt></p>
 <p><strong>2. 第一步改配置的环境和xml文件</strong></p>
-<p><img src="cha1.png" alt=""></p>
+<p><img src="/2020/03/14/maven/cha1.png" alt></p>
 <p><strong>3. 加属性防止因为断网不能创建maven</strong></p>
-<p><img src="chuang2.png" alt=""></p>
+<p><img src="/2020/03/14/maven/chuang2.png" alt></p>
 <h2 id="使用骨架创建maven的java工程"><a href="#使用骨架创建maven的java工程" class="headerlink" title="使用骨架创建maven的java工程"></a>使用骨架创建maven的java工程</h2><p><strong>1. 新建项目 –&gt; maven –&gt; 选择骨架的quickstart</strong></p>
-<p><img src="gu1.png" alt=""></p>
+<p><img src="/2020/03/14/maven/gu1.png" alt></p>
 <p><strong>2. 选择填写公司/项目名/版本信息</strong></p>
-<p><img src="gu2.png" alt=""></p>
+<p><img src="/2020/03/14/maven/gu2.png" alt></p>
 <p><strong>3. 确定信息</strong></p>
-<p><img src="gu3.png" alt=""></p>
+<p><img src="/2020/03/14/maven/gu3.png" alt></p>
 <p><strong>4. 然后进入之后第一次需要配置环境  选择右下角第二个的自动导入的英文</strong></p>
-<p><img src="wancheng.png" alt=""></p>
+<p><img src="/2020/03/14/maven/wancheng.png" alt></p>
 <p><strong>5. 自己新建resources文件  去右键更新为资源root</strong></p>
-<p><img src="gengxin.png" alt=""></p>
+<p><img src="/2020/03/14/maven/gengxin.png" alt></p>
 <h2 id="不使用骨架创建maven的java工程"><a href="#不使用骨架创建maven的java工程" class="headerlink" title="不使用骨架创建maven的java工程"></a>不使用骨架创建maven的java工程</h2><p><strong>1. 只是不选择骨架 其他的都一样</strong></p>
 <p><strong>2. 创建后直接有框架不需要更多的添加</strong></p>
-<p><img src="buyonggujia.png" alt=""></p>
+<p><img src="/2020/03/14/maven/buyonggujia.png" alt></p>
 <h2 id="使用骨架创建maven的web工程"><a href="#使用骨架创建maven的web工程" class="headerlink" title="使用骨架创建maven的web工程"></a>使用骨架创建maven的web工程</h2><p><strong>1. 还是选择maven –&gt; 选择webapp的骨架</strong></p>
-<p><img src="web1.png" alt=""></p>
+<p><img src="/2020/03/14/maven/web1.png" alt></p>
 <p><strong>2. 其他的和java步骤一样 –&gt; 自己手动建立java文件并且右键改为source root</strong></p>
-<p><img src="webzhanshi.png" alt=""></p>
+<p><img src="/2020/03/14/maven/webzhanshi.png" alt></p>
 <hr>
 <h1 id="maven工程servlet实例"><a href="#maven工程servlet实例" class="headerlink" title="maven工程servlet实例"></a>maven工程servlet实例</h1><p><strong>1. 更改java的配置 让java也可以创建jsp文件</strong></p>
-<p><img src="jsp.png" alt=""></p>
+<p><img src="/2020/03/14/maven/jsp.png" alt></p>
 <p><strong>2. 新建servlet包 –&gt; 新建servlet类 –&gt; 配置路径</strong></p>
-<p><img src="servlet.png" alt=""></p>
+<p><img src="/2020/03/14/maven/servlet.png" alt></p>
 <p><strong>3. servlet报错需要导入jar包 –&gt; pom配置相关的jar</strong></p>
-<p><img src="pom.png" alt=""></p>
+<p><img src="/2020/03/14/maven/pom.png" alt></p>
 <p><strong>4. 如果本地仓库没有就百度maven中央仓库 –&gt; 找要的jar下载弹出界面拷贝里面的代码即可</strong></p>
 <p><strong>5. 编写代码 –&gt; 最右边列选择Maven –&gt; 选择m的符号输入 tomcat:run执行tomcat</strong></p>
-<p><img src="tomcat.png" alt=""></p>
+<p><img src="/2020/03/14/maven/tomcat.png" alt></p>
 <p><strong>6. tomcat出现jar冲突 –&gt; 添加scope范围 让jsp和servlet的只是在写代码时候有用 执行时使用tomcat插件</strong></p>
-<p><img src="geng.png" alt=""></p>
+<p><img src="/2020/03/14/maven/geng.png" alt></p>
 <p><strong>7. pom里面添加设置(设置成我们的tomcat7)</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;plugins&gt;</span><br><span class="line">      &lt;plugin&gt;</span><br><span class="line">        &lt;groupId&gt;org.apache.tomcat.maven&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;tomcat7-maven-plugin&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.2&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;configuration&gt;</span><br><span class="line">          &lt;port&gt;9999&lt;&#x2F;port&gt;</span><br><span class="line">          &lt;uriEncoding&gt;UTF-8&lt;&#x2F;uriEncoding&gt;</span><br><span class="line">        &lt;&#x2F;configuration&gt;</span><br><span class="line">      &lt;&#x2F;plugin&gt;</span><br><span class="line">    &lt;&#x2F;plugins&gt;</span><br><span class="line">  &lt;&#x2F;build&gt;</span><br></pre></td></tr></table></figure>
 
@@ -486,10 +486,10 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">       &lt;groupId&gt;org.apache.maven.plugins&lt;&#x2F;groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;maven-compiler-plugin&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;configuration&gt;</span><br><span class="line">         &lt;target&gt;1.8&lt;&#x2F;target&gt;</span><br><span class="line">         &lt;source&gt;1.8&lt;&#x2F;source&gt;</span><br><span class="line">         &lt;encoding&gt;UTF-8&lt;&#x2F;encoding&gt;</span><br><span class="line">       &lt;&#x2F;configuration&gt;</span><br><span class="line">     &lt;&#x2F;plugin&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>9. 类似于7和8的步骤可以创建模板</strong></p>
-<p><img src="dingzhi.png" alt=""></p>
-<p><img src="dingzhier.png" alt=""></p>
+<p><img src="/2020/03/14/maven/dingzhi.png" alt></p>
+<p><img src="/2020/03/14/maven/dingzhier.png" alt></p>
 <hr>
-<h1 id="maven的jave工程取mysql数据"><a href="#maven的jave工程取mysql数据" class="headerlink" title="maven的jave工程取mysql数据"></a>maven的jave工程取mysql数据</h1><h2 id="准备数据库"><a href="#准备数据库" class="headerlink" title="准备数据库"></a>准备数据库</h2><p><img src="shujukuer.png" alt=""></p>
+<h1 id="maven的jave工程取mysql数据"><a href="#maven的jave工程取mysql数据" class="headerlink" title="maven的jave工程取mysql数据"></a>maven的jave工程取mysql数据</h1><h2 id="准备数据库"><a href="#准备数据库" class="headerlink" title="准备数据库"></a>准备数据库</h2><p><img src="/2020/03/14/maven/shujukuer.png" alt></p>
 <h2 id="准备domain包的类去接里面的属性"><a href="#准备domain包的类去接里面的属性" class="headerlink" title="准备domain包的类去接里面的属性"></a>准备domain包的类去接里面的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Items &#123;</span><br><span class="line">    private Integer id;</span><br><span class="line">    private String name;</span><br><span class="line">    public Integer getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setId(Integer id) &#123;</span><br><span class="line">        this.id &#x3D; id;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="pom里面写需要的mysql和junit的jar包"><a href="#pom里面写需要的mysql和junit的jar包" class="headerlink" title="pom里面写需要的mysql和junit的jar包"></a>pom里面写需要的mysql和junit的jar包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;5.1.6&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;scope&gt;runtime&lt;&#x2F;scope&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;junit&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;junit&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;4.12&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
@@ -502,9 +502,9 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 
 <h2 id="准备test层代码"><a href="#准备test层代码" class="headerlink" title="准备test层代码"></a>准备test层代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class ItemsTest &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void findAll() throws Exception &#123;</span><br><span class="line">        ItemsDao dao&#x3D;new ItemsDaoImpl();   &#x2F;&#x2F;面向接口编程</span><br><span class="line">        List&lt;Items&gt; list&#x3D;dao.findAll();  &#x2F;&#x2F;得到结果给list集合</span><br><span class="line">        for (Items items:list)</span><br><span class="line">        &#123; </span><br><span class="line">            System.out.println(items.getId());   &#x2F;&#x2F;增强for循环输出结果</span><br><span class="line">            System.out.println(items.getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="jieguo.png" alt=""></p>
+<p><img src="/2020/03/14/maven/jieguo.png" alt></p>
 <hr>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="zongti.png" alt=""></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2020/03/14/maven/zongti.png" alt></p>
 <pre><code>1.实现类必须要有的四要素：
     数据库驱动(看你用的oracle还是mysql)
     连接数据库的地址 url

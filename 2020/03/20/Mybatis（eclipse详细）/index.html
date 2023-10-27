@@ -377,7 +377,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="用eclipse配置环境"><a href="#用eclipse配置环境" class="headerlink" title="用eclipse配置环境"></a>用eclipse配置环境</h1><h2 id="导入相关的jar包"><a href="#导入相关的jar包" class="headerlink" title="导入相关的jar包"></a>导入相关的jar包</h2><p><img src="jar.png" alt=""></p>
+        <h1 id="用eclipse配置环境"><a href="#用eclipse配置环境" class="headerlink" title="用eclipse配置环境"></a>用eclipse配置环境</h1><h2 id="导入相关的jar包"><a href="#导入相关的jar包" class="headerlink" title="导入相关的jar包"></a>导入相关的jar包</h2><p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/jar.png" alt></p>
 <h2 id="src下新建全局配置mybatis-xml文件-编写JDBC的四个变量"><a href="#src下新建全局配置mybatis-xml文件-编写JDBC的四个变量" class="headerlink" title="src下新建全局配置mybatis.xml文件(编写JDBC的四个变量)"></a>src下新建全局配置mybatis.xml文件(编写JDBC的四个变量)</h2><blockquote>
 <p><strong>2.1 xml引入DTD(在mybatis.chm找)</strong></p>
 </blockquote>
@@ -386,7 +386,7 @@
 <blockquote>
 <p> <strong>2.2 如果导入DTD后续没有自动提示</strong></p>
 </blockquote>
-<p><img src="dtd.png" alt=""></p>
+<p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/dtd.png" alt></p>
 <blockquote>
 <p><strong>2.3 编写和jdbc以及连接数据库有关的资源(自动提示)</strong></p>
 </blockquote>
@@ -407,15 +407,15 @@
 <blockquote>
 <p>2.然后我们知道要用<strong>工厂设计模式</strong>–所以使用对应的<strong>SqlSessionFactory接口</strong></p>
 </blockquote>
-<p><img src="chakan.png" alt=""></p>
+<p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/chakan.png" alt></p>
 <blockquote>
 <p>3.我们通过ctrl+t打开查看<strong>接口实现类</strong>–需要<strong>关联外部文件夹</strong>–选择<strong>mybatis-3-mybatis-3.2.7文件的src</strong></p>
 </blockquote>
-<p><img src="duole.png" alt=""></p>
+<p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/duole.png" alt></p>
 <blockquote>
 <p>4.通过分析接口实现类发现是有参构造方法–需要新建Configuration类</p>
 </blockquote>
-<p><img src="chakan.png" alt=""></p>
+<p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/chakan.png" alt></p>
 <blockquote>
 <p>5.因为<strong>实例化比较麻烦</strong> –使用<strong>构建者模式</strong>快速构建对象 – 然后build需要字节流 –所以要用字节流去加载写好的主配置文件</p>
 </blockquote>
@@ -430,7 +430,7 @@
 <h2 id="相当于实现类的xml需要加载到主配置文件内"><a href="#相当于实现类的xml需要加载到主配置文件内" class="headerlink" title="相当于实现类的xml需要加载到主配置文件内"></a>相当于实现类的xml需要加载到主配置文件内</h2><p><strong>要在mybatis.xml里面加载我们的相当于实现类的xml的全路径</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span><br><span class="line"> 		&lt;mapper resource&#x3D;&quot;com&#x2F;bjsxt&#x2F;mapper&#x2F;FlowerMapper.xml&quot;&gt;&lt;&#x2F;mapper&gt;</span><br><span class="line"> 	&lt;&#x2F;mappers&gt;</span><br></pre></td></tr></table></figure>
 <hr>
-<h1 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h1><p><img src="jiea.png" alt=""></p>
+<h1 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h1><p><img src="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/jiea.png" alt></p>
 <pre><code>1： mapper包:存放xml配置文件(相当于实现类的那个xml)
     功能：
          1.1 mapper里面存放namespace自己的全路径
