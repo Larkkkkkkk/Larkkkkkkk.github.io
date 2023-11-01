@@ -473,7 +473,7 @@
 
 <h2 id="2-IO流原理及流的分类"><a href="#2-IO流原理及流的分类" class="headerlink" title="2. IO流原理及流的分类"></a>2. IO流原理及流的分类</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311010937721.png" alt="image-20220412224132724"></p>
 <h3 id="2-1-Java-IO原理"><a href="#2-1-Java-IO原理" class="headerlink" title="2.1 Java IO原理"></a>2.1 Java IO原理</h3><ul>
-<li><p>Java程序中，对于数据的输入/输出操作以“<code>流(stream)</code>” 的方式进行，可以看做是一种数据的流动。</p>
+<li><p>Java程序中，<strong>数据的输入/输出操作</strong>以“<code>流(stream)</code>” 的方式进行，可以看做是一种数据的流动。</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311010937428.png" alt="image-20220503123117300" style="zoom: 80%;">
 </li>
 <li><p>I/O流中的I/O是<code>Input/Output</code>的缩写， I/O技术是非常实用的技术，用于处理设备之间的数据传输。如读/写文件，网络通讯等。</p>
@@ -486,7 +486,7 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311010937530.png" alt="image-20220412224700133"></p>
 <h3 id="2-2-流的分类"><a href="#2-2-流的分类" class="headerlink" title="2.2 流的分类"></a>2.2 流的分类</h3><p><code>java.io</code>包下提供了各种“流”类和接口，用以获取不同种类的数据，并通过<code>标准的方法</code>输入或输出数据。</p>
 <ul>
-<li><p>按数据的流向不同分为：<strong>输入流</strong>和<strong>输出流</strong>。</p>
+<li><p>按<strong>数据的流向不同</strong>  —-&gt; ：<strong>输入流</strong>和<strong>输出流</strong>。</p>
 <ul>
 <li><strong>输入流</strong> ：把数据从<code>其他设备</code>上读取到<code>内存</code>中的流。 <ul>
 <li>以InputStream、Reader结尾</li>
@@ -498,7 +498,7 @@
 </li>
 </ul>
 </li>
-<li><p>按操作数据单位的不同分为：<strong>字节流（8bit）</strong>和<strong>字符流（16bit）</strong>。</p>
+<li><p>按<strong>操作数据单位的不同 ** —-&gt; ：</strong>字节流（8bit）<strong>和</strong>字符流（16bit）**。</p>
 <ul>
 <li><strong>字节流</strong> ：以字节为单位，读写数据的流。<ul>
 <li>以InputStream、OutputStream结尾</li>
@@ -510,7 +510,7 @@
 </li>
 </ul>
 </li>
-<li><p>根据IO流的角色不同分为：<strong>节点流</strong>和<strong>处理流</strong>。</p>
+<li><p>根据<strong>IO流的角色不同</strong> —-&gt; ：<strong>节点流</strong>和<strong>处理流</strong>。</p>
 <ul>
 <li><p><strong>节点流</strong>：直接从数据源或目的地读写数据</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311010937732.png" alt="image-20220412230745170"></p>
@@ -536,12 +536,12 @@
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">字节流</td>
+<td align="center">字节流(以字节为单位，读写数据)</td>
 <td align="center">InputStream</td>
 <td align="center">OutputStream</td>
 </tr>
 <tr>
-<td align="center">字符流</td>
+<td align="center">字符流(以字符为单位，读写数据)</td>
 <td align="center">Reader</td>
 <td align="center">Writer</td>
 </tr>
@@ -550,7 +550,7 @@
 <li>由这四个类派生出来的子类名称都是以其父类名作为子类名后缀。</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311010938499.png" alt="image-20220412230501953"></p>
-<p><strong>常用的节点流：</strong> 　</p>
+<p><strong>常用节点流：</strong> 　</p>
 <ul>
 <li>文件流： FileInputStream、FileOutputStrean、FileReader、FileWriter </li>
 <li>字节/字符数组流： ByteArrayInputStream、ByteArrayOutputStream、CharArrayReader、CharArrayWriter <ul>
