@@ -5,17 +5,16 @@
   
   <title>JAVA-网络编程 | Larkkkkkkk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第16章_网络编程本章专题与脉络   1. 网络编程概述Java是 Internet 上的语言，它从语言级上提供了对网络应用程序的支持，程序员能够很容易开发常见的网络应用程序。 Java提供的网络类库，可以实现无痛的网络连接，联网的底层细节被隐藏在 Java 的本机安装系统里，由 JVM 进行控制。并且 Java 实现了一个跨平台的网络库，程序员面对的是一个统一的网络编程环境。 1.1 软件架构">
+  <meta name="description" content="第16章_网络编程本章专题与脉络   1. 网络编程概述Java是 Internet 上的语言，它从语言级上提供了对网络应用程序的支持，程序员能够很容易开发常见的网络应用程序。 Java提供的网络类库，可以实现无痛的网络连接，联网的底层细节被隐藏在 Java 的本机安装系统里，由 JVM 控制。并且 Java 实现了一个跨平台的网络库，程序员面对的是一个统一的网络编程环境。 1.1 软件架构 C&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA-网络编程">
 <meta property="og:url" content="https://larkkkkkkk.github.io/2023/11/02/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Larkkkkkkk">
-<meta property="og:description" content="第16章_网络编程本章专题与脉络   1. 网络编程概述Java是 Internet 上的语言，它从语言级上提供了对网络应用程序的支持，程序员能够很容易开发常见的网络应用程序。 Java提供的网络类库，可以实现无痛的网络连接，联网的底层细节被隐藏在 Java 的本机安装系统里，由 JVM 进行控制。并且 Java 实现了一个跨平台的网络库，程序员面对的是一个统一的网络编程环境。 1.1 软件架构">
+<meta property="og:description" content="第16章_网络编程本章专题与脉络   1. 网络编程概述Java是 Internet 上的语言，它从语言级上提供了对网络应用程序的支持，程序员能够很容易开发常见的网络应用程序。 Java提供的网络类库，可以实现无痛的网络连接，联网的底层细节被隐藏在 Java 的本机安装系统里，由 JVM 控制。并且 Java 实现了一个跨平台的网络库，程序员面对的是一个统一的网络编程环境。 1.1 软件架构 C&#x2F;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311021655371.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311021656622.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311021656506.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311021656711.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311021656025.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311021657189.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311021657869.png">
@@ -39,7 +38,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311031629101.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20231103164404714.png">
 <meta property="article:published_time" content="2023-11-02T08:51:25.000Z">
-<meta property="article:modified_time" content="2023-11-03T08:45:53.473Z">
+<meta property="article:modified_time" content="2023-11-03T12:59:06.745Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -401,7 +400,7 @@
 
 <hr>
 <h2 id="1-网络编程概述"><a href="#1-网络编程概述" class="headerlink" title="1. 网络编程概述"></a>1. 网络编程概述</h2><p>Java是 Internet 上的语言，它从语言级上提供了对网络应用程序的支持，程序员能够很容易开发常见的网络应用程序。</p>
-<p>Java提供的网络类库，可以实现无痛的网络连接，联网的底层细节被隐藏在 Java 的本机安装系统里，由 JVM 进行控制。并且 Java 实现了一个跨平台的网络库，<code>程序员面对的是一个统一的网络编程环境</code>。</p>
+<p>Java提供的网络类库，可以实现无痛的网络连接，联网的底层细节被隐藏在 Java 的本机安装系统里，由 <strong>JVM 控制</strong>。并且 Java 实现了一个跨平台的网络库，<code>程序员面对的是一个统一的网络编程环境</code>。</p>
 <h3 id="1-1-软件架构"><a href="#1-1-软件架构" class="headerlink" title="1.1 软件架构"></a>1.1 软件架构</h3><ul>
 <li><strong>C/S架构</strong> ：全称为Client/Server结构，是指客户端和服务器结构。常见程序有QQ、美团app、360安全卫士等软件。</li>
 </ul>
@@ -424,8 +423,6 @@
 </ul>
 </li>
 </ul>
-<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311021656711.png" alt="image-20220415001614195" style="zoom:67%;">
-
 <h2 id="2-网络通信要素"><a href="#2-网络通信要素" class="headerlink" title="2. 网络通信要素"></a>2. 网络通信要素</h2><h3 id="2-1-如何实现网络中的主机互相通信"><a href="#2-1-如何实现网络中的主机互相通信" class="headerlink" title="2.1 如何实现网络中的主机互相通信"></a>2.1 如何实现网络中的主机互相通信</h3><ul>
 <li>通信双方地址<ul>
 <li>IP</li>
@@ -442,24 +439,25 @@
 <h3 id="2-2-通信要素一：IP地址和域名"><a href="#2-2-通信要素一：IP地址和域名" class="headerlink" title="2.2 通信要素一：IP地址和域名"></a>2.2 通信要素一：IP地址和域名</h3><h4 id="2-2-1-IP地址"><a href="#2-2-1-IP地址" class="headerlink" title="2.2.1 IP地址"></a>2.2.1 IP地址</h4><p><strong>IP地址：指互联网协议地址（Internet Protocol Address）</strong>，俗称IP。IP地址用来给网络中的一台计算机设备做唯一的编号。假如我们把“个人电脑”比作“一台电话”的话，那么“IP地址”就相当于“电话号码”。</p>
 <p><strong>IP地址分类方式一：</strong></p>
 <ul>
-<li><p><code>IPv4</code>：是一个32位的二进制数，通常被分为4个字节，表示成<code>a.b.c.d</code> 的形式，以点分<code>十进制</code>表示，例如<code>192.168.65.100</code> 。其中a、b、c、d都是0~255之间的十进制整数。</p>
+<li><p><code>IPv4</code>：是一个<strong>32位的二进制数</strong>，通常被分为<strong>4个字节</strong>，表示成<code>a.b.c.d</code> 的形式，以点分<code>十进制</code>表示，例如<code>192.168.65.100</code> 。其中a、b、c、d都是0~255之间的十进制整数。</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311021657869.png" alt="image-20220503145929568" style="zoom:80%;">
+
 <ul>
-<li><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311021657869.png" alt="image-20220503145929568" style="zoom:80%;">
-</li>
 <li><p>这种方式最多可以表示42亿个。其中，30亿都在北美，亚洲4亿，中国2.9亿。2011年初已经用尽。</p>
 </li>
 <li><p>IP地址 = 网络地址 +主机地址</p>
 <ul>
 <li>网络地址：标识计算机或网络设备所在的网段</li>
-<li>主机地址：标识特定主机或网络设备</li>
 </ul>
+</li>
+<li><p>主机地址：标识特定主机或网络设备</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311021657463.jpeg" alt="20220518_101503"></p>
 <p>其中，E类用于科研。</p>
 </li>
 </ul>
 </li>
 <li><p><code>IPv6</code>：由于互联网的蓬勃发展，IP地址的需求量愈来愈大，但是网络地址资源有限，使得IP的分配越发紧张。</p>
-<p>为了扩大地址空间，拟通过IPv6重新定义地址空间，采用128位地址长度，共16个字节，写成8个无符号整数，每个整数用四个十六进制位表示，数之间用冒号（：）分开。比如：<code>ABCD:EF01:2345:6789:ABCD:EF01:2345:6789</code>，按保守方法估算IPv6实际可分配的地址，整个地球的每平方米面积上仍可分配1000多个地址，这样就解决了网络地址资源数量不够的问题。2012年6月6日，国际互联网协会举行了世界IPv6启动纪念日，这一天，全球IPv6网络正式启动。多家知名网站，如Google、Facebook和Yahoo等，于当天全球标准时间0点（北京时间8点整）开始永久性支持IPv6访问。2018年6月，三大运营商联合阿里云宣布，将全面对外提供IPv6服务，并计划在2025年前助推中国互联网真正实现“IPv6 Only”。</p>
+<p>​    为了扩大地址空间，拟通过IPv6重新定义地址空间，采用<strong>128位地址长度</strong>，共<strong>16个字节</strong>，写成8个无符号整数，每个整数用四个<strong>十六进制位</strong>表示，数之间<strong>用冒号（：）分开</strong>。<br>​    比如：<code>ABCD:EF01:2345:6789:ABCD:EF01:2345:6789</code>，按保守方法估算IPv6实际可分配的地址，整个地球的每平方米面积上仍可 分配1000多个地址，这样就解决了网络地址资源数量不够的问题。2012年6月6日，国际互联网协会举行了世界IPv6启动纪念日，这一天，全球IPv6网络正式启动。多家知名网站，如Google、Facebook和Yahoo等，于当天全球标准时间0点（北京时间8点整）开始永久性支持IPv6访问。2018年6月，三大运营商联合阿里云宣布，将全面对外提供IPv6服务，并计划在2025年前助推中国互联网真正实现“IPv6 Only”。</p>
 <p>在IPv6的设计过程中除了一劳永逸地解决了地址短缺问题以外，还考虑了在IPv4中解决不好的其它问题，主要有端到端IP连接、服务质量（QoS）、安全性、多播、移动性、即插即用等。</p>
 </li>
 </ul>
@@ -520,7 +518,7 @@
 </ul>
 <p><strong>新的问题：网络协议涉及内容太多、太复杂。如何解决？</strong></p>
 <p>计算机网络通信涉及内容很多，比如指定源地址和目标地址，加密解密，压缩解压缩，差错控制，流量控制，路由控制，如何实现如此复杂的网络协议呢？<code>通信协议分层思想</code>。</p>
-<p>在制定协议时，把复杂成份分解成一些简单的成份，再将它们复合起来。最常用的复合方式是层次方式，即<code>同层间可以通信、上一层可以调用下一层，而与再下一层不发生关系</code>。各层互不影响，利于系统的开发和扩展。</p>
+<p>在制定协议时，把复杂成份分解成一些简单的成份，再将它们复合起来。最常用的复合方式是<strong>层次方式</strong>，即<code>同层间可以通信、上一层可以调用下一层，而与再下一层不发生关系</code>。各层互不影响，利于系统的开发和扩展。</p>
 <p>这里有两套参考模型</p>
 <ul>
 <li>OSI参考模型：模型过于理想化，未能在因特网上进行广泛推广</li>
@@ -605,7 +603,7 @@
 <p>之后客户端进入TIME_WAIT(时间等待)状态，服务器收到ACK应答报文段后，服务器就进入CLOSE(关闭)状态，到此服务器的连接已经完成关闭。客户端处于TIME_WAIT状态时，此时的TCP还未释放掉，需要等待2MSL后，客户端才进入CLOSE状态。</p>
 </blockquote>
 <h2 id="3-网络编程API"><a href="#3-网络编程API" class="headerlink" title="3. 网络编程API"></a>3. 网络编程API</h2><h3 id="3-1-InetAddress类"><a href="#3-1-InetAddress类" class="headerlink" title="3.1 InetAddress类"></a>3.1 InetAddress类</h3><p>InetAddress类主要表示IP地址，两个子类：Inet4Address、Inet6Address。</p>
-<p>InetAddress 类没有提供公共的构造器，而是提供 了 如下几个 静态方法来获取InetAddress 实例</p>
+<p>InetAddress 类没有提供公共的构造器，而是提供如下几个静态方法来获取InetAddress 实例</p>
 <ul>
 <li>public static InetAddress getLocalHost()</li>
 <li>public static InetAddress getByName(String host)</li>
@@ -633,12 +631,12 @@
 </li>
 <li><p>Socket分类：</p>
 <ul>
-<li>流套接字（stream socket）：使用TCP提供可依赖的字节流服务<ul>
+<li>流套接字（stream socket）：使用TCP提供<strong>可依赖</strong>的字节流服务<ul>
 <li>ServerSocket：此类实现TCP服务器套接字。服务器套接字等待请求通过网络传入。</li>
 <li>Socket：此类实现客户端套接字（也可以就叫“套接字”）。套接字是两台机器间通信的端点。</li>
 </ul>
 </li>
-<li>数据报套接字（datagram socket）：使用UDP提供“尽力而为”的数据报服务<ul>
+<li>数据报套接字（datagram socket）：使用UDP提供“<strong>尽力而为</strong>”的数据报服务<ul>
 <li>DatagramSocket：此类表示用来发送和接收UDP数据报包的套接字。 </li>
 </ul>
 </li>
@@ -830,7 +828,7 @@
 <li>参数列表格式：参数名=参数值&amp;参数名=参数值….</li>
 </ul>
 </li>
-<li><p>为了表示URL，java.net 中实现了类 URL。我们可以通过下面的构造器来初始化一个 URL 对象：</p>
+<li><p>为了表示URL，java.net 中实现了<strong>类 URL</strong>。我们可以通过下面的构造器来初始化一个 URL 对象：</p>
 <ul>
 <li><p>public URL (String spec)：通过一个表示URL地址的字符串可以构造一个URL对象。例如：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL("http://www. atguigu.com/");</span><br></pre></td></tr></table></figure>
@@ -846,7 +844,7 @@
 </li>
 </ul>
 </li>
-<li><p>URL类的构造器都声明抛出非运行时异常，必须要对这一异常进行处理，通常是用 try-catch 语句进行捕获。</p>
+<li><p>URL类的构造器都声明抛出<strong>非运行时异常</strong>，必须要对这一异常进行处理，通常是用 <strong>try-catch 语句</strong>进行捕获。</p>
 </li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311022036723.png" alt="image-20220415013546074"></p>
@@ -875,22 +873,42 @@
 </li>
 <li><p>URLConnection：表示到URL所引用的远程对象的连接。当与一个URL建立连接时，首先要在一个 URL 对象上通过方法 openConnection() 生成对应的 URLConnection 对象。如果连接过程失败，将产生IOException. </p>
 <ul>
-<li>URL netchinaren = new URL (“<a href="http://www.atguigu.com/index.shtml&quot;" target="_blank" rel="noopener">http://www.atguigu.com/index.shtml&quot;</a>); </li>
-<li>URLConnectonn u = netchinaren.openConnection( ); </li>
+<li><pre><code>String str=&quot;http://raw.githubusercontent.com/.images/202311031512799.png&quot;;
+URL url=new URL(str);
+HttpURLConnection urlConnection= (HttpURLConnection) url.openConnection();
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 通过URLConnection对象获取的输入流和输出流，即可以与现有的CGI程序进行交互。</span><br><span class="line"></span><br><span class="line">  - public Object getContent( ) throws IOException</span><br><span class="line">  - public int getContentLength( )</span><br><span class="line">  - public String getContentType( )</span><br><span class="line">  - public long getDate( )</span><br><span class="line">  - public long getLastModified( )</span><br><span class="line">  - public InputStream getInputStream ( ) throws IOException</span><br><span class="line">  - public OutputSteram getOutputStream( )throws IOException</span><br></pre></td></tr></table></figure>
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.io.*;
+public class UrlTestDown {
+  public static void main(String[] args) throws IOException {
+      //将URL代表的资源下载到本地
+      //1.获取URL实例
+      String str=&quot;http://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311031512799.png&quot;;
+      URL url=new URL(str);
+      //2.建立与服务器端的连接
+      HttpURLConnection urlConnection= (HttpURLConnection) url.openConnection();
+      //3.获取输入流(从服务器得到)、创建输出流(存储到本地)
+      InputStream is = urlConnection.getInputStream();
+      File file=new File(&quot;hahha.png&quot;);
+      FileOutputStream fos=new FileOutputStream(file);
+      //4.读写数据
+      byte[] buffer = new byte[1024];
+      int len;
+      while ((len = is.read(buffer)) != -1) {
+          fos.write(buffer, 0, len);
+      }
+      System.out.println(&quot;文件下载完成&quot;);
+      //5.关闭资源
+      fos.close();
+      is.close();
+      urlConnection.disconnect(); //还比较特殊
+  }
+}</code></pre></li>
 </ul>
-</li>
-<li><p>通过URLConnection对象获取的输入流和输出流，即可以与现有的CGI程序进行交互。</p>
-<ul>
-<li>public Object getContent( ) throws IOException</li>
-<li>public int getContentLength( )</li>
-<li>public String getContentType( )</li>
-<li>public long getDate( )</li>
-<li>public long getLastModified( )</li>
-<li><strong>public InputStream getInputStream ( ) throws IOException</strong></li>
-<li>public OutputSteram getOutputStream( )throws IOException</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">package net;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line">import java.net.HttpURLConnection;</span><br><span class="line">import java.net.MalformedURLException;</span><br><span class="line">import java.net.URL;</span><br><span class="line">import java.io.*;</span><br><span class="line">public class UrlTestDown &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        &#x2F;&#x2F;将URL代表的资源下载到本地</span><br><span class="line">        &#x2F;&#x2F;1.获取URL实例</span><br><span class="line">        String str&#x3D;&quot;http:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Larkkkkkkk&#x2F;hexo-picture&#x2F;main&#x2F;.images&#x2F;202311031512799.png&quot;;</span><br><span class="line">        URL url&#x3D;new URL(str);</span><br><span class="line">        &#x2F;&#x2F;2.建立与服务器端的连接</span><br><span class="line">        HttpURLConnection urlConnection&#x3D; (HttpURLConnection) url.openConnection();</span><br><span class="line">        &#x2F;&#x2F;3.获取输入流(从服务器得到)、创建输出流(存储到本地)</span><br><span class="line">        InputStream is &#x3D; urlConnection.getInputStream();</span><br><span class="line">        File file&#x3D;new File(&quot;hahha.png&quot;);</span><br><span class="line">        FileOutputStream fos&#x3D;new FileOutputStream(file);</span><br><span class="line">        &#x2F;&#x2F;4.读写数据</span><br><span class="line">        byte[] buffer &#x3D; new byte[1024];</span><br><span class="line">        int len;</span><br><span class="line">        while ((len &#x3D; is.read(buffer)) !&#x3D; -1) &#123;</span><br><span class="line">            fos.write(buffer, 0, len);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;文件下载完成&quot;);</span><br><span class="line">        &#x2F;&#x2F;5.关闭资源</span><br><span class="line">        fos.close();</span><br><span class="line">        is.close();</span><br><span class="line">        urlConnection.disconnect(); &#x2F;&#x2F;还比较特殊</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20231103164404714.png" alt="image-20231103164404714"></p>
 </li>
 </ul>
@@ -959,7 +977,7 @@
         <p><span>本文标题:</span><a href="/2023/11/02/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">JAVA-网络编程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2023年11月02日 - 16时51分</p>
-        <p><span>最后更新:</span>2023年11月03日 - 16时45分</p>
+        <p><span>最后更新:</span>2023年11月03日 - 20时59分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2023/11/02/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="JAVA-网络编程">https://larkkkkkkk.github.io/2023/11/02/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2023/11/02/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
