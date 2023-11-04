@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311032109968.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311032109732.png">
 <meta property="article:published_time" content="2023-11-03T13:04:41.000Z">
-<meta property="article:modified_time" content="2023-11-04T03:22:05.640Z">
+<meta property="article:modified_time" content="2023-11-04T06:44:09.005Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -390,8 +390,8 @@
 
 <p>例如：某些变量或形参的声明类型是Object类型，但是程序却需要调用该对象运行时类型的方法，该方法不是Object中的方法，那么如何解决呢？</p>
 <p>解决这个问题，有两种方案：</p>
-<p>方案1(<strong>向下转型</strong>)：在编译和运行时都完全知道类型的具体信息，在这种情况下，我们可以直接先使用<code>instanceof</code>运算符进行判断，再利用强制类型转换符将其转换成运行时类型的变量即可。</p>
-<p>方案2(<strong>反射</strong>)：编译时根本无法预知该对象和类的真实信息，程序只能依靠<strong>运行时信息来发现该对象和类的真实信息</strong>，这就必须使用反射。</p>
+<p>1.方案1(<strong>向下转型</strong>)：在编译和运行时都完全知道类型的具体信息，在这种情况下，我们可以直接先使用<code>instanceof</code>运算符进行判断，再利用强制类型转换符将其转换成运行时类型的变量即可。</p>
+<p>2.方案2(<strong>反射</strong>)：编译时根本无法预知该对象和类的真实信息，程序只能依靠<strong>运行时信息来发现该对象和类的真实信息</strong>，这就必须使用反射。</p>
 <h3 id="1-2-反射概述"><a href="#1-2-反射概述" class="headerlink" title="1.2 反射概述"></a>1.2 反射概述</h3><p>Reflection（反射）是被视为<strong>动态语言</strong>的关键，反射机制允许程序在<code>运行期间</code>借助Reflection API取得任何类的内部信息，<strong>能直接操作任意对象的内部属性及方法</strong>。 </p>
 <p>加载完类之后，在堆内存的方法区中就产生了一个Class类型的对象（一个类只有一个Class对象），这个对象就包含了完整的类的结构信息。我们可以通过这个对象看到类的结构。<code>这个对象就像一面镜子，透过这个镜子看到类的结构，所以，我们形象的称之为：反射。</code></p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311032106369.png" alt="image-20220417161529285" style="zoom:80%;">
@@ -808,7 +808,7 @@
         <p><span>本文标题:</span><a href="/2023/11/03/JAVA-%E5%8F%8D%E5%B0%84/">JAVA-反射</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2023年11月03日 - 21时04分</p>
-        <p><span>最后更新:</span>2023年11月04日 - 11时22分</p>
+        <p><span>最后更新:</span>2023年11月04日 - 14时44分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2023/11/03/JAVA-%E5%8F%8D%E5%B0%84/" title="JAVA-反射">https://larkkkkkkk.github.io/2023/11/03/JAVA-%E5%8F%8D%E5%B0%84/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2023/11/03/JAVA-%E5%8F%8D%E5%B0%84/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
