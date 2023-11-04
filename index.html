@@ -361,12 +361,14 @@
           
         <h1 id="第17章-反射机制"><a href="#第17章-反射机制" class="headerlink" title="第17章_反射机制"></a>第17章_反射机制</h1><h2 id="本章专题与脉络"><a href="#本章专题与脉络" class="headerlink" title="本章专题与脉络"></a>本章专题与脉络</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311032106121.png" alt="第3阶段：Java高级应用-第17章"></p>
 <hr>
-<h2 id="1-反射-Reflection-的概念"><a href="#1-反射-Reflection-的概念" class="headerlink" title="1. 反射(Reflection)的概念"></a>1. 反射(Reflection)的概念</h2><h3 id="1-1-反射的出现背景"><a href="#1-1-反射的出现背景" class="headerlink" title="1.1 反射的出现背景"></a>1.1 反射的出现背景</h3><p>Java程序中，所有的对象都有两种类型：<code>编译时类型</code>和<code>运行时类型</code>，而很多时候对象的编译时类型和运行时类型<code>不一致</code>。 Object obj = new String(“hello”);    obj.getClass()</p>
+<h2 id="1-反射-Reflection-的概念"><a href="#1-反射-Reflection-的概念" class="headerlink" title="1. 反射(Reflection)的概念"></a>1. 反射(Reflection)的概念</h2><h3 id="1-1-反射出现的背景"><a href="#1-1-反射出现的背景" class="headerlink" title="1.1 反射出现的背景"></a>1.1 反射出现的背景</h3><p>Java程序中，所有的对象都有两种类型：<code>编译时类型</code>和<code>运行时类型</code>，而很多时候对象的编译时类型和运行时类型<code>不一致</code>。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object obj &#x3D; new String(&quot;hello&quot;);   </span><br><span class="line">obj.getClass()；</span><br></pre></td></tr></table></figure>
+
 <p>例如：某些变量或形参的声明类型是Object类型，但是程序却需要调用该对象运行时类型的方法，该方法不是Object中的方法，那么如何解决呢？</p>
 <p>解决这个问题，有两种方案：</p>
-<p>方案1：在编译和运行时都完全知道类型的具体信息，在这种情况下，我们可以直接先使用<code>instanceof</code>运算符进行判断，再利用强制类型转换符将其转换成运行时类型的变量即可。</p>
-<p>方案2：编译时根本无法预知该对象和类的真实信息，程序只能依靠<code>运行时信息</code>来发现该对象和类的真实信息，这就必须使用反射。</p>
-<h3 id="1-2-反射概述"><a href="#1-2-反射概述" class="headerlink" title="1.2 反射概述"></a>1.2 反射概述</h3><p>Reflection（反射）是被视为<code>动态语言</code>的关键，反射机制允许程序在<code>运行期间</code>借助于Reflection API取得任何类的内部信息，并能直接操作任意对象的内部属性及方法。</p>
+<p>方案1(<strong>向下转型</strong>)：在编译和运行时都完全知道类型的具体信息，在这种情况下，我们可以直接先使用<code>instanceof</code>运算符进行判断，再利用强制类型转换符将其转换成运行时类型的变量即可。</p>
+<p>方案2(<strong>反射</strong>)：编译时根本无法预知该对象和类的真实信息，程序只能依靠<strong>运行时信息来发现该对象和类的真实信息</strong>，这就必须使用反射。</p>
+<h3 id="1-2-反射概述"><a href="#1-2-反射概述" class="headerlink" title="1.2 反射概述"></a>1.2 反射概述</h3><p>Reflection（反射）是被视为<strong>动态语言</strong>的关键，反射机制允许程序在<code>运行期间</code>借助Reflection API取得任何类的内部信息，<strong>能直接操作任意对象的内部属性及方法</strong>。 </p>
 <p>加载完类之后，在堆内存的方法区中就产生了一个Class类型的对象（一个类只有一个Class对象），这个对象就包含了完整的类的结构信息。我们可以通过这个对象看到类的结构。<code>这个对象就像一面镜子，透过这个镜子看到类的结构，所以，我们形象的称之为：反射。</code></p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311032106369.png" alt="image-20220417161529285" style="zoom:80%;">
 
@@ -382,7 +384,8 @@
 <li>在运行时处理注解</li>
 <li>生成动态代理</li>
 </ul>
-<h3 id="1-4-反射相关的主要API"><a href="#1-4-反射相关的主要API" class="headerlink" title="1.4 反射相关的主要API"></a>1.4 反射相关的主要API</h3><p><code>java.lang.Class</code>：代表一个类<br>java.lang.reflect.Method：代表类的方法<br>java.lang.reflect.Field：代表类的成员变量<br>java.lang.reflect.Constructor：代表类的构造器<br>… …</p>
+<h3 id="1-4-反射相关的主要API"><a href="#1-4-反射相关的主要API" class="headerlink" title="1.4 反射相关的主要API"></a>1.4 反射相关的主要API</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java.lang.Class：代表一个类</span><br><span class="line">java.lang.reflect.Method：代表类的方法</span><br><span class="line">java.lang.reflect.Field：代表类的成员变量</span><br><span class="line">java.lang.reflect.Constructor：代表类的构造器</span><br><span class="line">… …</span><br></pre></td></tr></table></figure>
+
 <h3 id="1-5-反射的优缺点"><a href="#1-5-反射的优缺点" class="headerlink" title="1.5 反射的优缺点"></a>1.5 反射的优缺点</h3><p><strong>优点：</strong></p>
 <ul>
 <li><p>提高了Java程序的灵活性和扩展性，<code>降低了耦合性</code>，提高<code>自适应</code>能力</p>
