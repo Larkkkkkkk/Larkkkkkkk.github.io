@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311032109968.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311032109732.png">
 <meta property="article:published_time" content="2023-11-03T13:04:41.000Z">
-<meta property="article:modified_time" content="2023-11-04T06:44:09.005Z">
+<meta property="article:modified_time" content="2023-11-05T06:21:39.952Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -427,13 +427,13 @@
 <li><p>反射会<code>模糊</code>程序内部逻辑，<code>可读性较差</code>。</p>
 </li>
 </ul>
-<h2 id="2-理解Class类并获取Class实例"><a href="#2-理解Class类并获取Class实例" class="headerlink" title="2.  理解Class类并获取Class实例"></a>2.  理解Class类并获取Class实例</h2><p>要想<code>解剖</code>一个类，必须先要获取到该类的Class对象。而剖析一个类或用反射解决具体的问题就是使用相关API:</p>
+<h2 id="2-理解Class类并获取Class实例"><a href="#2-理解Class类并获取Class实例" class="headerlink" title="2.  理解Class类并获取Class实例"></a>2.  理解Class类并获取Class实例</h2><p>要想<code>解剖</code>一个类，必须先要获取到该类的Class对象。而剖析一个类/用反射解决具体的问题就是使用相关API:</p>
 <ul>
 <li>java.lang.Class</li>
 <li>java.lang.reflect.*</li>
 </ul>
-<p>所以，Class对象是反射的根源。</p>
-<h3 id="2-1-理解Class"><a href="#2-1-理解Class" class="headerlink" title="2.1 理解Class"></a>2.1 理解Class</h3><h4 id="2-1-1-理论上"><a href="#2-1-1-理论上" class="headerlink" title="2.1.1 理论上"></a>2.1.1 理论上</h4><p>在Object类中定义了以下的方法，此方法将被所有子类继承：</p>
+<p>所以，<strong>Class对象是反射的根源</strong>。</p>
+<h3 id="2-1-理解Class"><a href="#2-1-理解Class" class="headerlink" title="2.1 理解Class"></a>2.1 理解Class</h3><h4 id="2-1-1-理论上"><a href="#2-1-1-理论上" class="headerlink" title="2.1.1 理论上"></a>2.1.1 理论上</h4><p>在Object类中定义了以下的方法，此方法将被<strong>所有子类继承</strong>：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Class <span class="title">getClass</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
 
 <p>以上的方法返回值的类型是一个Class类，此类是Java反射的源头，实际上所谓反射从程序的运行结果来看也很好理解，即：可以通过对象反射求出类的名称。</p>
@@ -808,7 +808,7 @@
         <p><span>本文标题:</span><a href="/2023/11/03/JAVA-%E5%8F%8D%E5%B0%84/">JAVA-反射</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2023年11月03日 - 21时04分</p>
-        <p><span>最后更新:</span>2023年11月04日 - 14时44分</p>
+        <p><span>最后更新:</span>2023年11月05日 - 14时21分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2023/11/03/JAVA-%E5%8F%8D%E5%B0%84/" title="JAVA-反射">https://larkkkkkkk.github.io/2023/11/03/JAVA-%E5%8F%8D%E5%B0%84/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2023/11/03/JAVA-%E5%8F%8D%E5%B0%84/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
