@@ -415,7 +415,7 @@
 <p>以上的方法返回值的类型是一个Class类，此类是Java反射的源头，实际上所谓反射从程序的运行结果来看也很好理解，即：可以通过对象反射求出类的名称。</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311032107450.png" alt="image-20220417162559217" style="zoom:80%;">
 
-<p>对象照镜子后可以得到的信息：某个类的属性、方法和构造器、某个类到底实现了哪些接口。对于每个类而言，JRE 都为其保留一个不变的 Class 类型的对象。一个 Class 对象包含了特定某个结构(class/interface/enum/annotation/primitive type/void/[])的有关信息。</p>
+<p>对象照镜子后可以得到的信息：某个类的属性、方法和构造器、某个类到底实现了哪些接口。<br>对于每个类而言，JRE 都为其保留一个不变的 Class 类型的对象。一个 Class 对象包含了特定某个结构(class/interface/enum/annotation/primitive type/void/[])的有关信息。</p>
 <ul>
 <li>Class本身也是一个类</li>
 <li>Class 对象只能由系统建立对象</li>
@@ -427,34 +427,30 @@
 </ul>
 <h4 id="2-1-2-内存结构上"><a href="#2-1-2-内存结构上" class="headerlink" title="2.1.2 内存结构上"></a>2.1.2 内存结构上</h4><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311032107703.png" alt="image-20220514180100176" style="zoom:80%;">
 
-<p>说明：上图中字符串常量池在JDK6中存储在方法区；JDK7及以后，存储在堆空间。</p>
-<h3 id="2-2-获取Class类的实例-四种方法"><a href="#2-2-获取Class类的实例-四种方法" class="headerlink" title="2.2 获取Class类的实例(四种方法)"></a>2.2 获取Class类的实例(四种方法)</h3><p>方式1：要求编译期间已知类型</p>
-<p>前提：若已知具体的类，通过类的class属性获取，该方法最为安全可靠，程序性能最高</p>
+<p>说明：字符串常量池在JDK6中，存储在方法区；<br>            字符串常量池在JDK7及以后，存储在堆空间。</p>
+<h3 id="2-2-获取Class类的实例-四种方法"><a href="#2-2-获取Class类的实例-四种方法" class="headerlink" title="2.2 获取Class类的实例(四种方法)"></a>2.2 获取Class类的实例(四种方法)</h3><h4 id="2-2-1：要求编译期间已知类型"><a href="#2-2-1：要求编译期间已知类型" class="headerlink" title="2.2.1：要求编译期间已知类型"></a>2.2.1：要求编译期间已知类型</h4><p>前提：若已知具体的类，通过类的class属性获取，该方法最为安全可靠，程序性能最高</p>
 <p>实例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = String<span class="class">.<span class="keyword">class</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>方式2：获取对象的运行时类型</p>
-<p>前提：已知某个类的实例，调用该实例的getClass()方法获取Class对象</p>
+<h4 id="2-2-2：获取对象的运行时类型"><a href="#2-2-2：获取对象的运行时类型" class="headerlink" title="2.2.2：获取对象的运行时类型"></a>2.2.2：获取对象的运行时类型</h4><p>前提：已知某个类的实例，调用该实例的getClass()方法获取Class对象</p>
 <p>实例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = <span class="string">"www.atguigu.com"</span>.getClass();</span><br></pre></td></tr></table></figure>
 
-<p>方式3：可以获取编译期间未知的类型</p>
-<p>前提：已知一个类的全类名，且该类在类路径下，可通过Class类的静态方法forName()获取，可能抛出ClassNotFoundException</p>
+<h4 id="2-2-3：可以获取编译期间未知的类型"><a href="#2-2-3：可以获取编译期间未知的类型" class="headerlink" title="2.2.3：可以获取编译期间未知的类型"></a>2.2.3：可以获取编译期间未知的类型</h4><p>前提：已知一个类的全类名，且该类在类路径下，可通过Class类的静态方法forName()获取，可能抛出ClassNotFoundException</p>
 <p>实例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Class.forName(<span class="string">"java.lang.String"</span>);</span><br></pre></td></tr></table></figure>
 
-<p>方式4：其他方式(不做要求)</p>
-<p>前提：可以用系统类加载对象或自定义加载器对象加载指定路径下的类型</p>
+<h4 id="2-2-4：其他方式-不做要求"><a href="#2-2-4：其他方式-不做要求" class="headerlink" title="2.2.4：其他方式(不做要求)"></a>2.2.4：其他方式(不做要求)</h4><p>前提：可以用系统类加载对象或自定义加载器对象加载指定路径下的类型</p>
 <p>实例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClassLoader cl = <span class="keyword">this</span>.getClass().getClassLoader();</span><br><span class="line">Class clazz4 = cl.loadClass(<span class="string">"类的全类名"</span>);</span><br></pre></td></tr></table></figure>
 
 <p>再举例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetClassObject</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> <span class="keyword">throws</span> ClassNotFoundException</span>&#123;</span><br><span class="line">        Class c1 = GetClassObject<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">        GetClassObject obj = <span class="keyword">new</span> GetClassObject();</span><br><span class="line">        Class c2 = obj.getClass();</span><br><span class="line">        Class c3 = Class.forName(<span class="string">"com.atguigu.classtype.GetClassObject"</span>);</span><br><span class="line">        Class c4 = ClassLoader.getSystemClassLoader().loadClass(<span class="string">"com.atguigu.classtype.GetClassObject"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"c1 = "</span> + c1);</span><br><span class="line">        System.out.println(<span class="string">"c2 = "</span> + c2);</span><br><span class="line">        System.out.println(<span class="string">"c3 = "</span> + c3);</span><br><span class="line">        System.out.println(<span class="string">"c4 = "</span> + c4);</span><br><span class="line"></span><br><span class="line">        System.out.println(c1 == c2);</span><br><span class="line">        System.out.println(c1 == c3);</span><br><span class="line">        System.out.println(c1 == c4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetClassObject</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">        <span class="comment">//1.调用运行时类的静态属性:class</span></span><br><span class="line">        Class clazz1= User<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">        System.out.println(clazz1);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.调用运行时类的对象的方法: 对象.getClass()</span></span><br><span class="line">        User u1=<span class="keyword">new</span> User();</span><br><span class="line">        Class clazz2=u1.getClass();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.调用Class的静态方法:forName(String className)</span></span><br><span class="line">        String className=<span class="string">"code.User"</span>;  <span class="comment">//全类名</span></span><br><span class="line">        Class&lt;?&gt; clazz3=Class.forName(className);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4.使用类的加载器方式</span></span><br><span class="line">        Class clazz4=ClassLoader.getSystemClassLoader().loadClass(<span class="string">"code.User"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-3-哪些类型可以有Class对象"><a href="#2-3-哪些类型可以有Class对象" class="headerlink" title="2.3 哪些类型可以有Class对象"></a>2.3 哪些类型可以有Class对象</h3><p>简言之，所有Java类型！</p>
 <p>（1）class：外部类，成员(成员内部类，静态内部类)，局部内部类，匿名内部类<br>（2）interface：接口<br>（3）[]：数组<br>（4）enum：枚举<br>（5）annotation：注解@interface<br>（6）primitive type：基本数据类型<br>（7）void</p>
 <p>举例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Class c1 = Object<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c2 = Comparable<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c3 = String[]<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c4 = <span class="keyword">int</span>[][]<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c5 = ElementType<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c6 = Override<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c7 = <span class="keyword">int</span><span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c8 = <span class="keyword">void</span><span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c9 = Class<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span>[] b = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100</span>];</span><br><span class="line">Class c10 = a.getClass();</span><br><span class="line">Class c11 = b.getClass();</span><br><span class="line"><span class="comment">// 只要元素类型与维度一样，就是同一个Class</span></span><br><span class="line">System.out.println(c10 == c11);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Class c1 = Object<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c2 = Comparable<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c3 = String[]<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c4 = <span class="keyword">int</span>[][]<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c5 = ElementType<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c6 = Override<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c7 = <span class="keyword">int</span><span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c8 = <span class="keyword">void</span><span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Class c9 = Class<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line"><span class="comment">//测试是否是一个Class</span></span><br><span class="line"><span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span>[] b = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100</span>];</span><br><span class="line">Class c10 = a.getClass();</span><br><span class="line">Class c11 = b.getClass();</span><br><span class="line"><span class="comment">// 只要元素类型与维度一样，就是同一个Class</span></span><br><span class="line">System.out.println(c10 == c11);</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-4-Class类的常用方法"><a href="#2-4-Class类的常用方法" class="headerlink" title="2.4 Class类的常用方法"></a>2.4 Class类的常用方法</h3><table>
 <thead>
@@ -464,43 +460,43 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>static  Class forName(String  name)</td>
-<td>返回指定类名  name  的  Class  对象</td>
+<td>static  Class <strong>forName</strong>(String  name)</td>
+<td>返回指定类名name的Class  对象</td>
 </tr>
 <tr>
-<td>Object  newInstance()</td>
+<td>Object  <strong>newInstance</strong>()</td>
 <td>调用缺省构造函数，返回该Class对象的一个实例</td>
 </tr>
 <tr>
-<td>getName()</td>
-<td>返回此Class对象所表示的实体（类、接口、数组类、基本类型或void）名称</td>
+<td><strong>getName</strong>()</td>
+<td>返回此Class对象表示的实体（类/接口/数组类/基本类型/void）名称</td>
 </tr>
 <tr>
-<td>Class  getSuperClass()</td>
+<td>Class  <strong>getSuperClass</strong>()</td>
 <td>返回当前Class对象的父类的Class对象</td>
 </tr>
 <tr>
-<td>Class  [] getInterfaces()</td>
+<td>Class  [] <strong>getInterfaces</strong>()</td>
 <td>获取当前Class对象的接口</td>
 </tr>
 <tr>
-<td>ClassLoader  getClassLoader()</td>
+<td>ClassLoader  <strong>getClassLoader</strong>()</td>
 <td>返回该类的类加载器</td>
 </tr>
 <tr>
-<td>Class  getSuperclass()</td>
+<td>Class  <strong>getSuperclass</strong>()</td>
 <td>返回表示此Class所表示的实体的超类的Class</td>
 </tr>
 <tr>
-<td>Constructor[]  getConstructors()</td>
+<td>Constructor[]  <strong>getConstructors</strong>()</td>
 <td>返回一个包含某些Constructor对象的数组</td>
 </tr>
 <tr>
-<td>Field[]  getDeclaredFields()</td>
+<td>Field[]  <strong>getDeclaredFields</strong>()</td>
 <td>返回Field对象的一个数组</td>
 </tr>
 <tr>
-<td>Method  getMethod(String  name,Class … paramTypes)</td>
+<td>Method  <strong>getMethod</strong>(String  name,Class … paramTypes)</td>
 <td>返回一个Method对象，此对象的形参类型为paramType</td>
 </tr>
 </tbody></table>
@@ -509,16 +505,22 @@
 
 <h2 id="3-类的加载与ClassLoader的理解"><a href="#3-类的加载与ClassLoader的理解" class="headerlink" title="3. 类的加载与ClassLoader的理解"></a>3. 类的加载与ClassLoader的理解</h2><h3 id="3-1-类的生命周期"><a href="#3-1-类的生命周期" class="headerlink" title="3.1 类的生命周期"></a>3.1 类的生命周期</h3><p>类在内存中完整的生命周期：加载–&gt;使用–&gt;卸载。其中加载过程又分为：装载、链接、初始化三个阶段。</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311032108612.png" alt="image-20220417173459849"></p>
-<h3 id="3-2-类的加载过程"><a href="#3-2-类的加载过程" class="headerlink" title="3.2 类的加载过程"></a>3.2 类的加载过程</h3><p>当程序主动使用某个类时，如果该类还未被加载到内存中，系统会通过加载、链接、初始化三个步骤来对该类进行初始化。如果没有意外，JVM将会连续完成这三个步骤，所以有时也把这三个步骤统称为类加载。</p>
+<h3 id="3-2-类的加载过程"><a href="#3-2-类的加载过程" class="headerlink" title="3.2 类的加载过程"></a>3.2 类的加载过程</h3><p>当程序主动使用某个类时，如果该类还未被加载到内存中，系统会通过加载、链接、初始化三个步骤来对该类进行初始化。</p>
+<p>如果没有意外，JVM将会连续完成这三个步骤，所以有时也把这三个步骤统称为类加载。</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311032108743.png" alt="image-20220417171411631" style="zoom: 50%;">
 
 <p>类的加载又分为三个阶段：</p>
 <p>（1）装载（Loading）</p>
 <p>将类的class文件读入内存，并为之创建一个java.lang.Class对象。此过程由类加载器完成</p>
 <p>（2）链接（Linking）</p>
-<p>①验证Verify：确保加载的类信息符合JVM规范，例如：以cafebabe开头，没有安全方面的问题。</p>
-<p>②准备Prepare：正式为类变量（static）分配内存并<code>设置类变量默认初始值</code>的阶段，这些内存都将在方法区中进行分配。</p>
-<p>③解析Resolve：虚拟机常量池内的符号引用（常量名）替换为直接引用（地址）的过程。</p>
+<ul>
+<li><p>验证Verify：确保加载的类信息符合JVM规范，例如：以cafebabe开头，没有安全方面的问题。</p>
+</li>
+<li><p>准备Prepare：正式为类变量（static）分配内存并<code>设置类变量默认初始值</code>的阶段，这些内存都将在方法区中进行分配。</p>
+</li>
+<li><p>解析Resolve：虚拟机常量池内的符号引用（常量名）替换为直接引用（地址）的过程。</p>
+</li>
+</ul>
 <p>（3）初始化（Initialization）</p>
 <ul>
 <li><p>执行<code>类构造器&lt;clinit&gt;()方法</code>的过程。<code>类构造器&lt;clinit&gt;()方法</code>是由编译期自动收集类中所有类变量的赋值动作和静态代码块中的语句合并产生的。（类构造器是构造类信息的，不是构造该类对象的构造器）。</p>
