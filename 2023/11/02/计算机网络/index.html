@@ -17,8 +17,13 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132028834.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132034935.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132035251.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132108245.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132116937.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132117889.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132120295.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132127656.png">
 <meta property="article:published_time" content="2023-11-02T12:40:52.000Z">
-<meta property="article:modified_time" content="2023-11-13T12:36:20.551Z">
+<meta property="article:modified_time" content="2023-11-13T13:31:06.537Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
@@ -417,6 +422,88 @@
 <td><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132035251.png" alt="image-20231113203506221">，其中l代表信道长度，v代表电磁波在信道上传播速度</td>
 </tr>
 </tbody></table>
+<h2 id="1-5-计算机网络体系结构"><a href="#1-5-计算机网络体系结构" class="headerlink" title="1.5 计算机网络体系结构"></a>1.5 计算机网络体系结构</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132108245.png" alt="image-20231113210802196"></p>
+<h3 id="1-5-1-五层协议"><a href="#1-5-1-五层协议" class="headerlink" title="1.5.1 五层协议"></a>1.5.1 五层协议</h3><ul>
+<li><p><strong>应用层</strong> ：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等协议。数据单位为报文。</p>
+</li>
+<li><p><strong>传输层</strong> ：为进程提供通用数据传输服务。由于应用层协议很多，定义通用的传输层协议就可以支持不断增多的应用层协议。<br>运输层包括两种协议：(TCP 主要提供完整性服务，UDP 主要提供及时性服务。)</p>
+<p>1.传输控制协议 TCP，提供面向连接、可靠的数据传输服务，数据单位为报文段；<br>2.用户数据报协议 UDP，提供无连接、尽最大努力的数据传输服务，数据单位为用户数据报。</p>
+</li>
+<li><p><strong>网络层</strong> ：为主机提供数据传输服务。而传输层协议是为主机中的进程提供数据传输服务。网络层把传输层传递下来的报文段或者用户数据报封装成分组。</p>
+</li>
+<li><p><strong>数据链路层</strong> ：网络层针对的还是主机之间的数据传输服务，而主机之间可以有很多链路，链路层协议就是为同一链路的主机提供数据传输服务。数据链路层把网络层传下来的分组封装成帧。</p>
+</li>
+<li><p><strong>物理层</strong> ：考虑的是怎样在传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的作用是尽可能屏蔽传输媒体和通信手段的差异，使数据链路层感觉不到这些差异。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>层名</th>
+<th>传输的数据</th>
+<th>作用</th>
+<th>协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用层</td>
+<td>报文</td>
+<td>为特定应用程序提供数据传输服务</td>
+<td>FTP(文件传输协议) <br>DNS(域名系统) <br>HTTP(超文本传输协议)</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>TCP报文段<br>UDP用户数据包</td>
+<td>为进程提供通用数据传输服务</td>
+<td>TCP(传输控制协议)<br>UDP(用户数据报协议)</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>IP数据包</td>
+<td>为主机提供数据传输服务</td>
+<td>IP(网络互连协议)</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>数据帧</td>
+<td>为同一链路的主机提供数据传输服务</td>
+<td></td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>数据比特流</td>
+<td>虑的是怎样在传输媒体上传输数据比特流</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="1-5-2-OSI"><a href="#1-5-2-OSI" class="headerlink" title="1.5.2 OSI"></a>1.5.2 OSI</h3><p>其中表示层和会话层用途如下：</p>
+<ul>
+<li><strong>表示层</strong> ：数据压缩、加密以及数据描述，这使得应用程序不必关心在各台主机中数据内部格式不同的问题。</li>
+<li><strong>会话层</strong> ：建立及管理会话。</li>
+</ul>
+<p>五层协议没有表示层和会话层，而是将这些功能留给应用程序开发者处理。</p>
+<h3 id="1-5-3-TCP-IP"><a href="#1-5-3-TCP-IP" class="headerlink" title="1.5.3 TCP/IP"></a>1.5.3 TCP/IP</h3><p>其中表示层和会话层用途如下：</p>
+<ul>
+<li><strong>表示层</strong> ：数据压缩、加密以及数据描述，这使得应用程序不必关心在各台主机中数据内部格式不同的问题。</li>
+<li><strong>会话层</strong> ：建立及管理会话。</li>
+</ul>
+<p>五层协议没有表示层和会话层，而是将这些功能留给应用程序开发者处理<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132116937.png" alt="image-20231113211635898"></p>
+<h3 id="1-5-4-数据在各层的传递过程"><a href="#1-5-4-数据在各层的传递过程" class="headerlink" title="1.5.4 数据在各层的传递过程"></a>1.5.4 数据在各层的传递过程</h3><p>在向下的过程中，需要添加下层协议所需要的首部或者尾部，而在向上的过程中不断拆开首部和尾部。</p>
+<p>路由器只有下面三层协议，因为路由器位于网络核心中，不需要为进程或者应用程序提供服务，因此也就不需要传输层和应用层。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132117889.png" alt="image-20231113211742825"></p>
+<h1 id="2-物理层"><a href="#2-物理层" class="headerlink" title="2.物理层"></a>2.物理层</h1><h2 id="2-1-通信方式"><a href="#2-1-通信方式" class="headerlink" title="2.1 通信方式"></a>2.1 通信方式</h2><p>根据信息在传输线上的传送方向，分为以下三种通信方式：</p>
+<ul>
+<li>单工通信：单向传输</li>
+<li>半双工通信：双向交替传输</li>
+<li>全双工通信：双向同时传输</li>
+</ul>
+<h2 id="2-2-带通调制"><a href="#2-2-带通调制" class="headerlink" title="2.2 带通调制"></a>2.2 带通调制</h2><ul>
+<li><strong>带通调制</strong>:数字信号(离散的信号)–&gt; 模拟信号(连续的信号)</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132120295.png" alt="image-20231113212021243"></p>
+<h1 id="3-链路层"><a href="#3-链路层" class="headerlink" title="3.链路层"></a>3.链路层</h1><h2 id="3-1-三大基本问题"><a href="#3-1-三大基本问题" class="headerlink" title="3.1 三大基本问题"></a>3.1 三大基本问题</h2><h3 id="3-1-1-封装成帧"><a href="#3-1-1-封装成帧" class="headerlink" title="3.1.1  封装成帧"></a>3.1.1  封装成帧</h3><p>将网络层传下来的分组添加首部和尾部(向下封装)，用于标记帧的开始和结束</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311132127656.png" alt="image-20231113212755618"></p>
+<h3 id="3-1-2-透明传输"><a href="#3-1-2-透明传输" class="headerlink" title="3.1.2 透明传输"></a>3.1.2 透明传输</h3><h3 id="3-1-3-差错检测"><a href="#3-1-3-差错检测" class="headerlink" title="3.1.3 差错检测"></a>3.1.3 差错检测</h3><p>目前数据链路层广泛使用<strong>循环冗余检验（CRC）</strong>来检查<strong>比特差错</strong></p>
 
       
       
@@ -475,7 +562,7 @@
         <p><span>本文标题:</span><a href="/2023/11/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2023年11月02日 - 20时40分</p>
-        <p><span>最后更新:</span>2023年11月13日 - 20时36分</p>
+        <p><span>最后更新:</span>2023年11月13日 - 21时31分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2023/11/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">https://larkkkkkkk.github.io/2023/11/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2023/11/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -513,7 +600,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-计算机网络概述"><span class="toc-number">1.</span> <span class="toc-text">1.计算机网络概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-网络的网络"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 网络的网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-主机之间的通信方式"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 主机之间的通信方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-客户-服务器-C-S"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1 客户-服务器(C&#x2F;S)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-对等-P2P"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2.2 对等(P2P)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-电路交换和分组交换"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 电路交换和分组交换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-四种时延"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 四种时延</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-计算机网络概述"><span class="toc-number">1.</span> <span class="toc-text">1.计算机网络概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-网络的网络"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 网络的网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-主机之间的通信方式"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 主机之间的通信方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-客户-服务器-C-S"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1 客户-服务器(C&#x2F;S)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-对等-P2P"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2.2 对等(P2P)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-电路交换和分组交换"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 电路交换和分组交换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-四种时延"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 四种时延</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-计算机网络体系结构"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 计算机网络体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-1-五层协议"><span class="toc-number">1.5.1.</span> <span class="toc-text">1.5.1 五层协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-2-OSI"><span class="toc-number">1.5.2.</span> <span class="toc-text">1.5.2 OSI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-3-TCP-IP"><span class="toc-number">1.5.3.</span> <span class="toc-text">1.5.3 TCP&#x2F;IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-4-数据在各层的传递过程"><span class="toc-number">1.5.4.</span> <span class="toc-text">1.5.4 数据在各层的传递过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-物理层"><span class="toc-number">2.</span> <span class="toc-text">2.物理层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-通信方式"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 通信方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-带通调制"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 带通调制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-链路层"><span class="toc-number">3.</span> <span class="toc-text">3.链路层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-三大基本问题"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 三大基本问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-封装成帧"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1  封装成帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-透明传输"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 透明传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-差错检测"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3 差错检测</span></a></li></ol></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
