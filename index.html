@@ -1953,7 +1953,8 @@
 <p>4、客户端收到来自服务器的连接释放(FIN)报文段后，会向服务器发送一个ACK应答报文段，以连接释放(FIN)报文段的确认序号 ack 作为ACK应答报文段的序列号 seq，以连接释放(FIN)报文段的序列号 seq+1作为确认序号ack。</p>
 <p>之后客户端进入TIME_WAIT(时间等待)状态，服务器收到ACK应答报文段后，服务器就进入CLOSE(关闭)状态，到此服务器的连接已经完成关闭。客户端处于TIME_WAIT状态时，此时的TCP还未释放掉，需要等待2MSL后，客户端才进入CLOSE状态。</p>
 </blockquote>
-<h2 id="3-网络编程API"><a href="#3-网络编程API" class="headerlink" title="3. 网络编程API"></a>3. 网络编程API</h2><h3 id="3-1-InetAddress类"><a href="#3-1-InetAddress类" class="headerlink" title="3.1 InetAddress类"></a>3.1 InetAddress类</h3><p>InetAddress类主要表示IP地址，两个子类：Inet4Address、Inet6Address。</p>
+<h2 id="3-网络编程API"><a href="#3-网络编程API" class="headerlink" title="3. 网络编程API"></a>3. 网络编程API</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311231128587.png" alt="img"></p>
+<h3 id="3-1-InetAddress类"><a href="#3-1-InetAddress类" class="headerlink" title="3.1 InetAddress类"></a>3.1 InetAddress类</h3><p>InetAddress类主要表示IP地址，两个子类：Inet4Address、Inet6Address。</p>
 <p>InetAddress 类没有提供公共的构造器，而是提供如下几个静态方法来获取InetAddress 实例</p>
 <ul>
 <li>public static InetAddress getLocalHost()</li>
