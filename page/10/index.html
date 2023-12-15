@@ -1335,7 +1335,15 @@
 </ul>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312141814960.png" alt="image-20231214181440899" style="zoom:67%;">
 
-<h2 id="6-3"><a href="#6-3" class="headerlink" title="6.3"></a>6.3</h2>
+<h2 id="6-3-注册条件"><a href="#6-3-注册条件" class="headerlink" title="6.3 注册条件"></a>6.3 注册条件</h2><p>Springboot提供了Conditional注解解决注册时候对象赋值问题，但是过于复杂所以给出了常用的三个相关注解</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312151054446.png" alt="image-20231215105437322"></p>
+<h3 id="1-ConditionalOnProperty-从配置文件判断"><a href="#1-ConditionalOnProperty-从配置文件判断" class="headerlink" title="1. @ConditionalOnProperty(从配置文件判断)"></a>1. @ConditionalOnProperty(从配置文件判断)</h3><p>从配置文件中的读取，读取成功注入，读取失败不注入</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312151106952.png" alt="image-20231215110651901"></p>
+<h3 id="2-ConditionalOnMissingBean-从IOC容器判断"><a href="#2-ConditionalOnMissingBean-从IOC容器判断" class="headerlink" title="2.@ConditionalOnMissingBean(从IOC容器判断)"></a>2.@ConditionalOnMissingBean(从IOC容器判断)</h3><p>因为Country需要从配置文件中读取注入，失败了所以没有注入，这样的话下面的province就会注入</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312151104138.png" alt="image-20231215110456029"></p>
+<h3 id="3-ConditionalOnClass-从当前环境判断"><a href="#3-ConditionalOnClass-从当前环境判断" class="headerlink" title="3.@ConditionalOnClass(从当前环境判断)"></a>3.@ConditionalOnClass(从当前环境判断)</h3><p>如果环境中有当前类就注入，没有就不注入</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312151116926.png" alt="image-20231215111612870"></p>
+
       
       
     </div>
