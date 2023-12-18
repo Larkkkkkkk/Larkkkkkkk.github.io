@@ -1343,7 +1343,33 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312151104138.png" alt="image-20231215110456029"></p>
 <h3 id="3-ConditionalOnClass-从当前环境判断"><a href="#3-ConditionalOnClass-从当前环境判断" class="headerlink" title="3.@ConditionalOnClass(从当前环境判断)"></a>3.@ConditionalOnClass(从当前环境判断)</h3><p>如果环境中有当前类就注入，没有就不注入</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312151116926.png" alt="image-20231215111612870"></p>
-<h1 id="7-自动配置原理"><a href="#7-自动配置原理" class="headerlink" title="7.自动配置原理"></a>7.自动配置原理</h1><h1 id="8-自定义Starter"><a href="#8-自定义Starter" class="headerlink" title="8.自定义Starter"></a>8.自定义Starter</h1>
+<h1 id="7-自动配置原理"><a href="#7-自动配置原理" class="headerlink" title="7.自动配置原理"></a>7.自动配置原理</h1><h2 id="7-1-原理图"><a href="#7-1-原理图" class="headerlink" title="7.1 原理图"></a>7.1 原理图</h2><ul>
+<li><strong>其实就是将自动配置类写到一个.imports配置文件中</strong></li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312181401837.png" alt="image-20231218140121744" style="zoom:67%;">
+
+<p>上图描述：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312181424330.png" alt="image-20231218142400281" style="zoom: 67%;">
+
+
+
+<h2 id="7-2-如何实现"><a href="#7-2-如何实现" class="headerlink" title="7.2 如何实现"></a>7.2 如何实现</h2><ul>
+<li><strong>原来的情况: 导入jar包之后只有类，需要自己写配置类和启动类import导入</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312181415332.png" alt="image-20231218141522259"></p>
+<ul>
+<li><p><strong>现在的情况: 导入jar包的时候里面不仅仅有类，还有配置类，imports配置文件等，不需要添加任何其他操作</strong></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312181422977.png" alt="image-20231218142256913"></p>
+</li>
+</ul>
+<h1 id="8-自定义starter-公共组件"><a href="#8-自定义starter-公共组件" class="headerlink" title="8.自定义starter(公共组件)"></a>8.自定义starter(公共组件)</h1><ul>
+<li>主要是自己写autoconfigure和starter两个组件</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312181522887.png" alt="image-20231218152255793"></p>
+<h2 id="8-1-提供核心组件1-autoconfigure模块"><a href="#8-1-提供核心组件1-autoconfigure模块" class="headerlink" title="8.1 提供核心组件1-autoconfigure模块"></a>8.1 提供核心组件1-autoconfigure模块</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312181526269.png" alt="image-20231218152656226"></p>
+<h2 id="8-2-提供核心组件2-starter模块"><a href="#8-2-提供核心组件2-starter模块" class="headerlink" title="8.2 提供核心组件2-starter模块"></a>8.2 提供核心组件2-starter模块</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312181528258.png" alt="image-20231218152819225"></p>
+<h2 id="8-3-使用starter模块"><a href="#8-3-使用starter模块" class="headerlink" title="8.3 使用starter模块"></a>8.3 使用starter模块</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312181529488.png" alt="image-20231218152955444"></p>
+
       
       
     </div>
