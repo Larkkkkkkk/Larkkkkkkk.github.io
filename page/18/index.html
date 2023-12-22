@@ -1129,79 +1129,318 @@ HttpServlet （用于处理http的请求）</code></pre><ul>
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="一、http协议介绍"><a href="#一、http协议介绍" class="headerlink" title="一、http协议介绍"></a>一、http协议介绍</h1><blockquote>
+        <h1 id="1-http协议-超文本传输协议"><a href="#1-http协议-超文本传输协议" class="headerlink" title="1.http协议(超文本传输协议)"></a>1.http协议(超文本传输协议)</h1><blockquote>
 <p>针对网络上的客户端与服务器端在执行http请求的时候，遵守的一种规范。 其实就是规定了客户端在访问服务器端的时候，要带上哪些东西， 服务器端返回数据的时候，也要带上什么东西。 </p>
 </blockquote>
 <ul>
 <li>版本<br> <strong>1.0</strong>—请求数据，服务器返回后，将会断开连接<br> <strong>1.1</strong>—请求数据，服务器返回后，连接还会保持着。 除非服务器|客户端关掉。有一定的时间限制，如果都空着这个连接，那么后面会自己断掉。</li>
 </ul>
 <hr>
-<h1 id="二、演示客户端—服务器端通讯"><a href="#二、演示客户端—服务器端通讯" class="headerlink" title="二、演示客户端—服务器端通讯"></a>二、演示客户端—服务器端通讯</h1><ol>
-<li><p>安装抓包工具 HttpWatch (IE插件)</p>
+<h2 id="1-1-介绍"><a href="#1-1-介绍" class="headerlink" title="1.1 介绍"></a>1.1 介绍</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221634601.png" alt="image-20231222163410552"></p>
+<p><strong>HTTP：Hyper Text Transfer Protocol(超文本传输协议)</strong>，规定了浏览器与服务器之间数据传输的规则。</p>
+<ul>
+<li>http是互联网上应用最为广泛的一种网络协议 </li>
+<li>http协议要求：浏览器在向服务器发送请求数据时，或是服务器在向浏览器发送响应数据时，都必须按照固定的格式进行数据传输</li>
+</ul>
+<h2 id="1-2-特点"><a href="#1-2-特点" class="headerlink" title="1.2 特点"></a>1.2 特点</h2><p>我们刚才初步认识了HTTP协议，那么我们在看看HTTP协议有哪些特点：</p>
+<ul>
+<li><p>*<em>1.基于TCP协议: *</em>   面向连接，安全</p>
+<blockquote>
+<p>TCP是一种面向连接的(建立连接之前是需要经过三次握手)、可靠的、基于字节流的传输层通信协议，在数据传输方面更安全</p>
+</blockquote>
 </li>
-<li><p>打开tomcat. 输入localhost:8080 打开首页</p>
+<li><p><strong>2.基于请求-响应模型:</strong>   一次请求对应一次响应（先请求后响应）</p>
+<blockquote>
+<p>请求和响应是一一对应关系，没有请求，就没有响应</p>
+</blockquote>
 </li>
-<li><p>在首页中间找到Example-Servlet Examples-点击Request  Parameters 的 Execute超链接 </p>
+<li><p><strong>3.HTTP协议是无状态协议:</strong>  对于数据没有记忆能力。每次请求-响应都是独立的</p>
+<blockquote>
+<p>无状态指的是客户端发送HTTP请求给服务端之后，服务端根据请求响应数据，响应完后，不会记录任何信息。</p>
+<ul>
+<li>缺点:  多次请求间不能共享数据</li>
+<li>优点:  速度快</li>
+</ul>
+<p>请求之间无法共享数据会引发的问题：</p>
+<ul>
+<li>如：京东购物。加入购物车和去购物车结算是两次请求</li>
+<li>由于HTTP协议的无状态特性，加入购物车请求响应结束后，并未记录加入购物车是何商品</li>
+<li>发起去购物车结算的请求后，因为无法获取哪些商品加入了购物车，会导致此次请求无法正确展示数据</li>
+</ul>
+<p>具体使用的时候，我们发现京东是可以正常展示数据的，原因是Java早已考虑到这个问题，并提出了使用会话技术(Cookie、Session)来解决这个问题。具体如何来做，我们后面课程中会讲到。</p>
+</blockquote>
 </li>
-</ol>
-<p><img src="/2020/02/17/HTTP%E5%8D%8F%E8%AE%AE/img02.png" alt></p>
-<ol start="4">
-<li>输入一个例子，然后查看浏览器和 tomcat服务器的对接细节</li>
-</ol>
-<p><img src="/2020/02/17/HTTP%E5%8D%8F%E8%AE%AE/img03.png" alt></p>
+</ul>
+<h2 id="1-3-Http协议两个分类"><a href="#1-3-Http协议两个分类" class="headerlink" title="1.3 Http协议两个分类"></a>1.3 Http协议两个分类</h2><p>浏览器和服务器是按照HTTP协议进行数据通信的。</p>
+<p>HTTP协议又分为：<strong>请求协议</strong>和<strong>响应协议</strong></p>
+<ul>
+<li>请求协议：浏览器将数据以请求格式发送到服务器<ul>
+<li>包括：<strong>请求行</strong>、<strong>请求头</strong> 、<strong>请求体</strong> </li>
+</ul>
+</li>
+<li>响应协议：服务器将数据以响应格式返回给浏览器<ul>
+<li>包括：<strong>响应行</strong> 、<strong>响应头</strong> 、<strong>响应体</strong> </li>
+</ul>
+</li>
+</ul>
 <hr>
-<h1 id="三、http请求数据-左侧"><a href="#三、http请求数据-左侧" class="headerlink" title="三、http请求数据(左侧)"></a>三、http请求数据(左侧)</h1><blockquote>
+<h1 id="2-HTTP-请求协议"><a href="#2-HTTP-请求协议" class="headerlink" title="2.HTTP-请求协议"></a>2.HTTP-请求协议</h1><blockquote>
 <p>请求的数据(三部分):请求行、请求头、请求体</p>
 </blockquote>
-<ul>
-<li><strong>1.请求行(左侧第一行)</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;examples&#x2F;servlets&#x2F;servlet&#x2F;RequestParamExample HTTP&#x2F;1.1</span><br></pre></td></tr></table></figure>
-<pre><code>POST-----请求方式,以post去提交数据    
-/examples/servlets/servlet/RequestParamExample----请求的地址路径(访问到哪里) 
-HTTP/1.1-----协议版本</code></pre><ul>
-<li><strong>2.请求头(左侧中间部分)</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Accept: application&#x2F;x-ms-application, image&#x2F;jpeg, application&#x2F;xaml+xml, image&#x2F;gif, image&#x2F;pjpeg, application&#x2F;x-ms-xbap, *&#x2F;*</span><br><span class="line">Referer: http:&#x2F;&#x2F;localhost:8080&#x2F;examples&#x2F;servlets&#x2F;servlet&#x2F;RequestParamExample</span><br><span class="line">Accept-Language: zh-CN</span><br><span class="line">User-Agent: Mozilla&#x2F;4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident&#x2F;4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)</span><br><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Host: localhost:8080</span><br><span class="line">Content-Length: 31</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Cache-Control: no-cache</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Accept-----客户端向服务器端表示，我能支持什么类型的数据</span><br><span class="line">Referer----真正请求的地址路径，全路径</span><br><span class="line">Accept-Language----支持的语言格式</span><br><span class="line">User-Agent----用户代理 向服务器表明当前来访的客户端信息</span><br><span class="line">Content-Type----提交的数据类型(经过urlencoding编码的form表单的数据)	</span><br><span class="line">Accept-Encoding：gzip, deflate----压缩算法。 </span><br><span class="line">Host----主机地址</span><br><span class="line">Content-Length----数据长度</span><br><span class="line">Connectio----Keep-Alive 保持连接</span><br><span class="line">Cache-Control---对缓存的操作</span><br></pre></td></tr></table></figure>
-
+<img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20231222164414883.png" alt="image-20231222164414883" style="zoom:50%;">
 
 <ul>
-<li><strong>3.请求体(左侧最后一行)</strong><br>浏览器<strong>真正</strong>发送给服务器的数据(发送的数据呈现的是key=value,多个数据，那么使用 &amp;</li>
+<li>请求行(以上图中红色部分)：包含请求方式、资源路径、协议/版本<ul>
+<li>请求方式：POST</li>
+<li>资源路径：/brand</li>
+<li>协议/版本：HTTP/1.1</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firstname&#x3D;zhang&amp;lastname&#x3D;sansan</span><br></pre></td></tr></table></figure>
+</li>
+<li>请求头(以上图中黄色部分)   </li>
+<li>请求体(以上图中绿色部分) ：存储请求参数 <ul>
+<li>请求体和请求头之间是有一个空行隔开（作用：用于标记请求头结束）</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-1-请求行"><a href="#2-1-请求行" class="headerlink" title="2.1 请求行"></a>2.1 请求行</h2><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221655863.png" alt="image-20231222165531796" style="zoom: 50%;">
 
+<ul>
+<li><strong>请求方式</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">请求方式</th>
+<th align="left">请求说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>GET</strong>(最常见)</td>
+<td align="left">获取资源。<br>向特定的资源发出请求。例：<a href="http://www.baidu.com/s?wd=itheima" target="_blank" rel="noopener">http://www.baidu.com/s?wd=itheima</a></td>
+</tr>
+<tr>
+<td align="center"><strong>POST</strong>(最常见)</td>
+<td align="left">传输实体主体。<br>向指定资源提交数据进行处理请求（例：上传文件），数据被包含在请求体中。</td>
+</tr>
+<tr>
+<td align="center">OPTIONS</td>
+<td align="left">返回服务器针对特定资源所支持的HTTP请求方式。<br>因为并不是所有的服务器都支持规定的方法，为了安全有些服务器可能会禁止掉一些方法，例如：DELETE、PUT等。那么OPTIONS就是用来询问服务器支持的方法。</td>
+</tr>
+<tr>
+<td align="center">HEAD</td>
+<td align="left">获得报文首部。<br>HEAD方法类似GET方法，但是不同的是HEAD方法不要求返回数据。通常用于确认URI的有效性及资源更新时间等。</td>
+</tr>
+<tr>
+<td align="center">PUT</td>
+<td align="left">传输文件。<br>PUT方法用来传输文件。类似FTP协议，文件内容包含在请求报文的实体中，然后请求保存到URL指定的服务器位置。</td>
+</tr>
+<tr>
+<td align="center">DELETE</td>
+<td align="left">删除文件。<br>请求服务器删除Request-URI所标识的资源</td>
+</tr>
+<tr>
+<td align="center">TRACE</td>
+<td align="left">追踪路径。<br>回显服务器收到的请求，主要用于测试或诊断</td>
+</tr>
+<tr>
+<td align="center">CONNECT</td>
+<td align="left">要求用隧道协议连接代理。<br>HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>资源路径</strong></li>
+</ul>
+<p>资源路径=请求路径<strong>?</strong>请求参数1=值1<strong>&amp;</strong>请求参数2=值2</p>
+<ul>
+<li><strong>协议/版本</strong></li>
+</ul>
+<p>HTTP/1.1等等</p>
+<h2 id="2-2-请求头"><a href="#2-2-请求头" class="headerlink" title="2.2 请求头"></a>2.2 请求头</h2><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221705540.png" alt="image-20231222170506433" style="zoom: 50%;">
+
+<p>http是个无状态的协议，所以在请求头设置浏览器的一些自身信息和想要响应的形式。这样服务器在收到信息后，就可以知道是谁，想干什么了</p>
+<p>常见的HTTP请求头有:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Host: 表示请求的主机名</span><br><span class="line"></span><br><span class="line">User-Agent: 浏览器版本。 例如：Chrome浏览器的标识类似Mozilla&#x2F;5.0 ...Chrome&#x2F;79 ，IE浏览器的标识类似Mozilla&#x2F;5.0 (Windows NT ...)like Gecko</span><br><span class="line"></span><br><span class="line">Accept：表示浏览器能接收的资源类型，如text&#x2F;*，image&#x2F;*或者*&#x2F;*表示所有；</span><br><span class="line"></span><br><span class="line">Accept-Language：表示浏览器偏好的语言，服务器可以据此返回不同语言的网页；</span><br><span class="line"></span><br><span class="line">Accept-Encoding：表示浏览器可以支持的压缩类型，例如gzip, deflate等。</span><br><span class="line"></span><br><span class="line">Content-Type：请求主体的数据类型</span><br><span class="line"></span><br><span class="line">Content-Length：数据主体的大小（单位：字节）</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-请求体"><a href="#2-3-请求体" class="headerlink" title="2.3 请求体"></a>2.3 请求体</h2><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221710581.png" alt="image-20231222171056457" style="zoom:67%;">
+
+<h2 id="2-4-Get和Post的区别"><a href="#2-4-Get和Post的区别" class="headerlink" title="2.4 Get和Post的区别"></a>2.4 Get和Post的区别</h2><table>
+<thead>
+<tr>
+<th>区别方式</th>
+<th>GET请求</th>
+<th>POST请求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求参数</td>
+<td>请求参数在请求行(第一部分)<br>例：/brand/findAll?name=OPPO&amp;status=1</td>
+<td>请求参数在请求体(第三部分)</td>
+</tr>
+<tr>
+<td>请求参数长度</td>
+<td>有限制(浏览器不同限制也不同)</td>
+<td>没有限制</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>安全性低(请求参数暴露在浏览器地址栏中)</td>
+<td>安全性相对高</td>
+</tr>
+</tbody></table>
 <hr>
-<h1 id="四、http响应数据-右侧"><a href="#四、http响应数据-右侧" class="headerlink" title="四、http响应数据(右侧)"></a>四、http响应数据(右侧)</h1><blockquote>
-<p>请求的数据(三部分):响应行、响应头、响应体</p>
+<h1 id="3-HTTP-响应协议"><a href="#3-HTTP-响应协议" class="headerlink" title="3.HTTP-响应协议"></a>3.HTTP-响应协议</h1><blockquote>
+<p>响应的数据(三部分):响应行、响应头、响应体</p>
 </blockquote>
-<p><strong>右侧全部代码如下</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP&#x2F;1.1 200 OK</span><br><span class="line">Server: Apache-Coyote&#x2F;1.1</span><br><span class="line">Content-Type: text&#x2F;html;charset&#x3D;ISO-8859-1</span><br><span class="line">Content-Length: 673</span><br><span class="line">Date: Fri, 17 Feb 2017 02:53:02 GMT</span><br><span class="line">...这里还有很多数据...</span><br></pre></td></tr></table></figure>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221644008.png" alt="image-20231222164452936" style="zoom:80%;">
 
+
+
+<h2 id="3-1-响应行"><a href="#3-1-响应行" class="headerlink" title="3.1 响应行"></a>3.1 响应行</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221713334.png" alt="image-20231222171333614"></p>
 <ul>
-<li><strong>1.响应行(右侧第一行)</strong></li>
+<li><strong>协议</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP&#x2F;1.1 200 OK</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP&#x2F;1.1----协议版本  </span><br><span class="line">状态码(咱们这次交互到底是什么样结果的一个code)</span><br><span class="line">		200 : ok  正确</span><br><span class="line">		403 : for bidden  拒绝</span><br><span class="line">		404 ： Not Found</span><br><span class="line">		500 ： 服务器异常</span><br></pre></td></tr></table></figure>
-
+<p>​    http1.1等协议</p>
 <ul>
-<li><strong>2.响应头(右侧第一行)</strong></li>
+<li><strong>状态码</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server: Apache-Coyote&#x2F;1.1</span><br><span class="line">Content-Type: text&#x2F;html;charset&#x3D;ISO-8859-1</span><br><span class="line">Content-Length: 673</span><br><span class="line">Date: Fri, 17 Feb 2017 02:53:02 GMT</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server----服务器是哪一种类型。(Tomcat)</span><br><span class="line">Content-Type----服务器返回给客户端你的内容类型</span><br><span class="line">Content-Length----返回的数据长度</span><br><span class="line">Date----通讯的日期，响应的时间</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="五、HTTP协议的Get和Post区别"><a href="#五、HTTP协议的Get和Post区别" class="headerlink" title="五、HTTP协议的Get和Post区别"></a>五、HTTP协议的Get和Post区别</h1><p><img src="/2020/02/17/HTTP%E5%8D%8F%E8%AE%AE/img04.png" alt></p>
+<table>
+<thead>
+<tr>
+<th>状态码分类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1xx</td>
+<td><strong>响应中(发送还未结束)</strong>——临时状态码，表示请求已经接受，告诉客户端应该继续请求或者如果它已经完成则忽略它</td>
+</tr>
+<tr>
+<td>2xx</td>
+<td><strong>成功(最希望看到的)</strong>——表示请求已经被成功接收，处理已完成(成功了)</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td><strong>重定向(我这里有问题，给你自动换一个服务器)</strong>——重定向到其它地方：它让客户端再发起一个请求以完成整个处理(域名过期，已经为您转到新域名位置)</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td><strong>客户端错误</strong>——处理发生错误，责任在客户端，如：客户端的请求一个不存在的资源，客户端未被授权，禁止访问等</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td><strong>服务器端错误</strong>——处理发生错误，责任在服务端，如：服务端抛出异常，路由出错，HTTP版本不支持等(后端controller不写@RequestParam注解)</td>
+</tr>
+</tbody></table>
 <ul>
-<li><p><strong>post</strong></p>
-<pre><code>1. 数据是以**流(stream)**的方式写过去，不会在地址栏上面显示。 现在一般提交数据---&gt;服务器使用的都是POST
-2. 以流的方式写数据，所以数据没有大小限制。</code></pre></li>
-<li><p><strong>get</strong></p>
-<pre><code>1. 会在地址栏后面拼接数据(暴露隐私)。一般从服务器获取数据，并且客户端也不用提交上面数据的时候，可以使用GET
-2. 能够带的数据有限, 1kb大小</code></pre></li>
+<li><p><strong>描述</strong></p>
+<p>对响应数据的描述</p>
+</li>
 </ul>
+<h2 id="3-2-响应头"><a href="#3-2-响应头" class="headerlink" title="3.2 响应头"></a>3.2 响应头</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221718223.png" alt="image-20231222171815139"></p>
+<ul>
+<li>常见的响应头信息：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221720177.png" alt="image-20231222172032115"></p>
+<h2 id="3-3-响应体"><a href="#3-3-响应体" class="headerlink" title="3.3 响应体"></a>3.3 响应体</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221719190.png" alt="image-20231222171920140"></p>
+<h1 id="4-HTTP状态码-响应协议"><a href="#4-HTTP状态码-响应协议" class="headerlink" title="4.HTTP状态码(响应协议)"></a>4.HTTP状态码(响应协议)</h1><h2 id="4-1-状态码大类"><a href="#4-1-状态码大类" class="headerlink" title="4.1 状态码大类"></a>4.1 状态码大类</h2><table>
+<thead>
+<tr>
+<th>状态码分类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1xx</td>
+<td><strong>响应中(发送还未结束)</strong>——临时状态码，表示请求已经接受，告诉客户端应该继续请求或者如果它已经完成则忽略它</td>
+</tr>
+<tr>
+<td>2xx</td>
+<td><strong>成功(最希望看到的)</strong>——表示请求已经被成功接收，处理已完成(成功了)</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td><strong>重定向(我这里有问题，给你自动换一个服务器)</strong>——重定向到其它地方：它让客户端再发起一个请求以完成整个处理(域名过期，已经为您转到新域名位置)</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td><strong>客户端错误</strong>——处理发生错误，责任在客户端，如：客户端的请求一个不存在的资源，客户端未被授权，禁止访问等</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td><strong>服务器端错误</strong>——处理发生错误，责任在服务端，如：服务端抛出异常，路由出错，HTTP版本不支持等(后端controller不写@RequestParam注解)</td>
+</tr>
+</tbody></table>
+<h2 id="4-2-常见的响应状态码"><a href="#4-2-常见的响应状态码" class="headerlink" title="4.2 常见的响应状态码"></a>4.2 常见的响应状态码</h2><table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>英文描述</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>==200==</td>
+<td><strong><code>OK</code></strong></td>
+<td>客户端请求成功，即<strong>处理成功</strong>，这是我们最想看到的状态码</td>
+</tr>
+<tr>
+<td>302</td>
+<td><strong><code>Found</code></strong></td>
+<td>指示所请求的资源已移动到由<code>Location</code>响应头给定的 URL，浏览器会自动重新访问到这个页面</td>
+</tr>
+<tr>
+<td>304</td>
+<td><strong><code>Not Modified</code></strong></td>
+<td>告诉客户端，你请求的资源至上次取得后，服务端并未更改，你直接用你本地缓存吧。隐式重定向</td>
+</tr>
+<tr>
+<td>400</td>
+<td><strong><code>Bad Request</code></strong></td>
+<td>客户端请求有<strong>语法错误</strong>，不能被服务器所理解</td>
+</tr>
+<tr>
+<td>403</td>
+<td><strong><code>Forbidden</code></strong></td>
+<td>服务器收到请求，但是<strong>拒绝提供服务</strong>，比如：没有权限访问相关资源</td>
+</tr>
+<tr>
+<td>==404==</td>
+<td><strong><code>Not Found</code></strong></td>
+<td><strong>请求资源不存在</strong>，一般是URL输入有误，或者网站资源被删除了</td>
+</tr>
+<tr>
+<td>405</td>
+<td><strong><code>Method Not Allowed</code></strong></td>
+<td>请求方式有误，比如应该用GET请求方式的资源，用了POST</td>
+</tr>
+<tr>
+<td>428</td>
+<td><strong><code>Precondition Required</code></strong></td>
+<td><strong>服务器要求有条件的请求</strong>，告诉客户端要想访问该资源，必须携带特定的请求头</td>
+</tr>
+<tr>
+<td>429</td>
+<td><strong><code>Too Many Requests</code></strong></td>
+<td>指示用户在给定时间内发送了<strong>太多请求</strong>（“限速”），配合 Retry-After(多长时间后可以请求)响应头一起使用</td>
+</tr>
+<tr>
+<td>431</td>
+<td><strong><code>Request Header Fields Too Large</code></strong></td>
+<td><strong>请求头太大</strong>，服务器不愿意处理请求，因为它的头部字段太大。请求可以在减少请求头域的大小后重新提交。</td>
+</tr>
+<tr>
+<td>==500==</td>
+<td><strong><code>Internal Server Error</code></strong></td>
+<td><strong>服务器发生不可预期的错误</strong>。服务器出异常了，赶紧看日志去吧</td>
+</tr>
+<tr>
+<td>503</td>
+<td><strong><code>Service Unavailable</code></strong></td>
+<td><strong>服务器尚未准备好处理请求</strong>，服务器刚刚启动，还未初始化好</td>
+</tr>
+</tbody></table>
+<p>状态码大全：<a href="https://cloud.tencent.com/developer/chapter/13553" target="_blank" rel="noopener">https://cloud.tencent.com/developer/chapter/13553</a> </p>
+<h1 id="5-HTTP协议解析"><a href="#5-HTTP协议解析" class="headerlink" title="5. HTTP协议解析"></a>5. HTTP协议解析</h1><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221722709.png" alt="image-20231222172249641"></p>
 
       
       
