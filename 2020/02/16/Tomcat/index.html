@@ -5,27 +5,39 @@
   
   <title>Tomcat | Larkkkkkkk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、程序架构 C&#x2F;S(client&#x2F;server)   QQ 微信 LOL  优点： 有一部分代码写在客户端， 用户体验比较好。 缺点：  服务器更新，客户端也要随着更新。 占用资源大。  B&#x2F;S(browser&#x2F;server)   网页游戏 ， WebQQ …  优点：  客户端只要有浏览器就可以了。     占用资源小， 不用更新。 缺点： 用户体验不佳。  二、Web应用(服务器支撑 ind">
+  <meta name="description" content="1. WEB服务器-Tomcat1.1 简介1.1.1 服务器概述服务器硬件  指的也是计算机，只不过服务器要比我们日常使用的计算机大很多。      服务器，也称伺服器。是提供计算服务的设备。由于服务器需要响应服务请求，并进行处理，因此一般来说服务器应具备承担服务并且保障服务的能力。 服务器的构成包括处理器、硬盘、内存、系统总线等，和通用的计算机架构类似，但是由于需要提供高可靠的服务，因此在处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tomcat">
 <meta property="og:url" content="https://larkkkkkkk.github.io/2020/02/16/Tomcat/index.html">
 <meta property="og:site_name" content="Larkkkkkkk">
-<meta property="og:description" content="一、程序架构 C&#x2F;S(client&#x2F;server)   QQ 微信 LOL  优点： 有一部分代码写在客户端， 用户体验比较好。 缺点：  服务器更新，客户端也要随着更新。 占用资源大。  B&#x2F;S(browser&#x2F;server)   网页游戏 ， WebQQ …  优点：  客户端只要有浏览器就可以了。     占用资源小， 不用更新。 缺点： 用户体验不佳。  二、Web应用(服务器支撑 ind">
+<meta property="og:description" content="1. WEB服务器-Tomcat1.1 简介1.1.1 服务器概述服务器硬件  指的也是计算机，只不过服务器要比我们日常使用的计算机大很多。      服务器，也称伺服器。是提供计算服务的设备。由于服务器需要响应服务请求，并进行处理，因此一般来说服务器应具备承担服务并且保障服务的能力。 服务器的构成包括处理器、硬盘、内存、系统总线等，和通用的计算机架构类似，但是由于需要提供高可靠的服务，因此在处理">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://larkkkkkkk.github.io/2020/02/16/Tomcat/rootlimian.png">
-<meta property="og:image" content="https://larkkkkkkk.github.io/2020/02/16/Tomcat/xmllimian.png">
-<meta property="og:image" content="https://larkkkkkkk.github.io/2020/02/16/Tomcat/buzhou.png">
-<meta property="og:image" content="https://larkkkkkkk.github.io/2020/02/16/Tomcat/dierzhong.png">
-<meta property="og:image" content="https://larkkkkkkk.github.io/2020/02/16/Tomcat/xinjian.png">
-<meta property="og:image" content="https://larkkkkkkk.github.io/2020/02/16/Tomcat/zhongjian.png">
-<meta property="og:image" content="https://larkkkkkkk.github.io/2020/02/16/Tomcat/duode.png">
-<meta property="og:image" content="https://larkkkkkkk.github.io/2020/02/16/Tomcat/zuizhong.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221734122.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221736664.png">
+<meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20231222173646117.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221737444.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221737221.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221737676.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221737976.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221737236.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221738002.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221738104.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221739242.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221739526.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221739607.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221739334.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221742179.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221742747.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221742660.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221742272.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221743848.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221743740.png">
 <meta property="article:published_time" content="2020-02-16T05:17:42.000Z">
-<meta property="article:modified_time" content="2020-05-16T09:08:00.000Z">
+<meta property="article:modified_time" content="2023-12-22T09:43:17.206Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="Tomcat">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://larkkkkkkk.github.io/2020/02/16/Tomcat/rootlimian.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221734122.png">
   
     <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
   
@@ -379,95 +391,156 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="一、程序架构"><a href="#一、程序架构" class="headerlink" title="一、程序架构"></a>一、程序架构</h1><ul>
-<li><strong>C/S(client/server)</strong></li>
+        <h1 id="1-WEB服务器-Tomcat"><a href="#1-WEB服务器-Tomcat" class="headerlink" title="1. WEB服务器-Tomcat"></a>1. WEB服务器-Tomcat</h1><h2 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h2><h3 id="1-1-1-服务器概述"><a href="#1-1-1-服务器概述" class="headerlink" title="1.1.1 服务器概述"></a>1.1.1 服务器概述</h3><p><strong>服务器硬件</strong></p>
+<ul>
+<li>指的也是计算机，只不过服务器要比我们日常使用的计算机大很多。</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221734122.png" alt="image-20231222173448980" style="zoom: 50%;">
+
+
+
+<p>服务器，也称伺服器。是提供计算服务的设备。由于服务器需要响应服务请求，并进行处理，因此一般来说服务器应具备承担服务并且保障服务的能力。</p>
+<p>服务器的构成包括处理器、硬盘、内存、系统总线等，和通用的计算机架构类似，但是由于需要提供高可靠的服务，因此在处理能力、稳定性、可靠性、安全性、可扩展性、可管理性等方面要求较高。</p>
+<p>在网络环境下，根据服务器提供的服务类型不同，可分为：文件服务器，数据库服务器，应用程序服务器，WEB服务器等。</p>
+<p>服务器只是一台设备，必须安装服务器软件才能提供相应的服务。</p>
+<p><strong>服务器软件</strong></p>
+<p>服务器软件：基于ServerSocket编写的程序</p>
+<ul>
+<li>服务器软件本质是一个运行在服务器设备上的应用程序</li>
+<li>能够接收客户端请求，并根据请求给客户端响应数据</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221736664.png" alt="image-20231222173608608"></p>
+<h3 id="1-1-2-Web服务器"><a href="#1-1-2-Web服务器" class="headerlink" title="1.1.2 Web服务器"></a>1.1.2 Web服务器</h3><p>Web服务器是一个应用程序(软件)，对HTTP协议的操作进行封装，使得程序员不必直接对协议进行操作(不用程序员自己写代码去解析http协议规则)，让Web开发更加便捷。主要功能是”提供网上信息浏览服务”。</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20231222173646117.png" alt="image-20231222173646117"></p>
+<p>Web服务器是安装在服务器端的一款软件，将来我们把自己写的Web项目部署到Tomcat服务器软件中，当Web服务器软件启动后，部署在Web服务器软件中的页面就可以直接通过浏览器来访问了。</p>
+<p><strong>Web服务器软件使用步骤</strong></p>
+<ul>
+<li>准备静态资源</li>
+<li>下载安装Web服务器软件</li>
+<li>将静态资源部署到Web服务器上</li>
+<li>启动Web服务器使用浏览器访问对应的资源</li>
+</ul>
+<p>第1步：准备静态资源</p>
+<ul>
+<li>在提供的资料中找到静态资源文件</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221737444.png" alt="image-20231222173726408"></p>
+<p>第2步：下载安装Web服务器软件</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221737221.png" alt="image-20231222173712179"></p>
+<p>第3步：将静态资源部署到Web服务器上</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221737676.png" alt="image-20231222173719630"></p>
+<p>第4步：启动Web服务器使用浏览器访问对应的资源</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221737976.png" alt="image-20231222173734901" style="zoom:50%;">
+
+<p>浏览器输入：<code>http://localhost:8080/demo/index.html</code></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221737236.png" alt="image-20231222173752168" style="zoom:67%;">
+
+<p>上述内容在演示的时候，使用的是Apache下的Tomcat软件，至于Tomcat软件如何使用，后面会详细的讲到。而对于Web服务器来说，实现的方案有很多，Tomcat只是其中的一种，而除了Tomcat以外，还有很多优秀的Web服务器，比如:</p>
+ <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221738002.png" alt="image-20231222173802921" style="zoom: 67%;">
+
+<p>Tomcat就是一款软件，我们主要是以学习如何去使用为主。具体我们会从以下这些方向去学习:</p>
+<ol>
+<li><p>简介：初步认识下Tomcat</p>
+</li>
+<li><p>基本使用: 安装、卸载、启动、关闭、配置和项目部署，这些都是对Tomcat的基本操作</p>
+</li>
+<li><p>IDEA中如何创建Maven Web项目</p>
+</li>
+<li><p>IDEA中如何使用Tomcat,后面这两个都是我们以后开发经常会用到的方式</p>
+</li>
+</ol>
+<p>首选我们来认识下Tomcat。</p>
+<h3 id="1-1-3-Tomcat"><a href="#1-1-3-Tomcat" class="headerlink" title="1.1.3 Tomcat"></a>1.1.3 Tomcat</h3><p>Tomcat服务器软件是一个免费的开源的web应用服务器。是Apache软件基金会的一个核心项目。由Apache，Sun和其他一些公司及个人共同开发而成。</p>
+<p>由于Tomcat只支持Servlet/JSP少量JavaEE规范，所以是一个开源免费的轻量级Web服务器。</p>
+<blockquote>
+<p>JavaEE规范：   JavaEE =&gt; Java Enterprise Edition(Java企业版)</p>
+<p>avaEE规范就是指Java企业级开发的技术规范总和。包含13项技术规范：JDBC、JNDI、EJB、RMI、JSP、Servlet、XML、JMS、Java IDL、JTS、JTA、JavaMail、JAF</p>
+</blockquote>
+<p>因为Tomcat支持Servlet/JSP规范，所以Tomcat也被称为Web容器、Servlet容器。JavaWeb程序需要依赖Tomcat才能运行。</p>
+<p>Tomcat的官网: <a href="https://tomcat.apache.org/" target="_blank" rel="noopener">https://tomcat.apache.org/</a> </p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221738104.png" alt="image-20231222173824051"></p>
+<h2 id="1-2-基本使用"><a href="#1-2-基本使用" class="headerlink" title="1.2 基本使用"></a>1.2 基本使用</h2><h3 id="1-2-1-下载"><a href="#1-2-1-下载" class="headerlink" title="1.2.1 下载"></a>1.2.1 下载</h3><p>直接从官方网站下载：<a href="https://tomcat.apache.org/download-90.cgi" target="_blank" rel="noopener">https://tomcat.apache.org/download-90.cgi</a></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221739242.png" alt="image-20231222173909174" style="zoom: 50%;">
+
+<blockquote>
+<p>Tomcat软件类型说明：</p>
+<ul>
+<li>tar.gz文件，是linux和mac操作系统下的压缩版本</li>
+<li>zip文件，是window操作系统下压缩版本（我们选择zip文件）</li>
+</ul>
+</blockquote>
+<p>大家可以自行下载，也可以直接使用资料中已经下载好的资源，</p>
+<p>Tomcat的软件程序  ：/资料/SpringbootWeb/apache-tomcat-9.0.27-windows-x64.zip</p>
+ <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221739526.png" alt="image-20231222173921491" style="zoom:67%;">
+
+
+
+<h3 id="1-2-2-安装与卸载"><a href="#1-2-2-安装与卸载" class="headerlink" title="1.2.2 安装与卸载"></a>1.2.2 安装与卸载</h3><ul>
+<li><strong>安装:</strong> Tomcat是绿色版，直接解压即安装</li>
 </ul>
 <blockquote>
-<p>QQ 微信 LOL</p>
+<p>在E盘的develop目录下，将<code>apache-tomcat-9.0.27-windows-x64.zip</code>进行解压缩，会得到一个<code>apache-tomcat-9.0.27</code>的目录，Tomcat就已经安装成功。</p>
 </blockquote>
-<p>优点：</p>
-<pre><code>有一部分代码写在客户端， 用户体验比较好。 </code></pre><p>缺点： </p>
-<pre><code>服务器更新，客户端也要随着更新。 占用资源大。 </code></pre><ul>
-<li><strong>B/S(browser/server)</strong></li>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221739607.png" alt="image-20231222173945563" style="zoom: 67%;">
+
+<p>==注意，Tomcat在解压缩的时候，解压所在的目录可以任意，但最好解压到一个不包含中文和空格的目录，因为后期在部署项目的时候，如果路径有中文或者空格可能会导致程序部署失败。==</p>
+<p>打开<code>apache-tomcat-9.0.27</code>目录就能看到如下目录结构，每个目录中包含的内容需要认识下</p>
+  <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221739334.png" alt="image-20231222173958288" style="zoom:67%;">
+
+
+
+<p>bin：目录下有两类文件，一种是以<code>.bat</code>结尾的，是Windows系统的可执行文件，一种是以<code>.sh</code>结尾的，是Linux系统的可执行文件。</p>
+<p>webapps：就是以后项目部署的目录</p>
+<ul>
+<li><strong>卸载：</strong>卸载比较简单，可以直接删除目录即可</li>
+</ul>
+<h3 id="1-2-3-启动与关闭"><a href="#1-2-3-启动与关闭" class="headerlink" title="1.2.3 启动与关闭"></a>1.2.3 启动与关闭</h3><p><strong>启动Tomcat</strong> </p>
+<ul>
+<li>双击tomcat解压目录/bin/<strong>startup.bat</strong>文件即可启动tomcat</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221742179.png" alt="image-20231222174200134" style="zoom: 80%;">
+
+<p>==注意: tomcat服务器启动后,黑窗口不会关闭,只要黑窗口不关闭,就证明tomcat服务器正在运行==</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221742747.png" alt="image-20231222174211676" style="zoom:67%;">
+
+<p>Tomcat的默认端口为8080，所以在浏览器的地址栏输入：<code>http://127.0.0.1:8080</code> 即可访问tomcat服务器</p>
+<blockquote>
+<p>127.0.0.1 也可以使用localhost代替。如：<code>http://localhost:8080</code></p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221742660.png" style="zoom: 50%;">
+
+<ul>
+<li>能看到以上图片中Apache Tomcat的内容就说明Tomcat已经启动成功</li>
+</ul>
+<p>==注意事项== ：Tomcat启动的过程中，遇到控制台有中文乱码时，可以通常修改conf/logging.prooperties文件解决</p>
+<p> <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221742272.png" alt="image-20231222174239235"></p>
+<p><strong>关闭:</strong>  关闭有三种方式 </p>
+<p>1、强制关闭：直接x掉Tomcat窗口（不建议）</p>
+<p>2、正常关闭：bin\shutdown.bat</p>
+<p>3、正常关闭：在Tomcat启动窗口中按下 Ctrl+C</p>
+<ul>
+<li>说明：如果按下Ctrl+C没有反映，可以多按几次</li>
+</ul>
+<h3 id="1-2-4-常见问题"><a href="#1-2-4-常见问题" class="headerlink" title="1.2.4 常见问题"></a>1.2.4 常见问题</h3><p><strong>问题1：Tomcat启动时，窗口一闪而过</strong></p>
+<ul>
+<li>检查JAVA_HOME环境变量是否正确配置</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221743848.png" alt="image-20231222174300794" style="zoom:67%;">
+
+<p><strong>问题2：端口号冲突</strong></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221743740.png" alt="image-20231222174308683"></p>
+<ul>
+<li><p>发生问题的原因：Tomcat使用的端口被占用了。</p>
+</li>
+<li><p>解决方案：换Tomcat端口号</p>
+<ul>
+<li>要想修改Tomcat启动的端口号，需要修改 conf/server.xml文件</li>
+</ul>
+</li>
 </ul>
 <blockquote>
-<p>网页游戏 ， WebQQ …</p>
+<p>注: HTTP协议默认端口号为80，如果将Tomcat端口号改为80，则将来访问Tomcat时，将不用输入端口号。</p>
 </blockquote>
-<p>优点： </p>
-<pre><code>客户端只要有浏览器就可以了。     占用资源小， 不用更新。 </code></pre><p>缺点：</p>
-<pre><code>用户体验不佳。 </code></pre><hr>
-<h1 id="二、Web应用-服务器支撑-index-html"><a href="#二、Web应用-服务器支撑-index-html" class="headerlink" title="二、Web应用(服务器支撑 index.html)"></a>二、Web应用(服务器支撑 index.html)</h1><ul>
-<li><p><strong>服务器(配置好一点的电脑)：</strong>处理客户端的请求，返回资源/信息。</p>
-</li>
-<li><p><strong>服务器软件：</strong>客户端在浏览器的地址栏上输入地址 ，然后<strong>web服务器软件</strong>—接收请求—响应消息。</p>
-</li>
-</ul>
-<pre><code>服务器软件：
-1.Tomcat      apache
-2.WebLogic    BEA(收费)
-3.Websphere   IBM(收费)
-4.IIS         微软</code></pre><hr>
-<h1 id="三、Tomcat安装"><a href="#三、Tomcat安装" class="headerlink" title="三、Tomcat安装"></a>三、Tomcat安装</h1><p><strong>安装步骤：</strong></p>
-<pre><code>1.直接解压 ，然后找到bin/startup.bat
-2.启动之后，如果能够正常看到黑窗口，表明已经成功安装。 为了确保万无一失， 最好在浏览器的地址栏上输入 http://localhost:8080 , 如果有看到内容 就表明成功了。
-3.如果双击了startup.bat,  看到一闪而过的情形，一般都是 JDK的环境变量没有配置。 
-4.配置环境-编辑setclasspath.bat文件，然后更改环境(百度有解决方案)。</code></pre><p><strong>目录介绍：</strong></p>
-<p><strong>bin：</strong>包含了一些jar ,  bat文件 。  startup.bat<br><strong>conf：</strong>tomcat的配置     server.xml  web.xml<br><strong>lib：</strong>tomcat运行所需的jar文件<br><strong>logs：</strong>运行的日志文件<br><strong>temp：</strong>临时文件<br><strong>webapps：</strong>发布到tomcat服务器上的项目，就存放在这个目录。<br><strong>work：</strong>(目前不用管)jsp翻译成class文件存放地</p>
-<hr>
-<h1 id="四、把一个项目发布到tomcat中"><a href="#四、把一个项目发布到tomcat中" class="headerlink" title="四、把一个项目发布到tomcat中"></a>四、把一个项目发布到tomcat中</h1><blockquote>
-<p>需求： 如何能让其他的电脑访问我这台电脑上的资源。 hello.xml</p>
-</blockquote>
-<p>###1. 拷贝这个文件到webapps/ROOT里 ///在webapps新建一个xml将文档拷贝进去<br>    在浏览器里面访问<br>    一、<a href="http://localhost:8080/hello.xml" target="_blank" rel="noopener">http://localhost:8080/hello.xml</a><br>    二、<a href="http://localhost:8080/xml/hello.xml" target="_blank" rel="noopener">http://localhost:8080/xml/hello.xml</a><br>    三、<a href="http://192.168.245.1:8080/xml/hello.xml(通过ip地址)" target="_blank" rel="noopener">http://192.168.245.1:8080/xml/hello.xml(通过ip地址)</a></p>
-<p><img src="/2020/02/16/Tomcat/rootlimian.png" alt></p>
-<p><img src="/2020/02/16/Tomcat/xmllimian.png" alt></p>
-<hr>
-<p>###2. 配置虚拟路径(更改conf/server.xml文件)</p>
-<ol>
-<li>使用localhost：8080 打开tomcat首页, 在左侧找到tomcat的文档入口，点击进去后，在左侧接着找到 Context入口，点击进入。    </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;docs&#x2F;config&#x2F;context.html</span><br></pre></td></tr></table></figure>
-
-
-<ol start="2">
-<li>在conf/server.xml 找到host元素节点，然后在下面添加一行标签内容docBase存放的是xmlzancun文件夹(里面有一个hello.xml文件),然后路径写/a。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Context docBase&#x3D;&quot;F:\xmlzancun&quot; path&#x3D;&quot;&#x2F;a&quot;&gt;&lt;&#x2F;Context&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/02/16/Tomcat/buzhou.png" alt></p>
-<ol start="3">
-<li>之后关闭tomcat重启之后，在地址栏输入：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;a&#x2F;hello.xml</span><br></pre></td></tr></table></figure>
-<hr>
-<p><img src="/2020/02/16/Tomcat/dierzhong.png" alt></p>
-<hr>
-<p>###3. 配置虚拟路径(conf/catalina/localhost新建xml文件)</p>
-<ol>
-<li>新建一个xml，在这个文件里面写入以下内容</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&#39;1.0&#39; encoding&#x3D;&#39;utf-8&#39;?&gt;</span><br><span class="line">&lt;Context docBase&#x3D;&quot;F:\xmlzancun&quot;&gt;&lt;&#x2F;Context&gt;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>之后关闭tomcat重启之后，在地址栏输入：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;hello&#x2F;xml   (比较第二种少了&#x2F;a)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="五、给Eclipse配置Tomcat"><a href="#五、给Eclipse配置Tomcat" class="headerlink" title="五、给Eclipse配置Tomcat"></a>五、给Eclipse配置Tomcat</h1><ol>
-<li>在server里面 右键新建一个服务器,选择到apache分类,找到对应的tomcat版本,接着一步一步配置即可,在左侧里面找WebContent下定义html文件。</li>
-</ol>
-<p><img src="/2020/02/16/Tomcat/xinjian.png" alt></p>
-<ol start="2">
-<li>配置完毕后,关闭index文件,在控制台的server里面,右键刚才的服务器,然后open,找到上面的Server Location,选择中间的 Use Tomcat installation…</li>
-</ol>
-<p><img src="/2020/02/16/Tomcat/zhongjian.png" alt></p>
-<ol start="3">
-<li>创建web工程,在左侧里面找WebContent下定义html文件，然后执行会在tomcat文件下多一个wtpwebapps文件(里面存放新建的web项目)：</li>
-</ol>
-<p><img src="/2020/02/16/Tomcat/duode.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以通过这个网址进行查看：http:&#x2F;&#x2F;localhost:8080&#x2F;HelloWeba&#x2F;index.html</span><br></pre></td></tr></table></figure>
-
-<p><strong>页面展示：</strong></p>
-<p><img src="/2020/02/16/Tomcat/zuizhong.png" alt></p>
-<p>​    </p>
 
       
       
@@ -526,7 +599,7 @@
         <p><span>本文标题:</span><a href="/2020/02/16/Tomcat/">Tomcat</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2020年02月16日 - 13时17分</p>
-        <p><span>最后更新:</span>2020年05月16日 - 17时08分</p>
+        <p><span>最后更新:</span>2023年12月22日 - 17时43分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/02/16/Tomcat/" title="Tomcat">https://larkkkkkkk.github.io/2020/02/16/Tomcat/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2020/02/16/Tomcat/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -564,7 +637,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、程序架构"><span class="toc-number">1.</span> <span class="toc-text">一、程序架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、Web应用-服务器支撑-index-html"><span class="toc-number">2.</span> <span class="toc-text">二、Web应用(服务器支撑 index.html)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、Tomcat安装"><span class="toc-number">3.</span> <span class="toc-text">三、Tomcat安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、把一个项目发布到tomcat中"><span class="toc-number">4.</span> <span class="toc-text">四、把一个项目发布到tomcat中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、给Eclipse配置Tomcat"><span class="toc-number">5.</span> <span class="toc-text">五、给Eclipse配置Tomcat</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-WEB服务器-Tomcat"><span class="toc-number">1.</span> <span class="toc-text">1. WEB服务器-Tomcat</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-简介"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-服务器概述"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1.1 服务器概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-Web服务器"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.1.2 Web服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-Tomcat"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.1.3 Tomcat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-基本使用"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-下载"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1 下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-安装与卸载"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2.2 安装与卸载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-3-启动与关闭"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.2.3 启动与关闭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-4-常见问题"><span class="toc-number">1.2.4.</span> <span class="toc-text">1.2.4 常见问题</span></a></li></ol></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
