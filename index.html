@@ -743,26 +743,30 @@
 <ul>
 <li>EmpServiceA类中只编写了和员工相关的逻辑处理代码</li>
 </ul>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204202531571.png" alt="image-20221204202531571"> </p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231105693.png" alt="image-20231223110557491" style="zoom:67%;">
+
 <p>程序中耦合代码的体现：</p>
 <ul>
 <li>把业务类变为EmpServiceB时，需要修改controller层中的代码</li>
 </ul>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204203904900.png" alt="image-20221204203904900"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231108335.png" alt="image-20231223110817267" style="zoom:67%;">
+
 <p>高内聚、低耦合的目的是使程序模块的可重用性、移植性大大增强。</p>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20220828215549593.png" alt></p>
-<h3 id="3-2-2-解耦思路"><a href="#3-2-2-解耦思路" class="headerlink" title="3.2.2  解耦思路"></a>3.2.2  解耦思路</h3><p>之前我们在编写代码时，需要什么对象，就直接new一个就可以了。 这种做法呢，层与层之间代码就耦合了，当service层的实现变了之后， 我们还需要修改controller层的代码。</p>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204204916033.png" alt="image-20221204204916033"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231108522.png" alt="image-20231223110830461" style="zoom:67%;">
+
+
+
+
+
+<h3 id="3-2-2-解耦思路-控制反转和依赖注入的原因"><a href="#3-2-2-解耦思路-控制反转和依赖注入的原因" class="headerlink" title="3.2.2  解耦思路(控制反转和依赖注入的原因)"></a>3.2.2  解耦思路(控制反转和依赖注入的原因)</h3><p>之前我们在编写代码时，需要什么对象，就直接new一个就可以了。 这种做法呢，层与层之间代码就耦合了，当service层的实现变了之后， 我们还需要修改controller层的代码。</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231108292.png" alt="image-20231223110855213" style="zoom:67%;">
+
 <p> 那应该怎么解耦呢？</p>
 <ul>
-<li>首先不能在EmpController中使用new对象。代码如下：</li>
-</ul>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204205328069.png" alt="image-20221204205328069"></p>
-<ul>
-<li>此时，就存在另一个问题了，不能new，就意味着没有业务层对象（程序运行就报错），怎么办呢？<ul>
+<li>不能new，就意味着没有业务层对象（程序运行就报错），怎么办呢？<ul>
 <li>我们的解决思路是：<ul>
-<li>提供一个容器，容器中存储一些对象(例：EmpService对象)</li>
-<li>controller程序从容器中获取EmpService类型的对象</li>
+<li><strong>提供一个容器，容器中存储一些对象(例：EmpService对象)</strong></li>
+<li><strong>controller程序从容器中获取EmpService类型的对象</strong></li>
 </ul>
 </li>
 </ul>
@@ -783,8 +787,12 @@
 </li>
 </ul>
 <p>IOC容器中创建、管理的对象，称之为：bean对象</p>
-<h2 id="3-3-IOC-amp-DI"><a href="#3-3-IOC-amp-DI" class="headerlink" title="3.3 IOC&amp;DI"></a>3.3 IOC&amp;DI</h2><p>上面我们引出了Spring中IOC和DI的基本概念，下面我们就来具体学习下IOC和DI的代码实现。</p>
-<h3 id="3-3-1-IOC-amp-DI入门"><a href="#3-3-1-IOC-amp-DI入门" class="headerlink" title="3.3.1 IOC&amp;DI入门"></a>3.3.1 IOC&amp;DI入门</h3><p>任务：完成Controller层、Service层、Dao层的代码解耦</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231111705.png" alt="image-20231223111141495" style="zoom:67%;">
+
+
+
+<h1 id="4-IOC控制依赖和DI依赖注入"><a href="#4-IOC控制依赖和DI依赖注入" class="headerlink" title="4. IOC控制依赖和DI依赖注入"></a>4. IOC控制依赖和DI依赖注入</h1><p>上面我们引出了Spring中IOC和DI的基本概念，下面我们就来具体学习下IOC和DI的代码实现。</p>
+<h2 id="4-1-IOC-amp-DI基本步骤"><a href="#4-1-IOC-amp-DI基本步骤" class="headerlink" title="4.1 IOC&amp;DI基本步骤"></a>4.1 IOC&amp;DI基本步骤</h2><p>任务：完成Controller层、Service层、Dao层的代码解耦</p>
 <ul>
 <li>思路：<ol>
 <li>删除Controller层、Service层中new对象的代码</li>
@@ -798,63 +806,28 @@
 </li>
 </ul>
 <p>第1步：删除Controller层、Service层中new对象的代码</p>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204212807207.png" alt="image-20221204212807207"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231114553.png" alt="image-20231223111439496"></p>
 <p>第2步：Service层及Dao层的实现类，交给IOC容器管理</p>
 <ul>
-<li>使用Spring提供的注解：@Component ，就可以实现类交给IOC容器管理</li>
+<li>使用Spring提供的注解：<strong>@Component，就可以实现类交给IOC容器管理</strong></li>
 </ul>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204213328034.png" alt="image-20221204213328034"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231114223.png" alt="image-20231223111452170"></p>
 <p>第3步：为Controller及Service注入运行时依赖的对象</p>
 <ul>
-<li>使用Spring提供的注解：@Autowired ，就可以实现程序运行时IOC容器自动注入需要的依赖对象</li>
+<li>使用Spring提供的注解：<strong>@Autowired ，就可以实现程序运行时IOC容器自动注入需要的依赖对象</strong></li>
 </ul>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204213859112.png" alt="image-20221204213859112"></p>
-<p>完整的三层代码：</p>
-<ul>
-<li><strong>Controller层：</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmpController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span> <span class="comment">//运行时,从IOC容器中获取该类型对象,赋值给该变量</span></span><br><span class="line">    <span class="keyword">private</span> EmpService empService ;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/listEmp"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">list</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//1. 调用service, 获取数据</span></span><br><span class="line">        List&lt;Emp&gt; empList = empService.listEmp();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3. 响应数据</span></span><br><span class="line">        <span class="keyword">return</span> Result.success(empList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>Service层：</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span> <span class="comment">//将当前对象交给IOC容器管理,成为IOC容器的bean</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmpServiceA</span> <span class="keyword">implements</span> <span class="title">EmpService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span> <span class="comment">//运行时,从IOC容器中获取该类型对象,赋值给该变量</span></span><br><span class="line">    <span class="keyword">private</span> EmpDao empDao ;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Emp&gt; <span class="title">listEmp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1. 调用dao, 获取数据</span></span><br><span class="line">        List&lt;Emp&gt; empList = empDao.listEmp();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2. 对数据进行转换处理 - gender, job</span></span><br><span class="line">        empList.stream().forEach(emp -&gt; &#123;</span><br><span class="line">            <span class="comment">//处理 gender 1: 男, 2: 女</span></span><br><span class="line">            String gender = emp.getGender();</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">"1"</span>.equals(gender))&#123;</span><br><span class="line">                emp.setGender(<span class="string">"男"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"2"</span>.equals(gender))&#123;</span><br><span class="line">                emp.setGender(<span class="string">"女"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//处理job - 1: 讲师, 2: 班主任 , 3: 就业指导</span></span><br><span class="line">            String job = emp.getJob();</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">"1"</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">"讲师"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"2"</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">"班主任"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"3"</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">"就业指导"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> empList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Dao层：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span> <span class="comment">//将当前对象交给IOC容器管理,成为IOC容器的bean</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmpDaoA</span> <span class="keyword">implements</span> <span class="title">EmpDao</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Emp&gt; <span class="title">listEmp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1. 加载并解析emp.xml</span></span><br><span class="line">        String file = <span class="keyword">this</span>.getClass().getClassLoader().getResource(<span class="string">"emp.xml"</span>).getFile();</span><br><span class="line">        System.out.println(file);</span><br><span class="line">        List&lt;Emp&gt; empList = XmlParserUtils.parse(file, Emp<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">return</span> empList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>运行测试：</p>
-<ul>
-<li>启动SpringBoot引导类，打开浏览器，输入：<a href="http://localhost:8080/emp.html" target="_blank" rel="noopener">http://localhost:8080/emp.html</a></li>
-</ul>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204185455556.png" alt="image-20221204185455556"></p>
-<h3 id="3-3-2-IOC详解"><a href="#3-3-2-IOC详解" class="headerlink" title="3.3.2 IOC详解"></a>3.3.2 IOC详解</h3><p>通过IOC和DI的入门程序呢，我们已经基本了解了IOC和DI的基础操作。接下来呢，我们学习下IOC控制反转和DI依赖注入的细节。</p>
-<h4 id="3-3-2-1-bean的声明"><a href="#3-3-2-1-bean的声明" class="headerlink" title="3.3.2.1 bean的声明"></a>3.3.2.1 bean的声明</h4><p>前面我们提到IOC控制反转，就是将对象的控制权交给Spring的IOC容器，由IOC容器创建及管理对象。IOC容器创建的对象称为bean对象。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231115029.png" alt="image-20231223111517967"></p>
+<h2 id="4-2-IOC详解"><a href="#4-2-IOC详解" class="headerlink" title="4.2 IOC详解"></a>4.2 IOC详解</h2><h3 id="4-2-1-bean的声明-每个层一个注解"><a href="#4-2-1-bean的声明-每个层一个注解" class="headerlink" title="4.2.1 bean的声明(每个层一个注解)"></a>4.2.1 bean的声明(每个层一个注解)</h3><p>前面我们提到IOC控制反转，就是将对象的控制权交给Spring的IOC容器，由IOC容器创建及管理对象。IOC容器创建的对象称为bean对象。</p>
 <p>在之前的入门案例中，要把某个对象交给IOC容器管理，需要在类上添加一个注解：@Component </p>
 <p>而Spring框架为了更好的标识web应用程序开发当中，bean对象到底归属于哪一层，又提供了@Component的衍生注解：</p>
 <ul>
-<li>@Controller    （标注在控制层类上）</li>
-<li>@Service          （标注在业务层类上）</li>
-<li>@Repository    （标注在数据访问层类上）</li>
+<li><p>@Controller    （标注在控制层类上）</p>
+</li>
+<li><p>@Service          （标注在业务层类上）</p>
+</li>
+<li><p>@Repository    （标注在数据访问层类上）</p>
+</li>
 </ul>
-<p>修改入门案例代码：</p>
-<ul>
-<li><strong>Controller层：</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span>  <span class="comment">//@RestController = @Controller + @ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmpController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span> <span class="comment">//运行时,从IOC容器中获取该类型对象,赋值给该变量</span></span><br><span class="line">    <span class="keyword">private</span> EmpService empService ;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/listEmp"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">list</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//1. 调用service, 获取数据</span></span><br><span class="line">        List&lt;Emp&gt; empList = empService.listEmp();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3. 响应数据</span></span><br><span class="line">        <span class="keyword">return</span> Result.success(empList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>Service层：</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmpServiceA</span> <span class="keyword">implements</span> <span class="title">EmpService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span> <span class="comment">//运行时,从IOC容器中获取该类型对象,赋值给该变量</span></span><br><span class="line">    <span class="keyword">private</span> EmpDao empDao ;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Emp&gt; <span class="title">listEmp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1. 调用dao, 获取数据</span></span><br><span class="line">        List&lt;Emp&gt; empList = empDao.listEmp();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2. 对数据进行转换处理 - gender, job</span></span><br><span class="line">        empList.stream().forEach(emp -&gt; &#123;</span><br><span class="line">            <span class="comment">//处理 gender 1: 男, 2: 女</span></span><br><span class="line">            String gender = emp.getGender();</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">"1"</span>.equals(gender))&#123;</span><br><span class="line">                emp.setGender(<span class="string">"男"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"2"</span>.equals(gender))&#123;</span><br><span class="line">                emp.setGender(<span class="string">"女"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//处理job - 1: 讲师, 2: 班主任 , 3: 就业指导</span></span><br><span class="line">            String job = emp.getJob();</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">"1"</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">"讲师"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"2"</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">"班主任"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"3"</span>.equals(job))&#123;</span><br><span class="line">                emp.setJob(<span class="string">"就业指导"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> empList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Dao层：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmpDaoA</span> <span class="keyword">implements</span> <span class="title">EmpDao</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Emp&gt; <span class="title">listEmp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1. 加载并解析emp.xml</span></span><br><span class="line">        String file = <span class="keyword">this</span>.getClass().getClassLoader().getResource(<span class="string">"emp.xml"</span>).getFile();</span><br><span class="line">        System.out.println(file);</span><br><span class="line">        List&lt;Emp&gt; empList = XmlParserUtils.parse(file, Emp<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">return</span> empList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <p>要把某个对象交给IOC容器管理，需要在对应的类上加上如下注解之一：</p>
 <table>
 <thead>
@@ -877,19 +850,20 @@
 <tr>
 <td align="left">@Repository</td>
 <td>@Component的衍生注解</td>
-<td>标注在数据访问类上（由于与mybatis整合，用的少）</td>
+<td>标注在数据访问类上（由于与mybatis整合 –mybatis用的@Mapper）</td>
 </tr>
 <tr>
 <td align="left">@Component</td>
 <td>声明bean的基础注解</td>
-<td>不属于以上三类时，用此注解</td>
+<td>不清楚属于哪一个层上就用这个</td>
 </tr>
 </tbody></table>
 <blockquote>
-<p>查看源码：<img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204221320230.png" alt="image-20221204221320230"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231119493.png" style="zoom:67%;">
 </blockquote>
 <p>在IOC容器中，每一个Bean都有一个属于自己的名字，可以通过注解的value属性指定bean的名字。如果没有指定，默认为类名首字母小写。</p>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204222650873.png" alt="image-20221204222650873"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231120277.png" alt="image-20231223112029205" style="zoom:80%;">
+
 <blockquote>
 <p>注意事项: </p>
 <ul>
@@ -897,67 +871,45 @@
 <li>使用以上四个注解都可以声明bean，但是在springboot集成web开发中，声明控制器bean只能用@Controller。</li>
 </ul>
 </blockquote>
-<h4 id="3-3-2-2-组件扫描"><a href="#3-3-2-2-组件扫描" class="headerlink" title="3.3.2.2 组件扫描"></a>3.3.2.2 组件扫描</h4><p>问题：使用前面学习的四个注解声明的bean，一定会生效吗？</p>
+<h3 id="4-2-2-组件扫描"><a href="#4-2-2-组件扫描" class="headerlink" title="4.2.2 组件扫描"></a>4.2.2 组件扫描</h3><p>问题：使用前面学习的四个注解声明的bean，一定会生效吗？</p>
 <p>答案：不一定。（原因：bean想要生效，还需要被组件扫描）</p>
-<p> 下面我们通过修改项目工程的目录结构，来测试bean对象是否生效：</p>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204223602694.png" alt="image-20221204223602694"></p>
-<p>运行程序后，报错：</p>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204223815554.png" alt="image-20221204223815554"></p>
-<p>为什么没有找到bean对象呢？</p>
-<ul>
-<li>使用四大注解声明的bean，要想生效，还需要被组件扫描注解@ComponentScan扫描</li>
-</ul>
-<blockquote>
-<p>@ComponentScan注解虽然没有显式配置，但是实际上已经包含在了引导类声明注解 @SpringBootApplication 中，==<strong>默认扫描的范围是SpringBoot启动类所在包及其子包</strong>==。</p>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204224643683.png" alt="image-20221204224643683"> </p>
-</blockquote>
-<ul>
-<li>解决方案：手动添加@ComponentScan注解，指定要扫描的包   （==仅做了解，不推荐==）</li>
-</ul>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204225437297.png" alt="image-20221204225437297"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231121879.png" alt="image-20231223112148802" style="zoom:67%;">
+
 <p>推荐做法（如下图）：</p>
 <ul>
 <li>将我们定义的controller，service，dao这些包呢，都放在引导类所在包com.itheima的子包下，这样我们定义的bean就会被自动的扫描到</li>
 </ul>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204225815624.png" alt="image-20221204225815624"></p>
-<h3 id="3-3-3-DI详解"><a href="#3-3-3-DI详解" class="headerlink" title="3.3.3 DI详解"></a>3.3.3 DI详解</h3><p>上一小节我们讲解了控制反转IOC的细节，接下来呢，我们学习依赖注解DI的细节。</p>
-<p>依赖注入，是指IOC容器要为应用程序去提供运行时所依赖的资源，而资源指的就是对象。</p>
-<p>在入门程序案例中，我们使用了@Autowired这个注解，完成了依赖注入的操作，而这个Autowired翻译过来叫：自动装配。</p>
-<p>@Autowired注解，默认是按照<strong>类型</strong>进行自动装配的（去IOC容器中找某个类型的对象，然后完成注入操作）</p>
-<blockquote>
-<p>入门程序举例：在EmpController运行的时候，就要到IOC容器当中去查找EmpService这个类型的对象，而我们的IOC容器中刚好有一个EmpService这个类型的对象，所以就找到了这个类型的对象完成注入操作。</p>
-</blockquote>
-<p>那如果在IOC容器中，存在多个相同类型的bean对象，会出现什么情况呢？</p>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204232154445.png" alt="image-20221204232154445"></p>
-<ul>
-<li>程序运行会报错</li>
-</ul>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204231616724.png" alt="image-20221204231616724"></p>
-<p>如何解决上述问题呢？Spring提供了以下几种解决方案：</p>
-<ul>
-<li><p>@Primary</p>
-</li>
-<li><p>@Qualifier</p>
-</li>
-<li><p>@Resource</p>
-</li>
-</ul>
-<p>使用@Primary注解：当存在多个相同类型的Bean注入时，加上@Primary注解，来确定默认的实现。</p>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204232501679.png" alt="image-20221204232501679"> </p>
-<p>使用@Qualifier注解：指定当前要注入的bean对象。 在@Qualifier的value属性中，指定注入的bean的名称。</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231121605.png" alt="image-20231223112123552" style="zoom:67%;">
+
+
+
+
+
+<h2 id="4-3-DI详解-4种依赖注入"><a href="#4-3-DI详解-4种依赖注入" class="headerlink" title="4.3 DI详解(4种依赖注入)"></a>4.3 DI详解(4种依赖注入)</h2><p>依赖注入，是指IOC容器要为应用程序去提供运行时所依赖的资源，而资源指的就是对象。</p>
+<h3 id="4-3-1-Autowired注解"><a href="#4-3-1-Autowired注解" class="headerlink" title="4.3.1 @Autowired注解"></a>4.3.1 @Autowired注解</h3><p>默认是按照<strong>类型</strong>进行自动装配的（去IOC容器中找某个类型的对象，然后完成注入操作）  <strong>–如果有多个相同类型的就会报错，就要用其他三种注解解决</strong></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231126071.png" alt="image-20231223112602006" style="zoom:67%;">
+
+<h3 id="4-3-2-Primary注解-在相同类型的类上单独加优先级"><a href="#4-3-2-Primary注解-在相同类型的类上单独加优先级" class="headerlink" title="4.3.2 @Primary注解(在相同类型的类上单独加优先级)"></a>4.3.2 @Primary注解(在相同类型的类上单独加优先级)</h3><p>使用@Primary注解：当存在多个相同类型的Bean注入时，加上@Primary注解，来确定默认的实现。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231126009.png" alt="image-20231223112636963"></p>
+<h3 id="4-3-3-Qualifier注解-在出错位置配合Autowired注解看用哪个"><a href="#4-3-3-Qualifier注解-在出错位置配合Autowired注解看用哪个" class="headerlink" title="4.3.3 @Qualifier注解 (在出错位置配合Autowired注解看用哪个)"></a>4.3.3 @Qualifier注解 (在出错位置配合Autowired注解看用哪个)</h3><p>使用@Qualifier注解：指定当前要注入的bean对象。 在@Qualifier的value属性中，指定注入的bean的名称。</p>
 <ul>
 <li>@Qualifier注解不能单独使用，必须配合@Autowired使用</li>
 </ul>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204233333606.png" alt="image-20221204233333606"></p>
-<p>使用@Resource注解：是按照bean的名称进行注入。通过name属性指定要注入的bean的名称。</p>
-<p><img src="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/JAVA%25E8%25B7%25AF%25E7%25BA%25BF%25E8%25AF%25BE%25E7%25A8%258B%25E8%25B5%2584%25E6%2596%2599/2023%25E9%25BB%2591%25E9%25A9%25AC%25E5%2585%25A8%25E6%2596%25B0Web/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/day05-SpringBootWeb%25E8%25AF%25B7%25E6%25B1%2582%25E5%2593%258D%25E5%25BA%2594/%25E8%25AE%25B2%25E4%25B9%2589/assets/image-20221204233637735.png" alt="image-20221204233637735"></p>
-<blockquote>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231127691.png" alt="image-20231223112754645"></p>
+<h3 id="4-3-3-Resource注解-和Autowired同一位置，但是是按照名称注入"><a href="#4-3-3-Resource注解-和Autowired同一位置，但是是按照名称注入" class="headerlink" title="4.3.3 @Resource注解(和Autowired同一位置，但是是按照名称注入)"></a>4.3.3 @Resource注解(和Autowired同一位置，但是是按照名称注入)</h3><p>使用@Resource注解：是按照bean的名称进行注入。通过name属性指定要注入的bean的名称。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231129846.png" alt="image-20231223112926795"></p>
+<h3 id="4-3-4-面试题和总结"><a href="#4-3-4-面试题和总结" class="headerlink" title="4.3.4 面试题和总结"></a>4.3.4 面试题和总结</h3><blockquote>
 <p>面试题 ： @Autowird 与 @Resource的区别</p>
 <ul>
 <li>@Autowired 是spring框架提供的注解，而@Resource是JDK提供的注解</li>
 <li>@Autowired 默认是按照类型注入，而@Resource是按照名称注入</li>
+<li>@Autowired 如果出现多个类型相同的话会出现异常(所以用其他三种注解解决)</li>
 </ul>
 </blockquote>
+<ul>
+<li><strong>总结</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312231131153.png" alt="image-20231223113125106"></p>
 
       
       
