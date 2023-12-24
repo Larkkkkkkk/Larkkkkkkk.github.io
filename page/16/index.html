@@ -332,6 +332,112 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Filter" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/08/Filter/" class="article-date">
+      <time datetime="2020-03-08T09:47:58.000Z" itemprop="datePublished">2020-03-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/08/Filter/">Filter</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Filter-过滤器"><a href="#Filter-过滤器" class="headerlink" title="Filter(过滤器)"></a>Filter(过滤器)</h1><blockquote>
+<p>其实就是对客户端发出来的请求进行<strong>过滤</strong>。 浏览器发出，然后服务器派servlet处理。 在中间就可以过滤，其实过滤器起到的是<strong>拦截</strong>的作用。</p>
+</blockquote>
+<ul>
+<li><strong>作用</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 对一些敏感词汇进行过滤(敏感词汇)</span><br><span class="line">2. 统一设置编码(不用繁琐的设置utf-8)</span><br><span class="line">3. 自动登录</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Filter使用"><a href="#Filter使用" class="headerlink" title="Filter使用"></a>Filter使用</h1><h2 id="定义一个类实现Filter"><a href="#定义一个类实现Filter" class="headerlink" title="定义一个类实现Filter"></a>定义一个类实现Filter</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  &#x2F;&#x2F;构造方法</span><br><span class="line">   public FilterDemo() &#123;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">public void destroy() &#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException &#123;</span><br><span class="line">	System.out.println(&quot;到过滤器了&quot;);</span><br><span class="line">	chain.doFilter(request, response);  &#x2F;&#x2F;放行通过的代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void init(FilterConfig fConfig) throws ServletException &#123;</span><br><span class="line">	&#x2F;&#x2F; FilterConfig可以用于获取filter在注册的名字 以及初始化参数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="new注册过滤器-url-pattern可以更改"><a href="#new注册过滤器-url-pattern可以更改" class="headerlink" title="new注册过滤器(url-pattern可以更改)"></a>new注册过滤器(url-pattern可以更改)</h2><blockquote>
+<p>在<strong>web.xml里面注册</strong>，注册的手法与servlet基本一样。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;filter&gt;</span><br><span class="line">  &lt;display-name&gt;FilterDemo&lt;&#x2F;display-name&gt;</span><br><span class="line">  &lt;filter-name&gt;FilterDemo&lt;&#x2F;filter-name&gt;</span><br><span class="line">  &lt;filter-class&gt;guolvqi.FilterDemo&lt;&#x2F;filter-class&gt;</span><br><span class="line">&lt;&#x2F;filter&gt;</span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">  &lt;filter-name&gt;FilterDemo&lt;&#x2F;filter-name&gt;</span><br><span class="line">  &lt;url-pattern&gt;&#x2F;*&lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;filter-mapping&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="url-pattern-写法格式"><a href="#url-pattern-写法格式" class="headerlink" title="url-pattern 写法格式"></a>url-pattern 写法格式</h2><pre><code>1. 全路径匹配  以 /  开始 
+
+    /LoginServlet
+
+2. 以目录匹配 以 / 开始  以 * 结束
+
+    /demo01/*  
+
+3. 以后缀名匹配  以 * 开始 以后缀名结束
+    *.jsp  *.html *.do </code></pre><h2 id="dispatcher-设置"><a href="#dispatcher-设置" class="headerlink" title="dispatcher 设置"></a>dispatcher 设置</h2><pre><code>REQUEST ： 只要是请求过来，都拦截，默认就是REQUEST 
+FORWARD : 只要是转发都拦截。 
+ERROR ： 页面出错发生跳转 
+INCLUDE ： 包含页面的时候就拦截。</code></pre><hr>
+<h1 id="Filter生命周期"><a href="#Filter生命周期" class="headerlink" title="Filter生命周期"></a>Filter生命周期</h1><ul>
+<li><strong>创建</strong></li>
+</ul>
+<blockquote>
+<p>在服务器<strong>启动</strong>的时候就创建。 </p>
+</blockquote>
+<ul>
+<li><strong>销毁</strong></li>
+</ul>
+<blockquote>
+<p>服务器<strong>停止</strong>的时候。</p>
+</blockquote>
+<hr>
+<h1 id="Filter执行顺序"><a href="#Filter执行顺序" class="headerlink" title="Filter执行顺序"></a>Filter执行顺序</h1><ol>
+<li><p>客户端发出请求，先经过过滤器，如果过滤器放行，那么才能到servlet。</p>
+</li>
+<li><p>如果有<strong>多个过滤器</strong>， 那么他们会按照注册的<strong>映射顺序</strong> 来 排队。只要有一个过滤器,不放行，那么后面排队的过滤器以及咱们的servlet都不会收到请求。</p>
+</li>
+</ol>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Filter/" rel="tag">Filter</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JQuery省市联动" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1339,79 +1445,6 @@ SELECT * FROM stu LIMIT    5 OFFSET 2 (一次性五条 相对与之前的而言)
 <li><strong>三层结构</strong></li>
 </ul>
 <p><strong>1. Web层：</strong>JSP和Servlet<br><strong>2. 业务逻辑层：</strong>EJB 会话bean JAVABean<br><strong>3. 数据访问层：</strong>Dao</p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2-0/" rel="tag">学生管理系统2.0</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JSP开发模式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/29/JSP%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/" class="article-date">
-      <time datetime="2020-02-29T13:11:27.000Z" itemprop="datePublished">2020-02-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/29/JSP%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/">JSP开发模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="一、元数据-Meata-data"><a href="#一、元数据-Meata-data" class="headerlink" title="一、元数据(Meata data )"></a>一、元数据(Meata data )</h1><blockquote>
-<p>描述数据的数据 String sql , 描述这份sql字符串的数据叫做元数据</p>
-</blockquote>
-<p>数据库元数据  DatabaseMetaData<br>参数元数据  ParameterMetaData<br>结果集元数据  ResultSetMetaData</p>
-<hr>
-<h1 id="二、两种JSP开发模式"><a href="#二、两种JSP开发模式" class="headerlink" title="二、两种JSP开发模式"></a>二、两种JSP开发模式</h1><p><img src="/2020/02/29/JSP%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/img01.png" alt></p>
-<ul>
-<li><p><strong>JSP+JAVABean</strong></p>
-<pre><code>jsp里面要直接写java代码(&lt;%%&gt;)，维护起来比较麻烦，并且jsp的页面代码也比较臃肿。</code></pre></li>
-<li><p><strong>JSP+JAVABean+Servlet(MVC模式)</strong></p>
-<pre><code>M：model 模型层---封装根据JAVA Bean java类 EJB
-V：view  视图层---jsp用于显示
-C：controller 控制层---Servlet接收页面，找模型层处理，然后响应数据出去</code></pre></li>
-</ul>
-<hr>
 
       
       
