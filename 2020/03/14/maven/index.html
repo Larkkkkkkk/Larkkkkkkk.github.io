@@ -80,8 +80,28 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221545376.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221550455.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312221556658.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271601459.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271553823.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271608429.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271702441.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271715029.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271717008.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271729004.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271740758.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271728464.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271729004.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271743772.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271746959.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271753497.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271754230.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271819993.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271820479.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271821257.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271821937.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271822394.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271823202.png">
 <meta property="article:published_time" content="2020-03-14T02:14:58.000Z">
-<meta property="article:modified_time" content="2023-12-27T07:08:13.025Z">
+<meta property="article:modified_time" content="2023-12-27T10:23:28.127Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="maven">
 <meta name="twitter:card" content="summary">
@@ -850,7 +870,164 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <td>jdbc驱动</td>
 </tr>
 </tbody></table>
-<h1 id="13-分模块设计与开发"><a href="#13-分模块设计与开发" class="headerlink" title="13. 分模块设计与开发"></a>13. 分模块设计与开发</h1>
+<h1 id="13-分模块设计与开发-一个项目关联其他项目jar包"><a href="#13-分模块设计与开发-一个项目关联其他项目jar包" class="headerlink" title="13. 分模块设计与开发(一个项目关联其他项目jar包)"></a>13. 分模块设计与开发(一个项目关联其他项目jar包)</h1><blockquote>
+<p>分模块开发需要先针对模块功能进行设计，再进行编码。不会先将工程开发完毕，然后进行拆分</p>
+</blockquote>
+<p>分模块设计我们在进行项目设计阶段，就可以将一个大的项目拆分成若干个模块，每一个模块都是独立的</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271601459.png" alt="image-20231227160112385" style="zoom:67%;">
+
+<ul>
+<li>针对之前的项目就可以拆分多个子项目完成，在通用组件pom.xml文件中引用即可</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271553823.png" alt="image-20231227155302652" style="zoom:67%;">
+
+<p>在各自项目内配置需要的依赖(pom.xml)，然后再通同组件内调用其他依赖</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271608429.png" alt="image-20231227160832361" style="zoom: 80%;">
+
+<h1 id="14-继承与聚合"><a href="#14-继承与聚合" class="headerlink" title="14.继承与聚合"></a>14.继承与聚合</h1><blockquote>
+<p>Maven打包方式：</p>
+<ul>
+<li><p>==jar：普通模块打包==，springboot项目基本都是jar包（内嵌tomcat运行）</p>
+</li>
+<li><p>==war：普通web程序打包==，需要部署在外部的tomcat服务器中运行</p>
+</li>
+<li><p>==pom：父工程/聚合工程==，该模块不写代码，仅进行依赖管理</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="14-1-继承-加parent标签"><a href="#14-1-继承-加parent标签" class="headerlink" title="14.1 继承(加parent标签)"></a>14.1 继承(加parent标签)</h2><blockquote>
+<p> 将各个项目共同的依赖 –提取–&gt; 父工程</p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271702441.png" alt="image-20231227170204299" style="zoom:80%;">
+
+<ul>
+<li>概念:</li>
+</ul>
+<p>继承描述的是两个工程间的关系，与java中的继承相似，子工程可以继承父工程中的配置信息，常见于依赖关系的继承(==单一继承==)</p>
+<ul>
+<li>作用：</li>
+</ul>
+<p>==简化依赖配置、统一管理依赖==</p>
+<ul>
+<li>实现:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">    &lt;groupId&gt;...&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;...&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;...&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;relativePath&gt;....&lt;&#x2F;relativePath&gt;    设定父工程的pom.xml文件位置[如果不指定，将从本地仓库&#x2F;远程仓库查找该工程]</span><br><span class="line">&lt;&#x2F;parent&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="14-1-1-步骤"><a href="#14-1-1-步骤" class="headerlink" title="14.1.1 步骤"></a>14.1.1 步骤</h3><ul>
+<li>1.创建父工程，在父工程的pom.xml文件中设置打包方式为pom(默认jar)  –==<packaging>==</packaging></li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271715029.png" alt="image-20231227171512978" style="zoom: 80%;">
+
+<ul>
+<li>2.在子工程的pom.xml文件中，配置继承关系 –==<parent>==和里面的==<relativePath>==</relativePath></parent></li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271717008.png" alt="image-20231227171729961" style="zoom:80%;">
+
+<p>【注意:当配置了父工程之后，子工程坐标的<groupId>就可以删除，因为会自动继承父工程】</groupId></p>
+<ul>
+<li>3.在父工程中配置各个工程共有的依赖(子工程会自动继承父工程的依赖【<strong>子工程可以删除</strong>】)</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271729004.png" alt="image-20231227172956947" style="zoom:80%;">
+
+
+
+<h3 id="14-1-2-版本锁定-加dependencyManagemen标签"><a href="#14-1-2-版本锁定-加dependencyManagemen标签" class="headerlink" title="14.1.2 版本锁定(加dependencyManagemen标签)"></a>14.1.2 版本锁定(加dependencyManagemen标签)</h3><blockquote>
+<p>在maven中，父工程pom.xml文件通过==<dependencyManagemen>标签==来==统一管理依赖版本==</dependencyManagemen></p>
+</blockquote>
+<ul>
+<li>思路：</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271740758.png" alt="image-20231227174014699" style="zoom:150%;">
+
+<p>各个项目不同的依赖，父工程pom.xml文件中通过dependencyManagement统一版本，<strong>并不会将这个依赖直接引入进来</strong>。子工程调用的时候就不用写version版本标签</p>
+<p>要修改就在父工程区修改【<strong>但是子工程必须要调用</strong>，因为父工程只是统一版本了但是没有引入啊！！】</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271728464.png" alt="image-20231227172837396" style="zoom: 80%;">
+
+
+
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271729004.png" alt="image-20231227172956947" style="zoom:80%;">
+
+<p>==版本锁定就是在继承(可以不调用，会自动继承父类的)的前提上，子工程必须调用(同一版本不引入依赖，只是管理)但是可以省略版本号就行==</p>
+<h3 id="14-1-3-自定义属性-引用属性（加自定义标签）"><a href="#14-1-3-自定义属性-引用属性（加自定义标签）" class="headerlink" title="14.1.3 自定义属性/引用属性（加自定义标签）"></a>14.1.3 自定义属性/引用属性（加自定义标签）</h3><blockquote>
+<p>==集中的集中管理==  –也可以在父工程中将版本号统一在properties标签内设定自定义标签lombok.version，然后在其他依赖引入的version位置加入</p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271743772.png" alt="image-20231227174344711" style="zoom:150%;">
+
+<ul>
+<li>举例:</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271746959.png" alt="image-20231227174621891" style="zoom:67%;">
+
+
+
+<h3 id="14-1-4-区别对比"><a href="#14-1-4-区别对比" class="headerlink" title="14.1.4 区别对比"></a>14.1.4 区别对比</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271753497.png" alt="image-20231227175310417">
+
+<ul>
+<li>文字对比</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271754230.png" alt="image-20231227175439177" style="zoom:67%;">
+
+<blockquote>
+<p><strong>面试题：<code>&lt;dependencyManagement&gt;</code> 与 <code>&lt;dependencies&gt;</code> 的区别是什么?</strong></p>
+<ul>
+<li><code>&lt;dependencies&gt;</code> 是直接依赖，在父工程配置了依赖，子工程会直接继承下来。 </li>
+<li><code>&lt;dependencyManagement&gt;</code> 是统一管理依赖版本，不会直接依赖，还需要在子工程中引入所需依赖(无需指定版本)</li>
+</ul>
+</blockquote>
+<h2 id="14-2-聚合-加modules标签"><a href="#14-2-聚合-加modules标签" class="headerlink" title="14.2 聚合(加modules标签)"></a>14.2 聚合(加modules标签)</h2><blockquote>
+<p>对所有聚合的子模块统一操作==快速构建项目==</p>
+</blockquote>
+<ul>
+<li><p><strong>聚合：</strong></p>
+<p>将多个模块组织成一个整体，同时进行项目的构建。</p>
+</li>
+<li><p><strong>聚合工程：</strong></p>
+<p>一个不具有业务功能的“空”工程（有且仅有一个pom文件） 【一般来说，继承关系中的父工程 == 聚合关系中的聚合工程】</p>
+</li>
+<li><p><strong>作用：</strong></p>
+<p>快速构建项目（无需根据依赖关系手动构建，直接在聚合工程上构建即可）</p>
+</li>
+<li><p><strong>实现：</strong></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--聚合其他模块--&gt;</span><br><span class="line">&lt;modules&gt;</span><br><span class="line">    &lt;module&gt;..&#x2F;tlias-pojo&lt;&#x2F;module&gt;</span><br><span class="line">    &lt;module&gt;..&#x2F;tlias-utils&lt;&#x2F;module&gt;</span><br><span class="line">    &lt;module&gt;..&#x2F;tlias-web-management&lt;&#x2F;module&gt;</span><br><span class="line">&lt;&#x2F;modules&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在maven中，我们可以在聚合工程中通过 <code>&lt;modules&gt;</code> 设置当前聚合工程所包含的子模块的名称。</p>
+<p>==那此时，我们要进行编译、打包、安装操作，就无需在每一个模块上操作了。只需要在聚合工程上，统一进行操作就可以了==</p>
+<h2 id="14-3-继承和聚合的对比"><a href="#14-3-继承和聚合的对比" class="headerlink" title="14.3 继承和聚合的对比"></a>14.3 继承和聚合的对比</h2><ul>
+<li><p><strong>作用</strong></p>
+<ul>
+<li><p>聚合用于快速构建项目</p>
+</li>
+<li><p>继承用于简化依赖配置、统一管理依赖</p>
+</li>
+</ul>
+</li>
+<li><p><strong>相同点：</strong></p>
+<ul>
+<li><p>聚合与继承的pom.xml文件打包方式均为pom，通常将两种关系制作到同一个pom文件中</p>
+</li>
+<li><p>聚合与继承均属于设计型模块，并无实际的模块内容</p>
+</li>
+</ul>
+</li>
+<li><p><strong>不同点：</strong></p>
+<ul>
+<li><p>聚合是在聚合工程中配置关系，聚合可以感知到参与聚合的模块有哪些</p>
+</li>
+<li><p>继承是在子模块中配置关系，父模块无法感知哪些子模块继承了自己</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="15-私服"><a href="#15-私服" class="headerlink" title="15.私服"></a>15.私服</h1><h1 id="16-配置文件pom-xml详细解释"><a href="#16-配置文件pom-xml详细解释" class="headerlink" title="16.配置文件pom.xml详细解释"></a>16.配置文件pom.xml详细解释</h1><h2 id="16-1-项目相关"><a href="#16-1-项目相关" class="headerlink" title="16.1 项目相关"></a>16.1 项目相关</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271819993.png" alt="image-20231227181949935"></p>
+<h2 id="16-2-父工程相关"><a href="#16-2-父工程相关" class="headerlink" title="16.2 父工程相关"></a>16.2 父工程相关</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271820479.png" alt="image-20231227182027419"></p>
+<h2 id="16-3-自定义属性-引用属性"><a href="#16-3-自定义属性-引用属性" class="headerlink" title="16.3 自定义属性/引用属性"></a>16.3 自定义属性/引用属性</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271821257.png" alt="image-20231227182105218"></p>
+<h2 id="16-4-聚合相关"><a href="#16-4-聚合相关" class="headerlink" title="16.4 聚合相关"></a>16.4 聚合相关</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271821937.png" alt="image-20231227182137893"></p>
+<h2 id="16-5-项目依赖相关"><a href="#16-5-项目依赖相关" class="headerlink" title="16.5 项目依赖相关"></a>16.5 项目依赖相关</h2><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271822394.png" alt="image-20231227182259350" style="zoom:67%;">
+
+<h2 id="16-6-打包相关"><a href="#16-6-打包相关" class="headerlink" title="16.6 打包相关"></a>16.6 打包相关</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312271823202.png" alt="image-20231227182323163"></p>
+
       
       
         <div class="page-reward">
@@ -908,7 +1085,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
         <p><span>本文标题:</span><a href="/2020/03/14/maven/">maven</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2020年03月14日 - 10时14分</p>
-        <p><span>最后更新:</span>2023年12月27日 - 15时08分</p>
+        <p><span>最后更新:</span>2023年12月27日 - 18时23分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/14/maven/" title="maven">https://larkkkkkkk.github.io/2020/03/14/maven/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2020/03/14/maven/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -946,7 +1123,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-maven定义"><span class="toc-number">1.</span> <span class="toc-text">1.maven定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-maven解释"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 maven解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-maven三大作用"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 maven三大作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-方便的依赖管理"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1 方便的依赖管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-统一项目结构"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2.2 统一项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-3-标准的项目构建流程"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.2.3 标准的项目构建流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-maven安装"><span class="toc-number">2.</span> <span class="toc-text">2.maven安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-下载"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-安装步骤"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 安装步骤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-仓库种类和关系"><span class="toc-number">3.</span> <span class="toc-text">3.仓库种类和关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-maven标准目录结构"><span class="toc-number">4.</span> <span class="toc-text">4.maven标准目录结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-maven常用命令"><span class="toc-number">5.</span> <span class="toc-text">5.maven常用命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-maven生命周期"><span class="toc-number">6.</span> <span class="toc-text">6.maven生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-三套生命周期"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 三套生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-两种执行方式"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 两种执行方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-1-在idea中执行生命周期"><span class="toc-number">6.2.1.</span> <span class="toc-text">6.2.1 在idea中执行生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-2-在cmd命令行执行生命周期"><span class="toc-number">6.2.2.</span> <span class="toc-text">6.2.2 在cmd命令行执行生命周期</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-maven概念模型图-三个部分"><span class="toc-number">7.</span> <span class="toc-text">7.maven概念模型图(三个部分)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-项目对象模型"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 项目对象模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-依赖管理模型"><span class="toc-number">7.2.</span> <span class="toc-text">7.2 依赖管理模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-构建生命周期-阶段"><span class="toc-number">7.3.</span> <span class="toc-text">7.3 构建生命周期&#x2F;阶段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-maven使用步骤"><span class="toc-number">8.</span> <span class="toc-text">8.maven使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#idea继承maven插件"><span class="toc-number">8.1.</span> <span class="toc-text">idea继承maven插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用骨架创建maven的java工程"><span class="toc-number">8.2.</span> <span class="toc-text">使用骨架创建maven的java工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不使用骨架创建maven的java工程"><span class="toc-number">8.3.</span> <span class="toc-text">不使用骨架创建maven的java工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用骨架创建maven的web工程"><span class="toc-number">8.4.</span> <span class="toc-text">使用骨架创建maven的web工程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-maven工程servlet实例"><span class="toc-number">9.</span> <span class="toc-text">9.maven工程servlet实例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-maven的jave工程取mysql数据"><span class="toc-number">10.</span> <span class="toc-text">10.maven的jave工程取mysql数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备数据库"><span class="toc-number">10.1.</span> <span class="toc-text">准备数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备domain包的类去接里面的属性"><span class="toc-number">10.2.</span> <span class="toc-text">准备domain包的类去接里面的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pom里面写需要的mysql和junit的jar包"><span class="toc-number">10.3.</span> <span class="toc-text">pom里面写需要的mysql和junit的jar包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备dao包和实现类impl包"><span class="toc-number">10.4.</span> <span class="toc-text">准备dao包和实现类impl包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备test层代码"><span class="toc-number">10.5.</span> <span class="toc-text">准备test层代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-总结"><span class="toc-number">11.</span> <span class="toc-text">11.总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-依赖管理"><span class="toc-number">12.</span> <span class="toc-text">12.依赖管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-依赖配置-4步"><span class="toc-number">12.1.</span> <span class="toc-text">12.1 依赖配置(4步)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-依赖传递"><span class="toc-number">12.2.</span> <span class="toc-text">12.2 依赖传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-1-依赖具有传递性-默认有传递性"><span class="toc-number">12.2.1.</span> <span class="toc-text">12.2.1 依赖具有传递性(默认有传递性)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-2-排除依赖-加exclusions标签"><span class="toc-number">12.2.2.</span> <span class="toc-text">12.2.2 排除依赖(加exclusions标签)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-依赖范围-默认任何位置"><span class="toc-number">12.3.</span> <span class="toc-text">12.3 依赖范围(默认任何位置)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-3-1-限制依赖适用范围-加scope标签"><span class="toc-number">12.3.1.</span> <span class="toc-text">12.3.1 限制依赖适用范围(加scope标签)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-分模块设计与开发"><span class="toc-number">13.</span> <span class="toc-text">13. 分模块设计与开发</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-maven定义"><span class="toc-number">1.</span> <span class="toc-text">1.maven定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-maven解释"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 maven解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-maven三大作用"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 maven三大作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-方便的依赖管理"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1 方便的依赖管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-统一项目结构"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2.2 统一项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-3-标准的项目构建流程"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.2.3 标准的项目构建流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-maven安装"><span class="toc-number">2.</span> <span class="toc-text">2.maven安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-下载"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-安装步骤"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 安装步骤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-仓库种类和关系"><span class="toc-number">3.</span> <span class="toc-text">3.仓库种类和关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-maven标准目录结构"><span class="toc-number">4.</span> <span class="toc-text">4.maven标准目录结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-maven常用命令"><span class="toc-number">5.</span> <span class="toc-text">5.maven常用命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-maven生命周期"><span class="toc-number">6.</span> <span class="toc-text">6.maven生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-三套生命周期"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 三套生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-两种执行方式"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 两种执行方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-1-在idea中执行生命周期"><span class="toc-number">6.2.1.</span> <span class="toc-text">6.2.1 在idea中执行生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-2-在cmd命令行执行生命周期"><span class="toc-number">6.2.2.</span> <span class="toc-text">6.2.2 在cmd命令行执行生命周期</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-maven概念模型图-三个部分"><span class="toc-number">7.</span> <span class="toc-text">7.maven概念模型图(三个部分)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-项目对象模型"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 项目对象模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-依赖管理模型"><span class="toc-number">7.2.</span> <span class="toc-text">7.2 依赖管理模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-构建生命周期-阶段"><span class="toc-number">7.3.</span> <span class="toc-text">7.3 构建生命周期&#x2F;阶段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-maven使用步骤"><span class="toc-number">8.</span> <span class="toc-text">8.maven使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#idea继承maven插件"><span class="toc-number">8.1.</span> <span class="toc-text">idea继承maven插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用骨架创建maven的java工程"><span class="toc-number">8.2.</span> <span class="toc-text">使用骨架创建maven的java工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不使用骨架创建maven的java工程"><span class="toc-number">8.3.</span> <span class="toc-text">不使用骨架创建maven的java工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用骨架创建maven的web工程"><span class="toc-number">8.4.</span> <span class="toc-text">使用骨架创建maven的web工程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-maven工程servlet实例"><span class="toc-number">9.</span> <span class="toc-text">9.maven工程servlet实例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-maven的jave工程取mysql数据"><span class="toc-number">10.</span> <span class="toc-text">10.maven的jave工程取mysql数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备数据库"><span class="toc-number">10.1.</span> <span class="toc-text">准备数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备domain包的类去接里面的属性"><span class="toc-number">10.2.</span> <span class="toc-text">准备domain包的类去接里面的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pom里面写需要的mysql和junit的jar包"><span class="toc-number">10.3.</span> <span class="toc-text">pom里面写需要的mysql和junit的jar包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备dao包和实现类impl包"><span class="toc-number">10.4.</span> <span class="toc-text">准备dao包和实现类impl包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备test层代码"><span class="toc-number">10.5.</span> <span class="toc-text">准备test层代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-总结"><span class="toc-number">11.</span> <span class="toc-text">11.总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-依赖管理"><span class="toc-number">12.</span> <span class="toc-text">12.依赖管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-依赖配置-4步"><span class="toc-number">12.1.</span> <span class="toc-text">12.1 依赖配置(4步)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-依赖传递"><span class="toc-number">12.2.</span> <span class="toc-text">12.2 依赖传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-1-依赖具有传递性-默认有传递性"><span class="toc-number">12.2.1.</span> <span class="toc-text">12.2.1 依赖具有传递性(默认有传递性)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-2-排除依赖-加exclusions标签"><span class="toc-number">12.2.2.</span> <span class="toc-text">12.2.2 排除依赖(加exclusions标签)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-依赖范围-默认任何位置"><span class="toc-number">12.3.</span> <span class="toc-text">12.3 依赖范围(默认任何位置)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-3-1-限制依赖适用范围-加scope标签"><span class="toc-number">12.3.1.</span> <span class="toc-text">12.3.1 限制依赖适用范围(加scope标签)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-分模块设计与开发-一个项目关联其他项目jar包"><span class="toc-number">13.</span> <span class="toc-text">13. 分模块设计与开发(一个项目关联其他项目jar包)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14-继承与聚合"><span class="toc-number">14.</span> <span class="toc-text">14.继承与聚合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#14-1-继承-加parent标签"><span class="toc-number">14.1.</span> <span class="toc-text">14.1 继承(加parent标签)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#14-1-1-步骤"><span class="toc-number">14.1.1.</span> <span class="toc-text">14.1.1 步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-1-2-版本锁定-加dependencyManagemen标签"><span class="toc-number">14.1.2.</span> <span class="toc-text">14.1.2 版本锁定(加dependencyManagemen标签)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-1-3-自定义属性-引用属性（加自定义标签）"><span class="toc-number">14.1.3.</span> <span class="toc-text">14.1.3 自定义属性&#x2F;引用属性（加自定义标签）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-1-4-区别对比"><span class="toc-number">14.1.4.</span> <span class="toc-text">14.1.4 区别对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-2-聚合-加modules标签"><span class="toc-number">14.2.</span> <span class="toc-text">14.2 聚合(加modules标签)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-3-继承和聚合的对比"><span class="toc-number">14.3.</span> <span class="toc-text">14.3 继承和聚合的对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-私服"><span class="toc-number">15.</span> <span class="toc-text">15.私服</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#16-配置文件pom-xml详细解释"><span class="toc-number">16.</span> <span class="toc-text">16.配置文件pom.xml详细解释</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#16-1-项目相关"><span class="toc-number">16.1.</span> <span class="toc-text">16.1 项目相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-2-父工程相关"><span class="toc-number">16.2.</span> <span class="toc-text">16.2 父工程相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-3-自定义属性-引用属性"><span class="toc-number">16.3.</span> <span class="toc-text">16.3 自定义属性&#x2F;引用属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-4-聚合相关"><span class="toc-number">16.4.</span> <span class="toc-text">16.4 聚合相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-5-项目依赖相关"><span class="toc-number">16.5.</span> <span class="toc-text">16.5 项目依赖相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-6-打包相关"><span class="toc-number">16.6.</span> <span class="toc-text">16.6 打包相关</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
