@@ -332,6 +332,65 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Linux部署" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/17/Linux%E9%83%A8%E7%BD%B2/" class="article-date">
+      <time datetime="2020-03-17T10:02:24.000Z" itemprop="datePublished">2020-03-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/17/Linux%E9%83%A8%E7%BD%B2/">Linux部署</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Linux部署"><a href="#Linux部署" class="headerlink" title="Linux部署"></a>Linux部署</h1><h2 id="修改项目"><a href="#修改项目" class="headerlink" title="修改项目"></a>修改项目</h2><h3 id="druid-properties中将url后面加characterEncoding-utf-8"><a href="#druid-properties中将url后面加characterEncoding-utf-8" class="headerlink" title="druid.properties中将url后面加characterEncoding=utf-8"></a>druid.properties中将url后面加characterEncoding=utf-8</h3><h3 id="还需要将本地的数据库转成sql文件导入到linux中的数据库中"><a href="#还需要将本地的数据库转成sql文件导入到linux中的数据库中" class="headerlink" title="还需要将本地的数据库转成sql文件导入到linux中的数据库中"></a>还需要将本地的数据库转成sql文件导入到linux中的数据库中</h3><h3 id="更改绝对路径为相对路径-localhost-8080"><a href="#更改绝对路径为相对路径-localhost-8080" class="headerlink" title="更改绝对路径为相对路径(localhost:8080)"></a>更改绝对路径为相对路径(localhost:8080)</h3><h3 id="java里面maven使用插件package打包成war文件"><a href="#java里面maven使用插件package打包成war文件" class="headerlink" title="java里面maven使用插件package打包成war文件"></a>java里面maven使用插件package打包成war文件</h3><h3 id="将war包上传到linux的目录下-启动tomcat"><a href="#将war包上传到linux的目录下-启动tomcat" class="headerlink" title="将war包上传到linux的目录下 启动tomcat"></a>将war包上传到linux的目录下 启动tomcat</h3><h3 id="通过windows浏览器：-localhost：8080-项目名"><a href="#通过windows浏览器：-localhost：8080-项目名" class="headerlink" title="通过windows浏览器： localhost：8080/项目名"></a>通过windows浏览器： localhost：8080/项目名</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>　　其实就是将项目打包成war包然后放在linux里面通过tomcat启动，我们就可以通过windows去启动。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Linux网络知识" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1554,7 +1613,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <p><img src="https://i.imgur.com/v7xWsqC.png" alt></p>
 <p>这种启动属于<code>前台启动</code>，会阻塞整个会话窗口，窗口关闭或者按下<code>CTRL + C</code>则Redis停止。不推荐使用。</p>
 <h4 id="3-3-5-指定配置启动"><a href="#3-3-5-指定配置启动" class="headerlink" title="3.3.5.指定配置启动"></a>3.3.5.指定配置启动</h4><p>如果要让Redis以<code>后台</code>方式启动，则必须修改Redis配置文件，就在我们之前解压的redis安装包下（<code>/usr/local/src/redis-6.2.6</code>），名字叫redis.conf：</p>
-<p><img src="/2020/03/10/redis/image-20211211082225509.png" alt="image-20211211082225509"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021904094.png" alt="image-20240102190447020"></p>
 <p>我们先将这个配置文件备份一份：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp redis.conf redis.conf.bck</span><br></pre></td></tr></table></figure>
 
@@ -1652,9 +1711,10 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 
 <h2 id="4-Redis常见命令"><a href="#4-Redis常见命令" class="headerlink" title="4.Redis常见命令"></a>4.Redis常见命令</h2><h3 id="4-1-Redis数据结构介绍"><a href="#4-1-Redis数据结构介绍" class="headerlink" title="4.1 Redis数据结构介绍"></a>4.1 Redis数据结构介绍</h3><p>Redis是一个key-value的数据库，</p>
 <p>==key(一般是String类型)，value(多种多样)==：</p>
-<p><img src="/2020/03/10/redis/1652887393157.png" alt="1652887393157"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021905823.png" alt="image-20240102190555758" style="zoom:67%;">
+
 <p>可以通过Help命令来帮助我们去查看命令</p>
-<img src="/2020/03/10/redis/1652887748279.png" alt="1652887748279" style="zoom: 67%;">
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021906031.png" alt="image-20240102190625971" style="zoom: 67%;">
 
 <h3 id="4-2-Redis-通用命令"><a href="#4-2-Redis-通用命令" class="headerlink" title="4.2 Redis 通用命令"></a>4.2 Redis 通用命令</h3><p>通用指令是部分数据类型的，都可以使用的指令，常见的有：</p>
 <ul>
@@ -1665,7 +1725,8 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <li>==ttl== key：查看一个KEY的剩余有效期</li>
 </ul>
 <p>通过help [command] 可以查看一个命令的具体用法，例如：</p>
-<p><img src="/2020/03/10/redis/1652887865189.png" alt="1652887865189"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021907924.png" alt="image-20240102190707881" style="zoom:80%;">
+
 <p>课堂代码如下</p>
 <ul>
 <li>KEYS</li>
@@ -1698,7 +1759,8 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <li>int：整数类型，可以做自增.自减操作</li>
 <li>float：浮点类型，可以做自增.自减操作</li>
 </ul>
-<p><img src="/2020/03/10/redis/1652890121291.png" alt="1652890121291"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021907445.png" alt="image-20240102190734391" style="zoom: 80%;">
+
 <p>String的常见命令有：</p>
 <p>  <strong>添加/获取值</strong>：</p>
 <ul>
@@ -1753,7 +1815,8 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 
 <h3 id="4-4-Redis命令-Key的层级结构-区分相同名称"><a href="#4-4-Redis命令-Key的层级结构-区分相同名称" class="headerlink" title="4.4 Redis命令-Key的层级结构(区分相同名称)"></a>4.4 Redis命令-Key的层级结构(区分相同名称)</h3><p>我们可以通过给key==<strong>添加前缀</strong>==加以区分，不过这个前缀不是随便加的，有一定的规范：</p>
 <p>Redis的key允许有多个单词形成层级结构，多个单词之间用’:’隔开，格式如下：</p>
-<p><img src="/2020/03/10/redis/1652941631682.png" alt="1652941631682"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021908062.png" alt="image-20240102190810025" style="zoom: 80%;">
+
 <p>这个格式并非固定，也可以根据自己的需求来删除或添加词条。</p>
 <p>例如我们的项目名称叫 heima，有user和product两种不同类型的数据，我们可以这样定义key：</p>
 <ul>
@@ -1780,12 +1843,16 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 </tr>
 </tbody></table>
 <p>一旦我们向redis采用这样的方式存储，那么在可视化界面中，redis会以层级结构来进行存储，形成类似于这样的结构，更加方便Redis获取数据</p>
-<p><img src="/2020/03/10/redis/1652941883537.png" alt="1652941883537"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021908487.png" alt="image-20240102190848438" style="zoom:80%;">
+
+
+
 <h3 id="4-5-Redis命令-Hash命令-类似HashMap"><a href="#4-5-Redis命令-Hash命令-类似HashMap" class="headerlink" title="4.5 Redis命令-Hash命令(类似HashMap)"></a>4.5 Redis命令-Hash命令(类似HashMap)</h3><p>Hash类型，也叫散列，其value是一个无序字典，类似于Java中的HashMap结构。</p>
 <p>String结构是将对象序列化为JSON字符串后存储，当需要修改对象某个字段时很不方便：</p>
-<p><img src="/2020/03/10/redis/1652941995945.png" alt="1652941995945"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021909516.png" alt="image-20240102190911476"></p>
 <p><strong>Hash结构可以将对象中的每个字段独立存储，可以针对单个字段做CRUD(更加灵活)：</strong></p>
-<p><img src="/2020/03/10/redis/1652942027719.png" alt="1652942027719"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021909493.png" alt="image-20240102190937450" style="zoom:80%;">
+
 <p><strong>Hash类型的常见命令</strong>(==h/hm+ String操作==)  –[field-value就像集合的key-value键值对]</p>
 <ul>
 <li>hset(==hset)== key field value：添加/修改一个key的键值对field-value</li>
@@ -1850,7 +1917,8 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <li>LRANGE(==lrange==) key star end：返回一段角标范围内的所有元素 [角标从0开始]</li>
 <li>BLPOP(==blpop==)和BRPOP(==brpop==)：与LPOP和RPOP类似 (等待指定时间) 而不是直接返回nil  【<strong>阻塞</strong>】</li>
 </ul>
-<p><img src="/2020/03/10/redis/.%5CRedis.assets%5C1652943604992.png" alt="1652943604992"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021910721.png" alt="image-20240102191014676" style="zoom:80%;">
+
 <ul>
 <li>LPUSH和RPUSH</li>
 </ul>
@@ -1970,7 +2038,8 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <h2 id="5-Java客户端-Jedis"><a href="#5-Java客户端-Jedis" class="headerlink" title="5.Java客户端-Jedis"></a>5.Java客户端-Jedis</h2><p>在Redis官网中提供了各种语言的客户端，地址：<a href="https://redis.io/docs/clients/" target="_blank" rel="noopener">https://redis.io/docs/clients/</a></p>
 <p><img src="https://i.imgur.com/9f68ivq.png" alt></p>
 <p>其中Java客户端也包含很多：</p>
-<p><img src="/2020/03/10/redis/image-20220609102817435.png" alt="image-20220609102817435"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021911255.png" alt="image-20240102191100196" style="zoom:80%;">
+
 <p>标记为❤的就是推荐使用的java客户端，包括：</p>
 <ul>
 <li>Jedis和Lettuce：这两个主要是提供了Redis命令对应的API，方便我们操作Redis，而SpringDataRedis又对这两种做了抽象和封装，因此我们后期会直接以SpringDataRedis来学习。</li>
@@ -1979,7 +2048,8 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <h3 id="5-1-Jedis连接-不推荐"><a href="#5-1-Jedis连接-不推荐" class="headerlink" title="5.1 Jedis连接(不推荐)"></a>5.1 Jedis连接(不推荐)</h3><p><strong>入门案例详细步骤</strong></p>
 <p>案例分析：</p>
 <p>0）创建工程：</p>
-<p><img src="/2020/03/10/redis/%5CRedis.assets%5C1652959239813.png" alt="1652959239813"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021911967.png" alt="image-20240102191137914" style="zoom:80%;">
+
 <p>1）引入依赖：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--jedis(github上的才有用)--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--单元测试--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -2027,7 +2097,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <li>支持基于Redis的JDKCollection实现</li>
 </ul>
 <p>SpringDataRedis中提供了RedisTemplate工具类，其中封装了各种对Redis的操作。并且将不同数据类型的操作API封装到了不同的类型中：</p>
-<p><img src="/2020/03/10/redis/.%5CRedis.assets%5C1652976773295.png" alt="1652976773295"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021912441.png" alt="image-20240102191209384"></p>
 <h3 id="6-1-快速入门"><a href="#6-1-快速入门" class="headerlink" title="6.1.快速入门"></a>6.1.快速入门</h3><p>SpringBoot已经提供了对SpringDataRedis的支持，使用非常简单：</p>
 <h4 id="6-1-1-导入pom坐标"><a href="#6-1-1-导入pom坐标" class="headerlink" title="6.1.1.导入pom坐标"></a>6.1.1.导入pom坐标</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--redis依赖--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--common-pool--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-pool2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -2035,7 +2105,7 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 
 <h4 id="6-1-2-配置文件"><a href="#6-1-2-配置文件" class="headerlink" title="6.1.2 .配置文件"></a>6.1.2 .配置文件</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="number">192.168</span><span class="number">.150</span><span class="number">.101</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123321</span></span><br><span class="line">    <span class="attr">lettuce:</span>  <span class="string">//默认是这个</span>  <span class="string">如果要用Jedis就要自己配置(线程不安全)</span></span><br><span class="line">      <span class="attr">pool:</span></span><br><span class="line">        <span class="attr">max-active:</span> <span class="number">8</span>  <span class="comment">#最大连接</span></span><br><span class="line">        <span class="attr">max-idle:</span> <span class="number">8</span>   <span class="comment">#最大空闲连接</span></span><br><span class="line">        <span class="attr">min-idle:</span> <span class="number">0</span>   <span class="comment">#最小空闲连接</span></span><br><span class="line">        <span class="attr">max-wait:</span> <span class="string">100ms</span> <span class="comment">#连接等待时间</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="6-1-3-测试代码"><a href="#6-1-3-测试代码" class="headerlink" title="6.1.3.测试代码"></a>6.1.3.测试代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedisDemoApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate&lt;String, Object&gt; redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//插入一条string类型数据</span></span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">"namesyx"</span>,<span class="string">"syx"</span>);</span><br><span class="line">        <span class="comment">//读取一条string类型数据</span></span><br><span class="line">        Object namesyx = redisTemplate.opsForValue().get(<span class="string">"namesyx"</span>);</span><br><span class="line">        System.out.println(namesyx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="6-1-3-测试代码"><a href="#6-1-3-测试代码" class="headerlink" title="6.1.3.测试代码"></a>6.1.3.测试代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedisDemoApplicationTests</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate&lt;String, Object&gt; redisTemplate;   <span class="comment">//工具类</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//插入一条string类型数据</span></span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">"namesyx"</span>,<span class="string">"syx"</span>);</span><br><span class="line">        <span class="comment">//读取一条string类型数据</span></span><br><span class="line">        Object namesyx = redisTemplate.opsForValue().get(<span class="string">"namesyx"</span>);</span><br><span class="line">        System.out.println(namesyx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312281641271.png" style="zoom:150%;">
 
@@ -2063,14 +2133,16 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 
 <p>整体可读性有了很大提升，并且能将Java对象自动的序列化为JSON字符串，并且查询时能自动把JSON反序列化为Java对象。不过，其中记录了序列化时对应的class名称，目的是为了查询时实现自动反序列化。这会带来额外的内存开销。</p>
 <h4 id="6-2-2-StringRedisTemplate-手动序列化"><a href="#6-2-2-StringRedisTemplate-手动序列化" class="headerlink" title="6.2.2 StringRedisTemplate(手动序列化)"></a>6.2.2 StringRedisTemplate(手动序列化)</h4><p>为了减少内存的消耗，我们可以采用==手动序列化==的方式，换句话说，就是不借助默认的序列化器，而是我们自己来控制序列化的动作，同时，我们只采用String的序列化器，这样，在存储value时，我们就不需要在内存中就不用多存储数据，从而节约我们的内存空间</p>
-<p><img src="/2020/03/10/redis/.%5CRedis.assets%5C1653054744832.png" alt="1653054744832"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021912144.png" alt="image-20240102191247093" style="zoom:80%;">
+
 <p>因此SpringDataRedis就提供了RedisTemplate的子类：StringRedisTemplate，它的key和value的序列化方式默认就是String方式。</p>
 <p><img src="https://i.imgur.com/zXH6Qn6.png" alt></p>
 <p>而是<strong>直接使用</strong>：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedisStringTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StringRedisTemplate stringRedisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 写入一条String数据</span></span><br><span class="line">        stringRedisTemplate.opsForValue().set(<span class="string">"verify:phone:13600527634"</span>, <span class="string">"124143"</span>);</span><br><span class="line">        <span class="comment">// 获取string数据</span></span><br><span class="line">        Object name = stringRedisTemplate.opsForValue().get(<span class="string">"name"</span>);</span><br><span class="line">        System.out.println(<span class="string">"name = "</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testSaveUser</span><span class="params">()</span> <span class="keyword">throws</span> JsonProcessingException </span>&#123;</span><br><span class="line">        <span class="comment">// 创建对象</span></span><br><span class="line">        User user = <span class="keyword">new</span> User(<span class="string">"虎哥"</span>, <span class="number">21</span>);</span><br><span class="line">        <span class="comment">// 手动序列化</span></span><br><span class="line">        String json = mapper.writeValueAsString(user);</span><br><span class="line">        <span class="comment">// 写入数据</span></span><br><span class="line">        stringRedisTemplate.opsForValue().set(<span class="string">"user:200"</span>, json);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取数据</span></span><br><span class="line">        String jsonUser = stringRedisTemplate.opsForValue().get(<span class="string">"user:200"</span>);</span><br><span class="line">        <span class="comment">// 手动反序列化</span></span><br><span class="line">        User user1 = mapper.readValue(jsonUser, User<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        System.out.println(<span class="string">"user1 = "</span> + user1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>此时我们再来看一看存储的数据，小伙伴们就会发现那个class数据已经不在了，节约了我们的空间~</p>
-<p><img src="/2020/03/10/redis/.%5CRedis.assets%5C1653054945211.png" alt="1653054945211"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401021913615.png" alt="image-20240102191313565" style="zoom: 80%;">
+
 <blockquote>
 <p>最后小总结：</p>
 <p>RedisTemplate的两种序列化实践方案：</p>
@@ -2384,124 +2456,6 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B3%A8%E8%A7%A3/" rel="tag">注解</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-自动登录（过滤器）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/" class="article-date">
-      <time datetime="2020-03-08T13:48:46.000Z" itemprop="datePublished">2020-03-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/">自动登录（过滤器）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="自动登录分析"><a href="#自动登录分析" class="headerlink" title="自动登录分析"></a>自动登录分析</h1><p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/img05.png" alt></p>
-<hr>
-<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="建立数据库"><a href="#建立数据库" class="headerlink" title="建立数据库"></a>建立数据库</h2><p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/shujuku.png" alt></p>
-<h2 id="建立页面"><a href="#建立页面" class="headerlink" title="建立页面"></a>建立页面</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;form method&#x3D;&quot;post&quot; action&#x3D;&quot;&quot;&gt;</span><br><span class="line">	账号：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line">	密码：&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">	   	  &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;auto_login&quot;&gt;自动登录&lt;br&gt;</span><br><span class="line">		  &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot;&gt;</span><br><span class="line">  &lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/zuichu.png" alt></p>
-<h2 id="拷贝jar和JDBCUtils类，C3P0配置文件"><a href="#拷贝jar和JDBCUtils类，C3P0配置文件" class="headerlink" title="拷贝jar和JDBCUtils类，C3P0配置文件"></a>拷贝jar和JDBCUtils类，C3P0配置文件</h2><p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/kaobei.png" alt></p>
-<hr>
-<h1 id="MVC模型各层实现"><a href="#MVC模型各层实现" class="headerlink" title="MVC模型各层实现"></a>MVC模型各层实现</h1><h2 id="dao层代码-接口写方法"><a href="#dao层代码-接口写方法" class="headerlink" title="dao层代码(接口写方法)"></a>dao层代码(接口写方法)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface UserDao &#123;	</span><br><span class="line">	UserBean login(UserBean user) throws SQLException; &#x2F;&#x2F;将传入的数据封装成一个对象  返回所有信息		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="UserBean层-数据封装"><a href="#UserBean层-数据封装" class="headerlink" title="UserBean层(数据封装)"></a>UserBean层(数据封装)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class UserBean &#123;</span><br><span class="line"></span><br><span class="line">	private int id;    &#x2F;&#x2F;数据库的所有属性</span><br><span class="line">	private String username;</span><br><span class="line">	private String password;</span><br><span class="line">	</span><br><span class="line">	public int getId() &#123;</span><br><span class="line">		return id;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setId(int id) &#123;</span><br><span class="line">		this.id &#x3D; id;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getUsername() &#123;</span><br><span class="line">		return username;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setUsername(String username) &#123;</span><br><span class="line">		this.username &#x3D; username;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getPassword() &#123;</span><br><span class="line">		return password;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setPassword(String password) &#123;</span><br><span class="line">		this.password &#x3D; password;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="UserDaoImpl层-具体实现"><a href="#UserDaoImpl层-具体实现" class="headerlink" title="UserDaoImpl层(具体实现)"></a>UserDaoImpl层(具体实现)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class UserDaoImpl implements UserDao &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public UserBean login(UserBean user) throws SQLException &#123;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;1.调用DBUtils的类</span><br><span class="line">			QueryRunner runner&#x3D;new QueryRunner(JDBCUtil02.getDataSource());</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.写sql语句	</span><br><span class="line">			String sql&#x3D;&quot;select * from t_user where username&#x3D;? and password&#x3D;?&quot;;</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;3.调用query方法	</span><br><span class="line">			return  runner.query(sql,new BeanHandler&lt;UserBean&gt;(UserBean.class),user.getUsername(),user.getPassword());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="Servlet层"><a href="#Servlet层" class="headerlink" title="Servlet层"></a>Servlet层</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.获取数据</span><br><span class="line">			String username&#x3D;request.getParameter(&quot;username&quot;);</span><br><span class="line">			String password&#x3D;request.getParameter(&quot;password&quot;);</span><br><span class="line">			String autologin&#x3D;request.getParameter(&quot;auto_login&quot;);</span><br><span class="line">			&#x2F;&#x2F;测试控制台输出一下输入情况： System.out.println(username+&quot;&#x3D;&quot;+password+&quot;&#x3D;&quot;+autologin);</span><br><span class="line">		</span><br><span class="line">			UserBean user&#x3D;new UserBean();  &#x2F;&#x2F;将登陆界面的账号密码封装一下</span><br><span class="line">			user.setUsername(username);</span><br><span class="line">			user.setPassword(password);</span><br><span class="line">			</span><br><span class="line">&#x2F;&#x2F;2.dao层实现</span><br><span class="line">			UserDao dao&#x3D;new UserDaoImpl();</span><br><span class="line">			UserBean userBean&#x3D;dao.login(user);   &#x2F;&#x2F;UserDao存的是</span><br><span class="line">		</span><br><span class="line">&#x2F;&#x2F;3.判断跳转</span><br><span class="line">			if(userBean!&#x3D;null)  &#x2F;&#x2F;成功进入首页</span><br><span class="line">			&#123;</span><br><span class="line">				request.getSession().setAttribute(&quot;userBean&quot;, userBean);</span><br><span class="line">				response.sendRedirect(&quot;index.jsp&quot;);   &#x2F;&#x2F;使用重定位</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			else  &#x2F;&#x2F;输入不正确就还是这个界面</span><br><span class="line">			&#123;</span><br><span class="line">				request.getRequestDispatcher(&quot;login.jsp&quot;).forward(request, response);   &#x2F;&#x2F;使用转发</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="BeanUtils介绍"><a href="#BeanUtils介绍" class="headerlink" title="BeanUtils介绍"></a>BeanUtils介绍</h1><p><strong>使用框架：</strong></p>
-<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/beanUtils.png" alt></p>
-<h2 id="主页的jsp页面"><a href="#主页的jsp页面" class="headerlink" title="主页的jsp页面"></a>主页的jsp页面</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;form method&#x3D;&quot;post&quot; action&#x3D;&quot;RegisterServlet&quot;&gt;</span><br><span class="line">	账号：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line">	密码：&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">	邮箱:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;email&quot;&gt;&lt;br&gt;</span><br><span class="line">	电话：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;phone&quot;&gt;&lt;br&gt;</span><br><span class="line">	地址：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;address&quot;&gt;&lt;br&gt;</span><br><span class="line">	生日：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;birthday&quot;&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">		&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;注册&quot;&gt;</span><br><span class="line">  &lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Servlet代码"><a href="#Servlet代码" class="headerlink" title="Servlet代码"></a>Servlet代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注册自己的日期转换器</span><br><span class="line">			ConvertUtils.register(new MyDateConverter(), Date.class);</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;转化数据</span><br><span class="line">			Map map &#x3D; request.getParameterMap();</span><br><span class="line">			UserBean bean &#x3D; new UserBean();</span><br><span class="line">			BeanUtils.populate(bean, map);</span><br><span class="line"></span><br><span class="line">			System.out.println(&quot;22222bean&#x3D;&quot;+bean.toString());</span><br></pre></td></tr></table></figure>
-
-<h2 id="MyDateConverter类-具体用来String转Date"><a href="#MyDateConverter类-具体用来String转Date" class="headerlink" title="MyDateConverter类(具体用来String转Date)"></a>MyDateConverter类(具体用来String转Date)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class MyDateConverter implements Converter &#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	&#x2F;&#x2F; 将value 转换 c 对应类型</span><br><span class="line">	&#x2F;&#x2F; 存在Class参数目的编写通用转换器，如果转换目标类型是确定的，可以不使用c 参数</span><br><span class="line">	public Object convert(Class c, Object value) &#123;</span><br><span class="line">		String strVal &#x3D; (String) value;</span><br><span class="line">		&#x2F;&#x2F; 将String转换为Date --- 需要使用日期格式化</span><br><span class="line">		DateFormat dateFormat &#x3D; new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);</span><br><span class="line">		try &#123;</span><br><span class="line">			Date date &#x3D; dateFormat.parse(strVal);</span><br><span class="line">			return date;</span><br><span class="line">		&#125; catch (ParseException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/kuang.png" alt></p>
-<hr>
-<h1 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h1><h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><blockquote>
-<p> 过滤器的<strong>核心</strong> 帮用户完成登录的功能。 </p>
-</blockquote>
-<ul>
-<li><strong>实现思路</strong></li>
-</ul>
-<ol>
-<li><p>先判断session是否有效， 如果有效，就不用取cookie了，直接放行。</p>
-</li>
-<li><p>如果session失效了，那么就取 cookie。</p>
-<ol>
-<li><p>没有cookie  第一次来 放行 </p>
-</li>
-<li><p>有cookie </p>
-<pre><code>1. 取出来cookie的值，然后完成登录
-2. 把这个用户的值存储到session中
-3. 放行。</code></pre></li>
-</ol>
-</li>
-</ol>
-<h2 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h2><p><strong>1. new一个新的Filter的文件，然后需要配置web里面的路径</strong></p>
-<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/genggai.png" alt></p>
-<p><strong>2. 编写取出cookie比对的工作类</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class CookieUtil &#123;</span><br><span class="line"></span><br><span class="line">	public static Cookie findCookie(Cookie[] cookies,String name) &#123;  &#x2F;&#x2F;传入已经有的cookie和传进来的name比对</span><br><span class="line">		</span><br><span class="line">		if(cookies!&#x3D;null)</span><br><span class="line">		&#123;</span><br><span class="line">			for(Cookie cookie:cookies)  &#x2F;&#x2F;循环</span><br><span class="line">			&#123;</span><br><span class="line">				if(name.equals(cookie.getName()))</span><br><span class="line">				&#123;</span><br><span class="line">					return cookie;  &#x2F;&#x2F;匹配传过来的和存的有相同的</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>3.编写思路实现(只实现doFilter()方法)：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">public class AutoLoginFilter implements Filter &#123;</span><br><span class="line">    public AutoLoginFilter() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	public void destroy() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException &#123;</span><br><span class="line">		</span><br><span class="line">					try &#123;</span><br><span class="line">						</span><br><span class="line">						HttpServletRequest r&#x3D;(HttpServletRequest)request;  &#x2F;&#x2F;强转一下</span><br><span class="line">						</span><br><span class="line">						&#x2F;&#x2F;先判断，session中还有没有那个userBean</span><br><span class="line">						UserBean userBean&#x3D;(UserBean) r.getSession().getAttribute(&quot;userBean&quot;);</span><br><span class="line">							if(userBean !&#x3D;null)  &#x2F;&#x2F;还有效</span><br><span class="line">							&#123;</span><br><span class="line">								chain.doFilter(request, response);  &#x2F;&#x2F;放行</span><br><span class="line">							&#125;</span><br><span class="line">							else  &#x2F;&#x2F;会话失效</span><br><span class="line">							&#123;</span><br><span class="line">								</span><br><span class="line">								&#x2F;&#x2F;1.从请求中取出cookie 但是cookie有很多key-value</span><br><span class="line">									Cookie[] cookies&#x3D;r.getCookies();</span><br><span class="line">								</span><br><span class="line">								&#x2F;&#x2F;2.从一堆的cookie里面找到之前的那个cookie</span><br><span class="line">									Cookie cookie&#x3D;CookieUtil.findCookie(cookies,&quot;auto_login&quot;);  &#x2F;&#x2F;servlet里面new的时候给的是 auto_login</span><br><span class="line">									</span><br><span class="line">									if(cookie&#x3D;&#x3D;null) &#x2F;&#x2F;第一次登陆</span><br><span class="line">									&#123;</span><br><span class="line">										chain.doFilter(request, response);  &#x2F;&#x2F;放行</span><br><span class="line">									&#125;</span><br><span class="line">									else    &#x2F;&#x2F;不是第一次</span><br><span class="line">									&#123;</span><br><span class="line">										</span><br><span class="line">												&#x2F;&#x2F;来到这里 表明什么情况</span><br><span class="line">													String value &#x3D; cookie.getValue();</span><br><span class="line">													String username &#x3D; value.split(&quot;#itheima#&quot;)[0];</span><br><span class="line">													String password &#x3D; value.split(&quot;#itheima#&quot;)[1];</span><br><span class="line">												</span><br><span class="line">												&#x2F;&#x2F;完成登录</span><br><span class="line">													UserBean user &#x3D; new UserBean();</span><br><span class="line">													user.setUsername(username);</span><br><span class="line">													user.setPassword(password);</span><br><span class="line"></span><br><span class="line">													UserDao dao &#x3D; new UserDaoImpl();</span><br><span class="line">														userBean &#x3D; dao.login(user);</span><br><span class="line">									</span><br><span class="line">												&#x2F;&#x2F;使用session存这个值到域中，方便下一次未过期前还可以用。</span><br><span class="line">													r.getSession().setAttribute(&quot;userBean&quot;, userBean);</span><br><span class="line">													</span><br><span class="line">													chain.doFilter(request, response); &#x2F;&#x2F;放行	</span><br><span class="line">									&#125;	</span><br><span class="line">							&#125;	</span><br><span class="line">					&#125;</span><br><span class="line">					catch (SQLException e) </span><br><span class="line">					&#123;</span><br><span class="line">						&#x2F;&#x2F; TODO 自动生成的 catch 块</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">						chain.doFilter(request, response);   &#x2F;&#x2F;异常也要放行	</span><br><span class="line">					&#125;							</span><br><span class="line">		&#125;	</span><br><span class="line">	</span><br><span class="line">	public void init(FilterConfig fConfig) throws ServletException &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><strong>展示代码层次</strong></p>
-<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/jieshi.png" alt></p>
-<p><strong>尝试使用：</strong></p>
-<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/changshi.png" alt></p>
-<hr>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Filter/" rel="tag">Filter</a></li></ul>
     </div>
 
       

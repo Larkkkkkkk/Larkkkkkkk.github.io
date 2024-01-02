@@ -332,6 +332,124 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-自动登录（过滤器）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/" class="article-date">
+      <time datetime="2020-03-08T13:48:46.000Z" itemprop="datePublished">2020-03-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/">自动登录（过滤器）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="自动登录分析"><a href="#自动登录分析" class="headerlink" title="自动登录分析"></a>自动登录分析</h1><p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/img05.png" alt></p>
+<hr>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="建立数据库"><a href="#建立数据库" class="headerlink" title="建立数据库"></a>建立数据库</h2><p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/shujuku.png" alt></p>
+<h2 id="建立页面"><a href="#建立页面" class="headerlink" title="建立页面"></a>建立页面</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;form method&#x3D;&quot;post&quot; action&#x3D;&quot;&quot;&gt;</span><br><span class="line">	账号：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line">	密码：&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">	   	  &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;auto_login&quot;&gt;自动登录&lt;br&gt;</span><br><span class="line">		  &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot;&gt;</span><br><span class="line">  &lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/zuichu.png" alt></p>
+<h2 id="拷贝jar和JDBCUtils类，C3P0配置文件"><a href="#拷贝jar和JDBCUtils类，C3P0配置文件" class="headerlink" title="拷贝jar和JDBCUtils类，C3P0配置文件"></a>拷贝jar和JDBCUtils类，C3P0配置文件</h2><p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/kaobei.png" alt></p>
+<hr>
+<h1 id="MVC模型各层实现"><a href="#MVC模型各层实现" class="headerlink" title="MVC模型各层实现"></a>MVC模型各层实现</h1><h2 id="dao层代码-接口写方法"><a href="#dao层代码-接口写方法" class="headerlink" title="dao层代码(接口写方法)"></a>dao层代码(接口写方法)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface UserDao &#123;	</span><br><span class="line">	UserBean login(UserBean user) throws SQLException; &#x2F;&#x2F;将传入的数据封装成一个对象  返回所有信息		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="UserBean层-数据封装"><a href="#UserBean层-数据封装" class="headerlink" title="UserBean层(数据封装)"></a>UserBean层(数据封装)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class UserBean &#123;</span><br><span class="line"></span><br><span class="line">	private int id;    &#x2F;&#x2F;数据库的所有属性</span><br><span class="line">	private String username;</span><br><span class="line">	private String password;</span><br><span class="line">	</span><br><span class="line">	public int getId() &#123;</span><br><span class="line">		return id;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setId(int id) &#123;</span><br><span class="line">		this.id &#x3D; id;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getUsername() &#123;</span><br><span class="line">		return username;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setUsername(String username) &#123;</span><br><span class="line">		this.username &#x3D; username;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getPassword() &#123;</span><br><span class="line">		return password;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setPassword(String password) &#123;</span><br><span class="line">		this.password &#x3D; password;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="UserDaoImpl层-具体实现"><a href="#UserDaoImpl层-具体实现" class="headerlink" title="UserDaoImpl层(具体实现)"></a>UserDaoImpl层(具体实现)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class UserDaoImpl implements UserDao &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public UserBean login(UserBean user) throws SQLException &#123;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;1.调用DBUtils的类</span><br><span class="line">			QueryRunner runner&#x3D;new QueryRunner(JDBCUtil02.getDataSource());</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.写sql语句	</span><br><span class="line">			String sql&#x3D;&quot;select * from t_user where username&#x3D;? and password&#x3D;?&quot;;</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;3.调用query方法	</span><br><span class="line">			return  runner.query(sql,new BeanHandler&lt;UserBean&gt;(UserBean.class),user.getUsername(),user.getPassword());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Servlet层"><a href="#Servlet层" class="headerlink" title="Servlet层"></a>Servlet层</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.获取数据</span><br><span class="line">			String username&#x3D;request.getParameter(&quot;username&quot;);</span><br><span class="line">			String password&#x3D;request.getParameter(&quot;password&quot;);</span><br><span class="line">			String autologin&#x3D;request.getParameter(&quot;auto_login&quot;);</span><br><span class="line">			&#x2F;&#x2F;测试控制台输出一下输入情况： System.out.println(username+&quot;&#x3D;&quot;+password+&quot;&#x3D;&quot;+autologin);</span><br><span class="line">		</span><br><span class="line">			UserBean user&#x3D;new UserBean();  &#x2F;&#x2F;将登陆界面的账号密码封装一下</span><br><span class="line">			user.setUsername(username);</span><br><span class="line">			user.setPassword(password);</span><br><span class="line">			</span><br><span class="line">&#x2F;&#x2F;2.dao层实现</span><br><span class="line">			UserDao dao&#x3D;new UserDaoImpl();</span><br><span class="line">			UserBean userBean&#x3D;dao.login(user);   &#x2F;&#x2F;UserDao存的是</span><br><span class="line">		</span><br><span class="line">&#x2F;&#x2F;3.判断跳转</span><br><span class="line">			if(userBean!&#x3D;null)  &#x2F;&#x2F;成功进入首页</span><br><span class="line">			&#123;</span><br><span class="line">				request.getSession().setAttribute(&quot;userBean&quot;, userBean);</span><br><span class="line">				response.sendRedirect(&quot;index.jsp&quot;);   &#x2F;&#x2F;使用重定位</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			else  &#x2F;&#x2F;输入不正确就还是这个界面</span><br><span class="line">			&#123;</span><br><span class="line">				request.getRequestDispatcher(&quot;login.jsp&quot;).forward(request, response);   &#x2F;&#x2F;使用转发</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="BeanUtils介绍"><a href="#BeanUtils介绍" class="headerlink" title="BeanUtils介绍"></a>BeanUtils介绍</h1><p><strong>使用框架：</strong></p>
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/beanUtils.png" alt></p>
+<h2 id="主页的jsp页面"><a href="#主页的jsp页面" class="headerlink" title="主页的jsp页面"></a>主页的jsp页面</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;form method&#x3D;&quot;post&quot; action&#x3D;&quot;RegisterServlet&quot;&gt;</span><br><span class="line">	账号：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line">	密码：&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">	邮箱:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;email&quot;&gt;&lt;br&gt;</span><br><span class="line">	电话：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;phone&quot;&gt;&lt;br&gt;</span><br><span class="line">	地址：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;address&quot;&gt;&lt;br&gt;</span><br><span class="line">	生日：&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;birthday&quot;&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">		&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;注册&quot;&gt;</span><br><span class="line">  &lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Servlet代码"><a href="#Servlet代码" class="headerlink" title="Servlet代码"></a>Servlet代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注册自己的日期转换器</span><br><span class="line">			ConvertUtils.register(new MyDateConverter(), Date.class);</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;转化数据</span><br><span class="line">			Map map &#x3D; request.getParameterMap();</span><br><span class="line">			UserBean bean &#x3D; new UserBean();</span><br><span class="line">			BeanUtils.populate(bean, map);</span><br><span class="line"></span><br><span class="line">			System.out.println(&quot;22222bean&#x3D;&quot;+bean.toString());</span><br></pre></td></tr></table></figure>
+
+<h2 id="MyDateConverter类-具体用来String转Date"><a href="#MyDateConverter类-具体用来String转Date" class="headerlink" title="MyDateConverter类(具体用来String转Date)"></a>MyDateConverter类(具体用来String转Date)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class MyDateConverter implements Converter &#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	&#x2F;&#x2F; 将value 转换 c 对应类型</span><br><span class="line">	&#x2F;&#x2F; 存在Class参数目的编写通用转换器，如果转换目标类型是确定的，可以不使用c 参数</span><br><span class="line">	public Object convert(Class c, Object value) &#123;</span><br><span class="line">		String strVal &#x3D; (String) value;</span><br><span class="line">		&#x2F;&#x2F; 将String转换为Date --- 需要使用日期格式化</span><br><span class="line">		DateFormat dateFormat &#x3D; new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);</span><br><span class="line">		try &#123;</span><br><span class="line">			Date date &#x3D; dateFormat.parse(strVal);</span><br><span class="line">			return date;</span><br><span class="line">		&#125; catch (ParseException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/kuang.png" alt></p>
+<hr>
+<h1 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h1><h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><blockquote>
+<p> 过滤器的<strong>核心</strong> 帮用户完成登录的功能。 </p>
+</blockquote>
+<ul>
+<li><strong>实现思路</strong></li>
+</ul>
+<ol>
+<li><p>先判断session是否有效， 如果有效，就不用取cookie了，直接放行。</p>
+</li>
+<li><p>如果session失效了，那么就取 cookie。</p>
+<ol>
+<li><p>没有cookie  第一次来 放行 </p>
+</li>
+<li><p>有cookie </p>
+<pre><code>1. 取出来cookie的值，然后完成登录
+2. 把这个用户的值存储到session中
+3. 放行。</code></pre></li>
+</ol>
+</li>
+</ol>
+<h2 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h2><p><strong>1. new一个新的Filter的文件，然后需要配置web里面的路径</strong></p>
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/genggai.png" alt></p>
+<p><strong>2. 编写取出cookie比对的工作类</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class CookieUtil &#123;</span><br><span class="line"></span><br><span class="line">	public static Cookie findCookie(Cookie[] cookies,String name) &#123;  &#x2F;&#x2F;传入已经有的cookie和传进来的name比对</span><br><span class="line">		</span><br><span class="line">		if(cookies!&#x3D;null)</span><br><span class="line">		&#123;</span><br><span class="line">			for(Cookie cookie:cookies)  &#x2F;&#x2F;循环</span><br><span class="line">			&#123;</span><br><span class="line">				if(name.equals(cookie.getName()))</span><br><span class="line">				&#123;</span><br><span class="line">					return cookie;  &#x2F;&#x2F;匹配传过来的和存的有相同的</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.编写思路实现(只实现doFilter()方法)：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">public class AutoLoginFilter implements Filter &#123;</span><br><span class="line">    public AutoLoginFilter() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	public void destroy() &#123;&#125;</span><br><span class="line"></span><br><span class="line">	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException &#123;</span><br><span class="line">		</span><br><span class="line">					try &#123;</span><br><span class="line">						</span><br><span class="line">						HttpServletRequest r&#x3D;(HttpServletRequest)request;  &#x2F;&#x2F;强转一下</span><br><span class="line">						</span><br><span class="line">						&#x2F;&#x2F;先判断，session中还有没有那个userBean</span><br><span class="line">						UserBean userBean&#x3D;(UserBean) r.getSession().getAttribute(&quot;userBean&quot;);</span><br><span class="line">							if(userBean !&#x3D;null)  &#x2F;&#x2F;还有效</span><br><span class="line">							&#123;</span><br><span class="line">								chain.doFilter(request, response);  &#x2F;&#x2F;放行</span><br><span class="line">							&#125;</span><br><span class="line">							else  &#x2F;&#x2F;会话失效</span><br><span class="line">							&#123;</span><br><span class="line">								</span><br><span class="line">								&#x2F;&#x2F;1.从请求中取出cookie 但是cookie有很多key-value</span><br><span class="line">									Cookie[] cookies&#x3D;r.getCookies();</span><br><span class="line">								</span><br><span class="line">								&#x2F;&#x2F;2.从一堆的cookie里面找到之前的那个cookie</span><br><span class="line">									Cookie cookie&#x3D;CookieUtil.findCookie(cookies,&quot;auto_login&quot;);  &#x2F;&#x2F;servlet里面new的时候给的是 auto_login</span><br><span class="line">									</span><br><span class="line">									if(cookie&#x3D;&#x3D;null) &#x2F;&#x2F;第一次登陆</span><br><span class="line">									&#123;</span><br><span class="line">										chain.doFilter(request, response);  &#x2F;&#x2F;放行</span><br><span class="line">									&#125;</span><br><span class="line">									else    &#x2F;&#x2F;不是第一次</span><br><span class="line">									&#123;</span><br><span class="line">										</span><br><span class="line">												&#x2F;&#x2F;来到这里 表明什么情况</span><br><span class="line">													String value &#x3D; cookie.getValue();</span><br><span class="line">													String username &#x3D; value.split(&quot;#itheima#&quot;)[0];</span><br><span class="line">													String password &#x3D; value.split(&quot;#itheima#&quot;)[1];</span><br><span class="line">												</span><br><span class="line">												&#x2F;&#x2F;完成登录</span><br><span class="line">													UserBean user &#x3D; new UserBean();</span><br><span class="line">													user.setUsername(username);</span><br><span class="line">													user.setPassword(password);</span><br><span class="line"></span><br><span class="line">													UserDao dao &#x3D; new UserDaoImpl();</span><br><span class="line">														userBean &#x3D; dao.login(user);</span><br><span class="line">									</span><br><span class="line">												&#x2F;&#x2F;使用session存这个值到域中，方便下一次未过期前还可以用。</span><br><span class="line">													r.getSession().setAttribute(&quot;userBean&quot;, userBean);</span><br><span class="line">													</span><br><span class="line">													chain.doFilter(request, response); &#x2F;&#x2F;放行	</span><br><span class="line">									&#125;	</span><br><span class="line">							&#125;	</span><br><span class="line">					&#125;</span><br><span class="line">					catch (SQLException e) </span><br><span class="line">					&#123;</span><br><span class="line">						&#x2F;&#x2F; TODO 自动生成的 catch 块</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">						chain.doFilter(request, response);   &#x2F;&#x2F;异常也要放行	</span><br><span class="line">					&#125;							</span><br><span class="line">		&#125;	</span><br><span class="line">	</span><br><span class="line">	public void init(FilterConfig fConfig) throws ServletException &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><strong>展示代码层次</strong></p>
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/jieshi.png" alt></p>
+<p><strong>尝试使用：</strong></p>
+<p><img src="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/changshi.png" alt></p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Filter/" rel="tag">Filter</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Filter" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1383,69 +1501,6 @@ SELECT * FROM stu LIMIT    5 OFFSET 2 (一次性五条 相对与之前的而言)
 
 缺点： 数据库量过大，内存溢出。</code></pre><hr>
 <h1 id="十一、代码完整上传至其他仓库-Student-management-system"><a href="#十一、代码完整上传至其他仓库-Student-management-system" class="headerlink" title="十一、代码完整上传至其他仓库(Student management system)"></a>十一、代码完整上传至其他仓库(Student management system)</h1>
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2-0/" rel="tag">学生管理系统2.0</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-三层架构" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/29/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/" class="article-date">
-      <time datetime="2020-02-29T13:11:49.000Z" itemprop="datePublished">2020-02-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/29/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">三层架构</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="一、三层架构-客户端"><a href="#一、三层架构-客户端" class="headerlink" title="一、三层架构(客户端)"></a>一、三层架构(客户端)</h1><p><img src="/2020/02/29/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/img02.png" alt></p>
-<ul>
-<li><strong>三层结构</strong></li>
-</ul>
-<p><strong>1. Web层：</strong>JSP和Servlet<br><strong>2. 业务逻辑层：</strong>EJB 会话bean JAVABean<br><strong>3. 数据访问层：</strong>Dao</p>
-
       
       
     </div>
