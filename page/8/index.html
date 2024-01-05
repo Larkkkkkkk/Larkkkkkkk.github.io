@@ -332,6 +332,77 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-LeetCode链表" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/" class="article-date">
+      <time datetime="2020-10-04T13:28:30.000Z" itemprop="datePublished">2020-10-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/">LeetCode链表</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="删除排序链表的重复元素-改变指向"><a href="#删除排序链表的重复元素-改变指向" class="headerlink" title="删除排序链表的重复元素(改变指向)"></a>删除排序链表的重复元素(改变指向)</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/delduoyu.png" alt></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 新建current链表指向head，方便后面移动
+2. 只要当前节点值和下一个结点值相同就指向跳过下一个节点
+3. 只要不相同就正常挪到下个节点判断</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static ListNode deleteDuplicates(ListNode head) &#123;</span><br><span class="line">       ListNode current &#x3D; head;  &#x2F;&#x2F;要判断的链表给current</span><br><span class="line">       while (current !&#x3D; null &amp;&amp; current.next !&#x3D; null) &#123;  &#x2F;&#x2F;没到结尾</span><br><span class="line">           if (current.next.val &#x3D;&#x3D; current.val) &#123;  &#x2F;&#x2F;当前节点和下一个结点值相同</span><br><span class="line">               current.next &#x3D; current.next.next;  &#x2F;&#x2F;直接跳过下一个节点</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">               current &#x3D; current.next; &#x2F;&#x2F;不相同的话挪下一个结点判断</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       return head;  &#x2F;&#x2F;最后返回head即可</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="二进制链表转整数-倒序累积"><a href="#二进制链表转整数-倒序累积" class="headerlink" title="二进制链表转整数(倒序累积)"></a>二进制链表转整数(倒序累积)</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p><img src="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/zhuanzhengshutimu.png" alt></p>
+<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><pre><code>1. 使用while循环测试出多少个节点(数组方便给大小)
+2. 使用while循环将每一位给数组
+3. 倒序将二进制累计!!</code></pre><h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.util.*;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        ListNode head1&#x3D;new ListNode(1);</span><br><span class="line">        ListNode head2&#x3D;new ListNode(0);</span><br><span class="line">        ListNode head3&#x3D;new ListNode(1);</span><br><span class="line">        head1.next&#x3D;head2;    &#x2F;&#x2F;生成三个节点 然后相连</span><br><span class="line">        head2.next&#x3D;head3;</span><br><span class="line">        System.out.println(getDecimalValue(head1));  &#x2F;&#x2F;调用方法返回结果</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static int getDecimalValue(ListNode head) &#123;</span><br><span class="line">        int res&#x3D;0;</span><br><span class="line">        int flag&#x3D;0; &#x2F;&#x2F;统计有几个节点</span><br><span class="line">        ListNode temp&#x3D;head;</span><br><span class="line">        while(temp!&#x3D;null)&#123;</span><br><span class="line">            flag++;  &#x2F;&#x2F;+1</span><br><span class="line">            temp&#x3D;temp.next;  &#x2F;&#x2F;节点往后遍历</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        temp&#x3D;head;  &#x2F;&#x2F;重新指向head</span><br><span class="line">        int[] a&#x3D;new int[flag];  &#x2F;&#x2F;存每一位</span><br><span class="line">        int t&#x3D;0; &#x2F;&#x2F;控制a数组下标</span><br><span class="line">        while(temp!&#x3D;null)&#123;</span><br><span class="line">            a[t++]&#x3D;temp.val;  &#x2F;&#x2F;记录当前值</span><br><span class="line">            temp&#x3D;temp.next;  &#x2F;&#x2F;节点往后遍历</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;a数组&quot;+Arrays.toString(a));</span><br><span class="line"></span><br><span class="line">        int zs&#x3D;0; &#x2F;&#x2F;控制每一位数字乘2的倍数</span><br><span class="line">        for(int i&#x3D;a.length-1;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">           System.out.println(&quot;a[i]是:&quot;+a[i]+&quot; 当前倍数乘的是:&quot;+Math.pow(2,zs));</span><br><span class="line">            res+&#x3D;a[i]*Math.pow(2,zs);</span><br><span class="line">            zs++;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/zhuanzhengshu.png" alt></p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-本地项目上传Github" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -3527,115 +3598,6 @@ volatile：有序性 + 可见性（缺一个原子性）</code></pre><h2 id="知
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A7%8B%E6%8B%9B/" rel="tag">秋招</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Hexo博客重装系统重新部署" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" class="article-date">
-      <time datetime="2020-07-12T06:08:36.000Z" itemprop="datePublished">2020-07-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/">Hexo博客重装系统重新部署</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="前提-博客文件夹还在"><a href="#前提-博客文件夹还在" class="headerlink" title="前提(博客文件夹还在!!!)"></a>前提(博客文件夹还在!!!)</h1><blockquote>
-<p>我写这篇博客想记录重装系统之后如何重新部署hexo博客!!</p>
-</blockquote>
-<hr>
-<h1 id="1-完整步骤"><a href="#1-完整步骤" class="headerlink" title="1.完整步骤"></a>1.完整步骤</h1><h2 id="1-1安装git和node-js文件"><a href="#1-1安装git和node-js文件" class="headerlink" title="1.1安装git和node.js文件"></a>1.1安装git和node.js文件</h2><blockquote>
-<p>两个软件路径百度就可以找到(如果你有幸看到这篇文章,可以联系我发给你)</p>
-</blockquote>
-<h2 id="1-2配置git信息-生成新的ssh密钥"><a href="#1-2配置git信息-生成新的ssh密钥" class="headerlink" title="1.2配置git信息,生成新的ssh密钥"></a>1.2配置git信息,生成新的ssh密钥</h2><pre><code>//每次输入一行就执行一次(按回车)
-    git config --global user.name &quot;你自己的github用户名&quot;
-    git config --global user.email &quot;Xxxxx@qq.com&quot;
-
-//你需要把邮件地址和用户名换成你自己的，然后一路回车，使用默认值即可。    
-    ssh-keygen -t rsa -C &quot;Xxxx@qq.com&quot;</code></pre><h2 id="1-3更新ssh密钥"><a href="#1-3更新ssh密钥" class="headerlink" title="1.3更新ssh密钥"></a>1.3更新ssh密钥</h2><blockquote>
-<p>打开id_rsa.pub文件并且复制里面的内容</p>
-</blockquote>
-<p><img src="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/lujing.png" alt></p>
-<blockquote>
-<p>生成的ssh公钥(刚复制的内容)复制到github的settings里面的ssh选项中(参考github讲ssh密钥添加到github账户)</p>
-</blockquote>
-<p><a href="http://https://docs.github.com/cn/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account" target="_blank" rel="noopener" title="参考">http://https://docs.github.com/cn/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account</a></p>
-<h2 id="1-4安装hexo"><a href="#1-4安装hexo" class="headerlink" title="1.4安装hexo"></a>1.4安装hexo</h2><blockquote>
-<p>npm install hexo-cli -g</p>
-</blockquote>
-<h2 id="1-5打开原来的hexo博客所在文件夹"><a href="#1-5打开原来的hexo博客所在文件夹" class="headerlink" title="1.5打开原来的hexo博客所在文件夹"></a>1.5打开原来的hexo博客所在文件夹</h2><blockquote>
-<p>只需保留_config.yml，theme/，source/，scaffolds/，package.json，.gitignore 这些项目，删除其他的文件。</p>
-</blockquote>
-<blockquote>
-<p>git bush运行命令npm install</p>
-</blockquote>
-<blockquote>
-<p>git bush运行命令npm install hexo-deployer-git –save</p>
-</blockquote>
-<blockquote>
-<p>最后执行hexo g和hexo d试试就行</p>
-</blockquote>
-<hr>
-<h1 id="2-重新部署参考文章"><a href="#2-重新部署参考文章" class="headerlink" title="2.重新部署参考文章"></a>2.重新部署参考文章</h1><blockquote>
-<p>参考别人的思路!!!</p>
-</blockquote>
-<p><a href="http://http://fenghub.top/2017/02/25/hexo-rebuilding/" target="_blank" rel="noopener" title="大佬的">http://http://fenghub.top/2017/02/25/hexo-rebuilding/</a></p>
-<hr>
-<h1 id="3-hexo博客更改域名"><a href="#3-hexo博客更改域名" class="headerlink" title="3.hexo博客更改域名"></a>3.hexo博客更改域名</h1><h2 id="3-1-购买域名"><a href="#3-1-购买域名" class="headerlink" title="3.1 购买域名"></a>3.1 购买域名</h2><h2 id="3-2-域名解析"><a href="#3-2-域名解析" class="headerlink" title="3.2 域名解析"></a>3.2 域名解析</h2><p>前提:</p>
-<p>​    先找到自己能够跑通的github网站:   larkkkkkkk.github.io</p>
-<p>​    然后电脑cmd打开输入ipconfig进行ping一下: 得到<strong>ip地址xxx.xxx.xxx.xxx</strong></p>
-<p><img src="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/image-20231009160826890.png" alt="image-20231009160826890"></p>
-<h3 id="3-2-1-一键解析"><a href="#3-2-1-一键解析" class="headerlink" title="3.2.1 一键解析"></a>3.2.1 一键解析</h3><p><img src="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/image-20231009160418731.png" alt="image-20231009160418731"></p>
-<h3 id="3-2-2-自己解析"><a href="#3-2-2-自己解析" class="headerlink" title="3.2.2 自己解析"></a>3.2.2 自己解析</h3><p>创建一条A记录,创建一条CNAME记录。</p>
-<p><img src="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/image-20231009160942760.png" alt="image-20231009160942760"></p>
-<h2 id="3-3-Hexo目录下创建CNAME文件"><a href="#3-3-Hexo目录下创建CNAME文件" class="headerlink" title="3.3 Hexo目录下创建CNAME文件"></a>3.3 Hexo目录下创建CNAME文件</h2><p>创建一个文件里面存放你的域名: <a href="http://www.xxx.xxx" target="_blank" rel="noopener">www.xxx.xxx</a><br><img src="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/image-20231009161109713.png" alt="image-20231009161109713"></p>
-<h2 id="3-4-访问"><a href="#3-4-访问" class="headerlink" title="3.4 访问"></a>3.4 访问</h2><p>这样的话就不用xxx.github.io,直接访问你的新域名就行</p>
-<p><img src="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/image-20231009161211550.png" alt="image-20231009161211550"></p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" rel="tag">重新部署</a></li></ul>
     </div>
 
       

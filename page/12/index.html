@@ -332,6 +332,99 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JSP九大内置对象和四大作用域" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/04/09/JSP%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9B%9B%E5%A4%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="article-date">
+      <time datetime="2020-04-09T14:57:37.000Z" itemprop="datePublished">2020-04-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/09/JSP%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9B%9B%E5%A4%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/">JSP九大内置对象和四大作用域</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="九大内置对象"><a href="#九大内置对象" class="headerlink" title="九大内置对象"></a>九大内置对象</h1><p><img src="/2020/04/09/JSP%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9B%9B%E5%A4%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/jiuge.jpg" alt></p>
+<hr>
+<h1 id="四个作用域"><a href="#四个作用域" class="headerlink" title="四个作用域"></a>四个作用域</h1><p><strong>1. page(当前页面)</strong></p>
+<p><strong>2. request(一次请求中同一个对象)</strong></p>
+<p><strong>3. session(一次会话)</strong></p>
+<pre><code>3.1 只要客户端Cookie中传递的Jsessionid不变 --&gt; session就不会重新实例化(不超过默认时间)
+3.2 实际有效时间:
+    3.2.1 浏览器关闭 ： cookie失效
+    3.2.2 默认时间 ：tomcat的web.xml中配置</code></pre><p><strong>4 .application(关闭tomcat)</strong></p>
+<hr>
+<h1 id="SpringMVC作用域传值方式-四种"><a href="#SpringMVC作用域传值方式-四种" class="headerlink" title="SpringMVC作用域传值方式(四种)"></a>SpringMVC作用域传值方式(四种)</h1><pre><code>1. 使用原生Servlet(HandlerMethod参数中添加作用域对象)
+2. 使用Map集合
+3. 使用SpringMVC中Model接口
+4. 使用SpringMVC中ModelAndView类</code></pre><h2 id="使用原生Servlet"><a href="#使用原生Servlet" class="headerlink" title="使用原生Servlet"></a>使用原生Servlet</h2><blockquote>
+<p><strong>在HandlerMethod参数中 + 作用域对象</strong></p>
+</blockquote>
+<p><strong>注解类：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class DemoController &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(&quot;demo01&quot;)</span><br><span class="line">	public String demo1(HttpServletRequest abc,HttpSession sessionParam) &#123;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;request作用域	</span><br><span class="line">		abc.setAttribute(&quot;req&quot;,&quot;req的值&quot;);</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;session作用域	</span><br><span class="line">		HttpSession session &#x3D; abc.getSession();</span><br><span class="line">		session.setAttribute(&quot;session&quot;, &quot;session的值&quot;);</span><br><span class="line">		sessionParam.setAttribute(&quot;sessionParam&quot;, &quot;sessionParam的值&quot;);</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;设置application作用域	</span><br><span class="line">		ServletContext application&#x3D;abc.getServletContext();</span><br><span class="line">		application.setAttribute(&quot;application&quot;,&quot;application的值&quot;);</span><br><span class="line">		</span><br><span class="line">		return &quot;index.jsp&quot;; &#x2F;&#x2F;返回给一个jsp页面</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>index.jsp页面(取出来):</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">request:$&#123;requestScope.req &#125;&lt;&#x2F;br&gt;</span><br><span class="line">session:$&#123;sessionScope.session &#125;&lt;&#x2F;br&gt;</span><br><span class="line">sessionParam:$&#123;sessionScope.sessionParam &#125;&lt;&#x2F;br&gt;</span><br><span class="line">application:$&#123;applicationScope.application &#125;&lt;&#x2F;br&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Map集合"><a href="#Map集合" class="headerlink" title="Map集合"></a>Map集合</h2><blockquote>
+<p><strong>map中的内容放入request作用域</strong><br><strong>spring会对map集合通过BindingAwareModelMap进行实例化</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;demo02&quot;)</span><br><span class="line">	public String demo2(Map&lt;String,Object&gt; map) &#123;</span><br><span class="line"></span><br><span class="line">	System.out.println(map.getClass());  &#x2F;&#x2F;输出map的结果</span><br><span class="line">	map.put(&quot;map&quot;,&quot;map的值&quot;);  &#x2F;&#x2F;获取map值</span><br><span class="line">	return &quot;index.jsp&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用SpringMVC中Model接口"><a href="#使用SpringMVC中Model接口" class="headerlink" title="使用SpringMVC中Model接口"></a>使用SpringMVC中Model接口</h2><blockquote>
+<p><strong>内容最终放入到request作用域</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;demo03&quot;)</span><br><span class="line">	public String demo3(Model model) &#123;</span><br><span class="line"></span><br><span class="line">	model.addAttribute(&quot;model&quot;,&quot;model的值&quot;);</span><br><span class="line">	return &quot;index.jsp&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用SpringMVC中ModelAndView类"><a href="#使用SpringMVC中ModelAndView类" class="headerlink" title="使用SpringMVC中ModelAndView类"></a>使用SpringMVC中ModelAndView类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;demo04&quot;)</span><br><span class="line">	public String demo4() &#123;</span><br><span class="line"></span><br><span class="line">	ModelAndView m&#x3D;new ModelAndView(&quot;index.jsp&quot;);</span><br><span class="line">	return &quot;m&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-SpringMVC实现菜单功能" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1248,182 +1341,6 @@
 
 异常解决：
         proxy-target-class更改 true(cglib动态代理) / false(JDK动态代理)</code></pre><h2 id="配置文件aop标签-配合注解"><a href="#配置文件aop标签-配合注解" class="headerlink" title="配置文件aop标签(配合注解)"></a>配置文件aop标签(配合注解)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;aop:aspectj-autoproxy proxy-target-class&#x3D;&quot;true&quot;&gt;  &#x2F;&#x2F;注解一定要打开true  用更高效的cglib</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;aop:aspectj-autoproxy&gt;</span><br></pre></td></tr></table></figure>
-
-<hr>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-AOP" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/04/02/AOP/" class="article-date">
-      <time datetime="2020-04-01T16:04:13.000Z" itemprop="datePublished">2020-04-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/02/AOP/">AOP</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="AOP-面向切面编程"><a href="#AOP-面向切面编程" class="headerlink" title="AOP 面向切面编程"></a>AOP 面向切面编程</h1><blockquote>
-<p>在原有纵向执行流程中添加横切面(不需要修改原有代码)</p>
-</blockquote>
-<p><strong>面向切面编程 特性：</strong><br>    1. 高扩展性<br>    2. 原有代码释放了部分逻辑(横切面会分担一些功能)</p>
-<p><strong>面向切面编程：</strong></p>
-<pre><code>在程序原有纵向执行流程中，针对某一个/某一些方法添加通知，形成横切面过程 -- 面向切面编程</code></pre><p><strong>面向切面编程概念图：</strong></p>
-<p><img src="/2020/04/02/AOP/gainian.png" alt></p>
-<pre><code>1. 原有功能： 切点(pointcut)
-2. 前置通知： 切点之前执行的功能 (before advice)
-3. 后置通知： 切点之后执行的功能 (after advice)
-4. 异常通知： 切点执行过程中出现异常 (throws advice)
-5. 切面： 所有功能总称
-6. 织入： 将切面嵌入到原有功能的过程</code></pre><h2 id="两种AOP实现方式"><a href="#两种AOP实现方式" class="headerlink" title="两种AOP实现方式"></a>两种AOP实现方式</h2><pre><code>1. Schema-based  
-    1. 每个通知都需要实现接口/类
-    2. 配置spring配置文件在&lt;aop:config&gt;配置
-
-2. AspectJ  
-    1. 每个通知不需要实现接口/类
-    2. 配置spring配置文件在&lt;aop:config&gt;的子标签&lt;aop:aspect&gt;中配置</code></pre><hr>
-<h1 id="使用Schema-based方式"><a href="#使用Schema-based方式" class="headerlink" title="使用Schema-based方式"></a>使用Schema-based方式</h1><h2 id="总体实现步骤"><a href="#总体实现步骤" class="headerlink" title="总体实现步骤"></a>总体实现步骤</h2><pre><code>1.导入jar包
-2.编写demo类(具有几个方法)
-3.编写配置文件
-    3.1 导入aop的xmls和location
-    3.2 编写aop的相关信息(切点 前置和后置通知类的连接)
-    3.3 前置通知类/后置通知类/demo类的bean方法
-4.编写前置通知类(实现MethodBeforeAdvice接口)
-5.编写后置通知类(实现AfterReturningAdvic接口)
-6.编写测试类(IOC 控制反转)</code></pre><h2 id="具体实现代码"><a href="#具体实现代码" class="headerlink" title="具体实现代码"></a>具体实现代码</h2><p><strong>1.导入jar包</strong></p>
-<p><img src="/2020/04/02/AOP/ajr.png" alt></p>
-<p><strong>2.Demo类</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Demo &#123;</span><br><span class="line"></span><br><span class="line">	public void demo1()&#123;</span><br><span class="line">		System.out.println(&quot;demo1&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void demo2()&#123;</span><br><span class="line">		System.out.println(&quot;demo2&quot;);  &#x2F;&#x2F;切点是demo02方法</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void demo3()&#123;</span><br><span class="line">		System.out.println(&quot;demo3&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>3.配置文件</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">    xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">    xmlns:aop&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&quot;             &lt;!-- 导入aop的xmlns --&gt;</span><br><span class="line">    xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop                       &lt;!-- 导入aop的地址 --&gt;</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&#x2F;spring-aop.xsd&quot;&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;bean id&#x3D;&quot;mybefore&quot; class&#x3D;&quot;com.bjsxt.advice.MyBeforeAdvice&quot;&gt;&lt;&#x2F;bean&gt;  &lt;!-- 前置通知类 --&gt;</span><br><span class="line">    &lt;bean id&#x3D;&quot;myafter&quot;  class&#x3D;&quot;com.bjsxt.advice.MyAfterAdvice&quot;&gt;&lt;&#x2F;bean&gt;   &lt;!-- 后置通知类 --&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;aop:config&gt;</span><br><span class="line">    	 &lt;aop:pointcut expression&#x3D;&quot;execution(* com.bjsxt.test.Demo.demo02())&quot; id&#x3D;&quot;mypoint&quot;&#x2F;&gt;  &lt;!-- 要给aop的pointcut切点编程  execution(* )的格式 --&gt;</span><br><span class="line">    	 &lt;aop:advisor advice-ref&#x3D;&quot;mybefore&quot; pointcut-ref&#x3D;&quot;mypoint&quot;&#x2F;&gt;   &lt;!-- 将前置通知类加到上面的切点 --&gt;</span><br><span class="line">    	 &lt;aop:advisor advice-ref&#x3D;&quot;myafter&quot; pointcut-ref&#x3D;&quot;mypoint&quot;&#x2F;&gt;    &lt;!-- 将后置通知类加到上面的切点 --&gt;</span><br><span class="line">    &lt;&#x2F;aop:config&gt;   </span><br><span class="line">    </span><br><span class="line">    &lt;bean id&#x3D;&quot;demo&quot; class&#x3D;&quot;com.bjsxt.test.Demo&quot;&gt;&lt;&#x2F;bean&gt; &lt;!-- 找方法的bean  用于test类找 --&gt;</span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;beans&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>4.前置通知类</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class MyBeforeAdvice implements MethodBeforeAdvice&#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void before(Method arg0, Object[] arg1, Object arg2) throws Throwable &#123;</span><br><span class="line">		System.out.println(&quot;执行前置通知!&quot;);	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>5.后置通知类</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class MyAfterAdvice implements AfterReturningAdvice &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void afterReturning(Object arg0, Method arg1, Object[] arg2, Object arg3) throws Throwable &#123;</span><br><span class="line">		System.out.println(&quot;执行后置通知!&quot;);	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>6.测试类</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;原来的写法：</span><br><span class="line">		&#x2F;&#x2F;Demo demo&#x3D;new Demo();</span><br><span class="line">		&#x2F;&#x2F;demo.demo1();</span><br><span class="line">		&#x2F;&#x2F;demo.demo2();</span><br><span class="line">		&#x2F;&#x2F;demo.demo3();</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;因为我们是IOC 控制反转  将new和管理对象给了spring </span><br><span class="line">		ApplicationContext ac&#x3D;new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">		Demo demo &#x3D; ac.getBean(&quot;demo&quot;,Demo.class);   &#x2F;&#x2F;通过找配置文件中的bean</span><br><span class="line">			demo.demo1();</span><br><span class="line">			demo.demo2();</span><br><span class="line">			demo.demo3();</span><br><span class="line">	&#125;	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h3><p><img src="/2020/04/02/AOP/zongjie.png" alt></p>
-<h3 id="前置通知实现的接口方法参数"><a href="#前置通知实现的接口方法参数" class="headerlink" title="前置通知实现的接口方法参数"></a>前置通知实现的接口方法参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class MyBeforeAdvice implements MethodBeforeAdvice&#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void before(Method arg0, Object[] arg1, Object arg2) throws Throwable &#123;</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;agr0 切点方法对象 Method对象</span><br><span class="line">		&#x2F;&#x2F;agr1 切点方法参数</span><br><span class="line">		&#x2F;&#x2F;agr2 切点在那个对象中</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="后置通知实现的接口方法参数"><a href="#后置通知实现的接口方法参数" class="headerlink" title="后置通知实现的接口方法参数"></a>后置通知实现的接口方法参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class MyAfterAdvice implements AfterReturningAdvice &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void afterReturning(Object arg0, Method arg1, Object[] arg2, Object arg3) throws Throwable &#123;</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;agr0 切点方法返回值</span><br><span class="line">		&#x2F;&#x2F;agr1 切点方法对象</span><br><span class="line">		&#x2F;&#x2F;agr2 切点方法参数</span><br><span class="line">		&#x2F;&#x2F;agr3 切点方法所在类的对象</span><br><span class="line"></span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="配置异常通知-AspectJ方式"><a href="#配置异常通知-AspectJ方式" class="headerlink" title="配置异常通知(AspectJ方式)"></a>配置异常通知(AspectJ方式)</h1><blockquote>
-<p>只要<strong>切点报异常</strong>才能触发 异常通知(throws advice)<br>不实现接口(方法随便写) 然后配置在aop：aspect标签下面</p>
-</blockquote>
-<h2 id="准备类和异常通知方法"><a href="#准备类和异常通知方法" class="headerlink" title="准备类和异常通知方法"></a>准备类和异常通知方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class MtThrowAdvice &#123;</span><br><span class="line">	public void myexception(Exception e) &#123;		</span><br><span class="line">		System.out.println(&quot;异常了!!!&quot;+e.getMessage());   &#x2F;&#x2F;自己写的报错的方法  输出错误原因</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建Demo类-切点方法"><a href="#创建Demo类-切点方法" class="headerlink" title="创建Demo类(切点方法)"></a>创建Demo类(切点方法)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Demo &#123;</span><br><span class="line"></span><br><span class="line">	public void demo1()&#123;</span><br><span class="line">		    int i&#x3D;5&#x2F;0;                  &#x2F;&#x2F;这里出异常</span><br><span class="line">		System.out.println(&quot;demo1&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="更改配置文件"><a href="#更改配置文件" class="headerlink" title="更改配置文件"></a>更改配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">    xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">    xmlns:aop&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&quot;</span><br><span class="line">    xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&#x2F;spring-aop.xsd&quot;&gt;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> 	&lt;bean id&#x3D;&quot;mythrow&quot; class&#x3D;&quot;com.bjsxt.advice.MtThrowAdvice&quot;&gt;&lt;&#x2F;bean&gt;   &#x2F;&#x2F;给写的异常类写bean</span><br><span class="line"> </span><br><span class="line">	&lt;aop:config&gt;</span><br><span class="line">	  &lt;aop:aspect ref&#x3D;&quot;mythrow&quot;&gt;   &#x2F;&#x2F;相比于schema-based方式它可以自动找是前置还是后置通知  我们的aspectJ需要明确ref跳到哪个异常类</span><br><span class="line">	  	&lt;aop:pointcut expression&#x3D;&quot;execution(* com.bjsxt.test.Demo.demo01())&quot; id&#x3D;&quot;mypoint&quot;&#x2F;&gt;  &#x2F;&#x2F;这行主要写切点： 是哪个包哪个类的哪个方法 然后给切点一个id</span><br><span class="line">	  	&lt;aop:after-throwing method&#x3D;&quot;myexception&quot; pointcut-ref&#x3D;&quot;mypoint&quot; throwing&#x3D;&quot;e&quot;&#x2F;&gt;  &#x2F;&#x2F;异常通知： 方法是刚才那个类的哪个  然后切点是哪个 扔出来的信息是方法的哪个对象</span><br><span class="line">	  &lt;&#x2F;aop:aspect&gt;</span><br><span class="line">	&lt;&#x2F;aop:config&gt;</span><br><span class="line">	</span><br><span class="line">     	&lt;bean id&#x3D;&quot;demo&quot; class&#x3D;&quot;com.bjsxt.test.Demo&quot;&gt;&lt;&#x2F;bean&gt;  &#x2F;&#x2F;给切点的类写bean</span><br><span class="line">     	</span><br><span class="line">&lt;&#x2F;beans&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="添加测试类"><a href="#添加测试类" class="headerlink" title="添加测试类"></a>添加测试类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;原来的写法：</span><br><span class="line">		&#x2F;&#x2F;Demo demo&#x3D;new Demo();</span><br><span class="line">		&#x2F;&#x2F;demo.demo1();</span><br><span class="line">		&#x2F;&#x2F;demo.demo2();</span><br><span class="line">		&#x2F;&#x2F;demo.demo3();</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;因为我们是IOC 控制反转  将new和管理对象给了spring </span><br><span class="line">		ApplicationContext ac&#x3D;new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">		Demo demo &#x3D; ac.getBean(&quot;demo&quot;,Demo.class);</span><br><span class="line">			demo.demo1();   &#x2F;&#x2F;测试方法</span><br><span class="line">	&#125;	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="异常通知-Schema-based"><a href="#异常通知-Schema-based" class="headerlink" title="异常通知(Schema-based)"></a>异常通知(Schema-based)</h1><blockquote>
-<p><strong>实现接口(方法必须叫afterThrowing) 然后配置在aop：config下面</strong></p>
-</blockquote>
-<h2 id="准备异常类"><a href="#准备异常类" class="headerlink" title="准备异常类"></a>准备异常类</h2><pre><code>1. 必须实现throwsAdvice接口
-2. 实现的方法有两种 (1个参数 / 4个参数)
-3. 异常类型必须要和切点报错的异常一致(一般就写最大的Exception!!!!)</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  public class MyThrow implements ThrowsAdvice &#123;</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F;第一种	</span><br><span class="line">	public void afterThrowing(Exception ex) throws Throwable&#123;  &#x2F;&#x2F;里面用最大的Exception </span><br><span class="line">		System.out.println(&quot;aaaa&quot;);	</span><br><span class="line">	&#125;	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="准备配置文件-展示细节"><a href="#准备配置文件-展示细节" class="headerlink" title="准备配置文件(展示细节)"></a>准备配置文件(展示细节)</h2><blockquote>
-<p><strong>只在aop：config标签里面去写</strong></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;aop:config&gt;</span><br><span class="line"> 	  &lt;aop:pointcut expression&#x3D;&quot;execution(* com.bjsxt.test.Demo.demo01())&quot; id&#x3D;&quot;mypoint&quot;&#x2F;&gt;</span><br><span class="line"> 	  &lt;aop:advisor advice-ref&#x3D;&quot;mythrow&quot; pointcut-ref&#x3D;&quot;mypoint&quot;&#x2F;&gt;</span><br><span class="line"> 	&lt;&#x2F;aop:config&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="对比两种方法的区别"><a href="#对比两种方法的区别" class="headerlink" title="对比两种方法的区别"></a>对比两种方法的区别</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.AspectJ：</span><br><span class="line">	1.1 不实现接口(显示异常的方法随便取名字)</span><br><span class="line">		1.2 配置文件结构 aop：config -- aop：aspect(ref写跳转的异常类位置) -- aop：pointcut(切点) &#x2F;aop:after-throwing(异常通知)</span><br><span class="line"></span><br><span class="line">2.schema-based：</span><br><span class="line">	2.1 实现throwsAdvice接口(显示异常的方法必须叫afterThrowing)</span><br><span class="line">	2.2 配置文件结构  aop：config -- aop：pointcut(切点) &#x2F; aop :advisor (前置&#x2F;后置&#x2F;异常通知都在这)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="环绕通知-Schema-based"><a href="#环绕通知-Schema-based" class="headerlink" title="环绕通知(Schema-based)"></a>环绕通知(Schema-based)</h1><blockquote>
-<p><strong>前置和后置通知 –&gt; 一个通知(环绕)</strong></p>
-</blockquote>
-<h2 id="创建类实现MethodInterceptor接口"><a href="#创建类实现MethodInterceptor接口" class="headerlink" title="创建类实现MethodInterceptor接口"></a>创建类实现MethodInterceptor接口</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class MyArround implements MethodInterceptor&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public Object invoke(MethodInvocation arg0) throws Throwable &#123;</span><br><span class="line">		System.out.println(&quot;环绕-前置&quot;);</span><br><span class="line">		Object result &#x3D; arg0.proceed(); &#x2F;&#x2F;放行 调用切点方式</span><br><span class="line">		System.out.println(&quot;环绕-后置&quot;);</span><br><span class="line">		return result;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置文件-展示细节"><a href="#配置文件-展示细节" class="headerlink" title="配置文件(展示细节)"></a>配置文件(展示细节)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;myarround&quot; class&#x3D;&quot;com.bjsxt.advice.MyArround&quot;&gt;&lt;&#x2F;bean&gt;</span><br><span class="line"></span><br><span class="line">	&lt;aop:config&gt;</span><br><span class="line">		&lt;aop:pointcut expression&#x3D;&quot;execution(* com.bjsxt.test.Demo.demo01())&quot; id&#x3D;&quot;mypoint&quot;&#x2F;&gt;  &#x2F;&#x2F;配置切点</span><br><span class="line">		&lt;aop:advisor advice-ref&#x3D;&quot;myarround&quot; pointcut-ref&#x3D;&quot;mypoint&quot; &#x2F;&gt;   &#x2F;&#x2F;配置环绕的信息</span><br><span class="line">	&lt;&#x2F;aop:config&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;bean id&#x3D;&quot;demo&quot; class&#x3D;&quot;com.bjsxt.test.Demo&quot;&gt;&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="环绕通知-AspectJ"><a href="#环绕通知-AspectJ" class="headerlink" title="环绕通知(AspectJ)"></a>环绕通知(AspectJ)</h1><h2 id="创建MyAdvice类-不实现接口"><a href="#创建MyAdvice类-不实现接口" class="headerlink" title="创建MyAdvice类(不实现接口)"></a>创建MyAdvice类(不实现接口)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class MyAdvice &#123;</span><br><span class="line">	public void mybefore(String name1,int age1) &#123;</span><br><span class="line">		System.out.println(&quot;前置&quot;+name1+&quot;  &quot;+age1);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void myafter1() &#123;</span><br><span class="line">		System.out.println(&quot;后置1&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void myafter2() &#123;</span><br><span class="line">		System.out.println(&quot;后置2&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void mythrow() &#123;</span><br><span class="line">		System.out.println(&quot;异常&quot;);	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public Object myarround(ProceedingJoinPoint p) throws Throwable &#123;   &#x2F;&#x2F;环绕的类  ProceedingJoinPoint就是需要的类</span><br><span class="line">		System.out.println(&quot;执行环绕&quot;);</span><br><span class="line">		System.out.println(&quot;环绕-前置&quot;);</span><br><span class="line">		Object result &#x3D; p.proceed();    &#x2F;&#x2F;和另外一种方法一样的执行</span><br><span class="line">		System.out.println(&quot;环绕-后置&quot;);</span><br><span class="line">		return result;</span><br><span class="line">  &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建Demo类-切点方法-1"><a href="#创建Demo类-切点方法-1" class="headerlink" title="创建Demo类(切点方法)"></a>创建Demo类(切点方法)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Demo &#123;</span><br><span class="line"></span><br><span class="line">	public void demo1(String name,int age)&#123;    &#x2F;&#x2F;现在切点传入的是name 和 age (后面会在配置和自己写的方法内的属性不同!!!)</span><br><span class="line">		&#x2F;&#x2F;int i&#x3D;5&#x2F;0;</span><br><span class="line">		System.out.println(&quot;demo1&quot;+name+&quot;  &quot;+age);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;myarround&quot; class&#x3D;&quot;com.bjsxt.advice.MyArround&quot;&gt;&lt;&#x2F;bean&gt;</span><br><span class="line">	&lt;bean id&#x3D;&quot;myadvice&quot; class&#x3D;&quot;com.bjsxt.advice.MyAdvice&quot;&gt;&lt;&#x2F;bean&gt;   &#x2F;&#x2F;自己写的环绕的类</span><br><span class="line"></span><br><span class="line">	&lt;aop:config&gt;</span><br><span class="line">		&lt;aop:aspect ref&#x3D;&quot;myadvice&quot;&gt;   &#x2F;&#x2F;弹到我们写的类(环绕 前置 后置等方法)</span><br><span class="line">			&lt;aop:pointcut expression&#x3D;&quot;execution(* com.bjsxt.test.Demo.demo01(String,int)) and args(name1,age1)&quot; id&#x3D;&quot;mypoint&quot;&#x2F;&gt;  &#x2F;&#x2F;切点信息</span><br><span class="line">			&lt;aop:before method&#x3D;&quot;mybefore&quot; pointcut-ref&#x3D;&quot;mypoint&quot; arg-names&#x3D;&quot;name1,age1&quot; &#x2F;&gt;  &#x2F;&#x2F;前置通知信息</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;有两种： </span><br><span class="line">					1.after 异常也可以执行   </span><br><span class="line">					2.after-returning 异常就不会执行	</span><br><span class="line"></span><br><span class="line">			&lt;aop:after method&#x3D;&quot;myafter1&quot; pointcut-ref&#x3D;&quot;mypoint&quot;&#x2F;&gt;  </span><br><span class="line">			&lt;aop:after-returning method&#x3D;&quot;myafter2&quot; pointcut-ref&#x3D;&quot;mypoint&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">			&lt;aop:after-throwing method&#x3D;&quot;mythrow&quot; pointcut-ref&#x3D;&quot;mypoint&quot;&#x2F;&gt;    &#x2F;&#x2F;异常通知信息</span><br><span class="line">			&lt;aop:around method&#x3D;&quot;myarround&quot; pointcut-ref&#x3D;&quot;mypoint&quot;&#x2F;&gt;  &#x2F;&#x2F;环绕的具体标签 aop：around</span><br><span class="line">		&lt;&#x2F;aop:aspect&gt;</span><br><span class="line">	&lt;&#x2F;aop:config&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;bean id&#x3D;&quot;demo&quot; class&#x3D;&quot;com.bjsxt.test.Demo&quot;&gt;&lt;&#x2F;bean&gt;  &#x2F;&#x2F;Demo类信息</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试Test类"><a href="#测试Test类" class="headerlink" title="测试Test类"></a>测试Test类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">	public static void main(String[] args) &#123;	</span><br><span class="line">	&#x2F;&#x2F;因为我们是IOC 控制反转  将new和管理对象给了spring </span><br><span class="line">		ApplicationContext ac&#x3D;new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</span><br><span class="line">		Demo demo &#x3D; ac.getBean(&quot;demo&quot;,Demo.class);   &#x2F;&#x2F;通过bean去找</span><br><span class="line">			demo.demo1(&quot;zhangsan&quot;,123);  &#x2F;&#x2F;传入参数执行方法</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="关于配置文件中的细节"><a href="#关于配置文件中的细节" class="headerlink" title="关于配置文件中的细节"></a>关于配置文件中的细节</h2><pre><code>1. 关于后置的标签(执行顺序和配置顺序有关)：
-    1.1 after 异常也可以执行   
-    1.2 after-returning 异常就不会执行
-
-2. 关于前置标签的属性和使用问题
-        &lt;aop:pointcut expression=&quot;execution(* com.bjsxt.test.Demo.demo01(String,int)) and args(name1,age1)&quot; id=&quot;mypoint&quot;/&gt;
-        &lt;aop:before method=&quot;mybefore&quot; pointcut-ref=&quot;mypoint&quot; arg-names=&quot;name1,age1&quot; /&gt;
-    注：     2.1 execution(* com.bjsxt.test.Demo.demo01()) 在后面加 and args()
-         2.2 args()有几个参数 下面的arg-names就要有几个参数
-         2.3 arg-names=&quot;&quot; 里面的参数名称必须和通知方法参数名对应(和你写的前置方法的参数一样!!)</code></pre><hr>
-<h1 id="使用注解-基于Aspect"><a href="#使用注解-基于Aspect" class="headerlink" title="使用注解(基于Aspect)"></a>使用注解(基于Aspect)</h1><blockquote>
-<p>告诉spring哪些类下的包有注解(默认不会自动找)</p>
-</blockquote>
-<h2 id="配置文件-引入xmlns：context"><a href="#配置文件-引入xmlns：context" class="headerlink" title="配置文件(引入xmlns：context)"></a>配置文件(引入xmlns：context)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">    xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">    xmlns:aop&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&quot;</span><br><span class="line">    xmlns:context&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&quot;     &#x2F;&#x2F; 1. 引入这一行 xmlns:context</span><br><span class="line">    xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&#x2F;spring-aop.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context                       &#x2F;&#x2F; 2. 引入相关的location地址</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&#x2F;spring-context.xsd&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h2><pre><code>1. 相当于bean标签(引入相关类)
-2. 相当于bean id=&quot;&quot;  @Component(没有参数) -- 将类名首字母变小写(Demo -- demo)  
-3. @Component(可以随意自定义名称)</code></pre><h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><h3 id="配置文件注解在哪些包"><a href="#配置文件注解在哪些包" class="headerlink" title="配置文件注解在哪些包"></a>配置文件注解在哪些包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;多个包就用逗号隔开</span><br><span class="line">&lt;context:component-scan base-package&#x3D;&quot;com.bjsxt.advice,com.bjsxt.test&quot;&gt;&lt;&#x2F;context:component-scan&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置Demo切片类"><a href="#配置Demo切片类" class="headerlink" title="配置Demo切片类"></a>配置Demo切片类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Component   &#x2F;&#x2F;加这个注解 表明现在是给切片类写了id&#x3D;&quot;demo&quot;</span><br><span class="line">public class Demo &#123;</span><br><span class="line">	@Pointcut(&quot;execution(* com.bjsxt.test.Demo.demo01())&quot;)    &#x2F;&#x2F;demo01是切片</span><br><span class="line">	public void demo1()&#123;</span><br><span class="line">		System.out.println(&quot;demo01&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置前置-后置类"><a href="#配置前置-后置类" class="headerlink" title="配置前置/后置类"></a>配置前置/后置类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Component  &#x2F;&#x2F;要引入Demo切片类</span><br><span class="line">@Aspect     &#x2F;&#x2F;告诉我是一个切片类</span><br><span class="line">public class MyAdvice &#123;</span><br><span class="line">	</span><br><span class="line">	@Before(&quot;com.bjsxt.test.Demo.demo01()&quot;)  &#x2F;&#x2F;方法前面要用是哪个切片</span><br><span class="line">	public void mybefore() &#123;</span><br><span class="line">		System.out.println(&quot;前置&quot;);		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@After(&quot;com.bjsxt.test.Demo.demo01()&quot;)</span><br><span class="line">	public void myafter() &#123;</span><br><span class="line">		System.out.println(&quot;后置&quot;);		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置文件更改代理"><a href="#配置文件更改代理" class="headerlink" title="配置文件更改代理"></a>配置文件更改代理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- </span><br><span class="line">		    true  使用cglib动态代理(注解)</span><br><span class="line">			false 使用jdk动态代理 </span><br><span class="line">	--&gt;</span><br><span class="line">	</span><br><span class="line">&lt;aop:aspectj-autoproxy proxy-target-class&#x3D;&quot;true&quot;&gt;&lt;&#x2F;aop:aspectj-autoproxy&gt;</span><br></pre></td></tr></table></figure>
 
 <hr>
 

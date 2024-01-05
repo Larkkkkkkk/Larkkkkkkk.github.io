@@ -332,6 +332,65 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-webserver" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/12/19/webserver/" class="article-date">
+      <time datetime="2019-12-19T13:13:01.000Z" itemprop="datePublished">2019-12-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/19/webserver/">webserver</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>一、反射：</strong><br>　　<strong>反射</strong>是框架设计的灵魂（<strong><code>框架</code></strong>是半成品软件，可以在框架的基础上进行软件开发，简化编码）。<br>将类的各个组成部分封装成其他对象</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webserver%E7%BC%96%E7%A8%8B/" rel="tag">webserver编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-TCP" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -2182,107 +2241,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-List" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/11/02/List/" class="article-date">
-      <time datetime="2019-11-02T08:27:43.000Z" itemprop="datePublished">2019-11-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/02/List/">List接口</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>一、List接口</strong><br> <code>java.util.List接口</code> <strong>extends</strong> <code>Collection接口</code></p>
-<p><strong>特点：</strong></p>
-<ol>
-<li><strong>有序</strong>的集合(存储和取出元素的顺序一致)</li>
-<li>有<strong>索引</strong>，包括了一些有索引的方法</li>
-<li>存储<strong>重复</strong>的元素</li>
-<li><strong>实现类</strong>：<br><strong>Arraylist</strong>(底层采用数组结构，查询快，增删慢),<br><strong>LinkedList</strong>(底层采用链表结构，查询慢,增删快),<br><strong>Vector</strong>(底层采用数组结构，查询快，增删慢)</li>
-</ol>
-<p><strong>举例：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Main extends Object&#123;</span><br><span class="line">	public  static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;创建一个List集合对象(多态)	</span><br><span class="line">		List&lt;String&gt; list&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">		list.add(&quot;a&quot;);</span><br><span class="line">		list.add(&quot;b&quot;);</span><br><span class="line">		list.add(&quot;c&quot;);</span><br><span class="line">		list.add(&quot;d&quot;);</span><br><span class="line">		list.add(&quot;a&quot;);</span><br><span class="line">		System.out.println(list);</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;使用增强for循环</span><br><span class="line">		for(String i:list)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(i);	</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;使用迭代器</span><br><span class="line">		Iterator&lt;String&gt; lists&#x3D;set.iterator();</span><br><span class="line">		while(sets.hasNext()) </span><br><span class="line">		&#123;</span><br><span class="line">			String a&#x3D;lists.next();</span><br><span class="line">			System.out.println(a);</span><br><span class="line">		&#125;	</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>代码结果如下：</strong><br>[a, b, c, d, a]  <strong>(重复的a可以打印出来！！！)</strong><br>!!!!!!!!!!!!!!!!!!!<br>a<br>b<br>c<br>d<br>a<br>!!!!!!!!!!!!!!!!!!!<br>a<br>b<br>c<br>d<br>a</p>
-<hr>
-<p><strong><code>特定(索引)的方法：</code></strong></p>
-<ol>
-<li><code>public void add(int index,E element);</code>将指定元素<strong>添加</strong>到集合的指定位置</li>
-<li><code>public E get(int index);</code><strong>返回</strong>指定位置元素</li>
-<li><code>public E remove(int index);</code><strong>移除</strong>指定位置元素(返回被移除的元素)　　<strong>需要赋给一个变量</strong></li>
-<li><code>public E set(int index,E element);</code><strong>替换</strong>指定位置元素(返回之前的元素)　　<strong>需要赋给一个变量</strong></li>
-</ol>
-<p><strong>举例：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Main extends Object&#123;</span><br><span class="line">	public  static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;创建一个List集合对象(多态)</span><br><span class="line">		</span><br><span class="line">		List&lt;String&gt; list&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">		list.add(&quot;a&quot;);</span><br><span class="line">		list.add(&quot;b&quot;);</span><br><span class="line">		list.add(&quot;c&quot;);</span><br><span class="line">		list.add(&quot;d&quot;);</span><br><span class="line">		list.add(&quot;a&quot;);</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[a, b, c, d, a]</span><br><span class="line">	</span><br><span class="line">		&#x2F;&#x2F;public void add(int index,E element);  添加</span><br><span class="line">		list.add(3,&quot;woaini&quot;);  &#x2F;&#x2F;形参为给第几个位置添加什么字符串</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[a, b, c, woaini, d, a]</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;public E remove(int index);  移除(返回被移除的元素)</span><br><span class="line">		String yuanlai1&#x3D;list.remove(2);  &#x2F;&#x2F;形参是int型</span><br><span class="line">		System.out.println(&quot;被移除的是:&quot;+yuanlai1);  &#x2F;&#x2F;输出字符串必须要用&quot;+&quot;符号</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[a, b, woaini, d, a]</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;public E set(int index,E element);  替换(返回之前的元素)</span><br><span class="line">		String yuanlai2&#x3D;list.set(1, &quot;aa&quot;);</span><br><span class="line">		System.out.println(&quot;被替换的是:&quot;+yuanlai2);  &#x2F;&#x2F;输出字符串必须要用&quot;+&quot;符号</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[a, aa, woaini, d, a]</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;public E get(int index);  返回</span><br><span class="line">		String zhiding&#x3D;list.get(4);  &#x2F;&#x2F;5就会导致&quot;java.lang.IndexOutOfBoundsException&quot;异常</span><br><span class="line">		System.out.println(&quot;指定的是:&quot;+zhiding);  &#x2F;&#x2F;指定的是:a</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>代码结果如下：</strong><br>[a, b, c, d, a]<br>[a, b, c, woaini, d, a]<br>被移除的是:c<br>[a, b, woaini, d, a]<br>被替换的是:b<br>[a, aa, woaini, d, a]<br>指定的是:a</p>
-<hr>
-<p><strong>二、ArrayList集合(实现类)</strong><br>　　它的方法和List定义的基本一致(基本被用于接口的实现类)！</p>
-<hr>
-<p><strong>三、LinkedList集合</strong><br>　　LinkedList集合的底层结构是<strong>链表结构</strong>，方便元素的<strong>增、删、添、首尾操作</strong>。</p>
-<p><strong>方法：</strong></p>
-<ol>
-<li>除了和List接口中的方法(<strong>继承</strong>)+特有的方法；</li>
-<li><strong><code>特有(首尾操作)的方法：</code></strong><br>第一组：<br>  <code>void addFirst(E e);</code><br> <code>void addLast(E e);</code><br> 第二组(返回移除的元素)：<br> <code>E removeFirst();</code><br> <code>E removeLast();</code><br> 第三组(返回特定的元素)：<br> <code>E getFirst();</code><br> <code>E getLast();</code><br> 第四组：<br> <code>E pop();</code>  //弹出,删除集合中的第一个元素<br> <code>void push(E e);</code>//推入,往集合中增加一个元素</li>
-</ol>
-<p>举例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Main extends Object&#123;</span><br><span class="line">	public  static void main(String[] args) &#123;</span><br><span class="line">		LinkedList&lt;String&gt; list&#x3D;new LinkedList&lt;String&gt;();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;使用父类的添加方法</span><br><span class="line">		list.add(&quot;123&quot;);</span><br><span class="line">		list.add(&quot;WWW&quot;);</span><br><span class="line">		list.add(&quot;12SW&quot;);</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[123, WWW, 12SW]</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;使用LinkedList的特定方法添加</span><br><span class="line">		list.addFirst(&quot;ASD&quot;);  </span><br><span class="line">		list.addFirst(&quot;AHHAHAHA&quot;); &#x2F;&#x2F;[AHHAHAHA, ASD, 123, WWW, 12SW]  会不断地当第一个！！</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[AHHAHAHA, ASD, 123, WWW, 12SW]</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;删除元素</span><br><span class="line">		String shanchu&#x3D;list.removeFirst(); &#x2F;&#x2F;删除第一个AHHAHAHA</span><br><span class="line">		System.out.println(shanchu);</span><br><span class="line">		System.out.println(list); &#x2F;&#x2F;[ASD, 123, WWW, 12SW]</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;获取元素</span><br><span class="line">		String get&#x3D;list.getLast(); &#x2F;&#x2F;获取最后一个元素</span><br><span class="line">		System.out.println(get);  &#x2F;&#x2F;12SW</span><br><span class="line">		System.out.println(list);</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;pop弹出</span><br><span class="line">		String pop&#x3D;list.pop();  &#x2F;&#x2F;弹出第一个元素</span><br><span class="line">		System.out.println(pop);  &#x2F;&#x2F;ASD</span><br><span class="line">		System.out.println(list);</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">	</span><br><span class="line">		&#x2F;&#x2F;push推入</span><br><span class="line">		list.push(&quot;MAMMAMAM&quot;);</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[MAMMAMAM, 123, WWW, 12SW]</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>代码结果如下：</strong><br>添加了三个元素：<br>[123, WWW, 12SW]<br>!!!!!!!!!!!</p>
-<p>通过addFirst添加了第一个元素<br>[AHHAHAHA, ASD, 123, WWW, 12SW]<br>!!!!!!!!!!!</p>
-<p>通过removeFirst第一个元素<br>AHHAHAHA<br>[ASD, 123, WWW, 12SW]<br>!!!!!!!!!!!</p>
-<p>通过getLast获取最后一个元素<br>12SW<br>[ASD, 123, WWW, 12SW]<br>!!!!!!!!!!!</p>
-<p>通过pop弹出第一个元素<br>ASD<br>[123, WWW, 12SW]<br>!!!!!!!!!!!</p>
-<p>通过push推入第一个元<br>[MAMMAMAM, 123, WWW, 12SW]<br>!!!!!!!!!!!</p>
-<hr>
-<p><strong>四、Vector<E>类</E></strong><br>　　jdk1.2(现在是1.9)之后被ArrayList类取代。</p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA-%E9%9B%86%E5%90%88/" rel="tag">JAVA-集合</a></li></ul>
     </div>
 
       

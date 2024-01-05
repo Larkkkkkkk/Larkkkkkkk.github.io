@@ -332,6 +332,107 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-List" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/02/List/" class="article-date">
+      <time datetime="2019-11-02T08:27:43.000Z" itemprop="datePublished">2019-11-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/02/List/">List接口</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>一、List接口</strong><br> <code>java.util.List接口</code> <strong>extends</strong> <code>Collection接口</code></p>
+<p><strong>特点：</strong></p>
+<ol>
+<li><strong>有序</strong>的集合(存储和取出元素的顺序一致)</li>
+<li>有<strong>索引</strong>，包括了一些有索引的方法</li>
+<li>存储<strong>重复</strong>的元素</li>
+<li><strong>实现类</strong>：<br><strong>Arraylist</strong>(底层采用数组结构，查询快，增删慢),<br><strong>LinkedList</strong>(底层采用链表结构，查询慢,增删快),<br><strong>Vector</strong>(底层采用数组结构，查询快，增删慢)</li>
+</ol>
+<p><strong>举例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Main extends Object&#123;</span><br><span class="line">	public  static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;创建一个List集合对象(多态)	</span><br><span class="line">		List&lt;String&gt; list&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">		list.add(&quot;a&quot;);</span><br><span class="line">		list.add(&quot;b&quot;);</span><br><span class="line">		list.add(&quot;c&quot;);</span><br><span class="line">		list.add(&quot;d&quot;);</span><br><span class="line">		list.add(&quot;a&quot;);</span><br><span class="line">		System.out.println(list);</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;使用增强for循环</span><br><span class="line">		for(String i:list)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(i);	</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;使用迭代器</span><br><span class="line">		Iterator&lt;String&gt; lists&#x3D;set.iterator();</span><br><span class="line">		while(sets.hasNext()) </span><br><span class="line">		&#123;</span><br><span class="line">			String a&#x3D;lists.next();</span><br><span class="line">			System.out.println(a);</span><br><span class="line">		&#125;	</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong><br>[a, b, c, d, a]  <strong>(重复的a可以打印出来！！！)</strong><br>!!!!!!!!!!!!!!!!!!!<br>a<br>b<br>c<br>d<br>a<br>!!!!!!!!!!!!!!!!!!!<br>a<br>b<br>c<br>d<br>a</p>
+<hr>
+<p><strong><code>特定(索引)的方法：</code></strong></p>
+<ol>
+<li><code>public void add(int index,E element);</code>将指定元素<strong>添加</strong>到集合的指定位置</li>
+<li><code>public E get(int index);</code><strong>返回</strong>指定位置元素</li>
+<li><code>public E remove(int index);</code><strong>移除</strong>指定位置元素(返回被移除的元素)　　<strong>需要赋给一个变量</strong></li>
+<li><code>public E set(int index,E element);</code><strong>替换</strong>指定位置元素(返回之前的元素)　　<strong>需要赋给一个变量</strong></li>
+</ol>
+<p><strong>举例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Main extends Object&#123;</span><br><span class="line">	public  static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;创建一个List集合对象(多态)</span><br><span class="line">		</span><br><span class="line">		List&lt;String&gt; list&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">		list.add(&quot;a&quot;);</span><br><span class="line">		list.add(&quot;b&quot;);</span><br><span class="line">		list.add(&quot;c&quot;);</span><br><span class="line">		list.add(&quot;d&quot;);</span><br><span class="line">		list.add(&quot;a&quot;);</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[a, b, c, d, a]</span><br><span class="line">	</span><br><span class="line">		&#x2F;&#x2F;public void add(int index,E element);  添加</span><br><span class="line">		list.add(3,&quot;woaini&quot;);  &#x2F;&#x2F;形参为给第几个位置添加什么字符串</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[a, b, c, woaini, d, a]</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;public E remove(int index);  移除(返回被移除的元素)</span><br><span class="line">		String yuanlai1&#x3D;list.remove(2);  &#x2F;&#x2F;形参是int型</span><br><span class="line">		System.out.println(&quot;被移除的是:&quot;+yuanlai1);  &#x2F;&#x2F;输出字符串必须要用&quot;+&quot;符号</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[a, b, woaini, d, a]</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;public E set(int index,E element);  替换(返回之前的元素)</span><br><span class="line">		String yuanlai2&#x3D;list.set(1, &quot;aa&quot;);</span><br><span class="line">		System.out.println(&quot;被替换的是:&quot;+yuanlai2);  &#x2F;&#x2F;输出字符串必须要用&quot;+&quot;符号</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[a, aa, woaini, d, a]</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;public E get(int index);  返回</span><br><span class="line">		String zhiding&#x3D;list.get(4);  &#x2F;&#x2F;5就会导致&quot;java.lang.IndexOutOfBoundsException&quot;异常</span><br><span class="line">		System.out.println(&quot;指定的是:&quot;+zhiding);  &#x2F;&#x2F;指定的是:a</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong><br>[a, b, c, d, a]<br>[a, b, c, woaini, d, a]<br>被移除的是:c<br>[a, b, woaini, d, a]<br>被替换的是:b<br>[a, aa, woaini, d, a]<br>指定的是:a</p>
+<hr>
+<p><strong>二、ArrayList集合(实现类)</strong><br>　　它的方法和List定义的基本一致(基本被用于接口的实现类)！</p>
+<hr>
+<p><strong>三、LinkedList集合</strong><br>　　LinkedList集合的底层结构是<strong>链表结构</strong>，方便元素的<strong>增、删、添、首尾操作</strong>。</p>
+<p><strong>方法：</strong></p>
+<ol>
+<li>除了和List接口中的方法(<strong>继承</strong>)+特有的方法；</li>
+<li><strong><code>特有(首尾操作)的方法：</code></strong><br>第一组：<br>  <code>void addFirst(E e);</code><br> <code>void addLast(E e);</code><br> 第二组(返回移除的元素)：<br> <code>E removeFirst();</code><br> <code>E removeLast();</code><br> 第三组(返回特定的元素)：<br> <code>E getFirst();</code><br> <code>E getLast();</code><br> 第四组：<br> <code>E pop();</code>  //弹出,删除集合中的第一个元素<br> <code>void push(E e);</code>//推入,往集合中增加一个元素</li>
+</ol>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Main extends Object&#123;</span><br><span class="line">	public  static void main(String[] args) &#123;</span><br><span class="line">		LinkedList&lt;String&gt; list&#x3D;new LinkedList&lt;String&gt;();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;使用父类的添加方法</span><br><span class="line">		list.add(&quot;123&quot;);</span><br><span class="line">		list.add(&quot;WWW&quot;);</span><br><span class="line">		list.add(&quot;12SW&quot;);</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[123, WWW, 12SW]</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;使用LinkedList的特定方法添加</span><br><span class="line">		list.addFirst(&quot;ASD&quot;);  </span><br><span class="line">		list.addFirst(&quot;AHHAHAHA&quot;); &#x2F;&#x2F;[AHHAHAHA, ASD, 123, WWW, 12SW]  会不断地当第一个！！</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[AHHAHAHA, ASD, 123, WWW, 12SW]</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;删除元素</span><br><span class="line">		String shanchu&#x3D;list.removeFirst(); &#x2F;&#x2F;删除第一个AHHAHAHA</span><br><span class="line">		System.out.println(shanchu);</span><br><span class="line">		System.out.println(list); &#x2F;&#x2F;[ASD, 123, WWW, 12SW]</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;获取元素</span><br><span class="line">		String get&#x3D;list.getLast(); &#x2F;&#x2F;获取最后一个元素</span><br><span class="line">		System.out.println(get);  &#x2F;&#x2F;12SW</span><br><span class="line">		System.out.println(list);</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;pop弹出</span><br><span class="line">		String pop&#x3D;list.pop();  &#x2F;&#x2F;弹出第一个元素</span><br><span class="line">		System.out.println(pop);  &#x2F;&#x2F;ASD</span><br><span class="line">		System.out.println(list);</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">	</span><br><span class="line">		&#x2F;&#x2F;push推入</span><br><span class="line">		list.push(&quot;MAMMAMAM&quot;);</span><br><span class="line">		System.out.println(list);  &#x2F;&#x2F;[MAMMAMAM, 123, WWW, 12SW]</span><br><span class="line">		System.out.println(&quot;!!!!!!!!!!!&quot;);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>代码结果如下：</strong><br>添加了三个元素：<br>[123, WWW, 12SW]<br>!!!!!!!!!!!</p>
+<p>通过addFirst添加了第一个元素<br>[AHHAHAHA, ASD, 123, WWW, 12SW]<br>!!!!!!!!!!!</p>
+<p>通过removeFirst第一个元素<br>AHHAHAHA<br>[ASD, 123, WWW, 12SW]<br>!!!!!!!!!!!</p>
+<p>通过getLast获取最后一个元素<br>12SW<br>[ASD, 123, WWW, 12SW]<br>!!!!!!!!!!!</p>
+<p>通过pop弹出第一个元素<br>ASD<br>[123, WWW, 12SW]<br>!!!!!!!!!!!</p>
+<p>通过push推入第一个元<br>[MAMMAMAM, 123, WWW, 12SW]<br>!!!!!!!!!!!</p>
+<hr>
+<p><strong>四、Vector<E>类</E></strong><br>　　jdk1.2(现在是1.9)之后被ArrayList类取代。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA-%E9%9B%86%E5%90%88/" rel="tag">JAVA-集合</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Set" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1254,80 +1355,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%BA%AF%E6%B3%95/" rel="tag">算法-回溯法</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-贪心算法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/10/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="article-date">
-      <time datetime="2019-10-15T12:25:44.000Z" itemprop="datePublished">2019-10-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>贪心算法：<br>　　又称贪婪算法。重复地使用一个<strong>贪婪规则</strong>（确定一个符合的准则）去挑选解的一部分，从<strong>局部最优解</strong>逐步达到<strong>全局最优</strong>。<br>　　贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备<strong>无后效性</strong>，即某个状态以前的过程不会影响以后的状态，只与当前状态有关。<br>例如：<br><strong>背包问题：</strong><br>有三个参赛者：A,B,C;<br>每个比赛者一个包（包的载重量为20kg）<br>给定N个物品，每个物品有一定的质量和价值<br>规则：<br>　　１.物品可以切一部分放入<br>　　2.包装的物品的总质量不超过包的载重量<br>　　3.包里装的物品的价值之和最高者获胜<br>假设：物品n=3，包的载重量c=20<br>物品1:V=25,M=18<br>物品2:V=24,M=15<br>物品3:V=15,M=10</p>
-<p><strong>思路：</strong><br>A考虑优先放入价值高的物品：<br>　　max=25+24<em>（2/15）=28.2;<br>B考虑优先放入重量低的物品：<br>　　max=15+24</em>（10/15）=31;<br>C考虑优先放入性价比高的物品：<br>　　max=24+15<em>（5/10）=31.5;<br>*</em>所以说我们对于此题选择C考虑的方法为解决题目的贪心规则。**</p>
-<p><strong>一、两地调度：</strong><br>公司计划面试 2N 人。第 i 人飞往 A 市的费用为 costs[i][0]，飞往 B 市的费用为 costs[i][1]。<br>返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。<br>示例：<br>　　输入：[[10,20],[30,200],[400,50],[30,20]]<br>输出：110<br>解释：<br>　　第一个人去 A 市，费用为 10。<br>　　第二个人去 A 市，费用为 30。<br>　　第三个人去 B 市，费用为 50。<br>　　第四个人去 B 市，费用为 20。</p>
-<p><strong>思路：</strong><br>　　我们可以考虑先让公司指派2N个人全都去A城，然后计算从A和B出发的金钱差额放入数组里面，排序之后将数组前一半的人替换到B去，这样可以保证有N个人去A，其他人去B。然后也可以保证最低费用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">public class DiYiGe&#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	   Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">	   int n&#x3D;input.nextInt();</span><br><span class="line">	   int m&#x3D;input.nextInt();</span><br><span class="line">	   int[][] a&#x3D;new int[n][m];</span><br><span class="line">	   for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">	   &#123;</span><br><span class="line">		   for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">		   &#123;</span><br><span class="line">		     a[i][j]&#x3D;input.nextInt();  &#x2F;&#x2F;双层循环读取分别去A和B的花费</span><br><span class="line">		   &#125;</span><br><span class="line">	   &#125;</span><br><span class="line">	    System.out.println(min(a));	   </span><br><span class="line">	&#125;	</span><br><span class="line">	</span><br><span class="line">	    public static int min(int[][] a) &#123;</span><br><span class="line">	        int m&#x3D;a.length;  &#x2F;&#x2F;原数组的长度</span><br><span class="line">	        int b[] &#x3D; new int[m];  &#x2F;&#x2F;对应存放每个人去A和B的消耗差</span><br><span class="line">	        int sum &#x3D; 0;  </span><br><span class="line">	        for(int i&#x3D;0;i&lt;m;i++)&#123;</span><br><span class="line">	            b[i] &#x3D; a[i][1]-a[i][0];  &#x2F;&#x2F;计算从A到B城的消耗差</span><br><span class="line">	            sum +&#x3D;a[i][0];   &#x2F;&#x2F;加上所有人到A城的费用</span><br><span class="line">	        &#125;</span><br><span class="line">	        Arrays.sort(b); &#x2F;&#x2F;将差距</span><br><span class="line">	        for(int i&#x3D;0;i&lt;m&#x2F;2;i++)</span><br><span class="line">	            sum+&#x3D;b[i];    &#x2F;&#x2F;减去应到B城的人员的额外消耗</span><br><span class="line">	        return sum;</span><br><span class="line">	    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>代码结果如下：<br><img src="/2019/10/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/jietu1.png" alt></p>
-<hr>
-<p><strong>二、柠檬水找零：</strong><br>　　在柠檬水摊上，每一杯柠檬水的售价为 5 美元。<br>　　顾客排队购买你的产品，（按账单 bills 支付的顺序）一次购买一杯。<br>每位顾客只买一杯柠檬水，然后向你付 5 美元、10 美元或 20 美元。你必须给每个顾客正确找零，也就是说净交易是每位顾客向你支付 5 美元。<br>　　注意，一开始你手头没有任何零钱。</p>
-<p>示例：<br>　　输入：[5,5,5,10,20]<br>　　输出：true<br>解释：<br>　　前 3 位顾客那里，我们按顺序收取 3 张 5 美元的钞票。<br>　　第 4 位顾客那里，我们收取一张 10 美元的钞票，并返还 5 美元。<br>　　第 5 位顾客那里，我们找还一张 10 美元的钞票和一张 5 美元的钞票。<br>　　由于所有客户都得到了正确的找零，所以我们输出 true。</p>
-<p><strong>思路</strong>：先收前面的人钱，然后保证手里有零钱，如果需要找20的话，先考虑找10元大的钱，保证5元够用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line">public class NingMeng &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">        int n&#x3D;input.nextInt();</span><br><span class="line">        int[] a&#x3D;new int[n];</span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            a[i]&#x3D;input.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Change(a));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static boolean Change(int[] a) &#123;</span><br><span class="line">        int money[] &#x3D; new int[3];  &#x2F;&#x2F; 利用下标存放5&#x2F;10&#x2F;20元的数量</span><br><span class="line">        money[0]++;  &#x2F;&#x2F;存放5元的个数</span><br><span class="line">        for (int i&#x3D;1;i&lt;a.length;i++) &#123;</span><br><span class="line">            switch (a[i]) &#123;  &#x2F;&#x2F;依次找零</span><br><span class="line">                case 5:</span><br><span class="line">                    money[0]++;  &#x2F;&#x2F;如果是5元直接+1</span><br><span class="line">                    break;</span><br><span class="line">                case 10:</span><br><span class="line">                    money[1]++;  &#x2F;&#x2F;十元的话+1</span><br><span class="line">                    money[0]--;  &#x2F;&#x2F;找零5元</span><br><span class="line">                    if (money[0] &lt; 0) &#123;</span><br><span class="line">                        return false;  &#x2F;&#x2F;不能成功找零</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                case 20:</span><br><span class="line">                    money[2]++; &#x2F;&#x2F;如果是20元直接+1</span><br><span class="line">                    if (money[1]&gt;0) &#123; &#x2F;&#x2F;如果有10元找一张 10元-1 5元-1</span><br><span class="line">                        money[1]--;</span><br><span class="line">						money[0]--; </span><br><span class="line">                    &#125;</span><br><span class="line">                    else &#123;</span><br><span class="line">                        money[0] -&#x3D; 3;  &#x2F;&#x2F;如果找5元 5元-3</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    if (money[0] &lt; 0) &#123;</span><br><span class="line">                        return false;</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>代码结果如下：<br><img src="/2019/10/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/jietu2.png" alt></p>
-<hr>
-<p><strong>三、跳台阶</strong><br>给定一个非负整数数组，你最初位于数组的第一个位置。<br>数组中的每个元素代表你在该位置可以跳跃的最大长度。<br>你的目标是使用最少的跳跃次数到达数组的最后一个位置。<br>例如：<br>输入: [2,3,1,1,4]<br>输出: 2<br>解释: 跳到最后一个位置的最小跳跃数是 2。<br>从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。<br>说明：假设你总是可以到达数组的最后一个位置。<br><strong>思路：</strong><br>假如a={2,3,1,1,4,2,1}那么最符合题意的就是2跳到3的位置然后跳到4然后跳到终点。<br>现在当处于第一个位置2的时候考虑是跳到3还是1，显然跳到3更好一点，那么跳到3之后考虑跳到1还是1还是4，因此选择4的位置，最后选择跳到终点。<br>-&gt;我们考虑<strong>下一个要跳跃的点就必须是保证上一次和这一次的跳跃点距离最远</strong>，这样可以保证输出少。</p>
-<p>贪心算法代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  public int jump(int[] a) &#123;</span><br><span class="line">     int sum &#x3D; 0;</span><br><span class="line">      int zy &#x3D; 0; &#x2F;&#x2F; 能跳到的最远距离</span><br><span class="line">      int max &#x3D; 0; &#x2F;&#x2F; 下一步可以跳到的最远距离</span><br><span class="line">      for(int i &#x3D; 0; i &lt; a.length - 1; i++)</span><br><span class="line">&#123;</span><br><span class="line">          max &#x3D; Math.max(max, i + a[i]);</span><br><span class="line">          &#x2F;&#x2F; 更新当前点</span><br><span class="line">          if(i &#x3D;&#x3D; zy)</span><br><span class="line">	&#123;</span><br><span class="line">              zy &#x3D; max;</span><br><span class="line">              sum++;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return sum;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">算法-贪心算法</a></li></ul>
     </div>
 
       

@@ -332,6 +332,84 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-时间复杂度和空间复杂度分析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/04/15/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" class="article-date">
+      <time datetime="2020-04-15T01:31:55.000Z" itemprop="datePublished">2020-04-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/15/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/">时间复杂度和空间复杂度分析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="衡量算法的优劣"><a href="#衡量算法的优劣" class="headerlink" title="衡量算法的优劣"></a>衡量算法的优劣</h1><pre><code>1. 事后统计的方法
+2. 事前分析估算的方法</code></pre><hr>
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><ul>
+<li><p><strong>T(n)=O(f(n))</strong></p>
+<p>  T(n)：是指算法中基本操作语句的重复执行次数是问题规模n的某个函数<br>  O(f(n)):是算法的渐进时间复杂度</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>常见时间复杂度</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	常数阶O(1)</span><br><span class="line">	对数阶O(log2n)</span><br><span class="line">	线性阶O(n)</span><br><span class="line">	线性对数阶O(nlog2n)</span><br><span class="line">	平方阶O(n2)</span><br><span class="line">	立方阶O(n3)</span><br><span class="line">	k次方阶O(nk)</span><br><span class="line">	指数阶O(2n)</span><br><span class="line">随着问题规模n的不断增大，上述时间复杂度不断增大，算法的执行效率越低。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>T(n)不同 但是时间复杂度可能相同</strong></p>
+<p>  例如：</p>
+<pre><code>T(n)=n²+5n+6 与 T(n)=3n²+3n+2 它们的T(n) 不同，但时间复杂度相同，都为O(n²)。</code></pre></li>
+</ul>
+<h2 id="时间复杂度求法"><a href="#时间复杂度求法" class="headerlink" title="时间复杂度求法"></a>时间复杂度求法</h2><pre><code>1. 用1 代理运行实践中所有的加法常数
+2. 只保留最高阶项
+3. 去除最高阶项系数</code></pre><hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" rel="tag">复杂度分析</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-递归" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1234,99 +1312,6 @@
 <p><strong>注解类MultipartFile类的对象和文件标签的name必须一致!!!</strong></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class DemoController &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping()</span><br><span class="line">	public String upload(MultipartFile file,String name) throws IOException &#123;   &#x2F;&#x2F; MultipartFile类的文件file名必须和input里面的name&#x3D;&quot;file&quot;一致</span><br><span class="line">	 </span><br><span class="line">		String fileName &#x3D; file.getOriginalFilename();  &#x2F;&#x2F;获取文件名</span><br><span class="line">		String suffix &#x3D; fileName.substring(fileName.lastIndexOf(&quot;.&quot;));  &#x2F;&#x2F;使用substring获取到.后面文件</span><br><span class="line">		if(suffix.equalsIgnoreCase(&quot;.png&quot;)) &#123;   &#x2F;&#x2F;不区分大小判断</span><br><span class="line">			String uuid &#x3D; UUID.randomUUID().toString();  &#x2F;&#x2F;获取随机后数字</span><br><span class="line">			FileUtils.copyInputStreamToFile(file.getInputStream(),new File(&quot;E:&#x2F;&quot;+uuid+suffix));  &#x2F;&#x2F;上传到E盘</span><br><span class="line">				return &quot;index.jsp&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			return &quot;error.jsp&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JSP九大内置对象和四大作用域" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/04/09/JSP%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9B%9B%E5%A4%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="article-date">
-      <time datetime="2020-04-09T14:57:37.000Z" itemprop="datePublished">2020-04-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/09/JSP%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9B%9B%E5%A4%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/">JSP九大内置对象和四大作用域</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="九大内置对象"><a href="#九大内置对象" class="headerlink" title="九大内置对象"></a>九大内置对象</h1><p><img src="/2020/04/09/JSP%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9B%9B%E5%A4%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/jiuge.jpg" alt></p>
-<hr>
-<h1 id="四个作用域"><a href="#四个作用域" class="headerlink" title="四个作用域"></a>四个作用域</h1><p><strong>1. page(当前页面)</strong></p>
-<p><strong>2. request(一次请求中同一个对象)</strong></p>
-<p><strong>3. session(一次会话)</strong></p>
-<pre><code>3.1 只要客户端Cookie中传递的Jsessionid不变 --&gt; session就不会重新实例化(不超过默认时间)
-3.2 实际有效时间:
-    3.2.1 浏览器关闭 ： cookie失效
-    3.2.2 默认时间 ：tomcat的web.xml中配置</code></pre><p><strong>4 .application(关闭tomcat)</strong></p>
-<hr>
-<h1 id="SpringMVC作用域传值方式-四种"><a href="#SpringMVC作用域传值方式-四种" class="headerlink" title="SpringMVC作用域传值方式(四种)"></a>SpringMVC作用域传值方式(四种)</h1><pre><code>1. 使用原生Servlet(HandlerMethod参数中添加作用域对象)
-2. 使用Map集合
-3. 使用SpringMVC中Model接口
-4. 使用SpringMVC中ModelAndView类</code></pre><h2 id="使用原生Servlet"><a href="#使用原生Servlet" class="headerlink" title="使用原生Servlet"></a>使用原生Servlet</h2><blockquote>
-<p><strong>在HandlerMethod参数中 + 作用域对象</strong></p>
-</blockquote>
-<p><strong>注解类：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class DemoController &#123;</span><br><span class="line"></span><br><span class="line">	@RequestMapping(&quot;demo01&quot;)</span><br><span class="line">	public String demo1(HttpServletRequest abc,HttpSession sessionParam) &#123;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;request作用域	</span><br><span class="line">		abc.setAttribute(&quot;req&quot;,&quot;req的值&quot;);</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;session作用域	</span><br><span class="line">		HttpSession session &#x3D; abc.getSession();</span><br><span class="line">		session.setAttribute(&quot;session&quot;, &quot;session的值&quot;);</span><br><span class="line">		sessionParam.setAttribute(&quot;sessionParam&quot;, &quot;sessionParam的值&quot;);</span><br><span class="line">		</span><br><span class="line">	&#x2F;&#x2F;设置application作用域	</span><br><span class="line">		ServletContext application&#x3D;abc.getServletContext();</span><br><span class="line">		application.setAttribute(&quot;application&quot;,&quot;application的值&quot;);</span><br><span class="line">		</span><br><span class="line">		return &quot;index.jsp&quot;; &#x2F;&#x2F;返回给一个jsp页面</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>index.jsp页面(取出来):</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">request:$&#123;requestScope.req &#125;&lt;&#x2F;br&gt;</span><br><span class="line">session:$&#123;sessionScope.session &#125;&lt;&#x2F;br&gt;</span><br><span class="line">sessionParam:$&#123;sessionScope.sessionParam &#125;&lt;&#x2F;br&gt;</span><br><span class="line">application:$&#123;applicationScope.application &#125;&lt;&#x2F;br&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Map集合"><a href="#Map集合" class="headerlink" title="Map集合"></a>Map集合</h2><blockquote>
-<p><strong>map中的内容放入request作用域</strong><br><strong>spring会对map集合通过BindingAwareModelMap进行实例化</strong></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;demo02&quot;)</span><br><span class="line">	public String demo2(Map&lt;String,Object&gt; map) &#123;</span><br><span class="line"></span><br><span class="line">	System.out.println(map.getClass());  &#x2F;&#x2F;输出map的结果</span><br><span class="line">	map.put(&quot;map&quot;,&quot;map的值&quot;);  &#x2F;&#x2F;获取map值</span><br><span class="line">	return &quot;index.jsp&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用SpringMVC中Model接口"><a href="#使用SpringMVC中Model接口" class="headerlink" title="使用SpringMVC中Model接口"></a>使用SpringMVC中Model接口</h2><blockquote>
-<p><strong>内容最终放入到request作用域</strong></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;demo03&quot;)</span><br><span class="line">	public String demo3(Model model) &#123;</span><br><span class="line"></span><br><span class="line">	model.addAttribute(&quot;model&quot;,&quot;model的值&quot;);</span><br><span class="line">	return &quot;index.jsp&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用SpringMVC中ModelAndView类"><a href="#使用SpringMVC中ModelAndView类" class="headerlink" title="使用SpringMVC中ModelAndView类"></a>使用SpringMVC中ModelAndView类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;demo04&quot;)</span><br><span class="line">	public String demo4() &#123;</span><br><span class="line"></span><br><span class="line">	ModelAndView m&#x3D;new ModelAndView(&quot;index.jsp&quot;);</span><br><span class="line">	return &quot;m&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
 

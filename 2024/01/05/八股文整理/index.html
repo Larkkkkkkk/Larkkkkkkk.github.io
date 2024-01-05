@@ -3,22 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Mybatis运行原理总结 | Larkkkkkkk</title>
+  <title>八股文整理 | Larkkkkkkk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mybatis运行原理运行过程中涉及的类1. Resources Mybatis中的IO流的工具类 ： 加载配置文件 2. SqlSesssionFactoryBuilder()构建器 ：创建SqlSessionFactory接口的实体类 3. XMLConfigBuilder() : Mybatis全局配置文件内容构造器类 --读取流内容并转为JAVA代码 4. Configuration: 封">
+  <meta name="description" content="1.Java基础1.1 Java语言有哪些特点 1.&#x3D;&#x3D;简单易学&#x3D;&#x3D;(简化版C++)  2.&#x3D;&#x3D;面向对象&#x3D;&#x3D;【封装(就是可以通过权限修饰符将属性设置权限，这样只能通过get&#x2F;set方法获取)，继承(父类和子类之间具有继承关系，子类可以继承父类的方法和属性，并且在此基础上进行修改)，多态(编译看左边，运行看右边)】  3.&#x3D;&#x3D;平台无关性&#x3D;&#x3D;(Java虚拟机实现平台无关性)  4.&#x3D;&#x3D;支持多线程&#x3D;&#x3D;(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mybatis运行原理总结">
-<meta property="og:url" content="https://larkkkkkkk.github.io/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:title" content="八股文整理">
+<meta property="og:url" content="https://larkkkkkkk.github.io/2024/01/05/%E5%85%AB%E8%82%A1%E6%96%87%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="Larkkkkkkk">
-<meta property="og:description" content="Mybatis运行原理运行过程中涉及的类1. Resources Mybatis中的IO流的工具类 ： 加载配置文件 2. SqlSesssionFactoryBuilder()构建器 ：创建SqlSessionFactory接口的实体类 3. XMLConfigBuilder() : Mybatis全局配置文件内容构造器类 --读取流内容并转为JAVA代码 4. Configuration: 封">
+<meta property="og:description" content="1.Java基础1.1 Java语言有哪些特点 1.&#x3D;&#x3D;简单易学&#x3D;&#x3D;(简化版C++)  2.&#x3D;&#x3D;面向对象&#x3D;&#x3D;【封装(就是可以通过权限修饰符将属性设置权限，这样只能通过get&#x2F;set方法获取)，继承(父类和子类之间具有继承关系，子类可以继承父类的方法和属性，并且在此基础上进行修改)，多态(编译看左边，运行看右边)】  3.&#x3D;&#x3D;平台无关性&#x3D;&#x3D;(Java虚拟机实现平台无关性)  4.&#x3D;&#x3D;支持多线程&#x3D;&#x3D;(">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://larkkkkkkk.github.io/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/liuchengtu.png">
-<meta property="article:published_time" content="2020-03-30T16:06:27.000Z">
-<meta property="article:modified_time" content="2020-03-31T01:30:58.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052116321.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052120350.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052130719.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052136534.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052139576.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052141337.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052155494.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052218990.png">
+<meta property="article:published_time" content="2024-01-05T12:43:52.000Z">
+<meta property="article:modified_time" content="2024-01-05T14:31:30.517Z">
 <meta property="article:author" content="Larkkkkkkk">
-<meta property="article:tag" content="Mybatis">
+<meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://larkkkkkkk.github.io/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/liuchengtu.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052116321.png">
   
     <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
   
@@ -334,11 +341,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Mybatis运行原理总结" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-八股文整理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/" class="article-date">
-      <time datetime="2020-03-30T16:06:27.000Z" itemprop="datePublished">2020-03-31</time>
+      <a href="/2024/01/05/%E5%85%AB%E8%82%A1%E6%96%87%E6%95%B4%E7%90%86/" class="article-date">
+      <time datetime="2024-01-05T12:43:52.000Z" itemprop="datePublished">2024-01-05</time>
 </a>
     </div>
   
@@ -351,7 +358,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Mybatis运行原理总结
+      八股文整理
     </h1>
   
 
@@ -362,7 +369,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -372,33 +379,149 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Mybatis运行原理"><a href="#Mybatis运行原理" class="headerlink" title="Mybatis运行原理"></a>Mybatis运行原理</h1><h2 id="运行过程中涉及的类"><a href="#运行过程中涉及的类" class="headerlink" title="运行过程中涉及的类"></a>运行过程中涉及的类</h2><pre><code>1. Resources Mybatis中的IO流的工具类 ： 加载配置文件
-2. SqlSesssionFactoryBuilder()构建器 ：创建SqlSessionFactory接口的实体类
-3. XMLConfigBuilder() : Mybatis全局配置文件内容构造器类 --读取流内容并转为JAVA代码
-4. Configuration: 封装全局配置文件所有内容 
-5. DefaultSqlSessionFactory()：是SqlSessionFactory()接口实现类
-6. Transaction：事务类 -- 每一个sqlssion都有一个transaction对象
-7. TransactionFactory：事务工厂
-8. Executor： Mybatis执行器
-9. SimpleExecutor: 默认执行器
-10. BatchExcutor：批量操作
-11. openSession：参数控制：
-12. DefaultSqlSession：SqlSession接口实现类
-13. ExcptionFactory：异常工厂</code></pre><h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/liuchengtu.png" alt></p>
-<h2 id="文字描述"><a href="#文字描述" class="headerlink" title="文字描述"></a>文字描述</h2><pre><code>1. Mybatis执行时先要通过Resources加载全局配置文件
-2. 通过实例化SqlSessionFactoryBuilder构建器 -- 帮助SqlSessionFactory接口实现类DefaultSqlSessionFactory
-3. 用XmlConfiguration解析全局配置文件 
-4. 将解析结果给Configuration --&gt; 最后又给了DefaultSqlSessionFactory
+        <h1 id="1-Java基础"><a href="#1-Java基础" class="headerlink" title="1.Java基础"></a>1.Java基础</h1><h2 id="1-1-Java语言有哪些特点"><a href="#1-1-Java语言有哪些特点" class="headerlink" title="1.1 Java语言有哪些特点"></a>1.1 Java语言有哪些特点</h2><ul>
+<li><p>1.==简单易学==(简化版C++)</p>
+</li>
+<li><p>2.==面向对象==【封装(就是可以通过权限修饰符将属性设置权限，这样只能通过get/set方法获取)，继承(父类和子类之间具有继承关系，子类可以继承父类的方法和属性，并且在此基础上进行修改)，多态(编译看左边，运行看右边)】</p>
+</li>
+<li><p>3.==平台无关性==(Java虚拟机实现平台无关性)</p>
+</li>
+<li><p>4.==支持多线程==(Java支持多线程)</p>
+</li>
+<li><p>5.==可靠性==(Java具备异常处理和自动内存管理机制)</p>
+</li>
+<li><p>6.==安全性==(Java提供权限修饰符，限制程序直接访问操作系统资源)</p>
+</li>
+<li><p>7.支持==网络编程==</p>
+</li>
+<li><p>8.==跨平台性==:只要操作系统安装jvm就可以运行java程序 (一次编写，随处运行)</p>
+</li>
+</ul>
+<h2 id="1-2-Java三个版本的比较"><a href="#1-2-Java三个版本的比较" class="headerlink" title="1.2 Java三个版本的比较"></a>1.2 Java三个版本的比较</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052116321.png" alt="image-20240105211658267"></p>
+<ul>
+<li><p>==Java SE（Java Platform，Standard Edition）==: Java 平台==标准版==，Java 编程语言的基础，它包含了支持 Java 应用程序开发和运行的核心类库以及虚拟机等核心组件。Java SE 可以用于构建==桌面应用程序== / ==简单的服务器应用程序==</p>
+</li>
+<li><p>==Java EE（Java Platform, Enterprise Edition ）==：Java 平台==企业版==，建立在 Java SE 的基础上，包含了支持==企业级应用程序开发==和部署的标准和规范（比如 Servlet、JSP、EJB、JDBC、JPA、JTA、JavaMail、JMS）。 Java EE 可以用于构建分布式、可移植、健壮、可伸缩和安全的服务端 Java 应用程序，例如 Web 应用程序</p>
+</li>
+<li><p>==Java ME== 是 Java 的微型版本，主要用于开发==嵌入式消费电子设备的应用程序==，例如手机、PDA、机顶盒、冰箱、空调等。Java ME 无需重点关注，知道有这个东西就好了，现在已经用不上了。</p>
+</li>
+</ul>
+<p><strong>简单来说，Java SE 是 Java 的基础版本，Java EE 是 Java 的高级版本。Java SE 更适合开发桌面应用程序或简单的服务器应用程序，Java EE 更适合开发复杂的企业级应用程序或 Web 应用程序</strong></p>
+<h2 id="1-3-JVM-amp-JDK-amp-JRE-三者对比"><a href="#1-3-JVM-amp-JDK-amp-JRE-三者对比" class="headerlink" title="1.3 JVM &amp; JDK &amp; JRE 三者对比"></a>1.3 JVM &amp; JDK &amp; JRE 三者对比</h2><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052120350.png" alt="image-20240105212044287" style="zoom:80%;">
 
-----
+<ul>
+<li>==JDK==:  Java程序开发工具包=jre+开发人员使用的工具（例如javac编译工具）</li>
+</ul>
+<ul>
+<li>==JRE==:  Java程序运行时环境=jvm+运行时需要的核心类库   [有了jre其实就可以运行代码]</li>
+</ul>
+<ul>
+<li><p>==JVM==:  运行Java字节码的虚拟机,JVM针对不同系统有特定实现(使用相同的字节码.class，得出相同结果)  –&gt; 一次编译，随处可以运行</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052130719.png" alt="image-20240105213023670" style="zoom:67%;">
 
-5. 由SqlSessionFactory工厂创建SqlSession
-6. 每次创建SqlSession都必须要要用TransactionFactory创建Transaction对象
-7. 有了事务对象之后就需要有Excutor执行器
-8. 创建实例化DefaultSqlSession传给SqlSession接口
-9. 进行不同的JDBC
-10. 成功就提交 --关闭
-11. 不成功就回滚事务</code></pre><hr>
+
+
+</li>
+</ul>
+<h2 id="1-4-字节码-class文件"><a href="#1-4-字节码-class文件" class="headerlink" title="1.4 字节码(.class文件)"></a>1.4 字节码(.class文件)</h2><p>==字节码==：JVM可以理解的代码，不面向任何特定的处理器，只面向虚拟机JVM。</p>
+<ul>
+<li><strong>Java程序执行过程：</strong></li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052136534.png" alt="image-20240105213658490">
+
+<p>引入==JIT编译器(运行时编译)==，完成第一次编译之后就会将字节码对应的机器码保存下来，下次可以直接使用。机器码效率 &gt; java解释器，所以Java是编译和解释共存的语言</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052139576.png" alt="image-20240105213914539"></p>
+<blockquote>
+<p>HotSpot 采用了==惰性评估(Lazy Evaluation)==的做法，根据==二八定律==，消耗大部分系统资源的只有那一小部分的代码（热点代码），而这也就是 JIT 所需要编译的部分。JVM 会根据代码每次被执行的情况收集信息并相应地做出一些优化，因此执行的次数越多，它的速度就越快。</p>
+</blockquote>
+<p>JDK、JRE、JVM、JIT 这四者的关系如下图所示</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052141337.png" alt="image-20240105214120303" style="zoom:80%;">
+
+
+
+
+
+<h2 id="1-5-Java语言是”编译和解释并存”"><a href="#1-5-Java语言是”编译和解释并存”" class="headerlink" title="1.5 Java语言是”编译和解释并存”"></a>1.5 Java语言是”编译和解释并存”</h2><p>这是因为 Java 语言既具有编译型语言的特征，也具有解释型语言的特征。</p>
+<p>因为 Java 程序要经过==先编译，后解释==两个步骤，Java 编写的程序需要先经过编译步骤，生成字节码（<code>.class</code> 文件），这种字节码必须由 Java 解释器来解释执行</p>
+<h2 id="1-6-Java和C-区别"><a href="#1-6-Java和C-区别" class="headerlink" title="1.6 Java和C++区别"></a>1.6 Java和C++区别</h2><p>Java 不提供指针来直接访问内存，程序内存更加安全</p>
+<p>Java 的类是单继承的，C++ 支持多重继承；虽然 Java 的类不可以多继承，但是接口可以多继承。</p>
+<p>Java 有自动内存管理垃圾回收机制(GC)，不需要程序员手动释放无用内存。</p>
+<p>C ++同时支持方法重载和操作符重载，但是 Java 只支持方法重载（操作符重载增加了复杂性，这与 Java 最初的设计思想不符）。</p>
+<h2 id="1-7-Java三种注释"><a href="#1-7-Java三种注释" class="headerlink" title="1.7 Java三种注释"></a>1.7 Java三种注释</h2><ul>
+<li>==单行注释==   通常用于解释方法内某单行代码的作用</li>
+<li>==多行注释==  通常用于解释一段代码的作用</li>
+<li>==文档注释(Java特有)==  通常用于生成 Java 开发文档</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052155494.png" alt="image-20240105215518448" style="zoom:80%;">
+
+<p>注释并不会执行(编译器在编译代码之前会把代码中的所有注释抹掉,字节码(.class)中不保留注释)</p>
+<blockquote>
+<p><strong>代码的注释不是越详细越好。实际上好的代码本身就是注释，我们要尽量规范和美化自己的代码来减少不必要的注释。</strong></p>
+<p><strong>若编程语言足够有表达力，就不需要注释，尽量通过代码来阐述</strong></p>
+</blockquote>
+<h2 id="1-8-Java结构和格式"><a href="#1-8-Java结构和格式" class="headerlink" title="1.8 Java结构和格式"></a>1.8 Java结构和格式</h2><ul>
+<li><strong>Java结构和语法格式</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">权限修饰符 class 类名&#123;</span><br><span class="line">	权限修饰符 方法1()&#123;             &#x2F;&#x2F;每一级都需要缩进  每一级都需要&#123;&#125;配对</span><br><span class="line">		语法1;</span><br><span class="line">		语法2;</span><br><span class="line">	&#125;</span><br><span class="line">	权限修饰符 方法2()&#123;</span><br><span class="line">		语法1;</span><br><span class="line">		语法2;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Java程序入口 –main方法</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)&#123;</span><br><span class="line">  	&#x2F;&#x2F;解释说明:  </span><br><span class="line">    public：公共的，用它修饰的类或成员在任意位置可见  [权限修饰符]</span><br><span class="line">    static：静态的，用它修饰的方法，可以不用创建对象就可以调用  [标识了静态就可以调用静态和非静态的，但是非静态的只能调用非静态的]</span><br><span class="line">    void：表示该方法没有返回值  [return;即可]</span><br><span class="line">    main：Java的主方法名，JavaSE的程序入口 </span><br><span class="line">    String[]：字符串数组，这是main方法的形参类型，可以通过命令行参数传值  </span><br><span class="line">    args：这是main方法的形参名，如果要在main中使用命令行参数，可以遍历该args数组。  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Java程序输出</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;有两种情况</span><br><span class="line">&#x2F;&#x2F;1.换行 --输出内容(可以忽略)</span><br><span class="line">System.out.println(输出内容);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;2.不换行 --输出内容(不可以忽略)</span><br><span class="line">System.out.print(输出内容);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>源文件名和类名</strong></p>
+<ul>
+<li><p>==一致性==：</p>
+<p>如果一个类写了很多类，==源文件名(.java)必须和public的class类名一致==(不一致会编译报错)，可以和其他类不一致(不便于代码维护)</p>
+</li>
+<li><p>==多样性==：</p>
+<p>一个源文件可以有多个类，但是一个源文件只有一个public类</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-9-标识符和关键字"><a href="#1-9-标识符和关键字" class="headerlink" title="1.9 标识符和关键字"></a>1.9 标识符和关键字</h2><ul>
+<li>==标识符==：只要你自己要定义的都可以叫做标识符<ul>
+<li>区别大小写 </li>
+<li>长度无限制 </li>
+<li>只能由这四种组成: <ul>
+<li>①26个英文字母   (可以当做开头)</li>
+<li>②数字0-9    【如果可做开头的话就不知道指代数字本身还是变量所对应的值   int 123L=12;  long l=123L;  这样的话l最后是123还是12】</li>
+<li>③ 下划线_       (可以当做开头)</li>
+<li>④ 美元符号$    (可以当做开头)</li>
+</ul>
+</li>
+<li>可以包含关键字和保留字，但是不可以使用</li>
+<li>四种情况的命名规范：<ul>
+<li>①包名  —所有的单词都小写  — java.lang com.at.bean</li>
+<li>②类名/接口名  —所有的单词都大写  —ShopController</li>
+<li>③变量名/方法名  —第一个单词小写，后面的单词都大写  —getById()</li>
+<li>④常量名  —所有的单词大写，中间用下划线连接  — MAX_SHOP_VALUES</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>==关键字==:  专门用途的字符串/单词<ul>
+<li>全部为小写，一共有50个(const和goto是保留字，true和false和null是字面量)</li>
+</ul>
+</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401052218990.png" alt="image-20240105221810897" style="zoom: 67%;">
+
+<blockquote>
+<p> 其中，default可以在程序控制，可以当做修饰符，还可以设置为访问权限</p>
+<p>在程序控制中，当在 <code>switch</code> 中匹配不到任何情况时，可以使用 <code>default</code> 来编写默认匹配的情况。</p>
+<p>在类，方法和变量修饰符中，从 JDK8 开始引入了默认方法，可以使用 <code>default</code> 关键字来定义一个方法的默认实现。</p>
+<p>在访问控制中，如果一个方法前没有任何修饰符，则默认会有一个修饰符 <code>default</code>，但是这个修饰符加上了就会报错。</p>
+</blockquote>
 
       
       
@@ -454,13 +577,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/">Mybatis运行原理总结</a></p>
+        <p><span>本文标题:</span><a href="/2024/01/05/%E5%85%AB%E8%82%A1%E6%96%87%E6%95%B4%E7%90%86/">八股文整理</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
-        <p><span>发布时间:</span>2020年03月31日 - 00时06分</p>
-        <p><span>最后更新:</span>2020年03月31日 - 09时30分</p>
+        <p><span>发布时间:</span>2024年01月05日 - 20时43分</p>
+        <p><span>最后更新:</span>2024年01月05日 - 22时31分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/" title="Mybatis运行原理总结">https://larkkkkkkk.github.io/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2024/01/05/%E5%85%AB%E8%82%A1%E6%96%87%E6%95%B4%E7%90%86/" title="八股文整理">https://larkkkkkkk.github.io/2024/01/05/%E5%85%AB%E8%82%A1%E6%96%87%E6%95%B4%E7%90%86/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/01/05/%E5%85%AB%E8%82%A1%E6%96%87%E6%95%B4%E7%90%86/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -473,18 +596,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/03/31/Spring/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Spring
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/30/Mybatis%E6%B3%A8%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Mybatis注解</div>
+    <a href="/2024/01/02/Springboot-takeout/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Springboot-takeout</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -495,7 +609,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybatis运行原理"><span class="toc-number">1.</span> <span class="toc-text">Mybatis运行原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#运行过程中涉及的类"><span class="toc-number">1.1.</span> <span class="toc-text">运行过程中涉及的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程图"><span class="toc-number">1.2.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文字描述"><span class="toc-number">1.3.</span> <span class="toc-text">文字描述</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Java基础"><span class="toc-number">1.</span> <span class="toc-text">1.Java基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Java语言有哪些特点"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Java语言有哪些特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-Java三个版本的比较"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Java三个版本的比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-JVM-amp-JDK-amp-JRE-三者对比"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 JVM &amp; JDK &amp; JRE 三者对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-字节码-class文件"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 字节码(.class文件)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-Java语言是”编译和解释并存”"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 Java语言是”编译和解释并存”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-Java和C-区别"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 Java和C++区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-Java三种注释"><span class="toc-number">1.7.</span> <span class="toc-text">1.7 Java三种注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-Java结构和格式"><span class="toc-number">1.8.</span> <span class="toc-text">1.8 Java结构和格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-标识符和关键字"><span class="toc-number">1.9.</span> <span class="toc-text">1.9 标识符和关键字</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -564,13 +678,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/03/31/Spring/" title="上一篇: Spring">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2020/03/30/Mybatis%E6%B3%A8%E8%A7%A3/" title="下一篇: Mybatis注解">
+            <a href="/2024/01/02/Springboot-takeout/" title="下一篇: Springboot-takeout">
                 <i class="fa fa-angle-right"></i>
             </a>
         
