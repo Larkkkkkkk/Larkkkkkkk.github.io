@@ -332,6 +332,133 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-ServletContext" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/18/ServletContext/" class="article-date">
+      <time datetime="2020-02-18T06:02:28.000Z" itemprop="datePublished">2020-02-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/18/ServletContext/">ServletContext</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、ServletContext-Servlet-上下文"><a href="#一、ServletContext-Servlet-上下文" class="headerlink" title="一、ServletContext(Servlet 上下文)"></a>一、ServletContext(Servlet 上下文)</h1><blockquote>
+<p>每个web工程都只有一个ServletContext对象。 说白了也就是不管在哪个servlet里面，获取到的这个类的对象都是同一个。</p>
+</blockquote>
+<p><strong>举例步骤：</strong>新建一个项目–java Resources–src右键新建Servlet–填写类名和包名</p>
+<p><strong>自动生成代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">package servleter;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Servlet implementation class ServletContext01</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class ServletContext01 extends HttpServlet &#123;</span><br><span class="line">	private static final long serialVersionUID &#x3D; 1L;</span><br><span class="line">       </span><br><span class="line">    &#x2F;**</span><br><span class="line">     * @see HttpServlet#HttpServlet()</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public ServletContext01() &#123;</span><br><span class="line">        super();</span><br><span class="line">        &#x2F;&#x2F; TODO Auto-generated constructor stub</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">		response.getWriter().append(&quot;Served at: &quot;).append(request.getContextPath());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###如何得到对象(和ServletConfig相似)</p>
+<pre><code>//1. 获取对象
+    ServletContext context = getServletContext();</code></pre><hr>
+<h1 id="二、ServletContext获取全局参数"><a href="#二、ServletContext获取全局参数" class="headerlink" title="二、ServletContext获取全局参数"></a>二、ServletContext获取全局参数</h1><pre><code>ServletConfig----在servlet里面对&lt;init-paramd&gt;写具体的参数</code></pre><p><img src="/2020/02/18/ServletContext/config.png" alt></p>
+<pre><code>ServletContext---对根标签servlet外面对&lt;context-param&gt;写全局参数</code></pre><p><img src="/2020/02/18/ServletContext/context.png" alt></p>
+<p><img src="/2020/02/18/ServletContext/jiegoutu.png" alt></p>
+<p><strong>使用了直接右键server所以不用自己配</strong></p>
+<p><strong>web.xml的完整内容：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;web-app xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot; xmlns&#x3D;&quot;http:&#x2F;&#x2F;java.sun.com&#x2F;xml&#x2F;ns&#x2F;javaee&quot; xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;java.sun.com&#x2F;xml&#x2F;ns&#x2F;javaee http:&#x2F;&#x2F;java.sun.com&#x2F;xml&#x2F;ns&#x2F;javaee&#x2F;web-app_2_5.xsd&quot; id&#x3D;&quot;WebApp_ID&quot; version&#x3D;&quot;2.5&quot;&gt;</span><br><span class="line">  &lt;display-name&gt;ServletRegister&lt;&#x2F;display-name&gt;</span><br><span class="line">  &lt;welcome-file-list&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.html&lt;&#x2F;welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.htm&lt;&#x2F;welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.jsp&lt;&#x2F;welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;default.html&lt;&#x2F;welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;default.htm&lt;&#x2F;welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;default.jsp&lt;&#x2F;welcome-file&gt;</span><br><span class="line">  &lt;&#x2F;welcome-file-list&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;context-param&gt;     &#x2F;&#x2F;在这加context-param标签!!!!!!!!!!!!!!!</span><br><span class="line">    &lt;param-name&gt;address&lt;&#x2F;param-name&gt;</span><br><span class="line">    &lt;param-value&gt;shenzhen&lt;&#x2F;param-value&gt;</span><br><span class="line">  &lt;&#x2F;context-param&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;Demo&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;servlet.Demo&lt;&#x2F;servlet-class&gt;</span><br><span class="line">  &lt;&#x2F;servlet&gt;</span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;Demo&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;Demo&lt;&#x2F;url-pattern&gt;</span><br><span class="line">  &lt;&#x2F;servlet-mapping&gt;</span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">    &lt;description&gt;&lt;&#x2F;description&gt;</span><br><span class="line">    &lt;display-name&gt;ServletContext01&lt;&#x2F;display-name&gt;</span><br><span class="line">    &lt;servlet-name&gt;ServletContext01&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;servleter.ServletContext01&lt;&#x2F;servlet-class&gt;</span><br><span class="line">  &lt;&#x2F;servlet&gt;</span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;ServletContext01&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;ServletContext01&lt;&#x2F;url-pattern&gt;</span><br><span class="line">  &lt;&#x2F;servlet-mapping&gt;</span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">    &lt;description&gt;&lt;&#x2F;description&gt;</span><br><span class="line">    &lt;display-name&gt;ServletContext02&lt;&#x2F;display-name&gt;</span><br><span class="line">    &lt;servlet-name&gt;ServletContext02&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;servleter.ServletContext02&lt;&#x2F;servlet-class&gt;</span><br><span class="line">  &lt;&#x2F;servlet&gt;</span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;ServletContext02&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;ServletContext02&lt;&#x2F;url-pattern&gt;</span><br><span class="line">  &lt;&#x2F;servlet-mapping&gt;</span><br><span class="line">&lt;&#x2F;web-app&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>ServletContext01/02代码几乎一样都是创建对象然后输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class ServletContext02 extends HttpServlet &#123;</span><br><span class="line">	</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.获取对象</span><br><span class="line">			ServletContext context&#x3D;getServletContext();</span><br><span class="line">		&#x2F;&#x2F;2.获得address		</span><br><span class="line">			String address&#x3D;context.getInitParameter(&quot;address&quot;);</span><br><span class="line">			System.out.println(&quot;这是ServletContext02的address&#x3D;&quot;+address);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">			doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>01通过浏览器去刷新/02通过eclipse自带的页面浏览器刷新</strong></p>
+<p><img src="/2020/02/18/ServletContext/duibi.png" alt></p>
+<hr>
+<h1 id="三、ServletContext获取Web应用中的资源"><a href="#三、ServletContext获取Web应用中的资源" class="headerlink" title="三、ServletContext获取Web应用中的资源"></a>三、ServletContext获取Web应用中的资源</h1><ol>
+<li>获取资源在tomcat里面的<strong>绝对路径(getRealpath()方法)</strong></li>
+</ol>
+<p><img src="/2020/02/18/ServletContext/diyijiegou.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Demo04 extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.获取对象</span><br><span class="line">			ServletContext context&#x3D;getServletContext();</span><br><span class="line">			String path&#x3D;context.getRealPath(&quot;file&#x2F;config.properties&quot;);   &#x2F;&#x2F;获取给定的文件在服务器上面的绝对路径 ---如果“”里面没有东西意思就是找到根目录</span><br><span class="line">				System.out.println(&quot;path&#x3D;&quot;+path);</span><br><span class="line">				</span><br><span class="line">				 &#x2F;&#x2F;1.创建属性对象</span><br><span class="line">				Properties properties&#x3D;new Properties(); </span><br><span class="line">				InputStream is&#x3D;new FileInputStream(path);  &#x2F;&#x2F;通过InputStream数据流连接path</span><br><span class="line">				properties.load(is); &#x2F;&#x2F;加载输入流</span><br><span class="line">				</span><br><span class="line">				&#x2F;&#x2F;3.获取name属性的值</span><br><span class="line">				String name&#x3D;properties.getProperty(&quot;name&quot;);</span><br><span class="line">				System.out.println(&quot;name&#x3D;&quot;+name); 			</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="/2020/02/18/ServletContext/diyi.png" alt></p>
+<hr>
+<ol start="2">
+<li><strong>ServletContext对象.getResourceAsStream</strong>获取资源流对象</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Demo04 extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;test01(); </span><br><span class="line">		test02();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private void test02() throws IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.获取对象</span><br><span class="line">		Properties properties&#x3D;new Properties();</span><br><span class="line">		ServletContext context&#x3D;getServletContext();  &#x2F;&#x2F;创建ServletContext对象</span><br><span class="line">		InputStream is&#x3D;context.getResourceAsStream(&quot;file&#x2F;config.properties&quot;);  &#x2F;&#x2F;直接写文件路径(不需要path)</span><br><span class="line">		properties.load(is);	&#x2F;&#x2F;加载文件</span><br><span class="line">		&#x2F;&#x2F;3.获取name属性的值</span><br><span class="line">		String name&#x3D;properties.getProperty(&quot;name&quot;);</span><br><span class="line">		System.out.println(&quot;name22&#x3D;&quot;+name);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<ol>
+<li>通过<strong>classloader</strong>去获取web工程下的资源 </li>
+</ol>
+<ul>
+<li><p><strong>ServletContext：</strong><br>　　<br>a路径：F:\tomcat\apache-tomcat…\wtpwebapps\Demo04</p>
+</li>
+<li><p><strong>ClassLoader：</strong><br>　　<br>a路径：F:\tomcat\apache-tomcat…\wtpwebapps\Demo04\WEB-INF\classes</p>
+</li>
+</ul>
+<p>要想让classloader回到Demo03的位置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;获得该java文件吧内磨机片的class然后获取到加载这个class的虚拟机中的那个类加载器对象</span><br><span class="line">InputStream is&#x3D;this.getClass().getClassLoader().getResourceAsStream(&quot;..&#x2F;..&#x2F;file&#x2F;config.properties&quot;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="四、ServletContext存取数据"><a href="#四、ServletContext存取数据" class="headerlink" title="四、ServletContext存取数据"></a>四、ServletContext存取数据</h1><p><strong>此为web代码框架：</strong></p>
+<p><img src="/2020/02/18/ServletContext/zuizhong.png" alt></p>
+<p><strong>实现界面分析：</strong></p>
+<p><img src="/2020/02/18/ServletContext/fenxi.png" alt></p>
+<p><strong>步骤：</strong></p>
+<ol>
+<li><strong>Client客户端：</strong>主要是要有两个html的客户端代码：<br>login主要是有三个input标签分别是登录、注册、提交按钮；login_success是用来用href标签弹出网站成功登陆次数(通过ServletContext对象的getAttribute()方法获取loginservlet类中的count值)</li>
+<li><strong>server服务器端：</strong>主要是两个类：<br>CountServlet类只是获取LoginServlet类的ServletContext对象获取count输出<br>LoginServlet主要分为两步骤：一是通过request的getParameter方法获取login.html输入的账户密码；二是通过ServletContext()对象的set/getAttribute方法获取和更改登陆成功数字。成功可以通过response的setStatus(302)方法设置状态码，然后通过setHeader方法跳转到预定的login_success.html页面。</li>
+</ol>
+<p><strong>LoginServlet类代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">public class LoginServlet extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;1.获取数据</span><br><span class="line">		String username&#x3D;request.getParameter(&quot;username&quot;);  &#x2F;&#x2F;request 包括请求的信息</span><br><span class="line">		String password&#x3D;request.getParameter(&quot;password&quot;);</span><br><span class="line">		System.out.println(username+password);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.校验数据</span><br><span class="line">		PrintWriter pw&#x3D;response.getWriter();  &#x2F;&#x2F;response 响应数据给浏览器 </span><br><span class="line">		</span><br><span class="line">		if(&quot;admin&quot;.equals(username)&amp;&amp;&quot;123&quot;.equals(password))</span><br><span class="line">		&#123;</span><br><span class="line">			&#x2F;&#x2F;System.out.println(&quot;登陆成功!&quot;);</span><br><span class="line">			&#x2F;&#x2F;pw.write(&quot;login success..&quot;);</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;1.成功的次数累计加一	</span><br><span class="line">			Object obj&#x3D;getServletContext().getAttribute(&quot;count&quot;);&#x2F;&#x2F;使用ServeletContext对象的getAttribute方法获取count数</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;默认是0次</span><br><span class="line">			int totalCount&#x3D;0; &#x2F;&#x2F;计数用</span><br><span class="line">			if(obj!&#x3D;null)</span><br><span class="line">			&#123;</span><br><span class="line">				totalCount&#x3D;(int) obj;  &#x2F;&#x2F;如果不为0就把obj强转给计数用的totalCount</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(&quot;已经登陆成功的次数是：&quot;+totalCount);</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;给count赋新的值</span><br><span class="line">			getServletContext().setAttribute(&quot;count&quot;,totalCount+1);  &#x2F;&#x2F;输出之后可以使用ServletContext对象的setAttribute方法更改count数字(当前输出的数字加一付给count)</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.跳转到成功的界面</span><br><span class="line">			&#x2F;&#x2F;设置状态码</span><br><span class="line">			response.setStatus(302);</span><br><span class="line">			&#x2F;&#x2F;定位-----&gt;跳转去 login_success.html		</span><br><span class="line">			response.setHeader(&quot;Location&quot;,&quot;login_success.html&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(&quot;登录失败！&quot;);</span><br><span class="line">			pw.write(&quot;login failed..&quot;);</span><br><span class="line">		&#125;	</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">			doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>CountServlet类代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class CountServlet extends HttpServlet &#123;</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;	</span><br><span class="line">		&#x2F;&#x2F;1.取值</span><br><span class="line">		int count&#x3D;(int) getServletContext().getAttribute(&quot;count&quot;);</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;2.输出到界面</span><br><span class="line">		response.getWriter().write(&quot;当前网站成功登录总次数为&quot;+count+&quot;次&quot;);	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>login_success.html代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">	&lt;h2&gt;登录成功了&lt;&#x2F;h2&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;CountServlet&quot;&gt;获取网站登录成功总数 &lt;&#x2F;a&gt;   &lt;!--href找的是xml里面 url标签的内容--&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>login.html代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;h2&gt;请输入以下内容，完成登陆&lt;&#x2F;h2&gt;</span><br><span class="line">	&lt;form action&#x3D;&quot;LoginServlet&quot; method&#x3D;&quot;get&quot;&gt;  &lt;!--action找的是xml里面 url标签的内容--&gt;</span><br><span class="line">		账号:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">		密码:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&#x2F;&gt;&lt;br&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-HTTPServletReauest和HTTPServletResponse" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1770,151 +1897,6 @@ encoding : 解析xml中的文字的时候，使用什么编码来翻译
 
 <p><strong>3. test包里面的TestUserDaoImpl类里面写增删查改的直接调用方法</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class TestUserDaoImpl &#123;</span><br><span class="line">	@Test</span><br><span class="line">	public void testInsert()&#123;  &#x2F;&#x2F;测试插入</span><br><span class="line">		</span><br><span class="line">		UserDao dao &#x3D; new UserDaoImpl();</span><br><span class="line">		</span><br><span class="line">		dao.insert(&quot;aobama&quot;, &quot;911&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Test </span><br><span class="line">	public void testUpdate()&#123;  &#x2F;&#x2F;测试更新</span><br><span class="line">		</span><br><span class="line">		UserDao dao &#x3D; new UserDaoImpl();</span><br><span class="line">		</span><br><span class="line">		dao.update(2, &quot;itheima&quot;);</span><br><span class="line">	&#125;	</span><br><span class="line"></span><br><span class="line">	@Test</span><br><span class="line">	public void testDelete()&#123; &#x2F;&#x2F;测试删除</span><br><span class="line">		</span><br><span class="line">		UserDao dao &#x3D; new UserDaoImpl();</span><br><span class="line">		</span><br><span class="line">		dao.delete(30);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Test</span><br><span class="line">	public void testFindAll()&#123;  &#x2F;&#x2F;测试查询所有</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;面向父类编程 接口编程</span><br><span class="line">		UserDao dao &#x3D; new UserDaoImpl(); &#x2F;&#x2F;体现多态的特征 </span><br><span class="line">		dao.findAll();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Test</span><br><span class="line">	public void testLogin()&#123;</span><br><span class="line">		UserDao dao &#x3D; new UserDaoImpl();</span><br><span class="line">		dao.login(&quot;admin&quot;, &quot;100234khsdf88&#39; or &#39;1&#x3D;1&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CJDBC/" rel="tag">Mysql数据库和JDBC</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JDBC对于数据库的CRUD" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/" class="article-date">
-      <time datetime="2020-02-13T04:31:42.000Z" itemprop="datePublished">2020-02-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/">数据库的CRUD</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="数据库-sql-—-增删查改-CRUD"><a href="#数据库-sql-—-增删查改-CRUD" class="headerlink" title="数据库(sql)—-增删查改(CRUD)"></a>数据库(sql)—-增删查改(CRUD)</h1><ul>
-<li>开始的数据库：</li>
-</ul>
-<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/yuanshi.png" alt></p>
-<p><strong>其中四个增删查改的操作</strong></p>
-<ul>
-<li><p><strong>insert(插入)</strong></p>
-<pre><code>   //插入全部
-insert into t_stu (id,name,age) 
-values (&apos;4&apos;,&apos;wangqiang&apos;,28)    
-   //插入一部分
-insert into t_stu (name,age) 
-values (&apos;wangqiang&apos;,28)</code></pre></li>
-<li><p><strong>delete(删除)</strong></p>
-<pre><code>delete 
-from s_stu
-where id=6    </code></pre></li>
-<li><p><strong>query(查询)</strong></p>
-<pre><code>select  */列/行
-from t_stu(表)
-where  name=&apos;wangwu&apos;</code></pre></li>
-<li><p><strong>update(更新)</strong></p>
-<pre><code>update t_stu(表)
-set id=6
-where age=5;</code></pre></li>
-</ul>
-<h1 id="一、查询"><a href="#一、查询" class="headerlink" title="一、查询"></a>一、查询</h1><p><strong>查询的sql语句：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String sql&#x3D;&quot;select * from s_stu where name&#x3D;&#39;lisi&#39;&quot;;  &#x2F;&#x2F;写sql语句</span><br></pre></td></tr></table></figure>
-
-<p><strong>完整代码如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">package CRUDlianxi;</span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import com.mysql.jdbc.Connection;</span><br><span class="line">import com.mysql.jdbc.Statement;</span><br><span class="line">public class MainTest &#123;</span><br><span class="line">	public static void main(String[] args) throws SQLException &#123;</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;1.获得连接对象</span><br><span class="line">		java.sql.Connection conn&#x3D;JDBC.getConn();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.根据连接对象，得到statement</span><br><span class="line">		java.sql.Statement st&#x3D;conn.createStatement();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">		String sql&#x3D;&quot;select * from s_stu where name&#x3D;&#39;lisi&#39;&quot;;  &#x2F;&#x2F;写sql语句</span><br><span class="line">		ResultSet rs&#x3D;st.executeQuery(sql);	&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;4.遍历</span><br><span class="line">		while(rs.next())  &#x2F;&#x2F;判断是不是有下一个</span><br><span class="line">		&#123;</span><br><span class="line">			int id&#x3D;rs.getInt(&quot;id&quot;);</span><br><span class="line">			String name&#x3D;rs.getString(&quot;name&quot;);</span><br><span class="line">			int age&#x3D;rs.getInt(&quot;age&quot;);</span><br><span class="line">			System.out.println(&quot;id&#x3D;&quot;+id+&quot; name&#x3D;&quot;+name+&quot; age&#x3D;&quot;+age);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>查询结果如下：</strong></p>
-<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/diyige.png" alt></p>
-<hr>
-<h1 id="二、修改"><a href="#二、修改" class="headerlink" title="二、修改"></a>二、修改</h1><p>　　主要是更改为st调用<code>executeUpdate(sql)</code>方法，结果返回给一个整数rs,判断rs得知结果修改正确与否</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">String sql&#x3D;&quot;update s_stu set id&#x3D;22 where age&#x3D;18&quot;;  &#x2F;&#x2F;写sql语句</span><br><span class="line">int rs&#x3D;st.executeUpdate(sql);	&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;4判断是不是修改正确</span><br><span class="line">if(rs &gt;0 )&#123;</span><br><span class="line">	System.out.println(&quot;更新成功&quot;);</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">	System.out.println(&quot;更新失败&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>完整代码如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">package CRUDlianxi;</span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import com.mysql.jdbc.Connection;</span><br><span class="line">import com.mysql.jdbc.Statement;</span><br><span class="line">public class MainTest &#123;</span><br><span class="line">	public static void main(String[] args) throws SQLException &#123;</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;1.获得连接对象</span><br><span class="line">		java.sql.Connection conn&#x3D;JDBC.getConn();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.根据连接对象，得到statement</span><br><span class="line">		java.sql.Statement st&#x3D;conn.createStatement();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">		String sql&#x3D;&quot;update s_stu set id&#x3D;22 where age&#x3D;18&quot;;  &#x2F;&#x2F;写sql语句</span><br><span class="line">		int rs&#x3D;st.executeUpdate(sql);	&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;4判断是不是修改正确</span><br><span class="line">		if(rs &gt;0 )&#123;</span><br><span class="line">			System.out.println(&quot;更新成功&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(&quot;更新失败&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>修改结果如下：</strong></p>
-<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/dierge.png" alt></p>
-<p><strong>修改之后数据库的样子：</strong></p>
-<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/diergede.png" alt></p>
-<hr>
-<h1 id="三、删除"><a href="#三、删除" class="headerlink" title="三、删除"></a>三、删除</h1><p>　　和修改操作相比只是sql语句不同，调用的方法都相同。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">String sql&#x3D;&quot;delete from s_stu where id&#x3D;22&quot;;  &#x2F;&#x2F;写sql语句		</span><br><span class="line">int result &#x3D; st.executeUpdate(sql);&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;4判断是不是删除正确</span><br><span class="line">if(result &gt;0 )&#123;</span><br><span class="line">	System.out.println(&quot;删除成功&quot;);</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">	System.out.println(&quot;删除失败&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>完整代码如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">package CRUDlianxi;</span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import com.mysql.jdbc.Connection;</span><br><span class="line">import com.mysql.jdbc.Statement;</span><br><span class="line">public class MainTest &#123;</span><br><span class="line">	public static void main(String[] args) throws SQLException &#123;</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;1.获得连接对象</span><br><span class="line">		java.sql.Connection conn&#x3D;JDBC.getConn();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.根据连接对象，得到statement</span><br><span class="line">		java.sql.Statement st&#x3D;conn.createStatement();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">		String sql&#x3D;&quot;delete from s_stu where id&#x3D;22&quot;;  &#x2F;&#x2F;写sql语句		</span><br><span class="line">		int result &#x3D; st.executeUpdate(sql);&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;4判断是不是删除正确</span><br><span class="line">		if(result &gt;0 )&#123;</span><br><span class="line">			System.out.println(&quot;删除成功&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			System.out.println(&quot;删除失败&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>删除结果如下：</strong></p>
-<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/disange.png" alt></p>
-<p><strong>删除之后数据库的样子：</strong></p>
-<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/disangede.png" alt></p>
-<hr>
-<h1 id="四、插入"><a href="#四、插入" class="headerlink" title="四、插入"></a>四、插入</h1><p>　　和修改操作相比只是sql语句不同，调用的方法都相同。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">String sql&#x3D;&quot;insert into s_stu (id,name,age) values (66,&#39;wangqiang&#39;,28)&quot;;  &#x2F;&#x2F;写sql语句		</span><br><span class="line">int result &#x3D; st.executeUpdate(sql);&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;4判断是不是删除正确	</span><br><span class="line">if(result &gt;0 )&#123;</span><br><span class="line">	System.out.println(&quot;添加成功&quot;);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	System.out.println(&quot;添加失败&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>完整代码如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package CRUDlianxi;</span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line">import com.mysql.jdbc.Connection;</span><br><span class="line">import com.mysql.jdbc.Statement;</span><br><span class="line">public class MainTest &#123;</span><br><span class="line">	public static void main(String[] args) throws SQLException &#123;</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;1.获得连接对象</span><br><span class="line">		java.sql.Connection conn&#x3D;JDBC.getConn();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2.根据连接对象，得到statement</span><br><span class="line">		java.sql.Statement st&#x3D;conn.createStatement();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;3.执行sql语句，返回ResultSet</span><br><span class="line">		String sql&#x3D;&quot;insert into s_stu (id,name,age) values (66,&#39;wangqiang&#39;,28)&quot;;  &#x2F;&#x2F;写sql语句		</span><br><span class="line">		int result &#x3D; st.executeUpdate(sql);&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;4判断是不是删除正确	</span><br><span class="line">		if(result &gt;0 )&#123;</span><br><span class="line">			System.out.println(&quot;添加成功&quot;);</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			System.out.println(&quot;添加失败&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>插入结果如下：</strong></p>
-<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/disige.png" alt></p>
-<p><strong>插入之后数据库的样子：</strong></p>
-<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/disigede.png" alt></p>
-<hr>
-<h1 id="代码步骤总结："><a href="#代码步骤总结：" class="headerlink" title="代码步骤总结："></a>代码步骤总结：</h1><ol>
-<li>需要去拷贝JDBC文件内的JDBC类还有properties文件(有url/name/password等)，之后导入mysql和java的jar连接包。</li>
-</ol>
-<p><img src="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/zongjie.png" alt></p>
-<ol start="2">
-<li>根据类.getConn()方法—&gt;连接对象conn<br> <code>java.sql.Connection conn=JDBC.getConn();</code></li>
-<li>根据对象调取createStatement()方法—&gt;关键对象st<br> <code>java.sql.Statement st=conn.createStatement();</code></li>
-<li>然后编写sql语句—&gt;关键对象st调用相关方法(SQL)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String sql&#x3D;&quot;xxxx&quot;;  &#x2F;&#x2F;写sql语句		</span><br><span class="line">int result &#x3D; st.executeUpdate(sql);&#x2F;&#x2F;返回给ResultSet对象   st连接对象去调用Query方法</span><br></pre></td></tr></table></figure></li>
-<li>按查询的话可以遍历输出答案，如果是其他三种就可以让返回int整数判断是不是成功修改。</li>
-</ol>
-<pre><code>if(result &gt;0 )
-{
-    System.out.println(&quot;添加成功&quot;);
-}
-else
-{    
-    System.out.println(&quot;添加失败&quot;);
-}</code></pre>
       
       
     </div>

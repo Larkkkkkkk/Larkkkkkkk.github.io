@@ -332,6 +332,122 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-线程状态" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/07/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/" class="article-date">
+      <time datetime="2019-11-07T07:11:21.000Z" itemprop="datePublished">2019-11-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/07/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/">线程状态</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>一、线程状态</strong><br>在API中<code>java.lang.Thread.state</code>介绍了六种线程状态！</p>
+<p><img src="/2019/11/07/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/xianchengzhuangtaitu.png" alt></p>
+<p>参考视频：<br><a href="https://www.bilibili.com/video/av62541169/?p=312" target="_blank" rel="noopener" title="多线程的网址">https://www.bilibili.com/video/av62541169/?p=312</a></p>
+<ol>
+<li>先<code>new Thread/Thread子类()；</code>—&gt;<strong>新建状态</strong></li>
+<li>执行<code>start()方法</code><ul>
+<li>抢到cpu—&gt;<strong>运行状态(Runnable)</strong>–<code>run()方法结束</code>/<code>stop()过时</code>就会到<strong>死亡状态(Terminated)</strong></li>
+<li>没抢到cpu—&gt;<strong>阻塞状态(Blockerd)</strong></li>
+</ul>
+</li>
+<li>执行<code>sleep(long)方法</code> / <code>wait(long)方法</code>—&gt;<strong>睡眠/休眠状态(Timed_waiting)</strong><ul>
+<li>睡眠结束，cpu不空闲—&gt;<strong>阻塞状态</strong></li>
+<li>睡眠结束，cpu空闲—&gt;<strong>运行状态</strong></li>
+</ul>
+</li>
+<li>执行<code>Object.wait(无参数)</code>—&gt;<strong>无限/永久等待状态</strong></li>
+<li>执行<code>Object.notify()</code>—&gt;只有这个方法才能唤醒。</li>
+</ol>
+<hr>
+<p><strong>二、等待唤醒案例</strong></p>
+<ul>
+<li>等待唤醒案例：线程之间的通信<br>　　创建一个<strong>顾客线程(消费者)</strong>：告知老板需要包子的种类和数量，调用<strong>wait方法</strong>，放弃cpu的执行，进入到WAITING状态(无限等待)<br>　　创建一个<strong>老板线程(生产者)</strong>：花了s秒生产包子，包子做好，调用<strong>notify()方法</strong>，唤醒顾客吃包子。</li>
+<li>注意点：</li>
+</ul>
+<ol>
+<li>顾客和老板线程必须使用同步代码块包裹，而且保证只有一个在执行。(使用同步技术-synchronized(对象)形式)</li>
+<li>同步使用的锁对象必须保证唯一。(只有一个obj对象)</li>
+<li>只有锁对象才可以使用wait和notify方法。(代码中obj.wait()方法/obj.notify()方法)</li>
+</ol>
+<p><code>Object类</code>中的方法：</p>
+<ol>
+<li><code>void wait()</code>：<br> 在其他线程调用此对象的notify()方法/notifyAll()方法前，导致当前线程等待。</li>
+<li><code>void notify()</code>：<br> 唤醒在此对象监控器上等待的单个线程<br> 会继续执行wait()方法之后的代码</li>
+</ol>
+<ul>
+<li>具体实现：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">package dengdaihuanxing;</span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;创建锁对象(唯一)</span><br><span class="line">		Object obj&#x3D;new Object();</span><br><span class="line">		&#x2F;&#x2F;创建一个顾客线程(消费者)---匿名内部类</span><br><span class="line">		new Thread()&#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void run() &#123;</span><br><span class="line">				&#x2F;&#x2F;保证只有一个执行---同步技术</span><br><span class="line">				synchronized(obj) &#123;</span><br><span class="line">				System.out.println(&quot;告知老板要的包子的种类和数量：&quot;);</span><br><span class="line">				&#x2F;&#x2F;调用wait方法---进入无限等待状态</span><br><span class="line">				try</span><br><span class="line">				&#123;</span><br><span class="line">					obj.wait(); &#x2F;&#x2F;锁对象才可以调用wait方法</span><br><span class="line">				&#125; </span><br><span class="line">				catch (InterruptedException e) </span><br><span class="line">				&#123;			</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">				&#x2F;&#x2F;唤醒之后执行的代码</span><br><span class="line">				System.out.println(&quot;包子已经做好了，可以吃了！&quot;);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;.start();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;创建一个老板线程(生产者)</span><br><span class="line">		new Thread() &#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void run() &#123;</span><br><span class="line">				&#x2F;&#x2F;花五秒钟做包子</span><br><span class="line">				try </span><br><span class="line">				&#123;</span><br><span class="line">					Thread.sleep(5000);</span><br><span class="line">				&#125; </span><br><span class="line">				catch (InterruptedException e)</span><br><span class="line">				&#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#x2F;&#x2F;保证只有一个执行---同步技术</span><br><span class="line">			synchronized(obj) &#123;</span><br><span class="line">				System.out.println(&quot;老板5秒后做好包子,可以来吃包子了&quot;);</span><br><span class="line">				&#x2F;&#x2F;调用notify()方法唤醒吃包子</span><br><span class="line">				obj.notify();&#x2F;&#x2F;锁对象才可以调用notify方法</span><br><span class="line">				&#125;		</span><br><span class="line">			&#125;		</span><br><span class="line">		&#125;.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>代码结果如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">告知老板要的包子的种类和数量：</span><br><span class="line">(不用输入等待5秒后就会弹出下面的结果)</span><br><span class="line">老板5秒后做好包子,可以来吃包子了</span><br><span class="line">包子已经做好了，可以吃了！</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>三、Object类中wait带参方法和notify方法</strong></p>
+<ul>
+<li><strong>进入TimeWaiting(计时等待)</strong>有两种方式：</li>
+</ul>
+<ol>
+<li>使用<code>sleep(long m)</code>，在毫秒值结束之后，线程–&gt;Runnable/Blocked状态。</li>
+<li>使用<code>wait(long m)</code>：wait方法如果在毫秒值结束之后，还没有被notify方法唤醒，就会自动醒来。</li>
+</ol>
+<ul>
+<li><strong>唤醒</strong>的方法</li>
+</ul>
+<ol>
+<li><code>notify()</code>： —&gt;唤醒<strong>单个</strong>线程</li>
+<li><code>notify()All</code>： —&gt;唤醒<strong>所有</strong>线程</li>
+</ol>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">JAVA-多线程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-线程安全" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1916,117 +2032,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA-%E9%9B%86%E5%90%88/" rel="tag">JAVA-集合</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Lambda" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/10/24/Lambda/" class="article-date">
-      <time datetime="2019-10-24T14:03:55.000Z" itemprop="datePublished">2019-10-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/24/Lambda/">Lambda表达式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>一、介绍接口实现的三种方法,引出Lambda表达式。</strong></p>
-<p>　　定义接口(comparator)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface comparator&#123; </span><br><span class="line">	int compare(int a,int b); &#x2F;&#x2F;抽象方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>　　定义实现类(Mycomparator)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Mycomparator implements comparator&#123;  &#x2F;&#x2F;实现类必须实现接口里面的所有抽象方法</span><br><span class="line">	@override</span><br><span class="line">		public int compare(int a,int b)&#123;</span><br><span class="line">			return a-b;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>1.使用<strong>接口实现类</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class ChengXu&#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">	comparator comparator1&#x3D;new Mycomparator();  &#x2F;&#x2F;多态（左边父类，右边子类） 编译在左，实现在右</span><br><span class="line">			comparator1.compare;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<hr>
-<ul>
-<li>2.使用<strong>匿名接口类</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class ChengXu&#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">	comparator comparator2&#x3D;new comparator()&#123;   &#x2F;&#x2F;哪个接口要实现就写哪个接口的匿名抽象类</span><br><span class="line">			@override</span><br><span class="line">		public int compare(int a,int b)&#123;</span><br><span class="line">			return a-b;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<ul>
-<li>3.使用<strong>Lambda表达式</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class ChengXu&#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">	comparator comparator3&#x3D;(a,b) -&gt;a-b;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>二、Lambda表达式的<strong>基本语法</strong><br>1.Lambda表达式只能描述只有一个抽象方法的接口(@FunctionalInterface注释)。<br>2.也可以用于集合类中遍历集合元素。<br>3.包含<strong>三个部分</strong>：</p>
-<ol>
-<li>形参列表：允许省略参数类型。（一个参数的话可以省略形参的圆括号）。</li>
-<li>箭头（-&gt;）：必须有英文画线和大于符号组成。</li>
-<li>代码块：如果只有一句，省略”{}”。</li>
-<li>java8中引入了一个新的操作符”-&gt;”(箭头操作符/Lambda操作符),将Lambda表达式拆分为两个部分：</li>
-<li>左边：Lambda表达式的参数列表(实现的抽象方法参数相同)</li>
-<li>右边：Lambda表达式中所需要的功能(方法体)</li>
-</ol>
-<hr>
-<p>三、<strong>函数式接口</strong><br>　　代表只含有<strong>一个抽象方法</strong>的<strong>接口</strong>（默认方法、类方法可以有很多）。<br>　　JAVA8专门为函数式接口提供了<strong>@FunctionalInterface注解</strong>。放在接口定义的前面，用于告诉编译器执行更为严格检查，不是函数式接口就会报错。</p>
-<hr>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Runnable r&#x3D;()-&gt;&#123;</span><br><span class="line">	for(int i&#x3D;0;i&lt;100;i++)</span><br><span class="line">    &#123;</span><br><span class="line">		System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>解释：<br>Lambda表达式实现的是<strong>匿名方法</strong>（只能实现特定函数式接口的唯一方法），因此就有两个<strong>限制</strong>：</p>
-<ol>
-<li>Lambda表达式的目标类型必须是明确的函数式接口。(我觉得最适合的就是（参数列表<strong>强制类型转换</strong>）)</li>
-<li>Lambda表达式只能为函数式接口创建对象。</li>
-</ol>
-<hr>
-<p>Java在<strong>java.util.function包</strong>下面预定义了很多函数式接口</p>
-<ol>
-<li><strong>XxxFunction</strong>：这类接口中通常有一个<strong>apply()抽象方法</strong>，对参数处理后返回一个新的值。</li>
-<li><strong>XxxConsumer</strong>：这类接口中通常有一个<strong>accept()抽象方法</strong>，对参数处理后但是不返回新的值。</li>
-<li><strong>XxxPredicate</strong>:这类接口中通常有一个<strong>test()抽象方法</strong>，对参数进行某种处理后返回一个boolean值，用于筛选数据。</li>
-<li><strong>XxxSupplier</strong>：这类接口中通常有一个<strong>getAsXxx()抽象方法</strong>，不需要输入一个值通过某种算法返回一个值。</li>
-</ol>
-<hr>
-<p>四、<strong>方法引用和构造器引用</strong><br>　　如果Lambda表达式的<strong>代码块只有一条代码</strong>，那么就可以在代码块中使用方法引用和构造器引用。</p>
-<p><img src="/2019/10/24/Lambda/gouzaoqi.png" alt></p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">JAVA-Lambda表达式</a></li></ul>
     </div>
 
       
