@@ -360,7 +360,7 @@
       
           
         <h1 id="1-微服务的定义"><a href="#1-微服务的定义" class="headerlink" title="1.微服务的定义"></a>1.微服务的定义</h1><p>随着互联网行业的发展对于服务的要求也越来越高，服务架构也从单体架构逐渐演变为微服务架构</p>
-<h1 id="1-1-三种架构的对比"><a href="#1-1-三种架构的对比" class="headerlink" title="1.1 三种架构的对比"></a>1.1 三种架构的对比</h1><ul>
+<h2 id="1-1-三种架构的对比"><a href="#1-1-三种架构的对比" class="headerlink" title="1.1 三种架构的对比"></a>1.1 三种架构的对比</h2><ul>
 <li><strong>单体架构</strong></li>
 </ul>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316220448340.png" alt="image-20240316220448340"></p>
@@ -386,7 +386,13 @@
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316221239275.png" alt="image-20240316221239275"></p>
 <p>此外，要考虑很多版本兼容问题。主要是因为SpringCloud底层是依赖于Springboot实现的：</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316221342911.png" alt="image-20240316221342911"></p>
-
+<h1 id="2-服务拆分"><a href="#2-服务拆分" class="headerlink" title="2.服务拆分"></a>2.服务拆分</h1><ul>
+<li>服务拆分原则</li>
+</ul>
+<p>​        不同微服务，不要重复开发相同业务</p>
+<p>​        微服务数据独立，不要访问其它微服务的数据库</p>
+<p>​        微服务可以将自己的业务暴露为接口，供其它微服务调用</p>
+<h1 id="3-远程调用"><a href="#3-远程调用" class="headerlink" title="3.远程调用"></a>3.远程调用</h1>
       
       
     </div>
