@@ -359,7 +359,34 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="一-微服务的定义"><a href="#一-微服务的定义" class="headerlink" title="一.微服务的定义"></a>一.微服务的定义</h1>
+        <h1 id="1-微服务的定义"><a href="#1-微服务的定义" class="headerlink" title="1.微服务的定义"></a>1.微服务的定义</h1><p>随着互联网行业的发展对于服务的要求也越来越高，服务架构也从单体架构逐渐演变为微服务架构</p>
+<h1 id="1-1-三种架构的对比"><a href="#1-1-三种架构的对比" class="headerlink" title="1.1 三种架构的对比"></a>1.1 三种架构的对比</h1><ul>
+<li><strong>单体架构</strong></li>
+</ul>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316220448340.png" alt="image-20240316220448340"></p>
+<ul>
+<li><strong>分布式架构</strong></li>
+</ul>
+<img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316220536632.png" alt="image-20240316220536632" style="zoom: 80%;">
+
+<ul>
+<li><strong>微服务(优化版分布式架构)</strong></li>
+</ul>
+<p>微服务的架构特征：==可以认为<strong>微服务</strong>是一种经过良好架构设计的分布式架构方案==</p>
+<ul>
+<li>单一职责：微服务拆分粒度更小，每一个服务都对应唯一的业务能力，做到单一职责</li>
+<li>自治：团队独立、技术独立、数据独立，独立部署和交付</li>
+<li>面向服务：服务提供统一标准的接口，与语言和技术无关</li>
+<li>隔离性强：服务调用做好隔离、容错、降级，避免出现级联问题</li>
+</ul>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316220844109.png" alt="image-20240316220844109"></p>
+<h2 id="1-2-SpringCloud"><a href="#1-2-SpringCloud" class="headerlink" title="1.2 SpringCloud"></a>1.2 SpringCloud</h2><p>SpringCloud是目前国内使用最广泛的微服务框架。官网地址：<a href="https://spring.io/projects/spring-cloud。" target="_blank" rel="noopener">https://spring.io/projects/spring-cloud。</a></p>
+<p>SpringCloud集成了各种微服务功能组件，并基于SpringBoot实现了这些组件的自动装配，从而提供了良好的开箱即用体验。</p>
+<p>其中常见的组件包括：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316221239275.png" alt="image-20240316221239275"></p>
+<p>此外，要考虑很多版本兼容问题。主要是因为SpringCloud底层是依赖于Springboot实现的：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316221342911.png" alt="image-20240316221342911"></p>
+
       
       
     </div>
