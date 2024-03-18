@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://larkkkkkkk.github.io/"/>
-  <updated>2024-03-17T13:22:52.368Z</updated>
+  <updated>2024-03-18T14:16:13.963Z</updated>
   <id>https://larkkkkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RabbitMQ</title>
+    <link href="https://larkkkkkkk.github.io/2024/03/18/RabbitMQ-0/"/>
+    <id>https://larkkkkkkk.github.io/2024/03/18/RabbitMQ-0/</id>
+    <published>2024-03-18T11:43:04.000Z</published>
+    <updated>2024-03-18T14:16:13.963Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-同步调用和异步调用"><a href="#1-同步调用和异步调用" class="headerlink" title="1.同步调用和异步调用"></a>1.同步调用和异步调用</h1><h2 id="1-1-同步调用"><a href="#1-1-同步调用" class="headerlink" title="1.1 同步调用"></a>1.1 同步调用</h2><h2 id="1-2-异步调用"><a href="#1-2-异步调用" class="headerlink" title="1.2 异步调用"></a>1.2 异步调用</h2><h2 id="1-3-MQ技术选型"><a href="#1-3-MQ技术选型" class="headerlink" title="1.3 MQ技术选型"></a>1.3 MQ技术选型</h2><h1 id="2-RabbitMQ"><a href="#2-RabbitMQ" class="headerlink" title="2.RabbitMQ"></a>2.RabbitMQ</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;1-同步调用和异步调用&quot;&gt;&lt;a href=&quot;#1-同步调用和异步调用&quot; class=&quot;headerlink&quot; title=&quot;1.同步调用和异步调用&quot;&gt;&lt;/a&gt;1.同步调用和异步调用&lt;/h1&gt;&lt;h2 id=&quot;1-1-同步调用&quot;&gt;&lt;a href=&quot;#1-1-同步调用&quot;
+      
+    
+    </summary>
+    
+    
+    
+      <category term="RabbitMQ" scheme="https://Larkkkkkkk.github.io/tags/RabbitMQ/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringCloud</title>
@@ -451,30 +475,6 @@
     
     
       <category term="picture" scheme="https://Larkkkkkkk.github.io/tags/picture/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JAVA-代码随想录</title>
-    <link href="https://larkkkkkkk.github.io/2023/10/20/JAVA-%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/"/>
-    <id>https://larkkkkkkk.github.io/2023/10/20/JAVA-%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/</id>
-    <published>2023-10-20T06:35:36.000Z</published>
-    <updated>2023-11-07T03:55:02.268Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h1&gt;
-      
-    
-    </summary>
-    
-    
-    
-      <category term="JAVA" scheme="https://Larkkkkkkk.github.io/tags/JAVA/"/>
     
   </entry>
   
