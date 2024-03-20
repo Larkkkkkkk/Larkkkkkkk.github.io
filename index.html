@@ -505,15 +505,51 @@
 <h3 id="3-1-6-消费者接收消息"><a href="#3-1-6-消费者接收消息" class="headerlink" title="3.1.6 消费者接收消息"></a>3.1.6 消费者接收消息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.使用注解RabbitListener(队列名&#x3D;“xxx”)</span><br><span class="line">2.启动当前消费者子工程(SpringBoot工程)</span><br><span class="line">3.生产者发送一次消息，消费者就会接收到一次消息</span><br></pre></td></tr></table></figure>
 
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319201418364.png" alt="image-20240319201418364"></p>
-<h2 id="3-2-生产者-消费者-1-n-WorkQueues任务模型"><a href="#3-2-生产者-消费者-1-n-WorkQueues任务模型" class="headerlink" title="3.2 生产者-消费者(1-n) -WorkQueues任务模型"></a>3.2 生产者-消费者(1-n) -WorkQueues任务模型</h2><p>Work queues任务模型 –&gt; 让多个消费者绑定到一个队列，共同消费队列中的消息</p>
+<h2 id="3-2-生产者-消费者-1-n-WorkQueues任务模型"><a href="#3-2-生产者-消费者-1-n-WorkQueues任务模型" class="headerlink" title="3.2 生产者-消费者(1-n) -WorkQueues任务模型"></a>3.2 生产者-消费者(1-n) -WorkQueues任务模型</h2><p>Work queues任务模型    –&gt;   让多个消费者绑定到一个队列，共同消费队列中的消息   –&gt;   ==解决消息堆积太多==</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319202054225.png" alt="image-20240319202054225"></p>
-<h2 id="3-3-交换机-Exchange"><a href="#3-3-交换机-Exchange" class="headerlink" title="3.3 交换机(Exchange)"></a>3.3 交换机(Exchange)</h2><p>交换机的三大作用：</p>
+<h3 id="3-2-1-新建队列"><a href="#3-2-1-新建队列" class="headerlink" title="3.2.1 新建队列"></a>3.2.1 新建队列</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320091336394.png" alt="image-20240320091336394"></p>
+<h3 id="3-2-2-生产者发送消息"><a href="#3-2-2-生产者发送消息" class="headerlink" title="3.2.2 生产者发送消息"></a>3.2.2 生产者发送消息</h3><p>一个发送者，循环发送50次消息</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320091703762.png" alt="image-20240320091703762"></p>
+<h3 id="3-2-3-消费者接收消息"><a href="#3-2-3-消费者接收消息" class="headerlink" title="3.2.3 消费者接收消息"></a>3.2.3 消费者接收消息</h3><p>两个消费者接收消息，一个休眠20ms(每秒钟处理50个消息)，一个休眠200ms(每秒钟处理5个消息)</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320092251196.png" alt="image-20240320092251196"></p>
+<h3 id="3-2-4-均匀分配"><a href="#3-2-4-均匀分配" class="headerlink" title="3.2.4 均匀分配"></a>3.2.4 均匀分配</h3><p>启动消费者子工程项目，再发送消息就可以接受消息：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320092647584.png" alt="image-20240320092647584"></p>
+<p>可以看到消费者1和消费者2竟然每人消费了25条消息：</p>
 <ul>
-<li>接受生产者发送的消息</li>
-<li>将消息按照规则路由到与之绑定的队列</li>
-<li>将消息路由到每个绑定的队列</li>
+<li>消费者1很快完成了自己的25条消息</li>
+<li>消费者2却在缓慢的处理自己的25条消息。</li>
 </ul>
-<h3 id="3-3-1-Fanout交换机"><a href="#3-3-1-Fanout交换机" class="headerlink" title="3.3.1 Fanout交换机"></a>3.3.1 Fanout交换机</h3><h3 id="3-3-2-Direct交换机"><a href="#3-3-2-Direct交换机" class="headerlink" title="3.3.2 Direct交换机"></a>3.3.2 Direct交换机</h3><h3 id="3-3-3-Topic交换机"><a href="#3-3-3-Topic交换机" class="headerlink" title="3.3.3 Topic交换机"></a>3.3.3 Topic交换机</h3>
+<p>也就是说消息是==平均分配==给每个消费者，并没有考虑到消费者的处理能力。导致1个消费者空闲，另一个消费者忙的不可开交。没有充分利用每一个消费者的能力，最终消息处理的耗时远远超过了1秒。这样显然是有问题的  </p>
+<h3 id="3-2-5-能者多劳-prefetch"><a href="#3-2-5-能者多劳-prefetch" class="headerlink" title="3.2.5 能者多劳(prefetch)"></a>3.2.5 能者多劳(prefetch)</h3><p>修改==listener.simple.prefetch:1==可以保证==能者多劳==，每个消费者每次只能获取一条消息，处理完成才能获取下一条消息</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320093106144.png" alt="image-20240320093106144"></p>
+<p>更改之后重新发送消息：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320093225443.png" alt="image-20240320093225443"></p>
+<p>可以发现，由于消费者1处理速度较快，所以处理了更多的消息；消费者2处理速度较慢，只处理了6条消息。而最终总的执行耗时也在1秒左右，大大提升。<br>正所谓能者多劳，这样充分利用了每一个消费者的处理能力，可以有效避免消息积压问题</p>
+<h1 id="4-交换机-Exchange"><a href="#4-交换机-Exchange" class="headerlink" title="4 交换机(Exchange)"></a>4 交换机(Exchange)</h1><p>在3.1和3.2部分没有添加交换机，生产者直接发送消息到队列。但是引入交换机之后消息发送的模式会有很大的变化：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320093715426.png" alt="image-20240320093715426"></p>
+<p>可以看到，在订阅模型中，多了一个exchange角色，而且过程略有变化：</p>
+<ul>
+<li><strong>Publisher</strong>：生产者，不再发送消息到队列中，而是发给交换机</li>
+<li><strong>Exchange</strong>：交换机，一方面，接收生产者发送的消息。另一方面，知道如何处理消息(递交给某个特别队列、递交给所有队列、或是将消息丢弃)</li>
+<li><strong>Queue</strong>：消息队列也与以前一样，接收消息、缓存消息。不过队列一定要与交换机绑定。</li>
+<li><strong>Consumer</strong>：消费者，与以前一样，订阅队列，没有变化</li>
+</ul>
+<p><strong>Exchange（交换机）只负责转发消息，不具备存储消息的能力</strong>，因此如果没有任何队列与Exchange绑定，或者没有符合路由规则的队列，那么消息会丢失！</p>
+<p>Exchange（交换机）的类型有四种：</p>
+<ul>
+<li><strong>Fanout</strong>：广播，将消息交给所有绑定到交换机的队列。我们最早在控制台使用的正是Fanout交换机</li>
+<li><strong>Direct</strong>：订阅，基于RoutingKey（路由key）发送给订阅了消息的队列</li>
+<li><strong>Topic</strong>：通配符订阅，与Direct类似，只不过RoutingKey可以使用通配符</li>
+<li><strong>Headers</strong>：头匹配，基于MQ的消息头匹配，用的较少</li>
+</ul>
+<h2 id="4-1-Fanout交换机-广播"><a href="#4-1-Fanout交换机-广播" class="headerlink" title="4.1 Fanout交换机(广播)"></a>4.1 Fanout交换机(广播)</h2><p>在广播(Fanout)模式下，消息发送流程是这样的</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320094830771.png" alt="image-20240320094830771"></p>
+<h3 id="4-1-1-声明交换机和队列"><a href="#4-1-1-声明交换机和队列" class="headerlink" title="4.1.1 声明交换机和队列"></a>4.1.1 声明交换机和队列</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320095902006.png" alt="image-20240320095902006"></p>
+<h3 id="4-1-2-消息发送"><a href="#4-1-2-消息发送" class="headerlink" title="4.1.2 消息发送"></a>4.1.2 消息发送</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320095942536.png" alt="image-20240320095942536"></p>
+<h3 id="4-1-3-消息接收"><a href="#4-1-3-消息接收" class="headerlink" title="4.1.3 消息接收"></a>4.1.3 消息接收</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320100056347.png" alt="image-20240320100056347"></p>
+<p>启动消费者子工程之后发送消息</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320100134844.png" alt="image-20240320100134844"></p>
+<h2 id="4-2-Direct交换机-订阅"><a href="#4-2-Direct交换机-订阅" class="headerlink" title="4.2 Direct交换机(订阅)"></a>4.2 Direct交换机(订阅)</h2><h3 id="4-2-1-声明交换机和队列"><a href="#4-2-1-声明交换机和队列" class="headerlink" title="4.2.1 声明交换机和队列"></a>4.2.1 声明交换机和队列</h3><h3 id="4-2-2-消息发送"><a href="#4-2-2-消息发送" class="headerlink" title="4.2.2 消息发送"></a>4.2.2 消息发送</h3><h3 id="4-2-3-消息接收"><a href="#4-2-3-消息接收" class="headerlink" title="4.2.3 消息接收"></a>4.2.3 消息接收</h3><h3 id="4-2-4-总结"><a href="#4-2-4-总结" class="headerlink" title="4.2.4 总结"></a>4.2.4 总结</h3><h2 id="4-3-Topic交换机-通配符订阅"><a href="#4-3-Topic交换机-通配符订阅" class="headerlink" title="4.3 Topic交换机(通配符订阅)"></a>4.3 Topic交换机(通配符订阅)</h2><h3 id="4-3-1-声明交换机和队列"><a href="#4-3-1-声明交换机和队列" class="headerlink" title="4.3.1 声明交换机和队列"></a>4.3.1 声明交换机和队列</h3><h3 id="4-3-2-消息发送"><a href="#4-3-2-消息发送" class="headerlink" title="4.3.2 消息发送"></a>4.3.2 消息发送</h3><h3 id="4-3-3-消息接收"><a href="#4-3-3-消息接收" class="headerlink" title="4.3.3 消息接收"></a>4.3.3 消息接收</h3><h3 id="4-3-4-总结"><a href="#4-3-4-总结" class="headerlink" title="4.3.4 总结"></a>4.3.4 总结</h3><h1 id="5-1-声明队列和交换机-替换官网手动创建"><a href="#5-1-声明队列和交换机-替换官网手动创建" class="headerlink" title="5.1 声明队列和交换机(替换官网手动创建)"></a>5.1 声明队列和交换机(替换官网手动创建)</h1>
       
       
     </div>
