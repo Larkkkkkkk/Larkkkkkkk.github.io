@@ -586,10 +586,32 @@
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320221056179.png" alt="image-20240320221056179"></p>
 <h1 id="6-消息转换器"><a href="#6-消息转换器" class="headerlink" title="6.消息转换器"></a>6.消息转换器</h1><p>Spring的convertAndSend()方法接收的是一个Object类型：</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320221749744.png" alt="image-20240320221749744"></p>
-<p>而在数据传输时，可能会因为JDK序列化导致数据体积过大(乱码一样的序列化结果)，安全漏洞，可读性差等问题。</p>
+<p>而在数据传输时，可能会因为默认的==JDK序列化==导致数据体积过大(乱码一样的序列化结果)，安全漏洞，可读性差等问题。</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320222347892.png" alt="image-20240320222347892"></p>
-<p>因此可以考虑使用==Json序列化和反序列化==</p>
+<p>因此可以考虑使用==Json序列化和反序列化==：</p>
+<h2 id="6-1-配置JSON转换器"><a href="#6-1-配置JSON转换器" class="headerlink" title="6.1 配置JSON转换器"></a>6.1 配置JSON转换器</h2><ul>
+<li>1.在生产者和消费者两个服务中都要引入依赖</li>
+</ul>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321092511719.png" alt="image-20240321092511719"></p>
+<p>注意：如果项目中引入了Spring-boot-starter-web依赖，则无需再次引入Jackson依赖</p>
+<ul>
+<li><p>2.在生产者和消费者两个服务的启动类中添加一个Bean：配置消息转换器</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321092839447.png" alt="image-20240321092839447"></p>
+</li>
+</ul>
+<h1 id="7-使用总结"><a href="#7-使用总结" class="headerlink" title="7.使用总结"></a>7.使用总结</h1><h2 id="7-1-maven引入maven坐标"><a href="#7-1-maven引入maven坐标" class="headerlink" title="7.1 maven引入maven坐标"></a>7.1 maven引入maven坐标</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--消息发送--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-amqp&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
 
+<h2 id="7-2-子工程配置RabbitMQ信息"><a href="#7-2-子工程配置RabbitMQ信息" class="headerlink" title="7.2 子工程配置RabbitMQ信息"></a>7.2 子工程配置RabbitMQ信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  rabbitmq:</span><br><span class="line">    host: 192.168.150.101 # 你的虚拟机IP</span><br><span class="line">    port: 5672 # 端口</span><br><span class="line">    virtual-host: &#x2F;hmall # 虚拟主机</span><br><span class="line">    username: hmall # 用户名</span><br><span class="line">    password: 123 # 密码</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-3-配置消息转换器"><a href="#7-3-配置消息转换器" class="headerlink" title="7.3 配置消息转换器"></a>7.3 配置消息转换器</h2><p>可以在公共模块添加bean</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321095355698.png" alt="image-20240321095355698"></p>
+<h2 id="7-4-生产者-发送消息"><a href="#7-4-生产者-发送消息" class="headerlink" title="7.4 生产者-发送消息"></a>7.4 生产者-发送消息</h2><p>将原始的同步修改订单信息更改为异步修改</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321095847784.png" alt="image-20240321095847784"></p>
+<h2 id="7-5-消费者-接收消息"><a href="#7-5-消费者-接收消息" class="headerlink" title="7.5 消费者-接收消息"></a>7.5 消费者-接收消息</h2><p>消费者可以添加消息监听，添加好交换机和路由key和队列</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321100301473.png" alt="image-20240321100301473"></p>
+<hr>
+<p>异步结构可能会在发送者，MQ，消费者三个地方出现问题!!!因此要考虑这三个位置的可靠性和兜底方案(延迟消息)</p>
+<h1 id="8-可靠性-发送者"><a href="#8-可靠性-发送者" class="headerlink" title="8.可靠性-发送者"></a>8.可靠性-发送者</h1><h1 id="9-可靠性-MQ"><a href="#9-可靠性-MQ" class="headerlink" title="9.可靠性-MQ"></a>9.可靠性-MQ</h1><h1 id="10-可靠性-消费者"><a href="#10-可靠性-消费者" class="headerlink" title="10.可靠性-消费者"></a>10.可靠性-消费者</h1><h1 id="11-延迟消息"><a href="#11-延迟消息" class="headerlink" title="11.延迟消息"></a>11.延迟消息</h1><h1 id><a href="#" class="headerlink" title></a></h1>
       
       
     </div>
