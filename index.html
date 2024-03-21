@@ -635,7 +635,7 @@
 <p>综上，我们要解决消息丢失问题，保证MQ的可靠性，就必须从3个方面入手：</p>
 <ul>
 <li>确保生产者一定把消息发送到MQ    —&gt; ==生产者的可靠性(生产者重试机制，生产者确认机制)==</li>
-<li>确保MQ不会将消息弄丢   —&gt; ==MQ的可靠性(数据持久化，lazyqueue)==</li>
+<li>确保MQ不会将消息弄丢   —&gt; ==MQ的可靠性(数据持久化，lazy queue)==</li>
 <li>确保消费者一定要处理消息   —&gt;   ==消费者的可靠性(消费者确认机制，失败重传机制，失败处理策略，业务幂等性)==</li>
 </ul>
 <h1 id="8-可靠性-发送者"><a href="#8-可靠性-发送者" class="headerlink" title="8.可靠性-发送者"></a>8.可靠性-发送者</h1><h2 id="8-1-生产者重试机制-建议禁用"><a href="#8-1-生产者重试机制-建议禁用" class="headerlink" title="8.1 生产者重试机制(建议禁用)"></a>8.1 生产者重试机制(建议禁用)</h2><p>生产者发送消息时，出现网络故障，导致与MQ连接中断   ———-&gt;  SpringAMQP提供的消息发送时的==重试机制==</p>
@@ -672,9 +672,96 @@
 <li><code>correlated</code>：MQ异步回调返回回执</li>
 </ul>
 <p>一般我们推荐使用<code>correlated</code>，回调机制。</p>
-<h3 id="8-2-2-定义ReturnCallback"><a href="#8-2-2-定义ReturnCallback" class="headerlink" title="8.2.2 定义ReturnCallback"></a>8.2.2 定义ReturnCallback</h3><p>每个<code>RabbitTemplate</code>只能配置一个<code>ReturnCallback</code>，因此我们可以在配置类中统一设置。我们在publisher模块定义一个配置类：</p>
-<h3 id="8-2-3-定义ConfirmCallback"><a href="#8-2-3-定义ConfirmCallback" class="headerlink" title="8.2.3 定义ConfirmCallback"></a>8.2.3 定义ConfirmCallback</h3><h1 id="9-可靠性-MQ"><a href="#9-可靠性-MQ" class="headerlink" title="9.可靠性-MQ"></a>9.可靠性-MQ</h1><h2 id="9-1-持久化"><a href="#9-1-持久化" class="headerlink" title="9.1 持久化"></a>9.1 持久化</h2><p>官网默认是非持久化，spring都是默认持久化</p>
-<h2 id="9-2"><a href="#9-2" class="headerlink" title="9.2"></a>9.2</h2><h1 id="10-可靠性-消费者"><a href="#10-可靠性-消费者" class="headerlink" title="10.可靠性-消费者"></a>10.可靠性-消费者</h1><h1 id="11-延迟消息"><a href="#11-延迟消息" class="headerlink" title="11.延迟消息"></a>11.延迟消息</h1><h1 id><a href="#" class="headerlink" title></a></h1>
+<h3 id="8-2-2-定义ReturnCallback-返回信息"><a href="#8-2-2-定义ReturnCallback-返回信息" class="headerlink" title="8.2.2 定义ReturnCallback(返回信息)"></a>8.2.2 定义ReturnCallback(返回信息)</h3><p><strong>每个<code>RabbitTemplate</code>只能配置一个<code>ReturnCallback</code>，因此我们可以在配置类中统一设置</strong></p>
+<p>我们在publisher模块定义一个配置类：rabbitTemplate对象调用setReturnsCallback()方法，方法参数是一个匿名内部类(重写returnedMessage方法)</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321161749402.png" alt="image-20240321161749402"></p>
+<h3 id="8-2-3-定义ConfirmCallback-确定ack-nack"><a href="#8-2-3-定义ConfirmCallback-确定ack-nack" class="headerlink" title="8.2.3 定义ConfirmCallback(确定ack/nack)"></a>8.2.3 定义ConfirmCallback(确定ack/nack)</h3><p>由于每个消息发送时的处理逻辑不一定相同，因此ConfirmCallback需要在每次发送消息时定义。</p>
+<p>就是在发送消息时，调用RabbitTemplate.convertAndSend()时多传递一个参数：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321162745583.png" alt="image-20240321162745583"></p>
+<p>这里的CorrelationData中包含两个核心的东西：</p>
+<ul>
+<li><code>id</code>：消息的唯一标示，MQ对不同的消息的回执以此做判断，避免混淆</li>
+<li><code>SettableListenableFuture</code>：回执结果的Future对象</li>
+</ul>
+<p>将来MQ的回执就会通过这个<code>Future</code>来返回，我们可以提前给<code>CorrelationData</code>中的<code>Future</code>添加回调函数来处理消息回执：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321194022895.png" alt="image-20240321194022895"></p>
+<p>发送者位置发送消息(新增字段为了获取MQ给的结果)：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321194656371.png" alt="image-20240321194656371"></p>
+<p><strong>注意</strong>：<br>开启生产者确认比较消耗MQ性能，一般不建议开启。而且大家思考一下触发确认的几种情况：</p>
+<ul>
+<li>路由失败：一般是因为RoutingKey错误导致，往往是编程导致</li>
+<li>交换机名称错误：同样是编程错误导致</li>
+<li>MQ内部故障：这种需要处理，但概率往往较低。因此只有对消息可靠性要求非常高的业务才需要开启，而且仅仅需要开启ConfirmCallback处理nack就可以</li>
+</ul>
+<h1 id="9-可靠性-RabbitMQ"><a href="#9-可靠性-RabbitMQ" class="headerlink" title="9.可靠性-RabbitMQ"></a>9.可靠性-RabbitMQ</h1><p>在默认情况下，RabbitMQ会将接收到的信息保存在==内存==中(降低消息收发延迟)。这样会导致两个问题：</p>
+<ul>
+<li>一旦RabbitMQ宕机，内存中的消息会丢失   –&gt; ==交换机持久化,队列持久化,消息持久化==</li>
+<li>内存空间有限，当消费者故障或者处理过慢，会导致消息积压，引发RabbitMQ阻塞  –&gt; ==Lazy Queue==</li>
+</ul>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321200321687.png" alt="image-20240321200321687"></p>
+<h2 id="9-1-三种持久化"><a href="#9-1-三种持久化" class="headerlink" title="9.1 三种持久化"></a>9.1 三种持久化</h2><p>为了提升性能，默认情况下MQ的数据都是在内存存储的临时数据，重启后就会消失。为了保证数据的可靠性，必须配置数据持久化，包括：</p>
+<ul>
+<li>交换机持久化</li>
+<li>队列持久化</li>
+<li>消息持久化</li>
+</ul>
+<p>其中以控制台界面为例：</p>
+<p>交换机持久化：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321202630567.png" alt="image-20240321202630567"></p>
+<p>队列持久化：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321202726506.png" alt="image-20240321202726506"></p>
+<p>消息持久化：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321202757851.png" alt="image-20240321202757851"></p>
+<p><strong>说明：</strong></p>
+<p>在开启持久化机制以后，如果同时还开启了生产者确认机制，那么MQ会在消息持久化以后才发送ACK回执，进一步确保消息的可靠性</p>
+<p>不过出于性能考虑，为了减少IO次数，发送到RabbitMQ的消息是每隔一段时间(100ms左右)批量持久化，这会导致后续的ACK回执有一定的延迟，因此建议生产者确认全部采用异步方式</p>
+<h2 id="9-2-LazyQueue惰性队列"><a href="#9-2-LazyQueue惰性队列" class="headerlink" title="9.2 LazyQueue惰性队列"></a>9.2 LazyQueue惰性队列</h2><p>在默认情况下，RabbitMQ会将接收到的信息保存在内存中以降低消息收发的延迟。但在某些特殊情况下，这会导致消息积压，比如：</p>
+<ul>
+<li>消费者宕机或出现网络故障(后续崩了)</li>
+<li>消息发送量激增，超过了消费者处理速度(前面发的太快了，后面接不住)</li>
+<li>消费者处理业务发生阻塞(后续阻塞)</li>
+</ul>
+<p>一旦出现消息堆积问题，RabbitMQ的内存占用会越来越高 —&gt; 触发内存预警上限，此时RabbitMQ会将内存消息 –刷–&gt; 磁盘，这个行为叫==PageOut==，<code>PageOut</code>会耗费一段时间，并且会阻塞队列进程。因此在这个过程中RabbitMQ不会再处理新的消息，生产者的所有请求都会被阻塞</p>
+<p>为了解决这个问题，从3.6.0版本开始，增加了Lazy Queues(惰性队列)。惰性队列的特征如下：</p>
+<ul>
+<li>接收到消息后直接存入磁盘而非内存 (直接存磁盘，就不会刷盘造成阻塞队列进程)</li>
+<li>消费者要消费消息时才会从磁盘中读取并加载到内存（也就是懒加载，需要了我才加载内存）</li>
+<li>支持数百万条的消息存储</li>
+</ul>
+<p>而在3.12版本之后，LazyQueue已经成为了所有队列的默认格式。因此官方推荐升级RabbitMQ为3.12版本/所有队列都设置为LazyQueue模式</p>
+<h3 id="9-2-1-控制台配置Lazy模式"><a href="#9-2-1-控制台配置Lazy模式" class="headerlink" title="9.2.1 控制台配置Lazy模式"></a>9.2.1 控制台配置Lazy模式</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321204855176.png" alt="image-20240321204855176"></p>
+<h3 id="9-2-2-代码配置Lazy模式"><a href="#9-2-2-代码配置Lazy模式" class="headerlink" title="9.2.2 代码配置Lazy模式"></a>9.2.2 代码配置Lazy模式</h3><p>基本原理都是设置属性：==x-queue-mode=lazy==</p>
+<ul>
+<li><strong>基于@Bean注解</strong>(配置类)</li>
+</ul>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321204954868.png" alt="image-20240321204954868"></p>
+<p>QueueBuilder底层源码为：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321205034258.png" alt="image-20240321205034258"></p>
+<ul>
+<li><strong>基于@RabbitListener注解</strong>(消费者子工程)</li>
+</ul>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321205132950.png" alt="image-20240321205132950"></p>
+<h3 id="9-2-3-更新已有队列为Lazy模式"><a href="#9-2-3-更新已有队列为Lazy模式" class="headerlink" title="9.2.3 更新已有队列为Lazy模式"></a>9.2.3 更新已有队列为Lazy模式</h3><ul>
+<li>基于控制台：</li>
+</ul>
+<img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321205402456.png" alt="image-20240321205402456" style="zoom: 80%;">
+
+<ul>
+<li>基于命令行：</li>
+</ul>
+<p>可以基于命令行设置policy：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl set_policy Lazy &quot;^lazy-queue$&quot; &#39;&#123;&quot;queue-mode&quot;:&quot;lazy&quot;&#125;&#39; --apply-to queues</span><br></pre></td></tr></table></figure>
+
+<p>命令解读：</p>
+<ul>
+<li><code>rabbitmqctl</code> ：RabbitMQ的命令行工具</li>
+<li><code>set_policy</code> ：添加一个策略</li>
+<li><code>Lazy</code> ：策略名称，可以自定义</li>
+<li><code>&quot;^lazy-queue$&quot;</code> ：用正则表达式匹配队列的名字</li>
+<li><code>&#39;{&quot;queue-mode&quot;:&quot;lazy&quot;}&#39;</code> ：设置队列模式为lazy模式</li>
+<li><code>--apply-to queues</code>：策略的作用对象，是所有的队列</li>
+</ul>
+<h1 id="10-可靠性-消费者"><a href="#10-可靠性-消费者" class="headerlink" title="10.可靠性-消费者"></a>10.可靠性-消费者</h1><h2 id="10-1-消费者确认机制"><a href="#10-1-消费者确认机制" class="headerlink" title="10.1 消费者确认机制"></a>10.1 消费者确认机制</h2><h2 id="10-2-失败重试机制"><a href="#10-2-失败重试机制" class="headerlink" title="10.2 失败重试机制"></a>10.2 失败重试机制</h2><h2 id="10-3-失败处理策略"><a href="#10-3-失败处理策略" class="headerlink" title="10.3 失败处理策略"></a>10.3 失败处理策略</h2><h2 id="10-4-业务幂等性"><a href="#10-4-业务幂等性" class="headerlink" title="10.4 业务幂等性"></a>10.4 业务幂等性</h2><h3 id="10-4-1-唯一消息ID"><a href="#10-4-1-唯一消息ID" class="headerlink" title="10.4.1 唯一消息ID"></a>10.4.1 唯一消息ID</h3><h3 id="10-4-2-业务判断"><a href="#10-4-2-业务判断" class="headerlink" title="10.4.2 业务判断"></a>10.4.2 业务判断</h3><h2 id="10-5-兜底方案"><a href="#10-5-兜底方案" class="headerlink" title="10.5 兜底方案"></a>10.5 兜底方案</h2><h1 id="11-延迟消息"><a href="#11-延迟消息" class="headerlink" title="11.延迟消息"></a>11.延迟消息</h1><h1 id><a href="#" class="headerlink" title></a></h1>
       
       
     </div>
