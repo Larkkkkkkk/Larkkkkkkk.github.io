@@ -668,7 +668,7 @@
 <h2 id="7-5-消费者-接收消息"><a href="#7-5-消费者-接收消息" class="headerlink" title="7.5 消费者-接收消息"></a>7.5 消费者-接收消息</h2><p>消费者可以添加消息监听，添加好交换机和路由key和队列</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321100301473.png" alt="image-20240321100301473"></p>
 <hr>
-<h1 id="高级进阶"><a href="#高级进阶" class="headerlink" title="==高级进阶=="></a>==高级进阶==</h1><p>异步结构可能会在发送者，MQ，消费者三个地方出现问题!!!因此要考虑这三个位置的可靠性和兜底方案(延迟消息)</p>
+<h1 id="高级进阶-–保证消息可靠性-三个方面"><a href="#高级进阶-–保证消息可靠性-三个方面" class="headerlink" title="==高级进阶 –保证消息可靠性(三个方面)=="></a>==高级进阶 –保证消息可靠性(三个方面)==</h1><p>异步结构可能会在发送者，MQ，消费者三个地方出现问题!!!因此要考虑这三个位置的可靠性和兜底方案(延迟消息)</p>
 <p>消息从发送者发送消息，到消费者处理消息，需要经过的流程是这样的：</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321120455090.png" alt="image-20240321120455090"></p>
 <p>消息从生产者到消费者的每一步都可能导致消息丢失：</p>
@@ -850,20 +850,28 @@
 <p>​                - 如果是消息处理/校验异常，自动返回reject(RabbitMQ删除消息)</p>
 <p>配置消费者的xml文件可以修改SpringAMQP的ack处理方式：</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240401141236210.png" alt="image-20240401141236210"></p>
+<p>但是，如果auto模式下是业务异常回执给nack，那就会不断从MQ中投递消息，会导致MQ消息处理飙升带来不必要的压力(这种极端情况就是消费者一直无法执行成功，发生概率很低，但是不怕万一就怕一万)</p>
 <h2 id="10-2-消费者失败重试机制"><a href="#10-2-消费者失败重试机制" class="headerlink" title="10.2 消费者失败重试机制"></a>10.2 消费者失败重试机制</h2><p>因为10.1如果是收到nack回执，那么就会不断从MQ中投递消息，可能会导致消息堆积，导致mq的消息处理飙升，带来不必要的压力</p>
-<p>我们可以利用Spring的retry机制—&gt;==当消费者异常就利用本地重试==</p>
+<p>我们可以利用Spring的retry机制—&gt;==当消费者异常就利用本地重试(×无限制重试)==</p>
 <p>配置消费者的xml文件可以修改SpringAMQP的本地重试机制：</p>
 <img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240401154838741.png" alt="image-20240401154838741" style="zoom: 50%;">
 
 <p>在开启重试机制后，重试次数耗尽之后，如果消息依然失效，则会默认<strong>直接丢弃消息!!!!!!!!!!!!!</strong></p>
 <img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240401155907410.png" alt="image-20240401155907410" style="zoom: 50%;">
 
+<p>可以发现：</p>
+<ul>
+<li><p>消费者在失败后消息并没有重新回到MQ无限重新投递，而是重试3次</p>
+</li>
+<li><p>本地重试3次之后，抛出了AmqpRejectAndDontRequeueException异常（说明直接reject丢弃了）</p>
+</li>
+</ul>
 <h2 id="10-3-失败处理策略"><a href="#10-3-失败处理策略" class="headerlink" title="10.3 失败处理策略"></a>10.3 失败处理策略</h2><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240401163030885.png" alt="image-20240401163030885"></p>
 <p>因为10.2本地重试之后如果消息失效就直接丢弃，因此我们可以考虑==加上自定义重试次数之后的策略==。只需要==MessageRecoverer接口==来处理，它包含了三种不同的实现：</p>
 <ul>
-<li>RejectAndDontRequeueRecoverer(默认)：重试耗尽后，直接reject，丢弃消息</li>
-<li>ImmediateRequeueMessageRecoverer ：重试耗尽后，返回nack，消息重新入队 【减缓重试的速度，就还是要重新投递到前一步】</li>
-<li>RepublishMessageRecoverer：重试耗尽后，将失败消息投递到指定的交换机(最后人工校验/特殊校验)</li>
+<li><strong>RejectAndDontRequeueRecoverer(默认)</strong>：重试耗尽后，直接reject，丢弃消息</li>
+<li>*<em>ImmediateRequeueMessageRecoverer *</em>：重试耗尽后，返回nack，消息重新入队 【减缓重试的速度，就还是要重新投递到前一步】</li>
+<li><strong>RepublishMessageRecoverer</strong>：重试耗尽后，将失败消息投递到指定的交换机(最后人工校验/特殊校验)</li>
 </ul>
 <h3 id="10-3-1-第三种策略为例"><a href="#10-3-1-第三种策略为例" class="headerlink" title="10.3.1 第三种策略为例"></a>10.3.1 第三种策略为例</h3><p>①定义接受失败消息的交换机，队列和绑定关系</p>
 <p>②定义RepublishMessageRecoverer：</p>
@@ -871,12 +879,122 @@
 
 <p>③在10.2基础上会将消息直接传递到对应交换机上最后进行人工处理</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240401163012833.png" alt="image-20240401163012833"></p>
-<h2 id="10-4-业务幂等性"><a href="#10-4-业务幂等性" class="headerlink" title="10.4 业务幂等性"></a>10.4 业务幂等性</h2><ul>
-<li><strong>幂等性</strong></li>
+<ul>
+<li><p>总结：</p>
+<p>自定义的三种方式，第一种默认直接拒绝(不好)，第二种相当于往前重试了一个环节(减缓了重试速度，但是也不好)，第三种相当于交给专门队列和交换机，最后交给人工处理(也不是很好)</p>
+</li>
 </ul>
-<h3 id="10-4-1-唯一消息ID"><a href="#10-4-1-唯一消息ID" class="headerlink" title="10.4.1 唯一消息ID"></a>10.4.1 唯一消息ID</h3><h3 id="10-4-2-业务状态判断"><a href="#10-4-2-业务状态判断" class="headerlink" title="10.4.2 业务状态判断"></a>10.4.2 业务状态判断</h3><p>根据具体业务情况判断 +</p>
-<h2 id="10-5-兜底方案"><a href="#10-5-兜底方案" class="headerlink" title="10.5 兜底方案"></a>10.5 兜底方案</h2><p>那就==定时==主动询问消费者是否完成</p>
-<h1 id="11-延迟消息"><a href="#11-延迟消息" class="headerlink" title="11.延迟消息"></a>11.延迟消息</h1><h2 id="11-1-延迟消息的定义"><a href="#11-1-延迟消息的定义" class="headerlink" title="11.1 延迟消息的定义"></a>11.1 延迟消息的定义</h2><h2 id="11-2-延迟任务"><a href="#11-2-延迟任务" class="headerlink" title="11.2 延迟任务"></a>11.2 延迟任务</h2><h2 id="11-3-两种解决办法"><a href="#11-3-两种解决办法" class="headerlink" title="11.3 两种解决办法"></a>11.3 两种解决办法</h2>
+<h2 id="10-4-业务幂等性"><a href="#10-4-业务幂等性" class="headerlink" title="10.4 业务幂等性"></a>10.4 业务幂等性</h2><ul>
+<li><p><strong>幂等性</strong></p>
+<p>用函数表达式来描述是这样的：<code>f(x) = f(f(x))</code>，例如求绝对值函数。</p>
+<p>在程序开发中，则是指==同一个业务，执行一次或多次对业务状态的影响是一致的==。例如：</p>
+<ul>
+<li>根据id删除数据</li>
+<li>查询数据</li>
+<li>新增数据</li>
+</ul>
+<p>但数据的更新往往不是幂等的，如果重复执行可能造成不一样的后果。比如：</p>
+<ul>
+<li>取消订单，恢复库存的业务。如果多次恢复就会出现库存重复增加的情况</li>
+<li>退款业务。重复退款对商家而言会有经济损失。</li>
+</ul>
+<p>所以，我们要尽可能避免业务被重复执行。然而在实际业务场景中，由于意外经常会出现业务被重复执行的情况，例如：</p>
+<ul>
+<li>页面卡顿时频繁刷新导致表单重复提交</li>
+<li>服务间调用的重试</li>
+<li>MQ消息的重复投递</li>
+</ul>
+<p>我们在用户支付成功后会发送MQ消息到交易服务，修改订单状态为已支付，就可能出现消息回</p>
+<p>复投递的情况。如果消费者不做判断，很有可能导致消息被消费多次，出现业务故障。</p>
+<p>举例：</p>
+<ol>
+<li>假如用户刚刚支付完成，并且投递消息到交易服务，交易服务更改订单为<strong>已支付</strong>状态。</li>
+<li>由于某种原因，例如网络故障导致生产者没有得到确认，隔了一段时间后<strong>重新投递</strong>给交易服务。</li>
+<li>但是，在新投递的消息被消费之前，用户选择了退款，将订单状态改为了<strong>已退款</strong>状态。</li>
+<li>退款完成后，新投递的消息才被消费，那么订单状态会被再次改为<strong>已支付</strong>。业务异常。</li>
+</ol>
+<p>因此，我们必须想办法保证消息处理的幂等性。这里给出两种方案：</p>
+<ul>
+<li>唯一消息ID</li>
+<li>业务状态判断</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-4-1-唯一消息ID-存在业务侵入"><a href="#10-4-1-唯一消息ID-存在业务侵入" class="headerlink" title="10.4.1 唯一消息ID(存在业务侵入)"></a>10.4.1 唯一消息ID(存在业务侵入)</h3><p>这个思路非常简单：</p>
+<ol>
+<li>每一条消息都生成一个唯一的id，与消息一起投递给消费者。</li>
+<li>消费者接收到消息后处理自己的业务，业务处理成功后将消息ID保存到数据库</li>
+<li>如果下次又收到相同消息，去数据库查询判断是否存在，存在则为重复消息放弃处理。</li>
+</ol>
+<ul>
+<li><strong>SpringAMQP的MeesageConverter自带MessageID的功能</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;以Jackson的消息转换器为例：</span><br><span class="line">&#x2F;&#x2F;在消费者和生产者的config配置里面添加</span><br><span class="line">@Bean</span><br><span class="line">public MessageConverter messageConverter()&#123;</span><br><span class="line">    &#x2F;&#x2F; 1.定义消息转换器</span><br><span class="line">    Jackson2JsonMessageConverter jjmc &#x3D; new Jackson2JsonMessageConverter();</span><br><span class="line">    &#x2F;&#x2F; 2.配置自动创建消息id，用于识别不同消息，也可以在业务中基于ID判断是否是重复消息</span><br><span class="line">    jjmc.setCreateMessageIds(true);</span><br><span class="line">    &#x2F;&#x2F; 3.返回jjmc</span><br><span class="line">    return jjmc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们在生产者位置添加：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402102220873.png" alt="image-20240402102220873"></p>
+<p>打开源码可以看到，生成随机id的底层源码：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402095327684.png" alt="image-20240402095327684"></p>
+<p>最终发送一条消息如下：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402102055345.png" alt="image-20240402102055345"></p>
+<ul>
+<li><p><strong>使用Redis缓存(tk使用)</strong></p>
+<p>在调用接口的时候+调用生成随机数的接口生成id(全局唯一)两者合二为一，然后判断是否第一次调用，第一次调用的话业务处理完成之后将{key：id，value：操作结果}+过期时间存入redis数据库；之后每次进行的时候判断是否key存在，存在的话说明重复提交返回错误</p>
+</li>
+</ul>
+<h3 id="10-4-2-业务状态判断"><a href="#10-4-2-业务状态判断" class="headerlink" title="10.4.2 业务状态判断"></a>10.4.2 业务状态判断</h3><p>业务判断就是基于业务本身的逻辑或状态来判断是否是重复的请求或消息，不同的业务场景判断的思路也不一样。</p>
+<p>相比较而言，消息ID的方案需要改造原有的数据库(<strong>会存在业务侵入问题</strong>)，所以我更推荐使用业务判断的方案。</p>
+<p>以支付修改订单的业务为例，我们需要修改<code>OrderServiceImpl</code>中的<code>markOrderPaySuccess</code>方法：处理消息的业务逻辑是把订单状态从未支付修改为已支付。因此我们就可以在执行业务时判断订单状态是否是未支付，如果不是则证明订单已经被处理过，无需重复处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在原有基础上添加判断订单状态 ---如果不符合直接消息reject了!!!!!!!</span><br><span class="line"></span><br><span class="line">   @Override</span><br><span class="line">    public void markOrderPaySuccess(Long orderId) &#123;</span><br><span class="line">        &#x2F;&#x2F; 1.查询订单</span><br><span class="line">        Order old &#x3D; getById(orderId);</span><br><span class="line">        &#x2F;&#x2F; 2.判断订单状态</span><br><span class="line">        if (old &#x3D;&#x3D; null || old.getStatus() !&#x3D; 1) &#123;</span><br><span class="line">            &#x2F;&#x2F; 订单不存在或者订单状态不是1，放弃处理</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 3.尝试更新订单</span><br><span class="line">        Order order &#x3D; new Order();</span><br><span class="line">        order.setId(orderId);</span><br><span class="line">        order.setStatus(2);</span><br><span class="line">        order.setPayTime(LocalDateTime.now());</span><br><span class="line">        updateById(order);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据上述代码逻辑可以完成幂等判断需求，但是由于判断和更新是两步动作，可能会在极小概率下可能存在线程安全问题  –&gt; 可以考虑使用==乐观锁(CAS机制)==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;可以将上述三步直接合并为一条sql语句</span><br><span class="line">@Override</span><br><span class="line">public void markOrderPaySuccess(Long orderId) &#123;</span><br><span class="line">    &#x2F;&#x2F; UPDATE &#96;order&#96; SET status &#x3D; ? , pay_time &#x3D; ? WHERE id &#x3D; ? AND status &#x3D; 1</span><br><span class="line">    &#x2F;&#x2F;mybatisplus的方式</span><br><span class="line">    lambdaUpdate()</span><br><span class="line">            .set(Order::getStatus, 2)</span><br><span class="line">            .set(Order::getPayTime, LocalDateTime.now())</span><br><span class="line">            .eq(Order::getId, orderId)</span><br><span class="line">            .eq(Order::getStatus, 1)</span><br><span class="line">            .update();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意看，上述代码等同于这样的SQL语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="string">`order`</span> <span class="keyword">SET</span> <span class="keyword">status</span> = ? , pay_time = ? <span class="keyword">WHERE</span> <span class="keyword">id</span> = ? <span class="keyword">AND</span> <span class="keyword">status</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>我们在where条件中除了判断id以外，还加上了status必须为1的条件。如果条件不符（说明订单已支付），则SQL匹配不到数据，根本不会执行。</p>
+<h2 id="10-5-兜底方案"><a href="#10-5-兜底方案" class="headerlink" title="10.5 兜底方案"></a>10.5 兜底方案</h2><p>上述机制可能增加了消息的可靠性，但是也不好说能保证消息100%的可靠。</p>
+<p>兜底方案：既然MQ通知不一定发送到交易服务，那交易服务就自己==定时==主动询问消费者是否完成</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402105828416.png" alt="image-20240402105828416"></p>
+<p>什么时候去查询是无法确定的，因此我们通常采用的措施是利用<strong>定时任务</strong>定期查询。</p>
+<h1 id="可靠性总结图"><a href="#可靠性总结图" class="headerlink" title="==可靠性总结图=="></a>==可靠性总结图==</h1><p>综上，支付服务与交易服务之间的订单状态一致性是如何保证的？</p>
+<ul>
+<li>首先，支付服务会正在用户支付成功以后利用MQ消息通知交易服务，完成订单状态同步。</li>
+<li>其次，为了保证MQ消息的可靠性，我们采用了生产者确认机制、消费者确认、消费者失败重试等策略，确保消息投递的可靠性</li>
+<li>最后，我们还在交易服务设置了定时任务，定期查询订单支付状态。这样即便MQ通知失败，还可以利用定时任务作为兜底方案，确保订单支付状态的最终一致性。</li>
+</ul>
+<h1 id="高级进阶-–延迟消息-两种方式"><a href="#高级进阶-–延迟消息-两种方式" class="headerlink" title="==高级进阶 –延迟消息(两种方式)=="></a>==高级进阶 –延迟消息(两种方式)==</h1><h1 id="11-延迟消息"><a href="#11-延迟消息" class="headerlink" title="11.延迟消息"></a>11.延迟消息</h1><p><strong>延迟消息</strong>：生产者发送消息时指定一个时间，消费者不会立刻收到消息，而在指定时间之后才收到消息</p>
+<p><strong>延迟任务：</strong>设置一定时间之后才执行的任务，(最简单的方案就是利用MQ的延迟消息)</p>
+<p>在RabbitMQ中实现延迟消息也有两种方案：</p>
+<ul>
+<li>死信交换机+TTL</li>
+<li>延迟消息插件</li>
+</ul>
+<h2 id="11-1-死信交换机和延迟消息"><a href="#11-1-死信交换机和延迟消息" class="headerlink" title="11.1 死信交换机和延迟消息"></a>11.1 死信交换机和延迟消息</h2><h3 id="11-1-1-死信交换机"><a href="#11-1-1-死信交换机" class="headerlink" title="11.1.1 死信交换机"></a>11.1.1 死信交换机</h3><p><strong>死信(dead letter)</strong>？</p>
+<ul>
+<li>消费者使用<code>basic.reject</code>或 <code>basic.nack</code>声明消费失败，并且消息的<code>requeue</code>参数设置为false</li>
+<li>消息是一个过期消息，超时无人消费</li>
+<li>要投递的队列消息满了，无法投递</li>
+</ul>
+<p>如果队列设置属性dead-letter-exchange指定交换机 –&gt;该队列的死信就会投递到这个交换机。</p>
+<p>这个交换机就叫做<strong>死信交换机(Dead letter Exchange,简称DLX)</strong></p>
+<p><strong>死信交换机的作用</strong>？</p>
+<ol>
+<li><p>收集那些因处理失败而被拒绝的消息</p>
+</li>
+<li><p>收集那些因队列满了而被拒绝的消息</p>
+</li>
+<li><p>收集因TTL（有效期）到期的消息</p>
+</li>
+</ol>
+<h3 id="11-1-2-延迟消息"><a href="#11-1-2-延迟消息" class="headerlink" title="11.1.2 延迟消息"></a>11.1.2 延迟消息</h3><p>总结来说：宏观上看到就是内部做了一个延迟一样</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402113915144.png" alt="image-20240402113915144"></p>
+<p>进一步说：变相的让发送消息到消费多了5s</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402114329589.png" alt="image-20240402114329589"></p>
+<h2 id="11-2-延迟消息插件-DelayExchange"><a href="#11-2-延迟消息插件-DelayExchange" class="headerlink" title="11.2 延迟消息插件(DelayExchange)"></a>11.2 延迟消息插件(DelayExchange)</h2><p>RabbitMQ官方提供一款插件，==原生支持延迟消息功能==。</p>
+<p>插件原理就是设计了一种<strong>支持延迟消息功能</strong>的交换机，当消息投递到交换机后可以存放一定时间，到期后再投递到队列。</p>
+<h3 id="11-2-1-下载"><a href="#11-2-1-下载" class="headerlink" title="11.2.1 下载"></a>11.2.1 下载</h3><h3 id="11-2-2-安装"><a href="#11-2-2-安装" class="headerlink" title="11.2.2 安装"></a>11.2.2 安装</h3><h3 id="11-2-3-声明延迟交换机"><a href="#11-2-3-声明延迟交换机" class="headerlink" title="11.2.3 声明延迟交换机"></a>11.2.3 声明延迟交换机</h3><h3 id="11-2-4-发送延迟消息"><a href="#11-2-4-发送延迟消息" class="headerlink" title="11.2.4 发送延迟消息"></a>11.2.4 发送延迟消息</h3><h1 id="12-实际操作"><a href="#12-实际操作" class="headerlink" title="12. 实际操作"></a>12. 实际操作</h1>
       
       
     </div>
