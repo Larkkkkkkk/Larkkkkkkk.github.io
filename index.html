@@ -417,7 +417,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="1-同步调用和异步调用"><a href="#1-同步调用和异步调用" class="headerlink" title="1.同步调用和异步调用"></a>1.同步调用和异步调用</h1><h2 id="1-1-同步调用"><a href="#1-1-同步调用" class="headerlink" title="1.1 同步调用"></a>1.1 同步调用</h2><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319100914998.png" alt="image-20240319100914998"></p>
+        <h1 id="1-同步调用和异步调用"><a href="#1-同步调用和异步调用" class="headerlink" title="1.同步调用和异步调用"></a>1.同步调用和异步调用</h1><h2 id="1-1-同步调用"><a href="#1-1-同步调用" class="headerlink" title="1.1 同步调用"></a>1.1 同步调用</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407480.png" alt="image-20240319100914998"></p>
 <p>综上，同步调用的方式存在下列问题：</p>
 <ul>
 <li>拓展性差(新增业务和逻辑就要修改，不符合开闭原则)</li>
@@ -431,10 +431,10 @@
 <li>消息Broker：管理、暂存、转发消息，你可以把它理解成微信服务器</li>
 <li>消息接收者：接收和处理消息的人，就是原来的服务提供方</li>
 </ul>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319143703635.png" alt="image-20240319143703635"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071403552.png" alt="image-20240319143703635"></p>
 <p>异步调用中，发送者不再直接同步调用接收者的业务接口，而是发送一条消息投递给消息Broker(消息代理)。然后接收者根据自己的需求从消息Broker那里订阅消息。每当发送方发送消息后，接受者都能获取消息并处理  —&gt;  发送消息的人和接收消息的人就完全解耦了</p>
 <p>如图所示：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319144436498.png" alt="image-20240319144436498"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071404220.png" alt="image-20240319144436498"></p>
 <p>综上，异步调用的优势包括：</p>
 <ul>
 <li>耦合度更低</li>
@@ -519,7 +519,7 @@
 </tbody></table>
 <p>追求可用性：Kafka、 RocketMQ 、RabbitMQ<br>追求可靠性：RabbitMQ、RocketMQ<br>追求吞吐能力：RocketMQ、Kafka<br>追求消息低延迟：RabbitMQ、Kafka</p>
 <p>据统计，目前国内消息队列使用最多的还是RabbitMQ，再加上其各方面都比较均衡，稳定性也好</p>
-<h1 id="2-RabbitMQ"><a href="#2-RabbitMQ" class="headerlink" title="2.RabbitMQ"></a>2.RabbitMQ</h1><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319093425166.png" alt="image-20240319093425166" style="zoom:80%;">
+<h1 id="2-RabbitMQ"><a href="#2-RabbitMQ" class="headerlink" title="2.RabbitMQ"></a>2.RabbitMQ</h1><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407789.png" alt="image-20240319093425166" style="zoom:80%;">
 
 <p>RabbitMQ是基于Erlang语言开发的开源消息通信中间件，官网地址：<a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">Messaging that just works — RabbitMQ</a></p>
 <h2 id="2-1-RabbitMQ安装"><a href="#2-1-RabbitMQ安装" class="headerlink" title="2.1 RabbitMQ安装"></a>2.1 RabbitMQ安装</h2><p>基于Docker来安装RabbitMQ，命令如下：</p>
@@ -531,8 +531,8 @@
 <li>5672：RabbitMQ的消息发送处理接口</li>
 </ul>
 <p>通过访问 <a href="http://localhost:15672即可看到管理控制台。首次访问登录，需要配置文件中设定的用户名和密码">http://localhost:15672即可看到管理控制台。首次访问登录，需要配置文件中设定的用户名和密码</a></p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319192803935.png" alt="image-20240319192803935"></p>
-<h2 id="2-2-RabbitMQ架构"><a href="#2-2-RabbitMQ架构" class="headerlink" title="2.2 RabbitMQ架构"></a>2.2 RabbitMQ架构</h2><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319193424489.png" alt="image-20240319193424489"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407126.png" alt="image-20240319192803935"></p>
+<h2 id="2-2-RabbitMQ架构"><a href="#2-2-RabbitMQ架构" class="headerlink" title="2.2 RabbitMQ架构"></a>2.2 RabbitMQ架构</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071410365.png" alt="image-20240319193424489"></p>
 <p>其中包含几个概念：</p>
 <ul>
 <li><code>**publisher**</code>：生产者，也就是发送消息的一方</li>
@@ -550,28 +550,28 @@
 <li>基于注解的监听器模式，异步接收消息</li>
 <li>封装了RabbitTemplate工具，用于发送消息 -rabbitTemplate.convertAndSend(队列名,发送信息);</li>
 </ul>
-<h2 id="3-1-生产者-消费者-1-1"><a href="#3-1-生产者-消费者-1-1" class="headerlink" title="3.1 生产者-消费者(1-1)"></a>3.1 生产者-消费者(1-1)</h2><h3 id="3-1-1-导入Demo工程"><a href="#3-1-1-导入Demo工程" class="headerlink" title="3.1.1 导入Demo工程"></a>3.1.1 导入Demo工程</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319195614981.png" alt="image-20240319195614981"></p>
-<h3 id="3-1-2-导入maven坐标"><a href="#3-1-2-导入maven坐标" class="headerlink" title="3.1.2 导入maven坐标"></a>3.1.2 导入maven坐标</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319195708883.png" alt="image-20240319195708883"></p>
-<h3 id="3-1-3-新建队列"><a href="#3-1-3-新建队列" class="headerlink" title="3.1.3  新建队列"></a>3.1.3  新建队列</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319200226308.png" alt="image-20240319200226308"></p>
-<h3 id="3-1-4-每个子工程配置RabbitMQ信息"><a href="#3-1-4-每个子工程配置RabbitMQ信息" class="headerlink" title="3.1.4  每个子工程配置RabbitMQ信息"></a>3.1.4  每个子工程配置RabbitMQ信息</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319200405081.png" alt="image-20240319200405081"></p>
+<h2 id="3-1-生产者-消费者-1-1"><a href="#3-1-生产者-消费者-1-1" class="headerlink" title="3.1 生产者-消费者(1-1)"></a>3.1 生产者-消费者(1-1)</h2><h3 id="3-1-1-导入Demo工程"><a href="#3-1-1-导入Demo工程" class="headerlink" title="3.1.1 导入Demo工程"></a>3.1.1 导入Demo工程</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407932.png" alt="image-20240319195614981"></p>
+<h3 id="3-1-2-导入maven坐标"><a href="#3-1-2-导入maven坐标" class="headerlink" title="3.1.2 导入maven坐标"></a>3.1.2 导入maven坐标</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407671.png" alt="image-20240319195708883"></p>
+<h3 id="3-1-3-新建队列"><a href="#3-1-3-新建队列" class="headerlink" title="3.1.3  新建队列"></a>3.1.3  新建队列</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407672.png" alt="image-20240319200226308"></p>
+<h3 id="3-1-4-每个子工程配置RabbitMQ信息"><a href="#3-1-4-每个子工程配置RabbitMQ信息" class="headerlink" title="3.1.4  每个子工程配置RabbitMQ信息"></a>3.1.4  每个子工程配置RabbitMQ信息</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407634.png" alt="image-20240319200405081"></p>
 <h3 id="3-1-5-生产者发送消息"><a href="#3-1-5-生产者发送消息" class="headerlink" title="3.1.5 生产者发送消息"></a>3.1.5 生产者发送消息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.注入RabbitTemplate对象</span><br><span class="line">2.对象调用convertAndSend(队列名，信息)方法</span><br></pre></td></tr></table></figure>
 
-<img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319200946446.png" alt="image-20240319200946446" style="zoom:150%;">
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407159.png" alt="image-20240319200946446" style="zoom:150%;">
 
 
 
 <h3 id="3-1-6-消费者接收消息"><a href="#3-1-6-消费者接收消息" class="headerlink" title="3.1.6 消费者接收消息"></a>3.1.6 消费者接收消息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.使用注解RabbitListener(队列名&#x3D;“xxx”)</span><br><span class="line">2.启动当前消费者子工程(SpringBoot工程)</span><br><span class="line">3.生产者发送一次消息，消费者就会接收到一次消息</span><br></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319201418364.png" alt="image-20240319201418364"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407040.png" alt="image-20240319201418364"></p>
 <h2 id="3-2-生产者-消费者-1-n-WorkQueues任务模型"><a href="#3-2-生产者-消费者-1-n-WorkQueues任务模型" class="headerlink" title="3.2 生产者-消费者(1-n) -WorkQueues任务模型"></a>3.2 生产者-消费者(1-n) -WorkQueues任务模型</h2><p>Work queues任务模型    –&gt;   让多个消费者绑定到一个队列，共同消费队列中的消息   –&gt;   ==解决消息堆积太多==</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240319202054225.png" alt="image-20240319202054225"></p>
-<h3 id="3-2-1-新建队列"><a href="#3-2-1-新建队列" class="headerlink" title="3.2.1 新建队列"></a>3.2.1 新建队列</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320091336394.png" alt="image-20240320091336394"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407290.png" alt="image-20240319202054225"></p>
+<h3 id="3-2-1-新建队列"><a href="#3-2-1-新建队列" class="headerlink" title="3.2.1 新建队列"></a>3.2.1 新建队列</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407109.png" alt="image-20240320091336394"></p>
 <h3 id="3-2-2-生产者发送消息"><a href="#3-2-2-生产者发送消息" class="headerlink" title="3.2.2 生产者发送消息"></a>3.2.2 生产者发送消息</h3><p>一个发送者，循环发送50次消息</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320091703762.png" alt="image-20240320091703762"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407815.png" alt="image-20240320091703762"></p>
 <h3 id="3-2-3-消费者接收消息"><a href="#3-2-3-消费者接收消息" class="headerlink" title="3.2.3 消费者接收消息"></a>3.2.3 消费者接收消息</h3><p>两个消费者接收消息，一个休眠20ms(每秒钟处理50个消息)，一个休眠200ms(每秒钟处理5个消息)</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320092251196.png" alt="image-20240320092251196"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071410175.png" alt="image-20240320092251196"></p>
 <h3 id="3-2-4-均匀分配"><a href="#3-2-4-均匀分配" class="headerlink" title="3.2.4 均匀分配"></a>3.2.4 均匀分配</h3><p>启动消费者子工程项目，再发送消息就可以接受消息：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320092647584.png" alt="image-20240320092647584"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407287.png" alt="image-20240320092647584"></p>
 <p>可以看到消费者1和消费者2竟然每人消费了25条消息：</p>
 <ul>
 <li>消费者1很快完成了自己的25条消息</li>
@@ -579,12 +579,12 @@
 </ul>
 <p>也就是说消息是==平均分配==给每个消费者，并没有考虑到消费者的处理能力。导致1个消费者空闲，另一个消费者忙的不可开交。没有充分利用每一个消费者的能力，最终消息处理的耗时远远超过了1秒。这样显然是有问题的  </p>
 <h3 id="3-2-5-能者多劳-prefetch"><a href="#3-2-5-能者多劳-prefetch" class="headerlink" title="3.2.5 能者多劳(prefetch)"></a>3.2.5 能者多劳(prefetch)</h3><p>修改==listener.simple.prefetch:1==可以保证==能者多劳==，每个消费者每次只能获取一条消息，处理完成才能获取下一条消息</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320093106144.png" alt="image-20240320093106144"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407470.png" alt="image-20240320093106144"></p>
 <p>更改之后重新发送消息：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320093225443.png" alt="image-20240320093225443"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407467.png" alt="image-20240320093225443"></p>
 <p>可以发现，由于消费者1处理速度较快，所以处理了更多的消息；消费者2处理速度较慢，只处理了6条消息。而最终总的执行耗时也在1秒左右，大大提升。<br>正所谓能者多劳，这样充分利用了每一个消费者的处理能力，可以有效避免消息积压问题</p>
 <h1 id="4-交换机-Exchange"><a href="#4-交换机-Exchange" class="headerlink" title="4.交换机(Exchange)"></a>4.交换机(Exchange)</h1><p>在3.1和3.2部分没有添加交换机，生产者直接发送消息到队列。但是引入交换机之后消息发送的模式会有很大的变化：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320093715426.png" alt="image-20240320093715426"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407236.png" alt="image-20240320093715426"></p>
 <p>可以看到，在订阅模型中，多了一个exchange角色，而且过程略有变化：</p>
 <ul>
 <li><strong>Publisher</strong>：生产者，不再发送消息到队列中，而是发给交换机</li>
@@ -601,22 +601,22 @@
 <li><strong>Headers</strong>：头匹配，基于MQ的消息头匹配，用的较少</li>
 </ul>
 <h2 id="4-1-Fanout交换机-广播"><a href="#4-1-Fanout交换机-广播" class="headerlink" title="4.1 Fanout交换机(广播)"></a>4.1 Fanout交换机(广播)</h2><p>在广播(Fanout)模式下，消息发送流程是这样的</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320094830771.png" alt="image-20240320094830771"></p>
-<h3 id="4-1-1-声明交换机和队列"><a href="#4-1-1-声明交换机和队列" class="headerlink" title="4.1.1 声明交换机和队列"></a>4.1.1 声明交换机和队列</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320095902006.png" alt="image-20240320095902006"></p>
-<h3 id="4-1-2-消息发送"><a href="#4-1-2-消息发送" class="headerlink" title="4.1.2 消息发送"></a>4.1.2 消息发送</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320095942536.png" alt="image-20240320095942536"></p>
-<h3 id="4-1-3-消息接收"><a href="#4-1-3-消息接收" class="headerlink" title="4.1.3 消息接收"></a>4.1.3 消息接收</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320100056347.png" alt="image-20240320100056347"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407800.png" alt="image-20240320094830771"></p>
+<h3 id="4-1-1-声明交换机和队列"><a href="#4-1-1-声明交换机和队列" class="headerlink" title="4.1.1 声明交换机和队列"></a>4.1.1 声明交换机和队列</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407936.png" alt="image-20240320095902006"></p>
+<h3 id="4-1-2-消息发送"><a href="#4-1-2-消息发送" class="headerlink" title="4.1.2 消息发送"></a>4.1.2 消息发送</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407284.png" alt="image-20240320095942536"></p>
+<h3 id="4-1-3-消息接收"><a href="#4-1-3-消息接收" class="headerlink" title="4.1.3 消息接收"></a>4.1.3 消息接收</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407340.png" alt="image-20240320100056347"></p>
 <p>启动消费者子工程之后发送消息</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320100134844.png" alt="image-20240320100134844"></p>
-<h2 id="4-2-Direct交换机-订阅"><a href="#4-2-Direct交换机-订阅" class="headerlink" title="4.2 Direct交换机(订阅)"></a>4.2 Direct交换机(订阅)</h2><h3 id="4-2-1-声明交换机和队列"><a href="#4-2-1-声明交换机和队列" class="headerlink" title="4.2.1 声明交换机和队列"></a>4.2.1 声明交换机和队列</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320200427090.png" alt="image-20240320200427090"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071412799.png" alt="image-20240320100134844"></p>
+<h2 id="4-2-Direct交换机-订阅"><a href="#4-2-Direct交换机-订阅" class="headerlink" title="4.2 Direct交换机(订阅)"></a>4.2 Direct交换机(订阅)</h2><h3 id="4-2-1-声明交换机和队列"><a href="#4-2-1-声明交换机和队列" class="headerlink" title="4.2.1 声明交换机和队列"></a>4.2.1 声明交换机和队列</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071412758.png" alt="image-20240320200427090"></p>
 <p>官网在线创建：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320200530874.png" alt="image-20240320200530874"></p>
-<h3 id="4-2-2-消息发送"><a href="#4-2-2-消息发送" class="headerlink" title="4.2.2 消息发送"></a>4.2.2 消息发送</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320200725027.png" alt="image-20240320200725027"></p>
-<h3 id="4-2-3-消息接收"><a href="#4-2-3-消息接收" class="headerlink" title="4.2.3 消息接收"></a>4.2.3 消息接收</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320200746903.png" alt="image-20240320200746903"></p>
-<h3 id="4-2-4-总结"><a href="#4-2-4-总结" class="headerlink" title="4.2.4 总结"></a>4.2.4 总结</h3><h2 id="4-3-Topic交换机-通配符订阅"><a href="#4-3-Topic交换机-通配符订阅" class="headerlink" title="4.3 Topic交换机(通配符订阅)"></a>4.3 Topic交换机(通配符订阅)</h2><h3 id="4-3-1-声明交换机和队列"><a href="#4-3-1-声明交换机和队列" class="headerlink" title="4.3.1 声明交换机和队列"></a>4.3.1 声明交换机和队列</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320200956679.png" alt="image-20240320200956679"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407754.png" alt="image-20240320200530874"></p>
+<h3 id="4-2-2-消息发送"><a href="#4-2-2-消息发送" class="headerlink" title="4.2.2 消息发送"></a>4.2.2 消息发送</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407619.png" alt="image-20240320200725027"></p>
+<h3 id="4-2-3-消息接收"><a href="#4-2-3-消息接收" class="headerlink" title="4.2.3 消息接收"></a>4.2.3 消息接收</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407860.png" alt="image-20240320200746903"></p>
+<h3 id="4-2-4-总结"><a href="#4-2-4-总结" class="headerlink" title="4.2.4 总结"></a>4.2.4 总结</h3><h2 id="4-3-Topic交换机-通配符订阅"><a href="#4-3-Topic交换机-通配符订阅" class="headerlink" title="4.3 Topic交换机(通配符订阅)"></a>4.3 Topic交换机(通配符订阅)</h2><h3 id="4-3-1-声明交换机和队列"><a href="#4-3-1-声明交换机和队列" class="headerlink" title="4.3.1 声明交换机和队列"></a>4.3.1 声明交换机和队列</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407415.png" alt="image-20240320200956679"></p>
 <p>官网在线创建：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320200925685.png" alt="image-20240320200925685"></p>
-<h3 id="4-3-2-消息发送"><a href="#4-3-2-消息发送" class="headerlink" title="4.3.2 消息发送"></a>4.3.2 消息发送</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320200802564.png" alt="image-20240320200802564"></p>
-<h3 id="4-3-3-消息接收"><a href="#4-3-3-消息接收" class="headerlink" title="4.3.3 消息接收"></a>4.3.3 消息接收</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320200816573.png" alt="image-20240320200816573"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071412374.png" alt="image-20240320200925685"></p>
+<h3 id="4-3-2-消息发送"><a href="#4-3-2-消息发送" class="headerlink" title="4.3.2 消息发送"></a>4.3.2 消息发送</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407499.png" alt="image-20240320200802564"></p>
+<h3 id="4-3-3-消息接收"><a href="#4-3-3-消息接收" class="headerlink" title="4.3.3 消息接收"></a>4.3.3 消息接收</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407834.png" alt="image-20240320200816573"></p>
 <h3 id="4-3-4-总结"><a href="#4-3-4-总结" class="headerlink" title="4.3.4 总结"></a>4.3.4 总结</h3><p><code>Topic</code>类型的<code>Exchange</code>与<code>Direct</code>相比，都是可以根据<code>RoutingKey</code>把消息路由到不同的队列。只不过<code>Topic</code>类型<code>Exchange</code>可以让队列在绑定<code>BindingKey</code> 的时候使用==通配符==！</p>
 <p>BindingKey一般是一个/多个单词组成，多个单词之间用.分割</p>
 <p>通配符规则：</p>
@@ -636,25 +636,25 @@
 <li>Exchange：</li>
 <li>Binding：</li>
 </ul>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320203603754.png" alt="image-20240320203603754"></p>
-<h2 id="5-1-Bean方式声明-不推荐"><a href="#5-1-Bean方式声明-不推荐" class="headerlink" title="5.1 @Bean方式声明(不推荐)"></a>5.1 @Bean方式声明(不推荐)</h2><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320215605011.png" alt="image-20240320215605011"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408736.png" alt="image-20240320203603754"></p>
+<h2 id="5-1-Bean方式声明-不推荐"><a href="#5-1-Bean方式声明-不推荐" class="headerlink" title="5.1 @Bean方式声明(不推荐)"></a>5.1 @Bean方式声明(不推荐)</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408875.png" alt="image-20240320215605011"></p>
 <p>这样创建很繁琐，因此提供了基于注解的方式</p>
-<h2 id="5-2-注解方式声明-推荐"><a href="#5-2-注解方式声明-推荐" class="headerlink" title="5.2 注解方式声明(推荐)"></a>5.2 注解方式声明(推荐)</h2><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320220328866.png" alt="image-20240320220328866"></p>
+<h2 id="5-2-注解方式声明-推荐"><a href="#5-2-注解方式声明-推荐" class="headerlink" title="5.2 注解方式声明(推荐)"></a>5.2 注解方式声明(推荐)</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408708.png" alt="image-20240320220328866"></p>
 <p>其实就是@RabbitListener注解里面配置关系(@QueueBinding)具体的就是交换机(@Exchange)，队列(@Queue)以及路由key(key)</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320221056179.png" alt="image-20240320221056179"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071412958.png" alt="image-20240320221056179"></p>
 <h1 id="6-消息转换器"><a href="#6-消息转换器" class="headerlink" title="6.消息转换器"></a>6.消息转换器</h1><p>Spring的convertAndSend()方法接收的是一个Object类型：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320221749744.png" alt="image-20240320221749744"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408190.png" alt="image-20240320221749744"></p>
 <p>而在数据传输时，可能会因为默认的==JDK序列化==导致数据体积过大(乱码一样的序列化结果)，安全漏洞，可读性差等问题。</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240320222347892.png" alt="image-20240320222347892"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408420.png" alt="image-20240320222347892"></p>
 <p>因此可以考虑使用==Json序列化和反序列化==：</p>
 <h2 id="6-1-配置JSON转换器"><a href="#6-1-配置JSON转换器" class="headerlink" title="6.1 配置JSON转换器"></a>6.1 配置JSON转换器</h2><ul>
 <li>1.在生产者和消费者两个服务中都要引入依赖</li>
 </ul>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321092511719.png" alt="image-20240321092511719"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408060.png" alt="image-20240321092511719"></p>
 <p>注意：如果项目中引入了Spring-boot-starter-web依赖，则无需再次引入Jackson依赖</p>
 <ul>
 <li><p>2.在生产者和消费者两个服务的启动类中添加一个Bean：配置消息转换器</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321092839447.png" alt="image-20240321092839447"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408366.png" alt="image-20240321092839447"></p>
 </li>
 </ul>
 <h1 id="7-使用总结"><a href="#7-使用总结" class="headerlink" title="==7.使用总结=="></a>==7.使用总结==</h1><h2 id="7-1-maven引入maven坐标"><a href="#7-1-maven引入maven坐标" class="headerlink" title="7.1 maven引入maven坐标"></a>7.1 maven引入maven坐标</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--消息发送--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-amqp&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
@@ -662,18 +662,18 @@
 <h2 id="7-2-子工程配置RabbitMQ信息"><a href="#7-2-子工程配置RabbitMQ信息" class="headerlink" title="7.2 子工程配置RabbitMQ信息"></a>7.2 子工程配置RabbitMQ信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  rabbitmq:</span><br><span class="line">    host: 192.168.150.101 # 你的虚拟机IP</span><br><span class="line">    port: 5672 # 端口</span><br><span class="line">    virtual-host: &#x2F;hmall # 虚拟主机</span><br><span class="line">    username: hmall # 用户名</span><br><span class="line">    password: 123 # 密码</span><br><span class="line">    </span><br><span class="line">&#x2F;&#x2F;消费者和生产者会在对应位置添加配置 【例如：生产者消费者的确认机制，重试机制等】</span><br></pre></td></tr></table></figure>
 
 <h2 id="7-3-配置消息转换器"><a href="#7-3-配置消息转换器" class="headerlink" title="7.3 配置消息转换器"></a>7.3 配置消息转换器</h2><p>可以在公共模块添加bean</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321095355698.png" alt="image-20240321095355698"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408004.png" alt="image-20240321095355698"></p>
 <h2 id="7-4-生产者-发送消息"><a href="#7-4-生产者-发送消息" class="headerlink" title="7.4 生产者-发送消息"></a>7.4 生产者-发送消息</h2><p>将原始的同步修改订单信息更改为异步修改</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321095847784.png" alt="image-20240321095847784"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408382.png" alt="image-20240321095847784"></p>
 <h2 id="7-5-消费者-接收消息"><a href="#7-5-消费者-接收消息" class="headerlink" title="7.5 消费者-接收消息"></a>7.5 消费者-接收消息</h2><p>消费者可以添加消息监听，添加好交换机和路由key和队列</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321100301473.png" alt="image-20240321100301473"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408722.png" alt="image-20240321100301473"></p>
 <p>==总结如下：==</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240403110457790.png" alt="image-20240403110457790"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408690.png" alt="image-20240403110457790"></p>
 <p>大致就是导入maven，子工程配置一些属性，然后生产者调用rabbitMQ的rabbitTemplate.convertAndSend()方法发送消息【里面可以添加各种】，在消费者方面可以①使用bean进行声明交换机，队列和关系②使用@RabbitListener注解进行声明【里面可以添加一些属性，例如持久化的，lazyqueue的，延迟消息的】</p>
 <hr>
 <h1 id="高级进阶-–保证消息可靠性-三个方面"><a href="#高级进阶-–保证消息可靠性-三个方面" class="headerlink" title="==高级进阶 –保证消息可靠性(三个方面)=="></a>==高级进阶 –保证消息可靠性(三个方面)==</h1><p>异步结构可能会在发送者，MQ，消费者三个地方出现问题!!!因此要考虑这三个位置的可靠性和兜底方案(延迟消息)</p>
 <p>消息从发送者发送消息，到消费者处理消息，需要经过的流程是这样的：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321120455090.png" alt="image-20240321120455090"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408510.png" alt="image-20240321120455090"></p>
 <p>消息从生产者到消费者的每一步都可能导致消息丢失：</p>
 <ul>
 <li>发送消息时丢失：<ul>
@@ -703,12 +703,12 @@
 <p>==总汇总(复习图)==</p>
 </li>
 </ul>
-<img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240325153049616.png" alt="image-20240325153049616" style="zoom:150%;">
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408491.png" alt="image-20240325153049616" style="zoom:150%;">
 
 
 
 <h1 id="8-可靠性——-发送者"><a href="#8-可靠性——-发送者" class="headerlink" title="8.可靠性——-发送者"></a>8.可靠性——-发送者</h1><h2 id="8-1-生产者重试机制-建议禁用"><a href="#8-1-生产者重试机制-建议禁用" class="headerlink" title="8.1 生产者重试机制(建议禁用)"></a>8.1 生产者重试机制(建议禁用)</h2><p>生产者发送消息时，出现网络故障，导致与MQ连接中断   ———-&gt;  SpringAMQP提供的消息发送时的==重试机制==</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321110716739.png" alt="image-20240321110716739"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408900.png" alt="image-20240321110716739"></p>
 <p>注意:<br>当网络不稳定的时候，利用重试机制可以有效提高消息发送的成功率。不过SpringAMQP提供的重试机制是==阻塞式重试==（也就是说多次重试等待的过程中，当前线程是被阻塞的）</p>
 <p>如果对业务性能有要求的，建议禁用重试机制。如果一定要使用，请合理配置等待时长和重试次数，当然也可以考虑使用异步线程来执行发送消息的代码。</p>
 <h2 id="8-2-生产者确认机制-默认不开启"><a href="#8-2-生产者确认机制-默认不开启" class="headerlink" title="8.2 生产者确认机制(默认不开启)"></a>8.2 生产者确认机制(默认不开启)</h2><p>一般情况下，只要生产者与MQ之间的网络连接顺畅，基本不会出现发送消息丢失的情况，因此大多数情况下我们无需考虑这种问题。</p>
@@ -720,7 +720,7 @@
 </ul>
 <p>针对上述三种情况，RabbitMQ提供了==生产者消息确认机制==，包括了Publisher Confirm和Publisher Return两种方式。</p>
 <p>在开启确认机制的情况下，当生产者发送消息给MQ之后，MQ会根据消息处理的情况返回不同的回执：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321160450585.png" alt="image-20240321160450585"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408106.png" alt="image-20240321160450585"></p>
 <p>总结如下：</p>
 <ul>
 <li>1.只要消息投递到MQ，就返回ACK，告知投递成功(基本上这三种ack我们可以考虑不处理，直接只关注nack的情况)</li>
@@ -734,7 +734,7 @@
 <p>【其中ack(投递成功)和nack(投递失败)都属于Publisher Confirm机制;return是属于Publisher Return机制】</p>
 <p>【(默认)两种机制都是关闭状态，需要通过配置文件来开启，因为是需要额外的网络和系统资源开销】</p>
 <p>【一定要使用的话，无需开启Publisher-Return机制(一般路由失败是自己业务问题)】</p>
-<h3 id="8-2-1-配置文件添加"><a href="#8-2-1-配置文件添加" class="headerlink" title="8.2.1 配置文件添加"></a>8.2.1 配置文件添加</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321161135899.png" alt="image-20240321161135899"></p>
+<h3 id="8-2-1-配置文件添加"><a href="#8-2-1-配置文件添加" class="headerlink" title="8.2.1 配置文件添加"></a>8.2.1 配置文件添加</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408985.png" alt="image-20240321161135899"></p>
 <p>这里<code>publisher-confirm-type</code>有三种模式可选：</p>
 <ul>
 <li><code>none</code>：关闭confirm机制</li>
@@ -744,19 +744,19 @@
 <p>一般我们推荐使用<code>correlated</code>，回调机制。</p>
 <h3 id="8-2-2-定义ReturnCallback-返回信息"><a href="#8-2-2-定义ReturnCallback-返回信息" class="headerlink" title="8.2.2 定义ReturnCallback(返回信息)"></a>8.2.2 定义ReturnCallback(返回信息)</h3><p><strong>每个<code>RabbitTemplate</code>只能配置一个<code>ReturnCallback</code>，因此我们可以在配置类中统一设置</strong></p>
 <p>我们在publisher模块定义一个配置类：rabbitTemplate对象调用setReturnsCallback()方法，方法参数是一个匿名内部类(重写returnedMessage方法)</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321161749402.png" alt="image-20240321161749402"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408864.png" alt="image-20240321161749402"></p>
 <h3 id="8-2-3-定义ConfirmCallback-确定ack-nack"><a href="#8-2-3-定义ConfirmCallback-确定ack-nack" class="headerlink" title="8.2.3 定义ConfirmCallback(确定ack/nack)"></a>8.2.3 定义ConfirmCallback(确定ack/nack)</h3><p>由于每个消息发送时的处理逻辑不一定相同，因此ConfirmCallback需要在每次发送消息时定义。</p>
 <p>就是在发送消息时，调用RabbitTemplate.convertAndSend()时多传递一个参数：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321162745583.png" alt="image-20240321162745583"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408581.png" alt="image-20240321162745583"></p>
 <p>这里的CorrelationData中包含两个核心的东西：</p>
 <ul>
 <li><code>id</code>：消息的唯一标示，MQ对不同的消息的回执以此做判断，避免混淆</li>
 <li><code>SettableListenableFuture</code>：回执结果的Future对象</li>
 </ul>
 <p>将来MQ的回执就会通过这个<code>Future</code>来返回，我们可以提前给<code>CorrelationData</code>中的<code>Future</code>添加回调函数来处理消息回执：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321194022895.png" alt="image-20240321194022895"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408700.png" alt="image-20240321194022895"></p>
 <p>发送者位置发送消息(新增字段为了获取MQ给的结果)：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321194656371.png" alt="image-20240321194656371"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408032.png" alt="image-20240321194656371"></p>
 <p><strong>注意</strong>：<br>开启生产者确认比较消耗MQ性能，一般不建议开启。而且大家思考一下触发确认的几种情况：</p>
 <ul>
 <li>路由失败：一般是因为RoutingKey错误导致，往往是编程导致</li>
@@ -768,7 +768,7 @@
 <li>一旦RabbitMQ宕机，内存中的消息会丢失   –&gt; ==交换机持久化,队列持久化,消息持久化==</li>
 <li>内存空间有限，当消费者故障或者处理过慢，会导致消息积压，引发RabbitMQ阻塞  –&gt; ==Lazy Queue==</li>
 </ul>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321200321687.png" alt="image-20240321200321687"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408311.png" alt="image-20240321200321687"></p>
 <h2 id="9-1-三种持久化"><a href="#9-1-三种持久化" class="headerlink" title="9.1 三种持久化"></a>9.1 三种持久化</h2><p>为了提升性能，默认情况下MQ的数据都是在内存存储的临时数据，重启后就会消失。为了保证数据的可靠性，必须配置数据持久化，包括：</p>
 <ul>
 <li>交换机持久化</li>
@@ -777,11 +777,11 @@
 </ul>
 <p>其中以控制台界面为例：</p>
 <p>交换机持久化：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321202630567.png" alt="image-20240321202630567"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408675.png" alt="image-20240321202630567"></p>
 <p>队列持久化：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321202726506.png" alt="image-20240321202726506"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408066.png" alt="image-20240321202726506"></p>
 <p>消息持久化：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321202757851.png" alt="image-20240321202757851"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408104.png" alt="image-20240321202757851"></p>
 <p><strong>说明：</strong></p>
 <p>在开启持久化机制以后，如果同时还开启了生产者确认机制，那么MQ会在消息持久化以后才发送ACK回执，进一步确保消息的可靠性</p>
 <p>不过出于性能考虑，为了减少IO次数，发送到RabbitMQ的消息是每隔一段时间(100ms左右)批量持久化，这会导致后续的ACK回执有一定的延迟，因此建议生产者确认全部采用异步方式</p>
@@ -799,22 +799,22 @@
 <li>支持数百万条的消息存储</li>
 </ul>
 <p>而在3.12版本之后，LazyQueue已经成为了所有队列的默认格式。因此官方推荐升级RabbitMQ为3.12版本/所有队列都设置为LazyQueue模式</p>
-<h3 id="9-2-1-控制台配置Lazy模式"><a href="#9-2-1-控制台配置Lazy模式" class="headerlink" title="9.2.1 控制台配置Lazy模式"></a>9.2.1 控制台配置Lazy模式</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321204855176.png" alt="image-20240321204855176"></p>
+<h3 id="9-2-1-控制台配置Lazy模式"><a href="#9-2-1-控制台配置Lazy模式" class="headerlink" title="9.2.1 控制台配置Lazy模式"></a>9.2.1 控制台配置Lazy模式</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409172.png" alt="image-20240321204855176"></p>
 <h3 id="9-2-2-代码配置Lazy模式"><a href="#9-2-2-代码配置Lazy模式" class="headerlink" title="9.2.2 代码配置Lazy模式"></a>9.2.2 代码配置Lazy模式</h3><p>基本原理都是设置属性：==x-queue-mode=lazy==</p>
 <ul>
 <li><strong>基于@Bean注解</strong>(配置类)</li>
 </ul>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321204954868.png" alt="image-20240321204954868"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409643.png" alt="image-20240321204954868"></p>
 <p>QueueBuilder底层源码为：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321205034258.png" alt="image-20240321205034258"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409225.png" alt="image-20240321205034258"></p>
 <ul>
 <li><strong>基于@RabbitListener注解</strong>(消费者子工程)</li>
 </ul>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321205132950.png" alt="image-20240321205132950"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409794.png" alt="image-20240321205132950"></p>
 <h3 id="9-2-3-更新已有队列为Lazy模式"><a href="#9-2-3-更新已有队列为Lazy模式" class="headerlink" title="9.2.3 更新已有队列为Lazy模式"></a>9.2.3 更新已有队列为Lazy模式</h3><ul>
 <li>基于控制台：</li>
 </ul>
-<img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321205402456.png" alt="image-20240321205402456" style="zoom: 80%;">
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409681.png" alt="image-20240321205402456" style="zoom: 80%;">
 
 <ul>
 <li>基于命令行：</li>
@@ -852,15 +852,15 @@
 <p>​                - 如果是业务异常，自动返回nack(RabbitMQ再次投递消息)     —&gt; <strong>可能会出现不停重复投递(导致消息堆积)</strong></p>
 <p>​                - 如果是消息处理/校验异常，自动返回reject(RabbitMQ删除消息)</p>
 <p>配置消费者的xml文件可以修改SpringAMQP的ack处理方式：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240401141236210.png" alt="image-20240401141236210"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409439.png" alt="image-20240401141236210"></p>
 <p>但是，如果auto模式下是业务异常回执给nack，那就会不断从MQ中投递消息，会导致MQ消息处理飙升带来不必要的压力(这种极端情况就是消费者一直无法执行成功，发生概率很低，但是不怕万一就怕一万)</p>
 <h2 id="10-2-消费者失败重试机制"><a href="#10-2-消费者失败重试机制" class="headerlink" title="10.2 消费者失败重试机制"></a>10.2 消费者失败重试机制</h2><p>因为10.1如果是收到nack回执，那么就会不断从MQ中投递消息，可能会导致消息堆积，导致mq的消息处理飙升，带来不必要的压力</p>
 <p>我们可以利用Spring的retry机制—&gt;==当消费者异常就利用本地重试(×无限制重试)==</p>
 <p>配置消费者的xml文件可以修改SpringAMQP的本地重试机制：</p>
-<img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240401154838741.png" alt="image-20240401154838741" style="zoom: 50%;">
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409973.png" alt="image-20240401154838741" style="zoom: 50%;">
 
 <p>在开启重试机制后，重试次数耗尽之后，如果消息依然失效，则会默认<strong>直接丢弃消息!!!!!!!!!!!!!</strong></p>
-<img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240401155907410.png" alt="image-20240401155907410" style="zoom: 50%;">
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409607.png" alt="image-20240401155907410" style="zoom: 50%;">
 
 <p>可以发现：</p>
 <ul>
@@ -869,7 +869,7 @@
 <li><p>本地重试3次之后，抛出了AmqpRejectAndDontRequeueException异常（说明直接reject丢弃了）</p>
 </li>
 </ul>
-<h2 id="10-3-失败处理策略"><a href="#10-3-失败处理策略" class="headerlink" title="10.3 失败处理策略"></a>10.3 失败处理策略</h2><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240401163030885.png" alt="image-20240401163030885"></p>
+<h2 id="10-3-失败处理策略"><a href="#10-3-失败处理策略" class="headerlink" title="10.3 失败处理策略"></a>10.3 失败处理策略</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409952.png" alt="image-20240401163030885"></p>
 <p>因为10.2本地重试之后如果消息失效就直接丢弃，因此我们可以考虑==加上自定义重试次数之后的策略==。只需要==MessageRecoverer接口==来处理，它包含了三种不同的实现：</p>
 <ul>
 <li><strong>RejectAndDontRequeueRecoverer(默认)</strong>：重试耗尽后，直接reject，丢弃消息</li>
@@ -881,7 +881,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package com.itheima.consumer.config;</span><br><span class="line">import org.springframework.amqp.core.Binding;</span><br><span class="line">import org.springframework.amqp.core.BindingBuilder;</span><br><span class="line">import org.springframework.amqp.core.DirectExchange;</span><br><span class="line">import org.springframework.amqp.core.Queue;</span><br><span class="line">import org.springframework.amqp.rabbit.core.RabbitTemplate;</span><br><span class="line">import org.springframework.amqp.rabbit.retry.MessageRecoverer;</span><br><span class="line">import org.springframework.amqp.rabbit.retry.RepublishMessageRecoverer;</span><br><span class="line">import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;</span><br><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">&#x2F;&#x2F;当消费者重试机制属性enabled&#x3D;true的时候生效</span><br><span class="line">@ConditionalOnProperty(name &#x3D; &quot;spring.rabbitmq.listener.simple.retry.enabled&quot;, havingValue &#x3D; &quot;true&quot;)</span><br><span class="line">public class ErrorMessageConfig &#123;</span><br><span class="line">    &#x2F;&#x2F;交换机</span><br><span class="line">    @Bean</span><br><span class="line">    public DirectExchange errorMessageExchange()&#123;</span><br><span class="line">        return new DirectExchange(&quot;error.direct&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;队列</span><br><span class="line">    @Bean</span><br><span class="line">    public Queue errorQueue()&#123;</span><br><span class="line">        return new Queue(&quot;error.queue&quot;, true);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;交换机和队列绑定</span><br><span class="line">    @Bean</span><br><span class="line">    public Binding errorBinding(Queue errorQueue, DirectExchange errorMessageExchange)&#123;</span><br><span class="line">        return BindingBuilder.bind(errorQueue).to(errorMessageExchange).with(&quot;error&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;第三种!!!!  返回一个MessageRecoverer类型</span><br><span class="line">    @Bean</span><br><span class="line">    public MessageRecoverer republishMessageRecoverer(RabbitTemplate rabbitTemplate)&#123;</span><br><span class="line">        return new RepublishMessageRecoverer(rabbitTemplate, &quot;error.direct&quot;, &quot;error&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>③在10.2基础上会将消息直接传递到对应交换机上最后进行人工处理</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240401163012833.png" alt="image-20240401163012833"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409804.png" alt="image-20240401163012833"></p>
 <ul>
 <li><p>总结：</p>
 <p>自定义的三种方式，第一种默认直接拒绝(不好)，第二种相当于往前重试了一个环节(减缓了重试速度，但是也不好)，第三种相当于交给专门队列和交换机，最后交给人工处理(也不是很好)</p>
@@ -935,11 +935,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;以Jackson的消息转换器为例：</span><br><span class="line">&#x2F;&#x2F;在消费者和生产者的config配置里面添加</span><br><span class="line">@Bean</span><br><span class="line">public MessageConverter messageConverter()&#123;</span><br><span class="line">    &#x2F;&#x2F; 1.定义消息转换器</span><br><span class="line">    Jackson2JsonMessageConverter jjmc &#x3D; new Jackson2JsonMessageConverter();</span><br><span class="line">    &#x2F;&#x2F; 2.配置自动创建消息id，用于识别不同消息，也可以在业务中基于ID判断是否是重复消息</span><br><span class="line">    jjmc.setCreateMessageIds(true);</span><br><span class="line">    &#x2F;&#x2F; 3.返回jjmc</span><br><span class="line">    return jjmc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们在生产者位置添加：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402102220873.png" alt="image-20240402102220873"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409146.png" alt="image-20240402102220873"></p>
 <p>打开源码可以看到，生成随机id的底层源码：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402095327684.png" alt="image-20240402095327684"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409752.png" alt="image-20240402095327684"></p>
 <p>最终发送一条消息如下：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402102055345.png" alt="image-20240402102055345"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409002.png" alt="image-20240402102055345"></p>
 <ul>
 <li><p><strong>使用Redis缓存(tk使用)</strong></p>
 <p>在调用接口的时候+调用生成随机数的接口生成id(全局唯一)两者合二为一，然后判断是否第一次调用，第一次调用的话业务处理完成之后将{key：id，value：操作结果}+过期时间存入redis数据库；之后每次进行的时候判断是否key存在，存在的话说明重复提交返回错误</p>
@@ -959,7 +959,7 @@
 <p>我们在where条件中除了判断id以外，还加上了status必须为1的条件。如果条件不符（说明订单已支付），则SQL匹配不到数据，根本不会执行。</p>
 <h2 id="10-5-兜底方案"><a href="#10-5-兜底方案" class="headerlink" title="10.5 兜底方案"></a>10.5 兜底方案</h2><p>上述机制可能增加了消息的可靠性，但是也不好说能保证消息100%的可靠。</p>
 <p>兜底方案：既然MQ通知不一定发送到交易服务，那交易服务就自己==定时==主动询问消费者是否完成</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402105828416.png" alt="image-20240402105828416"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409472.png" alt="image-20240402105828416"></p>
 <p>什么时候去查询是无法确定的，因此我们通常采用的措施是利用<strong>定时任务</strong>定期查询。</p>
 <h1 id="可靠性总结图"><a href="#可靠性总结图" class="headerlink" title="==可靠性总结图=="></a>==可靠性总结图==</h1><p>综上，支付服务与交易服务之间的订单状态一致性是如何保证的？</p>
 <ul>
@@ -967,7 +967,7 @@
 <li>其次，为了保证MQ消息的可靠性，我们采用了生产者确认机制、消费者确认、消费者失败重试等策略，确保消息投递的可靠性</li>
 <li>最后，我们还在交易服务设置了定时任务，定期查询订单支付状态。这样即便MQ通知失败，还可以利用定时任务作为兜底方案，确保订单支付状态的最终一致性。</li>
 </ul>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402164059822.png" alt="image-20240402164059822"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409144.png" alt="image-20240402164059822"></p>
 <h1 id="高级进阶-–延迟消息-两种方式"><a href="#高级进阶-–延迟消息-两种方式" class="headerlink" title="==高级进阶 –延迟消息(两种方式)=="></a>==高级进阶 –延迟消息(两种方式)==</h1><h1 id="11-延迟消息"><a href="#11-延迟消息" class="headerlink" title="11.延迟消息"></a>11.延迟消息</h1><p><strong>延迟消息</strong>：生产者发送消息时指定一个时间，消费者不会立刻收到消息，而在指定时间之后才收到消息</p>
 <p><strong>延迟任务：</strong>设置一定时间之后才执行的任务，(最简单的方案就是利用MQ的延迟消息)</p>
 <p>在RabbitMQ中实现延迟消息也有两种方案：</p>
@@ -993,36 +993,36 @@
 </li>
 </ol>
 <h3 id="11-1-2-延迟消息"><a href="#11-1-2-延迟消息" class="headerlink" title="11.1.2 延迟消息"></a>11.1.2 延迟消息</h3><p>总结来说：宏观上看到就是内部做了一个延迟一样</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402113915144.png" alt="image-20240402113915144"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409360.png" alt="image-20240402113915144"></p>
 <p>进一步说：变相的让发送消息到消费多了5s</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402114329589.png" alt="image-20240402114329589"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409151.png" alt="image-20240402114329589"></p>
 <h2 id="11-2-延迟消息插件-DelayExchange"><a href="#11-2-延迟消息插件-DelayExchange" class="headerlink" title="11.2 延迟消息插件(DelayExchange)"></a>11.2 延迟消息插件(DelayExchange)</h2><p>RabbitMQ官方提供一款插件，==原生支持延迟消息功能==。</p>
 <p>插件原理就是设计了一种<strong>支持延迟消息功能</strong>的交换机，当消息投递到交换机后可以存放一定时间，到期后再投递到队列。</p>
 <h3 id="11-2-1-下载"><a href="#11-2-1-下载" class="headerlink" title="11.2.1 下载"></a>11.2.1 下载</h3><p>插件下载地址：<br><a href="https://github.com/rabbitmq/rabbitmq-delayed-message-exchange" target="_blank" rel="noopener">GitHub - rabbitmq/rabbitmq-delayed-message-exchange: Delayed Messaging for RabbitMQ</a></p>
 <p>由于我们安装的MQ是<code>3.8</code>版本，因此这里下载<code>3.8.17</code>版本：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402133333466.png" alt="image-20240402133333466"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409089.png" alt="image-20240402133333466"></p>
 <h3 id="11-2-2-安装"><a href="#11-2-2-安装" class="headerlink" title="11.2.2 安装"></a>11.2.2 安装</h3><p>因为我们是基于Docker安装，所以需要先查看RabbitMQ的插件目录对应的数据卷</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume inspect mq-plugins</span><br></pre></td></tr></table></figure>
 
 <p>结果如下：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402133421439.png" alt="image-20240402133421439"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409492.png" alt="image-20240402133421439"></p>
 <p>插件目录被挂载到了<code>/var/lib/docker/volumes/mq-plugins/_data</code>这个目录，我们上传插件到该目录下。</p>
 <p>接下来执行命令，安装插件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mq rabbitmq-plugins enable rabbitmq_delayed_message_exchange</span><br></pre></td></tr></table></figure>
 
 <p>结果如下：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402134224233.png" alt="image-20240402134224233"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409136.png" alt="image-20240402134224233"></p>
 <h3 id="11-2-3-声明延迟交换机"><a href="#11-2-3-声明延迟交换机" class="headerlink" title="11.2.3 声明延迟交换机"></a>11.2.3 声明延迟交换机</h3><ul>
 <li>方式一：基于注解方式</li>
 </ul>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402134800279.png" alt="image-20240402134800279"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409244.png" alt="image-20240402134800279"></p>
 <ul>
 <li><p>方式二：基于@Bean方式</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402135010167.png" alt="image-20240402135010167"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409868.png" alt="image-20240402135010167"></p>
 </li>
 </ul>
 <h3 id="11-2-4-发送延迟消息"><a href="#11-2-4-发送延迟消息" class="headerlink" title="11.2.4 发送延迟消息"></a>11.2.4 发送延迟消息</h3><p>发送消息时：只需要通过设定x-delay属性设定延迟时间：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240402135204953.png" alt="image-20240402135204953"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409934.png" alt="image-20240402135204953"></p>
 <p>延迟消息插件内部会维护一个本地数据库表，同时使用Elang Timers功能实现计时。如果消息的延迟时间设置较长，可能会导致堆积的延迟消息非常多，会带来较大的CPU开销，同时延迟消息的时间会存在误差。<br>因此，<strong>不建议设置延迟时间过长的延迟消息</strong>。</p>
 <h1 id="12-实际操作-日后补充"><a href="#12-实际操作-日后补充" class="headerlink" title="12. 实际操作(日后补充)"></a>12. 实际操作(日后补充)</h1>
       
@@ -1086,11 +1086,11 @@
 <h2 id="1-1-三种架构的对比"><a href="#1-1-三种架构的对比" class="headerlink" title="1.1 三种架构的对比"></a>1.1 三种架构的对比</h2><ul>
 <li><strong>单体架构</strong></li>
 </ul>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316220448340.png" alt="image-20240316220448340"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406563.png" alt="image-20240316220448340"></p>
 <ul>
 <li><strong>分布式架构</strong></li>
 </ul>
-<img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316220536632.png" alt="image-20240316220536632" style="zoom: 80%;">
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406018.png" alt="image-20240316220536632" style="zoom: 80%;">
 
 <ul>
 <li><strong>微服务(优化版分布式架构)</strong></li>
@@ -1102,20 +1102,20 @@
 <li>面向服务：服务提供统一标准的接口，与语言和技术无关</li>
 <li>隔离性强：服务调用做好隔离、容错、降级，避免出现级联问题</li>
 </ul>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316220844109.png" alt="image-20240316220844109"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406475.png" alt="image-20240316220844109"></p>
 <h2 id="1-2-SpringCloud"><a href="#1-2-SpringCloud" class="headerlink" title="1.2 SpringCloud"></a>1.2 SpringCloud</h2><p>SpringCloud是目前国内使用最广泛的微服务框架。官网地址：<a href="https://spring.io/projects/spring-cloud。" target="_blank" rel="noopener">https://spring.io/projects/spring-cloud。</a></p>
 <p>SpringCloud集成了各种微服务功能组件，并基于SpringBoot实现了这些组件的自动装配，从而提供了良好的开箱即用体验。</p>
 <p>其中常见的组件包括：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316221239275.png" alt="image-20240316221239275"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406791.png" alt="image-20240316221239275"></p>
 <p>此外，要考虑很多版本兼容问题。主要是因为SpringCloud底层是依赖于Springboot实现的：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316221342911.png" alt="image-20240316221342911"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406497.png" alt="image-20240316221342911"></p>
 <h1 id="2-服务拆分和远程调用"><a href="#2-服务拆分和远程调用" class="headerlink" title="2.服务拆分和远程调用"></a>2.服务拆分和远程调用</h1><ul>
 <li>==服务拆分原则==</li>
 </ul>
 <p>​        不同微服务，不要重复开发相同业务</p>
 <p>​        微服务数据独立，不要访问其它微服务的数据库</p>
 <p>​        微服务可以将自己的业务暴露为接口，供其它微服务调用</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240316222315019.png" alt="image-20240316222315019"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406959.png" alt="image-20240316222315019"></p>
 <ul>
 <li><p>==远程调用原则==</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240317152606026.png" alt="image-20240317152606026"></p>
@@ -1124,7 +1124,7 @@
 <h1 id="3-提供者与消费者"><a href="#3-提供者与消费者" class="headerlink" title="3.提供者与消费者"></a>3.提供者与消费者</h1><p>在服务调用关系中，会有两个不同的角色：</p>
 <p><strong>服务提供者</strong>：一次业务中，被其它微服务调用的服务。（提供接口给其它微服务）</p>
 <p><strong>服务消费者</strong>：一次业务中，调用其它微服务的服务。（调用其它微服务提供的接口）</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240317152829239.png" alt="image-20240317152829239"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406167.png" alt="image-20240317152829239"></p>
 <p>但是，服务提供者与服务消费者的角色并不是绝对的，而是相对于业务而言【==相对的==】</p>
 <p>如果服务A调用了服务B，而服务B又调用了服务C，服务B的角色是什么？</p>
 <ul>
@@ -2012,7 +2012,7 @@
 <h3 id="4-2-2-使用位置"><a href="#4-2-2-使用位置" class="headerlink" title="4.2.2 使用位置"></a>4.2.2 使用位置</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312242143984.png" alt="image-20231224214332923" style="zoom:67%;">
 
 <h2 id="4-3-set"><a href="#4-3-set" class="headerlink" title="4.3 set"></a>4.3 set</h2><h3 id="4-3-1-作用"><a href="#4-3-1-作用" class="headerlink" title="4.3.1 作用"></a>4.3.1 作用</h3><p>1.动态的在行首插入set关键字<br>2.<strong>自动去除额外的逗号</strong></p>
-<h3 id="4-3-2-使用位置"><a href="#4-3-2-使用位置" class="headerlink" title="4.3.2 使用位置"></a>4.3.2 使用位置</h3><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20231224214629066.png" alt="image-20231224214629066" style="zoom:67%;">
+<h3 id="4-3-2-使用位置"><a href="#4-3-2-使用位置" class="headerlink" title="4.3.2 使用位置"></a>4.3.2 使用位置</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406222.png" alt="image-20231224214629066" style="zoom:67%;">
 
 <h2 id="4-4-foreach"><a href="#4-4-foreach" class="headerlink" title="4.4 foreach"></a>4.4 foreach</h2><h3 id="4-4-1-作用"><a href="#4-4-1-作用" class="headerlink" title="4.4.1 作用"></a>4.4.1 作用</h3><p>循环的时候<strong>批量处理</strong>一部分数据</p>
 <h3 id="4-4-2-使用位置"><a href="#4-4-2-使用位置" class="headerlink" title="4.4.2 使用位置"></a>4.4.2 使用位置</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312242149955.png" alt="image-20231224214910899" style="zoom: 67%;">
@@ -2021,15 +2021,15 @@
 <h3 id="4-5-2-使用位置"><a href="#4-5-2-使用位置" class="headerlink" title="4.5.2 使用位置"></a>4.5.2 使用位置</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312242149448.png" alt="image-20231224214941397" style="zoom: 80%;">
 
 <h2 id="4-6-choose-when-otherwise"><a href="#4-6-choose-when-otherwise" class="headerlink" title="4.6 choose-when-otherwise"></a>4.6 choose-when-otherwise</h2><h3 id="4-6-1-作用"><a href="#4-6-1-作用" class="headerlink" title="4.6.1 作用"></a>4.6.1 作用</h3><p>类似于Java的Switch语句，可以实现选择</p>
-<h3 id="4-6-2-使用位置"><a href="#4-6-2-使用位置" class="headerlink" title="4.6.2 使用位置"></a>4.6.2 使用位置</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240407133356683.png" alt="image-20240407133356683"></p>
+<h3 id="4-6-2-使用位置"><a href="#4-6-2-使用位置" class="headerlink" title="4.6.2 使用位置"></a>4.6.2 使用位置</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071405729.png" alt="image-20240407133356683"></p>
 <h2 id="4-7-trim"><a href="#4-7-trim" class="headerlink" title="4.7 trim"></a>4.7 trim</h2><h3 id="4-7-1-作用"><a href="#4-7-1-作用" class="headerlink" title="4.7.1 作用"></a>4.7.1 作用</h3><p>生成sql语句的时候，在前后添加自定义的字符串</p>
 <h3 id="4-7-2-使用位置"><a href="#4-7-2-使用位置" class="headerlink" title="4.7.2 使用位置"></a>4.7.2 使用位置</h3><p>prefix：加前缀 </p>
 <p>prefixOverrides：要覆盖的前缀 </p>
 <p>suffix：加后缀 </p>
 <p>suffixOverrides：要覆盖的后缀</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240407133446397.png" alt="image-20240407133446397"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071405222.png" alt="image-20240407133446397"></p>
 <h2 id="4-8-bind"><a href="#4-8-bind" class="headerlink" title="4.8 bind"></a>4.8 bind</h2><h3 id="4-8-1-作用"><a href="#4-8-1-作用" class="headerlink" title="4.8.1 作用"></a>4.8.1 作用</h3><p>可以将表达式结果/特定内容绑定到一个变量，这个变量可以在sql语句中使用【类似于参数宏定义】</p>
-<h3 id="4-8-2-使用位置"><a href="#4-8-2-使用位置" class="headerlink" title="4.8.2 使用位置"></a>4.8.2 使用位置</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240407133530203.png" alt="image-20240407133530203"></p>
+<h3 id="4-8-2-使用位置"><a href="#4-8-2-使用位置" class="headerlink" title="4.8.2 使用位置"></a>4.8.2 使用位置</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071405607.png" alt="image-20240407133530203"></p>
 <h1 id="5-mybatis日志输出"><a href="#5-mybatis日志输出" class="headerlink" title="5.mybatis日志输出"></a>5.mybatis日志输出</h1><p>在Mybatis当中我们可以借助日志，查看到sql语句的执行、执行传递的参数以及执行结果。具体操作如下：</p>
 <ol>
 <li>打开application.properties文件</li>
@@ -2068,7 +2068,15 @@
 <h3 id="2-mapper层方法上添加-Results和-Result注解手动映射"><a href="#2-mapper层方法上添加-Results和-Result注解手动映射" class="headerlink" title="2.mapper层方法上添加@Results和@Result注解手动映射"></a>2.mapper层方法上添加@Results和@Result注解手动映射</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312242223816.png" alt="image-20231224222316757" style="zoom:150%;">
 
 <h3 id="3-yml配置文件打开驼峰命名-推荐"><a href="#3-yml配置文件打开驼峰命名-推荐" class="headerlink" title="3.yml配置文件打开驼峰命名(推荐)"></a>3.yml配置文件打开驼峰命名(推荐)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312242223771.png" alt="image-20231224222337724"></p>
-<h1 id="9"><a href="#9" class="headerlink" title="9."></a>9.</h1>
+<h1 id="9-和-区别"><a href="#9-和-区别" class="headerlink" title="9.#{}和${}区别"></a>9.#{}和${}区别</h1><p>#{}表达式为OGNL表达式</p>
+<p>${}表达式为EL表达式</p>
+<p>1）相同：都可以获取对象的信息。</p>
+<p>（2）#{ }</p>
+<p>执行SQL时，会将#{ }替换为?，生成预编译SQL，会自动设置参数值，防止SQL注入<br>使用时机：参数传递，都使用#{ }<br>（3）${ }</p>
+<p>​            拼接SQL。直接将参数拼接在SQL语句中，存在SQL注入问题<br>​            使用时机：如果对表名、列表进行动态设置时使用</p>
+<p>（4）#{ } 只能操作跟数据字表字段相关的列值，跟列值无关的只能用${ }</p>
+<p>（5）#{ } 底层使用的是PreparedStatement，${ } 底层使用的是 Statement</p>
+
       
       
     </div>
