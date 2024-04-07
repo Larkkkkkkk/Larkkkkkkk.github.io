@@ -657,9 +657,9 @@
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321092839447.png" alt="image-20240321092839447"></p>
 </li>
 </ul>
-<h1 id="7-使用总结"><a href="#7-使用总结" class="headerlink" title="7.使用总结"></a>7.使用总结</h1><h2 id="7-1-maven引入maven坐标"><a href="#7-1-maven引入maven坐标" class="headerlink" title="7.1 maven引入maven坐标"></a>7.1 maven引入maven坐标</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--消息发送--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-amqp&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="7-使用总结"><a href="#7-使用总结" class="headerlink" title="==7.使用总结=="></a>==7.使用总结==</h1><h2 id="7-1-maven引入maven坐标"><a href="#7-1-maven引入maven坐标" class="headerlink" title="7.1 maven引入maven坐标"></a>7.1 maven引入maven坐标</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--消息发送--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-amqp&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="7-2-子工程配置RabbitMQ信息"><a href="#7-2-子工程配置RabbitMQ信息" class="headerlink" title="7.2 子工程配置RabbitMQ信息"></a>7.2 子工程配置RabbitMQ信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  rabbitmq:</span><br><span class="line">    host: 192.168.150.101 # 你的虚拟机IP</span><br><span class="line">    port: 5672 # 端口</span><br><span class="line">    virtual-host: &#x2F;hmall # 虚拟主机</span><br><span class="line">    username: hmall # 用户名</span><br><span class="line">    password: 123 # 密码</span><br></pre></td></tr></table></figure>
+<h2 id="7-2-子工程配置RabbitMQ信息"><a href="#7-2-子工程配置RabbitMQ信息" class="headerlink" title="7.2 子工程配置RabbitMQ信息"></a>7.2 子工程配置RabbitMQ信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  rabbitmq:</span><br><span class="line">    host: 192.168.150.101 # 你的虚拟机IP</span><br><span class="line">    port: 5672 # 端口</span><br><span class="line">    virtual-host: &#x2F;hmall # 虚拟主机</span><br><span class="line">    username: hmall # 用户名</span><br><span class="line">    password: 123 # 密码</span><br><span class="line">    </span><br><span class="line">&#x2F;&#x2F;消费者和生产者会在对应位置添加配置 【例如：生产者消费者的确认机制，重试机制等】</span><br></pre></td></tr></table></figure>
 
 <h2 id="7-3-配置消息转换器"><a href="#7-3-配置消息转换器" class="headerlink" title="7.3 配置消息转换器"></a>7.3 配置消息转换器</h2><p>可以在公共模块添加bean</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321095355698.png" alt="image-20240321095355698"></p>
@@ -667,6 +667,9 @@
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321095847784.png" alt="image-20240321095847784"></p>
 <h2 id="7-5-消费者-接收消息"><a href="#7-5-消费者-接收消息" class="headerlink" title="7.5 消费者-接收消息"></a>7.5 消费者-接收消息</h2><p>消费者可以添加消息监听，添加好交换机和路由key和队列</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240321100301473.png" alt="image-20240321100301473"></p>
+<p>==总结如下：==</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240403110457790.png" alt="image-20240403110457790"></p>
+<p>大致就是导入maven，子工程配置一些属性，然后生产者调用rabbitMQ的rabbitTemplate.convertAndSend()方法发送消息【里面可以添加各种】，在消费者方面可以①使用bean进行声明交换机，队列和关系②使用@RabbitListener注解进行声明【里面可以添加一些属性，例如持久化的，lazyqueue的，延迟消息的】</p>
 <hr>
 <h1 id="高级进阶-–保证消息可靠性-三个方面"><a href="#高级进阶-–保证消息可靠性-三个方面" class="headerlink" title="==高级进阶 –保证消息可靠性(三个方面)=="></a>==高级进阶 –保证消息可靠性(三个方面)==</h1><p>异步结构可能会在发送者，MQ，消费者三个地方出现问题!!!因此要考虑这三个位置的可靠性和兜底方案(延迟消息)</p>
 <p>消息从发送者发送消息，到消费者处理消息，需要经过的流程是这样的：</p>
@@ -2017,8 +2020,16 @@
 <h2 id="4-5-sql和include"><a href="#4-5-sql和include" class="headerlink" title="4.5 sql和include"></a>4.5 sql和include</h2><h3 id="4-5-1-作用"><a href="#4-5-1-作用" class="headerlink" title="4.5.1 作用"></a>4.5.1 作用</h3><p>将一些固定的(重复的/相同的)sql提取出来</p>
 <h3 id="4-5-2-使用位置"><a href="#4-5-2-使用位置" class="headerlink" title="4.5.2 使用位置"></a>4.5.2 使用位置</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312242149448.png" alt="image-20231224214941397" style="zoom: 80%;">
 
-
-
+<h2 id="4-6-choose-when-otherwise"><a href="#4-6-choose-when-otherwise" class="headerlink" title="4.6 choose-when-otherwise"></a>4.6 choose-when-otherwise</h2><h3 id="4-6-1-作用"><a href="#4-6-1-作用" class="headerlink" title="4.6.1 作用"></a>4.6.1 作用</h3><p>类似于Java的Switch语句，可以实现选择</p>
+<h3 id="4-6-2-使用位置"><a href="#4-6-2-使用位置" class="headerlink" title="4.6.2 使用位置"></a>4.6.2 使用位置</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240407133356683.png" alt="image-20240407133356683"></p>
+<h2 id="4-7-trim"><a href="#4-7-trim" class="headerlink" title="4.7 trim"></a>4.7 trim</h2><h3 id="4-7-1-作用"><a href="#4-7-1-作用" class="headerlink" title="4.7.1 作用"></a>4.7.1 作用</h3><p>生成sql语句的时候，在前后添加自定义的字符串</p>
+<h3 id="4-7-2-使用位置"><a href="#4-7-2-使用位置" class="headerlink" title="4.7.2 使用位置"></a>4.7.2 使用位置</h3><p>prefix：加前缀 </p>
+<p>prefixOverrides：要覆盖的前缀 </p>
+<p>suffix：加后缀 </p>
+<p>suffixOverrides：要覆盖的后缀</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240407133446397.png" alt="image-20240407133446397"></p>
+<h2 id="4-8-bind"><a href="#4-8-bind" class="headerlink" title="4.8 bind"></a>4.8 bind</h2><h3 id="4-8-1-作用"><a href="#4-8-1-作用" class="headerlink" title="4.8.1 作用"></a>4.8.1 作用</h3><p>可以将表达式结果/特定内容绑定到一个变量，这个变量可以在sql语句中使用【类似于参数宏定义】</p>
+<h3 id="4-8-2-使用位置"><a href="#4-8-2-使用位置" class="headerlink" title="4.8.2 使用位置"></a>4.8.2 使用位置</h3><p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240407133530203.png" alt="image-20240407133530203"></p>
 <h1 id="5-mybatis日志输出"><a href="#5-mybatis日志输出" class="headerlink" title="5.mybatis日志输出"></a>5.mybatis日志输出</h1><p>在Mybatis当中我们可以借助日志，查看到sql语句的执行、执行传递的参数以及执行结果。具体操作如下：</p>
 <ol>
 <li>打开application.properties文件</li>
