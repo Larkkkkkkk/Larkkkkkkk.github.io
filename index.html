@@ -359,7 +359,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="1-Zookeeper"><a href="#1-Zookeeper" class="headerlink" title="1.Zookeeper"></a>1.Zookeeper</h1>
+        <h1 id="1-Zookeeper"><a href="#1-Zookeeper" class="headerlink" title="1.Zookeeper"></a>1.Zookeeper</h1><p>学完dubbo来看</p>
+
       
       
     </div>
@@ -1132,7 +1133,113 @@
 <li>对于B调用C的业务而言：B是服务消费者，C是服务提供者</li>
 </ul>
 <p>因此，服务B既可以是服务提供者，也可以是服务消费者。</p>
-<h1 id="4-Eureka注册中心"><a href="#4-Eureka注册中心" class="headerlink" title="4.Eureka注册中心"></a>4.Eureka注册中心</h1><h1 id="5-Ribbon负载均衡"><a href="#5-Ribbon负载均衡" class="headerlink" title="5.Ribbon负载均衡"></a>5.Ribbon负载均衡</h1><h1 id="6-Nacos注册中心"><a href="#6-Nacos注册中心" class="headerlink" title="6.Nacos注册中心"></a>6.Nacos注册中心</h1>
+<p>可能会出现三种情况：</p>
+<p>1.消费者该如何获取服务提供者具体信息？ </p>
+<p>2.如果有多个服务提供者，消费者该如何选择？</p>
+<p>3.消费者如何感知服务提供者健康状态？</p>
+<h1 id="4-Eureka注册中心"><a href="#4-Eureka注册中心" class="headerlink" title="4.Eureka注册中心"></a>4.Eureka注册中心</h1><h2 id="4-1-Eureka结构"><a href="#4-1-Eureka结构" class="headerlink" title="4.1 Eureka结构"></a>4.1 Eureka结构</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404171627000.png" alt="image-20240417162755947"></p>
+<p>组成部分：分为<strong>eureka-server</strong>和<strong>eureka-client[服务消费者和服务提供者]</strong>两个部分</p>
+<p>基本步骤：</p>
+<p>1.client向注册中心server注册服务信息(告知有哪些服务和端口信息)  –每隔30s就重新注册</p>
+<p>2.服务消费者从service拉取服务提供者信息</p>
+<p>3.服务消费者自己负载均衡配置</p>
+<p>4.服务消费者远程调用</p>
+<p>==解决上述可能出现的三种情况==</p>
+<p>问题1：order-service如何得知user-service实例地址？</p>
+<p>获取地址信息的流程如下：</p>
+<ul>
+<li>user-service服务实例启动后，将自己的信息注册到eureka-server（Eureka服务端）。这个叫服务注册</li>
+<li>eureka-server保存服务名称到服务实例地址列表的映射关系</li>
+<li>order-service根据服务名称，拉取实例地址列表。这个叫服务发现/服务拉取</li>
+</ul>
+<p>问题2：order-service如何从多个user-service实例中选择具体的实例？</p>
+<ul>
+<li>order-service从实例列表中利用负载均衡算法选中一个实例地址</li>
+<li>向该实例地址发起远程调用</li>
+</ul>
+<p>问题3：order-service如何得知某个user-service实例是否依然健康，是不是已经宕机？</p>
+<ul>
+<li>user-service会每隔一段时间（默认30秒）向eureka-server发起请求，报告自己状态，称为心跳</li>
+<li>当超过一定时间没有发送心跳时，eureka-server会认为微服务实例故障，将该实例从服务列表中剔除</li>
+<li>order-service拉取服务时，就能将故障实例排除了</li>
+</ul>
+<p><strong>注意</strong>：一个微服务，既可以是服务提供者，又可以是服务消费者，因此eureka将服务注册、服务发现等功能统一封装到了eureka-client端</p>
+<p>==分三步进行==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404171646699.png" alt="image-20240417164603638"></p>
+<h2 id="4-2-搭建三步"><a href="#4-2-搭建三步" class="headerlink" title="4.2 搭建三步"></a>4.2 搭建三步</h2><h3 id="4-2-1-搭建注册中心"><a href="#4-2-1-搭建注册中心" class="headerlink" title="4.2.1 搭建注册中心"></a>4.2.1 搭建注册中心</h3><p>放一张视频里面的总结图</p>
+<h3 id="4-2-2-服务注册"><a href="#4-2-2-服务注册" class="headerlink" title="4.2.2 服务注册"></a>4.2.2 服务注册</h3><p>放一张视频里面的总结图</p>
+<h3 id="4-2-3-服务发现"><a href="#4-2-3-服务发现" class="headerlink" title="4.2.3 服务发现"></a>4.2.3 服务发现</h3><p>放一张视频里面的总结图</p>
+<h1 id="5-Ribbon负载均衡"><a href="#5-Ribbon负载均衡" class="headerlink" title="5.Ribbon负载均衡"></a>5.Ribbon负载均衡</h1><p>4部分添加<strong>@LoadBalanced注解</strong>即可实现负载均衡功能</p>
+<h2 id="5-1-负载均衡原理"><a href="#5-1-负载均衡原理" class="headerlink" title="5.1 负载均衡原理"></a>5.1 负载均衡原理</h2><p>其实就是我们发出的请求是<a href="http://userservice/user/1,根据负载均衡变成了http://localhost:8081" target="_blank" rel="noopener">http://userservice/user/1,根据负载均衡变成了http://localhost:8081</a></p>
+<p>SpringCloud底层其实是利用了一个名字为==Ribbon组件==来实现负载均衡</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404172053034.png" alt="image-20240417205259950"></p>
+<h2 id="5-2-源码跟踪"><a href="#5-2-源码跟踪" class="headerlink" title="5.2 源码跟踪"></a>5.2 源码跟踪</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404172054047.png" alt="image-20240417205452975"></p>
+<p>基本流程如下：</p>
+<ul>
+<li>拦截我们的RestTemplate请求<a href="http://userservice/user/1" target="_blank" rel="noopener">http://userservice/user/1</a></li>
+<li>RibbonLoadBalancerClient会从请求url中获取服务名称，也就是user-service</li>
+<li>DynamicServerListLoadBalancer根据user-service到eureka拉取服务列表</li>
+<li>eureka返回列表，localhost:8081、localhost:8082</li>
+<li>IRule利用内置负载均衡规则，从列表中选择一个，例如localhost:8081</li>
+<li>RibbonLoadBalancerClient修改请求地址，用localhost:8081替代userservice，得到<a href="http://localhost:8081/user/1，发起真实请求" target="_blank" rel="noopener">http://localhost:8081/user/1，发起真实请求</a></li>
+</ul>
+<h2 id="5-3-负载均衡策略-IRule接口"><a href="#5-3-负载均衡策略-IRule接口" class="headerlink" title="5.3 负载均衡策略(IRule接口)"></a>5.3 负载均衡策略(IRule接口)</h2><h3 id="5-3-1-负载均衡策略"><a href="#5-3-1-负载均衡策略" class="headerlink" title="5.3.1 负载均衡策略"></a>5.3.1 负载均衡策略</h3><p>负载均衡的规则都定义在==IRule接口==中，而IRule有很多不同的实现类：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404172137469.png" alt="image-20240417213754364"></p>
+<p>不同规则的含义如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>内置负载均衡规则类</strong></th>
+<th><strong>规则描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RoundRobinRule</td>
+<td>简单轮询服务列表来选择服务器。它是Ribbon默认的负载均衡规则。</td>
+</tr>
+<tr>
+<td>AvailabilityFilteringRule</td>
+<td>对以下两种服务器进行忽略：   （1）在默认情况下，这台服务器如果3次连接失败，这台服务器就会被设置为“短路”状态。短路状态将持续30秒，如果再次连接失败，短路的持续时间就会几何级地增加。  （2）并发数过高的服务器。如果一个服务器的并发连接数过高，配置了AvailabilityFilteringRule规则的客户端也会将其忽略。并发连接数的上限，可以由客户端的<clientName>.<clientConfigNameSpace>.ActiveConnectionsLimit属性进行配置。</clientConfigNameSpace></clientName></td>
+</tr>
+<tr>
+<td>WeightedResponseTimeRule</td>
+<td>为每一个服务器赋予一个权重值。服务器响应时间越长，这个服务器的权重就越小。这个规则会随机选择服务器，这个权重值会影响服务器的选择。</td>
+</tr>
+<tr>
+<td><strong>ZoneAvoidanceRule</strong>[默认]</td>
+<td>以区域可用的服务器为基础进行服务器的选择。使用Zone对服务器进行分类，这个Zone可以理解为一个机房、一个机架等。而后再对Zone内的多个服务做轮询。</td>
+</tr>
+<tr>
+<td>BestAvailableRule</td>
+<td>忽略那些短路的服务器，并选择并发数较低的服务器。</td>
+</tr>
+<tr>
+<td>RandomRule</td>
+<td>随机选择一个可用的服务器。</td>
+</tr>
+<tr>
+<td>RetryRule</td>
+<td>重试机制的选择逻辑</td>
+</tr>
+</tbody></table>
+<h3 id="5-3-2-自定义负载均衡策略"><a href="#5-3-2-自定义负载均衡策略" class="headerlink" title="5.3.2 自定义负载均衡策略"></a>5.3.2 自定义负载均衡策略</h3><p>通过定义IRule实现可以修改负载均衡规则，有两种方式:</p>
+<p>①<strong>代码方式</strong>：在order-service中的OrderApplication启动类上定义一个新的IRule：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;启动类定义一个bean，放入ioc容器</span><br><span class="line">@Bean</span><br><span class="line">public IRule randomRule()&#123;</span><br><span class="line">    return new RandomRule();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>②<strong>配置文件方式</strong>：在order-service的application.yml文件中，添加新的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">userservice: # 给某个微服务配置负载均衡规则，这里是userservice服务</span><br><span class="line">  ribbon:</span><br><span class="line">    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 负载均衡</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>注意</strong>，一般用默认的负载均衡规则，不做修改。</li>
+</ul>
+<h2 id="5-4-饥饿加载"><a href="#5-4-饥饿加载" class="headerlink" title="5.4 饥饿加载"></a>5.4 饥饿加载</h2><p>Ribbon默认是采用<strong>懒加载</strong>，即第一次访问时才会去创建LoadBalanceClient，请求时间会很长</p>
+<p>而饥饿加载则会在项目启动时创建，降低第一次访问的耗时，通过下面配置开启饥饿加载:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ribbon:</span><br><span class="line">  eager-load:</span><br><span class="line">    enabled: true</span><br><span class="line">    clients: userservice</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="6-Nacos注册中心"><a href="#6-Nacos注册中心" class="headerlink" title="6.Nacos注册中心"></a>6.Nacos注册中心</h1><p>SpringCloudAlibaba也推出了一个名为Nacos的注册中心</p>
+
       
       
     </div>
