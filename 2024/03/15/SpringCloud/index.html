@@ -30,6 +30,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404172053034.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404172054047.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404172137469.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211804078.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211649682.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211650841.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211651010.png">
@@ -49,7 +50,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211731012.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211733224.png">
 <meta property="article:published_time" content="2024-03-15T02:48:29.000Z">
-<meta property="article:modified_time" content="2024-04-21T09:58:41.545Z">
+<meta property="article:modified_time" content="2024-04-21T10:06:59.637Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="微服务">
 <meta name="twitter:card" content="summary">
@@ -573,7 +574,8 @@
 
 <h1 id="6-Nacos"><a href="#6-Nacos" class="headerlink" title="6.Nacos"></a>6.Nacos</h1><p>SpringCloudAlibaba推出了一个名为Nacos的注册中心，现在是<a href="https://spring.io/projects/spring-cloud" target="_blank" rel="noopener">SpringCloud</a>中的一个组件</p>
 <p>相比<a href="https://github.com/Netflix/eureka" target="_blank" rel="noopener">Eureka</a>功能更加丰富，在国内受欢迎程度较高</p>
-<h2 id="6-1-Nacos注册中心"><a href="#6-1-Nacos注册中心" class="headerlink" title="6.1 Nacos注册中心"></a>6.1 Nacos注册中心</h2><h3 id="6-1-1-搭建注册中心"><a href="#6-1-1-搭建注册中心" class="headerlink" title="6.1.1 搭建注册中心"></a>6.1.1 搭建注册中心</h3><ul>
+<h2 id="6-1-Nacos结构"><a href="#6-1-Nacos结构" class="headerlink" title="6.1 Nacos结构"></a>6.1 Nacos结构</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211804078.png" alt="image-20240421180436014"></p>
+<h2 id="6-2-搭建三步"><a href="#6-2-搭建三步" class="headerlink" title="6.2 搭建三步"></a>6.2 搭建三步</h2><h3 id="6-2-1-搭建注册中心"><a href="#6-2-1-搭建注册中心" class="headerlink" title="6.2.1 搭建注册中心"></a>6.2.1 搭建注册中心</h3><ul>
 <li>1.下载</li>
 </ul>
 <p>在Nacos的GitHub页面，提供有下载链接，可以下载编译好的Nacos服务端或者源代码：</p>
@@ -593,10 +595,10 @@
 <li>4.启动nacos</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211651010.png" alt="image-20240421165146961"></p>
-<h3 id="6-1-2-服务注册"><a href="#6-1-2-服务注册" class="headerlink" title="6.1.2 服务注册"></a>6.1.2 服务注册</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211643931.png" alt="image-20240421164336864"></p>
-<h3 id="6-1-3-服务发现"><a href="#6-1-3-服务发现" class="headerlink" title="6.1.3 服务发现"></a>6.1.3 服务发现</h3><p>和服务注册类似，导入nacos依赖</p>
+<h3 id="6-2-2-服务注册"><a href="#6-2-2-服务注册" class="headerlink" title="6.2.2 服务注册"></a>6.2.2 服务注册</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211643931.png" alt="image-20240421164336864"></p>
+<h3 id="6-2-3-服务发现"><a href="#6-2-3-服务发现" class="headerlink" title="6.2.3 服务发现"></a>6.2.3 服务发现</h3><p>和服务注册类似，导入nacos依赖</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211657613.png" alt="image-20240421165732561"></p>
-<h2 id="6-2-服务分级存储模型"><a href="#6-2-服务分级存储模型" class="headerlink" title="6.2 服务分级存储模型"></a>6.2 服务分级存储模型</h2><p>一个<strong>服务</strong>可以有多个<strong>实例</strong>，例如我们的user-service，可以有:</p>
+<h2 id="6-3-服务分级存储模型"><a href="#6-3-服务分级存储模型" class="headerlink" title="6.3 服务分级存储模型"></a>6.3 服务分级存储模型</h2><p>一个<strong>服务</strong>可以有多个<strong>实例</strong>，例如我们的user-service，可以有:</p>
 <ul>
 <li>user-service：127.0.0.1:8081</li>
 <li>user-service：127.0.0.1:8082</li>
@@ -613,15 +615,15 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211700416.png" alt="image-20240421170021358"></p>
 <p>微服务互相访问时，应该尽可能访问同集群实例，因为本地访问速度更快。当本集群内不可用时，才访问其它集群。例如：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211701771.png" alt="image-20240421170136721"></p>
-<h3 id="6-2-1user-service服务提供者配置集群"><a href="#6-2-1user-service服务提供者配置集群" class="headerlink" title="6.2.1user-service服务提供者配置集群"></a>6.2.1user-service服务提供者配置集群</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211707871.png" alt="image-20240421170739795"></p>
-<h3 id="6-2-2-order-service服务消费者配置集群"><a href="#6-2-2-order-service服务消费者配置集群" class="headerlink" title="6.2.2 order-service服务消费者配置集群"></a>6.2.2 order-service服务消费者配置集群</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211713471.png" alt="image-20240421171305421"></p>
-<h2 id="6-3-Nacos负载均衡-NacosRule实现"><a href="#6-3-Nacos负载均衡-NacosRule实现" class="headerlink" title="6.3 Nacos负载均衡(NacosRule实现)"></a>6.3 Nacos负载均衡(NacosRule实现)</h2><p>Ribbon默认的<code>ZoneAvoidanceRule</code>并不能实现根据同集群优先来实现负载均衡。[Eureka默认是同一个zone区域轮询]</p>
-<h3 id="6-3-1-修改负载均衡规则"><a href="#6-3-1-修改负载均衡规则" class="headerlink" title="6.3.1 修改负载均衡规则"></a>6.3.1 修改负载均衡规则</h3><p>注意:</p>
+<h3 id="6-3-1user-service服务提供者配置集群"><a href="#6-3-1user-service服务提供者配置集群" class="headerlink" title="6.3.1user-service服务提供者配置集群"></a>6.3.1user-service服务提供者配置集群</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211707871.png" alt="image-20240421170739795"></p>
+<h3 id="6-3-2-order-service服务消费者配置集群"><a href="#6-3-2-order-service服务消费者配置集群" class="headerlink" title="6.3.2 order-service服务消费者配置集群"></a>6.3.2 order-service服务消费者配置集群</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211713471.png" alt="image-20240421171305421"></p>
+<h2 id="6-4-Nacos负载均衡-NacosRule实现"><a href="#6-4-Nacos负载均衡-NacosRule实现" class="headerlink" title="6.4 Nacos负载均衡(NacosRule实现)"></a>6.4 Nacos负载均衡(NacosRule实现)</h2><p>Ribbon默认的<code>ZoneAvoidanceRule</code>并不能实现根据同集群优先来实现负载均衡。[Eureka默认是同一个zone区域轮询]</p>
+<h3 id="6-4-1-修改负载均衡规则"><a href="#6-4-1-修改负载均衡规则" class="headerlink" title="6.4.1 修改负载均衡规则"></a>6.4.1 修改负载均衡规则</h3><p>注意:</p>
 <p>==原来默认是集群间轮询，后来设定nacosrule之后是本地集群优先(本地集群又是随机的  –&gt;可以设置权重提高访问频率),如果本地的都挂了那就会跨集群==</p>
 <p>因此Nacos中提供了一个<code>NacosRule</code>的实现，可以优先从==同集群中挑选实例==</p>
 <p>修改order-service服务消费者的application.yml文件，修改负载均衡规则：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211711312.png" alt="image-20240421171140243"></p>
-<h3 id="6-3-2-修改权重"><a href="#6-3-2-修改权重" class="headerlink" title="6.3.2 修改权重"></a>6.3.2 修改权重</h3><p>服务器设备性能有差异，部分实例所在机器性能较好，另一些较差，我们希望性能好的机器承担更多的用户请求。</p>
+<h3 id="6-4-2-修改权重"><a href="#6-4-2-修改权重" class="headerlink" title="6.4.2 修改权重"></a>6.4.2 修改权重</h3><p>服务器设备性能有差异，部分实例所在机器性能较好，另一些较差，我们希望性能好的机器承担更多的用户请求。</p>
 <p>但默认情况下NacosRule是同集群内随机挑选，不会考虑机器的性能问题。</p>
 <p>因此，Nacos提供了权重配置来控制访问频率，权重越大则访问频率越高。</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211716359.png" alt="image-20240421171620311"></p>
@@ -629,14 +631,14 @@
 <li><strong>注意</strong>：如果权重修改为0，则该实例永远不会被访问</li>
 </ul>
 <p>==如果设备更新/版本升级，那我就可以将权重设置低一点然后少数用户测试，慢慢增大权重==</p>
-<h2 id="6-4-环境隔离"><a href="#6-4-环境隔离" class="headerlink" title="6.4 环境隔离"></a>6.4 环境隔离</h2><p>类似于rabbitMQ消息队列的virtueHost虚拟主机空间可以造成环境隔离</p>
+<h2 id="6-5-环境隔离"><a href="#6-5-环境隔离" class="headerlink" title="6.5 环境隔离"></a>6.5 环境隔离</h2><p>类似于rabbitMQ消息队列的virtueHost虚拟主机空间可以造成环境隔离</p>
 <ul>
 <li>nacos中可以有多个namespace</li>
 <li>namespace下可以有group、service等</li>
 <li>不同namespace之间相互隔离，例如不同namespace的服务互相不可见</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211725792.png" alt="image-20240421172511733"></p>
-<h3 id="6-4-1-网页创建namespace"><a href="#6-4-1-网页创建namespace" class="headerlink" title="6.4.1 网页创建namespace"></a>6.4.1 网页创建namespace</h3><p>默认情况下，所有service、data、group都在同一个namespace，名为public：</p>
+<h3 id="6-5-1-网页创建namespace"><a href="#6-5-1-网页创建namespace" class="headerlink" title="6.5.1 网页创建namespace"></a>6.5.1 网页创建namespace</h3><p>默认情况下，所有service、data、group都在同一个namespace，名为public：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211727449.png" alt="image-20240421172717407"></p>
 <p>我们可以点击页面新增按钮，添加一个namespace：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211728724.png" alt="image-20240421172854688"></p>
@@ -644,9 +646,9 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211729714.png" alt="image-20240421172907671"></p>
 <p>就能在页面看到一个新的namespace：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211729220.png" alt="image-20240421172925184"></p>
-<h3 id="6-4-2-服务消费者配置"><a href="#6-4-2-服务消费者配置" class="headerlink" title="6.4.2 服务消费者配置"></a>6.4.2 服务消费者配置</h3><p>给==微服务配置namespace==只能通过修改配置来实现</p>
+<h3 id="6-5-2-服务消费者配置"><a href="#6-5-2-服务消费者配置" class="headerlink" title="6.5.2 服务消费者配置"></a>6.5.2 服务消费者配置</h3><p>给==微服务配置namespace==只能通过修改配置来实现</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211731012.png" alt="image-20240421173139937"></p>
-<h2 id="6-5-Nacos服务实例"><a href="#6-5-Nacos服务实例" class="headerlink" title="6.5 Nacos服务实例"></a>6.5 Nacos服务实例</h2><p>Nacos的服务实例分为两种类型：</p>
+<h2 id="6-6-Nacos服务实例"><a href="#6-6-Nacos服务实例" class="headerlink" title="6.6 Nacos服务实例"></a>6.6 Nacos服务实例</h2><p>Nacos的服务实例分为两种类型：</p>
 <ul>
 <li><p>临时实例：如果实例宕机超过一定时间，会从服务列表剔除，默认的类型。</p>
 </li>
@@ -655,7 +657,7 @@
 </ul>
 <p>配置一个服务实例为永久实例：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211733224.png" alt="image-20240421173358174"></p>
-<h2 id="6-6-Nacos和Eureka对比"><a href="#6-6-Nacos和Eureka对比" class="headerlink" title="6.6 Nacos和Eureka对比"></a>6.6 Nacos和Eureka对比</h2><ul>
+<h2 id="6-7-Nacos和Eureka对比"><a href="#6-7-Nacos和Eureka对比" class="headerlink" title="6.7 Nacos和Eureka对比"></a>6.7 Nacos和Eureka对比</h2><ul>
 <li><p>Nacos与eureka的共同点</p>
 <ul>
 <li><p>都支持服务注册和服务拉取</p>
@@ -723,7 +725,7 @@
 </tbody></table>
 </li>
 </ul>
-
+<h2 id="6-8-Nacos配置管理"><a href="#6-8-Nacos配置管理" class="headerlink" title="6.8 Nacos配置管理"></a>6.8 Nacos配置管理</h2><h3 id="6-8-1-统一配置管理"><a href="#6-8-1-统一配置管理" class="headerlink" title="6.8.1 统一配置管理"></a>6.8.1 统一配置管理</h3><h3 id="6-8-2-配置热更新"><a href="#6-8-2-配置热更新" class="headerlink" title="6.8.2 配置热更新"></a>6.8.2 配置热更新</h3><h2 id="6-9-搭建Nacos集群"><a href="#6-9-搭建Nacos集群" class="headerlink" title="6.9 搭建Nacos集群"></a>6.9 搭建Nacos集群</h2>
       
       
         <div class="page-reward">
@@ -781,7 +783,7 @@
         <p><span>本文标题:</span><a href="/2024/03/15/SpringCloud/">SpringCloud</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年03月15日 - 10时48分</p>
-        <p><span>最后更新:</span>2024年04月21日 - 17时58分</p>
+        <p><span>最后更新:</span>2024年04月21日 - 18时06分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/03/15/SpringCloud/" title="SpringCloud">https://larkkkkkkk.github.io/2024/03/15/SpringCloud/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/03/15/SpringCloud/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -819,7 +821,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-微服务的定义"><span class="toc-number">1.</span> <span class="toc-text">1.微服务的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-三种架构的对比"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 三种架构的对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-SpringCloud"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 SpringCloud</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-服务拆分和远程调用"><span class="toc-number">2.</span> <span class="toc-text">2.服务拆分和远程调用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-提供者与消费者"><span class="toc-number">3.</span> <span class="toc-text">3.提供者与消费者</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Eureka注册中心"><span class="toc-number">4.</span> <span class="toc-text">4.Eureka注册中心</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Eureka结构"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 Eureka结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-搭建三步"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 搭建三步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-搭建注册中心"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1 搭建注册中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-服务注册"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2 服务注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-3-服务发现"><span class="toc-number">4.2.3.</span> <span class="toc-text">4.2.3 服务发现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Ribbon负载均衡"><span class="toc-number">5.</span> <span class="toc-text">5.Ribbon负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-负载均衡原理"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 负载均衡原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-源码跟踪"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 源码跟踪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-负载均衡策略-IRule接口"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 负载均衡策略(IRule接口)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-1-负载均衡策略"><span class="toc-number">5.3.1.</span> <span class="toc-text">5.3.1 负载均衡策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-2-自定义负载均衡策略-消费者"><span class="toc-number">5.3.2.</span> <span class="toc-text">5.3.2 自定义负载均衡策略(消费者)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-饥饿加载"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 饥饿加载</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Nacos"><span class="toc-number">6.</span> <span class="toc-text">6.Nacos</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-Nacos注册中心"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 Nacos注册中心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-1-搭建注册中心"><span class="toc-number">6.1.1.</span> <span class="toc-text">6.1.1 搭建注册中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-2-服务注册"><span class="toc-number">6.1.2.</span> <span class="toc-text">6.1.2 服务注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-3-服务发现"><span class="toc-number">6.1.3.</span> <span class="toc-text">6.1.3 服务发现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-服务分级存储模型"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 服务分级存储模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-1user-service服务提供者配置集群"><span class="toc-number">6.2.1.</span> <span class="toc-text">6.2.1user-service服务提供者配置集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-2-order-service服务消费者配置集群"><span class="toc-number">6.2.2.</span> <span class="toc-text">6.2.2 order-service服务消费者配置集群</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-Nacos负载均衡-NacosRule实现"><span class="toc-number">6.3.</span> <span class="toc-text">6.3 Nacos负载均衡(NacosRule实现)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-1-修改负载均衡规则"><span class="toc-number">6.3.1.</span> <span class="toc-text">6.3.1 修改负载均衡规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-2-修改权重"><span class="toc-number">6.3.2.</span> <span class="toc-text">6.3.2 修改权重</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-环境隔离"><span class="toc-number">6.4.</span> <span class="toc-text">6.4 环境隔离</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-1-网页创建namespace"><span class="toc-number">6.4.1.</span> <span class="toc-text">6.4.1 网页创建namespace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-2-服务消费者配置"><span class="toc-number">6.4.2.</span> <span class="toc-text">6.4.2 服务消费者配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-Nacos服务实例"><span class="toc-number">6.5.</span> <span class="toc-text">6.5 Nacos服务实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-6-Nacos和Eureka对比"><span class="toc-number">6.6.</span> <span class="toc-text">6.6 Nacos和Eureka对比</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-微服务的定义"><span class="toc-number">1.</span> <span class="toc-text">1.微服务的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-三种架构的对比"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 三种架构的对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-SpringCloud"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 SpringCloud</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-服务拆分和远程调用"><span class="toc-number">2.</span> <span class="toc-text">2.服务拆分和远程调用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-提供者与消费者"><span class="toc-number">3.</span> <span class="toc-text">3.提供者与消费者</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Eureka注册中心"><span class="toc-number">4.</span> <span class="toc-text">4.Eureka注册中心</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Eureka结构"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 Eureka结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-搭建三步"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 搭建三步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-搭建注册中心"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1 搭建注册中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-服务注册"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2 服务注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-3-服务发现"><span class="toc-number">4.2.3.</span> <span class="toc-text">4.2.3 服务发现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Ribbon负载均衡"><span class="toc-number">5.</span> <span class="toc-text">5.Ribbon负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-负载均衡原理"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 负载均衡原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-源码跟踪"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 源码跟踪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-负载均衡策略-IRule接口"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 负载均衡策略(IRule接口)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-1-负载均衡策略"><span class="toc-number">5.3.1.</span> <span class="toc-text">5.3.1 负载均衡策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-2-自定义负载均衡策略-消费者"><span class="toc-number">5.3.2.</span> <span class="toc-text">5.3.2 自定义负载均衡策略(消费者)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-饥饿加载"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 饥饿加载</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Nacos"><span class="toc-number">6.</span> <span class="toc-text">6.Nacos</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-Nacos结构"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 Nacos结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-搭建三步"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 搭建三步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-1-搭建注册中心"><span class="toc-number">6.2.1.</span> <span class="toc-text">6.2.1 搭建注册中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-2-服务注册"><span class="toc-number">6.2.2.</span> <span class="toc-text">6.2.2 服务注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-3-服务发现"><span class="toc-number">6.2.3.</span> <span class="toc-text">6.2.3 服务发现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-服务分级存储模型"><span class="toc-number">6.3.</span> <span class="toc-text">6.3 服务分级存储模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-1user-service服务提供者配置集群"><span class="toc-number">6.3.1.</span> <span class="toc-text">6.3.1user-service服务提供者配置集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-2-order-service服务消费者配置集群"><span class="toc-number">6.3.2.</span> <span class="toc-text">6.3.2 order-service服务消费者配置集群</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-Nacos负载均衡-NacosRule实现"><span class="toc-number">6.4.</span> <span class="toc-text">6.4 Nacos负载均衡(NacosRule实现)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-1-修改负载均衡规则"><span class="toc-number">6.4.1.</span> <span class="toc-text">6.4.1 修改负载均衡规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-2-修改权重"><span class="toc-number">6.4.2.</span> <span class="toc-text">6.4.2 修改权重</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-环境隔离"><span class="toc-number">6.5.</span> <span class="toc-text">6.5 环境隔离</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-1-网页创建namespace"><span class="toc-number">6.5.1.</span> <span class="toc-text">6.5.1 网页创建namespace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-2-服务消费者配置"><span class="toc-number">6.5.2.</span> <span class="toc-text">6.5.2 服务消费者配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-6-Nacos服务实例"><span class="toc-number">6.6.</span> <span class="toc-text">6.6 Nacos服务实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-7-Nacos和Eureka对比"><span class="toc-number">6.7.</span> <span class="toc-text">6.7 Nacos和Eureka对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-8-Nacos配置管理"><span class="toc-number">6.8.</span> <span class="toc-text">6.8 Nacos配置管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-8-1-统一配置管理"><span class="toc-number">6.8.1.</span> <span class="toc-text">6.8.1 统一配置管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-8-2-配置热更新"><span class="toc-number">6.8.2.</span> <span class="toc-text">6.8.2 配置热更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-9-搭建Nacos集群"><span class="toc-number">6.9.</span> <span class="toc-text">6.9 搭建Nacos集群</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
