@@ -19,9 +19,18 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251748690.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251755564.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251758105.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251805672.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251805189.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251807735.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251808501.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251719086.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251815147.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251813468.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251815462.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251815330.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251816541.png">
 <meta property="article:published_time" content="2024-04-25T08:17:17.000Z">
-<meta property="article:modified_time" content="2024-04-25T10:00:08.684Z">
+<meta property="article:modified_time" content="2024-04-25T10:17:06.058Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="MybatisPlus">
 <meta name="twitter:card" content="summary">
@@ -410,9 +419,39 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251755564.png" alt="image-20240425175502493"></p>
 <p>其中，具体的细节如图所示：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251758105.png" alt="image-20240425175807030"></p>
+<h2 id="2-1-TableName"><a href="#2-1-TableName" class="headerlink" title="2.1 @TableName"></a>2.1 @TableName</h2><ul>
+<li>描述：表名注解，标识实体类对应的表</li>
+<li>使用位置：实体类</li>
+</ul>
+<p>所有属性:</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251805672.png" alt="image-20240425180531600"></p>
+<h2 id="2-2-TableId"><a href="#2-2-TableId" class="headerlink" title="2.2 @TableId"></a>2.2 @TableId</h2><ul>
+<li>描述：主键注解，标识实体类中的主键字段</li>
+<li>使用位置：实体类的主键字段</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251805189.png" alt="image-20240425180555143"></p>
+<p>其中type=IdType.xxxx取值范围：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251807735.png" alt="image-20240425180718677" style="zoom:67%;">
+
+
+
+<h2 id="2-3-TableField"><a href="#2-3-TableField" class="headerlink" title="2.3 @TableField"></a>2.3 @TableField</h2><p>描述：普通字段注解</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251808501.png" alt="image-20240425180842453"></p>
 <h1 id="3-常见配置"><a href="#3-常见配置" class="headerlink" title="3.常见配置"></a>3.常见配置</h1><p>在application.yml文件配置：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251719086.png" alt="image-20240425171943982"></p>
-<h1 id="核心功能"><a href="#核心功能" class="headerlink" title="==核心功能=="></a>==核心功能==</h1><h1 id="1-条件构造器"><a href="#1-条件构造器" class="headerlink" title="1.条件构造器"></a>1.条件构造器</h1><h1 id="2-自定义SQL"><a href="#2-自定义SQL" class="headerlink" title="2.自定义SQL"></a>2.自定义SQL</h1><h1 id="3-Service接口"><a href="#3-Service接口" class="headerlink" title="3.Service接口"></a>3.Service接口</h1>
+<h1 id="核心功能"><a href="#核心功能" class="headerlink" title="==核心功能=="></a>==核心功能==</h1><p>刚才都是以id为条件的简单CRUD,一些复杂的SQL语句就需要用到一些高级功能。</p>
+<h1 id="1-条件构造器"><a href="#1-条件构造器" class="headerlink" title="1.条件构造器"></a>1.条件构造器</h1><p>除了新增以外，修改、删除、查询的SQL语句都需要<strong>指定where条件</strong>。</p>
+<p>因此BaseMapper中提供的相关方法除了以<code>id</code>作为<code>where</code>条件以外，还支持更加复杂的<code>where</code>条件。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251815147.png" alt="image-20240425181511109"></p>
+<p>参数中的<code>Wrapper</code>就是条件构造的抽象类，其下有很多默认实现，继承关系如图：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251813468.png" alt="image-20240425181331409"></p>
+<p>其中，<code>Wrapper</code>的子类<code>AbstractWrapper</code>提供了where中包含的所有条件构造方法：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251815462.png" alt="image-20240425181538417"></p>
+<p>而QueryWrapper在AbstractWrapper的基础上拓展了一个select方法，允许指定查询字段：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251815330.png" alt="image-20240425181553298"></p>
+<p>而UpdateWrapper在AbstractWrapper的基础上拓展了一个set方法，允许指定SQL中的SET部分：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251816541.png" alt="image-20240425181601512"></p>
+<h2 id="1-1-QueryWrapper"><a href="#1-1-QueryWrapper" class="headerlink" title="1.1 QueryWrapper"></a>1.1 QueryWrapper</h2><h2 id="1-2-UpdateWrapper"><a href="#1-2-UpdateWrapper" class="headerlink" title="1.2 UpdateWrapper"></a>1.2 UpdateWrapper</h2><h2 id="1-3-LambdaQueryWrapper"><a href="#1-3-LambdaQueryWrapper" class="headerlink" title="1.3 LambdaQueryWrapper"></a>1.3 LambdaQueryWrapper</h2><h1 id="2-自定义SQL"><a href="#2-自定义SQL" class="headerlink" title="2.自定义SQL"></a>2.自定义SQL</h1><h1 id="3-Service接口"><a href="#3-Service接口" class="headerlink" title="3.Service接口"></a>3.Service接口</h1>
       
       
         <div class="page-reward">
@@ -470,7 +509,7 @@
         <p><span>本文标题:</span><a href="/2024/04/25/MybatisPlus/">MybatisPlus</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年04月25日 - 16时17分</p>
-        <p><span>最后更新:</span>2024年04月25日 - 18时00分</p>
+        <p><span>最后更新:</span>2024年04月25日 - 18时17分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/04/25/MybatisPlus/" title="MybatisPlus">https://larkkkkkkk.github.io/2024/04/25/MybatisPlus/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/04/25/MybatisPlus/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -499,7 +538,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Mybatis介绍"><span class="toc-number">1.</span> <span class="toc-text">1.Mybatis介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基础使用"><span class="toc-number">2.</span> <span class="toc-text">&#x3D;&#x3D;基础使用&#x3D;&#x3D;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-pom-xml引入依赖"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 pom.xml引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-定义Mapper层"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 定义Mapper层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-对比"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-常见注解"><span class="toc-number">3.</span> <span class="toc-text">2.常见注解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-常见配置"><span class="toc-number">4.</span> <span class="toc-text">3.常见配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心功能"><span class="toc-number">5.</span> <span class="toc-text">&#x3D;&#x3D;核心功能&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-条件构造器"><span class="toc-number">6.</span> <span class="toc-text">1.条件构造器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-自定义SQL"><span class="toc-number">7.</span> <span class="toc-text">2.自定义SQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Service接口"><span class="toc-number">8.</span> <span class="toc-text">3.Service接口</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Mybatis介绍"><span class="toc-number">1.</span> <span class="toc-text">1.Mybatis介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基础使用"><span class="toc-number">2.</span> <span class="toc-text">&#x3D;&#x3D;基础使用&#x3D;&#x3D;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-pom-xml引入依赖"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 pom.xml引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-定义Mapper层"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 定义Mapper层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-对比"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-常见注解"><span class="toc-number">3.</span> <span class="toc-text">2.常见注解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-TableName"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 @TableName</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-TableId"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 @TableId</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-TableField"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 @TableField</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-常见配置"><span class="toc-number">4.</span> <span class="toc-text">3.常见配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心功能"><span class="toc-number">5.</span> <span class="toc-text">&#x3D;&#x3D;核心功能&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-条件构造器"><span class="toc-number">6.</span> <span class="toc-text">1.条件构造器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-QueryWrapper"><span class="toc-number">6.1.</span> <span class="toc-text">1.1 QueryWrapper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-UpdateWrapper"><span class="toc-number">6.2.</span> <span class="toc-text">1.2 UpdateWrapper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-LambdaQueryWrapper"><span class="toc-number">6.3.</span> <span class="toc-text">1.3 LambdaQueryWrapper</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-自定义SQL"><span class="toc-number">7.</span> <span class="toc-text">2.自定义SQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Service接口"><span class="toc-number">8.</span> <span class="toc-text">3.Service接口</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
