@@ -382,7 +382,7 @@
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251748690.png" alt="image-20240425174818635"></p>
 <p>但很多情况下，默认的实现与实际场景不符，因此MybatisPlus提供一些注解便于我们声明表信息</p>
-<h1 id="2-常见注解-解决底层pojo和数据库映射问题"><a href="#2-常见注解-解决底层pojo和数据库映射问题" class="headerlink" title="2.常见注解==解决底层pojo和数据库映射问题=="></a>2.常见注解==解决底层pojo和数据库映射问题==</h1><p>==如果不按照约定的话，需要使用以下三种注解来解决：==  </p>
+<h1 id="2-常见注解-解决po和mysql字段映射"><a href="#2-常见注解-解决po和mysql字段映射" class="headerlink" title="2.常见注解==解决po和mysql字段映射=="></a>2.常见注解==解决po和mysql字段映射==</h1><p>==如果不按照约定的话，需要使用以下三种注解来解决：==  </p>
 <p>MybatisPlus中比较常用的几个注解如下：</p>
 <p>•<strong>@TableName</strong>：用来指定表名</p>
 <p>•<strong>@TableId</strong>：用来指定表中的主键字段信息</p>
@@ -460,13 +460,13 @@
 <li><code>count</code>：计数</li>
 <li><code>page</code>：分页查询</li>
 </ul>
-<h2 id="3-1-新增-save"><a href="#3-1-新增-save" class="headerlink" title="3.1 新增(save)"></a>3.1 新增(save)</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557861.png" alt="image-20240426155746820"></p>
-<h2 id="3-2-删除-remove"><a href="#3-2-删除-remove" class="headerlink" title="3.2 删除(remove)"></a>3.2 删除(remove)</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261558520.png" alt="image-20240426155808475"></p>
-<h2 id="3-3-修改-update"><a href="#3-3-修改-update" class="headerlink" title="3.3 修改(update)"></a>3.3 修改(update)</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261558839.png" alt="image-20240426155852795"></p>
-<h2 id="3-4-查询"><a href="#3-4-查询" class="headerlink" title="3.4 查询"></a>3.4 查询</h2><h3 id="3-4-1-查询一条-get"><a href="#3-4-1-查询一条-get" class="headerlink" title="3.4.1 查询一条(get)"></a>3.4.1 查询一条(get)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261559663.png" alt="image-20240426155954622"></p>
-<h3 id="3-4-2-查询多条-list"><a href="#3-4-2-查询多条-list" class="headerlink" title="3.4.2 查询多条(list)"></a>3.4.2 查询多条(list)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261600209.png" alt="image-20240426160001166"></p>
-<h3 id="3-4-3-计数-count"><a href="#3-4-3-计数-count" class="headerlink" title="3.4.3 计数(count)"></a>3.4.3 计数(count)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261600943.png" alt="image-20240426160025902"></p>
-<h2 id="3-5-获取mapper自定义sql"><a href="#3-5-获取mapper自定义sql" class="headerlink" title="3.5 获取mapper自定义sql"></a>3.5 获取mapper自定义sql</h2><p>通过getBaseMapper获取Mapper，然后就mapper.自定义sql()</p>
+<h2 id="3-1-五大类方法解释"><a href="#3-1-五大类方法解释" class="headerlink" title="3.1 五大类方法解释"></a>3.1 五大类方法解释</h2><h3 id="3-1-1-新增-save"><a href="#3-1-1-新增-save" class="headerlink" title="3.1.1 新增(save)"></a>3.1.1 新增(save)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557861.png" alt="image-20240426155746820"></p>
+<h3 id="3-1-2-删除-remove"><a href="#3-1-2-删除-remove" class="headerlink" title="3.1.2 删除(remove)"></a>3.1.2 删除(remove)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261558520.png" alt="image-20240426155808475"></p>
+<h3 id="3-1-3-修改-update"><a href="#3-1-3-修改-update" class="headerlink" title="3.1.3 修改(update)"></a>3.1.3 修改(update)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261558839.png" alt="image-20240426155852795"></p>
+<h3 id="3-1-4-查询"><a href="#3-1-4-查询" class="headerlink" title="3.1.4 查询"></a>3.1.4 查询</h3><h4 id="3-4-1-查询一条-get"><a href="#3-4-1-查询一条-get" class="headerlink" title="3.4.1 查询一条(get)"></a>3.4.1 查询一条(get)</h4><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261559663.png" alt="image-20240426155954622"></p>
+<h4 id="3-4-2-查询多条-list"><a href="#3-4-2-查询多条-list" class="headerlink" title="3.4.2 查询多条(list)"></a>3.4.2 查询多条(list)</h4><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261600209.png" alt="image-20240426160001166"></p>
+<h4 id="3-4-3-计数-count"><a href="#3-4-3-计数-count" class="headerlink" title="3.4.3 计数(count)"></a>3.4.3 计数(count)</h4><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261600943.png" alt="image-20240426160025902"></p>
+<h3 id="3-1-5调用mapper层自定义sql"><a href="#3-1-5调用mapper层自定义sql" class="headerlink" title="3.1.5调用mapper层自定义sql"></a>3.1.5调用mapper层自定义sql</h3><p>通过getBaseMapper获取Mapper，然后就mapper.自定义sql()</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261601255.png" alt="image-20240426160126219"></p>
 <h2 id="3-6-基本用法"><a href="#3-6-基本用法" class="headerlink" title="3.6 基本用法"></a>3.6 基本用法</h2><p>现在的变化就是，==拿现成的直接用==:</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261605501.png" alt="image-20240426160527425"></p>
@@ -490,7 +490,7 @@
 <p>最推荐第三种我们在yml配置文件中添加&amp;rewriteBatchedStatements=true</p>
 <h1 id="Mybatis——-扩展功能"><a href="#Mybatis——-扩展功能" class="headerlink" title="==Mybatis——-扩展功能=="></a>==Mybatis——-扩展功能==</h1><h1 id="1-代码生成"><a href="#1-代码生成" class="headerlink" title="1.代码生成"></a>1.代码生成</h1><p>在使用MybatisPlus以后，基础的<code>Mapper</code>、<code>Service</code>、<code>PO</code>代码相对固定，重复编写也比较麻烦。因此MybatisPlus官方提供了代码生成器根据数据库表结构生成<code>PO</code>、<code>Mapper</code>、<code>Service</code>等相关代码。只不过代码生成器同样要编码使用，也很麻烦。</p>
 <p>这里推荐大家使用一款<code>MybatisPlus</code>的插件，它可以基于图形化界面完成<code>MybatisPlus</code>的代码生成，非常简单。</p>
-<h1 id="2-静态工具"><a href="#2-静态工具" class="headerlink" title="2.静态工具"></a>2.静态工具</h1>
+<h1 id="2-静态工具"><a href="#2-静态工具" class="headerlink" title="2.静态工具"></a>2.静态工具</h1><h1 id="3-逻辑删除"><a href="#3-逻辑删除" class="headerlink" title="3.逻辑删除"></a>3.逻辑删除</h1><h1 id="4-通用枚举"><a href="#4-通用枚举" class="headerlink" title="4.通用枚举"></a>4.通用枚举</h1><h1 id="5-Json类型处理器"><a href="#5-Json类型处理器" class="headerlink" title="5.Json类型处理器"></a>5.Json类型处理器</h1><h1 id="6-配置加密"><a href="#6-配置加密" class="headerlink" title="6.配置加密"></a>6.配置加密</h1><h1 id="Mybatis——-插件功能"><a href="#Mybatis——-插件功能" class="headerlink" title="==Mybatis——-插件功能=="></a>==Mybatis——-插件功能==</h1><h1 id="1-分页插件"><a href="#1-分页插件" class="headerlink" title="1.分页插件"></a>1.分页插件</h1><h1 id="2-通用分页实体"><a href="#2-通用分页实体" class="headerlink" title="2.通用分页实体"></a>2.通用分页实体</h1>
       
       
     </div>
