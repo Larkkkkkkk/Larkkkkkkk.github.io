@@ -535,9 +535,42 @@
 <h2 id="4-4-修改具体逻辑位置"><a href="#4-4-修改具体逻辑位置" class="headerlink" title="4.4 修改具体逻辑位置"></a>4.4 修改具体逻辑位置</h2><p>原来位置是用数字比对，可读性太差，现在就可以优雅地使用枚举类</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291656672.png" alt="image-20240429165653581"></p>
 <h1 id="5-Json类型处理器-字段是Json类型"><a href="#5-Json类型处理器-字段是Json类型" class="headerlink" title="5.Json类型处理器(字段是Json类型)"></a>5.Json类型处理器(字段是Json类型)</h1><p>如果实体类有一个属性是Json类型，那么Java中的Json类型和数据库中的匹配就有问题：<br>就跟4枚举处理器里面将的，MybatisPlus在Myabtis的基础上提供了Json类型处理器</p>
-<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291721065.png" alt="image-20240429172137951" style="zoom:80%;">
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291721065.png" alt="image-20240429172137951" style="zoom: 67%;">
 
-<h2 id="5-1-配置Json类型处理器"><a href="#5-1-配置Json类型处理器" class="headerlink" title="5.1 配置Json类型处理器"></a>5.1 配置Json类型处理器</h2><h1 id="6-配置加密"><a href="#6-配置加密" class="headerlink" title="6.配置加密"></a>6.配置加密</h1><h1 id="Mybatis——-插件功能"><a href="#Mybatis——-插件功能" class="headerlink" title="==Mybatis——-插件功能=="></a>==Mybatis——-插件功能==</h1><h1 id="1-分页插件"><a href="#1-分页插件" class="headerlink" title="1.分页插件"></a>1.分页插件</h1><h1 id="2-通用分页实体"><a href="#2-通用分页实体" class="headerlink" title="2.通用分页实体"></a>2.通用分页实体</h1>
+<h2 id="5-1-配置Json类型处理器"><a href="#5-1-配置Json类型处理器" class="headerlink" title="5.1 配置Json类型处理器"></a>5.1 配置Json类型处理器</h2><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301426197.png" alt="image-20240430142629145" style="zoom: 67%;">
+
+<p>因为没有提供在application.yml配置的方式，只能通过给实体类属性添加注解</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301424410.png" alt="image-20240430142453316"></p>
+<h2 id="5-2-测试查看"><a href="#5-2-测试查看" class="headerlink" title="5.2 测试查看"></a>5.2 测试查看</h2><p>info字段已经改成了一个Json类型</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301427801.png" alt="image-20240430142717732"></p>
+<h1 id="6-配置加密"><a href="#6-配置加密" class="headerlink" title="6.配置加密"></a>6.配置加密</h1><p>目前我们配置文件中很多参数都是明文存储，如果开发人员跑路很容易导致敏感信息泄露。</p>
+<p>MyBatisPlus从3.3.2版本开始提供了一个==基于AES算法的加密工具==，帮助我们对配置中的敏感信息做加密处理。</p>
+<h2 id="6-1-生成秘钥"><a href="#6-1-生成秘钥" class="headerlink" title="6.1 生成秘钥"></a>6.1 生成秘钥</h2><p>以数据库的账户密码为例：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301432687.png" alt="image-20240430143223630"></p>
+<h2 id="6-2-配置秘钥"><a href="#6-2-配置秘钥" class="headerlink" title="6.2 配置秘钥"></a>6.2 配置秘钥</h2><p>在application.yml文件中修改：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301435095.png" alt="image-20240430143508047"></p>
+<h2 id="6-3-测试"><a href="#6-3-测试" class="headerlink" title="6.3 测试"></a>6.3 测试</h2><p>测试类：在测试类的注解上配置：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301438113.png" alt="image-20240430143859062"></p>
+<p>启动项目：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301440705.png" alt="image-20240430144043661"></p>
+<h1 id="Mybatis——-插件功能"><a href="#Mybatis——-插件功能" class="headerlink" title="==Mybatis——-插件功能=="></a>==Mybatis——-插件功能==</h1><p>其实MybatisPlus提供了多个插件，而我们重点关注分页插件</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301647585.png" alt="image-20240430164735500"></p>
+<h1 id="1-分页插件"><a href="#1-分页插件" class="headerlink" title="1.分页插件"></a>1.分页插件</h1><h2 id="1-1-配置分页功能"><a href="#1-1-配置分页功能" class="headerlink" title="1.1 配置分页功能"></a>1.1 配置分页功能</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301523505.png" alt="image-20240430152339416"></p>
+<h2 id="1-2-测试简单分页"><a href="#1-2-测试简单分页" class="headerlink" title="1.2 测试简单分页"></a>1.2 测试简单分页</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301522267.png" alt="image-20240430152253190"></p>
+<h2 id="1-3-测试复杂分页"><a href="#1-3-测试复杂分页" class="headerlink" title="1.3 测试复杂分页"></a>1.3 测试复杂分页</h2><p>针对于1.2的话其实就是更针对业务逻辑：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301643474.png" alt="image-20240430164354320"></p>
+<h1 id="Mybatis——-使用操作"><a href="#Mybatis——-使用操作" class="headerlink" title="==Mybatis——-使用操作=="></a>==Mybatis——-使用操作==</h1><p>1.可以创建好数据库表</p>
+<p>2.根据mybatis插件生成:</p>
+<p>​    po(可以添加注解保证数据库和Java实体类对应，对于枚举和Json类型都有新推出的处理器解决)，</p>
+<p>​    service(extends IService<Xxx>)，</Xxx></p>
+<p>​    serviceImpl( extends ServiceImpl&lt;XxxMapper, Xxx&gt; implements IAddressService)，</p>
+<p>​    controller，</p>
+<p>​    mapper(extends BaseMapper<Xxx>)</Xxx></p>
+<p>3.按照原有的设计思路写代码：</p>
+<p>​    3.1 简单的就直接调用service的CRUD方法【service接口默认也有实现类ServiceImpl&lt;XXXMapper,实体类&gt;，这样也说明底层还是直接调用BaseMapper方法】</p>
+<p>​    3.2 复杂的话就还是原来的动态sql书写</p>
+<p>【只不过在书写过程中有很多好用的扩展功能】</p>
+
       
       
     </div>
