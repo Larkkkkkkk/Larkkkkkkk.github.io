@@ -722,7 +722,11 @@
 <td>1.只能给词条创建索引，而不是字段<br>2.无法根据字段做排序</td>
 </tr>
 </tbody></table>
-<h1 id="3-基础概念"><a href="#3-基础概念" class="headerlink" title="3.基础概念"></a>3.基础概念</h1><h1 id="4-IK分词器-ikun"><a href="#4-IK分词器-ikun" class="headerlink" title="4.IK分词器(ikun)"></a>4.IK分词器(ikun)</h1><p>Elasticsearch的关键就是倒排索引，而倒排索引依赖于对文档内容的分词情况(分词好那就效率高)，而分词则需要高效、精准的分词算法，IK分词器就是这样一个中文分词算法</p>
+<h1 id="3-基础概念"><a href="#3-基础概念" class="headerlink" title="3.基础概念"></a>3.基础概念</h1><h2 id="3-1-文档-一行数据-和字段-一个列"><a href="#3-1-文档-一行数据-和字段-一个列" class="headerlink" title="3.1 文档(一行数据)和字段(一个列)"></a>3.1 文档(一行数据)和字段(一个列)</h2><p>elasticsearch是面向<strong>文档（Document）</strong>存储的，可以是数据库中的一条商品数据，一个订单信息。文档数据会被序列化为<code>json</code>格式存储在<code>elasticsearch</code>中：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072305342.png" alt="image-20240507230531294"></p>
+<p>因此， 数据库中一行数据 &lt;==&gt; ES中一个JSON文档；</p>
+<p>而数据库中每行数据都包含很多列，这些列就转换为JSON文档中的<strong>字段（Field）</strong></p>
+<h2 id="3-2-索引和映射"><a href="#3-2-索引和映射" class="headerlink" title="3.2 索引和映射"></a>3.2 索引和映射</h2><h2 id="3-3-Mysql和Elasticsearch"><a href="#3-3-Mysql和Elasticsearch" class="headerlink" title="3.3 Mysql和Elasticsearch"></a>3.3 Mysql和Elasticsearch</h2><h1 id="4-IK分词器-ikun"><a href="#4-IK分词器-ikun" class="headerlink" title="4.IK分词器(ikun)"></a>4.IK分词器(ikun)</h1><p>Elasticsearch的关键就是倒排索引，而倒排索引依赖于对文档内容的分词情况(分词好那就效率高)，而分词则需要高效、精准的分词算法，IK分词器就是这样一个中文分词算法</p>
 <h2 id="4-1-安装IK分词器"><a href="#4-1-安装IK分词器" class="headerlink" title="4.1 安装IK分词器"></a>4.1 安装IK分词器</h2><p>方案一：在线安装</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it es .&#x2F;bin&#x2F;elasticsearch-plugin  install https:&#x2F;&#x2F;github.com&#x2F;medcl&#x2F;elasticsearch-analysis-ik&#x2F;releases&#x2F;download&#x2F;v7.12.1&#x2F;elasticsearch-analysis-ik-7.12.1.zip</span><br></pre></td></tr></table></figure>
 
