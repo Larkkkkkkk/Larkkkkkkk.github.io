@@ -635,18 +635,119 @@
 <p>Elasticsearch结合Kibana，Logstash，beats是一整套技术栈，被叫做==ELK==。经常用来做日志收集、系统监控和状态分析等等：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301712288.png" alt="image-20240430171212212"></p>
 <h2 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h2><h3 id="1-1-1-安装elasticsearch"><a href="#1-1-1-安装elasticsearch" class="headerlink" title="1.1.1 安装elasticsearch"></a>1.1.1 安装elasticsearch</h3><p>通过下面的Docker命令即可安装单机版本的elasticsearch：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#先在tar所在目录下打开cmd</span><br><span class="line">docker load -i es.tar</span><br><span class="line"></span><br><span class="line">docker run -d \</span><br><span class="line">  --name es \</span><br><span class="line">  -e &quot;ES_JAVA_OPTS&#x3D;-Xms512m -Xmx512m&quot; \        #配置jvm的内存</span><br><span class="line">  -e &quot;discovery.type&#x3D;single-node&quot; \            #配置运行模式【单点模式&#x2F;集群模式】</span><br><span class="line">  -v es-data:&#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;data \   #挂载</span><br><span class="line">  -v es-plugins:&#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins \</span><br><span class="line">  --privileged \</span><br><span class="line">  --network hm-net \   </span><br><span class="line">  -p 9200:9200 \  #访问http端口</span><br><span class="line">  -p 9300:9300 \  #集群使用</span><br><span class="line">  elasticsearch:7.12.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#先在tar所在目录下打开cmd</span><br><span class="line">docker load -i es.tar</span><br><span class="line"></span><br><span class="line">#创建一个网络【不然kibana不能连接es，踩坑了！！】</span><br><span class="line">docker network create elastic</span><br><span class="line"></span><br><span class="line">#黑马安装：</span><br><span class="line">docker run -d \</span><br><span class="line">  --name es \</span><br><span class="line">  -e &quot;ES_JAVA_OPTS&#x3D;-Xms512m -Xmx512m&quot; \        #配置jvm的内存</span><br><span class="line">  -e &quot;discovery.type&#x3D;single-node&quot; \            #配置运行模式【单点模式&#x2F;集群模式】</span><br><span class="line">  -v es-data:&#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;data \   #挂载</span><br><span class="line">  -v es-plugins:&#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins \</span><br><span class="line">  --privileged \</span><br><span class="line">  --network hm-net \   </span><br><span class="line">  -p 9200:9200 \  #访问http端口</span><br><span class="line">  -p 9300:9300 \  #集群使用</span><br><span class="line">  elasticsearch:7.12.1</span><br><span class="line">  </span><br><span class="line">#csdn安装:</span><br><span class="line">docker run -d --name es -e ES_JAVA_OPTS&#x3D;&quot;-Xms512m -Xmx512m&quot; -e &quot;discovery.type&#x3D;single-node&quot; --privileged --network elastic -p 9200:9200 -p 9300:9300 elasticsearch:7.12.1</span><br></pre></td></tr></table></figure>
+
+<p>启动之后访问<a href="http://localhost:9200/就可以看到elasticsearch信息：" target="_blank" rel="noopener">http://localhost:9200/就可以看到elasticsearch信息：</a></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072044725.png" alt="image-20240507204417602" style="zoom:67%;">
 
 
 
 <h3 id="1-1-2-安装Kibana"><a href="#1-1-2-安装Kibana" class="headerlink" title="1.1.2 安装Kibana"></a>1.1.2 安装Kibana</h3><p>通过下面的Docker命令，即可部署Kibana：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#先在tar所在目录下打开cmd</span><br><span class="line">docker load -i kibana.tar</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#先在tar所在目录下打开cmd</span><br><span class="line">docker load -i kibana.tar</span><br><span class="line"></span><br><span class="line">#黑马安装：</span><br><span class="line">docker run -d \</span><br><span class="line">--name kibana \</span><br><span class="line">-e ELASTICSEARCH_HOSTS&#x3D;http:&#x2F;&#x2F;es:9200 \   #es的地址，这里的es要和es配置docker的时候--name一致</span><br><span class="line">--network&#x3D;hm-net \  #网络和es一个网络</span><br><span class="line">-p 5601:5601  \</span><br><span class="line">kibana:7.12.1  #要保证和es版本一致！！！</span><br><span class="line"></span><br><span class="line">#csdn安装：</span><br><span class="line">docker run -d --name kibana -e ELASTICSEARCH_HOSTS&#x3D;http:&#x2F;&#x2F;es:9200 --network elastic -p 5601:5601  kibana:7.12.1</span><br></pre></td></tr></table></figure>
 
+<p>启动之后访问<a href="http://localhost:5601/就可以通过kibana数据化访问elasticsearch：" target="_blank" rel="noopener">http://localhost:5601/就可以通过kibana数据化访问elasticsearch：</a></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072046111.png" alt="image-20240507204635028" style="zoom:80%;">
 
+<p>可以点击右上角Dev tools，进入开发工具页面：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240507204914788.png" alt="image-20240507204914788"></p>
+<p>点击之后：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072051099.png" alt="image-20240507205135009"></p>
+<h1 id="2-倒排索引"><a href="#2-倒排索引" class="headerlink" title="2.倒排索引"></a>2.倒排索引</h1><p>elasticsearch的高性能搜索表现，因为底层的倒排索引技术解决的就是根据==部分词条模糊匹配==的问题。【Innodb底层就是用倒排索引做的全文索引】</p>
+<h2 id="2-1-正向索引-精准匹配"><a href="#2-1-正向索引-精准匹配" class="headerlink" title="2.1 正向索引(精准匹配)"></a>2.1 正向索引(精准匹配)</h2><p>我们有一张名为tb_goods的表：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072100540.png" alt="image-20240507210036497"></p>
+<p>其中，id字段已经创建了索引（底层使用b+树）所以根据id搜索的速度会非常快。但是其他字段例如title只在叶子结点上存在。</p>
+<p>比如用户的sql语句为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select *</span><br><span class="line">from tb_goods</span><br><span class="line">where title like &#39;%手机%&#39;;</span><br></pre></td></tr></table></figure>
 
+<p>搜索大概流程如图：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072124917.png" alt="image-20240507212400849"></p>
+<p>说明：</p>
+<ul>
+<li>1）检查到搜索条件为<code>like &#39;%手机%&#39;</code>，需要找到<code>title</code>中包含<code>手机</code>的数据</li>
+<li>2）逐条遍历每行数据（每个叶子节点），比如第1次拿到<code>id</code>为1的数据</li>
+<li>3）判断数据中的<code>title</code>字段值是否符合条件</li>
+<li>4）如果符合则放入结果集，不符合则丢弃</li>
+<li>5）回到步骤1</li>
+</ul>
+<p>综上，根据id搜索条件为精确匹配时，可以走索引，查询效率较高。而当搜索条件为模糊匹配时，由于索引无法生效，导致从索引查询退化为全表扫描，效率很差。</p>
+<p>因此，正向索引适合于根据索引字段的精确搜索，不适合基于部分词条的模糊匹配。</p>
+<p>而倒排索引恰好解决的就是根据部分词条模糊匹配的问题。</p>
+<h2 id="2-2-倒排索引-模糊匹配"><a href="#2-2-倒排索引-模糊匹配" class="headerlink" title="2.2 倒排索引(模糊匹配)"></a>2.2 倒排索引(模糊匹配)</h2><h3 id="2-2-1-基本概念"><a href="#2-2-1-基本概念" class="headerlink" title="2.2.1 基本概念"></a>2.2.1 基本概念</h3><p>倒排索引中两个重要的概念：</p>
+<ul>
+<li><p><strong>文档(Document):</strong>用来搜索的数据，<strong>每一条数据</strong>就是一个文档【一个网页，一个商品信息】</p>
+</li>
+<li><p><strong>词条(Term):</strong>对文档数据/用户搜索数据，利用某种算法分词，得到的<strong>具备含义的词语</strong>就是词条【我是中国人，就可以分为：我，是，中国人，国人，人这几个词条】</p>
+</li>
+</ul>
+<h3 id="2-2-2-创建流程"><a href="#2-2-2-创建流程" class="headerlink" title="2.2.2 创建流程"></a>2.2.2 创建流程</h3><p>创建倒排索引是对正向索引的一种特殊处理和应用，流程如下：</p>
+<ul>
+<li><p>将每个文档的数据利用<strong>分词算法</strong>根据语义拆分得到一个个词条</p>
+</li>
+<li><p>创建表，表中每行数据：{词条，词条所在文档id，词条位置}</p>
+</li>
+<li><p>因为词条唯一性，可以给词条创建正向索引(唯一索引)</p>
+</li>
+</ul>
+<p>此时形成的这张以词条为索引的表就是倒排索引表：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240507214322180.png" alt="image-20240507214322180"></p>
+<h3 id="2-2-3-搜索流程"><a href="#2-2-3-搜索流程" class="headerlink" title="2.2.3 搜索流程"></a>2.2.3 搜索流程</h3><p>以搜索”华为手机”为例，如图：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072150690.png" alt="image-20240507215033610"></p>
+<p>流程描述：</p>
+<p>1）用户输入条件<code>&quot;华为手机&quot;</code>进行搜索。</p>
+<p>2）对用户输入条件<strong>分词</strong>，得到词条：<code>华为</code>、<code>手机</code>。</p>
+<p>3）拿着词条在倒排索引中查找（<strong>由于词条有唯一索引，查询效率很高</strong>），即可得到包含词条的文档id：<code>1、2、3</code>。</p>
+<p>4）拿着文档<code>id</code>到正向索引中查找具体文档即可（由于<strong><code>id</code>也有索引</strong>，查询效率也很高）</p>
+<p>==根据条件先分词，每个词条去倒排索引查询【词条有唯一索引】找到对应文档id，根据文档id到正向索引【id有索引】查询具体文档(一条数据)==</p>
+<h3 id="2-2-4-两者对比"><a href="#2-2-4-两者对比" class="headerlink" title="2.2.4 两者对比"></a>2.2.4 两者对比</h3><ul>
+<li><strong>正向索引</strong>是最传统的，根据id索引的方式。但根据词条查询时，必须先逐条获取每个文档，然后判断文档中是否包含所需要的词条，是<strong>根据文档找词条的过程</strong>。 </li>
+<li>而<strong>倒排索引</strong>则相反，是先找到用户要搜索的词条，根据词条得到保护词条的文档的id，然后根据id获取文档。是<strong>根据词条找文档的过程</strong>。 </li>
+</ul>
+<p>两者优缺点：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>正向索引</th>
+<th>倒排索引</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>优点</td>
+<td>1.可以给多个字段创建索引<br>2.根据索引字段搜索和排序速度非常快</td>
+<td>部分词条查询效率高【创建唯一索引】</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>部分词条查询效率不高，只能全表扫描</td>
+<td>1.只能给词条创建索引，而不是字段<br>2.无法根据字段做排序</td>
+</tr>
+</tbody></table>
+<h1 id="3-基础概念"><a href="#3-基础概念" class="headerlink" title="3.基础概念"></a>3.基础概念</h1><h1 id="4-IK分词器-ikun"><a href="#4-IK分词器-ikun" class="headerlink" title="4.IK分词器(ikun)"></a>4.IK分词器(ikun)</h1><p>Elasticsearch的关键就是倒排索引，而倒排索引依赖于对文档内容的分词情况(分词好那就效率高)，而分词则需要高效、精准的分词算法，IK分词器就是这样一个中文分词算法</p>
+<h2 id="4-1-安装IK分词器"><a href="#4-1-安装IK分词器" class="headerlink" title="4.1 安装IK分词器"></a>4.1 安装IK分词器</h2><p>方案一：在线安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it es .&#x2F;bin&#x2F;elasticsearch-plugin  install https:&#x2F;&#x2F;github.com&#x2F;medcl&#x2F;elasticsearch-analysis-ik&#x2F;releases&#x2F;download&#x2F;v7.12.1&#x2F;elasticsearch-analysis-ik-7.12.1.zip</span><br></pre></td></tr></table></figure>
 
+<p>方案二：离线安装</p>
+<p>首先，查看之前安装的elasticsearch容器的plugins数据卷目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume inspect es-plugins</span><br></pre></td></tr></table></figure>
 
-<h2 id="1-2-倒排索引"><a href="#1-2-倒排索引" class="headerlink" title="1.2 倒排索引"></a>1.2 倒排索引</h2><h2 id="1-3-基础概念"><a href="#1-3-基础概念" class="headerlink" title="1.3 基础概念"></a>1.3 基础概念</h2><h2 id="1-4-IK分词器"><a href="#1-4-IK分词器" class="headerlink" title="1.4 IK分词器"></a>1.4 IK分词器</h2>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240507221107758.png" alt="image-20240507221107758"></p>
+<p>可以看到elasticsearch的插件挂载到了<code>/var/lib/docker/volumes/es-plugins/_data</code>这个目录。我们需要把IK分词器上传至这个目录</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072216972.png" alt="image-20240507221628934"></p>
+<h2 id="4-2-使用IK分词器"><a href="#4-2-使用IK分词器" class="headerlink" title="4.2 使用IK分词器"></a>4.2 使用IK分词器</h2><h3 id="4-2-1-官方标准分词器-standard"><a href="#4-2-1-官方标准分词器-standard" class="headerlink" title="4.2.1 官方标准分词器(standard)"></a>4.2.1 官方标准分词器(standard)</h3><p>我们在Kibana的DevTools上来测试分词器，首先测试Elasticsearch官方提供的标准分词器：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072218254.png" alt="image-20240507221852165" style="zoom: 67%;">
+
+<p>我们可以看到，标准分词器只能1个字作为一个1个词条，无法正取对中文做分词</p>
+<h3 id="4-2-2-IK分词器-ik-smart智能语义切分"><a href="#4-2-2-IK分词器-ik-smart智能语义切分" class="headerlink" title="4.2.2 IK分词器(ik_smart智能语义切分)"></a>4.2.2 IK分词器(ik_smart智能语义切分)</h3><p>这种情况下，可以智能的将词语切分。但是像程序员这种词可以拆分为程序员，程序，员</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072222404.png" alt="image-20240507222246345"></p>
+<h3 id="4-2-3-IK分词器-ik-max-word最细粒度切分"><a href="#4-2-3-IK分词器-ik-max-word最细粒度切分" class="headerlink" title="4.2.3 IK分词器(ik_max_word最细粒度切分)"></a>4.2.3 IK分词器(ik_max_word最细粒度切分)</h3><p>这种情况下，可以在4.2.2的前提下继续细分【程序员这种词可以拆分为程序员，程序，员】</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072225864.png" alt="image-20240507222545813"></p>
+<h2 id="4-3-扩展词典"><a href="#4-3-扩展词典" class="headerlink" title="4.3 扩展词典"></a>4.3 扩展词典</h2><p>随着互联网的发展，“造词运动”也越发的频繁。出现了很多新的词语，在原有的词汇列表中并不存在。比如：“泰裤辣”，“传智播客” 等</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072226525.png" alt="image-20240507222659451" style="zoom:80%;">
+
+<p>所以想要正确分词，<strong>IK分词器的词库也需要不断地更新</strong>，IK分词器提供了扩展词汇的功能：</p>
+<p>我们可以在ik-config文件夹下的<code>IkAnalyzer.cfg.xml</code>文件添加拓展词典和停用词典，这样我们再调用的时候，宋亚翔和传智播客就可以被认为是一个词语作为词条</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072244524.png" alt="image-20240507224408412"></p>
+
       
       
     </div>
