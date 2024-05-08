@@ -726,7 +726,30 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072305342.png" alt="image-20240507230531294"></p>
 <p>因此， 数据库中一行数据 &lt;==&gt; ES中一个JSON文档；</p>
 <p>而数据库中每行数据都包含很多列，这些列就转换为JSON文档中的<strong>字段（Field）</strong></p>
-<h2 id="3-2-索引和映射"><a href="#3-2-索引和映射" class="headerlink" title="3.2 索引和映射"></a>3.2 索引和映射</h2><h2 id="3-3-Mysql和Elasticsearch"><a href="#3-3-Mysql和Elasticsearch" class="headerlink" title="3.3 Mysql和Elasticsearch"></a>3.3 Mysql和Elasticsearch</h2><h1 id="4-IK分词器-ikun"><a href="#4-IK分词器-ikun" class="headerlink" title="4.IK分词器(ikun)"></a>4.IK分词器(ikun)</h1><p>Elasticsearch的关键就是倒排索引，而倒排索引依赖于对文档内容的分词情况(分词好那就效率高)，而分词则需要高效、精准的分词算法，IK分词器就是这样一个中文分词算法</p>
+<h2 id="3-2-索引-数据库的表-和映射-数据库表结构约束"><a href="#3-2-索引-数据库的表-和映射-数据库表结构约束" class="headerlink" title="3.2 索引(数据库的表)和映射(数据库表结构约束)"></a>3.2 索引(数据库的表)和映射(数据库表结构约束)</h2><p>随着业务发展，需要在es中存储的文档也会越来越多，比如有商品的文档，用户的文档，订单的文档等等；</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405082235832.png" alt="image-20240508223520776"></p>
+<p>所有文档都散乱存放显然非常混乱，也不方便管理。</p>
+<p>因此，我们要将==类型相同的文档==(一行数据)集中在一起管理，称为<strong>索引（Index）</strong></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405082238659.png" alt="image-20240508223847616"></p>
+<p>因此，==索引(类型相同的很多行文档) &lt;—-&gt;数据库中的表==</p>
+<p>数据库的表会有约束信息，用来定义表的结构、字段的名称、类型等信息。</p>
+<p>因此，索引库中就有==<strong>映射（mapping）</strong>，是索引中文档的字段约束信息，类似表的结构约束==</p>
+<h2 id="3-3-Mysql和Elasticsearch对比"><a href="#3-3-Mysql和Elasticsearch对比" class="headerlink" title="3.3 Mysql和Elasticsearch对比"></a>3.3 Mysql和Elasticsearch对比</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405082256502.png" alt="image-20240508225648423"></p>
+<blockquote>
+<p>注意：mysql的语法就是sql，而es的语法是dsl【提供json风格的请求语句，用来操作es进行crud】</p>
+</blockquote>
+<ul>
+<li>Mysql：擅长事务类型操作，可以确保数据的安全和一致性 </li>
+<li>Elasticsearch：擅长海量数据的搜索、分析、计算 </li>
+</ul>
+<p>因此在企业中，往往是两者结合使用：</p>
+<ul>
+<li>对安全性要求较高的写操作，使用mysql实现</li>
+<li>对查询性能要求较高的搜索需求，使用elasticsearch实现</li>
+<li>两者再基于某种方式，实现数据的同步，保证一致性</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405082312525.png" alt="image-20240508231244479"></p>
+<h1 id="4-IK分词器-ikun"><a href="#4-IK分词器-ikun" class="headerlink" title="4.IK分词器(ikun)"></a>4.IK分词器(ikun)</h1><p>Elasticsearch的关键就是倒排索引，而倒排索引依赖于对文档内容的分词情况(分词好那就效率高)，而分词则需要高效、精准的分词算法，IK分词器就是这样一个中文分词算法</p>
 <h2 id="4-1-安装IK分词器"><a href="#4-1-安装IK分词器" class="headerlink" title="4.1 安装IK分词器"></a>4.1 安装IK分词器</h2><p>方案一：在线安装</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it es .&#x2F;bin&#x2F;elasticsearch-plugin  install https:&#x2F;&#x2F;github.com&#x2F;medcl&#x2F;elasticsearch-analysis-ik&#x2F;releases&#x2F;download&#x2F;v7.12.1&#x2F;elasticsearch-analysis-ik-7.12.1.zip</span><br></pre></td></tr></table></figure>
 
@@ -751,7 +774,18 @@
 <p>所以想要正确分词，<strong>IK分词器的词库也需要不断地更新</strong>，IK分词器提供了扩展词汇的功能：</p>
 <p>我们可以在ik-config文件夹下的<code>IkAnalyzer.cfg.xml</code>文件添加拓展词典和停用词典，这样我们再调用的时候，宋亚翔和传智播客就可以被认为是一个词语作为词条</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072244524.png" alt="image-20240507224408412"></p>
-<h1 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h1>
+<h1 id="5-索引库操作-数据库表"><a href="#5-索引库操作-数据库表" class="headerlink" title="5.索引库操作(数据库表)"></a>5.索引库操作(数据库表)</h1><p>index类似数据库表，映射类似表的结构。我们要向es中存储数据，必须先创建索引和映射</p>
+<h2 id="5-1"><a href="#5-1" class="headerlink" title="5.1"></a>5.1</h2><h2 id="5-2-索引库的CRUD"><a href="#5-2-索引库的CRUD" class="headerlink" title="5.2 索引库的CRUD"></a>5.2 索引库的CRUD</h2><p>由于Elasticsearch采用的是Restful风格的API，因此其请求方式和路径相对都比较规范，而且请求参数也都采用JSON风格。</p>
+<p>我们直接基于Kibana的DevTools来编写请求做测试，由于有语法提示，会非常方便。</p>
+<h3 id="5-2-1-创建索引库和映射"><a href="#5-2-1-创建索引库和映射" class="headerlink" title="5.2.1 创建索引库和映射"></a>5.2.1 创建索引库和映射</h3><h3 id="5-2-2-查询索引库"><a href="#5-2-2-查询索引库" class="headerlink" title="5.2.2 查询索引库"></a>5.2.2 查询索引库</h3><h3 id="5-2-3-修改索引库"><a href="#5-2-3-修改索引库" class="headerlink" title="5.2.3 修改索引库"></a>5.2.3 修改索引库</h3><h3 id="5-2-4-删除索引库"><a href="#5-2-4-删除索引库" class="headerlink" title="5.2.4 删除索引库"></a>5.2.4 删除索引库</h3><h3 id="5-2-5-总结"><a href="#5-2-5-总结" class="headerlink" title="5.2.5 总结"></a>5.2.5 总结</h3><p>索引库操作：</p>
+<ul>
+<li>创建索引库：PUT /索引库名</li>
+<li>查询索引库：GET /索引库名</li>
+<li>删除索引库：DELETE /索引库名</li>
+<li>修改索引库，添加字段：PUT /索引库名/_mapping</li>
+</ul>
+<p>可以看到，对索引库的操作基本遵循的Restful的风格，因此API接口非常统一，方便记忆。</p>
+<h1 id="6-文档操作-一行数据"><a href="#6-文档操作-一行数据" class="headerlink" title="6.文档操作(一行数据)"></a>6.文档操作(一行数据)</h1>
       
       
     </div>
