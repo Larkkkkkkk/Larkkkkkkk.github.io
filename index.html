@@ -783,18 +783,130 @@
 <p>所以想要正确分词，<strong>IK分词器的词库也需要不断地更新</strong>，IK分词器提供了扩展词汇的功能：</p>
 <p>我们可以在ik-config文件夹下的<code>IkAnalyzer.cfg.xml</code>文件添加拓展词典和停用词典，这样我们再调用的时候，宋亚翔和传智播客就可以被认为是一个词语作为词条</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072244524.png" alt="image-20240507224408412"></p>
-<h1 id="5-索引库操作-数据库表"><a href="#5-索引库操作-数据库表" class="headerlink" title="5.索引库操作(数据库表)"></a>5.索引库操作(数据库表)</h1><p>index类似数据库表，映射类似表的结构。我们要向es中存储数据，必须先创建索引和映射</p>
-<h2 id="5-1"><a href="#5-1" class="headerlink" title="5.1"></a>5.1</h2><h2 id="5-2-索引库的CRUD"><a href="#5-2-索引库的CRUD" class="headerlink" title="5.2 索引库的CRUD"></a>5.2 索引库的CRUD</h2><p>由于Elasticsearch采用的是Restful风格的API，因此其请求方式和路径相对都比较规范，而且请求参数也都采用JSON风格。</p>
+<h1 id="5-索引库操作-数据库表"><a href="#5-索引库操作-数据库表" class="headerlink" title="5.索引库操作(数据库表)"></a>5.索引库操作(数据库表)</h1><p>index类似数据库表，映射类似表的结构。我们要向es中存储数据，必须先创建索引(数据库表)和映射(数据库定义)</p>
+<h2 id="5-1-Mapping映射属性"><a href="#5-1-Mapping映射属性" class="headerlink" title="5.1 Mapping映射属性"></a>5.1 Mapping映射属性</h2><p>Mapping是对索引库的文档设置约束，常见的mapping属性包括：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201506907.png" alt="image-20240520150601809"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;age&quot;: 21,</span><br><span class="line">    &quot;weight&quot;: 52.1,</span><br><span class="line">    &quot;isMarried&quot;: false,</span><br><span class="line">    &quot;info&quot;: &quot;黑马程序员Java讲师&quot;,</span><br><span class="line">    &quot;email&quot;: &quot;zy@itcast.cn&quot;,</span><br><span class="line">    &quot;score&quot;: [99.1, 99.5, 98.9],</span><br><span class="line">    &quot;name&quot;: &#123;</span><br><span class="line">        &quot;firstName&quot;: &quot;云&quot;,</span><br><span class="line">        &quot;lastName&quot;: &quot;赵&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对应的每个字段映射(Mapping)：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201510959.png" alt="image-20240520151047898"></p>
+<h2 id="5-2-索引库的CRUD"><a href="#5-2-索引库的CRUD" class="headerlink" title="5.2 索引库的CRUD"></a>5.2 索引库的CRUD</h2><p>由于Elasticsearch采用的是Restful风格的API，因此其请求方式和路径相对都比较规范，而且请求参数也都采用JSON风格。</p>
 <p>我们直接基于Kibana的DevTools来编写请求做测试，由于有语法提示，会非常方便。</p>
-<h3 id="5-2-1-创建索引库和映射"><a href="#5-2-1-创建索引库和映射" class="headerlink" title="5.2.1 创建索引库和映射"></a>5.2.1 创建索引库和映射</h3><h3 id="5-2-2-查询索引库"><a href="#5-2-2-查询索引库" class="headerlink" title="5.2.2 查询索引库"></a>5.2.2 查询索引库</h3><h3 id="5-2-3-修改索引库"><a href="#5-2-3-修改索引库" class="headerlink" title="5.2.3 修改索引库"></a>5.2.3 修改索引库</h3><h3 id="5-2-4-删除索引库"><a href="#5-2-4-删除索引库" class="headerlink" title="5.2.4 删除索引库"></a>5.2.4 删除索引库</h3><h3 id="5-2-5-总结"><a href="#5-2-5-总结" class="headerlink" title="5.2.5 总结"></a>5.2.5 总结</h3><p>索引库操作：</p>
+<h3 id="5-2-1-创建索引库和映射"><a href="#5-2-1-创建索引库和映射" class="headerlink" title="5.2.1 创建索引库和映射"></a>5.2.1 创建索引库和映射</h3><p><strong>基本语法</strong>：</p>
+<ul>
+<li>请求方式：<code>PUT</code></li>
+<li>请求路径：<code>/索引库名</code>，可以自定义</li>
+<li>请求参数：<code>mapping</code>映射</li>
+</ul>
+<p>格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">PUT &#x2F;索引库名称</span><br><span class="line">&#123;</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;properties&quot;: &#123;</span><br><span class="line">      &quot;字段名&quot;:&#123;</span><br><span class="line">        &quot;type&quot;: &quot;text&quot;,</span><br><span class="line">        &quot;analyzer&quot;: &quot;ik_smart&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;字段名2&quot;:&#123;</span><br><span class="line">        &quot;type&quot;: &quot;keyword&quot;,</span><br><span class="line">        &quot;index&quot;: &quot;false&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;字段名3&quot;:&#123;</span><br><span class="line">        &quot;properties&quot;: &#123;</span><br><span class="line">          &quot;子字段&quot;: &#123;</span><br><span class="line">            &quot;type&quot;: &quot;keyword&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#x2F;&#x2F; ...略</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201510959.png" alt="image-20240520151047898"></p>
+<h3 id="5-2-2-查询索引库"><a href="#5-2-2-查询索引库" class="headerlink" title="5.2.2 查询索引库"></a>5.2.2 查询索引库</h3><p><strong>基本语法</strong>：</p>
+<ul>
+<li>请求方式：GET </li>
+<li>请求路径：/索引库名 </li>
+<li>请求参数：无 </li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201513186.png" alt="image-20240520151340133"></p>
+<h3 id="5-2-3-修改索引库"><a href="#5-2-3-修改索引库" class="headerlink" title="5.2.3 修改索引库"></a>5.2.3 修改索引库</h3><p>倒排索引结构虽然不复杂，但是一旦数据结构改变（比如改变了分词器），就需要重新创建倒排索引，这简直是灾难。因此索引库<strong>一旦创建，无法修改mapping</strong></p>
+<p>虽然==无法修改mapping中已有字段，却允许添加新的字段到mapping==，因为不会对倒排索引产生影响。因此修改索引库能做的就是向索引库中添加新字段，或者更新索引库的基础属性。</p>
+<p><strong>基本语法</strong>：</p>
+<ul>
+<li>请求方式：PUT</li>
+<li>请求路径：/索引库名 </li>
+<li>请求参数：/_mapping</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201516998.png" alt="image-20240520151647929"></p>
+<h3 id="5-2-4-删除索引库"><a href="#5-2-4-删除索引库" class="headerlink" title="5.2.4 删除索引库"></a>5.2.4 删除索引库</h3><p><strong>基本语法：</strong></p>
+<ul>
+<li>请求方式：DELETE </li>
+<li>请求路径：/索引库名 </li>
+<li>请求参数：无 </li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201514822.png" alt="image-20240520151416751"></p>
+<h3 id="5-2-5-总结"><a href="#5-2-5-总结" class="headerlink" title="5.2.5 总结"></a>5.2.5 总结</h3><p>索引库操作：</p>
 <ul>
 <li>创建索引库：PUT /索引库名</li>
 <li>查询索引库：GET /索引库名</li>
 <li>删除索引库：DELETE /索引库名</li>
-<li>修改索引库，添加字段：PUT /索引库名/_mapping</li>
+<li>修改索引库【添加字段】：PUT /索引库名/_mapping</li>
 </ul>
 <p>可以看到，对索引库的操作基本遵循的Restful的风格，因此API接口非常统一，方便记忆。</p>
-<h1 id="6-文档操作-一行数据"><a href="#6-文档操作-一行数据" class="headerlink" title="6.文档操作(一行数据)"></a>6.文档操作(一行数据)</h1>
+<h1 id="6-文档操作-一行数据"><a href="#6-文档操作-一行数据" class="headerlink" title="6.文档操作(一行数据)"></a>6.文档操作(一行数据)</h1><p>有了索引库，接下来就可以向索引库中添加数据。而ElasticSearch数据就是JSON风格的文档。</p>
+<h2 id="6-1-新增文档"><a href="#6-1-新增文档" class="headerlink" title="6.1 新增文档"></a>6.1 新增文档</h2><p><strong>语法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;索引库名&#x2F;_doc&#x2F;文档id</span><br><span class="line">&#123;</span><br><span class="line">    &quot;字段1&quot;: &quot;值1&quot;,</span><br><span class="line">    &quot;字段2&quot;: &quot;值2&quot;,</span><br><span class="line">    &quot;字段3&quot;: &#123;</span><br><span class="line">        &quot;子属性1&quot;: &quot;值3&quot;,</span><br><span class="line">        &quot;子属性2&quot;: &quot;值4&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例如，目前要新增id=1的文档：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201536525.png" alt="image-20240520153641479"></p>
+<h2 id="6-2-查询文档"><a href="#6-2-查询文档" class="headerlink" title="6.2 查询文档"></a>6.2 查询文档</h2><p><strong>语法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F;&#123;索引库名称&#125;&#x2F;_doc&#x2F;&#123;id&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例如，查询id=1的文档：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201538769.png" alt="image-20240520153813733"></p>
+<h2 id="6-3-删除文档"><a href="#6-3-删除文档" class="headerlink" title="6.3 删除文档"></a>6.3 删除文档</h2><p><strong>语法：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE /&#123;索引库名&#125;/_doc/id值</span><br></pre></td></tr></table></figure>
+
+<p>例如，删除id=1的文档：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201539097.png" alt="image-20240520153911052"></p>
+<h2 id="6-4-修改文档"><a href="#6-4-修改文档" class="headerlink" title="6.4 修改文档"></a>6.4 修改文档</h2><p>修改有两种方式：</p>
+<ul>
+<li>全量修改：直接覆盖原来的文档【会删除旧文档，添加新文档(如果没有就直接删除)】</li>
+<li>局部修改：修改文档中的部分字段</li>
+</ul>
+<h3 id="6-4-1-全量修改"><a href="#6-4-1-全量修改" class="headerlink" title="6.4.1 全量修改"></a>6.4.1 全量修改</h3><p>全量修改是覆盖原来的文档，其本质是两步操作：</p>
+<ul>
+<li>根据指定的id删除文档</li>
+<li>新增一个相同id的文档</li>
+</ul>
+<p><strong>注意</strong>：如果根据id删除时，id不存在，第二步的新增也会执行，也就从修改变成了新增操作了。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PUT /&#123;索引库名&#125;/_doc/文档id</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"字段1"</span>: <span class="string">"值1"</span>,</span><br><span class="line">    <span class="attr">"字段2"</span>: <span class="string">"值2"</span>,</span><br><span class="line">    <span class="comment">// ... 略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201542046.png" alt="image-20240520154216989"></p>
+<h3 id="6-4-2-局部修改"><a href="#6-4-2-局部修改" class="headerlink" title="6.4.2 局部修改"></a>6.4.2 局部修改</h3><p>局部修改是只修改指定id匹配的文档中的部分字段。【<strong>注意：局部修改是POST</strong>】</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST /&#123;索引库名&#125;/_update/文档id</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"doc"</span>: &#123;</span><br><span class="line">         <span class="attr">"字段名"</span>: <span class="string">"新的值"</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201542149.png" alt="image-20240520154237114"></p>
+<h2 id="6-5-批处理"><a href="#6-5-批处理" class="headerlink" title="6.5 批处理"></a>6.5 批处理</h2><p>类似于Mysql数据库，可以进行多条数据一次性操作【感觉很麻烦，主要是可读性很差】</p>
+<p>批处理采用==POST请求==，基本语法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">POST _bulk</span><br><span class="line"># 1.修改 --如果文档id存在就覆盖，不存在就创建</span><br><span class="line"># index代表新增操作  _index表示索引库名 _id表示要操作的文档id  </span><br><span class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test"</span>, <span class="string">"_id"</span> : <span class="string">"1"</span> &#125; &#125;</span><br><span class="line"># 代表新增的文档内容</span><br><span class="line">&#123; <span class="string">"field1"</span> : <span class="string">"value1"</span> &#125;</span><br><span class="line"></span><br><span class="line"># 2.删除</span><br><span class="line">&#123; <span class="string">"delete"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test"</span>, <span class="string">"_id"</span> : <span class="string">"2"</span> &#125; &#125;</span><br><span class="line"></span><br><span class="line"># 3.新增 --如果文档id存在就报错</span><br><span class="line">&#123; <span class="string">"create"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"test"</span>, <span class="string">"_id"</span> : <span class="string">"3"</span> &#125; &#125;</span><br><span class="line">&#123; <span class="string">"field1"</span> : <span class="string">"value3"</span> &#125;</span><br><span class="line"></span><br><span class="line"># 4.更新</span><br><span class="line">&#123; <span class="string">"update"</span> : &#123;<span class="string">"_id"</span> : <span class="string">"1"</span>, <span class="string">"_index"</span> : <span class="string">"test"</span>&#125; &#125;</span><br><span class="line">&#123; <span class="string">"doc"</span> : &#123;<span class="string">"field2"</span> : <span class="string">"value2"</span>&#125; &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-6-总结"><a href="#6-6-总结" class="headerlink" title="6.6 总结"></a>6.6 总结</h2><p>相对于索引库创建，大致就是中间多了一个_doc路径，修改文档类似于修改索引库比较特殊。</p>
+<ul>
+<li>创建文档：<code>POST /{索引库名}/_doc/文档id   { json文档 }</code></li>
+<li>查询文档：<code>GET /{索引库名}/_doc/文档id</code></li>
+<li>删除文档：<code>DELETE /{索引库名}/_doc/文档id</code></li>
+<li>修改文档： <ul>
+<li>全量修改：<code>PUT /{索引库名}/_doc/文档id { json文档 }</code></li>
+<li>局部修改：<code>POST /{索引库名}/_update/文档id { &quot;doc&quot;: {字段}}</code></li>
+</ul>
+</li>
+</ul>
+<p>==索引库操作和文档操作对比：==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201553988.png" alt="image-20240520155321926"></p>
+<p>5和6步骤主要是在网页端进行设置，因此提出了一个Java的客户端—==JavaRestClient==</p>
+<h1 id="7-JavaRestClient"><a href="#7-JavaRestClient" class="headerlink" title="7.JavaRestClient"></a>7.JavaRestClient</h1><p>提供了各种不同语言的客户端，用来操作ES。这些客户端的本质就是==组装DSL语句==，通过http请求发送给ES。</p>
+<p>由于ES目前最新版本是8.8，提供了全新版本的客户端，老版本的客户端已经被标记为过时。而我们采用的是7.12版本，因此只能使用老版本客户端：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201555388.png" alt="image-20240520155549341"></p>
+<p>然后选择7.12版本，HighLevelRestClient版本：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201556867.png" alt="image-20240520155613826"></p>
+<h2 id="7-1-初始化RestClient"><a href="#7-1-初始化RestClient" class="headerlink" title="7.1 初始化RestClient"></a>7.1 初始化RestClient</h2><p>在Elasticsearch提供的API中，与Elasticsearch一切交互都封装在一个名为<code>RestHighLevelClient</code>的类中，必须先完成这个对象的初始化，建立与elasticsearch的连接。</p>
+<h3 id="7-1-1-引入RestHighLevelClient依赖"><a href="#7-1-1-引入RestHighLevelClient依赖" class="headerlink" title="7.1.1 引入RestHighLevelClient依赖"></a>7.1.1 引入RestHighLevelClient依赖</h3><p>在<code>item-service</code>模块中引入<code>es</code>的<code>RestHighLevelClient</code>依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch.client<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch-rest-high-level-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-1-2-覆盖ES版本"><a href="#7-1-2-覆盖ES版本" class="headerlink" title="7.1.2 覆盖ES版本"></a>7.1.2 覆盖ES版本</h3><p>因为SpringBoot默认的ES版本是<code>7.17.10</code>，所以我们需要覆盖默认的ES版本：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>11<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>11<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--覆盖成7.12.1--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">elasticsearch.version</span>&gt;</span>7.12.1<span class="tag">&lt;/<span class="name">elasticsearch.version</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-1-3-初始化RestHighLevelClient"><a href="#7-1-3-初始化RestHighLevelClient" class="headerlink" title="7.1.3 初始化RestHighLevelClient"></a>7.1.3 初始化RestHighLevelClient</h3><p>初始化的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RestHighLevelClient client = <span class="keyword">new</span> RestHighLevelClient(</span><br><span class="line">    <span class="comment">//使用RestClient的builder方法创建</span></span><br><span class="line">    RestClient.builder(</span><br><span class="line">        HttpHost.create(<span class="string">"http://192.168.xxx.xxx:9200"</span>)</span><br><span class="line">	)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-2-商品Mapping映射"><a href="#7-2-商品Mapping映射" class="headerlink" title="7.2 商品Mapping映射"></a>7.2 商品Mapping映射</h2><h2 id="7-3-索引库操作"><a href="#7-3-索引库操作" class="headerlink" title="7.3 索引库操作"></a>7.3 索引库操作</h2><h2 id="7-4-文档操作"><a href="#7-4-文档操作" class="headerlink" title="7.4 文档操作"></a>7.4 文档操作</h2><h2 id="7-5-批处理"><a href="#7-5-批处理" class="headerlink" title="7.5 批处理"></a>7.5 批处理</h2>
       
       
     </div>
