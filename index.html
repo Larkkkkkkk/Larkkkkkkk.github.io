@@ -783,7 +783,7 @@
 <p>所以想要正确分词，<strong>IK分词器的词库也需要不断地更新</strong>，IK分词器提供了扩展词汇的功能：</p>
 <p>我们可以在ik-config文件夹下的<code>IkAnalyzer.cfg.xml</code>文件添加拓展词典和停用词典，这样我们再调用的时候，宋亚翔和传智播客就可以被认为是一个词语作为词条</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072244524.png" alt="image-20240507224408412"></p>
-<h1 id="5-索引库操作-数据库表"><a href="#5-索引库操作-数据库表" class="headerlink" title="5.索引库操作(数据库表)"></a>5.索引库操作(数据库表)</h1><p>index类似数据库表，映射类似表的结构。我们要向es中存储数据，必须先创建索引(数据库表)和映射(数据库定义)</p>
+<h1 id="通过Elasticsearch手动创建–很繁琐"><a href="#通过Elasticsearch手动创建–很繁琐" class="headerlink" title="==通过Elasticsearch手动创建–很繁琐=="></a>==通过Elasticsearch手动创建–很繁琐==</h1><h1 id="5-索引库操作-数据库表"><a href="#5-索引库操作-数据库表" class="headerlink" title="5.索引库操作(数据库表)"></a>5.索引库操作(数据库表)</h1><p>index类似数据库表，映射类似表的结构。我们要向es中存储数据，必须先创建索引(数据库表)和映射(数据库定义)</p>
 <h2 id="5-1-Mapping映射属性"><a href="#5-1-Mapping映射属性" class="headerlink" title="5.1 Mapping映射属性"></a>5.1 Mapping映射属性</h2><p>Mapping是对索引库的文档设置约束，常见的mapping属性包括：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201506907.png" alt="image-20240520150601809"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;age&quot;: 21,</span><br><span class="line">    &quot;weight&quot;: 52.1,</span><br><span class="line">    &quot;isMarried&quot;: false,</span><br><span class="line">    &quot;info&quot;: &quot;黑马程序员Java讲师&quot;,</span><br><span class="line">    &quot;email&quot;: &quot;zy@itcast.cn&quot;,</span><br><span class="line">    &quot;score&quot;: [99.1, 99.5, 98.9],</span><br><span class="line">    &quot;name&quot;: &#123;</span><br><span class="line">        &quot;firstName&quot;: &quot;云&quot;,</span><br><span class="line">        &quot;lastName&quot;: &quot;赵&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -825,12 +825,12 @@
 <li>请求参数：无 </li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201514822.png" alt="image-20240520151416751"></p>
-<h3 id="5-2-5-总结"><a href="#5-2-5-总结" class="headerlink" title="5.2.5 总结"></a>5.2.5 总结</h3><p>索引库操作：</p>
+<h3 id="5-2-5-索引库操作总结"><a href="#5-2-5-索引库操作总结" class="headerlink" title="==5.2.5 索引库操作总结=="></a>==5.2.5 索引库操作总结==</h3><p>索引库操作：</p>
 <ul>
-<li>创建索引库：PUT /索引库名</li>
+<li>创建索引库：PUT /索引库名{“mappings”:{“properties”:{部分新字段信息}}}}</li>
 <li>查询索引库：GET /索引库名</li>
 <li>删除索引库：DELETE /索引库名</li>
-<li>修改索引库【添加字段】：PUT /索引库名/_mapping</li>
+<li>修改索引库【添加字段】：PUT /索引库名/_mapping{“properties”:{部分新字段信息}}</li>
 </ul>
 <p>可以看到，对索引库的操作基本遵循的Restful的风格，因此API接口非常统一，方便记忆。</p>
 <h1 id="6-文档操作-一行数据"><a href="#6-文档操作-一行数据" class="headerlink" title="6.文档操作(一行数据)"></a>6.文档操作(一行数据)</h1><p>有了索引库，接下来就可以向索引库中添加数据。而ElasticSearch数据就是JSON风格的文档。</p>
@@ -875,7 +875,7 @@
 
 
 
-<h2 id="6-6-总结"><a href="#6-6-总结" class="headerlink" title="6.6 总结"></a>6.6 总结</h2><p>相对于索引库创建，大致就是中间多了一个_doc路径，修改文档类似于修改索引库比较特殊。</p>
+<h2 id="6-6-文档操作总结"><a href="#6-6-文档操作总结" class="headerlink" title="==6.6 文档操作总结=="></a>==6.6 文档操作总结==</h2><p>相对于索引库创建，大致就是中间多了一个_doc路径，修改文档类似于修改索引库比较特殊。</p>
 <ul>
 <li>创建文档：<code>POST /{索引库名}/_doc/文档id   { json文档 }</code></li>
 <li>查询文档：<code>GET /{索引库名}/_doc/文档id</code></li>
@@ -887,14 +887,14 @@
 </li>
 </ul>
 <p>==索引库操作和文档操作对比：==</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201553988.png" alt="image-20240520155321926"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405211500548.png" alt="image-20240521150017482"></p>
 <p>5和6步骤主要是在网页端进行设置，因此提出了一个Java的客户端—==JavaRestClient==</p>
-<h1 id="7-JavaRestClient"><a href="#7-JavaRestClient" class="headerlink" title="7.JavaRestClient"></a>7.JavaRestClient</h1><p>提供了各种不同语言的客户端，用来操作ES。这些客户端的本质就是==组装DSL语句==，通过http请求发送给ES。</p>
+<h1 id="通过Java实现—不用繁琐的手动创建"><a href="#通过Java实现—不用繁琐的手动创建" class="headerlink" title="==通过Java实现—不用繁琐的手动创建=="></a>==通过Java实现—不用繁琐的手动创建==</h1><h1 id="7-JavaRestClient"><a href="#7-JavaRestClient" class="headerlink" title="7.JavaRestClient"></a>7.JavaRestClient</h1><p>提供了各种不同语言的客户端，用来操作ES。这些客户端的本质就是==组装DSL语句==，通过http请求发送给ES。</p>
 <p>由于ES目前最新版本是8.8，提供了全新版本的客户端，老版本的客户端已经被标记为过时。而我们采用的是7.12版本，因此只能使用老版本客户端：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201555388.png" alt="image-20240520155549341"></p>
 <p>然后选择7.12版本，HighLevelRestClient版本：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201556867.png" alt="image-20240520155613826"></p>
-<h2 id="7-1-初始化RestClient"><a href="#7-1-初始化RestClient" class="headerlink" title="7.1 初始化RestClient"></a>7.1 初始化RestClient</h2><p>在Elasticsearch提供的API中，与Elasticsearch一切交互都封装在一个名为<code>RestHighLevelClient</code>的类中，必须先完成这个对象的初始化，建立与elasticsearch的连接。</p>
+<h2 id="7-1-初始化RestClient"><a href="#7-1-初始化RestClient" class="headerlink" title="==7.1 初始化RestClient=="></a>==7.1 初始化RestClient==</h2><p>在Elasticsearch提供的API中，与Elasticsearch一切交互都封装在一个名为<code>RestHighLevelClient</code>的类中，必须先完成这个对象的初始化，建立与elasticsearch的连接。</p>
 <h3 id="7-1-1-引入RestHighLevelClient依赖"><a href="#7-1-1-引入RestHighLevelClient依赖" class="headerlink" title="7.1.1 引入RestHighLevelClient依赖"></a>7.1.1 引入RestHighLevelClient依赖</h3><p>在<code>item-service</code>模块中引入<code>es</code>的<code>RestHighLevelClient</code>依赖：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch.client<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch-rest-high-level-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -906,7 +906,7 @@
 
 
 
-<h2 id="7-2-商品Mapping映射"><a href="#7-2-商品Mapping映射" class="headerlink" title="7.2 商品Mapping映射"></a>7.2 商品Mapping映射</h2><p>我们针对购物车数据库进行分析：</p>
+<h2 id="7-2-商品Mapping映射"><a href="#7-2-商品Mapping映射" class="headerlink" title="==7.2 商品Mapping映射=="></a>==7.2 商品Mapping映射==</h2><p>我们针对购物车数据库进行分析：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201728989.png" alt="image-20240520172813812"></p>
 <p>我们可以对购物车的所有字段进行分析，判断哪些字段必须添加到ElasticSearch中，判断哪些字段必须添加搜索功能。从而进行新建索引库和映射：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201717606.png" alt="image-20240520171754450"></p>
@@ -917,7 +917,83 @@
 
 <h2 id="7-3-索引库操作"><a href="#7-3-索引库操作" class="headerlink" title="7.3 索引库操作"></a>7.3 索引库操作</h2><p>创建索引库的JavaAPI和Restful接口API对比：</p>
 <h3 id="7-3-1-创建索引库"><a href="#7-3-1-创建索引库" class="headerlink" title="7.3.1 创建索引库"></a>7.3.1 创建索引库</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405201733352.png" alt="image-20240520173351287"></p>
-<h3 id="7-3-2-删除索引库"><a href="#7-3-2-删除索引库" class="headerlink" title="7.3.2 删除索引库"></a>7.3.2 删除索引库</h3><h2 id="7-4-文档操作"><a href="#7-4-文档操作" class="headerlink" title="7.4 文档操作"></a>7.4 文档操作</h2><h2 id="7-5-批处理"><a href="#7-5-批处理" class="headerlink" title="7.5 批处理"></a>7.5 批处理</h2>
+<p>具体代码如下:</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405211350671.png" alt="image-20240521135017531" style="zoom:80%;">
+
+<p>创建索引库：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405211351676.png" alt="image-20240521135105629" style="zoom:80%;">
+
+<h3 id="7-3-2-删除索引库"><a href="#7-3-2-删除索引库" class="headerlink" title="7.3.2 删除索引库"></a>7.3.2 删除索引库</h3><p>具体代码如下:</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405211351946.png" alt="image-20240521135115905" style="zoom:80%;">
+
+<h3 id="7-3-3-查询索引库"><a href="#7-3-3-查询索引库" class="headerlink" title="7.3.3 查询索引库"></a>7.3.3 查询索引库</h3><p>具体代码如下:</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405211351275.png" style="zoom:80%;">
+
+<h3 id="7-3-4-索引库操作总结"><a href="#7-3-4-索引库操作总结" class="headerlink" title="==7.3.4 索引库操作总结=="></a>==7.3.4 索引库操作总结==</h3><p>JavaRestClient操作elasticsearch的流程基本类似。核心是<code>client.indices()</code>方法来获取索引库的操作对象。</p>
+<p>索引库操作的基本步骤：</p>
+<ul>
+<li><p>1.初始化RestHighLevelClient类对象client【创建客户端】</p>
+</li>
+<li><p>2.创建XxxIndexRequest对象request【XXX是<code>Create</code>、<code>Get</code>、<code>Delete</code>】</p>
+</li>
+<li><p>3.准备请求参数request.source()方法【<code>Create</code>时需要参数，其他情况不需要】</p>
+</li>
+<li><p>4.发送请求client.indices().xxx()方法【xxx是<code>create</code>、<code>exists</code>、<code>delete</code>】</p>
+</li>
+</ul>
+<h2 id="7-4-文档操作"><a href="#7-4-文档操作" class="headerlink" title="7.4 文档操作"></a>7.4 文档操作</h2><h3 id="7-4-1-新增文档"><a href="#7-4-1-新增文档" class="headerlink" title="7.4.1 新增文档"></a>7.4.1 新增文档</h3><ul>
+<li>1.创建Request对象，这里是<code>IndexRequest</code>，因为添加文档就是创建倒排索引的过程</li>
+<li>2.准备请求参数，本例中就是Json文档</li>
+<li>3.发送请求【client.index()方法就好了】</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405211427513.png" alt="image-20240521142712455"></p>
+<h3 id="7-4-2-查询文档"><a href="#7-4-2-查询文档" class="headerlink" title="7.4.2 查询文档"></a>7.4.2 查询文档</h3><p>与之前的流程类似，代码大概分2步：</p>
+<ul>
+<li>创建Request对象</li>
+<li>准备请求参数，这里是无参，【直接省略】</li>
+<li>发送请求</li>
+<li>解析结果【因为结果在_source部分内】</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405211428059.png" alt="image-20240521142844007"></p>
+<p>可以看到，响应结果是一个JSON，其中文档放在一个<code>_source</code>属性中，因此解析就是拿到<code>_source</code>，反序列化为Java对象即可</p>
+<h3 id="7-4-3-删除文档"><a href="#7-4-3-删除文档" class="headerlink" title="7.4.3 删除文档"></a>7.4.3 删除文档</h3><p>与查询相比，仅仅是请求方式从<code>DELETE</code>变成<code>GET</code>，可以想象Java代码应该依然是2步走：</p>
+<ul>
+<li>1）准备Request对象，因为是删除，这次是<code>DeleteRequest</code>对象。要指定索引库名和id</li>
+<li>2）准备参数，无参，直接省略</li>
+<li>3）发送请求。因为是删除，所以是<code>client.delete()</code>方法</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405211430055.png" alt="image-20240521143043972"></p>
+<h3 id="7-4-4-修改文档"><a href="#7-4-4-修改文档" class="headerlink" title="7.4.4 修改文档"></a>7.4.4 修改文档</h3><p>修改我们讲过两种方式：</p>
+<ul>
+<li>全量修改：本质是先根据id删除，再新增【与7.4.1一致】</li>
+<li>局部修改：修改文档中的指定字段值</li>
+</ul>
+<p>在RestClient的API中，全量修改与新增的API完全一致，判断依据是ID：</p>
+<ul>
+<li>如果新增时，ID已经存在，则修改</li>
+<li>如果新增时，ID不存在，则新增</li>
+</ul>
+<p>这里不再赘述，我们主要关注局部修改的API即可</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405211431593.png" alt="image-20240521143147541"></p>
+<p>与之前类似，也是三步走：</p>
+<ul>
+<li>1）准备<code>Request</code>对象。【这次是修改，所以是<code>UpdateRequest</code>】</li>
+<li>2）准备参数。【也就是JSON文档，里面包含要修改的字段】</li>
+<li>3）更新文档。【这里调用<code>client.update()</code>方法】</li>
+</ul>
+<h3 id="7-4-5-批量导入文档"><a href="#7-4-5-批量导入文档" class="headerlink" title="7.4.5 批量导入文档"></a>7.4.5 批量导入文档</h3><p>7.4.1-7.4.4的单条处理通过<strong>BulkRequest</strong>解决。因此<code>BulkRequest</code>中提供了<code>add</code>方法，用以添加其它CRUD的请求：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405211441488.png" alt="image-20240521144140401"></p>
+<p>具体代码：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405211439619.png" alt="image-20240521143955532"></p>
+<h3 id="7-4-6-文档操作总结"><a href="#7-4-6-文档操作总结" class="headerlink" title="==7.4.6 文档操作总结=="></a>==7.4.6 文档操作总结==</h3><p>文档操作的基本步骤：</p>
+<ul>
+<li>1.初始化RestHighLevelClient类对象client【创建客户端】</li>
+<li>2.创建XxxRequest对象request【Xxx是<code>Index</code>、<code>Update</code>、<code>Delete</code>、<code>Bulk</code>】</li>
+<li>3.准备请求参数request.source()方法（<code>Index</code>、<code>Update</code>、<code>Bulk</code>时需要）</li>
+<li>4.发送请求client.Xxx()方法【Xxx是<code>index</code>、<code>get</code>、<code>update</code>、<code>delete</code>、<code>bulk</code>】</li>
+<li>5.解析结果（<code>Get</code>查询时需要，数据在_source内部）</li>
+</ul>
+<h1 id="进阶查询-DSL查询"><a href="#进阶查询-DSL查询" class="headerlink" title="==进阶查询(DSL查询)=="></a>==进阶查询(DSL查询)==</h1><h1 id="1-快速入门"><a href="#1-快速入门" class="headerlink" title="1.快速入门"></a>1.快速入门</h1><h1 id="2-叶子查询"><a href="#2-叶子查询" class="headerlink" title="2.叶子查询"></a>2.叶子查询</h1><h1 id="3-复合查询"><a href="#3-复合查询" class="headerlink" title="3.复合查询"></a>3.复合查询</h1><h1 id="4-排序和分页"><a href="#4-排序和分页" class="headerlink" title="4.排序和分页"></a>4.排序和分页</h1><h1 id="5-高亮显示"><a href="#5-高亮显示" class="headerlink" title="5.高亮显示"></a>5.高亮显示</h1>
       
       
     </div>
