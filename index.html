@@ -1164,8 +1164,27 @@
 </ul>
 <h1 id="6-聚合"><a href="#6-聚合" class="headerlink" title="6.聚合"></a>6.聚合</h1><h1 id="DSL手写规则总结"><a href="#DSL手写规则总结" class="headerlink" title="==DSL手写规则总结=="></a>==DSL手写规则总结==</h1><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221649088.png" alt="image-20240522164945976" style="zoom:150%;">
 
-<h1 id="方式二：通过Java实现—RestClient查询"><a href="#方式二：通过Java实现—RestClient查询" class="headerlink" title="==方式二：通过Java实现—RestClient查询=="></a>==方式二：通过Java实现—RestClient查询==</h1><h1 id="0-总体对照分析"><a href="#0-总体对照分析" class="headerlink" title="0.总体对照分析"></a>0.总体对照分析</h1><h2 id="查询数据："><a href="#查询数据：" class="headerlink" title="==查询数据：=="></a>==查询数据：==</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221720814.png" alt="image-20240522172046658"></p>
-<h2 id="解析数据："><a href="#解析数据：" class="headerlink" title="==解析数据：=="></a>==解析数据：==</h2><h2 id="整体步骤："><a href="#整体步骤：" class="headerlink" title="==整体步骤：=="></a>==整体步骤：==</h2><h1 id="1-查询"><a href="#1-查询" class="headerlink" title="1.查询"></a>1.查询</h1><h1 id="2-分页和排序"><a href="#2-分页和排序" class="headerlink" title="2.分页和排序"></a>2.分页和排序</h1><h1 id="3-高亮"><a href="#3-高亮" class="headerlink" title="3.高亮"></a>3.高亮</h1><h1 id="4-聚合"><a href="#4-聚合" class="headerlink" title="4.聚合"></a>4.聚合</h1>
+<h1 id="方式二：通过Java实现—RestClient查询"><a href="#方式二：通过Java实现—RestClient查询" class="headerlink" title="==方式二：通过Java实现—RestClient查询=="></a>==方式二：通过Java实现—RestClient查询==</h1><h1 id="总体对照分析"><a href="#总体对照分析" class="headerlink" title="总体对照分析"></a>总体对照分析</h1><h2 id="查询数据："><a href="#查询数据：" class="headerlink" title="==查询数据：=="></a>==查询数据：==</h2><p>我们可以分三步拼凑DSL语句和发起请求获取相应结果：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221720814.png" alt="image-20240522172046658"></p>
+<p>其中source()方法下面对应的查询/高亮/分页/排序/聚合：<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221728464.png" alt="image-20240522172832347"></p>
+<p>在查询方面我们直接可以通过QueryBuilders类调用对应的叶子查询/复杂查询</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221729417.png" alt="image-20240522172921305"></p>
+<h2 id="解析数据："><a href="#解析数据：" class="headerlink" title="==解析数据：=="></a>==解析数据：==</h2><p>我们可以通过响应结果和Elasticsearch页面返回结果获取具体细节:</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221738726.png" alt="image-20240522173851593"></p>
+<p>黑马的图：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221739571.png" alt="image-20240522173920457"></p>
+<h2 id="整体步骤："><a href="#整体步骤：" class="headerlink" title="==整体步骤：=="></a>==整体步骤：==</h2><p>文档搜索的基本步骤是：</p>
+<ol>
+<li>创建<code>SearchRequest</code>对象</li>
+<li>准备<code>request.source()</code>，也就是DSL。<ol>
+<li><code>QueryBuilders</code>来构建查询条件</li>
+<li>传入<code>request.source()</code> 的<code>query()</code>方法</li>
+</ol>
+</li>
+<li>发送请求，得到结果</li>
+<li>解析结果（参考JSON结果，从外到内，逐层解析）</li>
+</ol>
+<h1 id="1-查询"><a href="#1-查询" class="headerlink" title="1.查询"></a>1.查询</h1><h1 id="2-分页和排序"><a href="#2-分页和排序" class="headerlink" title="2.分页和排序"></a>2.分页和排序</h1><h1 id="3-高亮"><a href="#3-高亮" class="headerlink" title="3.高亮"></a>3.高亮</h1><h1 id="4-聚合"><a href="#4-聚合" class="headerlink" title="4.聚合"></a>4.聚合</h1>
       
       
     </div>
