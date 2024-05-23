@@ -1162,29 +1162,90 @@
 <li>参与高亮的字段必须是<code>text</code>类型的字段</li>
 <li>默认情况下参与高亮的字段要与搜索字段一致，除非添加：<code>required_field_match=false</code></li>
 </ul>
-<h1 id="6-聚合"><a href="#6-聚合" class="headerlink" title="6.聚合"></a>6.聚合</h1><h1 id="DSL手写规则总结"><a href="#DSL手写规则总结" class="headerlink" title="==DSL手写规则总结=="></a>==DSL手写规则总结==</h1><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221649088.png" alt="image-20240522164945976" style="zoom:150%;">
+<h1 id="6-聚合"><a href="#6-聚合" class="headerlink" title="6.聚合"></a>6.聚合</h1><p>聚合（<code>aggregations</code>）可以让我们极其方便的实现对数据的统计、分析、运算。例如：</p>
+<ul>
+<li>什么品牌的手机最受欢迎？</li>
+<li>这些手机的平均价格、最高价格、最低价格？</li>
+<li>这些手机每月的销售情况如何？</li>
+</ul>
+<p>实现这些统计功能的比数据库的sql要方便的多，而且查询速度非常快，可以实现≈<strong>实时搜索</strong>效果。</p>
+<p><strong>聚合分类</strong>：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231432297.png" alt="image-20240523143246188"></p>
+<p>==【注意】：参与聚合的字段必须是Keyword、数值、日期、布尔的类型的字段(这些字段一般不分词)==</p>
+<p>举例：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231454009.png" alt></p>
+<p>具体位置解释：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231455468.png" alt="image-20240523145507262"></p>
+<h1 id="DSL手写规则总结"><a href="#DSL手写规则总结" class="headerlink" title="==DSL手写规则总结=="></a>==DSL手写规则总结==</h1><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221649088.png" alt="image-20240522164945976" style="zoom:150%;">
 
-<h1 id="方式二：通过Java实现—RestClient查询"><a href="#方式二：通过Java实现—RestClient查询" class="headerlink" title="==方式二：通过Java实现—RestClient查询=="></a>==方式二：通过Java实现—RestClient查询==</h1><h1 id="总体对照分析"><a href="#总体对照分析" class="headerlink" title="总体对照分析"></a>总体对照分析</h1><h2 id="查询数据："><a href="#查询数据：" class="headerlink" title="==查询数据：=="></a>==查询数据：==</h2><p>我们可以分三步拼凑DSL语句和发起请求获取相应结果：</p>
+<h1 id="方式二：通过Java实现—RestClient查询"><a href="#方式二：通过Java实现—RestClient查询" class="headerlink" title="==方式二：通过Java实现—RestClient查询=="></a>==方式二：通过Java实现—RestClient查询==</h1><h1 id="0-总体对照分析"><a href="#0-总体对照分析" class="headerlink" title="==0.总体对照分析=="></a>==0.总体对照分析==</h1><h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><p>我们可以分三步拼凑DSL语句和发起请求获取相应结果：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221720814.png" alt="image-20240522172046658"></p>
-<p>其中source()方法下面对应的查询/高亮/分页/排序/聚合：<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221728464.png" alt="image-20240522172832347"></p>
+<p>其中2.组织DSL参数的步骤中source()方法下面对应的查询/高亮/分页/排序/聚合：<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221728464.png" alt="image-20240522172832347"></p>
 <p>在查询方面我们直接可以通过QueryBuilders类调用对应的叶子查询/复杂查询</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221729417.png" alt="image-20240522172921305"></p>
-<h2 id="解析数据："><a href="#解析数据：" class="headerlink" title="==解析数据：=="></a>==解析数据：==</h2><p>我们可以通过响应结果和Elasticsearch页面返回结果获取具体细节:</p>
+<h2 id="解析数据"><a href="#解析数据" class="headerlink" title="解析数据"></a>解析数据</h2><p>我们可以通过响应结果和Elasticsearch页面返回结果获取具体细节: 【<strong>可以扩展很多，但其实就是对照DSL查询结果写</strong>】</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221738726.png" alt="image-20240522173851593"></p>
 <p>黑马的图：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405221739571.png" alt="image-20240522173920457"></p>
-<h2 id="整体步骤："><a href="#整体步骤：" class="headerlink" title="==整体步骤：=="></a>==整体步骤：==</h2><p>文档搜索的基本步骤是：</p>
+<h2 id="整体步骤"><a href="#整体步骤" class="headerlink" title="整体步骤"></a>整体步骤</h2><p>文档搜索的基本步骤是：</p>
 <ol>
-<li>创建<code>SearchRequest</code>对象</li>
-<li>准备<code>request.source()</code>，也就是DSL。<ol>
+<li>创建<code>SearchRequest</code>对象实例request</li>
+<li>准备<code>request.source()</code>，也就是DSL语句【这个位置可以创建查询，分页，排序，聚合，高亮等操作】<ol>
 <li><code>QueryBuilders</code>来构建查询条件</li>
 <li>传入<code>request.source()</code> 的<code>query()</code>方法</li>
 </ol>
 </li>
 <li>发送请求，得到结果</li>
-<li>解析结果（参考JSON结果，从外到内，逐层解析）</li>
+<li>解析结果（参考DSL查询得到的JSON结果，从外到内，逐层解析）</li>
 </ol>
-<h1 id="1-查询"><a href="#1-查询" class="headerlink" title="1.查询"></a>1.查询</h1><h1 id="2-分页和排序"><a href="#2-分页和排序" class="headerlink" title="2.分页和排序"></a>2.分页和排序</h1><h1 id="3-高亮"><a href="#3-高亮" class="headerlink" title="3.高亮"></a>3.高亮</h1><h1 id="4-聚合"><a href="#4-聚合" class="headerlink" title="4.聚合"></a>4.聚合</h1>
+<h1 id="1-查询"><a href="#1-查询" class="headerlink" title="1.查询"></a>1.查询</h1><p>上述手动创建DSL查询的时候讲过查询的分类：<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231356476.png" alt="image-20240523135626365"></p>
+<h2 id="1-1-叶子查询"><a href="#1-1-叶子查询" class="headerlink" title="1.1 叶子查询"></a>1.1 叶子查询</h2><h3 id="1-1-1-全文检索"><a href="#1-1-1-全文检索" class="headerlink" title="1.1.1 全文检索"></a>1.1.1 全文检索</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231357981.png" alt="image-20240523135752868"></p>
+<h3 id="1-1-2-精确查询"><a href="#1-1-2-精确查询" class="headerlink" title="1.1.2 精确查询"></a>1.1.2 精确查询</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231358697.png" alt="image-20240523135825592"></p>
+<h2 id="1-2-复合查询"><a href="#1-2-复合查询" class="headerlink" title="1.2 复合查询"></a>1.2 复合查询</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231359487.png" alt="image-20240523135928266"></p>
+<h2 id="1-3-举例"><a href="#1-3-举例" class="headerlink" title="1.3 举例"></a>1.3 举例</h2><p>举例：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231415435.png" alt="image-20240523141521261"></p>
+<p>具体代码如下:</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231415153.png" alt="image-20240523141510018"></p>
+<h1 id="2-分页和排序"><a href="#2-分页和排序" class="headerlink" title="2.分页和排序"></a>2.分页和排序</h1><h2 id="2-1-基础API"><a href="#2-1-基础API" class="headerlink" title="2.1 基础API"></a>2.1 基础API</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231427552.png" alt="image-20240523142727445"></p>
+<h1 id="3-高亮"><a href="#3-高亮" class="headerlink" title="3.高亮"></a>3.高亮</h1><ul>
+<li>条件同样是在<code>request.source()</code>中指定，只不过高亮条件要基于<code>HighlightBuilder</code>来构造</li>
+<li>高亮响应结果与搜索的文档结果不在一起，需要单独解析</li>
+</ul>
+<h2 id="3-1-基础API"><a href="#3-1-基础API" class="headerlink" title="3.1 基础API"></a>3.1 基础API</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231425033.png" alt="image-20240523142500909"></p>
+<h2 id="3-2-获取高亮值"><a href="#3-2-获取高亮值" class="headerlink" title="3.2 获取高亮值"></a>3.2 获取高亮值</h2><p>每一条hits信息原始数据在_source部分，而高亮部分在同级highlight内部：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231424188.png" alt="image-20240523142428052"></p>
+<p>在整体代码的位置：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231426493.png" alt="image-20240523142651360"></p>
+<p>代码解读：</p>
+<ul>
+<li>从结果中获取<code>_source</code>。<code>hit.getSourceAsString()</code>，这部分是非高亮结果，json字符串。还需要反序列为<code>ItemDoc</code>对象</li>
+<li>获取高亮结果。<code>hit.getHighlightFields()</code>，返回值是一个<code>Map</code>，key是高亮字段名称，值是<code>HighlightField</code>对象，代表高亮值</li>
+<li>从<code>Map</code>中根据高亮字段名称，获取高亮字段值对象<code>HighlightField</code></li>
+<li>从<code>HighlightField</code>中获取<code>Fragments</code>，并且转为字符串。这部分就是真正的高亮字符串了</li>
+<li>最后：用高亮的结果替换<code>ItemDoc</code>中的非高亮结果</li>
+</ul>
+<h1 id="4-聚合"><a href="#4-聚合" class="headerlink" title="4.聚合"></a>4.聚合</h1><p>我们以品牌聚合为例:</p>
+<h2 id="4-1-基础API"><a href="#4-1-基础API" class="headerlink" title="4.1 基础API"></a>4.1 基础API</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231500598.png" alt="image-20240523150059473"></p>
+<p>在Java代码中位置：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231502329.png" alt="image-20240523150224095"></p>
+<h2 id="4-2-获取桶结果"><a href="#4-2-获取桶结果" class="headerlink" title="4.2 获取桶结果"></a>4.2 获取桶结果</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231508702.png" alt="image-20240523150857573"></p>
+<p>在Java代码中位置：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405231509794.png" alt="image-20240523150938582"></p>
+<h1 id="Elasticsearch学习总结"><a href="#Elasticsearch学习总结" class="headerlink" title="==Elasticsearch学习总结=="></a>==Elasticsearch学习总结==</h1><ul>
+<li>==基本使用思路：==</li>
+</ul>
+<p>1.创建索引库和映射   –有了类似于数据库的表和表定义</p>
+<p>2.对文档进行CRUD  –有了类似于数据库的一行行数据</p>
+<p>3.在对应位置进行复杂的DSL查询  –我们可以进行高级的查询，分页，排序，高亮，聚合操作</p>
+<ul>
+<li>==如果写Java代码的话：==</li>
+</ul>
+<p>1.pom.xml导入RestHighLevelClient依赖，然后在父工程覆盖ES版本，初始化RestHighLevelClient依赖</p>
+<p>2.分析Mysql哪些字段需要搜索和必须存在，然后Elasticsearch在网页上进行手动设定索引库映射</p>
+<p>3.对索引库进行操作【不过我认为网页上更方便】 —到这一步类似于完成了数据库的表和表定义</p>
+<p>4.对文档操作【不过我认为网页上更方便】   —到这一步类似于有了数据库的数据</p>
+<p>5.在具体位置就可以进行复杂的DSL查询【可以进行查询，分页，排序，高亮，聚合等操作】</p>
+
       
       
     </div>
