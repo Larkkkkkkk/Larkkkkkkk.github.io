@@ -645,157 +645,65 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="参考文件"><a href="#参考文件" class="headerlink" title="参考文件"></a>参考文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1.第一个是我用chatgpt生成的手册</span><br><span class="line">2.第二个是我在开发过程中自己写的一个手册</span><br></pre></td></tr></table></figure>
+        <h1 id="1-Docker介绍"><a href="#1-Docker介绍" class="headerlink" title="1.Docker介绍"></a>1.Docker介绍</h1><p>Docker可以让项目部署和软件安装等步骤丝滑很多，大大减少了运维工作量。</p>
+<h2 id="1-1-镜像仓库-DockerRegistry"><a href="#1-1-镜像仓库-DockerRegistry" class="headerlink" title="1.1 镜像仓库(DockerRegistry)"></a>1.1 镜像仓库(DockerRegistry)</h2><p>Docker官方提供了一个专门管理，存储镜像的网站，并对外开放了镜像上传，下载的权利。</p>
+<p>Docker官方提供了一些基础镜像 –补充–&gt; 各大软件公司在基础镜像上制作的自家软件的镜像【基本上我们能用到的都会找得到】</p>
+<p>DockerRegistry(镜像仓库)：这种提供存储，管理Docker镜像的服务器 –在国外下载速度较慢，一般会使用第三方仓库提供的镜像加速功能，提高下载速度。而企业内部的机密项目往往会采用私有镜像仓库。</p>
+<p>总之，镜像的来源有两种:</p>
+<ul>
+<li>基于官方基础镜像自己制作</li>
+<li>直接去DockerRegistry官方网站下载</li>
+</ul>
+<p>【Docker本身就包含一个后台服务，我们可以利用Docker命令告诉Docker服务，帮助我们快速部署指定的应用。】</p>
+<p>【Docker服务部署应用时，①去搜索并下载应用对应的镜像，②根据镜像创建并允许容器，这样应用就部署完成了】</p>
+<p>如图所示：</p>
+<p>插入笔记的图</p>
+<h1 id="以下是环境层面，保证拥有环境"><a href="#以下是环境层面，保证拥有环境" class="headerlink" title="==以下是环境层面，保证拥有环境=="></a>==以下是环境层面，保证拥有环境==</h1><h1 id="2-Linux环境搭建"><a href="#2-Linux环境搭建" class="headerlink" title="2.Linux环境搭建"></a>2.Linux环境搭建</h1><h1 id="3-Docker安装"><a href="#3-Docker安装" class="headerlink" title="3.Docker安装"></a>3.Docker安装</h1><h1 id="以下是操作层面，保证可以操作"><a href="#以下是操作层面，保证可以操作" class="headerlink" title="==以下是操作层面，保证可以操作=="></a>==以下是操作层面，保证可以操作==</h1><h1 id="1-容器-container-–实例"><a href="#1-容器-container-–实例" class="headerlink" title="1.容器(container)  –实例"></a>1.容器(container)  –实例</h1><p>插入表格</p>
+<p>插入图片，并且解释</p>
+<h2 id="1-1-举例"><a href="#1-1-举例" class="headerlink" title="1.1 举例"></a>1.1 举例</h2><p>以部署nginx服务器为例：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524163218656.png" alt="image-20240524163218656"></p>
+<p>接下来我们可以生成一个tar压缩包，然后通过压缩包加载进来并且启动：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524163455037.png" alt="image-20240524163455037"></p>
+<p>其中，docker run指令的具体细节如下：</p>
+<h1 id="2-数据卷-volume-–中间商"><a href="#2-数据卷-volume-–中间商" class="headerlink" title="2. 数据卷(volume) –中间商"></a>2. 数据卷(volume) –中间商</h1><p>==使用操作：docker run指令内添加==</p>
+<p>放一个docker run -v的图片，然后标出来</p>
+<h2 id="2-1-数据卷定义"><a href="#2-1-数据卷定义" class="headerlink" title="2.1 数据卷定义"></a>2.1 数据卷定义</h2><p>数据卷是一个<strong>虚拟目录</strong>，是容器内目录与宿主机目录之间映射的桥梁。</p>
+<p>以Nginx为例，我们知道Nginx有两个关键的目录：</p>
+<ul>
+<li>html:放置一些静态资源</li>
+<li>conf:放置配置文件</li>
+</ul>
+<p>如果我们要让Nginx代理我们的静态资源，那就需要放在html目录，如果我们要需要Nginx配置，那就需要放在conf下的nginx.conf文件。</p>
+<p>因此，我们的最初是思路就是直接docker exec 进入容器内部进行修改，但会出现一个问题就是docker容器内部很多指令瘫痪。</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524165515475.png" alt="image-20240524165515475"></p>
+<p>只能是给docker容器对应目录  &lt;—-通过数据卷联系—-&gt; 宿主机(服务器)目录。</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524165623766.png" alt="image-20240524165623766"></p>
+<p>如图所示，我们就是</p>
+<p>放笔记里面的图，能看到样子</p>
+<p>我们在宿主机里面，独立于宿主机文件系统创建数据卷，以html为例，我们可以将宿主机默认目录和Docker容器的Nginx的目录联系起来</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524165805929.png" alt="image-20240524165805929"></p>
+<h2 id="2-2-数据卷命令"><a href="#2-2-数据卷命令" class="headerlink" title="2.2 数据卷命令"></a>2.2 数据卷命令</h2><p>【注意】容器和数据卷的挂在要在创建容器时候配置(docker run的时候添加-v xxx:xxx)。如果是已经docker run创建好的容器是不能设置数据卷的。</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524170806607.png" alt="image-20240524170806607"></p>
+<p>【默认】docker run不指定-v就会生成一个随机名的数据卷</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524170438212.png" alt="image-20240524170438212"></p>
+<h2 id="2-3-数据卷分类"><a href="#2-3-数据卷分类" class="headerlink" title="2.3 数据卷分类"></a>2.3 数据卷分类</h2><p>目前可以接触到的挂载方式有两种：</p>
+<ul>
+<li>-v 数据卷名:docker容器目录</li>
+<li>-v 本地目录:docker容器目录  【本地目录：一定要以 /或者./形式输入】</li>
+</ul>
+<h3 id="2-3-1-挂载固定目录"><a href="#2-3-1-挂载固定目录" class="headerlink" title="2.3.1 挂载固定目录"></a>2.3.1 挂载固定目录</h3><h3 id="2-3-2-挂载本地目录-文件"><a href="#2-3-2-挂载本地目录-文件" class="headerlink" title="2.3.2 挂载本地目录/文件"></a>2.3.2 挂载本地目录/文件</h3><p>2.3.1的第一种方式，我们数据卷的目录结构比较深，去操作数据卷目录的时候不方便。因此我们可以直接将容器目录和宿主机目录挂载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 挂载本地目录</span><br><span class="line">docker run  ...  -v 本地目录:容器内目录   【本地目录必须以 &#x2F; 或 .&#x2F;开头】，如果以名字开头，会被识别为数据卷名</span><br><span class="line"># 挂载本地文件</span><br><span class="line">docker run  ...  -v 本地文件:容器内文件   【本地文件必须以 &#x2F; 或 .&#x2F;开头】，如果以名字开头，会被识别为数据卷名</span><br></pre></td></tr></table></figure>
 
-<h1 id="Docker介绍"><a href="#Docker介绍" class="headerlink" title="Docker介绍"></a>Docker介绍</h1><h2 id="Docker的由来"><a href="#Docker的由来" class="headerlink" title="Docker的由来"></a>Docker的由来</h2><p>1.1.1    Docker是一个开源的应用容器引擎，是基于Go语言+Apache2.0协议开源。</p>
-<p>1.1.2    Docker可以让开发者直接打包他们的应用和依赖包到一个容器之中。</p>
-<p>1.1.3  Docker分为CE(社区版本)和EE(企业版本)两个版本。</p>
-<h2 id="Docker的应用场景"><a href="#Docker的应用场景" class="headerlink" title="Docker的应用场景"></a>Docker的应用场景</h2><p><img src=".images/clip_image002.jpg" alt="img"></p>
-<h2 id="Docker的优势"><a href="#Docker的优势" class="headerlink" title="Docker的优势"></a>Docker的优势</h2><p>1.1.3    能够快速、一致地交付应用程序</p>
-<p>Docker能够让开发人员使用我提供的应用程序/本地的容器在标准化环境中工作，能够减少开发的时间。</p>
-<p>1.1.4    能够响应式部署和扩展</p>
-<p>Docker能够在开发人员的本机上，数据中心的物理/虚拟机上/云服务上/混合环境中运行。</p>
-<p>Docker还可以根据业务需求指示，动态拆除和扩展应用程序和服务。</p>
-<p>1.1.5    在同一个硬件上运行更多工作负载</p>
-<p>   Docker能够减少资源做更多的事情。</p>
-<h2 id="Docker的架构"><a href="#Docker的架构" class="headerlink" title="Docker的架构"></a>Docker的架构</h2><p><img src=".images/clip_image004.jpg" alt="img"></p>
-<p>1.1.6    镜像(image):相当于一个root文件夹，或者说是java语言中的类。（静态的定义）</p>
-<p>1.1.7    容器(container):相当于一个文件，或者说是java语言中的实例。(镜像运行时的实体)。容器可以被创建、启动、停止、删除、暂停等。</p>
-<p>1.1.8    仓库(repository):仓库可以看作是像github一样代码托管中心，可以用来保存镜像。</p>
-<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><p>Docker可以安装在Ubuntu/linux/windows/MacOS/CentOS等等上面。</p>
-<p>可以参考本篇博客<a href="https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP" target="_blank" rel="noopener">🎉 Docker 简介和安装 - Docker 快速入门 - 易文档 (easydoc.net)</a> 桌面版: <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener">https://www.docker.com/products/docker-desktop</a></p>
-<h1 id="Docker操作"><a href="#Docker操作" class="headerlink" title="Docker操作"></a>Docker操作</h1><h2 id="Docker容器"><a href="#Docker容器" class="headerlink" title="Docker容器"></a>Docker容器</h2><p>1.1.9    启动容器 <strong>docker run</strong></p>
-<p>docker run -itd –name 容器名 镜像名</p>
-<p>按照顺序加一个可有的参数</p>
-<table>
-<thead>
-<tr>
-<th>-i</th>
-<th>交互式操作</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-t</td>
-<td>终端</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>-d</td>
-<td>定义docker网络类型</td>
-<td>Bridge/overlay</td>
-<td></td>
-</tr>
-<tr>
-<td>-P/p</td>
-<td>-P大写</td>
-<td>随机映射</td>
-<td></td>
-</tr>
-<tr>
-<td>-p小写</td>
-<td>5000:5000</td>
-<td>Docker开放5000端口映射到主机端口5000上</td>
-<td></td>
-</tr>
-<tr>
-<td>-p小写</td>
-<td>127.0.0.1:5001:5000</td>
-<td>绑定网络地址和端口</td>
-<td></td>
-</tr>
-<tr>
-<td>-p小写</td>
-<td>127.0.0.1:5001:5000/udp</td>
-<td>可以更改默认的tcp</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>–name</td>
-<td>给容器设定名称</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>–network</td>
-<td>设定网络(可以用于容器连接)</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>1.1.10  停止容器 <strong>docker stop</strong></p>
-<p>docker stop 容器名</p>
-<p>1.1.11  启动已经停止运行的一个/多个容器 <strong>docker start</strong> </p>
-<p>docker start 容器名</p>
-<p><strong>1.1.12</strong>  删除容器 <strong>docker rm(容器必须是stop状态)</strong></p>
-<p>docker rm -f 容器名</p>
-<p>1.1.13  重启已经停止运行的一个容器 <strong>docker restart</strong></p>
-<p>docker restart 容器名</p>
-<p>1.1.14  导出容器 <strong>docker import</strong></p>
-<p>docker import 容器名/http地址名</p>
-<p>1.1.15  导入容器 <strong>docker export</strong></p>
-<p>docker export 容器名 </p>
-<p>1.1.16  进入容器 </p>
-<p><strong>1.1.16.1</strong>    <strong>docker exec</strong></p>
-<p> docker exec -it ID /bin/bash </p>
-<p> ls(查看容器目录)</p>
-<p>1.1.16.2 <strong>docker cp</strong>(只能将文件复制到容器对应位置，但是镜像不更新!)</p>
-<p>  docker cp 本地文件路径 容器名/ID：容器路径</p>
-<p>1.1.16.3 <strong>docker -v挂载</strong>(可以将本地主机上的文件直接暴露给容器使用)</p>
-<p>  (将/aaa目录映射到主机的/a/b/c目录)</p>
-<p>docker run -it -v /a/b/c:/aaa –name test image </p>
-<p>1.1.17  容器常用指令</p>
-<p><strong>1.1.17.1</strong>    查看容器<strong>docker ps</strong></p>
-<p>docker ps -a(所有的容器)</p>
-<p>​            docker ps (正在运行的容器)</p>
-<p>docker ps -l (最后一次创建的容器)</p>
-<p>docker port 容器名(查看容器的端口)</p>
-<p>docker logs -f 容器名(查看容器的日志文件)</p>
-<p>docker inspect 容器名(查看容器的底层信息json文件)</p>
-<h2 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h2><p>1.1.18  获取镜像 <strong>docker pull</strong></p>
-<p>docker pull 镜像名:tag(不写默认是latest标签)</p>
-<p>1.1.19  查询镜像 <strong>docker search</strong></p>
-<p>docker search 镜像名</p>
-<p>1.1.20  删除镜像 <strong>docker rmi</strong></p>
-<p>docker rmi 镜像名</p>
-<p>1.1.21  创建镜像</p>
-<p>1.1.21.1 从已有的容器中更新镜像，并且提交这个镜像 <strong>docker commit</strong></p>
-<p>先创建一个容器</p>
-<p>docker run -it ubuntu:15.10 /bin/bash</p>
-<p>docker commit -m=”提交的描述信息” -a=”指定镜像作者” 容器ID 目标镜像名</p>
-<p><strong>1.1.21.2</strong>    <strong>docker build</strong></p>
-<p> docker build -t 镜像名 . (一定注意最后有一个.表示这个dockerfile文件的绝对路径)     </p>
-<h2 id="Docker仓库"><a href="#Docker仓库" class="headerlink" title="Docker仓库"></a>Docker仓库</h2><p>1.1.22  登录账号 docker login</p>
-<p>1.1.23  注销账号 docker logout </p>
-<h1 id="Dockerfile使用-封装tar文件"><a href="#Dockerfile使用-封装tar文件" class="headerlink" title="Dockerfile使用(封装tar文件)"></a>Dockerfile使用(封装tar文件)</h1><p>参考本篇博客<a href="https://blog.csdn.net/u010095372/article/details/125961361" target="_blank" rel="noopener">简单Win10版Docker+Python封装_docker封装python程序_赫凯的博客-CSDN博客</a></p>
-<h2 id="在执行代码路径下创建Dockerfile文件-一定要是文件而不是其他类型-和requirements文件"><a href="#在执行代码路径下创建Dockerfile文件-一定要是文件而不是其他类型-和requirements文件" class="headerlink" title="在执行代码路径下创建Dockerfile文件(一定要是文件而不是其他类型)和requirements文件"></a>在执行代码路径下创建Dockerfile文件(一定要是文件而不是其他类型)和requirements文件</h2><p><img src=".images/clip_image006.jpg" alt="img"></p>
-<p>然后根据自己的需求编写dockerfile内容和代码所需的requirements内容</p>
-<h2 id="其中dockerfile内容的格式如下"><a href="#其中dockerfile内容的格式如下" class="headerlink" title="其中dockerfile内容的格式如下:"></a>其中dockerfile内容的格式如下:</h2><p>步骤可以参考本篇博客<a href="https://blog.csdn.net/sinat_37935727/article/details/125875287" target="_blank" rel="noopener">将把python项目打包成Docker镜像（linux版）_python打包docker镜像_monkey_susu的博客-CSDN博客</a></p>
-<p><img src=".images/clip_image008.jpg" alt="img"></p>
-<p>例如：</p>
-<p><img src=".images/clip_image010.jpg" alt="img"></p>
-<h2 id="Requirements内容可以根据如下步骤得出"><a href="#Requirements内容可以根据如下步骤得出" class="headerlink" title="Requirements内容可以根据如下步骤得出:"></a>Requirements内容可以根据如下步骤得出:</h2><p>步骤可以参考本篇博客<a href="https://blog.csdn.net/COCO56/article/details/117452383" target="_blank" rel="noopener">如何使用PyCharm自动生成requirements.txt_pycharm requirements_COCO56（徐可可）的博客-CSDN博客</a></p>
-<p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image012.jpg" alt="img"></p>
-<h2 id="在Dockerfile文件目录下右键选择在终端中打开："><a href="#在Dockerfile文件目录下右键选择在终端中打开：" class="headerlink" title="在Dockerfile文件目录下右键选择在终端中打开："></a>在Dockerfile文件目录下右键选择在终端中打开：</h2><p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image014.png" alt="img"></p>
-<h2 id="使用docker-build语句生成docker镜像"><a href="#使用docker-build语句生成docker镜像" class="headerlink" title="使用docker build语句生成docker镜像"></a>使用docker build语句生成docker镜像</h2><p>docker build -t demo_leida2:v0 .</p>
-<p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image016.jpg" alt="img"></p>
-<h2 id="docker-images-查看是否生成成功"><a href="#docker-images-查看是否生成成功" class="headerlink" title="docker images 查看是否生成成功"></a>docker images 查看是否生成成功</h2><p>docker images </p>
-<p> <img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image018.jpg" alt="img"></p>
-<h2 id="docker-run-it-–name-容器名-镜像名-启动一下"><a href="#docker-run-it-–name-容器名-镜像名-启动一下" class="headerlink" title="docker run -it -–name 容器名 镜像名 启动一下"></a>docker run -it -–name 容器名 镜像名 启动一下</h2><p>docker run -it –name testleida demo_leida2:V0 </p>
-<p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image020.jpg" alt="img"></p>
-<p>​       要想退出就按Ctrl+v</p>
-<h2 id="docker-save-o-自定名-tar-镜像名"><a href="#docker-save-o-自定名-tar-镜像名" class="headerlink" title="docker save -o 自定名.tar 镜像名"></a>docker save -o 自定名.tar 镜像名</h2><p>docker save -o leida.tar demo_leida2:v0 </p>
-<p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image022.jpg" alt="img"></p>
-<p><img src="file:///C:/Users/LARKKK~1/AppData/Local/Temp/msohtmlclip1/01/clip_image024.jpg" alt="img"></p>
+<p>举例：我们将mysql的data，init，conf进行挂载</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524171555150.png" alt="image-20240524171555150"></p>
+<h2 id="2-4-查看数据卷内容"><a href="#2-4-查看数据卷内容" class="headerlink" title="2.4 查看数据卷内容"></a>2.4 查看数据卷内容</h2><p>同时，我们可以使用指令docker volume inspect查看数据卷详情，其中数据卷部分在：<strong>Mounts部分</strong></p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524171931148.png" alt="image-20240524171931148"></p>
+<h1 id="3-镜像-image-–类"><a href="#3-镜像-image-–类" class="headerlink" title="3.镜像(image) –类"></a>3.镜像(image) –类</h1><h1 id="4-网络"><a href="#4-网络" class="headerlink" title="4.网络"></a>4.网络</h1><h1 id="5-自启动-开机自启"><a href="#5-自启动-开机自启" class="headerlink" title="5.自启动(开机自启)"></a>5.自启动(开机自启)</h1><p>【默认】每次重启虚拟机都需要手动启动Docker和Docker中容器。我们可以通过命令实现开机自启：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Docker开机自启</span><br><span class="line">systemctl enable docker</span><br><span class="line"></span><br><span class="line"># Docker容器开机自启</span><br><span class="line">docker update --restart&#x3D;always [容器名&#x2F;容器id]</span><br></pre></td></tr></table></figure>
 
+<h1 id="6-Docker命令别名-简化指令"><a href="#6-Docker命令别名-简化指令" class="headerlink" title="6.Docker命令别名(简化指令)"></a>6.Docker命令别名(简化指令)</h1><p>修改/root/.bashrc文件：</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524164212751.png" alt="image-20240524164212751"></p>
+<h1 id="以下是部署项目层面"><a href="#以下是部署项目层面" class="headerlink" title="==以下是部署项目层面=="></a>==以下是部署项目层面==</h1>
       
       
     </div>
