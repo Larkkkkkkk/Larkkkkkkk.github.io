@@ -682,9 +682,10 @@
 <p>放笔记里面的图，能看到样子</p>
 <p>我们在宿主机里面，独立于宿主机文件系统创建数据卷，以html为例，我们可以将宿主机默认目录和Docker容器的Nginx的目录联系起来</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524165805929.png" alt="image-20240524165805929"></p>
-<h2 id="2-2-数据卷命令"><a href="#2-2-数据卷命令" class="headerlink" title="2.2 数据卷命令"></a>2.2 数据卷命令</h2><p>【注意】容器和数据卷的挂在要在创建容器时候配置(docker run的时候添加-v xxx:xxx)。如果是已经docker run创建好的容器是不能设置数据卷的。</p>
+<h2 id="2-2-数据卷命令"><a href="#2-2-数据卷命令" class="headerlink" title="2.2 数据卷命令"></a>2.2 数据卷命令</h2><p>放命令表</p>
+<p>【注意】容器和数据卷的挂在要在创建容器时候配置(docker run的时候添加-v xxx:xxx)。如果是已经docker run创建好的容器是不能设置数据卷的。</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524170806607.png" alt="image-20240524170806607"></p>
-<p>【默认】docker run不指定-v就会生成一个随机名的数据卷</p>
+<p>【默认】docker run不指定-v就会生成一个随机名的数据卷【匿名数据卷，不好用于操作】</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524170438212.png" alt="image-20240524170438212"></p>
 <h2 id="2-3-数据卷分类"><a href="#2-3-数据卷分类" class="headerlink" title="2.3 数据卷分类"></a>2.3 数据卷分类</h2><p>目前可以接触到的挂载方式有两种：</p>
 <ul>
