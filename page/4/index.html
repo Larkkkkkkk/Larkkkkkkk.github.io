@@ -844,11 +844,15 @@
 <li>Destination : 容器内的目录</li>
 </ul>
 <p>【注意：每一个不同的镜像，将来创建容器后内部有哪些目录可以挂载，可以参考DockerHub对应的页面(参考DockerHub查看容器内部哪些目录可以挂载)】</p>
-<h1 id="3-镜像-image-–类"><a href="#3-镜像-image-–类" class="headerlink" title="3.镜像(image) –类"></a>3.镜像(image) –类</h1><p>类似于Java的类</p>
-<h1 id="4-网络"><a href="#4-网络" class="headerlink" title="4.网络"></a>4.网络</h1><h1 id="5-自启动-开机自启"><a href="#5-自启动-开机自启" class="headerlink" title="5.自启动(开机自启)"></a>5.自启动(开机自启)</h1><p>【默认】每次重启虚拟机都需要手动启动Docker和Docker中容器。我们可以通过命令实现开机自启：</p>
+<h1 id="3-镜像-image-–类"><a href="#3-镜像-image-–类" class="headerlink" title="3.镜像(image) –类"></a>3.镜像(image) –类</h1><p>镜像类似于Java的类，镜像是一个模版，可以通过镜像创建多个容器(实例)。此外，镜像分为两种：</p>
+<ul>
+<li>别人提供的镜像</li>
+<li>自己构建的镜像</li>
+</ul>
+<h2 id="3-1-镜像结构"><a href="#3-1-镜像结构" class="headerlink" title="3.1 镜像结构"></a>3.1 镜像结构</h2><h2 id="3-2-Dockerfile"><a href="#3-2-Dockerfile" class="headerlink" title="3.2 Dockerfile"></a>3.2 Dockerfile</h2><h2 id="3-3-构建镜像"><a href="#3-3-构建镜像" class="headerlink" title="3.3 构建镜像"></a>3.3 构建镜像</h2><h1 id="4-网络"><a href="#4-网络" class="headerlink" title="4.网络"></a>4.网络</h1><h1 id="5-开机自启动"><a href="#5-开机自启动" class="headerlink" title="5.开机自启动"></a>5.开机自启动</h1><p>【默认】每次重启虚拟机都需要手动启动Docker和Docker中容器。我们可以通过命令实现开机自启：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Docker开机自启</span><br><span class="line">systemctl enable docker</span><br><span class="line"></span><br><span class="line"># Docker容器开机自启</span><br><span class="line">docker update --restart&#x3D;always [容器名&#x2F;容器id]</span><br></pre></td></tr></table></figure>
 
-<h1 id="6-Docker命令别名-简化指令"><a href="#6-Docker命令别名-简化指令" class="headerlink" title="6.Docker命令别名(简化指令)"></a>6.Docker命令别名(简化指令)</h1><p>修改/root/.bashrc文件：</p>
+<h1 id="6-Docker指令别名"><a href="#6-Docker指令别名" class="headerlink" title="6.Docker指令别名"></a>6.Docker指令别名</h1><p>修改/root/.bashrc文件：</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524164212751.png" alt="image-20240524164212751"></p>
 <h1 id="以下是部署项目层面"><a href="#以下是部署项目层面" class="headerlink" title="==以下是部署项目层面=="></a>==以下是部署项目层面==</h1>
       
