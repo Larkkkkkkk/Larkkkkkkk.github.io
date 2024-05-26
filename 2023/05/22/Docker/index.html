@@ -12,22 +12,27 @@
 <meta property="og:site_name" content="Larkkkkkkk">
 <meta property="og:description" content="1.Docker介绍Docker可以让项目部署和软件安装等步骤丝滑很多，大大减少了运维工作量。 1.1 镜像仓库(DockerRegistry)Docker官方提供了一个专门管理，存储镜像的网站，并对外开放了镜像上传，下载的权利。 Docker官方提供了一些基础镜像 –补充–&gt; 各大软件公司在基础镜像上制作的自家软件的镜像【基本上我们能用到的都会找得到】 DockerRegistry(镜像仓">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405261859728.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405261905608.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524163218656.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524163455037.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405261913844.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405261923409.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524165515475.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524165623766.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524165805929.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524170806607.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524170438212.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405261923409.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524171555150.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524171931148.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524164212751.png">
 <meta property="article:published_time" content="2023-05-22T11:43:54.000Z">
-<meta property="article:modified_time" content="2024-05-25T14:04:19.299Z">
+<meta property="article:modified_time" content="2024-05-26T11:41:23.919Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524163218656.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405261859728.png">
   
     <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
   
@@ -393,16 +398,106 @@
 <p>【Docker本身就包含一个后台服务，我们可以利用Docker命令告诉Docker服务，帮助我们快速部署指定的应用。】</p>
 <p>【Docker服务部署应用时，①去搜索并下载应用对应的镜像，②根据镜像创建并允许容器，这样应用就部署完成了】</p>
 <p>如图所示：</p>
-<p>插入笔记的图</p>
-<h1 id="以下是环境层面，保证拥有环境"><a href="#以下是环境层面，保证拥有环境" class="headerlink" title="==以下是环境层面，保证拥有环境=="></a>==以下是环境层面，保证拥有环境==</h1><h1 id="2-Linux环境搭建"><a href="#2-Linux环境搭建" class="headerlink" title="2.Linux环境搭建"></a>2.Linux环境搭建</h1><h1 id="3-Docker安装"><a href="#3-Docker安装" class="headerlink" title="3.Docker安装"></a>3.Docker安装</h1><h1 id="以下是操作层面，保证可以操作"><a href="#以下是操作层面，保证可以操作" class="headerlink" title="==以下是操作层面，保证可以操作=="></a>==以下是操作层面，保证可以操作==</h1><h1 id="1-容器-container-–实例"><a href="#1-容器-container-–实例" class="headerlink" title="1.容器(container)  –实例"></a>1.容器(container)  –实例</h1><p>插入表格</p>
-<p>插入图片，并且解释</p>
-<h2 id="1-1-举例"><a href="#1-1-举例" class="headerlink" title="1.1 举例"></a>1.1 举例</h2><p>以部署nginx服务器为例：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405261859728.png" alt="image-20240526185909604"></p>
+<h1 id="以下是环境层面，保证拥有环境"><a href="#以下是环境层面，保证拥有环境" class="headerlink" title="==以下是环境层面，保证拥有环境=="></a>==以下是环境层面，保证拥有环境==</h1><h1 id="2-Linux环境搭建"><a href="#2-Linux环境搭建" class="headerlink" title="2.Linux环境搭建"></a>2.Linux环境搭建</h1><h1 id="3-Docker安装"><a href="#3-Docker安装" class="headerlink" title="3.Docker安装"></a>3.Docker安装</h1><h1 id="以下是操作层面，保证可以操作"><a href="#以下是操作层面，保证可以操作" class="headerlink" title="==以下是操作层面，保证可以操作=="></a>==以下是操作层面，保证可以操作==</h1><h1 id="1-容器-container-–实例"><a href="#1-容器-container-–实例" class="headerlink" title="1.容器(container)  –实例"></a>1.容器(container)  –实例</h1><table>
+<thead>
+<tr>
+<th align="left"><strong>命令</strong></th>
+<th align="left"><strong>说明</strong></th>
+<th align="left"><strong>文档地址</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">docker pull</td>
+<td align="left">拉取镜像</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/pull/" target="_blank" rel="noopener">docker pull</a></td>
+</tr>
+<tr>
+<td align="left">docker push</td>
+<td align="left">推送镜像到DockerRegistry</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/push/" target="_blank" rel="noopener">docker push</a></td>
+</tr>
+<tr>
+<td align="left">docker images</td>
+<td align="left">查看本地镜像</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/images/" target="_blank" rel="noopener">docker images</a></td>
+</tr>
+<tr>
+<td align="left">docker rmi</td>
+<td align="left">删除本地镜像</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/rmi/" target="_blank" rel="noopener">docker rmi</a></td>
+</tr>
+<tr>
+<td align="left">docker run</td>
+<td align="left">创建并运行容器（不能重复创建）</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank" rel="noopener">docker run</a></td>
+</tr>
+<tr>
+<td align="left">docker stop</td>
+<td align="left">停止指定容器</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/stop/" target="_blank" rel="noopener">docker stop</a></td>
+</tr>
+<tr>
+<td align="left">docker start</td>
+<td align="left">启动指定容器</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/start/" target="_blank" rel="noopener">docker start</a></td>
+</tr>
+<tr>
+<td align="left">docker restart</td>
+<td align="left">重新启动容器</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/restart/" target="_blank" rel="noopener">docker restart</a></td>
+</tr>
+<tr>
+<td align="left">docker rm</td>
+<td align="left">删除指定容器</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/rm/" target="_blank" rel="noopener">docs.docker.com</a></td>
+</tr>
+<tr>
+<td align="left">docker ps</td>
+<td align="left">查看容器</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/ps/" target="_blank" rel="noopener">docker ps</a></td>
+</tr>
+<tr>
+<td align="left">docker logs</td>
+<td align="left">查看容器运行日志</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/logs/" target="_blank" rel="noopener">docker logs</a></td>
+</tr>
+<tr>
+<td align="left">docker exec</td>
+<td align="left">进入容器</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/exec/" target="_blank" rel="noopener">docker exec</a></td>
+</tr>
+<tr>
+<td align="left">docker save</td>
+<td align="left">保存镜像到本地压缩文件</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/save/" target="_blank" rel="noopener">docker save</a></td>
+</tr>
+<tr>
+<td align="left">docker load</td>
+<td align="left">加载本地压缩文件到镜像</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/load/" target="_blank" rel="noopener">docker load</a></td>
+</tr>
+<tr>
+<td align="left">docker inspect</td>
+<td align="left">查看容器详细信息</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/inspect/" target="_blank" rel="noopener">docker inspect</a></td>
+</tr>
+</tbody></table>
+<p>用一副图来表示这些命令的关系：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405261905608.png" alt="image-20240526190550515"></p>
+<p>其中，如果我们需要给其他人使用自己的镜像就有两种方式：</p>
+<p>①docker save存储为tar包，别人就可以docker load运行镜像</p>
+<p>②docker push上传到私有镜像仓库，别人就可以docker pull拉取镜像</p>
+<h2 id="1-1-创建容器举例"><a href="#1-1-创建容器举例" class="headerlink" title="1.1 创建容器举例"></a>1.1 创建容器举例</h2><p>以部署nginx服务器为例：</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524163218656.png" alt="image-20240524163218656"></p>
 <p>接下来我们可以生成一个tar压缩包，然后通过压缩包加载进来并且启动：</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524163455037.png" alt="image-20240524163455037"></p>
-<p>其中，docker run指令的具体细节如下：</p>
-<h1 id="2-数据卷-volume-–中间商"><a href="#2-数据卷-volume-–中间商" class="headerlink" title="2. 数据卷(volume) –中间商"></a>2. 数据卷(volume) –中间商</h1><p>==使用操作：docker run指令内添加==</p>
-<p>放一个docker run -v的图片，然后标出来</p>
+<h2 id="1-2-指令详解"><a href="#1-2-指令详解" class="headerlink" title="1.2 指令详解"></a>1.2 指令详解</h2><p>其中，docker run指令的具体细节如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405261913844.png" alt="image-20240526191336770"></p>
+<p>我们可以通过docker run指令搭配-x的形式配置一些参数信息，可以指定容器名为mysql，可以指定宿主机和容器mysql端口对比，指定mysql信息和镜像名。</p>
+<h1 id="2-数据卷-volume-–中间商"><a href="#2-数据卷-volume-–中间商" class="headerlink" title="2. 数据卷(volume) –中间商"></a>2. 数据卷(volume) –中间商</h1><p>==使用操作：会在docker run指令内添加-v xxx:xxx==</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405261923409.png" alt="image-20240526192300344" style="zoom:150%;">
+
 <h2 id="2-1-数据卷定义"><a href="#2-1-数据卷定义" class="headerlink" title="2.1 数据卷定义"></a>2.1 数据卷定义</h2><p>数据卷是一个<strong>虚拟目录</strong>，是容器内目录与宿主机目录之间映射的桥梁。</p>
 <p>以Nginx为例，我们知道Nginx有两个关键的目录：</p>
 <ul>
@@ -414,11 +509,55 @@
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524165515475.png" alt="image-20240524165515475"></p>
 <p>只能是给docker容器对应目录  &lt;—-通过数据卷联系—-&gt; 宿主机(服务器)目录。</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524165623766.png" alt="image-20240524165623766"></p>
-<p>如图所示，我们就是</p>
-<p>放笔记里面的图，能看到样子</p>
+<p>如图所示:</p>
 <p>我们在宿主机里面，独立于宿主机文件系统创建数据卷，以html为例，我们可以将宿主机默认目录和Docker容器的Nginx的目录联系起来</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524165805929.png" alt="image-20240524165805929"></p>
-<h2 id="2-2-数据卷命令"><a href="#2-2-数据卷命令" class="headerlink" title="2.2 数据卷命令"></a>2.2 数据卷命令</h2><p>放命令表</p>
+<p>在上图中：</p>
+<ul>
+<li>我们创建了两个数据卷：<code>conf</code>、<code>html</code></li>
+<li>Nginx容器内部的<code>conf</code>目录和<code>html</code>目录分别与两个数据卷关联。</li>
+<li>而数据卷conf和html分别指向了宿主机的<code>/var/lib/docker/volumes/conf/_data</code>目录和<code>/var/lib/docker/volumes/html/_data</code>目录</li>
+</ul>
+<p>这样以来，容器内的<code>conf</code>和<code>html</code>目录就 与宿主机的<code>conf</code>和<code>html</code>目录关联起来，我们称为<strong>挂载</strong>。此时，我们操作宿主机的<code>/var/lib/docker/volumes/html/_data</code>就是在操作容器内的<code>/usr/share/nginx/html/_data</code>目录。只要我们将静态资源放入宿主机对应目录，就可以被Nginx代理了</p>
+<p><strong>为什么不让容器目录直接指向宿主机目录呢</strong>？</p>
+<ul>
+<li>因为直接指向宿主机目录就与宿主机<strong>强耦合</strong>了，如果切换了环境，宿主机目录就可能发生改变了。由于容器一旦创建，目录挂载就无法修改，这样容器就无法正常工作了。</li>
+<li>但是容器指向数据卷，一个逻辑名称，而数据卷再指向宿主机目录，就不存在强耦合。如果宿主机目录发生改变，只要改变数据卷与宿主机目录之间的映射关系即可（只需要改映射关系）</li>
+</ul>
+<h2 id="2-2-数据卷命令"><a href="#2-2-数据卷命令" class="headerlink" title="2.2 数据卷命令"></a>2.2 数据卷命令</h2><table>
+<thead>
+<tr>
+<th align="left"><strong>命令</strong></th>
+<th align="left"><strong>说明</strong></th>
+<th align="left"><strong>文档地址</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">docker volume create</td>
+<td align="left">创建数据卷</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/volume_create/" target="_blank" rel="noopener">docker volume create</a></td>
+</tr>
+<tr>
+<td align="left">docker volume ls</td>
+<td align="left">查看所有数据卷</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/volume_ls/" target="_blank" rel="noopener">docs.docker.com</a></td>
+</tr>
+<tr>
+<td align="left">docker volume rm</td>
+<td align="left">删除指定数据卷</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/volume_prune/" target="_blank" rel="noopener">docs.docker.com</a></td>
+</tr>
+<tr>
+<td align="left">docker volume inspect</td>
+<td align="left">查看某个数据卷的详情</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/volume_inspect/" target="_blank" rel="noopener">docs.docker.com</a></td>
+</tr>
+<tr>
+<td align="left">docker volume prune</td>
+<td align="left">清除数据卷</td>
+<td align="left"><a href="https://docs.docker.com/engine/reference/commandline/volume_prune/" target="_blank" rel="noopener">docker volume prune</a></td>
+</tr>
+</tbody></table>
 <p>【注意】容器和数据卷的挂在要在创建容器时候配置(docker run的时候添加-v xxx:xxx)。如果是已经docker run创建好的容器是不能设置数据卷的。</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524170806607.png" alt="image-20240524170806607"></p>
 <p>【默认】docker run不指定-v就会生成一个随机名的数据卷【匿名数据卷，不好用于操作】</p>
@@ -428,13 +567,24 @@
 <li>-v 数据卷名:docker容器目录</li>
 <li>-v 本地目录:docker容器目录  【本地目录：一定要以 /或者./形式输入】</li>
 </ul>
-<h3 id="2-3-1-挂载固定目录"><a href="#2-3-1-挂载固定目录" class="headerlink" title="2.3.1 挂载固定目录"></a>2.3.1 挂载固定目录</h3><h3 id="2-3-2-挂载本地目录-文件"><a href="#2-3-2-挂载本地目录-文件" class="headerlink" title="2.3.2 挂载本地目录/文件"></a>2.3.2 挂载本地目录/文件</h3><p>2.3.1的第一种方式，我们数据卷的目录结构比较深，去操作数据卷目录的时候不方便。因此我们可以直接将容器目录和宿主机目录挂载</p>
+<h3 id="2-3-1-挂载固定目录"><a href="#2-3-1-挂载固定目录" class="headerlink" title="2.3.1 挂载固定目录"></a>2.3.1 挂载固定目录</h3><p>意思就是数据卷名为html，而docker容器目录是usr/share/nginx/html，宿主机目录就是用固定的默认目录(/var/lib/docker/volumes)。</p>
+<p>【/var/lib/docker/volumes<code>这个目录就是默认的存放所有容器数据卷的目录，其下再根据数据卷名称创建新目录，格式为</code>/数据卷名/_data】</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405261923409.png" alt="image-20240526192300344" style="zoom:150%;">
+
+<h3 id="2-3-2-挂载本地目录-文件"><a href="#2-3-2-挂载本地目录-文件" class="headerlink" title="2.3.2 挂载本地目录/文件"></a>2.3.2 挂载本地目录/文件</h3><p>2.3.1的第一种方式，我们数据卷的目录结构比较深，去操作数据卷目录的时候不方便。因此我们可以直接将容器目录和宿主机目录挂载</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 挂载本地目录</span><br><span class="line">docker run  ...  -v 本地目录:容器内目录   【本地目录必须以 &#x2F; 或 .&#x2F;开头】，如果以名字开头，会被识别为数据卷名</span><br><span class="line"># 挂载本地文件</span><br><span class="line">docker run  ...  -v 本地文件:容器内文件   【本地文件必须以 &#x2F; 或 .&#x2F;开头】，如果以名字开头，会被识别为数据卷名</span><br></pre></td></tr></table></figure>
 
 <p>举例：我们将mysql的data，init，conf进行挂载</p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524171555150.png" alt="image-20240524171555150"></p>
-<h2 id="2-4-查看数据卷内容"><a href="#2-4-查看数据卷内容" class="headerlink" title="2.4 查看数据卷内容"></a>2.4 查看数据卷内容</h2><p>同时，我们可以使用指令docker volume inspect查看数据卷详情，其中数据卷部分在：<strong>Mounts部分</strong></p>
+<h2 id="2-4-查看数据卷内容"><a href="#2-4-查看数据卷内容" class="headerlink" title="2.4 查看数据卷内容"></a>2.4 查看数据卷内容</h2><p>同时，我们可以使用指令<strong>docker volume inspect</strong>查看数据卷详情，其中数据卷部分在：<strong>Mounts部分</strong></p>
 <p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240524171931148.png" alt="image-20240524171931148"></p>
+<p>可以发现，其中有几个关键属性：</p>
+<ul>
+<li>Name：数据卷名称。由于定义容器未设置容器名，这里的就是匿名卷自动生成的名字，一串hash值。</li>
+<li>Source：宿主机目录</li>
+<li>Destination : 容器内的目录</li>
+</ul>
+<p>【注意：每一个不同的镜像，将来创建容器后内部有哪些目录可以挂载，可以参考DockerHub对应的页面(参考DockerHub查看容器内部哪些目录可以挂载)】</p>
 <h1 id="3-镜像-image-–类"><a href="#3-镜像-image-–类" class="headerlink" title="3.镜像(image) –类"></a>3.镜像(image) –类</h1><p>类似于Java的类</p>
 <h1 id="4-网络"><a href="#4-网络" class="headerlink" title="4.网络"></a>4.网络</h1><h1 id="5-自启动-开机自启"><a href="#5-自启动-开机自启" class="headerlink" title="5.自启动(开机自启)"></a>5.自启动(开机自启)</h1><p>【默认】每次重启虚拟机都需要手动启动Docker和Docker中容器。我们可以通过命令实现开机自启：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Docker开机自启</span><br><span class="line">systemctl enable docker</span><br><span class="line"></span><br><span class="line"># Docker容器开机自启</span><br><span class="line">docker update --restart&#x3D;always [容器名&#x2F;容器id]</span><br></pre></td></tr></table></figure>
@@ -499,7 +649,7 @@
         <p><span>本文标题:</span><a href="/2023/05/22/Docker/">Docker</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2023年05月22日 - 19时43分</p>
-        <p><span>最后更新:</span>2024年05月25日 - 22时04分</p>
+        <p><span>最后更新:</span>2024年05月26日 - 19时41分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2023/05/22/Docker/" title="Docker">https://larkkkkkkk.github.io/2023/05/22/Docker/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2023/05/22/Docker/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -537,7 +687,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Docker介绍"><span class="toc-number">1.</span> <span class="toc-text">1.Docker介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-镜像仓库-DockerRegistry"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 镜像仓库(DockerRegistry)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#以下是环境层面，保证拥有环境"><span class="toc-number">2.</span> <span class="toc-text">&#x3D;&#x3D;以下是环境层面，保证拥有环境&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Linux环境搭建"><span class="toc-number">3.</span> <span class="toc-text">2.Linux环境搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Docker安装"><span class="toc-number">4.</span> <span class="toc-text">3.Docker安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#以下是操作层面，保证可以操作"><span class="toc-number">5.</span> <span class="toc-text">&#x3D;&#x3D;以下是操作层面，保证可以操作&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-容器-container-–实例"><span class="toc-number">6.</span> <span class="toc-text">1.容器(container)  –实例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-举例"><span class="toc-number">6.1.</span> <span class="toc-text">1.1 举例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-数据卷-volume-–中间商"><span class="toc-number">7.</span> <span class="toc-text">2. 数据卷(volume) –中间商</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-数据卷定义"><span class="toc-number">7.1.</span> <span class="toc-text">2.1 数据卷定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-数据卷命令"><span class="toc-number">7.2.</span> <span class="toc-text">2.2 数据卷命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-数据卷分类"><span class="toc-number">7.3.</span> <span class="toc-text">2.3 数据卷分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-挂载固定目录"><span class="toc-number">7.3.1.</span> <span class="toc-text">2.3.1 挂载固定目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-挂载本地目录-文件"><span class="toc-number">7.3.2.</span> <span class="toc-text">2.3.2 挂载本地目录&#x2F;文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-查看数据卷内容"><span class="toc-number">7.4.</span> <span class="toc-text">2.4 查看数据卷内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-镜像-image-–类"><span class="toc-number">8.</span> <span class="toc-text">3.镜像(image) –类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-网络"><span class="toc-number">9.</span> <span class="toc-text">4.网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-自启动-开机自启"><span class="toc-number">10.</span> <span class="toc-text">5.自启动(开机自启)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Docker命令别名-简化指令"><span class="toc-number">11.</span> <span class="toc-text">6.Docker命令别名(简化指令)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#以下是部署项目层面"><span class="toc-number">12.</span> <span class="toc-text">&#x3D;&#x3D;以下是部署项目层面&#x3D;&#x3D;</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Docker介绍"><span class="toc-number">1.</span> <span class="toc-text">1.Docker介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-镜像仓库-DockerRegistry"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 镜像仓库(DockerRegistry)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#以下是环境层面，保证拥有环境"><span class="toc-number">2.</span> <span class="toc-text">&#x3D;&#x3D;以下是环境层面，保证拥有环境&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Linux环境搭建"><span class="toc-number">3.</span> <span class="toc-text">2.Linux环境搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Docker安装"><span class="toc-number">4.</span> <span class="toc-text">3.Docker安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#以下是操作层面，保证可以操作"><span class="toc-number">5.</span> <span class="toc-text">&#x3D;&#x3D;以下是操作层面，保证可以操作&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-容器-container-–实例"><span class="toc-number">6.</span> <span class="toc-text">1.容器(container)  –实例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-创建容器举例"><span class="toc-number">6.1.</span> <span class="toc-text">1.1 创建容器举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-指令详解"><span class="toc-number">6.2.</span> <span class="toc-text">1.2 指令详解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-数据卷-volume-–中间商"><span class="toc-number">7.</span> <span class="toc-text">2. 数据卷(volume) –中间商</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-数据卷定义"><span class="toc-number">7.1.</span> <span class="toc-text">2.1 数据卷定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-数据卷命令"><span class="toc-number">7.2.</span> <span class="toc-text">2.2 数据卷命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-数据卷分类"><span class="toc-number">7.3.</span> <span class="toc-text">2.3 数据卷分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-挂载固定目录"><span class="toc-number">7.3.1.</span> <span class="toc-text">2.3.1 挂载固定目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-挂载本地目录-文件"><span class="toc-number">7.3.2.</span> <span class="toc-text">2.3.2 挂载本地目录&#x2F;文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-查看数据卷内容"><span class="toc-number">7.4.</span> <span class="toc-text">2.4 查看数据卷内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-镜像-image-–类"><span class="toc-number">8.</span> <span class="toc-text">3.镜像(image) –类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-网络"><span class="toc-number">9.</span> <span class="toc-text">4.网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-自启动-开机自启"><span class="toc-number">10.</span> <span class="toc-text">5.自启动(开机自启)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Docker命令别名-简化指令"><span class="toc-number">11.</span> <span class="toc-text">6.Docker命令别名(简化指令)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#以下是部署项目层面"><span class="toc-number">12.</span> <span class="toc-text">&#x3D;&#x3D;以下是部署项目层面&#x3D;&#x3D;</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
