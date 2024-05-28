@@ -4564,8 +4564,10 @@
 <h1 id="5-开机自启动"><a href="#5-开机自启动" class="headerlink" title="5.开机自启动"></a>5.开机自启动</h1><p>【默认】每次重启虚拟机都需要手动启动Docker和Docker中容器。我们可以通过命令实现开机自启：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Docker开机自启</span><br><span class="line">systemctl enable docker</span><br><span class="line"></span><br><span class="line"># Docker容器开机自启</span><br><span class="line">docker update --restart&#x3D;always [容器名&#x2F;容器id]</span><br></pre></td></tr></table></figure>
 
-<h1 id="6-Docker指令别名"><a href="#6-Docker指令别名" class="headerlink" title="6.Docker指令别名"></a>6.Docker指令别名</h1><p>修改/root/.bashrc文件：</p>
+<h1 id="6-Docker指令别名"><a href="#6-Docker指令别名" class="headerlink" title="6.Docker指令别名"></a>6.Docker指令别名</h1><p>1.修改/root/.bashrc文件：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405271652845.png" alt="image-20240524164212751"></p>
+<p>2.然后，执行命令source /root/.bashrc使别名生效</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405281115439.png" alt="image-20240528111510351"></p>
 <h1 id="以下是部署项目层面"><a href="#以下是部署项目层面" class="headerlink" title="==以下是部署项目层面=="></a>==以下是部署项目层面==</h1><h1 id="1-部署后端项目"><a href="#1-部署后端项目" class="headerlink" title="1.部署后端项目"></a>1.部署后端项目</h1><ul>
 <li>1.1 打包jar包</li>
 </ul>
