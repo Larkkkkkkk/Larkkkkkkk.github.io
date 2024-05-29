@@ -377,7 +377,11 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405281657536.png" alt="image-20240528165703436"></p>
 <h2 id="1-4-编写yml配置文件"><a href="#1-4-编写yml配置文件" class="headerlink" title="1.4 编写yml配置文件"></a>1.4 编写yml配置文件</h2><p>直接从hm-service中导入，然后删除和修改一些配置</p>
 <h2 id="1-5-挪动代码"><a href="#1-5-挪动代码" class="headerlink" title="1.5 挪动代码"></a>1.5 挪动代码</h2><p>①domain实体，②mapper数据库打交道的，③service和serviceimpl，④controller</p>
-<h1 id="2-服务治理"><a href="#2-服务治理" class="headerlink" title="2.服务治理"></a>2.服务治理</h1>
+<p>==在这一步拆分多个子项目之后，我们可能会发现cart购物车服务会调用查询item商品服务，之前我们可以在一个模块中直接调用mapper，但是分开之后只能发送请求访问==</p>
+<h1 id="2-服务治理"><a href="#2-服务治理" class="headerlink" title="2.服务治理"></a>2.服务治理</h1><h2 id="2-1-RestTemplate"><a href="#2-1-RestTemplate" class="headerlink" title="2.1 RestTemplate"></a>2.1 RestTemplate</h2><p>之前通过调用item的mapper层方法即可，现在需要通过RestTemplate发送http请求给item服务获取数据。【但是有个致命问题是，exchange方法的url是写死的就很麻烦】</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405291104162.png" alt="image-20240529110418958"></p>
+<h2 id="2-2"><a href="#2-2" class="headerlink" title="2.2"></a>2.2</h2><p>为了解决RestTemplate发送http请求时会写死url问题，我们提出</p>
+
       
       
     </div>
