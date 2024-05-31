@@ -19,13 +19,16 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405291107820.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405291104162.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405291714600.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300951547.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311725981.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300953686.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300955865.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300951547.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300956689.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405301057487.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311731643.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311731800.png">
 <meta property="article:published_time" content="2024-05-28T06:23:36.000Z">
-<meta property="article:modified_time" content="2024-05-30T01:56:39.372Z">
+<meta property="article:modified_time" content="2024-05-31T09:33:37.011Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="微服务">
 <meta name="twitter:card" content="summary">
@@ -438,9 +441,9 @@
 <li>当提供者有多个实例时，消费者该选择哪一个？</li>
 </ul>
 <p>​        消费者可以通过负载均衡算法，从多个实例中选择一个</p>
-<h2 id="1-2注册中心方式"><a href="#1-2注册中心方式" class="headerlink" title="1.2注册中心方式"></a>1.2注册中心方式</h2><h3 id="1-1-1-Eureka-之前使用"><a href="#1-1-1-Eureka-之前使用" class="headerlink" title="1.1.1 Eureka(之前使用)"></a>1.1.1 Eureka(之前使用)</h3><h3 id="1-1-2-Nacos-目前使用"><a href="#1-1-2-Nacos-目前使用" class="headerlink" title="1.1.2 Nacos(目前使用)"></a>1.1.2 Nacos(目前使用)</h3><h4 id="1-注册中心"><a href="#1-注册中心" class="headerlink" title="1.注册中心"></a>1.注册中心</h4><ul>
+<h2 id="1-2注册中心方式"><a href="#1-2注册中心方式" class="headerlink" title="1.2注册中心方式"></a>1.2注册中心方式</h2><h3 id="1-1-1-Eureka-之前使用"><a href="#1-1-1-Eureka-之前使用" class="headerlink" title="1.1.1 Eureka(之前使用)"></a>1.1.1 Eureka(之前使用)</h3><h3 id="1-1-2-Nacos-目前使用"><a href="#1-1-2-Nacos-目前使用" class="headerlink" title="1.1.2 Nacos(目前使用)"></a>1.1.2 Nacos(目前使用)</h3><h4 id="1-角色1-注册中心"><a href="#1-角色1-注册中心" class="headerlink" title="1.角色1-注册中心"></a>1.角色1-注册中心</h4><ul>
 <li><p>1.准备配置文件和tar包</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300951547.png" alt></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311725981.png" alt="image-20240531172545922" style="zoom: 80%;">
 </li>
 <li><p>2.linux服务器docker容器启动</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300953686.png" alt="image-20240530095352569"></p>
@@ -449,11 +452,30 @@
 </li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300955865.png" alt="image-20240530095505769"></p>
-<h4 id="2-服务注册"><a href="#2-服务注册" class="headerlink" title="2.服务注册"></a>2.服务注册</h4><p>主要用于对服务提供者进行信息注册，注册到nacos中</p>
+<h4 id="2-角色2-服务注册"><a href="#2-角色2-服务注册" class="headerlink" title="2.角色2-服务注册"></a>2.角色2-服务注册</h4><p>主要用于对服务提供者进行信息注册，注册到nacos中。</p>
+<ul>
+<li>1.在pom.xml中导入依赖和在application.yml文件中配置nacos地址</li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300951547.png" alt="image-20240530095103394"></p>
-<p>我们添加完成之后可以刷新nacos地址，就可以在网页中看到</p>
+<ul>
+<li>2.我们添加完成之后可以刷新nacos地址，就可以在网页中看到</li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300956689.png" alt="image-20240530095604593"></p>
-<h4 id="3-服务发现"><a href="#3-服务发现" class="headerlink" title="3.服务发现"></a>3.服务发现</h4>
+<h4 id="3-角色3-服务发现"><a href="#3-角色3-服务发现" class="headerlink" title="3.角色3-服务发现"></a>3.角色3-服务发现</h4><ul>
+<li><p>1.在pom.xml中导入依赖和在application.yml文件中配置nacos地址</p>
+<p>【<strong>Nacos的依赖于服务注册时一致，这个依赖中同时包含了服务注册和发现的功能。因为任何一个微服务都可以调用别人，也可以被别人调用，即可以是调用者，也可以是提供者。</strong>】</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405301057487.png" alt="image-20240530105701412"></p>
+<ul>
+<li>2.我们添加完成之后可以刷新nacos地址，就可以在网页中看到</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311731643.png" alt="image-20240531173131580"></p>
+<ul>
+<li>3.进行远程调用</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311731800.png" alt></p>
+
       
       
         <div class="page-reward">
@@ -511,7 +533,7 @@
         <p><span>本文标题:</span><a href="/2024/05/28/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E9%BB%91%E9%A9%AC%E5%95%86%E5%9F%8E%E4%B8%BA%E4%BE%8B/">微服务-黑马商城为例</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年05月28日 - 14时23分</p>
-        <p><span>最后更新:</span>2024年05月30日 - 09时56分</p>
+        <p><span>最后更新:</span>2024年05月31日 - 17时33分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/05/28/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E9%BB%91%E9%A9%AC%E5%95%86%E5%9F%8E%E4%B8%BA%E4%BE%8B/" title="微服务-黑马商城为例">https://larkkkkkkk.github.io/2024/05/28/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E9%BB%91%E9%A9%AC%E5%95%86%E5%9F%8E%E4%B8%BA%E4%BE%8B/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/05/28/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E9%BB%91%E9%A9%AC%E5%95%86%E5%9F%8E%E4%B8%BA%E4%BE%8B/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -540,7 +562,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#服务拆分"><span class="toc-number">1.</span> <span class="toc-text">&#x3D;&#x3D;服务拆分&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-微服务拆分"><span class="toc-number">2.</span> <span class="toc-text">1.微服务拆分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-新建项目"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-导入依赖"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 导入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-编写启动类"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 编写启动类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-编写yml配置文件"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 编写yml配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-挪动代码"><span class="toc-number">2.5.</span> <span class="toc-text">1.5 挪动代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-远程调用-RestTemplate"><span class="toc-number">3.</span> <span class="toc-text">2.远程调用-RestTemplate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#服务治理"><span class="toc-number">4.</span> <span class="toc-text">&#x3D;&#x3D;服务治理&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-注册中心-动态变化"><span class="toc-number">5.</span> <span class="toc-text">1.注册中心(动态变化)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-注册中心原理"><span class="toc-number">5.1.</span> <span class="toc-text">1.1 注册中心原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2注册中心方式"><span class="toc-number">5.2.</span> <span class="toc-text">1.2注册中心方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-Eureka-之前使用"><span class="toc-number">5.2.1.</span> <span class="toc-text">1.1.1 Eureka(之前使用)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-Nacos-目前使用"><span class="toc-number">5.2.2.</span> <span class="toc-text">1.1.2 Nacos(目前使用)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-注册中心"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">1.注册中心</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-服务注册"><span class="toc-number">5.2.2.2.</span> <span class="toc-text">2.服务注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-服务发现"><span class="toc-number">5.2.2.3.</span> <span class="toc-text">3.服务发现</span></a></li></ol></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#服务拆分"><span class="toc-number">1.</span> <span class="toc-text">&#x3D;&#x3D;服务拆分&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-微服务拆分"><span class="toc-number">2.</span> <span class="toc-text">1.微服务拆分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-新建项目"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-导入依赖"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 导入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-编写启动类"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 编写启动类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-编写yml配置文件"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 编写yml配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-挪动代码"><span class="toc-number">2.5.</span> <span class="toc-text">1.5 挪动代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-远程调用-RestTemplate"><span class="toc-number">3.</span> <span class="toc-text">2.远程调用-RestTemplate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#服务治理"><span class="toc-number">4.</span> <span class="toc-text">&#x3D;&#x3D;服务治理&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-注册中心-动态变化"><span class="toc-number">5.</span> <span class="toc-text">1.注册中心(动态变化)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-注册中心原理"><span class="toc-number">5.1.</span> <span class="toc-text">1.1 注册中心原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2注册中心方式"><span class="toc-number">5.2.</span> <span class="toc-text">1.2注册中心方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-Eureka-之前使用"><span class="toc-number">5.2.1.</span> <span class="toc-text">1.1.1 Eureka(之前使用)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-Nacos-目前使用"><span class="toc-number">5.2.2.</span> <span class="toc-text">1.1.2 Nacos(目前使用)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-角色1-注册中心"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">1.角色1-注册中心</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-角色2-服务注册"><span class="toc-number">5.2.2.2.</span> <span class="toc-text">2.角色2-服务注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-角色3-服务发现"><span class="toc-number">5.2.2.3.</span> <span class="toc-text">3.角色3-服务发现</span></a></li></ol></li></ol></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 

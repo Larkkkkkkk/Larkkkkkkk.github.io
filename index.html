@@ -414,9 +414,9 @@
 <li>当提供者有多个实例时，消费者该选择哪一个？</li>
 </ul>
 <p>​        消费者可以通过负载均衡算法，从多个实例中选择一个</p>
-<h2 id="1-2注册中心方式"><a href="#1-2注册中心方式" class="headerlink" title="1.2注册中心方式"></a>1.2注册中心方式</h2><h3 id="1-1-1-Eureka-之前使用"><a href="#1-1-1-Eureka-之前使用" class="headerlink" title="1.1.1 Eureka(之前使用)"></a>1.1.1 Eureka(之前使用)</h3><h3 id="1-1-2-Nacos-目前使用"><a href="#1-1-2-Nacos-目前使用" class="headerlink" title="1.1.2 Nacos(目前使用)"></a>1.1.2 Nacos(目前使用)</h3><h4 id="1-注册中心"><a href="#1-注册中心" class="headerlink" title="1.注册中心"></a>1.注册中心</h4><ul>
+<h2 id="1-2注册中心方式"><a href="#1-2注册中心方式" class="headerlink" title="1.2注册中心方式"></a>1.2注册中心方式</h2><h3 id="1-1-1-Eureka-之前使用"><a href="#1-1-1-Eureka-之前使用" class="headerlink" title="1.1.1 Eureka(之前使用)"></a>1.1.1 Eureka(之前使用)</h3><h3 id="1-1-2-Nacos-目前使用"><a href="#1-1-2-Nacos-目前使用" class="headerlink" title="1.1.2 Nacos(目前使用)"></a>1.1.2 Nacos(目前使用)</h3><h4 id="1-角色1-注册中心"><a href="#1-角色1-注册中心" class="headerlink" title="1.角色1-注册中心"></a>1.角色1-注册中心</h4><ul>
 <li><p>1.准备配置文件和tar包</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300951547.png" alt></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311725981.png" alt="image-20240531172545922" style="zoom: 80%;">
 </li>
 <li><p>2.linux服务器docker容器启动</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300953686.png" alt="image-20240530095352569"></p>
@@ -425,11 +425,30 @@
 </li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300955865.png" alt="image-20240530095505769"></p>
-<h4 id="2-服务注册"><a href="#2-服务注册" class="headerlink" title="2.服务注册"></a>2.服务注册</h4><p>主要用于对服务提供者进行信息注册，注册到nacos中</p>
+<h4 id="2-角色2-服务注册"><a href="#2-角色2-服务注册" class="headerlink" title="2.角色2-服务注册"></a>2.角色2-服务注册</h4><p>主要用于对服务提供者进行信息注册，注册到nacos中。</p>
+<ul>
+<li>1.在pom.xml中导入依赖和在application.yml文件中配置nacos地址</li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300951547.png" alt="image-20240530095103394"></p>
-<p>我们添加完成之后可以刷新nacos地址，就可以在网页中看到</p>
+<ul>
+<li>2.我们添加完成之后可以刷新nacos地址，就可以在网页中看到</li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300956689.png" alt="image-20240530095604593"></p>
-<h4 id="3-服务发现"><a href="#3-服务发现" class="headerlink" title="3.服务发现"></a>3.服务发现</h4>
+<h4 id="3-角色3-服务发现"><a href="#3-角色3-服务发现" class="headerlink" title="3.角色3-服务发现"></a>3.角色3-服务发现</h4><ul>
+<li><p>1.在pom.xml中导入依赖和在application.yml文件中配置nacos地址</p>
+<p>【<strong>Nacos的依赖于服务注册时一致，这个依赖中同时包含了服务注册和发现的功能。因为任何一个微服务都可以调用别人，也可以被别人调用，即可以是调用者，也可以是提供者。</strong>】</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405301057487.png" alt="image-20240530105701412"></p>
+<ul>
+<li>2.我们添加完成之后可以刷新nacos地址，就可以在网页中看到</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311731643.png" alt="image-20240531173131580"></p>
+<ul>
+<li>3.进行远程调用</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311731800.png" alt></p>
+
       
       
     </div>
