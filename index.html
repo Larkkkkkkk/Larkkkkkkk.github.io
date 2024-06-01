@@ -387,7 +387,7 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405291107820.png" alt="image-20240529110754747"></p>
 <p>具体操作：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405291104162.png" alt="image-20240529110418958"></p>
-<h1 id="服务治理"><a href="#服务治理" class="headerlink" title="==服务治理=="></a>==服务治理==</h1><h1 id="1-注册中心-动态变化"><a href="#1-注册中心-动态变化" class="headerlink" title="1.注册中心(动态变化)"></a>1.注册中心(动态变化)</h1><p>为了解决RestTemplate发送http请求时会写死url问题【如果被调用服务有多台负载均衡，就会报错更改也很麻烦】。==其实注册中心就相当于docker中的数据卷一样，我们可以当做中间商然后把调用者(服务调用者)和被调用者(服务注册者)联系起来。==</p>
+<h1 id="服务治理"><a href="#服务治理" class="headerlink" title="==服务治理=="></a>==服务治理==</h1><h1 id="1-注册中心-增加中间商"><a href="#1-注册中心-增加中间商" class="headerlink" title="1.注册中心(增加中间商)"></a>1.注册中心(增加中间商)</h1><p>为了解决RestTemplate发送http请求时会写死url问题【如果被调用服务有多台负载均衡，就会报错更改也很麻烦】。==其实注册中心就相当于docker中的数据卷一样，我们可以当做中间商然后把调用者(服务调用者)和被调用者(服务注册者)联系起来。==</p>
 <h2 id="1-1-注册中心原理"><a href="#1-1-注册中心原理" class="headerlink" title="1.1 注册中心原理"></a>1.1 注册中心原理</h2><p>流程如下：</p>
 <ul>
 <li>服务启动时就会注册自己的服务信息（服务名、IP、端口）到注册中心   –<strong>让注册中心知道我可以被调用</strong></li>
@@ -413,8 +413,9 @@
 <ul>
 <li>当提供者有多个实例时，消费者该选择哪一个？</li>
 </ul>
-<p>​        消费者可以通过负载均衡算法，从多个实例中选择一个</p>
-<h2 id="1-2注册中心方式"><a href="#1-2注册中心方式" class="headerlink" title="1.2注册中心方式"></a>1.2注册中心方式</h2><h3 id="1-1-1-Eureka-之前使用"><a href="#1-1-1-Eureka-之前使用" class="headerlink" title="1.1.1 Eureka(之前使用)"></a>1.1.1 Eureka(之前使用)</h3><h3 id="1-1-2-Nacos-目前使用"><a href="#1-1-2-Nacos-目前使用" class="headerlink" title="1.1.2 Nacos(目前使用)"></a>1.1.2 Nacos(目前使用)</h3><h4 id="1-角色1-注册中心"><a href="#1-角色1-注册中心" class="headerlink" title="1.角色1-注册中心"></a>1.角色1-注册中心</h4><ul>
+<p>​        消费者可以通过负载均衡算法，从多个实例中选择一个【==以前SpringMVC默认是Ribbon负载均衡，后来默认是loadbalancer负载均衡==】</p>
+<h2 id="1-2注册中心方式"><a href="#1-2注册中心方式" class="headerlink" title="1.2注册中心方式"></a>1.2注册中心方式</h2><h3 id="1-1-1-Eureka-之前使用"><a href="#1-1-1-Eureka-之前使用" class="headerlink" title="1.1.1 Eureka(之前使用)"></a>1.1.1 Eureka(之前使用)</h3><p>具体使用可以去SpringCloud篇笔记查找。</p>
+<h3 id="1-1-2-Nacos-目前使用"><a href="#1-1-2-Nacos-目前使用" class="headerlink" title="1.1.2 Nacos(目前使用)"></a>1.1.2 Nacos(目前使用)</h3><h4 id="1-角色1-注册中心"><a href="#1-角色1-注册中心" class="headerlink" title="1.角色1-注册中心"></a>1.角色1-注册中心</h4><ul>
 <li><p>1.准备配置文件和tar包</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311725981.png" alt="image-20240531172545922" style="zoom: 80%;">
 </li>
@@ -436,10 +437,10 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405300956689.png" alt="image-20240530095604593"></p>
 <h4 id="3-角色3-服务发现"><a href="#3-角色3-服务发现" class="headerlink" title="3.角色3-服务发现"></a>3.角色3-服务发现</h4><ul>
 <li><p>1.在pom.xml中导入依赖和在application.yml文件中配置nacos地址</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406011612724.png" alt="image-20240601161204592"></p>
 <p>【<strong>Nacos的依赖于服务注册时一致，这个依赖中同时包含了服务注册和发现的功能。因为任何一个微服务都可以调用别人，也可以被别人调用，即可以是调用者，也可以是提供者。</strong>】</p>
 </li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405301057487.png" alt="image-20240530105701412"></p>
 <ul>
 <li>2.我们添加完成之后可以刷新nacos地址，就可以在网页中看到</li>
 </ul>
@@ -448,7 +449,59 @@
 <li>3.进行远程调用</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311731800.png" alt></p>
+<h1 id="2-OpenFeign-优化请求"><a href="#2-OpenFeign-优化请求" class="headerlink" title="2.OpenFeign(优化请求)"></a>2.OpenFeign(优化请求)</h1><p>之前使用的RestTemplate发起远程调用的代码：</p>
+  <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232026757.png" alt="image-20240423202621703" style="zoom:150%;">
 
+<p>存在下面的问题：</p>
+<p>•代码可读性差，编程体验不统一</p>
+<p>•参数复杂URL难以维护</p>
+<p>==Feign==是一个声明式的http客户端。其作用是帮助我们优雅地实现http请求发送，解决了上述的问题</p>
+<h2 id="2-1-使用步骤"><a href="#2-1-使用步骤" class="headerlink" title="2.1 使用步骤"></a>2.1 使用步骤</h2><ul>
+<li>1.导入依赖</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406011646223.png" alt="image-20240601164647179"></p>
+<ul>
+<li>2.服务发现方启动类添加注解</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406011646990.png" alt="image-20240601164613950"></p>
+<ul>
+<li>3.服务发现方编写接口</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406011655989.png" alt="image-20240601165533941"></p>
+<p>这里只需要声明接口，无需实现方法[<strong>OpenFeign动态代理实现</strong>]。接口中的几个关键信息：</p>
+<ul>
+<li><code>@FeignClient(&quot;item-service&quot;)</code> ：声明服务名称</li>
+<li><code>@GetMapping</code> ：声明请求方式</li>
+<li><code>@GetMapping(&quot;/items&quot;)</code> ：声明请求路径</li>
+<li><code>@RequestParam(&quot;ids&quot;) Collection&lt;Long&gt; ids</code> ：声明请求参数</li>
+<li><code>List&lt;ItemDTO&gt;</code> ：返回值类型</li>
+</ul>
+<p>有了上述信息，OpenFeign就可以利用动态代理帮我们实现这个方法，并且向<code>http://item-service/items</code>发送一个<code>GET</code>请求，携带ids为请求参数，并自动将返回值处理为<code>List&lt;ItemDTO&gt;</code>。我们只需要直接调用这个方法，即可实现远程调用了。</p>
+<ul>
+<li>4.服务发现方直接远程调用<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406011651403.png" alt="image-20240601165127358"></li>
+</ul>
+<p>总而言之，OpenFeign替我们完成了服务拉取、负载均衡、发送http请求的所有工作</p>
+<h2 id="2-2-连接池"><a href="#2-2-连接池" class="headerlink" title="2.2 连接池"></a>2.2 连接池</h2><p>==Feign底层发起http请求，依赖于其它的框架==。其底层客户端实现包括：</p>
+<ul>
+<li><p>URLConnection：[默认]不支持连接池</p>
+</li>
+<li><p>Apache HttpClient ：支持连接池</p>
+</li>
+<li><p>OKHttp：支持连接池</p>
+</li>
+</ul>
+<p>以HttpClient为例:</p>
+<p>①pom.xml文件引入依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--httpClient的依赖 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.github.openfeign&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;feign-httpclient&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>②yml配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">feign:</span><br><span class="line">  httpclient:</span><br><span class="line">    enabled: true # 开启feign对HttpClient的支持</span><br><span class="line">    #线程池的核心值需要压测和实际情况调整！！！！！！！！！！！1</span><br><span class="line">    max-connections: 200 # 最大的连接数</span><br><span class="line">    max-connections-per-route: 50 # 每个路径的最大连接数</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-3-最佳实践方案"><a href="#2-3-最佳实践方案" class="headerlink" title="2.3 最佳实践方案"></a>2.3 最佳实践方案</h2><p>我们在2.1的使用步骤其实只是模拟了一种调用，但可能多个模块之间互相调用这种方式就有很大弊端。</p>
+<p>因此可以提出继承方式和抽取方式：</p>
+<h3 id="2-3-1-两种抽取方式"><a href="#2-3-1-两种抽取方式" class="headerlink" title="2.3.1 两种抽取方式"></a>2.3.1 两种抽取方式</h3><h4 id="1-继承方式"><a href="#1-继承方式" class="headerlink" title="1.继承方式"></a>1.继承方式</h4><h4 id="2-抽取方式"><a href="#2-抽取方式" class="headerlink" title="2.抽取方式"></a>2.抽取方式</h4><h3 id="2-3-2-抽取Feign客户端"><a href="#2-3-2-抽取Feign客户端" class="headerlink" title="2.3.2 抽取Feign客户端"></a>2.3.2 抽取Feign客户端</h3><h3 id="2-3-3-扫描包"><a href="#2-3-3-扫描包" class="headerlink" title="2.3.3 扫描包"></a>2.3.3 扫描包</h3><h2 id="2-4-日志管理"><a href="#2-4-日志管理" class="headerlink" title="2.4 日志管理"></a>2.4 日志管理</h2>
       
       
     </div>
@@ -2463,6 +2516,7 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211626445.png" alt="image-20240421162629385"></p>
 <p>spring会<strong>自动</strong>帮助我们从eureka-server端，根据userservice这个服务名称，获取实例列表，而后完成负载均衡</p>
 <h1 id="5-Ribbon负载均衡"><a href="#5-Ribbon负载均衡" class="headerlink" title="5.Ribbon负载均衡"></a>5.Ribbon负载均衡</h1><p>4部分添加<strong>@LoadBalanced注解</strong>即可实现负载均衡功能</p>
+<p>==补充：以前SpringMVC默认是Ribbon负载均衡，后来默认是loadbalancer负载均衡==</p>
 <h2 id="5-1-负载均衡原理"><a href="#5-1-负载均衡原理" class="headerlink" title="5.1 负载均衡原理"></a>5.1 负载均衡原理</h2><p>其实就是我们发出的请求是<a href="http://userservice/user/1,根据负载均衡变成了http://localhost:8081" target="_blank" rel="noopener">http://userservice/user/1,根据负载均衡变成了http://localhost:8081</a></p>
 <p>SpringCloud底层其实是利用了一个名字为==Ribbon组件==来实现负载均衡</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404172053034.png" alt="image-20240417205259950"></p>
@@ -2528,8 +2582,6 @@
 <h2 id="5-4-饥饿加载"><a href="#5-4-饥饿加载" class="headerlink" title="5.4 饥饿加载"></a>5.4 饥饿加载</h2><p>Ribbon默认是采用<strong>懒加载</strong>，即第一次访问时才会去创建LoadBalanceClient，请求时间会很长</p>
 <p>而饥饿加载则会在项目启动时创建，降低第一次访问的耗时，通过下面配置开启饥饿加载:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ribbon:</span><br><span class="line">  eager-load:</span><br><span class="line">    enabled: true</span><br><span class="line">    clients: userservice</span><br></pre></td></tr></table></figure>
-
-
 
 
 
