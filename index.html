@@ -501,7 +501,27 @@
 
 <h2 id="2-3-最佳实践方案"><a href="#2-3-最佳实践方案" class="headerlink" title="2.3 最佳实践方案"></a>2.3 最佳实践方案</h2><p>我们在2.1的使用步骤其实只是模拟了一种调用，但可能多个模块之间互相调用这种方式就有很大弊端。</p>
 <p>因此可以提出继承方式和抽取方式：</p>
-<h3 id="2-3-1-两种抽取方式"><a href="#2-3-1-两种抽取方式" class="headerlink" title="2.3.1 两种抽取方式"></a>2.3.1 两种抽取方式</h3><h4 id="1-继承方式"><a href="#1-继承方式" class="headerlink" title="1.继承方式"></a>1.继承方式</h4><h4 id="2-抽取方式"><a href="#2-抽取方式" class="headerlink" title="2.抽取方式"></a>2.抽取方式</h4><h3 id="2-3-2-抽取Feign客户端"><a href="#2-3-2-抽取Feign客户端" class="headerlink" title="2.3.2 抽取Feign客户端"></a>2.3.2 抽取Feign客户端</h3><h3 id="2-3-3-扫描包"><a href="#2-3-3-扫描包" class="headerlink" title="2.3.3 扫描包"></a>2.3.3 扫描包</h3><h2 id="2-4-日志管理"><a href="#2-4-日志管理" class="headerlink" title="2.4 日志管理"></a>2.4 日志管理</h2>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406012050559.png" alt="image-20240601205026514"></p>
+<p>方案1抽取更加简单，工程结构也比较清晰，但缺点是整个项目耦合度偏高。</p>
+<p>方案2抽取相对麻烦，工程结构相对更复杂，但服务之间耦合度降低。</p>
+<h3 id="2-3-1-两种抽取方式"><a href="#2-3-1-两种抽取方式" class="headerlink" title="2.3.1 两种抽取方式"></a>2.3.1 两种抽取方式</h3><h4 id="1-继承方式"><a href="#1-继承方式" class="headerlink" title="1.继承方式"></a>1.继承方式</h4><p>就是将所有用得到的dto，po，vo啥的都放到一个微服务里面。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406012048451.png" alt="image-20240601204832364"></p>
+<h4 id="2-抽取方式"><a href="#2-抽取方式" class="headerlink" title="2.抽取方式"></a>2.抽取方式</h4><p>每个微服务存放自己需要的dto，po，vo啥的。只有需要的放到对应微服务。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406012048695.png" alt="image-20240601204850644"></p>
+<h3 id="2-3-2-抽取Feign客户端"><a href="#2-3-2-抽取Feign客户端" class="headerlink" title="2.3.2 抽取Feign客户端"></a>2.3.2 抽取Feign客户端</h3><p>就是将cart-service关于调用的代码和vo，dto等挪到hm-api公共模块内。</p>
+<h3 id="2-3-3-扫描包"><a href="#2-3-3-扫描包" class="headerlink" title="2.3.3 扫描包"></a>2.3.3 扫描包</h3><p>一般情况下，如果调用feign和注册feign不在一个微服务内，那就可能出现扫描包扫描不到报错。就需要进行设置扫描包：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406012043897.png" alt="image-20240601204312798"></p>
+<h2 id="2-4-日志管理"><a href="#2-4-日志管理" class="headerlink" title="2.4 日志管理"></a>2.4 日志管理</h2><p>OpenFeign只会在FeignClient所在包的日志级别为<strong>DEBUG</strong>时，才会输出日志。而且其日志级别有4级：</p>
+<ul>
+<li><strong>NONE</strong>：不记录任何日志信息，这是默认值。</li>
+<li><strong>BASIC</strong>：仅记录请求的方法，URL以及响应状态码和执行时间</li>
+<li><strong>HEADERS</strong>：在BASIC的基础上，额外记录了请求和响应的头信息</li>
+<li><strong>FULL</strong>：记录所有请求和响应的明细，包括头信息、请求体、元数据。</li>
+</ul>
+<p>Feign默认的日志级别就是NONE，所以默认我们看不到请求日志。</p>
+<h3 id="2-4-1-配置文件yml方式"><a href="#2-4-1-配置文件yml方式" class="headerlink" title="2.4.1 配置文件yml方式"></a>2.4.1 配置文件yml方式</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232253759.png" alt="image-20240423213829442"></p>
+<h3 id="2-4-2-Java代码方式"><a href="#2-4-2-Java代码方式" class="headerlink" title="2.4.2 Java代码方式"></a>2.4.2 Java代码方式</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232147785.png" alt="image-20240423214701673"></p>
+
       
       
     </div>
@@ -2789,9 +2809,8 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232125336.png" alt="image-20240423212526274"></p>
 <h2 id="7-2-自定义配置"><a href="#7-2-自定义配置" class="headerlink" title="7.2 自定义配置"></a>7.2 自定义配置</h2><p>Feign运行自定义配置来覆盖默认配置，可以修改的配置如下:</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232133749.png" alt="image-20240423213315647"></p>
-<p>注意:一般我们需要配置的就是日志级别</p>
+<p>【注意:一般我们需要配置的就是日志级别】</p>
 <p>==下面以日志为例来演示如何自定义配置==</p>
-<h3 id="7-2-1-配置文件yml方式"><a href="#7-2-1-配置文件yml方式" class="headerlink" title="7.2.1 配置文件yml方式"></a>7.2.1 配置文件yml方式</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232253759.png" alt="image-20240423213829442"></p>
 <p>而日志的级别分为四种：</p>
 <ul>
 <li>NONE：不记录任何日志信息，这是默认值。</li>
@@ -2799,7 +2818,8 @@
 <li>HEADERS：在BASIC的基础上，额外记录了请求和响应的头信息</li>
 <li>FULL：记录所有请求和响应的明细，包括头信息、请求体、元数据</li>
 </ul>
-<h3 id="7-2-2-Java代码方式"><a href="#7-2-2-Java代码方式" class="headerlink" title="7.2.2 Java代码方式"></a>7.2.2 Java代码方式</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232147785.png" alt="image-20240423214701673"></p>
+<h3 id="7-2-1-配置文件yml方式–日志"><a href="#7-2-1-配置文件yml方式–日志" class="headerlink" title="7.2.1 配置文件yml方式–日志"></a>7.2.1 配置文件yml方式–日志</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232253759.png" alt="image-20240423213829442"></p>
+<h3 id="7-2-2-Java代码方式–日志"><a href="#7-2-2-Java代码方式–日志" class="headerlink" title="7.2.2 Java代码方式–日志"></a>7.2.2 Java代码方式–日志</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232147785.png" alt="image-20240423214701673"></p>
 <h2 id="7-3-Feign使用优化"><a href="#7-3-Feign使用优化" class="headerlink" title="7.3 Feign使用优化"></a>7.3 Feign使用优化</h2><p>==Feign底层发起http请求，依赖于其它的框架==。其底层客户端实现包括：</p>
 <ul>
 <li><p>URLConnection：[默认]不支持连接池</p>
