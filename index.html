@@ -365,7 +365,7 @@
 <p>代码结构如下：</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405281426453.png" alt="image-20240528142611395" style="zoom:67%;">
 
-<h1 id="服务拆分"><a href="#服务拆分" class="headerlink" title="==服务拆分=="></a>==服务拆分==</h1><h1 id="1-微服务拆分"><a href="#1-微服务拆分" class="headerlink" title="1.微服务拆分"></a>1.微服务拆分</h1><p>拆分工程结构有两种：</p>
+<h1 id="服务拆分–各个模块各司其职"><a href="#服务拆分–各个模块各司其职" class="headerlink" title="==服务拆分–各个模块各司其职=="></a>==服务拆分–各个模块各司其职==</h1><h1 id="1-微服务拆分"><a href="#1-微服务拆分" class="headerlink" title="1.微服务拆分"></a>1.微服务拆分</h1><p>拆分工程结构有两种：</p>
 <ul>
 <li>1.独立project：总黑马商城设置一个空项目(各个模块都在这个目录下) –不怎么美观和使用</li>
 <li>2.Maven聚合：总黑马商城设置一个空项目(各个模块成为一个module模块，根据maven管理) –只是代码放一起但是各自可以打包开发编译</li>
@@ -387,7 +387,7 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405291107820.png" alt="image-20240529110754747"></p>
 <p>具体操作：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405291104162.png" alt="image-20240529110418958"></p>
-<h1 id="服务治理"><a href="#服务治理" class="headerlink" title="==服务治理=="></a>==服务治理==</h1><h1 id="1-注册中心-增加中间商"><a href="#1-注册中心-增加中间商" class="headerlink" title="1.注册中心(增加中间商)"></a>1.注册中心(增加中间商)</h1><p>为了解决RestTemplate发送http请求时会写死url问题【如果被调用服务有多台负载均衡，就会报错更改也很麻烦】。==其实注册中心就相当于docker中的数据卷一样，我们可以当做中间商然后把调用者(服务调用者)和被调用者(服务注册者)联系起来。==</p>
+<h1 id="服务治理–更高效管理调用者和被调用者"><a href="#服务治理–更高效管理调用者和被调用者" class="headerlink" title="==服务治理–更高效管理调用者和被调用者=="></a>==服务治理–更高效管理调用者和被调用者==</h1><h1 id="1-注册中心-增加调用中间商"><a href="#1-注册中心-增加调用中间商" class="headerlink" title="1.注册中心(增加调用中间商)"></a>1.注册中心(增加调用中间商)</h1><p>为了解决RestTemplate发送http请求时会写死url问题【如果被调用服务有多台负载均衡，就会报错更改也很麻烦】。==其实注册中心就相当于docker中的数据卷一样，我们可以当做中间商然后把调用者(服务调用者)和被调用者(服务注册者)联系起来。==</p>
 <h2 id="1-1-注册中心原理"><a href="#1-1-注册中心原理" class="headerlink" title="1.1 注册中心原理"></a>1.1 注册中心原理</h2><p>流程如下：</p>
 <ul>
 <li>服务启动时就会注册自己的服务信息（服务名、IP、端口）到注册中心   –<strong>让注册中心知道我可以被调用</strong></li>
@@ -449,7 +449,7 @@
 <li>3.进行远程调用</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311731800.png" alt></p>
-<h1 id="2-OpenFeign-优化请求"><a href="#2-OpenFeign-优化请求" class="headerlink" title="2.OpenFeign(优化请求)"></a>2.OpenFeign(优化请求)</h1><p>之前使用的RestTemplate发起远程调用的代码：</p>
+<h1 id="2-OpenFeign-优化发送http请求"><a href="#2-OpenFeign-优化发送http请求" class="headerlink" title="2.OpenFeign(优化发送http请求)"></a>2.OpenFeign(优化发送http请求)</h1><p>之前使用的RestTemplate发起远程调用的代码：</p>
   <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232026757.png" alt="image-20240423202621703" style="zoom:150%;">
 
 <p>存在下面的问题：</p>
@@ -521,8 +521,32 @@
 <p>Feign默认的日志级别就是NONE，所以默认我们看不到请求日志。</p>
 <h3 id="2-4-1-配置文件yml方式"><a href="#2-4-1-配置文件yml方式" class="headerlink" title="2.4.1 配置文件yml方式"></a>2.4.1 配置文件yml方式</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232253759.png" alt="image-20240423213829442"></p>
 <h3 id="2-4-2-Java代码方式"><a href="#2-4-2-Java代码方式" class="headerlink" title="2.4.2 Java代码方式"></a>2.4.2 Java代码方式</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232147785.png" alt="image-20240423214701673"></p>
-<p>==服务==</p>
-
+<p>提出一些问题：</p>
+<p>我们将黑马商城拆分为5个微服务：</p>
+<ul>
+<li>用户服务</li>
+<li>商品服务</li>
+<li>购物车服务</li>
+<li>交易服务</li>
+<li>支付服务 </li>
+</ul>
+<p>由于每个微服务都有不同的地址或端口，入口不同，在与前端联调的时候发现了一些问题：</p>
+<ul>
+<li>请求不同数据时要访问不同的入口，需要维护多个入口地址，麻烦</li>
+<li>前端无法调用nacos，无法实时更新服务列表</li>
+</ul>
+<p>单体架构时我们只需要完成一次用户登录、身份校验，就可以在所有业务中获取到用户信息。而微服务拆分后，每个微服务都独立部署，这就存在一些问题：</p>
+<ul>
+<li>每个微服务都需要编写登录校验、用户信息获取的功能吗？</li>
+<li>当微服务之间调用时，该如何传递用户信息？</li>
+</ul>
+<p>通过==网关==技术解决上述问题。笔记分为3章：</p>
+<ul>
+<li>第一章：网关路由，解决前端请求入口的问题。</li>
+<li>第二章：网关鉴权，解决统一登录校验和用户信息获取的问题。</li>
+<li>第三章：统一配置管理，解决微服务的配置文件重复和配置热更新问题。</li>
+</ul>
+<h1 id="服务管理–帮助前端和后端联调"><a href="#服务管理–帮助前端和后端联调" class="headerlink" title="==服务管理–帮助前端和后端联调=="></a>==服务管理–帮助前端和后端联调==</h1><h1 id="1-网关路由"><a href="#1-网关路由" class="headerlink" title="1.网关路由"></a>1.网关路由</h1><h1 id="2-网关鉴权"><a href="#2-网关鉴权" class="headerlink" title="2.网关鉴权"></a>2.网关鉴权</h1><h1 id="3-统一配置管理"><a href="#3-统一配置管理" class="headerlink" title="3.统一配置管理"></a>3.统一配置管理</h1>
       
       
     </div>
