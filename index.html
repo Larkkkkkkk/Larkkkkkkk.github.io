@@ -654,7 +654,8 @@
 <p>但是当网关将请求转发到微服务时，微服务又该如何获取用户身份呢？由于网关发送请求到微服务依然采用的是<code>Http</code>请求，因此我们可以将用户信息以请求头的方式传递到下游微服务。然后微服务可以从请求头中获取登录用户信息。考虑到微服务内部可能很多地方都需要用到登录用户信息，因此我们可以利用SpringMVC的拦截器来实现登录用户信息获取，并存入ThreadLocal，方便后续使用。</p>
 <p>据图流程图如下：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406102139229.png" alt="image-20240610213950132"></p>
-<h3 id="2-6-1-微服务获取用户"><a href="#2-6-1-微服务获取用户" class="headerlink" title="2.6.1 微服务获取用户"></a>2.6.1 微服务获取用户</h3><h3 id="2-6-2-OpenFeign传递用户"><a href="#2-6-2-OpenFeign传递用户" class="headerlink" title="2.6.2 OpenFeign传递用户"></a>2.6.2 OpenFeign传递用户</h3><h1 id="3-配置管理"><a href="#3-配置管理" class="headerlink" title="3.配置管理"></a>3.配置管理</h1>
+<h3 id="2-6-1-微服务获取用户"><a href="#2-6-1-微服务获取用户" class="headerlink" title="2.6.1 微服务获取用户"></a>2.6.1 微服务获取用户</h3><h4 id="1-保存用户到请求头"><a href="#1-保存用户到请求头" class="headerlink" title="1.保存用户到请求头"></a>1.保存用户到请求头</h4><p>==网关提供API==</p>
+<h4 id="2-拦截器获取用户"><a href="#2-拦截器获取用户" class="headerlink" title="2.拦截器获取用户"></a>2.拦截器获取用户</h4><h4 id="3-恢复购物车代码"><a href="#3-恢复购物车代码" class="headerlink" title="3.恢复购物车代码"></a>3.恢复购物车代码</h4><h3 id="2-6-2-OpenFeign传递用户"><a href="#2-6-2-OpenFeign传递用户" class="headerlink" title="2.6.2 OpenFeign传递用户"></a>2.6.2 OpenFeign传递用户</h3><h1 id="3-配置管理"><a href="#3-配置管理" class="headerlink" title="3.配置管理"></a>3.配置管理</h1>
       
       
     </div>
