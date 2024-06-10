@@ -627,7 +627,7 @@
 
 <h4 id="方式二-自定义类"><a href="#方式二-自定义类" class="headerlink" title="方式二-自定义类"></a>方式二-自定义类</h4><p>自定义<code>GatewayFilter</code>不是直接实现<code>GatewayFilter</code>，而是实现<code>AbstractGatewayFilterFactory</code>。</p>
 <ul>
-<li>第一种：参数yml配置+自定义过滤器</li>
+<li><strong>第一种</strong>：参数yml配置+自定义过滤器</li>
 </ul>
 <p>【注意:该类的名称一定要以<code>GatewayFilterFactory</code>为后缀！】</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406071528868.png" alt="image-20240607152819765"></p>
@@ -635,7 +635,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      default-filters:</span><br><span class="line">            - PrintAny #直接写自定义GatewayFilterFactory类名称中前缀类声明过滤器</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>第二种：自定义过滤器+动态配置参数【比较复杂不建议】</li>
+<li><strong>第二种</strong>：自定义过滤器+动态配置参数【比较复杂不建议】</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406071535309.png" alt="image-20240607153516182"></p>
 <p>然后在yml配置中使用：</p>
@@ -649,7 +649,12 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406071543417.png" alt="image-20240607154320369"></p>
 <h3 id="2-4-2-GlobalFilter"><a href="#2-4-2-GlobalFilter" class="headerlink" title="2.4.2 GlobalFilter"></a>2.4.2 GlobalFilter</h3><p>自定义GlobalFilter则简单很多，直接实现GlobalFilter即可，而且也无法设置动态参数[因为默认是全局路由]:</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406071538497.png" alt="image-20240607153823420"></p>
-<h2 id="2-5-登录校验"><a href="#2-5-登录校验" class="headerlink" title="2.5 登录校验"></a>2.5 登录校验</h2><h2 id="2-6-获取JWT信息"><a href="#2-6-获取JWT信息" class="headerlink" title="2.6 获取JWT信息"></a>2.6 获取JWT信息</h2><h3 id="2-6-1-微服务获取用户"><a href="#2-6-1-微服务获取用户" class="headerlink" title="2.6.1 微服务获取用户"></a>2.6.1 微服务获取用户</h3><h3 id="2-6-2-OpenFeign传递用户"><a href="#2-6-2-OpenFeign传递用户" class="headerlink" title="2.6.2 OpenFeign传递用户"></a>2.6.2 OpenFeign传递用户</h3><h1 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h1>
+<h2 id="2-5-登录校验"><a href="#2-5-登录校验" class="headerlink" title="2.5 登录校验"></a>2.5 登录校验</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406102133789.png" alt="image-20240610213352568"></p>
+<h2 id="2-6-获取用户信息"><a href="#2-6-获取用户信息" class="headerlink" title="2.6 获取用户信息"></a>2.6 获取用户信息</h2><p>现在，网关已经可以完成登录校验并获取登录用户身份信息。</p>
+<p>但是当网关将请求转发到微服务时，微服务又该如何获取用户身份呢？由于网关发送请求到微服务依然采用的是<code>Http</code>请求，因此我们可以将用户信息以请求头的方式传递到下游微服务。然后微服务可以从请求头中获取登录用户信息。考虑到微服务内部可能很多地方都需要用到登录用户信息，因此我们可以利用SpringMVC的拦截器来实现登录用户信息获取，并存入ThreadLocal，方便后续使用。</p>
+<p>据图流程图如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406102139229.png" alt="image-20240610213950132"></p>
+<h3 id="2-6-1-微服务获取用户"><a href="#2-6-1-微服务获取用户" class="headerlink" title="2.6.1 微服务获取用户"></a>2.6.1 微服务获取用户</h3><h3 id="2-6-2-OpenFeign传递用户"><a href="#2-6-2-OpenFeign传递用户" class="headerlink" title="2.6.2 OpenFeign传递用户"></a>2.6.2 OpenFeign传递用户</h3><h1 id="3-配置管理"><a href="#3-配置管理" class="headerlink" title="3.配置管理"></a>3.配置管理</h1>
       
       
     </div>
