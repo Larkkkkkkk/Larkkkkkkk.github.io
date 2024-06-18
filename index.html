@@ -714,13 +714,16 @@
 
 
 
-<h2 id="2-7-问题三-微服务之间怎么传递用户信息"><a href="#2-7-问题三-微服务之间怎么传递用户信息" class="headerlink" title="2.7 问题三-微服务之间怎么传递用户信息"></a>2.7 问题三-微服务之间怎么传递用户信息</h2><h2 id="总结：网关解决传递信息的三大问题"><a href="#总结：网关解决传递信息的三大问题" class="headerlink" title="==总结：网关解决传递信息的三大问题=="></a>==总结：网关解决传递信息的三大问题==</h2><ul>
+<h2 id="2-7-问题三-微服务之间怎么传递用户信息"><a href="#2-7-问题三-微服务之间怎么传递用户信息" class="headerlink" title="2.7 问题三-微服务之间怎么传递用户信息"></a>2.7 问题三-微服务之间怎么传递用户信息</h2><p>前端发起的请求都会经过网关再到微服务，由于我们之前编写的过滤器和拦截器功能，微服务可以轻松获取登录用户信息。</p>
+<p>但有些业务是比较复杂的，请求到达微服务后还需要调用其它多个微服务。比如下单业务，流程如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406181638193.png" alt="image-20240618163838037"></p>
+<h2 id="总结：网关解决传递信息的三大问题"><a href="#总结：网关解决传递信息的三大问题" class="headerlink" title="==总结：网关解决传递信息的三大问题=="></a>==总结：网关解决传递信息的三大问题==</h2><ul>
 <li>1.怎么做到先校验?后转发(网关路由是配置的，请求转发是Gateway内部代码)  —在gateway内部工作基本原理的NettyRoutingFilter过滤器前面定义一个过滤器(①路由过滤器②全局过滤器)。</li>
-<li>2.怎么做到网关给用户传递用户信息  —网关到微服务通过API，</li>
-<li>3.怎么做到用户之间调用传递用户信息  —</li>
+<li>2.怎么做到网关给用户传递用户信息  —网关到微服务通过API添加用户信息到http请求头，微服务通过SpringMVC拦截器获取用户信息，将用户信息存储到ThreadLocal中</li>
+<li>3.怎么做到用户之间调用传递用户信息  —就是利用发送http请求(Openfeign)的时候添加进去</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406181045023.png" alt="image-20240618104511792"></p>
-<h1 id="3-配置管理-nacos"><a href="#3-配置管理-nacos" class="headerlink" title="3.配置管理(nacos)"></a>3.配置管理(nacos)</h1>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406181703680.png" alt="image-20240618170312606"></p>
+<h1 id="配置管理–高效维护配置和动态变更"><a href="#配置管理–高效维护配置和动态变更" class="headerlink" title="==配置管理–高效维护配置和动态变更=="></a>==配置管理–高效维护配置和动态变更==</h1><h1 id="3-配置管理-nacos"><a href="#3-配置管理-nacos" class="headerlink" title="3.配置管理(nacos)"></a>3.配置管理(nacos)</h1>
       
       
     </div>
