@@ -729,7 +729,71 @@
 <li>3.<strong>怎么做到用户之间调用传递用户信息</strong>  —就是利用发送http请求(Openfeign)时通过提供的拦截器添加</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191439587.png" alt="image-20240619143917520"></p>
-<h1 id="配置管理–高效维护配置和动态变更"><a href="#配置管理–高效维护配置和动态变更" class="headerlink" title="==配置管理–高效维护配置和动态变更=="></a>==配置管理–高效维护配置和动态变更==</h1><h1 id="3-配置管理-nacos"><a href="#3-配置管理-nacos" class="headerlink" title="3.配置管理(nacos)"></a>3.配置管理(nacos)</h1>
+<h1 id="配置管理–高效维护配置和动态变更属性"><a href="#配置管理–高效维护配置和动态变更属性" class="headerlink" title="==配置管理–高效维护配置和动态变更属性=="></a>==配置管理–高效维护配置和动态变更属性==</h1><p>1.微服务重复配置过多，维护成本高  —-&gt; 共享配置</p>
+<p>2.业务配置经常变动，每次修改都要重启服务  —-&gt; 热更新</p>
+<p>3.网关路由配置写死，如果变更就要重启网关 —-&gt; 热更新</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191455894.png" alt="image-20240619145505779"></p>
+<p>这些问题都可以通过统一的<strong>配置管理器服务[Nacos第二大特性]</strong>解决 —–Nacos不仅仅具备注册中心功能，也具备配置管理的功能：</p>
+<p>微服务共享的配置可以统一交给Nacos保存和管理，在Nacos控制台修改配置后，Nacos会将配置变更推送给相关的微服务，并且无需重启即可生效，实现配置热更新。</p>
+<p>网关的路由同样是配置，因此同样可以基于这个功能实现动态路由功能，无需重启网关即可修改路由配置。</p>
+<h1 id="1-配置共享"><a href="#1-配置共享" class="headerlink" title="1.配置共享"></a>1.配置共享</h1><p>我们可以把微服务共享的配置抽取到Nacos中统一管理，这样就不需要每个微服务都重复配置了。分为两步：</p>
+<ul>
+<li>①在Nacos中添加共享配置</li>
+<li>②微服务拉取配置</li>
+</ul>
+<h2 id="1-1-添加共享配置"><a href="#1-1-添加共享配置" class="headerlink" title="1.1 添加共享配置"></a>1.1 添加共享配置</h2><p>在nacos控制台分别添加微服务共同配置：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191533467.png" alt="image-20240619153300369"></p>
+<p>最终形成多个yaml文档：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191533456.png" alt="image-20240619153352401"></p>
+<h2 id="1-2-拉取共享配置"><a href="#1-2-拉取共享配置" class="headerlink" title="1.2 拉取共享配置"></a>1.2 拉取共享配置</h2><p>将拉取到的共享配置与本地的<code>application.yaml</code>配置合并，完成项目上下文的初始化。</p>
+<p>不过，需要注意的是，读取Nacos配置是SpringCloud上下文（<code>ApplicationContext</code>）初始化时处理的，发生在项目的引导阶段。然后才会初始化SpringBoot上下文，去读取<code>application.yaml</code>。</p>
+<p>也就是说引导阶段，<code>application.yaml</code>文件尚未读取，根本不知道nacos 地址，该如何去加载nacos中的配置文件呢？</p>
+<p>SpringCloud在初始化上下文的时候会先读取一个名为<code>bootstrap.yaml</code>(或者<code>bootstrap.properties</code>)的文件，如果我们将nacos地址配置到<code>bootstrap.yaml</code>中，那么在项目引导阶段就可以读取nacos中的配置了。</p>
+<h3 id="1-2-1-文件读取顺序"><a href="#1-2-1-文件读取顺序" class="headerlink" title="1.2.1 文件读取顺序"></a>1.2.1 文件读取顺序</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191540790.png" alt="image-20240619154015718" style="zoom:67%;">
+
+<h3 id="1-2-2-拉取步骤"><a href="#1-2-2-拉取步骤" class="headerlink" title="1.2.2 拉取步骤"></a>1.2.2 拉取步骤</h3><ul>
+<li>1.导入依赖：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--nacos配置管理--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.cloud&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-config&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;!--读取bootstrap文件--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-bootstrap&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191541489.png" alt="image-20240619154146436"></p>
+<ul>
+<li>2.编写bootstrap文件：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191543053.png" alt="image-20240619154311986"></p>
+<h2 id="1-3-多配置文件读取顺序"><a href="#1-3-多配置文件读取顺序" class="headerlink" title="1.3 多配置文件读取顺序"></a>1.3 多配置文件读取顺序</h2><p>可能不同环境下有不同的yaml文件[像单体架构的时候properties，yml，yaml等情况]，因此当出现相同属性时就有优先级：==名字越长越牛逼==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404231735276.png" alt="image-20240423173524235"></p>
+<h2 id="1-4-配置共享整理总结"><a href="#1-4-配置共享整理总结" class="headerlink" title="1.4 配置共享整理总结"></a>1.4 配置共享整理总结</h2><p>其实就是把原来的application.yml文件拆分成三个部分：①application公共配置；②Nacos地址和读取①文件配置；③application个性化配置</p>
+<p>①nacos空间多个共享文件：原来application.yml中多个微服务可共享的信息</p>
+<p>②新建bootstrap.yml文件：原来application.yml里面关于nacos的配置+添加config信息(读取nacos配置的多个共同部分yml文件)；</p>
+<p>③application.yml：保留一部分自己特有的属性和①nacos里面${}需要的属性</p>
+<h1 id="2-配置热更新-无需重启"><a href="#2-配置热更新-无需重启" class="headerlink" title="2.配置热更新(无需重启)"></a>2.配置热更新(无需重启)</h1><p>这就要用到Nacos的配置热更新能力了，分为两步：</p>
+<ul>
+<li>在Nacos中添加配置[配置属性]</li>
+<li>在微服务读取配置[bootstrap.yml文件拉取配置，具体业务位置使用]</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191607049.png" alt="image-20240619160718950"></p>
+<h2 id="2-1-Nacos配置文件"><a href="#2-1-Nacos配置文件" class="headerlink" title="2.1 Nacos配置文件"></a>2.1 Nacos配置文件</h2><p>首先，我们在nacos中添加一个配置文件，将购物车的上限数量添加到配置中：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191609209.png" alt="image-20240619160940082"></p>
+<p>注意文件的dataId格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[服务名]-[spring.active.profile].[后缀名]</span><br></pre></td></tr></table></figure>
+
+<p>文件名称由三部分组成：</p>
+<ul>
+<li><strong><code>服务名</code></strong>：我们是购物车服务，所以是<code>cart-service</code></li>
+<li><strong><code>spring.active.profile</code></strong>：就是spring boot中的<code>spring.active.profile</code>，可以省略，则所有profile共享该配置</li>
+<li><strong><code>后缀名</code></strong>：例如yaml</li>
+</ul>
+<h2 id="2-2-配置热更新"><a href="#2-2-配置热更新" class="headerlink" title="2.2 配置热更新"></a>2.2 配置热更新</h2><p>我们在微服务中读取配置，实现配置热更新。【一般我们使用第一种方式，第二种要用两个注解】</p>
+<p>现在我们需要读取Nacos配置文件中的信息hm.cart.maxAmount属性:</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191619117.png" alt="image-20240619161955080"></p>
+<h3 id="2-2-1-方式一"><a href="#2-2-1-方式一" class="headerlink" title="2.2.1 方式一"></a>2.2.1 方式一</h3><p>在<code>cart-service</code>中新建一个属性读取类：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191611194.png" alt="image-20240619161154107"></p>
+<p>接着，在业务中使用该属性加载类：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191612768.png" alt="image-20240619161245631"></p>
+<h3 id="2-2-2-方式二"><a href="#2-2-2-方式二" class="headerlink" title="2.2.2 方式二"></a>2.2.2 方式二</h3><p>直接搭配@RefreshScope注解和@Value注解获取</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191619789.png" alt="image-20240619161914727"></p>
+<h1 id="3-动态路由"><a href="#3-动态路由" class="headerlink" title="3.动态路由"></a>3.动态路由</h1>
       
       
     </div>
@@ -2859,8 +2923,7 @@
 <h3 id="6-3-1user-service服务提供者配置集群"><a href="#6-3-1user-service服务提供者配置集群" class="headerlink" title="6.3.1user-service服务提供者配置集群"></a>6.3.1user-service服务提供者配置集群</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211707871.png" alt="image-20240421170739795"></p>
 <h3 id="6-3-2-order-service服务消费者配置集群"><a href="#6-3-2-order-service服务消费者配置集群" class="headerlink" title="6.3.2 order-service服务消费者配置集群"></a>6.3.2 order-service服务消费者配置集群</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211713471.png" alt="image-20240421171305421"></p>
 <h2 id="6-4-Nacos负载均衡-NacosRule实现"><a href="#6-4-Nacos负载均衡-NacosRule实现" class="headerlink" title="6.4 Nacos负载均衡(NacosRule实现)"></a>6.4 Nacos负载均衡(NacosRule实现)</h2><p>Ribbon默认的<code>ZoneAvoidanceRule</code>并不能实现根据同集群优先来实现负载均衡。[Eureka默认是同一个zone区域轮询]</p>
-<h3 id="6-4-1-修改负载均衡规则"><a href="#6-4-1-修改负载均衡规则" class="headerlink" title="6.4.1 修改负载均衡规则"></a>6.4.1 修改负载均衡规则</h3><p>注意:</p>
-<p>==原来默认是集群间轮询，后来设定nacosrule之后是本地集群优先(本地集群又是随机的  –&gt;可以设置权重提高访问频率),如果本地的都挂了那就会跨集群==</p>
+<h3 id="6-4-1-修改负载均衡规则"><a href="#6-4-1-修改负载均衡规则" class="headerlink" title="6.4.1 修改负载均衡规则"></a>6.4.1 修改负载均衡规则</h3><p>注意:==原来默认是集群间轮询，后来设定nacosrule之后是本地集群优先(本地集群又是随机的  –&gt;可以设置权重提高访问频率),如果本地的都挂了那就会跨集群==</p>
 <p>因此Nacos中提供了一个<code>NacosRule</code>的实现，可以优先从==同集群中挑选实例==</p>
 <p>修改order-service服务消费者的application.yml文件，修改负载均衡规则：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211711312.png" alt="image-20240421171140243"></p>
@@ -2891,7 +2954,7 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211731012.png" alt="image-20240421173139937"></p>
 <h2 id="6-6-Nacos服务实例"><a href="#6-6-Nacos服务实例" class="headerlink" title="6.6 Nacos服务实例"></a>6.6 Nacos服务实例</h2><p>Nacos的服务实例分为两种类型：</p>
 <ul>
-<li><p>临时实例：如果实例宕机超过一定时间，会从服务列表剔除，默认的类型。</p>
+<li><p>临时实例：【默认类型】如果实例宕机超过一定时间，会从服务列表剔除。</p>
 </li>
 <li><p>非临时实例：如果实例宕机，不会从服务列表剔除，也可以叫永久实例。</p>
 </li>

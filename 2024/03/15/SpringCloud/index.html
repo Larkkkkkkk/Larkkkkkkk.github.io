@@ -86,7 +86,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406071113462.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241752823.png">
 <meta property="article:published_time" content="2024-03-15T02:48:29.000Z">
-<meta property="article:modified_time" content="2024-06-07T05:52:32.521Z">
+<meta property="article:modified_time" content="2024-06-19T06:59:13.690Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="微服务">
 <meta name="twitter:card" content="summary">
@@ -661,8 +661,7 @@
 <h3 id="6-3-1user-service服务提供者配置集群"><a href="#6-3-1user-service服务提供者配置集群" class="headerlink" title="6.3.1user-service服务提供者配置集群"></a>6.3.1user-service服务提供者配置集群</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211707871.png" alt="image-20240421170739795"></p>
 <h3 id="6-3-2-order-service服务消费者配置集群"><a href="#6-3-2-order-service服务消费者配置集群" class="headerlink" title="6.3.2 order-service服务消费者配置集群"></a>6.3.2 order-service服务消费者配置集群</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211713471.png" alt="image-20240421171305421"></p>
 <h2 id="6-4-Nacos负载均衡-NacosRule实现"><a href="#6-4-Nacos负载均衡-NacosRule实现" class="headerlink" title="6.4 Nacos负载均衡(NacosRule实现)"></a>6.4 Nacos负载均衡(NacosRule实现)</h2><p>Ribbon默认的<code>ZoneAvoidanceRule</code>并不能实现根据同集群优先来实现负载均衡。[Eureka默认是同一个zone区域轮询]</p>
-<h3 id="6-4-1-修改负载均衡规则"><a href="#6-4-1-修改负载均衡规则" class="headerlink" title="6.4.1 修改负载均衡规则"></a>6.4.1 修改负载均衡规则</h3><p>注意:</p>
-<p>==原来默认是集群间轮询，后来设定nacosrule之后是本地集群优先(本地集群又是随机的  –&gt;可以设置权重提高访问频率),如果本地的都挂了那就会跨集群==</p>
+<h3 id="6-4-1-修改负载均衡规则"><a href="#6-4-1-修改负载均衡规则" class="headerlink" title="6.4.1 修改负载均衡规则"></a>6.4.1 修改负载均衡规则</h3><p>注意:==原来默认是集群间轮询，后来设定nacosrule之后是本地集群优先(本地集群又是随机的  –&gt;可以设置权重提高访问频率),如果本地的都挂了那就会跨集群==</p>
 <p>因此Nacos中提供了一个<code>NacosRule</code>的实现，可以优先从==同集群中挑选实例==</p>
 <p>修改order-service服务消费者的application.yml文件，修改负载均衡规则：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211711312.png" alt="image-20240421171140243"></p>
@@ -693,7 +692,7 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211731012.png" alt="image-20240421173139937"></p>
 <h2 id="6-6-Nacos服务实例"><a href="#6-6-Nacos服务实例" class="headerlink" title="6.6 Nacos服务实例"></a>6.6 Nacos服务实例</h2><p>Nacos的服务实例分为两种类型：</p>
 <ul>
-<li><p>临时实例：如果实例宕机超过一定时间，会从服务列表剔除，默认的类型。</p>
+<li><p>临时实例：【默认类型】如果实例宕机超过一定时间，会从服务列表剔除。</p>
 </li>
 <li><p>非临时实例：如果实例宕机，不会从服务列表剔除，也可以叫永久实例。</p>
 </li>
@@ -1027,7 +1026,7 @@
         <p><span>本文标题:</span><a href="/2024/03/15/SpringCloud/">SpringCloud</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年03月15日 - 10时48分</p>
-        <p><span>最后更新:</span>2024年06月07日 - 13时52分</p>
+        <p><span>最后更新:</span>2024年06月19日 - 14时59分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/03/15/SpringCloud/" title="SpringCloud">https://larkkkkkkk.github.io/2024/03/15/SpringCloud/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/03/15/SpringCloud/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
