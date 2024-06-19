@@ -96,15 +96,15 @@
     <link href="https://larkkkkkkk.github.io/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4/"/>
     <id>https://larkkkkkkk.github.io/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4/</id>
     <published>2024-05-27T08:58:27.000Z</published>
-    <updated>2024-06-19T09:12:10.231Z</updated>
+    <updated>2024-06-19T09:26:54.980Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="容易出现的高级问题"><a href="#容易出现的高级问题" class="headerlink" title="==容易出现的高级问题=="></a>==容易出现的高级问题==</h1><h1 id="1-雪崩"><a href="#1-雪崩" class="headerlink" title="1.雪崩"></a>1.雪崩</h1><h1 id="2-Sentinel"><a href="#2-Sentinel" class="headerlink" title="2. Sentinel"></a>2. Sentinel</h1><h1 id="服务保护方案"><a href="#服务保护方案" class="headerlink" title="==服务保护方案=="></a>==服务保护方案==</h1><h1 id="1-请求限流"><a href="#1-请求限流" class="headerlink" title="1.请求限流"></a>1.请求限流</h1><h1 id="2-线程隔离"><a href="#2-线程隔离" class="headerlink" title="2.线程隔离"></a>2.线程隔离</h1><h1 id="3-服务熔断"><a href="#3-服务熔断" class="headerlink" title="3.服务熔断"></a>3.服务熔断</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="容易出现的高级问题"><a href="#容易出现的高级问题" class="headerlink" title="==容易出现的高级问题=="></a>==容易出现的高级问题==</h1><h1 id="1-雪崩问题"><a href="#1-雪崩问题" class="headerlink" title="1.雪崩问题"></a>1.雪崩问题</h1><h2 id="1-1-产生情况"><a href="#1-1-产生情况" class="headerlink" title="1.1 产生情况"></a>1.1 产生情况</h2><h2 id="1-2-产生原因"><a href="#1-2-产生原因" class="headerlink" title="1.2 产生原因"></a>1.2 产生原因</h2><h2 id="1-3-解决方案"><a href="#1-3-解决方案" class="headerlink" title="1.3 解决方案"></a>1.3 解决方案</h2><h3 id="1-3-1-请求限流"><a href="#1-3-1-请求限流" class="headerlink" title="1.3.1 请求限流"></a>1.3.1 请求限流</h3><p>限制通过数量</p><h3 id="1-3-2-线程隔离"><a href="#1-3-2-线程隔离" class="headerlink" title="1.3.2 线程隔离"></a>1.3.2 线程隔离</h3><p>限制分给其他服务的线程数，保证不会因为一个服务挂了导致其他服务消耗完自己资源也挂了</p><h3 id="1-3-3-服务熔断"><a href="#1-3-3-服务熔断" class="headerlink" title="1.3.3 服务熔断"></a>1.3.3 服务熔断</h3><p>设定一个断路器(开关)，统计请求的异常比例和慢调用比例，超过阈值我就拒绝不让你用。熔断了去走服务的后备fallback逻辑(备份方案)</p><h1 id="2-常见服务保护技术"><a href="#2-常见服务保护技术" class="headerlink" title="2. 常见服务保护技术"></a>2. 常见服务保护技术</h1><p>目前我们常见的就是以下两种，我们都推荐使用Sentinel：</p><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191725090.png" alt="image-20240619172500972"></p><h1 id="服务保护方案–Sentinel"><a href="#服务保护方案–Sentinel" class="headerlink" title="==服务保护方案–Sentinel=="></a>==服务保护方案–Sentinel==</h1><h1 id="0-基础知识"><a href="#0-基础知识" class="headerlink" title="0.基础知识"></a>0.基础知识</h1><h1 id="1-请求限流"><a href="#1-请求限流" class="headerlink" title="1.请求限流"></a>1.请求限流</h1><h1 id="2-线程隔离"><a href="#2-线程隔离" class="headerlink" title="2.线程隔离"></a>2.线程隔离</h1><h1 id="3-服务熔断"><a href="#3-服务熔断" class="headerlink" title="3.服务熔断"></a>3.服务熔断</h1>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;容易出现的高级问题&quot;&gt;&lt;a href=&quot;#容易出现的高级问题&quot; class=&quot;headerlink&quot; title=&quot;==容易出现的高级问题==&quot;&gt;&lt;/a&gt;==容易出现的高级问题==&lt;/h1&gt;&lt;h1 id=&quot;1-雪崩&quot;&gt;&lt;a href=&quot;#1-雪崩&quot; class=&quot;
+        &lt;h1 id=&quot;容易出现的高级问题&quot;&gt;&lt;a href=&quot;#容易出现的高级问题&quot; class=&quot;headerlink&quot; title=&quot;==容易出现的高级问题==&quot;&gt;&lt;/a&gt;==容易出现的高级问题==&lt;/h1&gt;&lt;h1 id=&quot;1-雪崩问题&quot;&gt;&lt;a href=&quot;#1-雪崩问题&quot; cla
       
     
     </summary>
