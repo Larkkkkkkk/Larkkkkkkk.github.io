@@ -5,20 +5,46 @@
   
   <title>微服务-服务保护 | Larkkkkkkk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&#x3D;&#x3D;容易出现的高级问题&#x3D;&#x3D;1.雪崩问题1.1 产生情况1.2 产生原因1.3 解决方案1.3.1 请求限流限制通过数量 1.3.2 线程隔离限制分给其他服务的线程数，保证不会因为一个服务挂了导致其他服务消耗完自己资源也挂了 1.3.3 服务熔断设定一个断路器(开关)，统计请求的异常比例和慢调用比例，超过阈值我就拒绝不让你用。熔断了去走服务的后备fallback逻辑(备份方案) 2. 常见服务保护技">
+  <meta name="description" content="&#x3D;&#x3D;容易出现的高级问题&#x3D;&#x3D;1.雪崩问题1.1 产生背景在微服务远程调用的过程中，还存在几个问题需要解决。 ①业务健壮性问题： 例如在之前的查询购物车列表业务中，购物车服务需要查询最新的商品信息，与购物车数据做对比，提醒用户。大家设想一下，如果商品服务查询时发生故障，查询购物车列表在调用商品服务时，是不是也会异常？从而导致购物车查询失败。 但从业务角度来说，为了提升用户体验，即便是商品查询失败，购物">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微服务-服务保护">
 <meta property="og:url" content="https://larkkkkkkk.github.io/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4/index.html">
 <meta property="og:site_name" content="Larkkkkkkk">
-<meta property="og:description" content="&#x3D;&#x3D;容易出现的高级问题&#x3D;&#x3D;1.雪崩问题1.1 产生情况1.2 产生原因1.3 解决方案1.3.1 请求限流限制通过数量 1.3.2 线程隔离限制分给其他服务的线程数，保证不会因为一个服务挂了导致其他服务消耗完自己资源也挂了 1.3.3 服务熔断设定一个断路器(开关)，统计请求的异常比例和慢调用比例，超过阈值我就拒绝不让你用。熔断了去走服务的后备fallback逻辑(备份方案) 2. 常见服务保护技">
+<meta property="og:description" content="&#x3D;&#x3D;容易出现的高级问题&#x3D;&#x3D;1.雪崩问题1.1 产生背景在微服务远程调用的过程中，还存在几个问题需要解决。 ①业务健壮性问题： 例如在之前的查询购物车列表业务中，购物车服务需要查询最新的商品信息，与购物车数据做对比，提醒用户。大家设想一下，如果商品服务查询时发生故障，查询购物车列表在调用商品服务时，是不是也会异常？从而导致购物车查询失败。 但从业务角度来说，为了提升用户体验，即便是商品查询失败，购物">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201107590.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201108846.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201115053.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201120287.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201121329.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201124632.png">
+<meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240620112723879.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191725090.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201004928.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201006735.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201009932.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201010818.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201012586.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201013409.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201015183.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201016674.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201019122.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201020688.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201021628.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201025052.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201028517.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201030005.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201044237.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201044411.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201045455.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201046905.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201048318.png">
 <meta property="article:published_time" content="2024-05-27T08:58:27.000Z">
-<meta property="article:modified_time" content="2024-06-19T09:26:54.980Z">
+<meta property="article:modified_time" content="2024-06-20T03:27:24.258Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="微服务">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191725090.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201107590.png">
   
     <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
   
@@ -372,12 +398,133 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="容易出现的高级问题"><a href="#容易出现的高级问题" class="headerlink" title="==容易出现的高级问题=="></a>==容易出现的高级问题==</h1><h1 id="1-雪崩问题"><a href="#1-雪崩问题" class="headerlink" title="1.雪崩问题"></a>1.雪崩问题</h1><h2 id="1-1-产生情况"><a href="#1-1-产生情况" class="headerlink" title="1.1 产生情况"></a>1.1 产生情况</h2><h2 id="1-2-产生原因"><a href="#1-2-产生原因" class="headerlink" title="1.2 产生原因"></a>1.2 产生原因</h2><h2 id="1-3-解决方案"><a href="#1-3-解决方案" class="headerlink" title="1.3 解决方案"></a>1.3 解决方案</h2><h3 id="1-3-1-请求限流"><a href="#1-3-1-请求限流" class="headerlink" title="1.3.1 请求限流"></a>1.3.1 请求限流</h3><p>限制通过数量</p>
-<h3 id="1-3-2-线程隔离"><a href="#1-3-2-线程隔离" class="headerlink" title="1.3.2 线程隔离"></a>1.3.2 线程隔离</h3><p>限制分给其他服务的线程数，保证不会因为一个服务挂了导致其他服务消耗完自己资源也挂了</p>
-<h3 id="1-3-3-服务熔断"><a href="#1-3-3-服务熔断" class="headerlink" title="1.3.3 服务熔断"></a>1.3.3 服务熔断</h3><p>设定一个断路器(开关)，统计请求的异常比例和慢调用比例，超过阈值我就拒绝不让你用。熔断了去走服务的后备fallback逻辑(备份方案)</p>
+        <h1 id="容易出现的高级问题"><a href="#容易出现的高级问题" class="headerlink" title="==容易出现的高级问题=="></a>==容易出现的高级问题==</h1><h1 id="1-雪崩问题"><a href="#1-雪崩问题" class="headerlink" title="1.雪崩问题"></a>1.雪崩问题</h1><h2 id="1-1-产生背景"><a href="#1-1-产生背景" class="headerlink" title="1.1 产生背景"></a>1.1 产生背景</h2><p>在微服务远程调用的过程中，还存在几个问题需要解决。</p>
+<p>①<strong>业务健壮性</strong>问题：</p>
+<p>例如在之前的查询购物车列表业务中，购物车服务需要查询最新的商品信息，与购物车数据做对比，提醒用户。大家设想一下，如果商品服务查询时发生故障，查询购物车列表在调用商品服务时，是不是也会异常？从而导致购物车查询失败。</p>
+<p>但从业务角度来说，为了提升用户体验，即便是商品查询失败，购物车列表也应该正确展示出来，哪怕是不包含最新的商品信息。</p>
+<p>②<strong>级联失败</strong>问题：</p>
+<p>还是查询购物车的业务，假如商品服务业务并发较高，占用过多Tomcat连接。可能会导致商品服务的所有接口响应时间增加，延迟变高，甚至是长时间阻塞直至查询失败。</p>
+<p>此时查询购物车业务需要查询并等待商品查询结果，从而导致查询购物车列表业务的响应时间也变长，甚至也阻塞直至无法访问。而此时如果查询购物车的请求较多，可能导致购物车服务的Tomcat连接占用较多，所有接口的响应时间都会增加，整个服务性能很差， 甚至不可用。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201107590.png" alt="image-20240620110735548"></p>
+<p>依次类推，整个微服务群中与购物车服务、商品服务等有调用关系的服务可能都会出现问题，最终导致整个集群不可用。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201108846.png" alt="image-20240620110826809"></p>
+<p>==雪崩【级联失败】==：微服务调用链路中的某个服务故障，引起整个链路中的所有微服务都不可用。</p>
+<h2 id="1-2-产生原因"><a href="#1-2-产生原因" class="headerlink" title="1.2 产生原因"></a>1.2 产生原因</h2><ul>
+<li><p>微服务相互调用，服务提供者出现故障或阻塞。</p>
+</li>
+<li><p>服务调用者没有做好异常处理，导致自身故障。</p>
+</li>
+<li><p>调用链中的所有服务级联失败，导致整个集群故障</p>
+</li>
+</ul>
+<h2 id="1-3-解决方案"><a href="#1-3-解决方案" class="headerlink" title="1.3 解决方案"></a>1.3 解决方案</h2><ul>
+<li><p>尽量避免服务出现故障或阻塞。–<strong>请求限流和线程隔离</strong></p>
+<ul>
+<li><p>保证代码的健壮性；</p>
+</li>
+<li><p>保证网络畅通；</p>
+</li>
+<li><p>能应对较高的并发请求；</p>
+</li>
+</ul>
+</li>
+<li><p>服务调用者做好远程调用异常的后备方案，避免故障扩散 –<strong>服务熔断</strong></p>
+</li>
+</ul>
+<p>这些方案或多或少都会导致服务的体验上略有下降，比如请求限流，降低了并发上限；线程隔离，降低了可用资源数量；服务熔断，降低了服务的完整度，部分服务变的不可用或弱可用。因此这些方案都属于服务<strong>降级</strong>的方案。但通过这些方案，服务的健壮性得到了提升。</p>
+<h3 id="1-请求限流-降低并发上线"><a href="#1-请求限流-降低并发上线" class="headerlink" title="1.请求限流(降低并发上线)"></a>1.请求限流(降低并发上线)</h3><p>==限制访问微服务的请求并发量，避免服务因流量激增出现故障==</p>
+<p>服务故障最重要原因，就是并发太高！解决了这个问题，就能避免大部分故障。当然，接口的并发不是一直很高，而是突发的。因此请求限流，就是<strong>限制或控制</strong>接口访问的并发流量，避免服务因流量激增而出现故障。</p>
+<p>请求限流往往会有一个限流器，数量高低起伏的并发请求曲线，经过限流器就变的非常平稳。这就像是水电站的大坝，起到蓄水的作用，可以通过开关控制水流出的大小，让下游水流始终维持在一个平稳的量。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201115053.png" alt="image-20240620111528990"></p>
+<h3 id="2-线程隔离-降低独占资源数量"><a href="#2-线程隔离-降低独占资源数量" class="headerlink" title="2.线程隔离(降低独占资源数量)"></a>2.线程隔离(降低独占资源数量)</h3><p>==限制分给其他服务的线程数，保证不会因为一个服务挂了导致其他服务消耗完自己资源也挂了==</p>
+<p>为了避免某个接口故障或压力过大导致整个服务不可用，我们可以限定每个接口可以使用的资源范围，也就是将其“隔离”起来。</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201120287.png" alt="image-20240620112057241" style="zoom:67%;">
+
+<p>举例子说明：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201121329.png" alt="image-20240620112134291" style="zoom: 80%;">
+
+<p>如图所示，我们给查询购物车业务限定可用线程数量上限为20，这样即便查询购物车的请求因为查询商品服务而出现故障，也不会导致服务器的线程资源被耗尽，不会影响到其它接口。</p>
+<h4 id="2-1-快速失败-fallback"><a href="#2-1-快速失败-fallback" class="headerlink" title="2.1 快速失败(fallback)"></a>2.1 快速失败(fallback)</h4><p><strong>快速失败</strong>：给业务编写一个调用失败时的处理的逻辑，称为fallback。当调用出现故障（比如无线程可用）时，按照失败处理逻辑执行业务并返回，而不是直接抛出异常。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201124632.png" alt="image-20240620112448590"></p>
+<h3 id="3-服务熔断-提供后备方案"><a href="#3-服务熔断-提供后备方案" class="headerlink" title="3.服务熔断(提供后备方案)"></a>3.服务熔断(提供后备方案)</h3><p>==设定一个断路器(开关)，统计请求的异常比例和慢调用比例，超过阈值我就拒绝不让你用。熔断了去走服务的后备fallback逻辑(备份方案)==</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240620112723879.png" alt="image-20240620112723879"></p>
 <h1 id="2-常见服务保护技术"><a href="#2-常见服务保护技术" class="headerlink" title="2. 常见服务保护技术"></a>2. 常见服务保护技术</h1><p>目前我们常见的就是以下两种，我们都推荐使用Sentinel：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406191725090.png" alt="image-20240619172500972"></p>
-<h1 id="服务保护方案–Sentinel"><a href="#服务保护方案–Sentinel" class="headerlink" title="==服务保护方案–Sentinel=="></a>==服务保护方案–Sentinel==</h1><h1 id="0-基础知识"><a href="#0-基础知识" class="headerlink" title="0.基础知识"></a>0.基础知识</h1><h1 id="1-请求限流"><a href="#1-请求限流" class="headerlink" title="1.请求限流"></a>1.请求限流</h1><h1 id="2-线程隔离"><a href="#2-线程隔离" class="headerlink" title="2.线程隔离"></a>2.线程隔离</h1><h1 id="3-服务熔断"><a href="#3-服务熔断" class="headerlink" title="3.服务熔断"></a>3.服务熔断</h1>
+<h1 id="服务保护方案–Sentinel基础使用"><a href="#服务保护方案–Sentinel基础使用" class="headerlink" title="==服务保护方案–Sentinel基础使用=="></a>==服务保护方案–Sentinel基础使用==</h1><h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h1><p>Sentinel是阿里巴巴开源的一款服务保护框架，目前已经加入SpringCloudAlibaba中。官方网站：</p>
+<p><a href="https://security.feishu.cn/link/safety?target=https%3A%2F%2Fsentinelguard.io%2Fzh-cn%2F&amp;scene=ccm&amp;logParams=%7B%22location%22%3A%22ccm_docs%22%7D&amp;lang=zh-CN">https://security.feishu.cn/link/safety?target=https%3A%2F%2Fsentinelguard.io%2Fzh-cn%2F&amp;scene=ccm&amp;logParams=%7B%22location%22%3A%22ccm_docs%22%7D&amp;lang=zh-CN</a></p>
+<p>Sentinel 的使用可以分为两个部分:</p>
+<ul>
+<li><strong>核心库</strong>（Jar包）：不依赖任何框架/库，能够运行于 Java 8 及以上的版本的运行时环境，同时对 Dubbo / Spring Cloud 等框架也有较好的支持。在项目中引入依赖即可实现服务限流、隔离、熔断等功能。</li>
+<li><strong>控制台</strong>（Dashboard）：Dashboard 主要负责管理推送规则、监控、管理机器信息等。</li>
+</ul>
+<h1 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h1><p>为了方便监控微服务，我们先把Sentinel的控制台搭建出来</p>
+<h2 id="2-1-下载jar包"><a href="#2-1-下载jar包" class="headerlink" title="2.1 下载jar包"></a>2.1 下载jar包</h2><p>下载地址：<a href="https://github.com/alibaba/Sentinel/releases" target="_blank" rel="noopener">Releases · alibaba/Sentinel · GitHub</a></p>
+<h2 id="2-2-启动测试"><a href="#2-2-启动测试" class="headerlink" title="2.2 启动测试"></a>2.2 启动测试</h2><ul>
+<li>1.存放jar：将jar包放在任意非中文、不包含特殊字符的目录下，重命名为<code>sentinel-dashboard.jar</code>：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201004928.png" alt="image-20240620100439761"></p>
+<ul>
+<li>2.启动：在当前目录下cmd打开命令行输入指令启动：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入以下命令：</span><br><span class="line">java -Dserver.port=8090 -Dcsp.sentinel.dashboard.server=localhost:8090 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">其余配置项可以参考官方文档：</span></span><br><span class="line">https://github.com/alibaba/Sentinel/wiki/%E5%90%AF%E5%8A%A8%E9%85%8D%E7%BD%AE%E9%A1%B9</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201006735.png" alt="image-20240620100605675"></p>
+<ul>
+<li>3.访问：访问<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8090</a>页面，就可以看到sentinel的控制台了：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201009932.png" alt="image-20240620100945847"></p>
+<p>需要输入账号和密码，默认都是：sentinel</p>
+<p>登录后，即可看到控制台，默认会监控sentinel-dashboard服务本身</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201010818.png" alt="image-20240620101024738"></p>
+<h1 id="3-微服务整合"><a href="#3-微服务整合" class="headerlink" title="3.微服务整合"></a>3.微服务整合</h1><p>我们以微服务-黑马商城中的cart-service购物车模块为例：</p>
+<h2 id="3-1-引入依赖"><a href="#3-1-引入依赖" class="headerlink" title="3.1 引入依赖"></a>3.1 引入依赖</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--sentinel--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.cloud&lt;&#x2F;groupId&gt; </span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-alibaba-sentinel&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>因为整合到springalibaba，所以依赖名也是spring-cloud-starter前缀</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201012586.png" alt="image-20240620101220519"></p>
+<h2 id="3-2-yml配置控制台"><a href="#3-2-yml配置控制台" class="headerlink" title="3.2 yml配置控制台"></a>3.2 yml配置控制台</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    sentinel:</span><br><span class="line">      transport:</span><br><span class="line">        dashboard: localhost:8090  # sentinel控制台地址</span><br><span class="line">      # 因为restful风格，如果不设置的话同一个controller下的接口都是一个资源</span><br><span class="line">      http-method-specify: true #是否设置请求方式作为资源名称</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201013409.png" alt="image-20240620101330326"></p>
+<h2 id="3-3-测试"><a href="#3-3-测试" class="headerlink" title="3.3 测试"></a>3.3 测试</h2><p>重启<code>cart-service</code>，然后访问查询购物车接口，sentinel的客户端就会将服务访问的信息提交到<code>sentinel-dashboard</code>控制台。并展示出统计信息：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201015183.png" alt="image-20240620101510077"></p>
+<p>点击cart-service的簇点链路菜单，会看到下面的页面：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201016674.png" alt="image-20240620101637577"></p>
+<p>所谓<strong>簇点链路</strong>，就是<strong>单机调用链路</strong>，是一次请求进入服务后经过的每一个被<code>Sentinel</code>监控的资源。【默认情况下，<code>Sentinel</code>会监控<code>SpringMVC</code>的每一个<code>Endpoint</code>（接口）】</p>
+<p>因此，我们看到<code>/carts</code>这个接口路径就是其中一个簇点，我们可以对其进行限流、熔断、隔离等保护措施。</p>
+<h2 id="3-4-簇点链路"><a href="#3-4-簇点链路" class="headerlink" title="3.4 簇点链路"></a>3.4 簇点链路</h2><p>【默认情况下】Sentinel会把路径作为簇点资源的名称，无法区分路径相同但请求方式不同的接口，查询、删除、修改等都被<strong>识别为一个簇点资源</strong>(我们的SpringMVC接口是按照Restful风格设计，因此购物车的查询、删除、修改等接口全部都是<code>/carts</code>路径)</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201019122.png" alt="image-20240620101946062"></p>
+<p>解决方案：我们可以选择打开Sentinel的请求方式前缀，把<code>请求方式 + 请求路径</code>作为簇点资源名</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201020688.png" alt="image-20240620102041605" style="zoom: 50%;">
+
+<p>然后，重启服务，通过页面访问购物车的相关接口，可以看到sentinel控制台的簇点链路发生了变化：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201021628.png" alt="image-20240620102128531"></p>
+<h1 id="服务保护方案–Sentinel三大解决方案"><a href="#服务保护方案–Sentinel三大解决方案" class="headerlink" title="==服务保护方案–Sentinel三大解决方案=="></a>==服务保护方案–Sentinel三大解决方案==</h1><p>我们以微服务-黑马商城中的cart-service购物车模块为例：</p>
+<h1 id="1-请求限流"><a href="#1-请求限流" class="headerlink" title="1.请求限流"></a>1.请求限流</h1><p>前提：我们已经将cart-service购物车模块和sentinel建立连接，我们就可以通过控制台进行操作</p>
+<h2 id="1-1-控制台设置限流QPS"><a href="#1-1-控制台设置限流QPS" class="headerlink" title="1.1 控制台设置限流QPS"></a>1.1 控制台设置限流QPS</h2><p>把查询购物车列表这个簇点资源的流量限制在了每秒6个，也就是最大QPS为6.</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201025052.png" alt="image-20240620102556908"></p>
+<h2 id="1-2-Jmeter测试"><a href="#1-2-Jmeter测试" class="headerlink" title="1.2 Jmeter测试"></a>1.2 Jmeter测试</h2><p>【可参考笔记-jmeter快速入门】</p>
+<p>我们利用Jemeter做限流测试，我们每秒发出10个请求：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201028517.png" alt="image-20240620102852440" style="zoom:67%;">
+
+<p>最终在sentinel监控结果如下：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201030005.png" alt="image-20240620103024899" style="zoom:67%;">
+
+<p>可以看出<code>GET:/carts</code>这个接口的通过QPS稳定在6附近，而拒绝的QPS在4附近，符合我们的预</p>
+<h1 id="2-线程隔离"><a href="#2-线程隔离" class="headerlink" title="2.线程隔离"></a>2.线程隔离</h1><h2 id="2-1-控制台设置并发线程数"><a href="#2-1-控制台设置并发线程数" class="headerlink" title="2.1 控制台设置并发线程数"></a>2.1 控制台设置并发线程数</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201044237.png" alt="image-20240620104405158"></p>
+<h2 id="2-2-Jmeter测试"><a href="#2-2-Jmeter测试" class="headerlink" title="2.2 Jmeter测试"></a>2.2 Jmeter测试</h2><p>【可参考笔记-jmeter快速入门】</p>
+<p>我们利用Jemeter测试，每秒发送100个请求：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201044411.png" alt="image-20240620104448371"></p>
+<p>最终在sentinel监控结果如下：</p>
+<p>进入查询购物车的请求每秒大概在100，而在查询商品时却只剩下每秒10左右，符合我们的预期。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201045455.png" alt="image-20240620104557342"></p>
+<p>此时如果我们通过页面访问购物车的其它接口，例如添加购物车、修改购物车商品数量，发现不受影响：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201046905.png" alt="image-20240620104632824"></p>
+<h2 id="2-3-Fallback-后备方案"><a href="#2-3-Fallback-后备方案" class="headerlink" title="2.3 Fallback(后备方案)"></a>2.3 Fallback(后备方案)</h2><h3 id="2-3-1-OpenFeign整合Sentinel"><a href="#2-3-1-OpenFeign整合Sentinel" class="headerlink" title="2.3.1 OpenFeign整合Sentinel"></a>2.3.1 OpenFeign整合Sentinel</h3><p>修改cart-service模块的application.yml文件，开启Feign的sentinel功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">feign:</span><br><span class="line">  sentinel:</span><br><span class="line">    enabled: true # 开启feign对sentinel的支持</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201048318.png" alt="image-20240620104846227" style="zoom:50%;">
+
+<h2 id="2-3-2"><a href="#2-3-2" class="headerlink" title="2.3.2"></a>2.3.2</h2><h1 id="3-服务熔断"><a href="#3-服务熔断" class="headerlink" title="3.服务熔断"></a>3.服务熔断</h1>
       
       
         <div class="page-reward">
@@ -435,7 +582,7 @@
         <p><span>本文标题:</span><a href="/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4/">微服务-服务保护</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年05月27日 - 16时58分</p>
-        <p><span>最后更新:</span>2024年06月19日 - 17时26分</p>
+        <p><span>最后更新:</span>2024年06月20日 - 11时27分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4/" title="微服务-服务保护">https://larkkkkkkk.github.io/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -473,7 +620,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#容易出现的高级问题"><span class="toc-number">1.</span> <span class="toc-text">&#x3D;&#x3D;容易出现的高级问题&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-雪崩问题"><span class="toc-number">2.</span> <span class="toc-text">1.雪崩问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-产生情况"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 产生情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-产生原因"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 产生原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-解决方案"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-请求限流"><span class="toc-number">2.3.1.</span> <span class="toc-text">1.3.1 请求限流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-线程隔离"><span class="toc-number">2.3.2.</span> <span class="toc-text">1.3.2 线程隔离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-3-服务熔断"><span class="toc-number">2.3.3.</span> <span class="toc-text">1.3.3 服务熔断</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-常见服务保护技术"><span class="toc-number">3.</span> <span class="toc-text">2. 常见服务保护技术</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#服务保护方案–Sentinel"><span class="toc-number">4.</span> <span class="toc-text">&#x3D;&#x3D;服务保护方案–Sentinel&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0-基础知识"><span class="toc-number">5.</span> <span class="toc-text">0.基础知识</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-请求限流"><span class="toc-number">6.</span> <span class="toc-text">1.请求限流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-线程隔离"><span class="toc-number">7.</span> <span class="toc-text">2.线程隔离</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-服务熔断"><span class="toc-number">8.</span> <span class="toc-text">3.服务熔断</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#容易出现的高级问题"><span class="toc-number">1.</span> <span class="toc-text">&#x3D;&#x3D;容易出现的高级问题&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-雪崩问题"><span class="toc-number">2.</span> <span class="toc-text">1.雪崩问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-产生背景"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 产生背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-产生原因"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 产生原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-解决方案"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-请求限流-降低并发上线"><span class="toc-number">2.3.1.</span> <span class="toc-text">1.请求限流(降低并发上线)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-线程隔离-降低独占资源数量"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.线程隔离(降低独占资源数量)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-快速失败-fallback"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">2.1 快速失败(fallback)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-服务熔断-提供后备方案"><span class="toc-number">2.3.3.</span> <span class="toc-text">3.服务熔断(提供后备方案)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-常见服务保护技术"><span class="toc-number">3.</span> <span class="toc-text">2. 常见服务保护技术</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#服务保护方案–Sentinel基础使用"><span class="toc-number">4.</span> <span class="toc-text">&#x3D;&#x3D;服务保护方案–Sentinel基础使用&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-介绍"><span class="toc-number">5.</span> <span class="toc-text">1.介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-安装"><span class="toc-number">6.</span> <span class="toc-text">2.安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-下载jar包"><span class="toc-number">6.1.</span> <span class="toc-text">2.1 下载jar包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-启动测试"><span class="toc-number">6.2.</span> <span class="toc-text">2.2 启动测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-微服务整合"><span class="toc-number">7.</span> <span class="toc-text">3.微服务整合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-引入依赖"><span class="toc-number">7.1.</span> <span class="toc-text">3.1 引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-yml配置控制台"><span class="toc-number">7.2.</span> <span class="toc-text">3.2 yml配置控制台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-测试"><span class="toc-number">7.3.</span> <span class="toc-text">3.3 测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-簇点链路"><span class="toc-number">7.4.</span> <span class="toc-text">3.4 簇点链路</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#服务保护方案–Sentinel三大解决方案"><span class="toc-number">8.</span> <span class="toc-text">&#x3D;&#x3D;服务保护方案–Sentinel三大解决方案&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-请求限流"><span class="toc-number">9.</span> <span class="toc-text">1.请求限流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-控制台设置限流QPS"><span class="toc-number">9.1.</span> <span class="toc-text">1.1 控制台设置限流QPS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-Jmeter测试"><span class="toc-number">9.2.</span> <span class="toc-text">1.2 Jmeter测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-线程隔离"><span class="toc-number">10.</span> <span class="toc-text">2.线程隔离</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-控制台设置并发线程数"><span class="toc-number">10.1.</span> <span class="toc-text">2.1 控制台设置并发线程数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Jmeter测试"><span class="toc-number">10.2.</span> <span class="toc-text">2.2 Jmeter测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-Fallback-后备方案"><span class="toc-number">10.3.</span> <span class="toc-text">2.3 Fallback(后备方案)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-OpenFeign整合Sentinel"><span class="toc-number">10.3.1.</span> <span class="toc-text">2.3.1 OpenFeign整合Sentinel</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-2"><span class="toc-number">10.4.</span> <span class="toc-text">2.3.2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-服务熔断"><span class="toc-number">11.</span> <span class="toc-text">3.服务熔断</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
