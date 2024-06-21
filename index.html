@@ -1528,29 +1528,33 @@
 <p>此时整个购物车查询服务的平均RT影响不大：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201450001.png" alt="image-20240620145054930"></p>
 <h1 id="Sentinel服务保护总结"><a href="#Sentinel服务保护总结" class="headerlink" title="==Sentinel服务保护总结=="></a>==Sentinel服务保护总结==</h1><h1 id="1-使用操作"><a href="#1-使用操作" class="headerlink" title="1.使用操作"></a>1.使用操作</h1><ul>
-<li>启动sentinel控制台(jar包)</li>
+<li>1.启动sentinel控制台(jar包)</li>
 </ul>
 <p>到这已经可以<strong>打开sentinel控制台</strong></p>
 <ul>
-<li>具体使用的微服务导入sentinel依赖</li>
-<li>具体使用的微服务配置sentinel控制台信息</li>
+<li>2.具体使用的微服务pom.xml文件导入sentinel依赖</li>
+<li>3.具体使用的微服务yml文件配置sentinel控制台信息</li>
 </ul>
 <p>到这已经可以在<strong>sentinel控制台查看</strong></p>
+<p><strong>具体的四大解决方案【1请求限流，2线程隔离，4服务熔断在平台设置就行】</strong></p>
 <ul>
-<li>控制台通过具体微服务-簇点链路的流控按钮设置请求限流(设置QPS)和线程隔离(设置并发线程数)</li>
-</ul>
-<p>到这已经可以<strong>对单个微服务获取资源和访问控制【请求限流和线程隔离】</strong></p>
+<li><p>1和2.控制台通过具体微服务-簇点链路的流控按钮设置请求限流(设置QPS)和线程隔离(设置并发线程数)</p>
+</li>
+<li><p>3.fallback快速失败需要编写代码(Openfeign所在微服务进行编写)</p>
 <ul>
-<li>控制台通过具体微服务-簇点链路的熔断按钮设置熔断策略,走fallback快速失败(Openfeign所在微服务进行编写)</li>
+<li><p>①在Openfeign所在微服务编写降级处理类实现FallbackFactory重写create方法里面将ItemClient被其他微服务调用的方法都重写处理(后备方案，可以是信息提示等)</p>
+</li>
+<li><p>②将降级处理类加入bean</p>
+</li>
+<li><p>③在微服务ItemClient的FeignClient注解添加属性fallbackFactory=①降级处理类</p>
+</li>
 </ul>
-<p>到这已经可以<strong>对不太健康的微服务进行限制不让你访问，走fallback方案【服务熔断】</strong></p>
+</li>
+</ul>
 <ul>
-<li>①在Openfeign所在微服务编写降级处理类实现FallbackFactory重写create方法里面将ItemClient被其他微服务调用的方法都重写处理(后备方案，可以是信息提示等)</li>
-<li>②将降级处理类加入bean</li>
-<li>③在微服务ItemClient的FeignClient注解添加属性fallbackFactory=①降级处理类</li>
+<li>4.控制台通过具体微服务-簇点链路的熔断按钮设置熔断策略</li>
 </ul>
-<p>到这已经可以走<strong>服务熔断的fallback快速失败【快速失败fallback】</strong></p>
-<h1 id="2-四大方法总结"><a href="#2-四大方法总结" class="headerlink" title="2.四大方法总结"></a>2.四大方法总结</h1><p>1.请求限流(限制访问量)和线程隔离(限制线程数，不让此服务占用所有资源)相当于对单个微服务调用做保护</p>
+<h1 id="2-四大解决方案总结"><a href="#2-四大解决方案总结" class="headerlink" title="2.四大解决方案总结"></a>2.四大解决方案总结</h1><p>1.请求限流(限制访问量)和线程隔离(限制线程数，不让此服务占用所有资源)相当于对单个微服务调用做保护</p>
 <p>2.快速失败(如果请求限流/线程隔离资源没了，那就可以走这个fallback后备方案，不至于直接抛出异常)和服务熔断(提前对这个服务判断如果经常出异常，那就熔断)是在微服务调用其他微服务情况时候做保护</p>
 <p>如果比喻成买火车票乘车：</p>
 <p>1.请求限流就是限制购买人数</p>
