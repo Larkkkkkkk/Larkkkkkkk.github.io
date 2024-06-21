@@ -30,8 +30,18 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211004068.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211123561.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211022878.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211404912.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211439385.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211318101.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211319207.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211322389.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211349778.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211402548.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211514284.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211535111.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211512339.png">
 <meta property="article:published_time" content="2024-05-27T08:58:36.000Z">
-<meta property="article:modified_time" content="2024-06-21T03:26:33.426Z">
+<meta property="article:modified_time" content="2024-06-21T07:37:08.520Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="微服务">
 <meta name="twitter:card" content="summary">
@@ -497,23 +507,159 @@
 <p>然后针对出问题的方法进行修改【修改为GlobalTransactional注解】：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211022878.png" alt="image-20240621102212713"></p>
 <p><code>@GlobalTransactional</code>注解就是在标记事务的起点，将来TM就会基于这个方法判断全局事务范围，初始化全局事务。如果中途有分支事务出现问题，我们就可以告知TC进行回滚操作，保证全局事务要么成功/要么失败。</p>
-<h1 id="3-解决思路"><a href="#3-解决思路" class="headerlink" title="3.解决思路"></a>3.解决思路</h1><ul>
+<h1 id="3-实现思路"><a href="#3-实现思路" class="headerlink" title="3.实现思路"></a>3.实现思路</h1><ul>
 <li>1.准备TC所需要的数据库，准备配置文件和镜像文件 —【可以直接去服务器利用docker配置TC】</li>
 <li>2.微服务继承Seata<ul>
 <li>2.1 引入seata依赖</li>
-<li>2.2 yml配置seata信息 【因为涉及多个分支事务，所以一般配置到nacos】</li>
+<li>2.2 在yml配置seata信息 【因为涉及多个分支事务，所以一般配置到nacos】</li>
 <li>2.3 原有出现问题的方法替换@Tradtional注解为@GlobalTransactional注解解决分布式事务</li>
 </ul>
 </li>
 </ul>
-<h1 id="Seate底层原理-四种"><a href="#Seate底层原理-四种" class="headerlink" title="==Seate底层原理-四种=="></a>==Seate底层原理-四种==</h1><p>Seata支持四种不同的分布式事务解决方案：</p>
+<h1 id="Seate四种底层原理-四种"><a href="#Seate四种底层原理-四种" class="headerlink" title="==Seate四种底层原理-四种=="></a>==Seate四种底层原理-四种==</h1><p>Seata支持四种不同的分布式事务解决方案：</p>
 <ul>
 <li><strong>XA</strong></li>
 <li><strong>TCC（Try-Confirm-Cancel）</strong></li>
 <li><strong>AT（Automatic Transaction）</strong></li>
 <li><strong>SAGA</strong></li>
 </ul>
-<h1 id="1-XA模式"><a href="#1-XA模式" class="headerlink" title="1.XA模式"></a>1.XA模式</h1><h1 id="2-AT模式-Automatic-Transaction"><a href="#2-AT模式-Automatic-Transaction" class="headerlink" title="2.AT模式(Automatic Transaction)"></a>2.AT模式(Automatic Transaction)</h1>
+<h1 id="使用过程中，只是yml配置多一个属性"><a href="#使用过程中，只是yml配置多一个属性" class="headerlink" title="==使用过程中，只是yml配置多一个属性=="></a>==使用过程中，只是yml配置多一个属性==</h1><h1 id="1-XA模式"><a href="#1-XA模式" class="headerlink" title="1.XA模式"></a>1.XA模式</h1><p><code>XA</code> 规范 是<code>X/Open</code> 组织定义的分布式事务处理（DTP，Distributed Transaction Processing）标准，XA 规范 描述了全局的<code>TM</code>与局部的<code>RM</code>之间的接口，几乎所有主流的数据库都对 XA 规范提供了支持。</p>
+<h2 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h2><p>主要分为==两个阶段==提交：</p>
+<p><strong>一阶段</strong>的工作：【TM通知各个RM执行本地事务，RM向TC注册和报告完成情况，但是不提交保持数据库锁】</p>
+<p>①RM注册分支事务到TC【告知我是哪个TM的，我完成什么任务】</p>
+<p>②RM执行分支业务sql但不提交【完成任务了】</p>
+<p>③RM报告执行状态到TC【告诉你我完成了】</p>
+<p><strong>二阶段</strong>的工作：【TC基于一阶段RM提交事务状态来判断下一步操作是回滚还是提交】</p>
+<p>①TC检测各分支事务执行状态【看看各个RM完成如何】</p>
+<p>​    a.如果都成功，通知所有RM提交事务【ok，提交吧】</p>
+<p>​    b.如果有失败，通知所有RM回滚事务【no，回滚吧】</p>
+<p>②RM接收TC指令，提交或回滚事务【TC告诉我其他人好了/有问题，就提交/回滚】</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211404912.png" alt="image-20240621140448858"></p>
+<p>1.1 我们启动服务通过注解@GlobalTranscational开启全局事务</p>
+<p>1.2 我们操作的时候调用多个分支事务</p>
+<p>1.3 分支事务先向TC进行注册，告知TC我的哪个TM负责的，我要完成什么【告知之后可以进行业务逻辑】</p>
+<p>1.4 开始执行业务，进行sql语句的完成【但是不提交!!!!】</p>
+<p>1.5 执行业务sql完成之后报告TC我已经完成我自己的任务了，报告事务状态【TC就知道分支业务完成状态(有的完成了，有的失败了)】</p>
+<p>因为第一阶段结束我们可以进行结束全局事务，后续看看是回滚还是提交</p>
+<p>2.1 结束全局事务</p>
+<p>2.2 TM告知TC检查一下第一阶段各分支事务执行状态，看是不是所有都完成</p>
+<p>2.3 因为要全局事务要么提交/要么回滚，如果都成功，通知所有RM提交事务，如果有失败，通知所有RM回滚事务</p>
+<p>流程图如下：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211439385.png" alt="image-20240621143957304" style="zoom:80%;">
+
+
+
+<h2 id="1-2-具体实现操作"><a href="#1-2-具体实现操作" class="headerlink" title="1.2 具体实现操作"></a>1.2 具体实现操作</h2><h3 id="1-2-1-yml配置"><a href="#1-2-1-yml配置" class="headerlink" title="1.2.1 yml配置"></a>1.2.1 yml配置</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211318101.png" alt="image-20240621131831960" style="zoom:67%;">
+
+
+
+<h3 id="1-2-2-修改具体业务"><a href="#1-2-2-修改具体业务" class="headerlink" title="1.2.2 修改具体业务"></a>1.2.2 修改具体业务</h3><p>对应全局事务位置添加@GlobalTranscational：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211319207.png" alt="image-20240621131953128" style="zoom:80%;">
+
+<p>针对各个分支事务添加@transactional:</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211322389.png" alt="image-20240621132234331" style="zoom: 67%;">
+
+
+
+<h3 id="1-2-3-测试"><a href="#1-2-3-测试" class="headerlink" title="1.2.3 测试"></a>1.2.3 测试</h3><p>我们加入手机到购物车，然后修改手机库存stock=0下单之后trade-service会提示：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211349778.png" alt="image-20240621134914617"></p>
+<h2 id="1-3-XA使用总结"><a href="#1-3-XA使用总结" class="headerlink" title="1.3 XA使用总结"></a>1.3 XA使用总结</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211402548.png" alt="image-20240621140206477"></p>
+<h2 id="1-4-XA优缺点"><a href="#1-4-XA优缺点" class="headerlink" title="1.4 XA优缺点"></a>1.4 XA优缺点</h2><ul>
+<li><p>XA模式的<strong>优点</strong>是什么？</p>
+<ul>
+<li><p>事务的强一致性，满足ACID原则【第一阶段只完成不提交，只有第二阶段才告知一起回滚，还是一起提交】</p>
+</li>
+<li><p>常用数据库都支持，实现简单，并且没有代码侵入【比较好理解，而且比较规整】</p>
+</li>
+</ul>
+</li>
+<li><p>XA模式的<strong>缺点</strong>是什么？</p>
+<ul>
+<li><p>因为一阶段需要锁定数据库资源，等待二阶段结束才释放，性能较差【第一阶段只能等第二阶段指令，阻塞时间长】</p>
+</li>
+<li><p>依赖关系型数据库实现事务【关系型数据库】</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="2-AT模式-Automatic-Transaction-—seata主推"><a href="#2-AT模式-Automatic-Transaction-—seata主推" class="headerlink" title="2.AT模式(Automatic Transaction)—seata主推"></a>2.AT模式(Automatic Transaction)—seata主推</h1><p>分阶段提交的事务模型，不过弥补了XA模型中资源锁定周期过长的缺陷(一直阻塞等到第二阶段TC告知RM才可以进行操作)</p>
+<h2 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h2><p>主要分为==两个阶段==提交：</p>
+<p><strong>一阶段</strong>的工作：</p>
+<ol>
+<li><code>TM</code>发起并注册全局事务到<code>TC</code></li>
+<li><code>TM</code>调用分支事务</li>
+<li>分支事务准备执行业务SQL</li>
+<li><code>RM</code>拦截业务SQL，根据where条件查询原始数据，形成快照。【<strong>在执行业务sql之前生成快照</strong>】</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"id"</span>: <span class="number">1</span>, <span class="attr">"money"</span>: <span class="number">100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>RM</code>执行业务SQL，提交本地事务，释放数据库锁。此时 money = 90【我已经完成了自己的任务，并且提交了】</li>
+<li><code>RM</code>报告本地事务状态给<code>TC</code></li>
+</ol>
+<p><strong>二阶段</strong>的工作：</p>
+<ol>
+<li><code>TM</code>通知<code>TC</code>事务结束【ok了，你判断一下吧】</li>
+<li><code>TC</code>检查分支事务状态【如果都成功删除快照，如果有失败就用快照恢复数据库回滚】<ol>
+<li>如果都成功，则立即删除快照</li>
+<li>如果有分支事务失败，需要回滚。读取快照数据（{“id”: 1, “money”: 100}），将快照恢复到数据库。此时数据库再次恢复为100</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211514284.png" alt="image-20240621151403207"></p>
+<p>流程图如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211535111.png" alt="image-20240621153523017"></p>
+<h2 id="2-2-具体实现操作"><a href="#2-2-具体实现操作" class="headerlink" title="2.2 具体实现操作"></a>2.2 具体实现操作</h2><h3 id="2-2-1-yml配置"><a href="#2-2-1-yml配置" class="headerlink" title="2.2.1 yml配置"></a>2.2.1 yml配置</h3><p>类似于XA，就是将属性改为AT</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211512339.png" alt="image-20240621151209260" style="zoom: 67%;">
+
+<h3 id="2-2-2-修改具体业务"><a href="#2-2-2-修改具体业务" class="headerlink" title="2.2.2 修改具体业务"></a>2.2.2 修改具体业务</h3><p>类似与XA，就是全局事务位置加注解@GlobalTransanctional，分支事务位置加注解@Transanctional</p>
+<h3 id="2-2-3-添加快照undo表"><a href="#2-2-3-添加快照undo表" class="headerlink" title="2.2.3 添加快照undo表"></a>2.2.3 添加快照undo表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-- for AT mode you must to init this sql for you business database. the seata server not need it.</span><br><span class="line">CREATE TABLE IF NOT EXISTS &#96;undo_log&#96;</span><br><span class="line">(</span><br><span class="line">    &#96;branch_id&#96;     BIGINT       NOT NULL COMMENT &#39;branch transaction id&#39;,</span><br><span class="line">    &#96;xid&#96;           VARCHAR(128) NOT NULL COMMENT &#39;global transaction id&#39;,</span><br><span class="line">    &#96;context&#96;       VARCHAR(128) NOT NULL COMMENT &#39;undo_log context,such as serialization&#39;,</span><br><span class="line">    &#96;rollback_info&#96; LONGBLOB     NOT NULL COMMENT &#39;rollback info&#39;,</span><br><span class="line">    &#96;log_status&#96;    INT(11)      NOT NULL COMMENT &#39;0:normal status,1:defense status&#39;,</span><br><span class="line">    &#96;log_created&#96;   DATETIME(6)  NOT NULL COMMENT &#39;create datetime&#39;,</span><br><span class="line">    &#96;log_modified&#96;  DATETIME(6)  NOT NULL COMMENT &#39;modify datetime&#39;,</span><br><span class="line">    UNIQUE KEY &#96;ux_undo_log&#96; (&#96;xid&#96;, &#96;branch_id&#96;)</span><br><span class="line">) ENGINE &#x3D; InnoDB</span><br><span class="line">  AUTO_INCREMENT &#x3D; 1</span><br><span class="line">  DEFAULT CHARSET &#x3D; utf8mb4 COMMENT &#x3D;&#39;AT transaction mode undo table&#39;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-4-测试"><a href="#2-2-4-测试" class="headerlink" title="2.2.4 测试"></a>2.2.4 测试</h3><p>类似于XA测试，只不过多了快照数据进入到undo表</p>
+<h2 id="2-3-AT使用总结"><a href="#2-3-AT使用总结" class="headerlink" title="2.3 AT使用总结"></a>2.3 AT使用总结</h2><p>1.yml添加配置</p>
+<p>2.业务添加注解@GlobalTransanctional即可</p>
+<p>3.添加快照表【比XA模式就多一个这个】</p>
+<h2 id="2-4-AT优缺点"><a href="#2-4-AT优缺点" class="headerlink" title="2.4 AT优缺点"></a>2.4 AT优缺点</h2><ul>
+<li><p>XA模式的<strong>优点</strong>是什么？</p>
+<ul>
+<li>第一阶段就直接提交了，性能较好【后续如果需要就使用快照恢复】</li>
+</ul>
+</li>
+<li><p>XA模式的<strong>缺点</strong>是什么？</p>
+<ul>
+<li>第一阶段就提交，在第二阶段完成的极小时间段内可能出现数据不一致【<strong>用空间换时间</strong>】</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-XA模式和AT模式对比"><a href="#3-XA模式和AT模式对比" class="headerlink" title="3.XA模式和AT模式对比"></a>3.XA模式和AT模式对比</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>XA模式【模式强一致，一步一步来】</th>
+<th>AT模式【模式最终一致，可以第二阶段回退】</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一阶段</td>
+<td>只完成不提交(锁定资源)</td>
+<td>直接提交(不锁定资源)</td>
+</tr>
+<tr>
+<td>第二阶段</td>
+<td>数据库机制完成回滚</td>
+<td>数据快照完成回滚(第一阶段执行业务之前生成快照)</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>低(只有第二阶段才决定事务提交/回退)</td>
+<td>高(第一阶段就提交，第二阶段可以恢复)</td>
+</tr>
+</tbody></table>
+<h1 id="4-代码实现思路"><a href="#4-代码实现思路" class="headerlink" title="4.代码实现思路"></a>4.代码实现思路</h1><p>其实就是Seata实现步骤:</p>
+<p>①导入依赖</p>
+<p>②yml配置(基础配置+模式配置属性)       —-<strong>多了一个配置data-source-proxy-mode</strong></p>
+<p>③全局事务位置加注解@GlobalTransanctional</p>
+
       
       
         <div class="page-reward">
@@ -571,7 +717,7 @@
         <p><span>本文标题:</span><a href="/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">微服务-分布式事务</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年05月27日 - 16时58分</p>
-        <p><span>最后更新:</span>2024年06月21日 - 11时26分</p>
+        <p><span>最后更新:</span>2024年06月21日 - 15时37分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" title="微服务-分布式事务">https://larkkkkkkk.github.io/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -609,7 +755,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式事务产生原因"><span class="toc-number">1.</span> <span class="toc-text">&#x3D;&#x3D;分布式事务产生原因&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式事务解决方案-中间人-事务协调者"><span class="toc-number">2.</span> <span class="toc-text">&#x3D;&#x3D;分布式事务解决方案(中间人-事务协调者)&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Seata"><span class="toc-number">3.</span> <span class="toc-text">1.Seata</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Seata架构"><span class="toc-number">3.1.</span> <span class="toc-text">1.1 Seata架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-代码实现思路-两个方面"><span class="toc-number">3.2.</span> <span class="toc-text">1.2 代码实现思路(两个方面)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seata具体操作-分两个部分"><span class="toc-number">4.</span> <span class="toc-text">&#x3D;&#x3D;Seata具体操作(分两个部分)&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-TC部署"><span class="toc-number">5.</span> <span class="toc-text">1.TC部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-准备数据库表"><span class="toc-number">5.1.</span> <span class="toc-text">1.1 准备数据库表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-准备配置文件"><span class="toc-number">5.2.</span> <span class="toc-text">1.2 准备配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Docker部署"><span class="toc-number">5.3.</span> <span class="toc-text">1.3 Docker部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-微服务集成Seata"><span class="toc-number">6.</span> <span class="toc-text">2.微服务集成Seata</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-引入依赖"><span class="toc-number">6.1.</span> <span class="toc-text">2.1 引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-添加配置-统一配置到nacos"><span class="toc-number">6.2.</span> <span class="toc-text">2.2 添加配置(统一配置到nacos)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-配置公共配置"><span class="toc-number">6.2.1.</span> <span class="toc-text">2.2.1 配置公共配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-分支事务新建bootstrap-yml文件"><span class="toc-number">6.2.2.</span> <span class="toc-text">2.2.2 分支事务新建bootstrap.yml文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-分支事务调整application-yml文件"><span class="toc-number">6.2.3.</span> <span class="toc-text">2.2.3 分支事务调整application.yml文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-添加数据库保存中间数据"><span class="toc-number">6.3.</span> <span class="toc-text">2.3 添加数据库保存中间数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-测试"><span class="toc-number">6.4.</span> <span class="toc-text">2.4 测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-解决思路"><span class="toc-number">7.</span> <span class="toc-text">3.解决思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seate底层原理-四种"><span class="toc-number">8.</span> <span class="toc-text">&#x3D;&#x3D;Seate底层原理-四种&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-XA模式"><span class="toc-number">9.</span> <span class="toc-text">1.XA模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-AT模式-Automatic-Transaction"><span class="toc-number">10.</span> <span class="toc-text">2.AT模式(Automatic Transaction)</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式事务产生原因"><span class="toc-number">1.</span> <span class="toc-text">&#x3D;&#x3D;分布式事务产生原因&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式事务解决方案-中间人-事务协调者"><span class="toc-number">2.</span> <span class="toc-text">&#x3D;&#x3D;分布式事务解决方案(中间人-事务协调者)&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Seata"><span class="toc-number">3.</span> <span class="toc-text">1.Seata</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Seata架构"><span class="toc-number">3.1.</span> <span class="toc-text">1.1 Seata架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-代码实现思路-两个方面"><span class="toc-number">3.2.</span> <span class="toc-text">1.2 代码实现思路(两个方面)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seata具体操作-分两个部分"><span class="toc-number">4.</span> <span class="toc-text">&#x3D;&#x3D;Seata具体操作(分两个部分)&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-TC部署"><span class="toc-number">5.</span> <span class="toc-text">1.TC部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-准备数据库表"><span class="toc-number">5.1.</span> <span class="toc-text">1.1 准备数据库表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-准备配置文件"><span class="toc-number">5.2.</span> <span class="toc-text">1.2 准备配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Docker部署"><span class="toc-number">5.3.</span> <span class="toc-text">1.3 Docker部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-微服务集成Seata"><span class="toc-number">6.</span> <span class="toc-text">2.微服务集成Seata</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-引入依赖"><span class="toc-number">6.1.</span> <span class="toc-text">2.1 引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-添加配置-统一配置到nacos"><span class="toc-number">6.2.</span> <span class="toc-text">2.2 添加配置(统一配置到nacos)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-配置公共配置"><span class="toc-number">6.2.1.</span> <span class="toc-text">2.2.1 配置公共配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-分支事务新建bootstrap-yml文件"><span class="toc-number">6.2.2.</span> <span class="toc-text">2.2.2 分支事务新建bootstrap.yml文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-分支事务调整application-yml文件"><span class="toc-number">6.2.3.</span> <span class="toc-text">2.2.3 分支事务调整application.yml文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-添加数据库保存中间数据"><span class="toc-number">6.3.</span> <span class="toc-text">2.3 添加数据库保存中间数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-测试"><span class="toc-number">6.4.</span> <span class="toc-text">2.4 测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-实现思路"><span class="toc-number">7.</span> <span class="toc-text">3.实现思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seate四种底层原理-四种"><span class="toc-number">8.</span> <span class="toc-text">&#x3D;&#x3D;Seate四种底层原理-四种&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用过程中，只是yml配置多一个属性"><span class="toc-number">9.</span> <span class="toc-text">&#x3D;&#x3D;使用过程中，只是yml配置多一个属性&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-XA模式"><span class="toc-number">10.</span> <span class="toc-text">1.XA模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-基本概念"><span class="toc-number">10.1.</span> <span class="toc-text">1.1 基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-具体实现操作"><span class="toc-number">10.2.</span> <span class="toc-text">1.2 具体实现操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-yml配置"><span class="toc-number">10.2.1.</span> <span class="toc-text">1.2.1 yml配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-修改具体业务"><span class="toc-number">10.2.2.</span> <span class="toc-text">1.2.2 修改具体业务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-3-测试"><span class="toc-number">10.2.3.</span> <span class="toc-text">1.2.3 测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-XA使用总结"><span class="toc-number">10.3.</span> <span class="toc-text">1.3 XA使用总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-XA优缺点"><span class="toc-number">10.4.</span> <span class="toc-text">1.4 XA优缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-AT模式-Automatic-Transaction-—seata主推"><span class="toc-number">11.</span> <span class="toc-text">2.AT模式(Automatic Transaction)—seata主推</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-基本概念"><span class="toc-number">11.1.</span> <span class="toc-text">2.1 基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-具体实现操作"><span class="toc-number">11.2.</span> <span class="toc-text">2.2 具体实现操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-yml配置"><span class="toc-number">11.2.1.</span> <span class="toc-text">2.2.1 yml配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-修改具体业务"><span class="toc-number">11.2.2.</span> <span class="toc-text">2.2.2 修改具体业务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-添加快照undo表"><span class="toc-number">11.2.3.</span> <span class="toc-text">2.2.3 添加快照undo表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-4-测试"><span class="toc-number">11.2.4.</span> <span class="toc-text">2.2.4 测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-AT使用总结"><span class="toc-number">11.3.</span> <span class="toc-text">2.3 AT使用总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-AT优缺点"><span class="toc-number">11.4.</span> <span class="toc-text">2.4 AT优缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-XA模式和AT模式对比"><span class="toc-number">12.</span> <span class="toc-text">3.XA模式和AT模式对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-代码实现思路"><span class="toc-number">13.</span> <span class="toc-text">4.代码实现思路</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
