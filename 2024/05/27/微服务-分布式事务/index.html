@@ -28,9 +28,10 @@
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240621094830123.png">
 <meta property="og:image" content="c:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240621094943628.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211004068.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211123561.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211022878.png">
 <meta property="article:published_time" content="2024-05-27T08:58:36.000Z">
-<meta property="article:modified_time" content="2024-06-21T02:47:41.113Z">
+<meta property="article:modified_time" content="2024-06-21T03:26:33.426Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="微服务">
 <meta name="twitter:card" content="summary">
@@ -471,7 +472,8 @@
 
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406210941722.png" alt="image-20240621094124650"></p>
 <h2 id="2-2-添加配置-统一配置到nacos"><a href="#2-2-添加配置-统一配置到nacos" class="headerlink" title="2.2 添加配置(统一配置到nacos)"></a>2.2 添加配置(统一配置到nacos)</h2><p>【一般直接配置到apolication.yml文件】因为多个分支事务都需要，那我就可以将seata的配置放在nacos统一配置，剩下的就是改造application.yml和bootstrap.yml文件信息。</p>
-<h3 id="2-2-1-配置公共配置"><a href="#2-2-1-配置公共配置" class="headerlink" title="2.2.1 配置公共配置"></a>2.2.1 配置公共配置</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406210932325.png" alt="image-20240621093202209" style="zoom:67%;">
+<h3 id="2-2-1-配置公共配置"><a href="#2-2-1-配置公共配置" class="headerlink" title="2.2.1 配置公共配置"></a>2.2.1 配置公共配置</h3><p>server-addr一定要配置自己的ip：【不然容易注册不到nacos上去！！！】</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406210932325.png" alt="image-20240621093202209" style="zoom:67%;">
 
 <p>让微服务能找到TC的位置：</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406210934620.png" alt="image-20240621093439565" style="zoom:67%;">
@@ -490,10 +492,13 @@
 
 <p>添加完成之后：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211004068.png" alt="image-20240621100417899"></p>
-<h2 id="2-4-测试"><a href="#2-4-测试" class="headerlink" title="2.4 测试"></a>2.4 测试</h2><p><code>@GlobalTransactional</code>注解就是在标记事务的起点，将来TM就会基于这个方法判断全局事务范围，初始化全局事务。如果中途有分支事务出现问题，我们就可以告知TC进行回滚操作，保证全局事务要么成功/要么失败。</p>
+<h2 id="2-4-测试"><a href="#2-4-测试" class="headerlink" title="2.4 测试"></a>2.4 测试</h2><p>我们重新启动项目之后，可以查看seata日志：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211123561.png" alt="image-20240621112336246"></p>
+<p>然后针对出问题的方法进行修改【修改为GlobalTransactional注解】：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406211022878.png" alt="image-20240621102212713"></p>
+<p><code>@GlobalTransactional</code>注解就是在标记事务的起点，将来TM就会基于这个方法判断全局事务范围，初始化全局事务。如果中途有分支事务出现问题，我们就可以告知TC进行回滚操作，保证全局事务要么成功/要么失败。</p>
 <h1 id="3-解决思路"><a href="#3-解决思路" class="headerlink" title="3.解决思路"></a>3.解决思路</h1><ul>
-<li>1.准备TC所需要的数据库，准备配置文件和镜像文件 —可以直接去服务器利用docker配置TC</li>
+<li>1.准备TC所需要的数据库，准备配置文件和镜像文件 —【可以直接去服务器利用docker配置TC】</li>
 <li>2.微服务继承Seata<ul>
 <li>2.1 引入seata依赖</li>
 <li>2.2 yml配置seata信息 【因为涉及多个分支事务，所以一般配置到nacos】</li>
@@ -504,11 +509,11 @@
 <h1 id="Seate底层原理-四种"><a href="#Seate底层原理-四种" class="headerlink" title="==Seate底层原理-四种=="></a>==Seate底层原理-四种==</h1><p>Seata支持四种不同的分布式事务解决方案：</p>
 <ul>
 <li><strong>XA</strong></li>
-<li><strong>TCC</strong></li>
-<li><strong>AT</strong></li>
+<li><strong>TCC（Try-Confirm-Cancel）</strong></li>
+<li><strong>AT（Automatic Transaction）</strong></li>
 <li><strong>SAGA</strong></li>
 </ul>
-<h1 id="1-XA模式"><a href="#1-XA模式" class="headerlink" title="1.XA模式"></a>1.XA模式</h1><h1 id="2-AT模式"><a href="#2-AT模式" class="headerlink" title="2.AT模式"></a>2.AT模式</h1>
+<h1 id="1-XA模式"><a href="#1-XA模式" class="headerlink" title="1.XA模式"></a>1.XA模式</h1><h1 id="2-AT模式-Automatic-Transaction"><a href="#2-AT模式-Automatic-Transaction" class="headerlink" title="2.AT模式(Automatic Transaction)"></a>2.AT模式(Automatic Transaction)</h1>
       
       
         <div class="page-reward">
@@ -566,7 +571,7 @@
         <p><span>本文标题:</span><a href="/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">微服务-分布式事务</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年05月27日 - 16时58分</p>
-        <p><span>最后更新:</span>2024年06月21日 - 10时47分</p>
+        <p><span>最后更新:</span>2024年06月21日 - 11时26分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" title="微服务-分布式事务">https://larkkkkkkk.github.io/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -604,7 +609,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式事务产生原因"><span class="toc-number">1.</span> <span class="toc-text">&#x3D;&#x3D;分布式事务产生原因&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式事务解决方案-中间人-事务协调者"><span class="toc-number">2.</span> <span class="toc-text">&#x3D;&#x3D;分布式事务解决方案(中间人-事务协调者)&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Seata"><span class="toc-number">3.</span> <span class="toc-text">1.Seata</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Seata架构"><span class="toc-number">3.1.</span> <span class="toc-text">1.1 Seata架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-代码实现思路-两个方面"><span class="toc-number">3.2.</span> <span class="toc-text">1.2 代码实现思路(两个方面)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seata具体操作-分两个部分"><span class="toc-number">4.</span> <span class="toc-text">&#x3D;&#x3D;Seata具体操作(分两个部分)&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-TC部署"><span class="toc-number">5.</span> <span class="toc-text">1.TC部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-准备数据库表"><span class="toc-number">5.1.</span> <span class="toc-text">1.1 准备数据库表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-准备配置文件"><span class="toc-number">5.2.</span> <span class="toc-text">1.2 准备配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Docker部署"><span class="toc-number">5.3.</span> <span class="toc-text">1.3 Docker部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-微服务集成Seata"><span class="toc-number">6.</span> <span class="toc-text">2.微服务集成Seata</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-引入依赖"><span class="toc-number">6.1.</span> <span class="toc-text">2.1 引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-添加配置-统一配置到nacos"><span class="toc-number">6.2.</span> <span class="toc-text">2.2 添加配置(统一配置到nacos)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-配置公共配置"><span class="toc-number">6.2.1.</span> <span class="toc-text">2.2.1 配置公共配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-分支事务新建bootstrap-yml文件"><span class="toc-number">6.2.2.</span> <span class="toc-text">2.2.2 分支事务新建bootstrap.yml文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-分支事务调整application-yml文件"><span class="toc-number">6.2.3.</span> <span class="toc-text">2.2.3 分支事务调整application.yml文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-添加数据库保存中间数据"><span class="toc-number">6.3.</span> <span class="toc-text">2.3 添加数据库保存中间数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-测试"><span class="toc-number">6.4.</span> <span class="toc-text">2.4 测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-解决思路"><span class="toc-number">7.</span> <span class="toc-text">3.解决思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seate底层原理-四种"><span class="toc-number">8.</span> <span class="toc-text">&#x3D;&#x3D;Seate底层原理-四种&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-XA模式"><span class="toc-number">9.</span> <span class="toc-text">1.XA模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-AT模式"><span class="toc-number">10.</span> <span class="toc-text">2.AT模式</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式事务产生原因"><span class="toc-number">1.</span> <span class="toc-text">&#x3D;&#x3D;分布式事务产生原因&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式事务解决方案-中间人-事务协调者"><span class="toc-number">2.</span> <span class="toc-text">&#x3D;&#x3D;分布式事务解决方案(中间人-事务协调者)&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Seata"><span class="toc-number">3.</span> <span class="toc-text">1.Seata</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Seata架构"><span class="toc-number">3.1.</span> <span class="toc-text">1.1 Seata架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-代码实现思路-两个方面"><span class="toc-number">3.2.</span> <span class="toc-text">1.2 代码实现思路(两个方面)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seata具体操作-分两个部分"><span class="toc-number">4.</span> <span class="toc-text">&#x3D;&#x3D;Seata具体操作(分两个部分)&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-TC部署"><span class="toc-number">5.</span> <span class="toc-text">1.TC部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-准备数据库表"><span class="toc-number">5.1.</span> <span class="toc-text">1.1 准备数据库表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-准备配置文件"><span class="toc-number">5.2.</span> <span class="toc-text">1.2 准备配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Docker部署"><span class="toc-number">5.3.</span> <span class="toc-text">1.3 Docker部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-微服务集成Seata"><span class="toc-number">6.</span> <span class="toc-text">2.微服务集成Seata</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-引入依赖"><span class="toc-number">6.1.</span> <span class="toc-text">2.1 引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-添加配置-统一配置到nacos"><span class="toc-number">6.2.</span> <span class="toc-text">2.2 添加配置(统一配置到nacos)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-配置公共配置"><span class="toc-number">6.2.1.</span> <span class="toc-text">2.2.1 配置公共配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-分支事务新建bootstrap-yml文件"><span class="toc-number">6.2.2.</span> <span class="toc-text">2.2.2 分支事务新建bootstrap.yml文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-分支事务调整application-yml文件"><span class="toc-number">6.2.3.</span> <span class="toc-text">2.2.3 分支事务调整application.yml文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-添加数据库保存中间数据"><span class="toc-number">6.3.</span> <span class="toc-text">2.3 添加数据库保存中间数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-测试"><span class="toc-number">6.4.</span> <span class="toc-text">2.4 测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-解决思路"><span class="toc-number">7.</span> <span class="toc-text">3.解决思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Seate底层原理-四种"><span class="toc-number">8.</span> <span class="toc-text">&#x3D;&#x3D;Seate底层原理-四种&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-XA模式"><span class="toc-number">9.</span> <span class="toc-text">1.XA模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-AT模式-Automatic-Transaction"><span class="toc-number">10.</span> <span class="toc-text">2.AT模式(Automatic Transaction)</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
