@@ -332,6 +332,1255 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-RabbitMQ-0" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/03/18/RabbitMQ-0/" class="article-date">
+      <time datetime="2024-03-18T11:43:04.000Z" itemprop="datePublished">2024-03-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/18/RabbitMQ-0/">RabbitMQ</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="1-同步调用和异步调用"><a href="#1-同步调用和异步调用" class="headerlink" title="1.同步调用和异步调用"></a>1.同步调用和异步调用</h1><h2 id="1-1-同步调用"><a href="#1-1-同步调用" class="headerlink" title="1.1 同步调用"></a>1.1 同步调用</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407480.png" alt="image-20240319100914998"></p>
+<p>综上，同步调用的方式存在下列问题：</p>
+<ul>
+<li>拓展性差(新增业务和逻辑就要修改，不符合开闭原则)</li>
+<li>性能下降</li>
+<li>级联失败</li>
+</ul>
+<p>而要解决这些问题，我们就必须用<strong>异步调用</strong>的方式来代替<strong>同步调用</strong></p>
+<h2 id="1-2-异步调用"><a href="#1-2-异步调用" class="headerlink" title="1.2 异步调用"></a>1.2 异步调用</h2><p>  异步调用方式其实就是==基于消息通知的方式==，一般包含三个角色：</p>
+<ul>
+<li>消息发送者：投递消息的人，就是原来的调用方</li>
+<li>消息Broker：管理、暂存、转发消息，你可以把它理解成微信服务器</li>
+<li>消息接收者：接收和处理消息的人，就是原来的服务提供方</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071403552.png" alt="image-20240319143703635"></p>
+<p>异步调用中，发送者不再直接同步调用接收者的业务接口，而是发送一条消息投递给消息Broker(消息代理)。然后接收者根据自己的需求从消息Broker那里订阅消息。每当发送方发送消息后，接受者都能获取消息并处理  —&gt;  发送消息的人和接收消息的人就完全解耦了</p>
+<p>如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071404220.png" alt="image-20240319144436498"></p>
+<p>综上，异步调用的优势包括：</p>
+<ul>
+<li>耦合度更低</li>
+<li>性能更好</li>
+<li>业务拓展性强</li>
+<li>故障隔离，避免级联失败</li>
+</ul>
+<p>当然，异步通信也并非完美无缺，它存在下列缺点：</p>
+<ul>
+<li><p>完全依赖于Broker的可靠性、安全性和性能</p>
+</li>
+<li><p>架构复杂，后期维护和调试麻烦</p>
+</li>
+</ul>
+<h2 id="1-3-MQ技术选型"><a href="#1-3-MQ技术选型" class="headerlink" title="1.3 MQ技术选型"></a>1.3 MQ技术选型</h2><p>消息Broker，目前常见的实现方案就是消息队列（MessageQueue），简称为MQ.<br>目比较常见的MQ实现：</p>
+<ul>
+<li>ActiveMQ</li>
+<li>RabbitMQ</li>
+<li>RocketMQ</li>
+<li>Kafka</li>
+</ul>
+<p>几种常见MQ的对比：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>RabbitMQ</strong></th>
+<th><strong>ActiveMQ</strong></th>
+<th><strong>RocketMQ</strong></th>
+<th><strong>Kafka</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>公司/社区</td>
+<td>Rabbit</td>
+<td>Apache</td>
+<td>阿里</td>
+<td>Apache</td>
+</tr>
+<tr>
+<td>开发语言</td>
+<td>Erlang</td>
+<td>Java</td>
+<td>Java</td>
+<td>Scala&amp;Java</td>
+</tr>
+<tr>
+<td>协议支持</td>
+<td>AMQP  XMPP  SMTP  STOMP</td>
+<td>OpenWire  STOMP  REST  XMPP  AMQP</td>
+<td>自定义协议</td>
+<td>自定义协议</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>高</td>
+<td>一般</td>
+<td>高</td>
+<td>高</td>
+</tr>
+<tr>
+<td>单机吞吐量</td>
+<td>一般</td>
+<td>差</td>
+<td>高</td>
+<td>非常高</td>
+</tr>
+<tr>
+<td>消息延迟</td>
+<td>微秒级</td>
+<td>毫秒级</td>
+<td>毫秒级</td>
+<td>毫秒以内</td>
+</tr>
+<tr>
+<td>消息可靠性</td>
+<td>高</td>
+<td>一般</td>
+<td>高</td>
+<td>一般</td>
+</tr>
+</tbody></table>
+<p>追求可用性：Kafka、 RocketMQ 、RabbitMQ<br>追求可靠性：RabbitMQ、RocketMQ<br>追求吞吐能力：RocketMQ、Kafka<br>追求消息低延迟：RabbitMQ、Kafka</p>
+<p>据统计，目前国内消息队列使用最多的还是RabbitMQ，再加上其各方面都比较均衡，稳定性也好</p>
+<h1 id="2-RabbitMQ"><a href="#2-RabbitMQ" class="headerlink" title="2.RabbitMQ"></a>2.RabbitMQ</h1><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407789.png" alt="image-20240319093425166" style="zoom:80%;">
+
+<p>RabbitMQ是基于Erlang语言开发的开源消息通信中间件，官网地址：<a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">Messaging that just works — RabbitMQ</a></p>
+<h2 id="2-1-RabbitMQ安装"><a href="#2-1-RabbitMQ安装" class="headerlink" title="2.1 RabbitMQ安装"></a>2.1 RabbitMQ安装</h2><p>基于Docker来安装RabbitMQ，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker run </span><br><span class="line">-e RABBITMQ_DEFAULT_USER&#x3D;larkkkkkkk   #设置默认用户名</span><br><span class="line">-e RABBITMQ_DEFAULT_PASS&#x3D;123456   #设置默认密码</span><br><span class="line">-v mq-plugins:&#x2F;plugins   #将本地主机上的mq-plugins目录挂载到容器内部的&#x2F;plugins目录，可以存放插件</span><br><span class="line">--name mq    #指定容器名</span><br><span class="line">--hostname mq  #指定容器的主机名</span><br><span class="line">-p 15672:15672 #RabbitMQ管理页面登录的端口号 [浏览器输入http:&#x2F;&#x2F;localhost:15672&#x2F;即可进入]</span><br><span class="line">-p 5672:5672  #RabbitMQ用于AMQP协议通信 [SpringAMQP配置时候用]</span><br><span class="line">--network heima #将容器连接到名字为heima的网络中  [如果没有就使用命令创建hmall网络 docker network create heima]</span><br><span class="line">-d  #在后台运行容器</span><br><span class="line">rabbitmq:3.8-management  #使用RabbitMQ 3.8版本带有管理界面的镜像来创建容器</span><br></pre></td></tr></table></figure>
+
+<p>可以看到在安装命令中有两个映射的端口：</p>
+<ul>
+<li>15672：RabbitMQ提供的管理控制台的端口</li>
+<li>5672：RabbitMQ的消息发送处理接口</li>
+</ul>
+<p>通过访问 <a href="http://localhost:15672即可看到管理控制台。首次访问登录，需要配置文件中设定的用户名和密码">http://localhost:15672即可看到管理控制台。首次访问登录，需要配置文件中设定的用户名和密码</a></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407126.png" alt="image-20240319192803935"></p>
+<h2 id="2-2-RabbitMQ架构"><a href="#2-2-RabbitMQ架构" class="headerlink" title="2.2 RabbitMQ架构"></a>2.2 RabbitMQ架构</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071410365.png" alt="image-20240319193424489"></p>
+<p>其中包含几个概念：</p>
+<ul>
+<li><code>**publisher**</code>：生产者，也就是发送消息的一方</li>
+<li><code>**consumer**</code>：消费者，也就是消费消息的一方</li>
+<li><code>**queue**</code>：队列，存储消息。生产者投递的消息会暂存在消息队列中，等待消费者处理</li>
+<li><code>**exchange**</code>：交换机，负责消息路由。生产者发送的消息由交换机决定投递到哪个队列。</li>
+<li><code>**virtual host**</code>：虚拟主机，起到数据隔离的作用。每个虚拟主机相互独立，有各自的exchange、queue</li>
+</ul>
+<p>上述这些东西都可以在RabbitMQ的管理控制台来管理</p>
+<h1 id="3-SpringAMQP"><a href="#3-SpringAMQP" class="headerlink" title="3.SpringAMQP"></a>3.SpringAMQP</h1><p>RabbitMQ采用AMQP协议，因此具有跨语言的特性。任何语言只要遵循AMQP协议收发消息，都可以与RabbitMQ交互【RabbitMQ官方提供了各种不同语言的客户端】</p>
+<p>但是RabbitMQ官方提供的Java客户端编码复杂，一般生产环境下我们更多会结合Spring来使用,Spring提供模板工具和SpringBoot自动装配 –&gt; ==SpringAMQP==</p>
+<p>提供三个功能：</p>
+<ul>
+<li>自动声明队列、交换机及其绑定关系</li>
+<li>基于注解的监听器模式，异步接收消息</li>
+<li>封装了RabbitTemplate工具，用于发送消息 -rabbitTemplate.convertAndSend(队列名,发送信息);</li>
+</ul>
+<h2 id="3-1-生产者-消费者-1-1"><a href="#3-1-生产者-消费者-1-1" class="headerlink" title="3.1 生产者-消费者(1-1)"></a>3.1 生产者-消费者(1-1)</h2><h3 id="3-1-1-导入Demo工程"><a href="#3-1-1-导入Demo工程" class="headerlink" title="3.1.1 导入Demo工程"></a>3.1.1 导入Demo工程</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407932.png" alt="image-20240319195614981"></p>
+<h3 id="3-1-2-导入maven坐标"><a href="#3-1-2-导入maven坐标" class="headerlink" title="3.1.2 导入maven坐标"></a>3.1.2 导入maven坐标</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407671.png" alt="image-20240319195708883"></p>
+<h3 id="3-1-3-新建队列"><a href="#3-1-3-新建队列" class="headerlink" title="3.1.3  新建队列"></a>3.1.3  新建队列</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407672.png" alt="image-20240319200226308"></p>
+<h3 id="3-1-4-每个子工程配置RabbitMQ信息"><a href="#3-1-4-每个子工程配置RabbitMQ信息" class="headerlink" title="3.1.4  每个子工程配置RabbitMQ信息"></a>3.1.4  每个子工程配置RabbitMQ信息</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407634.png" alt="image-20240319200405081"></p>
+<h3 id="3-1-5-生产者发送消息"><a href="#3-1-5-生产者发送消息" class="headerlink" title="3.1.5 生产者发送消息"></a>3.1.5 生产者发送消息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.注入RabbitTemplate对象</span><br><span class="line">2.对象调用convertAndSend(队列名，信息)方法</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407159.png" alt="image-20240319200946446" style="zoom:150%;">
+
+
+
+<h3 id="3-1-6-消费者接收消息"><a href="#3-1-6-消费者接收消息" class="headerlink" title="3.1.6 消费者接收消息"></a>3.1.6 消费者接收消息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.使用注解RabbitListener(队列名&#x3D;“xxx”)</span><br><span class="line">2.启动当前消费者子工程(SpringBoot工程)</span><br><span class="line">3.生产者发送一次消息，消费者就会接收到一次消息</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407040.png" alt="image-20240319201418364"></p>
+<h2 id="3-2-生产者-消费者-1-n-WorkQueues任务模型"><a href="#3-2-生产者-消费者-1-n-WorkQueues任务模型" class="headerlink" title="3.2 生产者-消费者(1-n) -WorkQueues任务模型"></a>3.2 生产者-消费者(1-n) -WorkQueues任务模型</h2><p>Work queues任务模型    –&gt;   让多个消费者绑定到一个队列，共同消费队列中的消息   –&gt;   ==解决消息堆积太多==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407290.png" alt="image-20240319202054225"></p>
+<h3 id="3-2-1-新建队列"><a href="#3-2-1-新建队列" class="headerlink" title="3.2.1 新建队列"></a>3.2.1 新建队列</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407109.png" alt="image-20240320091336394"></p>
+<h3 id="3-2-2-生产者发送消息"><a href="#3-2-2-生产者发送消息" class="headerlink" title="3.2.2 生产者发送消息"></a>3.2.2 生产者发送消息</h3><p>一个发送者，循环发送50次消息</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407815.png" alt="image-20240320091703762"></p>
+<h3 id="3-2-3-消费者接收消息"><a href="#3-2-3-消费者接收消息" class="headerlink" title="3.2.3 消费者接收消息"></a>3.2.3 消费者接收消息</h3><p>两个消费者接收消息，一个休眠20ms(每秒钟处理50个消息)，一个休眠200ms(每秒钟处理5个消息)</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071410175.png" alt="image-20240320092251196"></p>
+<h3 id="3-2-4-均匀分配"><a href="#3-2-4-均匀分配" class="headerlink" title="3.2.4 均匀分配"></a>3.2.4 均匀分配</h3><p>启动消费者子工程项目，再发送消息就可以接受消息：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407287.png" alt="image-20240320092647584"></p>
+<p>可以看到消费者1和消费者2竟然每人消费了25条消息：</p>
+<ul>
+<li>消费者1很快完成了自己的25条消息</li>
+<li>消费者2却在缓慢的处理自己的25条消息。</li>
+</ul>
+<p>也就是说消息是==平均分配==给每个消费者，并没有考虑到消费者的处理能力。导致1个消费者空闲，另一个消费者忙的不可开交。没有充分利用每一个消费者的能力，最终消息处理的耗时远远超过了1秒。这样显然是有问题的  </p>
+<h3 id="3-2-5-能者多劳-yml配置prefetch"><a href="#3-2-5-能者多劳-yml配置prefetch" class="headerlink" title="3.2.5 能者多劳(yml配置prefetch)"></a>3.2.5 能者多劳(yml配置prefetch)</h3><p>修改==listener.simple.prefetch:1==可以保证==能者多劳==，每个消费者每次只能获取一条消息，处理完成才能获取下一条消息</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407470.png" alt="image-20240320093106144"></p>
+<p>更改之后重新发送消息：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407467.png" alt="image-20240320093225443"></p>
+<p>可以发现，由于消费者1处理速度较快，所以处理了更多的消息；消费者2处理速度较慢，只处理了6条消息。而最终总的执行耗时也在1秒左右，大大提升。<br>正所谓能者多劳，这样充分利用了每一个消费者的处理能力，可以有效避免消息积压问题</p>
+<h1 id="4-交换机-Exchange"><a href="#4-交换机-Exchange" class="headerlink" title="4.交换机(Exchange)"></a>4.交换机(Exchange)</h1><p>在3.1和3.2部分没有添加交换机，生产者直接发送消息到队列。但是引入交换机之后消息发送的模式会有很大的变化：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407236.png" alt="image-20240320093715426"></p>
+<p>可以看到，在订阅模型中，多了一个exchange角色，而且过程略有变化：</p>
+<ul>
+<li><strong>Publisher</strong>：生产者，不再发送消息到队列中，而是发给交换机</li>
+<li><strong>Exchange</strong>：交换机，一方面，接收生产者发送的消息。另一方面，知道如何处理消息(递交给某个特别队列、递交给所有队列、或是将消息丢弃)</li>
+<li><strong>Queue</strong>：消息队列也与以前一样，接收消息、缓存消息。不过队列一定要与交换机绑定。</li>
+<li><strong>Consumer</strong>：消费者，与以前一样，订阅队列，【没有变化】</li>
+</ul>
+<p><strong>Exchange（交换机）只负责转发消息，不具备存储消息的能力</strong>，因此如果没有任何队列与Exchange绑定，或者没有符合路由规则的队列，那么消息会丢失！</p>
+<p>Exchange（交换机）的类型有四种：</p>
+<ul>
+<li><strong>Fanout</strong>：广播，将消息交给所有绑定到交换机的队列。【最早在控制台使用】</li>
+<li><strong>Direct</strong>：订阅，基于RoutingKey（写死的路由key）发送给订阅了消息的队列</li>
+<li><strong>Topic</strong>：通配符订阅，基于RoutingKey（符合通配符的路由key）发送给订阅了消息的队列</li>
+<li><strong>Headers</strong>：头匹配，基于MQ的消息头匹配，【用的较少】</li>
+</ul>
+<h2 id="4-1-Fanout交换机-广播"><a href="#4-1-Fanout交换机-广播" class="headerlink" title="4.1 Fanout交换机(广播)"></a>4.1 Fanout交换机(广播)</h2><p>在广播(Fanout)模式下，消息发送流程是这样的</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407800.png" alt="image-20240320094830771"></p>
+<h3 id="4-1-1-声明交换机和队列"><a href="#4-1-1-声明交换机和队列" class="headerlink" title="4.1.1 声明交换机和队列"></a>4.1.1 声明交换机和队列</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407936.png" alt="image-20240320095902006"></p>
+<h3 id="4-1-2-消息发送"><a href="#4-1-2-消息发送" class="headerlink" title="4.1.2 消息发送"></a>4.1.2 消息发送</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407284.png" alt="image-20240320095942536"></p>
+<h3 id="4-1-3-消息接收"><a href="#4-1-3-消息接收" class="headerlink" title="4.1.3 消息接收"></a>4.1.3 消息接收</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407340.png" alt="image-20240320100056347"></p>
+<p>启动消费者子工程之后发送消息</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071412799.png" alt="image-20240320100134844"></p>
+<h2 id="4-2-Direct交换机-订阅"><a href="#4-2-Direct交换机-订阅" class="headerlink" title="4.2 Direct交换机(订阅)"></a>4.2 Direct交换机(订阅)</h2><h3 id="4-2-1-声明交换机和队列"><a href="#4-2-1-声明交换机和队列" class="headerlink" title="4.2.1 声明交换机和队列"></a>4.2.1 声明交换机和队列</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071412758.png" alt="image-20240320200427090"></p>
+<p>官网在线创建：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407754.png" alt="image-20240320200530874"></p>
+<h3 id="4-2-2-消息发送"><a href="#4-2-2-消息发送" class="headerlink" title="4.2.2 消息发送"></a>4.2.2 消息发送</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407619.png" alt="image-20240320200725027"></p>
+<h3 id="4-2-3-消息接收"><a href="#4-2-3-消息接收" class="headerlink" title="4.2.3 消息接收"></a>4.2.3 消息接收</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407860.png" alt="image-20240320200746903"></p>
+<h2 id="4-3-Topic交换机-通配符订阅"><a href="#4-3-Topic交换机-通配符订阅" class="headerlink" title="4.3 Topic交换机(通配符订阅)"></a>4.3 Topic交换机(通配符订阅)</h2><h3 id="4-3-1-声明交换机和队列"><a href="#4-3-1-声明交换机和队列" class="headerlink" title="4.3.1 声明交换机和队列"></a>4.3.1 声明交换机和队列</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407415.png" alt="image-20240320200956679"></p>
+<p>官网在线创建：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406222140936.png" alt="image-20240622214037809"></p>
+<h3 id="4-3-2-消息发送"><a href="#4-3-2-消息发送" class="headerlink" title="4.3.2 消息发送"></a>4.3.2 消息发送</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407499.png" alt="image-20240320200802564"></p>
+<h3 id="4-3-3-消息接收"><a href="#4-3-3-消息接收" class="headerlink" title="4.3.3 消息接收"></a>4.3.3 消息接收</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071407834.png" alt="image-20240320200816573"></p>
+<h3 id="4-3-4-总结"><a href="#4-3-4-总结" class="headerlink" title="4.3.4 总结"></a>4.3.4 总结</h3><p><code>Topic</code>类型的<code>Exchange</code>与<code>Direct</code>相比，都是可以根据<code>RoutingKey</code>把消息路由到不同的队列。只不过<code>Topic</code>类型<code>Exchange</code>可以让队列在绑定<code>BindingKey</code> 的时候使用==通配符==！</p>
+<p>BindingKey一般是一个/多个单词组成，多个单词之间用.分割</p>
+<p>通配符规则：</p>
+<p>通配符规则：</p>
+<ul>
+<li><code>#</code>：匹配0个或者多个词</li>
+<li><code>*</code>：匹配1个词</li>
+</ul>
+<p>举例：</p>
+<ul>
+<li><code>item.#</code>：能够匹配<code>item.spu.insert</code> 或者 <code>item.spu</code> 或者 <code>item</code> (#可以是0个词到多个词)</li>
+<li><code>item.*</code>：只能匹配<code>item.spu</code>  （*只能是一个词）</li>
+</ul>
+<h1 id="5-API-队列和交换机-替换网页手动创建"><a href="#5-API-队列和交换机-替换网页手动创建" class="headerlink" title="5. API-队列和交换机(替换网页手动创建)"></a>5. API-队列和交换机(替换网页手动创建)</h1><p>SpringAMQP提供了声明队列，交换机和绑定关系的API：</p>
+<ul>
+<li>Queue：队列</li>
+<li>Exchange：交换机</li>
+<li>Binding：绑定关系</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408736.png" alt="image-20240320203603754"></p>
+<h2 id="5-1-Bean方式声明-不推荐"><a href="#5-1-Bean方式声明-不推荐" class="headerlink" title="5.1 @Bean方式声明(不推荐)"></a>5.1 @Bean方式声明(不推荐)</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408875.png" alt="image-20240320215605011"></p>
+<p>这样创建很繁琐，因此提供了基于注解的方式</p>
+<h2 id="5-2-注解方式声明-推荐"><a href="#5-2-注解方式声明-推荐" class="headerlink" title="5.2 注解方式声明(推荐)"></a>5.2 注解方式声明(推荐)</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408708.png" alt="image-20240320220328866"></p>
+<p>其实就是@RabbitListener注解里面配置关系(@QueueBinding)，然后里面具体的就是交换机(@Exchange)，队列(@Queue)以及路由key(key)</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071412958.png" alt="image-20240320221056179"></p>
+<h1 id="6-消息转换器-解决发送消息的JDK序列化"><a href="#6-消息转换器-解决发送消息的JDK序列化" class="headerlink" title="6.消息转换器[解决发送消息的JDK序列化]"></a>6.消息转换器[解决发送消息的JDK序列化]</h1><p>Spring的convertAndSend()方法接收的是一个Object类型：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408190.png" alt="image-20240320221749744"></p>
+<p>而在数据传输时，可能会因为默认的==JDK序列化==导致数据体积过大(乱码一样的序列化结果)，安全漏洞，可读性差等问题。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408420.png" alt="image-20240320222347892"></p>
+<p>因此可以考虑使用==Json序列化和反序列化==：</p>
+<h2 id="6-1-配置JSON转换器"><a href="#6-1-配置JSON转换器" class="headerlink" title="6.1 配置JSON转换器"></a>6.1 配置JSON转换器</h2><ul>
+<li>1.在生产者和消费者两个服务中都要引入依赖</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408060.png" alt="image-20240321092511719"></p>
+<p>注意：如果项目中引入了Spring-boot-starter-web依赖，则无需再次引入Jackson依赖</p>
+<ul>
+<li><p>2.在生产者和消费者两个服务的启动类中添加一个Bean：配置消息转换器</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408366.png" alt="image-20240321092839447"></p>
+</li>
+</ul>
+<h1 id="7-RabbitMQ使用总结"><a href="#7-RabbitMQ使用总结" class="headerlink" title="==7.RabbitMQ使用总结=="></a>==7.RabbitMQ使用总结==</h1><h2 id="7-1-maven引入maven坐标"><a href="#7-1-maven引入maven坐标" class="headerlink" title="7.1 maven引入maven坐标"></a>7.1 maven引入maven坐标</h2><p>在生产者和消费者的pom.xml文件中配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--消息发送--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-amqp&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-2-子工程配置RabbitMQ信息"><a href="#7-2-子工程配置RabbitMQ信息" class="headerlink" title="7.2 子工程配置RabbitMQ信息"></a>7.2 子工程配置RabbitMQ信息</h2><p>在生产者和消费者的application.yml文件中配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  rabbitmq:</span><br><span class="line">    host: 192.168.92.129 # 你的虚拟机IP</span><br><span class="line">    port: 5672 # 端口</span><br><span class="line">    virtual-host: &#x2F;hmall # 虚拟主机</span><br><span class="line">    username: hmall # 用户名</span><br><span class="line">    password: 123456 # 密码</span><br><span class="line">    </span><br><span class="line">&#x2F;&#x2F;消费者和生产者会在对应位置添加配置 【例如：生产者消费者的确认机制，重试机制等】</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-3-配置消息转换器-解决发送消息的JDK序列化"><a href="#7-3-配置消息转换器-解决发送消息的JDK序列化" class="headerlink" title="7.3 配置消息转换器[解决发送消息的JDK序列化]"></a>7.3 配置消息转换器[解决发送消息的JDK序列化]</h2><p>可以在公共模块添加bean</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408004.png" alt="image-20240321095355698"></p>
+<h2 id="7-4-生产者-发送消息"><a href="#7-4-生产者-发送消息" class="headerlink" title="7.4 生产者-发送消息"></a>7.4 生产者-发送消息</h2><p>将原始的同步修改订单信息更改为异步修改</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408382.png" alt="image-20240321095847784"></p>
+<h2 id="7-5-消费者-接收消息"><a href="#7-5-消费者-接收消息" class="headerlink" title="7.5 消费者-接收消息"></a>7.5 消费者-接收消息</h2><p>消费者可以添加消息监听，添加好交换机和路由key和队列</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408722.png" alt="image-20240321100301473"></p>
+<p>==总结如下：==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408690.png" alt="image-20240403110457790"></p>
+<p>大致就是导入maven，子工程配置一些属性，然后生产者调用rabbitMQ的rabbitTemplate.convertAndSend()方法发送消息【里面可以添加各种】，在消费者方面可以①使用bean进行声明交换机，队列和关系②使用@RabbitListener注解进行声明【里面可以添加一些属性，例如持久化的，lazyqueue的，延迟消息的】</p>
+<hr>
+<h1 id="高级进阶-–保证消息可靠性-三个方面"><a href="#高级进阶-–保证消息可靠性-三个方面" class="headerlink" title="==高级进阶 –保证消息可靠性(三个方面)=="></a>==高级进阶 –保证消息可靠性(三个方面)==</h1><p>异步结构可能会在发送者，MQ，消费者三个地方出现问题!!!因此要考虑这三个位置的可靠性和兜底方案(延迟消息)</p>
+<p>消息从发送者发送消息，到消费者处理消息，需要经过的流程是这样的：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408510.png" alt="image-20240321120455090"></p>
+<p>消息从生产者到消费者的每一步都可能导致消息丢失：</p>
+<ul>
+<li>发送消息时丢失：<ul>
+<li>生产者发送消息时连接MQ失败</li>
+<li>生产者发送消息到达MQ后未找到<code>Exchange</code></li>
+<li>生产者发送消息到达MQ的<code>Exchange</code>后，未找到合适的<code>Queue</code></li>
+<li>消息到达MQ后，处理消息的进程发生异常</li>
+</ul>
+</li>
+<li>MQ导致消息丢失：<ul>
+<li>消息到达MQ，保存到队列后，尚未消费就突然宕机</li>
+</ul>
+</li>
+<li>消费者处理消息时：<ul>
+<li>消息接收后尚未处理突然宕机</li>
+<li>消息接收后处理过程中抛出异常</li>
+</ul>
+</li>
+</ul>
+<p>综上，我们要解决消息丢失问题，保证MQ的可靠性，就必须从3个方面入手：</p>
+<ul>
+<li><p>确保生产者一定把消息发送到MQ    —&gt; ==生产者的可靠性(生产者重试机制，生产者确认机制)==</p>
+</li>
+<li><p>确保MQ不会将消息弄丢   —&gt; ==MQ的可靠性(数据持久化，lazy queue)==</p>
+</li>
+<li><p>确保消费者一定要处理消息   —&gt;   ==消费者的可靠性(消费者确认机制，失败重传机制，失败处理策略，业务幂等性)==</p>
+<p>==总汇总(复习图)==</p>
+</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408491.png" alt="image-20240325153049616" style="zoom:150%;">
+
+
+
+<h1 id="8-可靠性——-发送者"><a href="#8-可靠性——-发送者" class="headerlink" title="8.可靠性——-发送者"></a>8.可靠性——-发送者</h1><h2 id="8-1-生产者重试机制-建议禁用"><a href="#8-1-生产者重试机制-建议禁用" class="headerlink" title="8.1 生产者重试机制(建议禁用)"></a>8.1 生产者重试机制(建议禁用)</h2><p>生产者发送消息时，出现网络故障，导致与MQ连接中断   ———-&gt;  SpringAMQP提供的消息发送时的==重试机制==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408900.png" alt="image-20240321110716739"></p>
+<p>注意:<br>当网络不稳定的时候，利用重试机制可以有效提高消息发送的成功率。不过SpringAMQP提供的重试机制是==阻塞式重试==（也就是说多次重试等待的过程中，当前线程是被阻塞的）</p>
+<p>如果对业务性能有要求的，建议禁用重试机制。如果一定要使用，请合理配置等待时长和重试次数，当然也可以考虑使用异步线程来执行发送消息的代码。</p>
+<h2 id="8-2-生产者确认机制-默认不开启"><a href="#8-2-生产者确认机制-默认不开启" class="headerlink" title="8.2 生产者确认机制(默认不开启)"></a>8.2 生产者确认机制(默认不开启)</h2><p>一般情况下，只要生产者与MQ之间的网络连接顺畅，基本不会出现发送消息丢失的情况，因此大多数情况下我们无需考虑这种问题。</p>
+<p>少数情况下，也会出现消息发送到MQ之后丢失的现象，比如：</p>
+<ul>
+<li>MQ内部处理消息的进程发生了异常 </li>
+<li>生产者发送消息到达MQ后未找到交换机</li>
+<li>生产者发送消息到达MQ的交换机之后，未找到合适的队列，因此无法路由</li>
+</ul>
+<p>针对上述三种情况，RabbitMQ提供了==生产者消息确认机制==，包括了Publisher Confirm和Publisher Return两种方式。</p>
+<p>在开启确认机制的情况下，当生产者发送消息给MQ之后，MQ会根据消息处理的情况返回不同的回执：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408106.png" alt="image-20240321160450585"></p>
+<p>总结如下：</p>
+<ul>
+<li>1.只要消息投递到MQ，就返回ACK，告知投递成功(基本上这三种ack我们可以考虑不处理，直接只关注nack的情况)</li>
+</ul>
+<p>​              1.1 当消息投递到MQ，但是路由失败时，通过<strong>Publisher Return</strong>返回异常信息，同时返回ack的确认信息，代表投递成功</p>
+<p>​              1.2 临时消息投递到了MQ，并且入队成功，返回ACK，告知投递成功</p>
+<p>​              1.3 持久消息投递到了MQ，并且入队完成持久化，返回ACK ，告知投递成功</p>
+<ul>
+<li>2.其它情况都会返回NACK，告知投递失败</li>
+</ul>
+<p>【其中ack(投递成功)和nack(投递失败)都属于Publisher Confirm机制;return是属于Publisher Return机制】</p>
+<p>【(默认)两种机制都是关闭状态，需要通过配置文件来开启，因为是需要额外的网络和系统资源开销】</p>
+<p>【一定要使用的话，无需开启Publisher-Return机制(一般路由失败是自己业务问题)】</p>
+<h3 id="8-2-1-配置文件添加"><a href="#8-2-1-配置文件添加" class="headerlink" title="8.2.1 配置文件添加"></a>8.2.1 配置文件添加</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408985.png" alt="image-20240321161135899"></p>
+<p>这里<code>publisher-confirm-type</code>有三种模式可选：</p>
+<ul>
+<li><code>none</code>：关闭confirm机制</li>
+<li><code>simple</code>：同步阻塞等待MQ的回执</li>
+<li><code>correlated</code>：MQ异步回调返回回执</li>
+</ul>
+<p>一般我们推荐使用<code>correlated</code>，回调机制。</p>
+<h3 id="8-2-2-定义ReturnCallback-返回信息"><a href="#8-2-2-定义ReturnCallback-返回信息" class="headerlink" title="8.2.2 定义ReturnCallback(返回信息)"></a>8.2.2 定义ReturnCallback(返回信息)</h3><p><strong>每个<code>RabbitTemplate</code>只能配置一个<code>ReturnCallback</code>，因此我们可以在配置类中统一设置</strong></p>
+<p>我们在publisher模块定义一个配置类：rabbitTemplate对象调用setReturnsCallback()方法，方法参数是一个匿名内部类(重写returnedMessage方法)</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408864.png" alt="image-20240321161749402"></p>
+<h3 id="8-2-3-定义ConfirmCallback-确定ack-nack"><a href="#8-2-3-定义ConfirmCallback-确定ack-nack" class="headerlink" title="8.2.3 定义ConfirmCallback(确定ack/nack)"></a>8.2.3 定义ConfirmCallback(确定ack/nack)</h3><p>由于每个消息发送时的处理逻辑不一定相同，因此ConfirmCallback需要在每次发送消息时定义。</p>
+<p>就是在发送消息时，调用RabbitTemplate.convertAndSend()时多传递一个参数：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408581.png" alt="image-20240321162745583"></p>
+<p>这里的CorrelationData中包含两个核心的东西：</p>
+<ul>
+<li><code>id</code>：消息的唯一标示，MQ对不同的消息的回执以此做判断，避免混淆</li>
+<li><code>SettableListenableFuture</code>：回执结果的Future对象</li>
+</ul>
+<p>将来MQ的回执就会通过这个<code>Future</code>来返回，我们可以提前给<code>CorrelationData</code>中的<code>Future</code>添加回调函数来处理消息回执：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408700.png" alt="image-20240321194022895"></p>
+<p>发送者位置发送消息(新增字段为了获取MQ给的结果)：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408032.png" alt="image-20240321194656371"></p>
+<p><strong>注意</strong>：<br>开启生产者确认比较消耗MQ性能，一般不建议开启。而且大家思考一下触发确认的几种情况：</p>
+<ul>
+<li>路由失败：一般是因为RoutingKey错误导致，往往是编程导致</li>
+<li>交换机名称错误：同样是编程错误导致</li>
+<li>MQ内部故障：这种需要处理，但概率往往较低。因此只有对消息可靠性要求非常高的业务才需要开启，而且仅仅需要开启ConfirmCallback处理nack就可以</li>
+</ul>
+<h1 id="9-可靠性——–RabbitMQ"><a href="#9-可靠性——–RabbitMQ" class="headerlink" title="9.可靠性——–RabbitMQ"></a>9.可靠性——–RabbitMQ</h1><p>在默认情况下，RabbitMQ会将接收到的信息保存在==内存==中(降低消息收发延迟)。这样会导致两个问题：</p>
+<ul>
+<li>一旦RabbitMQ宕机，内存中的消息会丢失   –&gt; ==交换机持久化,队列持久化,消息持久化==</li>
+<li>内存空间有限，当消费者故障或者处理过慢，会导致消息积压，引发RabbitMQ阻塞  –&gt; ==Lazy Queue==</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408311.png" alt="image-20240321200321687"></p>
+<h2 id="9-1-三种持久化"><a href="#9-1-三种持久化" class="headerlink" title="9.1 三种持久化"></a>9.1 三种持久化</h2><p>为了提升性能，默认情况下MQ的数据都是在内存存储的临时数据，重启后就会消失。为了保证数据的可靠性，必须配置数据持久化，包括：</p>
+<ul>
+<li>交换机持久化</li>
+<li>队列持久化</li>
+<li>消息持久化</li>
+</ul>
+<p>其中以控制台界面为例：</p>
+<p>交换机持久化：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408675.png" alt="image-20240321202630567"></p>
+<p>队列持久化：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408066.png" alt="image-20240321202726506"></p>
+<p>消息持久化：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408104.png" alt="image-20240321202757851"></p>
+<p><strong>说明：</strong></p>
+<p>在开启持久化机制以后，如果同时还开启了生产者确认机制，那么MQ会在消息持久化以后才发送ACK回执，进一步确保消息的可靠性</p>
+<p>不过出于性能考虑，为了减少IO次数，发送到RabbitMQ的消息是每隔一段时间(100ms左右)批量持久化，这会导致后续的ACK回执有一定的延迟，因此建议生产者确认全部采用异步方式</p>
+<h2 id="9-2-LazyQueue惰性队列"><a href="#9-2-LazyQueue惰性队列" class="headerlink" title="9.2 LazyQueue惰性队列"></a>9.2 LazyQueue惰性队列</h2><p>在默认情况下，RabbitMQ会将接收到的信息保存在内存中以降低消息收发的延迟。但在某些特殊情况下，这会导致消息积压，比如：</p>
+<ul>
+<li>消费者宕机或出现网络故障(后续崩了)</li>
+<li>消息发送量激增，超过了消费者处理速度(前面发的太快了，后面接不住)</li>
+<li>消费者处理业务发生阻塞(后续阻塞)</li>
+</ul>
+<p>一旦出现消息堆积问题，RabbitMQ的内存占用会越来越高 —&gt; 触发内存预警上限，此时RabbitMQ会将内存消息 –刷–&gt; 磁盘，这个行为叫==PageOut==，<code>PageOut</code>会耗费一段时间，并且会阻塞队列进程。因此在这个过程中RabbitMQ不会再处理新的消息，生产者的所有请求都会被阻塞</p>
+<p>为了解决这个问题，从3.6.0版本开始，增加了Lazy Queues(惰性队列)。惰性队列的特征如下：</p>
+<ul>
+<li>接收到消息后直接存入磁盘而非内存 (直接存磁盘，就不会刷盘造成阻塞队列进程)</li>
+<li>消费者要消费消息时才会从磁盘中读取并加载到内存（也就是懒加载，需要了我才加载内存）</li>
+<li>支持数百万条的消息存储</li>
+</ul>
+<p>而在3.12版本之后，LazyQueue已经成为了所有队列的默认格式。因此官方推荐升级RabbitMQ为3.12版本/所有队列都设置为LazyQueue模式</p>
+<h3 id="9-2-1-控制台配置Lazy模式"><a href="#9-2-1-控制台配置Lazy模式" class="headerlink" title="9.2.1 控制台配置Lazy模式"></a>9.2.1 控制台配置Lazy模式</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409172.png" alt="image-20240321204855176"></p>
+<h3 id="9-2-2-代码配置Lazy模式"><a href="#9-2-2-代码配置Lazy模式" class="headerlink" title="9.2.2 代码配置Lazy模式"></a>9.2.2 代码配置Lazy模式</h3><p>基本原理都是设置属性：==x-queue-mode=lazy==</p>
+<ul>
+<li><strong>基于@Bean注解</strong>(配置类)</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409643.png" alt="image-20240321204954868"></p>
+<p>QueueBuilder底层源码为：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409225.png" alt="image-20240321205034258"></p>
+<ul>
+<li><strong>基于@RabbitListener注解</strong>(消费者子工程)</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409794.png" alt="image-20240321205132950"></p>
+<h3 id="9-2-3-更新已有队列为Lazy模式"><a href="#9-2-3-更新已有队列为Lazy模式" class="headerlink" title="9.2.3 更新已有队列为Lazy模式"></a>9.2.3 更新已有队列为Lazy模式</h3><ul>
+<li>基于控制台：</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409681.png" alt="image-20240321205402456" style="zoom: 80%;">
+
+<ul>
+<li>基于命令行：</li>
+</ul>
+<p>可以基于命令行设置policy：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl set_policy Lazy &quot;^lazy-queue$&quot; &#39;&#123;&quot;queue-mode&quot;:&quot;lazy&quot;&#125;&#39; --apply-to queues</span><br></pre></td></tr></table></figure>
+
+<p>命令解读：</p>
+<ul>
+<li><code>rabbitmqctl</code> ：RabbitMQ的命令行工具</li>
+<li><code>set_policy</code> ：添加一个策略</li>
+<li><code>Lazy</code> ：策略名称，可以自定义</li>
+<li><code>&quot;^lazy-queue$&quot;</code> ：用正则表达式匹配队列的名字</li>
+<li><code>&#39;{&quot;queue-mode&quot;:&quot;lazy&quot;}&#39;</code> ：设置队列模式为lazy模式</li>
+<li><code>--apply-to queues</code>：策略的作用对象，是所有的队列</li>
+</ul>
+<h1 id="10-可靠性——-消费者"><a href="#10-可靠性——-消费者" class="headerlink" title="10.可靠性——-消费者"></a>10.可靠性——-消费者</h1><h2 id="10-1-消费者确认机制"><a href="#10-1-消费者确认机制" class="headerlink" title="10.1 消费者确认机制"></a>10.1 消费者确认机制</h2><p>为了确定消费者是否成功处理消息，RabbitMQ提供了消费者确认机制(<strong>Consumer Acknowledgement</strong>)</p>
+<p>就是说当消费者处理消息结束后，应该向+RabbitMQ发送一个回执，告知RabbitMQ自己消息处理状态。这时候回执有三种可选值：</p>
+<ul>
+<li><strong>ack</strong>：<strong>成功处理消息</strong>，RabbitMQ从队列中删除该消息</li>
+<li><strong>nack</strong>：<strong>消息处理失败</strong>，RabbitMQ再次投递消息</li>
+<li><strong>reject(很少使用)</strong>：<strong>消息处理失败并拒绝该消息</strong>，RabbitMQ从队列中删除该消息</li>
+</ul>
+<p>一般第三种reject方式比较少，除非是消息格式问题(那就是开发问题)，因此大多数情况下我们需要将消息处理的代码通过try-catch机制捕获，消息处理成功就返回ack，处理失败就返回nack。</p>
+<p>由于消息回执的处理代码比较统一，因此<strong>SpringAMQP帮我们实现了消息确认</strong>。并且允许我们通过配置文件(yml)设置ACK处理方式，有三种模式：</p>
+<ul>
+<li><strong>none</strong>:<strong>不处理</strong>。就是将消息投递给消费者后立刻回调ack，消息会立刻从MQ中删除。【非常不安全，不建议使用】</li>
+<li><strong>manual</strong>:<strong>手动模式</strong>。需要自己在业务代码中调用api，回调发送ack/reject【存在业务入侵，但更灵活】</li>
+<li><strong>auto</strong>:<strong>自动模式</strong>。SpringAMQP利用AOP对我们的消息处理逻辑做了环绕增强。<ul>
+<li>当业务正常执行时则自动返回ack(RabbitMQ删除消息)</li>
+<li>当业务出现异常时根据异常判断返回不同的结果</li>
+</ul>
+</li>
+</ul>
+<p>​                - 如果是业务异常，自动返回nack(RabbitMQ再次投递消息)     —&gt; <strong>可能会出现不停重复投递(导致消息堆积)</strong></p>
+<p>​                - 如果是消息处理/校验异常，自动返回reject(RabbitMQ删除消息)</p>
+<p>配置消费者的xml文件可以修改SpringAMQP的ack处理方式：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409439.png" alt="image-20240401141236210"></p>
+<p>但是，如果auto模式下是业务异常回执给nack，那就会不断从MQ中投递消息，会导致MQ消息处理飙升带来不必要的压力(这种极端情况就是消费者一直无法执行成功，发生概率很低，但是不怕万一就怕一万)</p>
+<h2 id="10-2-消费者失败重试机制"><a href="#10-2-消费者失败重试机制" class="headerlink" title="10.2 消费者失败重试机制"></a>10.2 消费者失败重试机制</h2><p>因为10.1如果是收到nack回执，那么就会不断从MQ中投递消息，可能会导致消息堆积，导致mq的消息处理飙升，带来不必要的压力</p>
+<p>我们可以利用Spring的retry机制—&gt;==当消费者异常就利用本地重试(×无限制重试)==</p>
+<p>配置消费者的xml文件可以修改SpringAMQP的本地重试机制：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409973.png" alt="image-20240401154838741" style="zoom: 50%;">
+
+<p>在开启重试机制后，重试次数耗尽之后，如果消息依然失效，则会默认<strong>直接丢弃消息!!!!!!!!!!!!!</strong></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409607.png" alt="image-20240401155907410" style="zoom: 50%;">
+
+<p>可以发现：</p>
+<ul>
+<li><p>消费者在失败后消息并没有重新回到MQ无限重新投递，而是重试3次</p>
+</li>
+<li><p>本地重试3次之后，抛出了AmqpRejectAndDontRequeueException异常（说明直接reject丢弃了）</p>
+</li>
+</ul>
+<h2 id="10-3-失败处理策略"><a href="#10-3-失败处理策略" class="headerlink" title="10.3 失败处理策略"></a>10.3 失败处理策略</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409952.png" alt="image-20240401163030885"></p>
+<p>因为10.2本地重试之后如果消息失效就直接丢弃，因此我们可以考虑==加上自定义重试次数之后的策略==。只需要==MessageRecoverer接口==来处理，它包含了三种不同的实现：</p>
+<ul>
+<li><strong>RejectAndDontRequeueRecoverer(默认)</strong>：重试耗尽后，直接reject，丢弃消息</li>
+<li>*<em>ImmediateRequeueMessageRecoverer *</em>：重试耗尽后，返回nack，消息重新入队 【减缓重试的速度，就还是要重新投递到前一步】</li>
+<li><strong>RepublishMessageRecoverer</strong>：重试耗尽后，将失败消息投递到指定的交换机(最后人工校验/特殊校验)</li>
+</ul>
+<h3 id="10-3-1-第三种策略为例"><a href="#10-3-1-第三种策略为例" class="headerlink" title="10.3.1 第三种策略为例"></a>10.3.1 第三种策略为例</h3><p>①定义接受失败消息的交换机，队列和绑定关系</p>
+<p>②定义RepublishMessageRecoverer：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package com.itheima.consumer.config;</span><br><span class="line">import org.springframework.amqp.core.Binding;</span><br><span class="line">import org.springframework.amqp.core.BindingBuilder;</span><br><span class="line">import org.springframework.amqp.core.DirectExchange;</span><br><span class="line">import org.springframework.amqp.core.Queue;</span><br><span class="line">import org.springframework.amqp.rabbit.core.RabbitTemplate;</span><br><span class="line">import org.springframework.amqp.rabbit.retry.MessageRecoverer;</span><br><span class="line">import org.springframework.amqp.rabbit.retry.RepublishMessageRecoverer;</span><br><span class="line">import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;</span><br><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">&#x2F;&#x2F;当消费者重试机制属性enabled&#x3D;true的时候生效</span><br><span class="line">@ConditionalOnProperty(name &#x3D; &quot;spring.rabbitmq.listener.simple.retry.enabled&quot;, havingValue &#x3D; &quot;true&quot;)</span><br><span class="line">public class ErrorMessageConfig &#123;</span><br><span class="line">    &#x2F;&#x2F;交换机</span><br><span class="line">    @Bean</span><br><span class="line">    public DirectExchange errorMessageExchange()&#123;</span><br><span class="line">        return new DirectExchange(&quot;error.direct&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;队列</span><br><span class="line">    @Bean</span><br><span class="line">    public Queue errorQueue()&#123;</span><br><span class="line">        return new Queue(&quot;error.queue&quot;, true);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;交换机和队列绑定</span><br><span class="line">    @Bean</span><br><span class="line">    public Binding errorBinding(Queue errorQueue, DirectExchange errorMessageExchange)&#123;</span><br><span class="line">        return BindingBuilder.bind(errorQueue).to(errorMessageExchange).with(&quot;error&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;第三种!!!!  返回一个MessageRecoverer类型</span><br><span class="line">    @Bean</span><br><span class="line">    public MessageRecoverer republishMessageRecoverer(RabbitTemplate rabbitTemplate)&#123;</span><br><span class="line">        return new RepublishMessageRecoverer(rabbitTemplate, &quot;error.direct&quot;, &quot;error&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>③在10.2基础上会将消息直接传递到对应交换机上最后进行人工处理</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409804.png" alt="image-20240401163012833"></p>
+<ul>
+<li><p>总结：</p>
+<p>自定义的三种方式，第一种默认直接拒绝(不好)，第二种相当于往前重试了一个环节(减缓了重试速度，但是也不好)，第三种相当于交给专门队列和交换机，最后交给人工处理(也不是很好)</p>
+</li>
+</ul>
+<h2 id="10-4-业务幂等性"><a href="#10-4-业务幂等性" class="headerlink" title="10.4 业务幂等性"></a>10.4 业务幂等性</h2><ul>
+<li><p><strong>幂等性</strong></p>
+<p>用函数表达式来描述是这样的：<code>f(x) = f(f(x))</code>，例如求绝对值函数。</p>
+<p>在程序开发中，则是指==同一个业务，执行一次或多次对业务状态的影响是一致的==。例如：</p>
+<ul>
+<li>根据id删除数据</li>
+<li>查询数据</li>
+<li>新增数据</li>
+</ul>
+<p>但数据的更新往往不是幂等的，如果重复执行可能造成不一样的后果。比如：</p>
+<ul>
+<li>取消订单，恢复库存的业务。如果多次恢复就会出现库存重复增加的情况</li>
+<li>退款业务。重复退款对商家而言会有经济损失。</li>
+</ul>
+<p>所以，我们要尽可能避免业务被重复执行。然而在实际业务场景中，由于意外经常会出现业务被重复执行的情况，例如：</p>
+<ul>
+<li>页面卡顿时频繁刷新导致表单重复提交</li>
+<li>服务间调用的重试</li>
+<li>MQ消息的重复投递</li>
+</ul>
+<p>我们在用户支付成功后会发送MQ消息到交易服务，修改订单状态为已支付，就可能出现消息回</p>
+<p>复投递的情况。如果消费者不做判断，很有可能导致消息被消费多次，出现业务故障。</p>
+<p>举例：</p>
+<ol>
+<li>假如用户刚刚支付完成，并且投递消息到交易服务，交易服务更改订单为<strong>已支付</strong>状态。</li>
+<li>由于某种原因，例如网络故障导致生产者没有得到确认，隔了一段时间后<strong>重新投递</strong>给交易服务。</li>
+<li>但是，在新投递的消息被消费之前，用户选择了退款，将订单状态改为了<strong>已退款</strong>状态。</li>
+<li>退款完成后，新投递的消息才被消费，那么订单状态会被再次改为<strong>已支付</strong>。业务异常。</li>
+</ol>
+<p>因此，我们必须想办法保证消息处理的幂等性。这里给出两种方案：</p>
+<ul>
+<li>唯一消息ID</li>
+<li>业务状态判断</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-4-1-唯一消息ID-存在业务侵入"><a href="#10-4-1-唯一消息ID-存在业务侵入" class="headerlink" title="10.4.1 唯一消息ID(存在业务侵入)"></a>10.4.1 唯一消息ID(存在业务侵入)</h3><p>这个思路非常简单：</p>
+<ol>
+<li>每一条消息都生成一个唯一的id，与消息一起投递给消费者。</li>
+<li>消费者接收到消息后处理自己的业务，业务处理成功后将消息ID保存到数据库</li>
+<li>如果下次又收到相同消息，去数据库查询判断是否存在，存在则为重复消息放弃处理。</li>
+</ol>
+<ul>
+<li><strong>SpringAMQP的MeesageConverter自带MessageID的功能</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;以Jackson的消息转换器为例：</span><br><span class="line">&#x2F;&#x2F;在消费者和生产者的config配置里面添加</span><br><span class="line">@Bean</span><br><span class="line">public MessageConverter messageConverter()&#123;</span><br><span class="line">    &#x2F;&#x2F; 1.定义消息转换器</span><br><span class="line">    Jackson2JsonMessageConverter jjmc &#x3D; new Jackson2JsonMessageConverter();</span><br><span class="line">    &#x2F;&#x2F; 2.配置自动创建消息id，用于识别不同消息，也可以在业务中基于ID判断是否是重复消息</span><br><span class="line">    jjmc.setCreateMessageIds(true);</span><br><span class="line">    &#x2F;&#x2F; 3.返回jjmc</span><br><span class="line">    return jjmc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们在生产者位置添加：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409146.png" alt="image-20240402102220873"></p>
+<p>打开源码可以看到，生成随机id的底层源码：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409752.png" alt="image-20240402095327684"></p>
+<p>最终发送一条消息如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409002.png" alt="image-20240402102055345"></p>
+<ul>
+<li><p><strong>使用Redis缓存(tk使用)</strong></p>
+<p>在调用接口的时候+调用生成随机数的接口生成id(全局唯一)两者合二为一，然后判断是否第一次调用，第一次调用的话业务处理完成之后将{key：id，value：操作结果}+过期时间存入redis数据库；之后每次进行的时候判断是否key存在，存在的话说明重复提交返回错误</p>
+</li>
+</ul>
+<h3 id="10-4-2-业务状态判断"><a href="#10-4-2-业务状态判断" class="headerlink" title="10.4.2 业务状态判断"></a>10.4.2 业务状态判断</h3><p>业务判断就是基于业务本身的逻辑或状态来判断是否是重复的请求或消息，不同的业务场景判断的思路也不一样。</p>
+<p>相比较而言，消息ID的方案需要改造原有的数据库(<strong>会存在业务侵入问题</strong>)，所以我更推荐使用业务判断的方案。</p>
+<p>以支付修改订单的业务为例，我们需要修改<code>OrderServiceImpl</code>中的<code>markOrderPaySuccess</code>方法：处理消息的业务逻辑是把订单状态从未支付修改为已支付。因此我们就可以在执行业务时判断订单状态是否是未支付，如果不是则证明订单已经被处理过，无需重复处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在原有基础上添加判断订单状态 ---如果不符合直接消息reject了!!!!!!!</span><br><span class="line"></span><br><span class="line">   @Override</span><br><span class="line">    public void markOrderPaySuccess(Long orderId) &#123;</span><br><span class="line">        &#x2F;&#x2F; 1.查询订单</span><br><span class="line">        Order old &#x3D; getById(orderId);</span><br><span class="line">        &#x2F;&#x2F; 2.判断订单状态</span><br><span class="line">        if (old &#x3D;&#x3D; null || old.getStatus() !&#x3D; 1) &#123;</span><br><span class="line">            &#x2F;&#x2F; 订单不存在或者订单状态不是1，放弃处理</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 3.尝试更新订单</span><br><span class="line">        Order order &#x3D; new Order();</span><br><span class="line">        order.setId(orderId);</span><br><span class="line">        order.setStatus(2);</span><br><span class="line">        order.setPayTime(LocalDateTime.now());</span><br><span class="line">        updateById(order);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据上述代码逻辑可以完成幂等判断需求，但是由于判断和更新是两步动作，可能会在极小概率下可能存在线程安全问题  –&gt; 可以考虑使用==乐观锁(CAS机制)==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;可以将上述三步直接合并为一条sql语句</span><br><span class="line">@Override</span><br><span class="line">public void markOrderPaySuccess(Long orderId) &#123;</span><br><span class="line">    &#x2F;&#x2F; UPDATE &#96;order&#96; SET status &#x3D; ? , pay_time &#x3D; ? WHERE id &#x3D; ? AND status &#x3D; 1</span><br><span class="line">    &#x2F;&#x2F;mybatisplus的方式</span><br><span class="line">    lambdaUpdate()</span><br><span class="line">            .set(Order::getStatus, 2)</span><br><span class="line">            .set(Order::getPayTime, LocalDateTime.now())</span><br><span class="line">            .eq(Order::getId, orderId)</span><br><span class="line">            .eq(Order::getStatus, 1)</span><br><span class="line">            .update();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意看，上述代码等同于这样的SQL语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="string">`order`</span> <span class="keyword">SET</span> <span class="keyword">status</span> = ? , pay_time = ? <span class="keyword">WHERE</span> <span class="keyword">id</span> = ? <span class="keyword">AND</span> <span class="keyword">status</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>我们在where条件中除了判断id以外，还加上了status必须为1的条件。如果条件不符（说明订单已支付），则SQL匹配不到数据，根本不会执行。</p>
+<h2 id="10-5-兜底方案"><a href="#10-5-兜底方案" class="headerlink" title="10.5 兜底方案"></a>10.5 兜底方案</h2><p>上述机制可能增加了消息的可靠性，但是也不好说能保证消息100%的可靠。</p>
+<p>兜底方案：既然MQ通知不一定发送到交易服务，那交易服务就自己==定时==主动询问消费者是否完成</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409472.png" alt="image-20240402105828416"></p>
+<p>什么时候去查询是无法确定的，因此我们通常采用的措施是利用<strong>定时任务</strong>定期查询。</p>
+<h1 id="可靠性总结图"><a href="#可靠性总结图" class="headerlink" title="==可靠性总结图=="></a>==可靠性总结图==</h1><p>综上，支付服务与交易服务之间的订单状态一致性是如何保证的？</p>
+<ul>
+<li>首先，支付服务会正在用户支付成功以后利用MQ消息通知交易服务，完成订单状态同步。</li>
+<li>其次，为了保证MQ消息的可靠性，我们采用了生产者确认机制、消费者确认、消费者失败重试等策略，确保消息投递的可靠性</li>
+<li>最后，我们还在交易服务设置了定时任务，定期查询订单支付状态。这样即便MQ通知失败，还可以利用定时任务作为兜底方案，确保订单支付状态的最终一致性。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409144.png" alt="image-20240402164059822"></p>
+<h1 id="高级进阶-–延迟消息-两种方式"><a href="#高级进阶-–延迟消息-两种方式" class="headerlink" title="==高级进阶 –延迟消息(两种方式)=="></a>==高级进阶 –延迟消息(两种方式)==</h1><h1 id="11-延迟消息"><a href="#11-延迟消息" class="headerlink" title="11.延迟消息"></a>11.延迟消息</h1><p><strong>延迟消息</strong>：生产者发送消息时指定一个时间，消费者不会立刻收到消息，而在指定时间之后才收到消息</p>
+<p><strong>延迟任务：</strong>设置一定时间之后才执行的任务，(最简单的方案就是利用MQ的延迟消息)</p>
+<p>在RabbitMQ中实现延迟消息也有两种方案：</p>
+<ul>
+<li>死信交换机+TTL</li>
+<li>延迟消息插件</li>
+</ul>
+<h2 id="11-1-死信交换机和延迟消息"><a href="#11-1-死信交换机和延迟消息" class="headerlink" title="11.1 死信交换机和延迟消息"></a>11.1 死信交换机和延迟消息</h2><h3 id="11-1-1-死信交换机"><a href="#11-1-1-死信交换机" class="headerlink" title="11.1.1 死信交换机"></a>11.1.1 死信交换机</h3><p><strong>死信(dead letter)</strong>？</p>
+<ul>
+<li>消费者使用<code>basic.reject</code>或 <code>basic.nack</code>声明消费失败，并且消息的<code>requeue</code>参数设置为false</li>
+<li>消息是一个过期消息，超时无人消费</li>
+<li>要投递的队列消息满了，无法投递</li>
+</ul>
+<p>如果队列设置属性dead-letter-exchange指定交换机 –&gt;该队列的死信就会投递到这个交换机。</p>
+<p>这个交换机就叫做<strong>死信交换机(Dead letter Exchange,简称DLX)</strong></p>
+<p><strong>死信交换机的作用</strong>？</p>
+<ol>
+<li><p>收集那些因处理失败而被拒绝的消息</p>
+</li>
+<li><p>收集那些因队列满了而被拒绝的消息</p>
+</li>
+<li><p>收集因TTL（有效期）到期的消息</p>
+</li>
+</ol>
+<h3 id="11-1-2-延迟消息"><a href="#11-1-2-延迟消息" class="headerlink" title="11.1.2 延迟消息"></a>11.1.2 延迟消息</h3><p>总结来说：宏观上看到就是内部做了一个延迟一样</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409360.png" alt="image-20240402113915144"></p>
+<p>进一步说：变相的让发送消息到消费多了5s</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409151.png" alt="image-20240402114329589"></p>
+<h2 id="11-2-延迟消息插件-DelayExchange"><a href="#11-2-延迟消息插件-DelayExchange" class="headerlink" title="11.2 延迟消息插件(DelayExchange)"></a>11.2 延迟消息插件(DelayExchange)</h2><p>RabbitMQ官方提供一款插件，==原生支持延迟消息功能==。</p>
+<p>插件原理就是设计了一种<strong>支持延迟消息功能</strong>的交换机，当消息投递到交换机后可以存放一定时间，到期后再投递到队列。</p>
+<h3 id="11-2-1-下载"><a href="#11-2-1-下载" class="headerlink" title="11.2.1 下载"></a>11.2.1 下载</h3><p>插件下载地址：<br><a href="https://github.com/rabbitmq/rabbitmq-delayed-message-exchange" target="_blank" rel="noopener">GitHub - rabbitmq/rabbitmq-delayed-message-exchange: Delayed Messaging for RabbitMQ</a></p>
+<p>由于我们安装的MQ是<code>3.8</code>版本，因此这里下载<code>3.8.17</code>版本：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409089.png" alt="image-20240402133333466"></p>
+<h3 id="11-2-2-安装"><a href="#11-2-2-安装" class="headerlink" title="11.2.2 安装"></a>11.2.2 安装</h3><p>因为我们是基于Docker安装，所以需要先查看RabbitMQ的插件目录对应的数据卷</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume inspect mq-plugins</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409492.png" alt="image-20240402133421439"></p>
+<p>插件目录被挂载到了<code>/var/lib/docker/volumes/mq-plugins/_data</code>这个目录，我们上传插件到该目录下。</p>
+<p>接下来执行命令，安装插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mq rabbitmq-plugins enable rabbitmq_delayed_message_exchange</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409136.png" alt="image-20240402134224233"></p>
+<h3 id="11-2-3-声明延迟交换机"><a href="#11-2-3-声明延迟交换机" class="headerlink" title="11.2.3 声明延迟交换机"></a>11.2.3 声明延迟交换机</h3><ul>
+<li>方式一：基于注解方式</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409244.png" alt="image-20240402134800279"></p>
+<ul>
+<li><p>方式二：基于@Bean方式</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409868.png" alt="image-20240402135010167"></p>
+</li>
+</ul>
+<h3 id="11-2-4-发送延迟消息"><a href="#11-2-4-发送延迟消息" class="headerlink" title="11.2.4 发送延迟消息"></a>11.2.4 发送延迟消息</h3><p>发送消息时：只需要通过设定x-delay属性设定延迟时间：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409934.png" alt="image-20240402135204953"></p>
+<p>延迟消息插件内部会维护一个本地数据库表，同时使用Elang Timers功能实现计时。如果消息的延迟时间设置较长，可能会导致堆积的延迟消息非常多，会带来较大的CPU开销，同时延迟消息的时间会存在误差。<br>因此，<strong>不建议设置延迟时间过长的延迟消息</strong>。</p>
+<h1 id="12-实际操作-日后补充"><a href="#12-实际操作-日后补充" class="headerlink" title="12. 实际操作(日后补充)"></a>12. 实际操作(日后补充)</h1>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-SpringCloud" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/03/15/SpringCloud/" class="article-date">
+      <time datetime="2024-03-15T02:48:29.000Z" itemprop="datePublished">2024-03-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/15/SpringCloud/">SpringCloud</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="1-微服务的定义"><a href="#1-微服务的定义" class="headerlink" title="1.微服务的定义"></a>1.微服务的定义</h1><p>随着互联网行业的发展对于服务的要求也越来越高，服务架构也从单体架构逐渐演变为微服务架构</p>
+<h2 id="1-1-三种架构的对比"><a href="#1-1-三种架构的对比" class="headerlink" title="1.1 三种架构的对比"></a>1.1 三种架构的对比</h2><ul>
+<li><strong>单体架构</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406563.png" alt="image-20240316220448340"></p>
+<ul>
+<li><strong>分布式架构</strong></li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406018.png" alt="image-20240316220536632" style="zoom: 80%;">
+
+<ul>
+<li><strong>微服务(优化版分布式架构)</strong></li>
+</ul>
+<p>微服务的架构特征：==可以认为<strong>微服务</strong>是一种经过良好架构设计的分布式架构方案==</p>
+<ul>
+<li>单一职责：微服务拆分粒度更小，每一个服务都对应唯一的业务能力，做到单一职责</li>
+<li>自治：团队独立、技术独立、数据独立，独立部署和交付</li>
+<li>面向服务：服务提供统一标准的接口，与语言和技术无关</li>
+<li>隔离性强：服务调用做好隔离、容错、降级，避免出现级联问题</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406475.png" alt="image-20240316220844109"></p>
+<h2 id="1-2-SpringCloud"><a href="#1-2-SpringCloud" class="headerlink" title="1.2 SpringCloud"></a>1.2 SpringCloud</h2><p>SpringCloud是目前国内使用最广泛的微服务框架。官网地址：<a href="https://spring.io/projects/spring-cloud。" target="_blank" rel="noopener">https://spring.io/projects/spring-cloud。</a></p>
+<p>SpringCloud集成了各种微服务功能组件，并基于SpringBoot实现了这些组件的自动装配，从而提供了良好的开箱即用体验。</p>
+<p>其中常见的组件包括：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406791.png" alt="image-20240316221239275"></p>
+<p>此外，要考虑很多版本兼容问题。主要是因为SpringCloud底层是依赖于Springboot实现的：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406497.png" alt="image-20240316221342911"></p>
+<h1 id="2-服务拆分和远程调用"><a href="#2-服务拆分和远程调用" class="headerlink" title="2.服务拆分和远程调用"></a>2.服务拆分和远程调用</h1><h2 id="2-1-服务拆分原则"><a href="#2-1-服务拆分原则" class="headerlink" title="2.1 服务拆分原则"></a>2.1 服务拆分原则</h2><ul>
+<li>==什么时候拆分？==</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405281416725.png" alt="image-20240528141616591"></p>
+<ul>
+<li>==怎么拆分?==</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405281417036.png" alt="image-20240528141659955"></p>
+<ul>
+<li>==服务拆分原则==</li>
+</ul>
+<p>​        不同微服务，不要重复开发相同业务</p>
+<p>​        微服务数据独立，不要访问其它微服务的数据库</p>
+<p>​        微服务可以将自己的业务暴露为接口，供其它微服务调用</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406959.png" alt="image-20240316222315019"></p>
+<h2 id="2-2-远程调用原则"><a href="#2-2-远程调用原则" class="headerlink" title="2.2 远程调用原则"></a>2.2 远程调用原则</h2><ul>
+<li><p>==远程调用原则==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071418858.png" alt="image-20240317152606026"></p>
+</li>
+</ul>
+<h1 id="3-提供者与消费者"><a href="#3-提供者与消费者" class="headerlink" title="3.提供者与消费者"></a>3.提供者与消费者</h1><p>在服务调用关系中，会有两个不同的角色：</p>
+<p><strong>服务提供者</strong>：一次业务中，被其它微服务调用的服务。（提供接口给其它微服务）</p>
+<p><strong>服务消费者</strong>：一次业务中，调用其它微服务的服务。（调用其它微服务提供的接口）</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071406167.png" alt="image-20240317152829239"></p>
+<p>但是，服务提供者与服务消费者的角色并不是绝对的，而是相对于业务而言【==相对的==】</p>
+<p>如果服务A调用了服务B，而服务B又调用了服务C，服务B的角色是什么？</p>
+<ul>
+<li>对于A调用B的业务而言：A是服务消费者，B是服务提供者</li>
+<li>对于B调用C的业务而言：B是服务消费者，C是服务提供者</li>
+</ul>
+<p>因此，服务B既可以是服务提供者，也可以是服务消费者。</p>
+<p>可能会出现三种情况：</p>
+<p>1.消费者该如何获取服务提供者具体信息？ </p>
+<p>2.如果有多个服务提供者，消费者该如何选择？</p>
+<p>3.消费者如何感知服务提供者健康状态？</p>
+<h1 id="4-Eureka注册中心"><a href="#4-Eureka注册中心" class="headerlink" title="4.Eureka注册中心"></a>4.Eureka注册中心</h1><h2 id="4-1-Eureka结构"><a href="#4-1-Eureka结构" class="headerlink" title="4.1 Eureka结构"></a>4.1 Eureka结构</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404171627000.png" alt="image-20240417162755947"></p>
+<p>组成部分：分为<strong>eureka-server</strong>和<strong>eureka-client[服务消费者和服务提供者]</strong>两个部分</p>
+<p>基本步骤：</p>
+<p>1.client向注册中心server注册服务信息(告知有哪些服务和端口信息)  –每隔30s就重新注册</p>
+<p>2.服务消费者从service拉取服务提供者信息</p>
+<p>3.服务消费者自己负载均衡配置</p>
+<p>4.服务消费者远程调用</p>
+<p>==解决上述可能出现的三种情况==</p>
+<p>问题1：order-service如何得知user-service实例地址？</p>
+<p>获取地址信息的流程如下：</p>
+<ul>
+<li>user-service服务实例启动后，将自己的信息注册到eureka-server（Eureka服务端）。这个叫服务注册</li>
+<li>eureka-server保存服务名称到服务实例地址列表的映射关系</li>
+<li>order-service根据服务名称，拉取实例地址列表。这个叫服务发现/服务拉取</li>
+</ul>
+<p>问题2：order-service如何从多个user-service实例中选择具体的实例？</p>
+<ul>
+<li>order-service从实例列表中利用负载均衡算法选中一个实例地址</li>
+<li>向该实例地址发起远程调用</li>
+</ul>
+<p>问题3：order-service如何得知某个user-service实例是否依然健康，是不是已经宕机？</p>
+<ul>
+<li>user-service会每隔一段时间（默认30秒）向eureka-server发起请求，报告自己状态，称为心跳</li>
+<li>当超过一定时间没有发送心跳时，eureka-server会认为微服务实例故障，将该实例从服务列表中剔除</li>
+<li>order-service拉取服务时，就能将故障实例排除了</li>
+</ul>
+<p><strong>注意</strong>：一个微服务，既可以是服务提供者，又可以是服务消费者，因此eureka将服务注册、服务发现等功能统一封装到了eureka-client端</p>
+<p>==分三步进行==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404171646699.png" alt="image-20240417164603638"></p>
+<h2 id="4-2-搭建三步"><a href="#4-2-搭建三步" class="headerlink" title="4.2 搭建三步"></a>4.2 搭建三步</h2><p>==总体图==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211623782.png" alt="image-20240421162352729"></p>
+<h3 id="4-2-1-搭建注册中心"><a href="#4-2-1-搭建注册中心" class="headerlink" title="4.2.1 搭建注册中心"></a>4.2.1 搭建注册中心</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211618168.png" alt="image-20240421161828967"></p>
+<h3 id="4-2-2-服务注册"><a href="#4-2-2-服务注册" class="headerlink" title="4.2.2 服务注册"></a>4.2.2 服务注册</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211619463.png" alt="image-20240421161959360"></p>
+<h3 id="4-2-3-服务发现"><a href="#4-2-3-服务发现" class="headerlink" title="4.2.3 服务发现"></a>4.2.3 服务发现</h3><p>分为四个步骤:</p>
+<p>1和2步骤类似于服务注册，只有spring.application.name= orderservice</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211630660.png" alt="image-20240421163002614"></p>
+<p>3和4步骤更新具体操作</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211626445.png" alt="image-20240421162629385"></p>
+<p>spring会<strong>自动</strong>帮助我们从eureka-server端，根据userservice这个服务名称，获取实例列表，而后完成负载均衡</p>
+<h1 id="5-Ribbon负载均衡"><a href="#5-Ribbon负载均衡" class="headerlink" title="5.Ribbon负载均衡"></a>5.Ribbon负载均衡</h1><p>4部分添加<strong>@LoadBalanced注解</strong>即可实现负载均衡功能</p>
+<p>==补充：以前SpringMVC默认是Ribbon负载均衡，后来默认是loadbalancer负载均衡==</p>
+<h2 id="5-1-负载均衡原理"><a href="#5-1-负载均衡原理" class="headerlink" title="5.1 负载均衡原理"></a>5.1 负载均衡原理</h2><p>其实就是我们发出的请求是<a href="http://userservice/user/1,根据负载均衡变成了http://localhost:8081" target="_blank" rel="noopener">http://userservice/user/1,根据负载均衡变成了http://localhost:8081</a></p>
+<p>SpringCloud底层其实是利用了一个名字为==Ribbon组件==来实现负载均衡</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404172053034.png" alt="image-20240417205259950"></p>
+<h2 id="5-2-源码跟踪"><a href="#5-2-源码跟踪" class="headerlink" title="5.2 源码跟踪"></a>5.2 源码跟踪</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404172054047.png" alt="image-20240417205452975"></p>
+<p>基本流程如下：</p>
+<ul>
+<li>拦截我们的RestTemplate请求<a href="http://userservice/user/1" target="_blank" rel="noopener">http://userservice/user/1</a></li>
+<li>RibbonLoadBalancerClient会从请求url中获取服务名称，也就是user-service</li>
+<li>DynamicServerListLoadBalancer根据user-service到eureka拉取服务列表</li>
+<li>eureka返回列表，localhost:8081、localhost:8082</li>
+<li>IRule利用内置负载均衡规则，从列表中选择一个，例如localhost:8081</li>
+<li>RibbonLoadBalancerClient修改请求地址，用localhost:8081替代userservice，得到<a href="http://localhost:8081/user/1，发起真实请求" target="_blank" rel="noopener">http://localhost:8081/user/1，发起真实请求</a></li>
+</ul>
+<h2 id="5-3-负载均衡策略-IRule接口"><a href="#5-3-负载均衡策略-IRule接口" class="headerlink" title="5.3 负载均衡策略(IRule接口)"></a>5.3 负载均衡策略(IRule接口)</h2><h3 id="5-3-1-负载均衡策略"><a href="#5-3-1-负载均衡策略" class="headerlink" title="5.3.1 负载均衡策略"></a>5.3.1 负载均衡策略</h3><p>负载均衡的规则都定义在==IRule接口==中，而IRule有很多不同的实现类：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404172137469.png" alt="image-20240417213754364"></p>
+<p>不同规则的含义如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>内置负载均衡规则类</strong></th>
+<th><strong>规则描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RoundRobinRule</td>
+<td>简单轮询服务列表来选择服务器。它是Ribbon默认的负载均衡规则。</td>
+</tr>
+<tr>
+<td>AvailabilityFilteringRule</td>
+<td>对以下两种服务器进行忽略：   （1）在默认情况下，这台服务器如果3次连接失败，这台服务器就会被设置为“短路”状态。短路状态将持续30秒，如果再次连接失败，短路的持续时间就会几何级地增加。  （2）并发数过高的服务器。如果一个服务器的并发连接数过高，配置了AvailabilityFilteringRule规则的客户端也会将其忽略。并发连接数的上限，可以由客户端的<clientName>.<clientConfigNameSpace>.ActiveConnectionsLimit属性进行配置。</clientConfigNameSpace></clientName></td>
+</tr>
+<tr>
+<td>WeightedResponseTimeRule</td>
+<td>为每一个服务器赋予一个权重值。服务器响应时间越长，这个服务器的权重就越小。这个规则会随机选择服务器，这个权重值会影响服务器的选择。</td>
+</tr>
+<tr>
+<td><strong>ZoneAvoidanceRule</strong>[默认]</td>
+<td>以区域可用的服务器为基础进行服务器的选择。使用Zone对服务器进行分类，这个Zone可以理解为一个机房、一个机架等。而后再对Zone内的多个服务做轮询。</td>
+</tr>
+<tr>
+<td>BestAvailableRule</td>
+<td>忽略那些短路的服务器，并选择并发数较低的服务器。</td>
+</tr>
+<tr>
+<td>RandomRule</td>
+<td>随机选择一个可用的服务器。</td>
+</tr>
+<tr>
+<td>RetryRule</td>
+<td>重试机制的选择逻辑</td>
+</tr>
+</tbody></table>
+<h3 id="5-3-2-自定义负载均衡策略-消费者"><a href="#5-3-2-自定义负载均衡策略-消费者" class="headerlink" title="5.3.2 自定义负载均衡策略(消费者)"></a>5.3.2 自定义负载均衡策略(消费者)</h3><p>通过定义IRule实现可以修改负载均衡规则，有两种方式:</p>
+<p>①<strong>代码方式</strong>：在order-service中的OrderApplication启动类上定义一个新的IRule：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;启动类定义一个bean，放入ioc容器</span><br><span class="line">@Bean</span><br><span class="line">public IRule randomRule()&#123;</span><br><span class="line">    return new RandomRule();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>②<strong>配置文件方式</strong>：在order-service的application.yml文件中，添加新的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">userservice: # 给某个微服务配置负载均衡规则，这里是userservice服务</span><br><span class="line">  ribbon:</span><br><span class="line">    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 负载均衡</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>注意</strong>，一般用默认的负载均衡规则，不做修改。</li>
+</ul>
+<h2 id="5-4-饥饿加载"><a href="#5-4-饥饿加载" class="headerlink" title="5.4 饥饿加载"></a>5.4 饥饿加载</h2><p>Ribbon默认是采用<strong>懒加载</strong>，即第一次访问时才会去创建LoadBalanceClient，请求时间会很长</p>
+<p>而饥饿加载则会在项目启动时创建，降低第一次访问的耗时，通过下面配置开启饥饿加载:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ribbon:</span><br><span class="line">  eager-load:</span><br><span class="line">    enabled: true</span><br><span class="line">    clients: userservice</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="6-Nacos"><a href="#6-Nacos" class="headerlink" title="6.Nacos"></a>6.Nacos</h1><p>SpringCloudAlibaba推出了一个名为Nacos的注册中心，现在是<a href="https://spring.io/projects/spring-cloud" target="_blank" rel="noopener">SpringCloud</a>中的一个组件，相比<a href="https://github.com/Netflix/eureka" target="_blank" rel="noopener">Eureka</a>功能更加丰富，在国内受欢迎程度较高。</p>
+<p>主要涉及nacos注册中心和nacos配置管理</p>
+<h2 id="6-1-Nacos结构"><a href="#6-1-Nacos结构" class="headerlink" title="6.1 Nacos结构"></a>6.1 Nacos结构</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211804078.png" alt="image-20240421180436014"></p>
+<h2 id="6-2-搭建三步"><a href="#6-2-搭建三步" class="headerlink" title="6.2 搭建三步"></a>6.2 搭建三步</h2><h3 id="6-2-1-搭建注册中心"><a href="#6-2-1-搭建注册中心" class="headerlink" title="6.2.1 搭建注册中心"></a>6.2.1 搭建注册中心</h3><ul>
+<li>1.下载</li>
+</ul>
+<p>在Nacos的GitHub页面，提供有下载链接，可以下载编译好的Nacos服务端或者源代码：</p>
+<p>GitHub主页：<a href="https://github.com/alibaba/nacos" target="_blank" rel="noopener">https://github.com/alibaba/nacos</a></p>
+<p>GitHub的Release下载页：<a href="https://github.com/alibaba/nacos/releases" target="_blank" rel="noopener">https://github.com/alibaba/nacos/releases</a></p>
+<ul>
+<li>2.解压</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211649682.png" alt="image-20240421164955642"></p>
+<ul>
+<li>3.端口配置</li>
+</ul>
+<p>Nacos的默认端口是8848，如果你电脑上的其它进程占用了8848端口，请先尝试关闭该进程。</p>
+<p><strong>如果无法关闭占用8848端口的进程</strong>，也可以进入nacos的conf目录，修改配置文件中的端口：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211650841.png" alt="image-20240421165044792"></p>
+<ul>
+<li>4.启动nacos</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211651010.png" alt="image-20240421165146961"></p>
+<h3 id="6-2-2-服务注册"><a href="#6-2-2-服务注册" class="headerlink" title="6.2.2 服务注册"></a>6.2.2 服务注册</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211643931.png" alt="image-20240421164336864"></p>
+<h3 id="6-2-3-服务发现"><a href="#6-2-3-服务发现" class="headerlink" title="6.2.3 服务发现"></a>6.2.3 服务发现</h3><p>和服务注册类似，导入nacos依赖</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211657613.png" alt="image-20240421165732561"></p>
+<h2 id="6-3-服务分级存储模型"><a href="#6-3-服务分级存储模型" class="headerlink" title="6.3 服务分级存储模型"></a>6.3 服务分级存储模型</h2><p>一个<strong>服务</strong>可以有多个<strong>实例</strong>，例如我们的user-service，可以有:</p>
+<ul>
+<li>user-service：127.0.0.1:8081</li>
+<li>user-service：127.0.0.1:8082</li>
+<li>user-service：127.0.0.1:8083</li>
+</ul>
+<p>假如这些实例分布于全国各地的不同机房，例如：</p>
+<ul>
+<li>127.0.0.1:8081，在上海机房</li>
+<li>127.0.0.1:8082，在上海机房</li>
+<li>127.0.0.1:8083，在杭州机房</li>
+</ul>
+<p>Nacos就将同一机房内的实例 划分为一个<strong>集群</strong>。</p>
+<p>也就是说，user-service是服务，一个服务可以包含多个集群，如杭州、上海，每个集群下可以有多个实例，形成分级模型，如图：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211700416.png" alt="image-20240421170021358"></p>
+<p>微服务互相访问时，应该尽可能访问同集群实例，因为本地访问速度更快。当本集群内不可用时，才访问其它集群。例如：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211701771.png" alt="image-20240421170136721"></p>
+<h3 id="6-3-1user-service服务提供者配置集群"><a href="#6-3-1user-service服务提供者配置集群" class="headerlink" title="6.3.1user-service服务提供者配置集群"></a>6.3.1user-service服务提供者配置集群</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211707871.png" alt="image-20240421170739795"></p>
+<h3 id="6-3-2-order-service服务消费者配置集群"><a href="#6-3-2-order-service服务消费者配置集群" class="headerlink" title="6.3.2 order-service服务消费者配置集群"></a>6.3.2 order-service服务消费者配置集群</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211713471.png" alt="image-20240421171305421"></p>
+<h2 id="6-4-Nacos负载均衡-NacosRule实现"><a href="#6-4-Nacos负载均衡-NacosRule实现" class="headerlink" title="6.4 Nacos负载均衡(NacosRule实现)"></a>6.4 Nacos负载均衡(NacosRule实现)</h2><p>Ribbon默认的<code>ZoneAvoidanceRule</code>并不能实现根据同集群优先来实现负载均衡。[Eureka默认是同一个zone区域轮询]</p>
+<h3 id="6-4-1-修改负载均衡规则"><a href="#6-4-1-修改负载均衡规则" class="headerlink" title="6.4.1 修改负载均衡规则"></a>6.4.1 修改负载均衡规则</h3><p>注意:==原来默认是集群间轮询，后来设定nacosrule之后是本地集群优先(本地集群又是随机的  –&gt;可以设置权重提高访问频率),如果本地的都挂了那就会跨集群==</p>
+<p>因此Nacos中提供了一个<code>NacosRule</code>的实现，可以优先从==同集群中挑选实例==</p>
+<p>修改order-service服务消费者的application.yml文件，修改负载均衡规则：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211711312.png" alt="image-20240421171140243"></p>
+<h3 id="6-4-2-修改权重"><a href="#6-4-2-修改权重" class="headerlink" title="6.4.2 修改权重"></a>6.4.2 修改权重</h3><p>服务器设备性能有差异，部分实例所在机器性能较好，另一些较差，我们希望性能好的机器承担更多的用户请求。</p>
+<p>但默认情况下NacosRule是同集群内随机挑选，不会考虑机器的性能问题。</p>
+<p>因此，Nacos提供了权重配置来控制访问频率，权重越大则访问频率越高。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211716359.png" alt="image-20240421171620311"></p>
+<ul>
+<li><strong>注意</strong>：如果权重修改为0，则该实例永远不会被访问</li>
+</ul>
+<p>==如果设备更新/版本升级，那我就可以将权重设置低一点然后少数用户测试，慢慢增大权重==</p>
+<h2 id="6-5-环境隔离"><a href="#6-5-环境隔离" class="headerlink" title="6.5 环境隔离"></a>6.5 环境隔离</h2><p>类似于rabbitMQ消息队列的virtueHost虚拟主机空间可以造成环境隔离</p>
+<ul>
+<li>nacos中可以有多个namespace</li>
+<li>namespace下可以有group、service等</li>
+<li>不同namespace之间相互隔离，例如不同namespace的服务互相不可见</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211725792.png" alt="image-20240421172511733"></p>
+<h3 id="6-5-1-网页创建namespace"><a href="#6-5-1-网页创建namespace" class="headerlink" title="6.5.1 网页创建namespace"></a>6.5.1 网页创建namespace</h3><p>默认情况下，所有service、data、group都在同一个namespace，名为public：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211727449.png" alt="image-20240421172717407"></p>
+<p>我们可以点击页面新增按钮，添加一个namespace：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211728724.png" alt="image-20240421172854688"></p>
+<p>然后，填写表单：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211729714.png" alt="image-20240421172907671"></p>
+<p>就能在页面看到一个新的namespace：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211729220.png" alt="image-20240421172925184"></p>
+<h3 id="6-5-2-服务消费者配置"><a href="#6-5-2-服务消费者配置" class="headerlink" title="6.5.2 服务消费者配置"></a>6.5.2 服务消费者配置</h3><p>给==微服务配置namespace==只能通过修改配置来实现</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211731012.png" alt="image-20240421173139937"></p>
+<h2 id="6-6-Nacos服务实例"><a href="#6-6-Nacos服务实例" class="headerlink" title="6.6 Nacos服务实例"></a>6.6 Nacos服务实例</h2><p>Nacos的服务实例分为两种类型：</p>
+<ul>
+<li><p>临时实例：【默认类型】如果实例宕机超过一定时间，会从服务列表剔除。</p>
+</li>
+<li><p>非临时实例：如果实例宕机，不会从服务列表剔除，也可以叫永久实例。</p>
+</li>
+</ul>
+<p>配置一个服务实例为永久实例：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404211733224.png" alt="image-20240421173358174"></p>
+<h2 id="6-7-Nacos和Eureka对比"><a href="#6-7-Nacos和Eureka对比" class="headerlink" title="6.7 Nacos和Eureka对比"></a>6.7 Nacos和Eureka对比</h2><ul>
+<li><p>Nacos与eureka的共同点</p>
+<ul>
+<li><p>都支持服务注册和服务拉取</p>
+</li>
+<li><p>都支持服务提供者心跳方式做健康检测</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Nacos与Eureka的区别</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Eureka</th>
+<th>Nacos</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>客户端</td>
+<td>==搭建新的EurekaServer项目==<br>1.pom.xml引入xxx-client依赖<br>2.启动类添加@EnableEurekaServer注解<br>3.application.yml配置eureka地址</td>
+<td>==启动app==<br>1.父工程引入依赖<br>2.pom.xml引入依赖</td>
+</tr>
+<tr>
+<td>服务提供者</td>
+<td>1.pom.xml引入xxx-server依赖<br>2.application.yml配置eureka地址</td>
+<td>在application.yml配置nacos信息[server-addr地址，cluster-name集群名]</td>
+</tr>
+<tr>
+<td>服务消费者</td>
+<td>1.pom.xml引入xxx-server依赖<br>2.application.yml配置eureka地址<br>3.RestTemlate引入@LoadBalanced注解<br>4.修改具体业务</td>
+<td>在application.yml配置nacos信息[server-addr地址和cluster-name集群名，namespace空间名，ephemeral实例类型]</td>
+</tr>
+<tr>
+<td>临时实例</td>
+<td>心跳模式【默认每30s进行检测，不正常的会被剔除】</td>
+<td>心跳模式【默认每30s进行检测，不正常的会被剔除】</td>
+</tr>
+<tr>
+<td>非临时实例</td>
+<td>×</td>
+<td>主动监测模式【不会被剔除】</td>
+</tr>
+<tr>
+<td>集群方式</td>
+<td>AP方式</td>
+<td>【默认】AP方式<br>如果集群中存在非临时实例会变成CP模式</td>
+</tr>
+<tr>
+<td>服务列表变更的消息推送模式</td>
+<td>定时拉取服务pull</td>
+<td>主动推送变更消息push</td>
+</tr>
+<tr>
+<td>负载均衡策略[服务消费者]</td>
+<td>【默认】随机<br>【IRule】同Zone轮询</td>
+<td>【默认】集群内轮询<br>【NacosRule】优先本地集群内 –&gt; 修改权重还可以提高访问概率</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="6-8-Nacos配置管理"><a href="#6-8-Nacos配置管理" class="headerlink" title="6.8 Nacos配置管理"></a>6.8 Nacos配置管理</h2><p>当微服务部署的实例越来越多[达到数百以上]，逐步修改微服务配置就会让你抓狂。 –&gt; 所以我们需要一种==统一配置管理方案==，可以集中管理所有实例配置</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404212303829.png" alt="image-20240421230353712"></p>
+<p>Nacos一方面可以将配置集中管理，另一方可以在配置变更时，及时通知微服务，实现配置的热更新</p>
+<h3 id="6-8-1-统一配置管理"><a href="#6-8-1-统一配置管理" class="headerlink" title="6.8.1 统一配置管理"></a>6.8.1 统一配置管理</h3><h4 id="6-8-1-1-网站添加配置"><a href="#6-8-1-1-网站添加配置" class="headerlink" title="6.8.1.1 网站添加配置"></a>6.8.1.1 网站添加配置</h4><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404212309200.png" alt="image-20240421230927123"></p>
+<blockquote>
+<p>注意：项目的核心配置，需要热更新的配置才有放到nacos管理的必要。基本不会变更的一些配置还是保存在微服务本地比较好。</p>
+</blockquote>
+<h4 id="6-8-1-2-微服务拉取配置"><a href="#6-8-1-2-微服务拉取配置" class="headerlink" title="6.8.1.2 微服务拉取配置"></a>6.8.1.2 微服务拉取配置</h4><p>微服务要拉取nacos中管理的配置，并且与本地的application.yml配置合并，才能完成项目启动</p>
+<p>但是如果未读取application.yml文件就不能得到nacos地址。【属于是卡bug呢】</p>
+<p>–&gt; 因此Spring引入一种新的配置文件:==bootstrap.yaml==文件【会在application.yml之前被读取】</p>
+<p>流程如下:</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404212312132.png" alt="image-20240421231210518"></p>
+<p>进行步骤:</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404231740052.png" alt="image-20240423174007971"></p>
+<p>②引入nacos-config依赖<br>首先，在user-service服务中，引入nacos-config的客户端依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--nacos配置管理依赖--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.cloud&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-config&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>③添加bootstrap.yaml</p>
+<p>然后，在user-service中添加一个bootstrap.yaml文件，内容如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404231741942.png" alt="image-20240423174156884"></p>
+<p>④尝试读取nacos配置</p>
+<p>在user-service中的UserController中添加业务逻辑，读取pattern.dateformat配置：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404231742422.png" alt="image-20240423174209359"></p>
+<h3 id="6-8-2-配置热更新"><a href="#6-8-2-配置热更新" class="headerlink" title="6.8.2 配置热更新"></a>6.8.2 配置热更新</h3><p>最终目的是修改nacos中的配置后，微服务无需重启即可让配置生效，也就是<strong>配置热更新</strong></p>
+<ul>
+<li>方式一：在@Value注入变量所在类上添加@RefreshScope注解</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404231732762.png" alt="image-20240423173252661"></p>
+<ul>
+<li>方式二：使用@ConfigurationProperties注解</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404231733544.png" alt="image-20240423173338466"></p>
+<h3 id="6-8-3-多环境配置共享"><a href="#6-8-3-多环境配置共享" class="headerlink" title="6.8.3 多环境配置共享"></a>6.8.3 多环境配置共享</h3><p>可能不同环境下有不同的yaml文件[像单体架构的时候properties，yml，yaml等情况]，因此当出现相同属性时就有优先级：==名字越长越牛逼==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404231735276.png" alt="image-20240423173524235"></p>
+<h2 id="6-9-搭建Nacos集群"><a href="#6-9-搭建Nacos集群" class="headerlink" title="6.9 搭建Nacos集群"></a>6.9 搭建Nacos集群</h2><p>==日后学习到了补充==</p>
+<h1 id="7-HTTP客户端Feign"><a href="#7-HTTP客户端Feign" class="headerlink" title="7.HTTP客户端Feign"></a>7.HTTP客户端Feign</h1><p>之前使用的RestTemplate发起远程调用的代码：</p>
+<p>  <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232026757.png" alt="image-20240423202621703"></p>
+<p>存在下面的问题：</p>
+<p>•代码可读性差，编程体验不统一</p>
+<p>•参数复杂URL难以维护</p>
+<p>==Feign==是一个声明式的http客户端。其作用是帮助我们优雅地实现http请求发送，解决了上述的问题</p>
+<h2 id="7-1-使用操作"><a href="#7-1-使用操作" class="headerlink" title="7.1 使用操作"></a>7.1 使用操作</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232115656.png" alt="image-20240423211551585"></p>
+<h3 id="7-1-1-导入依赖"><a href="#7-1-1-导入依赖" class="headerlink" title="7.1.1 导入依赖"></a>7.1.1 导入依赖</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232117240.png" alt="image-20240423211732453"></p>
+<h3 id="7-1-2-启动类添加注解"><a href="#7-1-2-启动类添加注解" class="headerlink" title="7.1.2 启动类添加注解"></a>7.1.2 启动类添加注解</h3><p>启动类上添加注解@EnableFeignClients</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232118683.png" alt="image-20240423211805626"></p>
+<h3 id="7-1-3-编写子服务接口"><a href="#7-1-3-编写子服务接口" class="headerlink" title="7.1.3 编写子服务接口"></a>7.1.3 编写子服务接口</h3><p>这样可以相当于<a href="http://userservice/user/id" target="_blank" rel="noopener">http://userservice/user/id</a></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232119940.png" alt="image-20240423211942883"></p>
+<h3 id="7-1-4-实际操作"><a href="#7-1-4-实际操作" class="headerlink" title="7.1.4 实际操作"></a>7.1.4 实际操作</h3><p>底层也有ribbon负载均衡，可以避免了访问ip地址的麻烦。Feign可以将调用步骤放在接口里面，这样使得我们看起来都是直接调用方法统一了。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232125336.png" alt="image-20240423212526274"></p>
+<h2 id="7-2-自定义配置"><a href="#7-2-自定义配置" class="headerlink" title="7.2 自定义配置"></a>7.2 自定义配置</h2><p>Feign运行自定义配置来覆盖默认配置，可以修改的配置如下:</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232133749.png" alt="image-20240423213315647"></p>
+<p>【注意:一般我们需要配置的就是日志级别】</p>
+<p>==下面以日志为例来演示如何自定义配置==</p>
+<p>而日志的级别分为四种：</p>
+<ul>
+<li>NONE：不记录任何日志信息，这是默认值。</li>
+<li>BASIC：仅记录请求的方法，URL以及响应状态码和执行时间</li>
+<li>HEADERS：在BASIC的基础上，额外记录了请求和响应的头信息</li>
+<li>FULL：记录所有请求和响应的明细，包括头信息、请求体、元数据</li>
+</ul>
+<h3 id="7-2-1-配置文件yml方式–日志"><a href="#7-2-1-配置文件yml方式–日志" class="headerlink" title="7.2.1 配置文件yml方式–日志"></a>7.2.1 配置文件yml方式–日志</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232253759.png" alt="image-20240423213829442"></p>
+<h3 id="7-2-2-Java代码方式–日志"><a href="#7-2-2-Java代码方式–日志" class="headerlink" title="7.2.2 Java代码方式–日志"></a>7.2.2 Java代码方式–日志</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232147785.png" alt="image-20240423214701673"></p>
+<h2 id="7-3-Feign使用优化"><a href="#7-3-Feign使用优化" class="headerlink" title="7.3 Feign使用优化"></a>7.3 Feign使用优化</h2><p>==Feign底层发起http请求，依赖于其它的框架==。其底层客户端实现包括：</p>
+<ul>
+<li><p>URLConnection：[默认]不支持连接池</p>
+</li>
+<li><p>Apache HttpClient ：支持连接池</p>
+</li>
+<li><p>OKHttp：支持连接池</p>
+</li>
+</ul>
+<h3 id="7-3-1-连接池优化"><a href="#7-3-1-连接池优化" class="headerlink" title="7.3.1 连接池优化"></a>7.3.1 连接池优化</h3><p>==由此可见，对于默认的URLConnection可以更改为Apache HttpClient或者OKHttp方式==</p>
+<p>以HttpClient为例:</p>
+<p>①pom.xml文件引入依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--httpClient的依赖 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.github.openfeign&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;feign-httpclient&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>②yml配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">feign:</span><br><span class="line">  httpclient:</span><br><span class="line">    enabled: true # 开启feign对HttpClient的支持</span><br><span class="line">    #线程池的核心值需要压测和实际情况调整！！！！！！！！！！！1</span><br><span class="line">    max-connections: 200 # 最大的连接数</span><br><span class="line">    max-connections-per-route: 50 # 每个路径的最大连接数</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-3-2-日志级别优化"><a href="#7-3-2-日志级别优化" class="headerlink" title="7.3.2 日志级别优化"></a>7.3.2 日志级别优化</h3><p>==日志级别最好是用basic或者none==</p>
+<h2 id="7-4-最佳实践方案"><a href="#7-4-最佳实践方案" class="headerlink" title="7.4 最佳实践方案"></a>7.4 最佳实践方案</h2><p>像7.1使用操作里面用feign替换掉RestTemplate</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232333714.png" alt="image-20240423233327633"></p>
+<p>这种情况下会发现usercontroller和feign客户端代码相似，因此可以提出继承方式和抽取方式</p>
+<h3 id="7-4-1-继承方式"><a href="#7-4-1-继承方式" class="headerlink" title="7.4.1 继承方式"></a>7.4.1 继承方式</h3><p>一样的代码可以通过继承来共享：</p>
+<p>1）定义一个API接口，利用定义方法，并基于SpringMVC注解做声明。</p>
+<p>2）Feign客户端和Controller都集成该接口</p>
+<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240423233410310.png" alt="image-20240423233410310"></p>
+<p>优点：</p>
+<ul>
+<li>简单</li>
+<li>实现了代码共享</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>服务提供方、服务消费方紧耦合</p>
+</li>
+<li><p>参数列表中的注解映射并不会继承，因此Controller中必须再次声明方法、参数列表、注解</p>
+</li>
+</ul>
+<h3 id="7-4-2-抽取方式"><a href="#7-4-2-抽取方式" class="headerlink" title="7.4.2 抽取方式"></a>7.4.2 抽取方式</h3><p>将Feign的Client抽取为<strong>独立模块</strong>，并且把接口有关的POJO、默认的Feign日志配置都放到这个模块中，提供给所有消费者使用。</p>
+<p>例如，将UserClient、User、Feign的默认配置都抽取到一个feign-api包中，所有微服务引用该依赖包，即可直接使用。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232336800.png" alt="image-20240423233624757"></p>
+<p>举例：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232340571.png" alt="image-20240423234056492"></p>
+<h1 id="8-Gateway服务网关"><a href="#8-Gateway服务网关" class="headerlink" title="8.Gateway服务网关"></a>8.Gateway服务网关</h1><p>Spring Cloud Gateway 是 Spring Cloud 的一个全新项目，该项目是基于 Spring 5.0，Spring Boot 2.0 和 Project Reactor 等响应式编程和事件流技术开发的网关，它旨在为微服务架构提供一种简单有效的统一的<strong>API 路由管理方式</strong></p>
+<p>Gateway网关是我们服务的守门神，==所有微服务的统一入口==</p>
+<p>网关的<strong>核心功能特性：</strong></p>
+<ul>
+<li><strong>1.请求路由和负载均衡</strong>：一切请求都必须先经过gateway，只根据某种规则把请求转发到某个微服务。如果转发的目标服务有多个时就需要负载均衡</li>
+<li><strong>2.权限控制</strong>：通过拦截器校验用户是否有请求资格，没有就进行拦截</li>
+<li><strong>3.限流</strong>：当请求流量过高时，网关中按照<strong>下流的微服务能够接受的速度</strong>放行请求，避免服务压力过大</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241706595.png" alt="image-20240424170653509"></p>
+<p>在SpringCloud中网关的实现包括两种：</p>
+<ul>
+<li>gateway【基于Spring5提供的WebFlux，属于响应式编程】</li>
+<li>zuul【基于Servlet实现，属于阻塞式编程】</li>
+</ul>
+<p>Zuul是基于Servlet的实现，属于阻塞式编程。而SpringCloudGateway则是基于Spring5中提供的WebFlux，属于响应式编程的实现，具备更好的性能</p>
+<h2 id="8-1-Gateway快速入门"><a href="#8-1-Gateway快速入门" class="headerlink" title="8.1 Gateway快速入门"></a>8.1 Gateway快速入门</h2><p>演示下网关的基本路由功能。基本步骤如下：</p>
+<ol>
+<li>pom.xml导入依赖</li>
+<li>application.yml配置基础配置和路由规则</li>
+<li>启动测试</li>
+</ol>
+<h3 id="8-3-1-导入依赖"><a href="#8-3-1-导入依赖" class="headerlink" title="8.3.1 导入依赖"></a>8.3.1 导入依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--网关--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-gateway&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;!--nacos服务发现依赖,也是一个微服务需要注册到nacos--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.cloud&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-discovery&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-3-2-编写规则"><a href="#8-3-2-编写规则" class="headerlink" title="8.3.2 编写规则"></a>8.3.2 编写规则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 10010  #网关端口号</span><br><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: gateway #gateway名称</span><br><span class="line">  cloud:</span><br><span class="line">    nacos:</span><br><span class="line">      server-addr: localhost:8848 #nacos地址</span><br><span class="line">    gateway:</span><br><span class="line">      routes:</span><br><span class="line">      #第一个</span><br><span class="line">        - id: user-service  #路由表示，必须唯一</span><br><span class="line">          uri: lb:&#x2F;&#x2F;userservice #路由的目标地址 lb就是负载均衡，后面跟服务名称</span><br><span class="line">          predicates: #路由断言，判断是否符合规则</span><br><span class="line">            - Path&#x3D;&#x2F;user&#x2F;** #路径断言，判断路径是否以&#x2F;user开头  --&gt; &#x2F;user&#x2F;**转为lb:&#x2F;&#x2F;userservice</span><br><span class="line">          </span><br><span class="line">          #请求头过滤器 </span><br><span class="line">          #添加一个头结点 --&gt; &#123;Truth,Itcast is freaking awesome!&#125;</span><br><span class="line">          filters:</span><br><span class="line">            - AddRequestHeader&#x3D;Truth,Itcast is freaking awesome!</span><br><span class="line">       #第二个</span><br><span class="line">        - id: order-service  #路由表示，必须唯一</span><br><span class="line">          uri: lb:&#x2F;&#x2F;orderservice #路由的目标地址 lb就是负载均衡，后面跟服务名称</span><br><span class="line">          predicates: #路由断言，判断是否符合规则</span><br><span class="line">            - Path&#x3D;&#x2F;order&#x2F;** #路径断言，判断路径是否以&#x2F;order开头  --&gt; &#x2F;order&#x2F;**转为lb:&#x2F;&#x2F;orderservice</span><br><span class="line">      </span><br><span class="line">      #默认过滤器</span><br><span class="line">      default-filters: # 默认过滤项</span><br><span class="line">        - AddRequestHeader&#x3D;Truth,Itcast is freaking awesome!</span><br><span class="line">      </span><br><span class="line">      #跨域问题</span><br><span class="line">      globalcors:</span><br><span class="line">        add-to-simple-url-handler-mapping: true #解决options请求被拦截问题</span><br><span class="line">        cors-configurations:</span><br><span class="line">          &#39;[&#x2F;**]&#39;: #拦截一切请求</span><br><span class="line">            allowedOrigins: # 允许哪些网站的跨域请求</span><br><span class="line">              - &quot;http:&#x2F;&#x2F;localhost:8090&quot;</span><br><span class="line">            allowedMethods: # 允许的跨域ajax的请求方式</span><br><span class="line">              - &quot;GET&quot;</span><br><span class="line">              - &quot;POST&quot;</span><br><span class="line">              - &quot;DELETE&quot;</span><br><span class="line">              - &quot;PUT&quot;</span><br><span class="line">              - &quot;OPTIONS&quot;</span><br><span class="line">            allowedHeaders: &quot;*&quot; # 允许在请求中携带的头信息</span><br><span class="line">            allowCredentials: true # 是否允许携带cookie</span><br><span class="line">            maxAge: 360000 # 这次跨域检测的有效期</span><br></pre></td></tr></table></figure>
+
+<p>总结:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">路由id：路由唯一标示</span><br><span class="line">uri：路由目的地，支持lb和http两种</span><br><span class="line">predicates：路由断言，判断请求是否符合要求，符合则转发到路由目的地</span><br><span class="line">filters：路由过滤器，处理请求或响应</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-3-3-启动测试"><a href="#8-3-3-启动测试" class="headerlink" title="8.3.3 启动测试"></a>8.3.3 启动测试</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241714213.png" alt="image-20240424171458156" style="zoom:67%;">
+
+
+
+<h2 id="8-2-路由参数3-断言工厂—–-判断是否符合规则"><a href="#8-2-路由参数3-断言工厂—–-判断是否符合规则" class="headerlink" title="8.2 路由参数3-断言工厂—–==判断是否符合规则=="></a>8.2 路由参数3-断言工厂—–==判断是否符合规则==</h2><p>我们在配置文件中写的断言规则只是字符串，这些字符串会被Predicate Factory读取并处理，转变为路由判断的条件</p>
+<p>例:Path=/user/**是按照路径匹配，这个规则由<code>org.springframework.cloud.gateway.handler.predicate.PathRoutePredicateFactory</code>类来处理</p>
+<p>==要符合条件才能访问转换匹配==</p>
+<h3 id="8-2-1-断言工厂分类"><a href="#8-2-1-断言工厂分类" class="headerlink" title="8.2.1 断言工厂分类"></a>8.2.1 断言工厂分类</h3><p>从这张图可以看出来可以有很多判断情况来匹配转换，可以通过访问时间，访问ip，访问范围，访问参数等等</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241722590.png" alt="image-20240424172200496"></p>
+<h2 id="8-3-路由参数4-过滤器工厂—–-请求时添加信息"><a href="#8-3-路由参数4-过滤器工厂—–-请求时添加信息" class="headerlink" title="8.3 路由参数4-过滤器工厂—–==请求时添加信息=="></a>8.3 路由参数4-过滤器工厂—–==请求时添加信息==</h2><p>GatewayFilter是网关中提供的一种过滤器，可以对进入==网关的请求==和==微服务返回的响应==做处理：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241726572.png" alt="image-20240424172659481"></p>
+<h3 id="8-3-1-路由过滤器种类"><a href="#8-3-1-路由过滤器种类" class="headerlink" title="8.3.1 路由过滤器种类"></a>8.3.1 路由过滤器种类</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241727349.png" alt="image-20240424172758297"></p>
+<h3 id="8-3-2-请求头过滤器"><a href="#8-3-2-请求头过滤器" class="headerlink" title="8.3.2 请求头过滤器"></a>8.3.2 请求头过滤器</h3><p>以AddRequestHeader 为例来讲解：</p>
+<blockquote>
+<p> <strong>需求</strong>：给所有进入userservice的请求添加一个请求头：Truth=itcast is freaking awesome!</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241730833.png" alt="image-20240424173001746"></p>
+<h3 id="8-3-3-默认过滤器"><a href="#8-3-3-默认过滤器" class="headerlink" title="8.3.3 默认过滤器"></a>8.3.3 默认过滤器</h3><p>对所有的路由都生效，需要写到default下面</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241730551.png" alt="image-20240424173035471"></p>
+<h3 id="8-3-4-全局过滤器"><a href="#8-3-4-全局过滤器" class="headerlink" title="8.3.4 全局过滤器"></a>8.3.4 全局过滤器</h3><blockquote>
+<p> <strong>需求</strong>:自定义拦截请求,前端访问时必须有一个authorization=admin才可以</p>
+</blockquote>
+<ul>
+<li><strong>实现GlobalFilter接口</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241737047.png" alt="image-20240424173746934"></p>
+<p>在filter中编写自定义逻辑，可以实现下列功能：</p>
+<ul>
+<li>登录状态判断</li>
+<li>权限校验</li>
+<li>请求限流等</li>
+</ul>
+<h3 id="8-3-5-执行顺序总结"><a href="#8-3-5-执行顺序总结" class="headerlink" title="8.3.5 执行顺序总结"></a>8.3.5 执行顺序总结</h3><p>请求进入网关会碰到三类过滤器：当前路由的过滤器、DefaultFilter、GlobalFilter</p>
+<p>请求路由后，会将当前路由过滤器和DefaultFilter、GlobalFilter，合并到一个过滤器链（集合）[==适配器模式]==中，排序后依次执行每个过滤器：</p>
+<p>==原因：可以合并是因为路由过滤器和默认过滤器在yml配置的是范围不同，但是底层都是GatewayFilter同一类。而全局过滤器实现GatewayFilter，内部是适配成GatewayFilter==</p>
+<p>==总结图：==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241740913.png" alt="image-20240424174011858"></p>
+<ul>
+<li>每一个过滤器都必须指定一个int类型的order值，<strong>order值越小，优先级越高，执行顺序越靠前</strong>。</li>
+<li>GlobalFilter过滤器的顺序: 实现Ordered接口/@Order注解，由我们自己指定[@order(数字)]</li>
+<li>路由过滤器和defaultFilter的顺序: 由Spring指定，默认是按照声明顺序从1递增[yml文件的书写顺序]。</li>
+<li>当三大类过滤器的order值一样时，会按照 defaultFilter &gt; 路由过滤器 &gt; GlobalFilter的顺序执行</li>
+</ul>
+<p>详细内容，可以查看源码：</p>
+<p><code>org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator#getFilters()</code>方法是先加载defaultFilters，然后再加载某个route的filters，然后合并。</p>
+<p><code>org.springframework.cloud.gateway.handler.FilteringWebHandler#handle()</code>方法会加载全局过滤器，与前面的过滤器合并后根据order排序，组织过滤器链</p>
+<h2 id="8-4-跨域问题"><a href="#8-4-跨域问题" class="headerlink" title="8.4 跨域问题"></a>8.4 跨域问题</h2><p>==跨域==：域名不一致就是跨域，主要包括：</p>
+<ul>
+<li><p>1.<strong>域名不同</strong>： <a href="http://www.taobao.com" target="_blank" rel="noopener">www.taobao.com</a> 和 <a href="http://www.taobao.org" target="_blank" rel="noopener">www.taobao.org</a> 和 <a href="http://www.jd.com" target="_blank" rel="noopener">www.jd.com</a> 和 miaosha.jd.com</p>
+</li>
+<li><p>2.<strong>域名相同，端口不同</strong>：localhost:8080和localhost:8081</p>
+</li>
+</ul>
+<p>跨域问题：浏览器禁止请求的发起者与服务端发生跨域ajax请求，请求被浏览器拦截的问题</p>
+<p>解决方案：</p>
+<h3 id="8-4-1-Gateway配置"><a href="#8-4-1-Gateway配置" class="headerlink" title="8.4.1 Gateway配置"></a>8.4.1 Gateway配置</h3><p>在gateway服务的application.yml文件中，添加下面的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    gateway:</span><br><span class="line">      # 解决跨域问题</span><br><span class="line">      globalcors: # 全局的跨域处理</span><br><span class="line">        add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题</span><br><span class="line">        corsConfigurations:</span><br><span class="line">          &#39;[&#x2F;**]&#39;:</span><br><span class="line">            allowedOrigins: # 允许哪些网站的跨域请求 </span><br><span class="line">              - &quot;http:&#x2F;&#x2F;localhost:8090&quot;</span><br><span class="line">            allowedMethods: # 允许的跨域ajax的请求方式</span><br><span class="line">              - &quot;GET&quot;</span><br><span class="line">              - &quot;POST&quot;</span><br><span class="line">              - &quot;DELETE&quot;</span><br><span class="line">              - &quot;PUT&quot;</span><br><span class="line">              - &quot;OPTIONS&quot;</span><br><span class="line">            allowedHeaders: &quot;*&quot; # 允许在请求中携带的头信息</span><br><span class="line">            allowCredentials: true # 是否允许携带cookie</span><br><span class="line">            maxAge: 360000 # 这次跨域检测的有效期</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="8-5-Gateway流程图"><a href="#8-5-Gateway流程图" class="headerlink" title="8.5 Gateway流程图"></a>8.5 Gateway流程图</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241723896.png" alt="image-20240424172300811"></p>
+<p>发送请求后，可以根据过滤器加一些修改，可以增加头拦截[过滤器]。然后<a href="http://localhost:10010/user/1根据断言工厂的断言路径判断/user/**就找到lb:/userservice" target="_blank" rel="noopener">http://localhost:10010/user/1根据断言工厂的断言路径判断/user/**就找到lb:/userservice</a> 就去负载均衡发送给<a href="http://localhost:xxxx/user/1">http://localhost:xxxx/user/1</a></p>
+<p>如果是访问orderservice的话在上述过程之后还会使用feign发送请求，feign里面配置的去找userservice/user/id</p>
+<h2 id="8-6-yml配置文件详解"><a href="#8-6-yml配置文件详解" class="headerlink" title="8.6 yml配置文件详解"></a>8.6 yml配置文件详解</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406071113462.png" alt="image-20240607111353328"></p>
+<h1 id="9-Springcloud总结"><a href="#9-Springcloud总结" class="headerlink" title="9.Springcloud总结"></a>9.Springcloud总结</h1><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404241752823.png" alt="image-20240424175219756"></p>
+<p>1.服务注册：将网关，userservice，orderservice这些微服务要注册到nacos注册中心</p>
+<p>2.服务配置：nacos进行配置管理</p>
+<p>3.网关配置和Feign配置：</p>
+<p>4.访问转换路径：我们现在访问一个<a href="http://localhost:10010/order/101?authorization=songyaxiang，网关这时候分为两个步骤：①经过路由要对符合路由规则的order/**转换为配置的lb或者http:/orderservice微服务去，由于lb还要考虑负载均衡，②要对输入和输出的信息进行修改【可能是新增/删除一些信息】，这时候要考虑过滤器的优先级；之后我们进入orderservice微服务访问使用RestTemplate【会很死板，出现Ip地址信息】/Feign【不会出现IP地址等，选择这个】发送http请求给userservice微服务；最终将结果返回" target="_blank" rel="noopener">http://localhost:10010/order/101?authorization=songyaxiang，网关这时候分为两个步骤：①经过路由要对符合路由规则的order/**转换为配置的lb或者http:/orderservice微服务去，由于lb还要考虑负载均衡，②要对输入和输出的信息进行修改【可能是新增/删除一些信息】，这时候要考虑过滤器的优先级；之后我们进入orderservice微服务访问使用RestTemplate【会很死板，出现Ip地址信息】/Feign【不会出现IP地址等，选择这个】发送http请求给userservice微服务；最终将结果返回</a></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JUC" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1886,420 +3135,9 @@
 
 
   
-    <article id="post-图解HTTP" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/11/10/%E5%9B%BE%E8%A7%A3HTTP/" class="article-date">
-      <time datetime="2023-11-10T12:58:03.000Z" itemprop="datePublished">2023-11-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/10/%E5%9B%BE%E8%A7%A3HTTP/">图解HTTP</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="1-基础概念"><a href="#1-基础概念" class="headerlink" title="1.基础概念"></a>1.基础概念</h1><h2 id="1-1-客户端和服务端"><a href="#1-1-客户端和服务端" class="headerlink" title="1.1 客户端和服务端"></a>1.1 客户端和服务端</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311102111196.png" alt="image-20231110211130071"></p>
-<h2 id="1-2-TCP-IP协议族"><a href="#1-2-TCP-IP协议族" class="headerlink" title="1.2 TCP/IP协议族"></a>1.2 TCP/IP协议族</h2><h3 id="1-2-1-定义"><a href="#1-2-1-定义" class="headerlink" title="1.2.1 定义"></a>1.2.1 定义</h3><ul>
-<li>定义</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第一种:TCP和IP协议</span><br><span class="line">第二种:IP协议的通信过程中，使用到的所有协议族(和互联网相关联的协议集合)的总称</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311102117593.png" alt="image-20231110211754520"></p>
-<h3 id="1-2-2-网络协议"><a href="#1-2-2-网络协议" class="headerlink" title="1.2.2 网络协议"></a>1.2.2 网络协议</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311102127980.png" alt="image-20231110212714910"></p>
-<table>
-<thead>
-<tr>
-<th>层名</th>
-<th>传输的数据</th>
-<th>作用</th>
-<th>协议</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>应用层</strong></td>
-<td>报文</td>
-<td>为特定应用程序提供数据传输服务</td>
-<td>FTP(文件传输协议) <br>DNS(域名系统) <br>HTTP(超文本传输协议)<br>DHCP(动态主机配置协议)<br>TELNET(远程登录协议)<br>SMTP()<br>POP3()<br>IMAP()</td>
-</tr>
-<tr>
-<td><strong>传输层</strong></td>
-<td>TCP报文段<br>UDP用户数据包</td>
-<td>为进程提供通用数据传输服务</td>
-<td>TCP(传输控制协议)<br>UDP(用户数据报协议)</td>
-</tr>
-<tr>
-<td><strong>网络层</strong></td>
-<td>IP数据包</td>
-<td>为主机提供数据传输服务</td>
-<td>IP(网络互连协议)<br>ARP(地址解析协议)<br>ICMP(网际控制报文协议)<br>IGMP(网际组管理协议)</td>
-</tr>
-<tr>
-<td><strong>数据链路层</strong></td>
-<td>数据帧</td>
-<td>为同一链路的主机提供数据传输服务</td>
-<td>PPP协议</td>
-</tr>
-</tbody></table>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311102135450.png" alt="image-20231110213521338"></p>
-<h3 id="1-2-3-网络层-IP协议"><a href="#1-2-3-网络层-IP协议" class="headerlink" title="1.2.3 网络层-IP协议"></a>1.2.3 网络层-IP协议</h3><p>​    1.<strong>作用</strong>:将各种数据包传送给对方</p>
-<p>​    2.<strong>两个重要条件:</strong>①IP地址:指明了节点被分配到的地址(与MAC地址进行配对，可变) ②MAC地址:指网卡所属的固定地址(基本不变)</p>
-<h3 id="1-2-4-传输层-TCP协议"><a href="#1-2-4-传输层-TCP协议" class="headerlink" title="1.2.4 传输层-TCP协议"></a>1.2.4 传输层-TCP协议</h3><h4 id="1-2-4-1-三次握手"><a href="#1-2-4-1-三次握手" class="headerlink" title="1.2.4.1 三次握手"></a>1.2.4.1 三次握手</h4><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311111046692.png" alt="image-20231111104646583"></p>
-<h3 id="1-2-5-应用层-DNS域名解析"><a href="#1-2-5-应用层-DNS域名解析" class="headerlink" title="1.2.5 应用层-DNS域名解析"></a>1.2.5 应用层-DNS域名解析</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311111047403.png" alt="image-20231111104743329"></p>
-<h3 id="1-2-6-各层协议之间关系"><a href="#1-2-6-各层协议之间关系" class="headerlink" title="1.2.6 各层协议之间关系"></a>1.2.6 各层协议之间关系</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311111049331.png" alt="image-20231111104953243"></p>
-<h3 id="1-2-7-URL和URI"><a href="#1-2-7-URL和URI" class="headerlink" title="1.2.7 URL和URI"></a>1.2.7 URL和URI</h3><h4 id="1-2-7-1-URL-统一资源定位符-—表示资源的地点"><a href="#1-2-7-1-URL-统一资源定位符-—表示资源的地点" class="headerlink" title="1.2.7.1 URL(统一资源定位符)  —表示资源的地点"></a>1.2.7.1 URL(统一资源定位符)  —表示资源的地点</h4><ul>
-<li><strong>RFC3986:</strong></li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311121423815.png" alt="image-20231112142348680"></p>
-<h4 id="1-2-7-2-URI-统一资源标识符-—标识某一互联网资源"><a href="#1-2-7-2-URI-统一资源标识符-—标识某一互联网资源" class="headerlink" title="1.2.7.2 URI(统一资源标识符) —标识某一互联网资源"></a>1.2.7.2 URI(统一资源标识符) —标识某一互联网资源</h4><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311121430338.png" alt="image-20231112143058269"></p>
-<h2 id="1-3-HTTP请求报文和响应报文"><a href="#1-3-HTTP请求报文和响应报文" class="headerlink" title="1.3 HTTP请求报文和响应报文"></a>1.3 HTTP请求报文和响应报文</h2><h3 id="1-3-1-HTTP请求报文"><a href="#1-3-1-HTTP请求报文" class="headerlink" title="1.3.1 HTTP请求报文"></a>1.3.1 HTTP请求报文</h3><h3 id="1-3-2-HTTP响应报文"><a href="#1-3-2-HTTP响应报文" class="headerlink" title="1.3.2 HTTP响应报文"></a>1.3.2 HTTP响应报文</h3>
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JAVA-数据结构与算法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/11/06/JAVA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="article-date">
-      <time datetime="2023-11-06T09:55:53.000Z" itemprop="datePublished">2023-11-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/06/JAVA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">JAVA-数据结构与算法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="1-数据结构与算法"><a href="#1-数据结构与算法" class="headerlink" title="1.数据结构与算法"></a>1.数据结构与算法</h1><h2 id="1-1-数据结构的定义"><a href="#1-1-数据结构的定义" class="headerlink" title="1.1 数据结构的定义"></a>1.1 数据结构的定义</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据结构&#x3D;数据+算法</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-1-1-数据与信息"><a href="#1-1-1-数据与信息" class="headerlink" title="1.1.1 数据与信息"></a>1.1.1 数据与信息</h3><ul>
-<li><p><strong>数据</strong>：指的是一种未处理的原始文字，数字，符号、图形</p>
-</li>
-<li><p><strong>信息</strong>：当数据 –处理【算法+数据结构】–&gt; (特定的方式系统地处理、归纳甚至进行分析)</p>
-</li>
-</ul>
-<h3 id="1-1-2-数据的分类"><a href="#1-1-2-数据的分类" class="headerlink" title="1.1.2 数据的分类"></a>1.1.2 数据的分类</h3><ul>
-<li>1.按照计算机中所存储和使用的对象：</li>
-</ul>
-<p>​        1.1 <strong>数值数据</strong>:  如0,1,2…,9所组成，可用运算符来进行运算的数据<br>​        1.2 <strong>字符数据</strong>:  如A,B,C,…,+,*等非数值型数据</p>
-<ul>
-<li>2.按照数据在计算机程序设计语言中的存在层次：</li>
-</ul>
-<pre><code>2.1 **基本数据类型/标量数据类型**:  不能以其他类型来定义的数据类型。【Java中所有基本数据类型】
-2.2 **结构数据类型/虚拟数据类型**:  【字符串，数组，指针，列表，文件等】
-2.3 **抽象数据类型**: 可以将一种数据类型看成是一种值的集合，以及在这些值上所进行的运算和其所代表的属性所成的集合【堆栈等】</code></pre><h2 id="1-2-算法"><a href="#1-2-算法" class="headerlink" title="1.2 算法"></a>1.2 算法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可执行程序&#x3D;数据结构+算法【最关键的因素】</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-1-算法的定义"><a href="#1-2-1-算法的定义" class="headerlink" title="1.2.1 算法的定义"></a>1.2.1 算法的定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">为了解决某项工作&#x2F;某个问题，所需要有限数量的机械性&#x2F;重复性指令与计算步骤</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>算法的五个条件：</p>
-<table>
-<thead>
-<tr>
-<th>算法的特性</th>
-<th>内容与说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>输入</td>
-<td>0-n个输入，这些输入必须有清楚的描述或定义</td>
-</tr>
-<tr>
-<td>输出</td>
-<td>1-n个输出【至少有一个输出结果】</td>
-</tr>
-<tr>
-<td>明确性</td>
-<td>每个指令/步骤必须是简洁明确的</td>
-</tr>
-<tr>
-<td>有限性</td>
-<td>在有限步骤后一定会结束【不存在无限循环】</td>
-</tr>
-<tr>
-<td>有效性</td>
-<td>步骤清楚+可行【能让用户】</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>算法的分类：</p>
-<table>
-<thead>
-<tr>
-<th>描述工具</th>
-<th>具体描述</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>伪语言</td>
-<td>不能直接放入计算机执行的语言，一般需要一种特定的预处理器/人工编写转换成真正的计算机语言</td>
-<td>sparks，pascal-like</td>
-</tr>
-<tr>
-<td>表格/图形</td>
-<td>清晰明了的描述过程</td>
-<td>数组，树形图，矩阵图</td>
-</tr>
-<tr>
-<td>流程图</td>
-<td>图形符号表示法</td>
-<td>流程图</td>
-</tr>
-<tr>
-<td>程序设计语言</td>
-<td>可读性高的高级语言</td>
-<td>Java，python，c#</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<h2 id="1-3-算法性能分析"><a href="#1-3-算法性能分析" class="headerlink" title="1.3 算法性能分析"></a>1.3 算法性能分析</h2><h3 id="1-3-1-时间复杂度"><a href="#1-3-1-时间复杂度" class="headerlink" title="1.3.1 时间复杂度"></a>1.3.1 时间复杂度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.一种以概量方式来衡量运行时间</span><br><span class="line">2. 在一个完全理想状态下的计算机中，我们定义T(n)来表示程序执行所要花费的时间</span><br><span class="line">3. Big-oh:程序的运行时间&#x2F;最大运行时间是时间复杂度的衡量标准</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-3-2-空间复杂度"><a href="#1-3-2-空间复杂度" class="headerlink" title="1.3.2 空间复杂度"></a>1.3.2 空间复杂度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.一种以概量方式来衡量所需的内存空间</span><br><span class="line">【</span><br><span class="line">  1.固定空间内存：基本程序代码，常量，变量 </span><br><span class="line">  2.变动空间内存：随程序进行时而改变大小的使用空间，例如引用类型变量</span><br><span class="line">】</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-3-3-Big-oh-衡量时间复杂度"><a href="#1-3-3-Big-oh-衡量时间复杂度" class="headerlink" title="1.3.3 Big-oh(衡量时间复杂度)"></a>1.3.3 Big-oh(衡量时间复杂度)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">常见的算法时间复杂度:</span><br><span class="line">O(1) &lt; O(log2N) &lt; O(N) &lt; O(Nlog2N) &lt; O(N^2) &lt; O(N^3) &lt;O(2^N) &lt;O(N!)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081440958.png" alt="image-20231108144058821"></p>
-<h2 id="1-4-常见算法"><a href="#1-4-常见算法" class="headerlink" title="1.4 常见算法"></a>1.4 常见算法</h2><h3 id="1-4-1-分治法"><a href="#1-4-1-分治法" class="headerlink" title="1.4.1 分治法"></a>1.4.1 分治法</h3><h3 id="1-4-2-递归法"><a href="#1-4-2-递归法" class="headerlink" title="1.4.2 递归法"></a>1.4.2 递归法</h3><h3 id="1-4-3-贪心法"><a href="#1-4-3-贪心法" class="headerlink" title="1.4.3 贪心法"></a>1.4.3 贪心法</h3><h3 id="1-4-4-动态规划法"><a href="#1-4-4-动态规划法" class="headerlink" title="1.4.4 动态规划法"></a>1.4.4 动态规划法</h3><h3 id="1-4-5-迭代法"><a href="#1-4-5-迭代法" class="headerlink" title="1.4.5 迭代法"></a>1.4.5 迭代法</h3><h3 id="1-4-6-枚举法"><a href="#1-4-6-枚举法" class="headerlink" title="1.4.6 枚举法"></a>1.4.6 枚举法</h3><h2 id="1-5程序设计简介"><a href="#1-5程序设计简介" class="headerlink" title="1.5程序设计简介"></a>1.5程序设计简介</h2><h3 id="1-5-1-程序开发流程"><a href="#1-5-1-程序开发流程" class="headerlink" title="1.5.1 程序开发流程"></a>1.5.1 程序开发流程</h3><ul>
-<li><p>四项原则</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.可读性高:阅读和理解都相当容易</span><br><span class="line">2.平均成本低：成本考虑不局限于编码的成本，还包括执行，编译，维护，学习，调试和日后更新等成本</span><br><span class="line">3.可靠性高：所编写出来的程序代码稳定性高，不容易出现边际错误</span><br><span class="line">4.可编写性高:对于针对需求所编写的程序相对于容易</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h1 id="2-数组结构"><a href="#2-数组结构" class="headerlink" title="2.数组结构"></a>2.数组结构</h1><h2 id="2-1-线性表"><a href="#2-1-线性表" class="headerlink" title="2.1 线性表"></a>2.1 线性表</h2><ul>
-<li>线性表的定义：</li>
-</ul>
-<p>​        有序表可以是空集合/(a1,a2,a3,….an-1,an),存在唯一的第一个元素a1和存在唯一的最后一个元素an。除了最后一个元素都有后继者，除了第一个元素都有先行者。</p>
-<ul>
-<li>线性表的运算：</li>
-</ul>
-<p>​        1.计算线性表的长度n</p>
-<pre><code>2.取出线性表中的第i项元素来修改</code></pre><p>​        3.插入一个新元素到第i项，并将原来位置和后面元素都后移</p>
-<p>​        4.删除第i项元素</p>
-<pre><code>5.遍历读取线性表元素
-
-6.替换第i项元素</code></pre><p>​        7.复制线性表</p>
-<p>​        8.合并线性表</p>
-<ul>
-<li>线性表的存储方式：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>静态数据结构</th>
-<th>动态数据结构</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>形式</td>
-<td>密集表</td>
-<td>链表</td>
-</tr>
-<tr>
-<td>优点</td>
-<td>使用连续分配的内存空间来存储有序表元素<br>设计简单，读取和修改表中任意元素时间固定O(1)</td>
-<td>使用不连续的内存空间来存储<br>数据插入和删除都方便O(1)<br>O(n)内存分配是在程序执行时才分配，不需要事先声明，充分节省内存</td>
-</tr>
-<tr>
-<td>缺点</td>
-<td>删除和加入数据，需要挪动大量数据O(n)</td>
-<td>不能随机读取，必须按顺序遍历找到数据O(n)</td>
-</tr>
-</tbody></table>
-<h2 id="2-2-数组"><a href="#2-2-数组" class="headerlink" title="2.2 数组"></a>2.2 数组</h2><h3 id="2-2-1-一维数组"><a href="#2-2-1-一维数组" class="headerlink" title="2.2.1 一维数组"></a>2.2.1 一维数组</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081515564.png" alt="image-20231108151519477"></p>
-<h3 id="2-2-2-二维数组"><a href="#2-2-2-二维数组" class="headerlink" title="2.2.2 二维数组"></a>2.2.2 二维数组</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081516343.png" alt="image-20231108151658260"></p>
-<h2 id="2-3-矩阵"><a href="#2-3-矩阵" class="headerlink" title="2.3 矩阵"></a>2.3 矩阵</h2><h1 id="3-链表"><a href="#3-链表" class="headerlink" title="3.链表"></a>3.链表</h1><ul>
-<li>许多<strong>相同数据类型</strong>的数据项，按照<strong>特定顺序排列</strong>而成的<strong>线性表(2.1定义的)</strong></li>
-</ul>
-<h2 id="3-1-动态分配内存"><a href="#3-1-动态分配内存" class="headerlink" title="3.1 动态分配内存"></a>3.1 动态分配内存</h2><table>
-<thead>
-<tr>
-<th>对比项目</th>
-<th>动态配置</th>
-<th>静态分配</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>内存分配</td>
-<td>运行阶段</td>
-<td>编译阶段</td>
-</tr>
-<tr>
-<td>内存释放</td>
-<td>程序结束前必须释放分配的内存空间，否则会内存”泄露”</td>
-<td>不需要释放，程序结束时自动归还给系统</td>
-</tr>
-<tr>
-<td>程序运行性能</td>
-<td>比较低(因为所需内存要执行程序时候才分配)</td>
-<td>比较高(程序编译阶段就分配好需要的内存容量)</td>
-</tr>
-<tr>
-<td>指针遗失</td>
-<td>可能会存在内存泄露(程序结束前不释放内存就指向新的内存空间，则原本指向的内存空间就无法被释放)</td>
-<td>没有此问题</td>
-</tr>
-</tbody></table>
-<h2 id="3-2-单向链表"><a href="#3-2-单向链表" class="headerlink" title="3.2 单向链表"></a>3.2 单向链表</h2><h3 id="3-2-1-单链表定义"><a href="#3-2-1-单链表定义" class="headerlink" title="3.2.1 单链表定义"></a>3.2.1 单链表定义</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081545280.png" alt="image-20231108154542232"></p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081547932.png" alt="image-20231108154727896"></p>
-<h3 id="3-2-2-建立单链表"><a href="#3-2-2-建立单链表" class="headerlink" title="3.2.2 建立单链表"></a>3.2.2 建立单链表</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081601424.png" alt="image-20231108160130306"></p>
-<h3 id="3-2-3-单链表删除节点"><a href="#3-2-3-单链表删除节点" class="headerlink" title="3.2.3 单链表删除节点"></a>3.2.3 单链表删除节点</h3><ul>
-<li>1.删除链表的第一个节点</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081618488.png" alt="image-20231108161827402"></p>
-<ul>
-<li>2.删除链表的中间节点</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081618085.png" alt="image-20231108161836010"></p>
-<ul>
-<li>3.删除链表的最后一个节点</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081618729.png" alt="image-20231108161855648"></p>
-<h3 id="3-2-4-单链表插入节点"><a href="#3-2-4-单链表插入节点" class="headerlink" title="3.2.4 单链表插入节点"></a>3.2.4 单链表插入节点</h3><ul>
-<li>1.插入到第一个节点前面</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081634755.png" alt="image-20231108163419693"></p>
-<ul>
-<li>2.插入到中间位置</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081634548.png" alt="image-20231108163433463"></p>
-<ul>
-<li>3.插入到最后一个节点后面</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081634805.png" alt="image-20231108163456678"></p>
-<h3 id="3-2-5-单链表反转"><a href="#3-2-5-单链表反转" class="headerlink" title="3.2.5 单链表反转"></a>3.2.5 单链表反转</h3><h2 id="3-3-环形链表"><a href="#3-3-环形链表" class="headerlink" title="3.3 环形链表"></a>3.3 环形链表</h2><h3 id="3-3-1-环形链表定义"><a href="#3-3-1-环形链表定义" class="headerlink" title="3.3.1 环形链表定义"></a>3.3.1 环形链表定义</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081641990.png" alt="image-20231108164158939"></p>
-<h3 id="3-3-2-环形链表插入新节点"><a href="#3-3-2-环形链表插入新节点" class="headerlink" title="3.3.2 环形链表插入新节点"></a>3.3.2 环形链表插入新节点</h3><ul>
-<li><p>1.插入到第一节点前，成为新的链接头部</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081656802.png" alt="image-20231108165636708"></p>
-</li>
-<li><p>2.插入到中间节点部分</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081656459.png" alt="image-20231108165650399"></p>
-</li>
-</ul>
-<h3 id="3-3-3-环形链表删除节点"><a href="#3-3-3-环形链表删除节点" class="headerlink" title="3.3.3 环形链表删除节点"></a>3.3.3 环形链表删除节点</h3><ul>
-<li>1.删除第一个节点</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081656262.png" alt="image-20231108165658190"></p>
-<ul>
-<li>2.删除中间节点部分</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081657644.png" alt="image-20231108165708563"></p>
-<h3 id="3-3-4-环形链表串联"><a href="#3-3-4-环形链表串联" class="headerlink" title="3.3.4 环形链表串联"></a>3.3.4 环形链表串联</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081659253.png" alt="image-20231108165906135"></p>
-<h2 id="3-4-双向链表"><a href="#3-4-双向链表" class="headerlink" title="3.4 双向链表"></a>3.4 双向链表</h2><h3 id="3-4-1-双向链表定义"><a href="#3-4-1-双向链表定义" class="headerlink" title="3.4.1 双向链表定义"></a>3.4.1 双向链表定义</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081703531.png" alt="image-20231108170323488"></p>
-<h3 id="3-4-2-双向链表插入节点"><a href="#3-4-2-双向链表插入节点" class="headerlink" title="3.4.2 双向链表插入节点"></a>3.4.2 双向链表插入节点</h3><ul>
-<li>1.插入到双向链表的第一个节点前</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081935571.png" alt="image-20231108193519482"></p>
-<ul>
-<li>2.插入到双向链表的末尾</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081935513.png" alt></p>
-<ul>
-<li>3.插入到双向链表的中间位置</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081935358.png" alt="image-20231108193541287"></p>
-<h3 id="3-4-3-双向链表删除节点"><a href="#3-4-3-双向链表删除节点" class="headerlink" title="3.4.3 双向链表删除节点"></a>3.4.3 双向链表删除节点</h3><ul>
-<li>1.删除双向链表的第一个节点</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081935793.png" alt="image-20231108193552713"></p>
-<ul>
-<li>2.删除双向链表的最后一个节点</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081936313.png" alt></p>
-<ul>
-<li>3.删除双向链表的中间位置</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202311081936148.png" alt></p>
-<h1 id="4-堆栈"><a href="#4-堆栈" class="headerlink" title="4.堆栈"></a>4.堆栈</h1><h2 id="4-1-堆栈"><a href="#4-1-堆栈" class="headerlink" title="4.1 堆栈"></a>4.1 堆栈</h2>
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/" rel="tag">JAVA</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 </div>

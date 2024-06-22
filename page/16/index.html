@@ -332,6 +332,209 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Mybatis查询所有" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/21/Mybatis%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89/" class="article-date">
+      <time datetime="2020-03-21T04:50:59.000Z" itemprop="datePublished">2020-03-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/21/Mybatis%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89/">Mybatis查询所有</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><h2 id="准备数据库"><a href="#准备数据库" class="headerlink" title="准备数据库"></a>准备数据库</h2><p><strong>最终结果：</strong></p>
+<p><img src="/2020/03/21/Mybatis%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89/shujuku.png" alt></p>
+<p><strong>sql语句:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create table people(</span><br><span class="line">id int(10) primary key auto_increment comment &#39;编号&#39;,</span><br><span class="line">name varchar(20) comment &#39;姓名&#39;,</span><br><span class="line">age int(3) comment &#39;年龄&#39;</span><br><span class="line">)comment &#39;人员信息表&#39;;</span><br><span class="line"></span><br><span class="line">insert into people values(default,&#39;张三&#39;,21);</span><br><span class="line">insert into people values(default,&#39;李四&#39;,22);</span><br></pre></td></tr></table></figure>
+
+<h2 id="准备实体类People"><a href="#准备实体类People" class="headerlink" title="准备实体类People"></a>准备实体类People</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class People &#123;</span><br><span class="line">	</span><br><span class="line">	private int id;      &#x2F;&#x2F;和数据库的属性匹配</span><br><span class="line">	private String name;</span><br><span class="line">	private int age;</span><br><span class="line">	</span><br><span class="line">	public int getId() &#123;   &#x2F;&#x2F;生成所有的set和get方法</span><br><span class="line">		return id;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setId(int id) &#123;</span><br><span class="line">		this.id &#x3D; id;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getName() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name &#x3D; name;</span><br><span class="line">	&#125;</span><br><span class="line">	public int getAge() &#123;</span><br><span class="line">		return age;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setAge(int age) &#123;</span><br><span class="line">		this.age &#x3D; age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><ul>
+<li>*<em>1. 导入mybatis的jar包 + 依赖包 + mysql的jar包 + jstl的jar包 *</em></li>
+</ul>
+<p><img src="/2020/03/21/Mybatis%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89/jar.png" alt></p>
+<ul>
+<li><p><strong>2. 搭建全局配置文件</strong></p>
+<pre><code>1. 中文chm文档dtd文件找约束
+2. 写configuration内容 -- 配置数据库
+3. 写mappers的配置 -- 找PeopleMapper.xml(类似于实现类)</code></pre></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--第一步--&gt;</span><br><span class="line">&lt;!DOCTYPE configuration</span><br><span class="line">  PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Config 3.0&#x2F;&#x2F;EN&quot;</span><br><span class="line">  &quot;http:&#x2F;&#x2F;mybatis.org&#x2F;dtd&#x2F;mybatis-3-config.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--第二步--&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;environments default&#x3D;&quot;default&quot;&gt;</span><br><span class="line">		&lt;environment id&#x3D;&quot;default&quot;&gt;</span><br><span class="line">			&lt;transactionManager type&#x3D;&quot;JDBC&quot;&gt;&lt;&#x2F;transactionManager&gt;</span><br><span class="line">				&lt;dataSource type&#x3D;&quot;POOLED&quot;&gt;</span><br><span class="line">					&lt;property name&#x3D;&quot;driver&quot; value&#x3D;&quot;com.mysql.jdbc.Driver&quot;&#x2F;&gt;</span><br><span class="line">					&lt;property name&#x3D;&quot;url&quot; value&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;ssm&quot;&#x2F;&gt;</span><br><span class="line">					&lt;property name&#x3D;&quot;username&quot; value&#x3D;&quot;root&quot;&#x2F;&gt;</span><br><span class="line">					&lt;property name&#x3D;&quot;password&quot; value&#x3D;&quot;njdxrjgc7777777.&quot;&#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;dataSource&gt;</span><br><span class="line">		&lt;&#x2F;environment&gt;</span><br><span class="line">	&lt;&#x2F;environments&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--第三步--&gt;</span><br><span class="line">	&lt;mappers&gt;</span><br><span class="line">	&lt;mapper resource&#x3D;&quot;com&#x2F;bjstx&#x2F;mapper&#x2F;PeopleMapper.xml&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;mappers&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>3. 搭建类似于实现类的xml文件</strong></p>
+<pre><code>1. 中文chm文档dtd文件找约束
+2. 写mapper配置 -- 里面写sq语句和返回值和方法名等信息</code></pre></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 第一步 --&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">  PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Mapper 3.0&#x2F;&#x2F;EN&quot;</span><br><span class="line">  &quot;http:&#x2F;&#x2F;mybatis.org&#x2F;dtd&#x2F;mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line">  </span><br><span class="line">&lt;!-- 第二步 --&gt;  </span><br><span class="line">  &lt;mapper namespace&#x3D;&quot;com.bjsxt.mapper.PeopleMapper&quot; &gt;</span><br><span class="line">  	&lt;select id&#x3D;&quot;selAll&quot; resultType&#x3D;&quot;com.bjsxt.pojo.People&quot;&gt;</span><br><span class="line">  		select * from people</span><br><span class="line">  	&lt;&#x2F;select&gt;</span><br><span class="line">  &lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="准备service层和实现层"><a href="#准备service层和实现层" class="headerlink" title="准备service层和实现层"></a>准备service层和实现层</h1><p><strong>PeopleService接口写方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface PeopleService &#123;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;显示人员</span><br><span class="line">	List&lt;People&gt; show() throws IOException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>PeopleServiceImpl类实现PeopleService接口</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> *  数据访问层 -- 处理异常和控制器中处理异常    service只是抛出异常 </span><br><span class="line"> *&#x2F;</span><br><span class="line">public class PeopleServiceImpl implements PeopleService&#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public List&lt;People&gt; show() throws IOException &#123;</span><br><span class="line">		&#x2F;&#x2F; 1. 找主配置文件</span><br><span class="line">			InputStream is &#x3D; Resources.getResourceAsStream(&quot;mybatis.xml&quot;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F; 2. 使用工厂模式     实例化工厂对象使用构建者模式 (名称标志后面：Builder) </span><br><span class="line">			&#x2F;&#x2F;构建者设计模式意义：简化对象实例化过程 (我们这个SqlSessionFactory里面还要很多类很多方法比较麻烦)</span><br><span class="line">			SqlSessionFactory factory&#x3D;new SqlSessionFactoryBuilder().build(is);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F; 3. 创建session </span><br><span class="line">			SqlSession session&#x3D;factory.openSession();</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;4. 调用xml配置文件中的功能 	</span><br><span class="line">			List&lt;People&gt; list &#x3D; session.selectList(&quot;com.bjsxt.mapper.PeopleMapper.setAll&quot;);</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;5. 关闭连接</span><br><span class="line">			session.close();</span><br><span class="line">			</span><br><span class="line">		return list;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="准备Servlet层"><a href="#准备Servlet层" class="headerlink" title="准备Servlet层"></a>准备Servlet层</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@WebServlet(&quot;&#x2F;abc&#x2F;b&#x2F;show&quot;)  &#x2F;&#x2F;1.是给默认属性赋值 省略 value&#x3D;  2.数组是一个值 省略 &#123;&#125;</span><br><span class="line">public class ShowServlet extends HttpServlet &#123;</span><br><span class="line">	&#x2F;&#x2F;面向接口编程</span><br><span class="line">	    private	PeopleService peopleService&#x3D;new PeopleServiceImpl();</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	protected void service(HttpServletRequest req,HttpServletResponse resp)throws ServletException,IOException&#123;</span><br><span class="line">		List&lt;People&gt; list &#x3D; peopleService.show();	</span><br><span class="line">		req.setAttribute(&quot;list&quot;, list);</span><br><span class="line">		&#x2F;&#x2F;使用请求转发      这次是相对路径</span><br><span class="line">		req.getRequestDispatcher(&quot;&#x2F;index.jsp&quot;).forward(req, resp); &#x2F;&#x2F;  &quot;&#x2F;&quot; 全路径(对WebContent目录)    &quot;&quot; 相对路径</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="index-jsp首页"><a href="#index-jsp首页" class="headerlink" title="index.jsp首页"></a>index.jsp首页</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language&#x3D;&quot;java&quot; contentType&#x3D;&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;</span><br><span class="line">    pageEncoding&#x3D;&quot;UTF-8&quot;%&gt;   </span><br><span class="line">&lt;%@ taglib prefix&#x3D;&quot;c&quot; uri&#x3D;&quot;http:&#x2F;&#x2F;java.sun.com&#x2F;jsp&#x2F;jstl&#x2F;core&quot; %&gt;  </span><br><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-&#x2F;&#x2F;W3C&#x2F;&#x2F;DTD HTML 4.01 Transitional&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;html4&#x2F;loose.dtd&quot;&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;table&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;th&gt;编号&lt;&#x2F;th&gt;</span><br><span class="line">		&lt;th&gt;姓名&lt;&#x2F;th&gt;</span><br><span class="line">		&lt;th&gt;年龄&lt;&#x2F;th&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">	&lt;c:forEach items&#x3D;&quot;$&#123;list &#125;&quot; var&#x3D;&quot;peo&quot;&gt;</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">			&lt;td&gt;$&#123;peo.id&#125;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;td&gt;$&#123;peo.name&#125;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;td&gt;$&#123;peo.age&#125;&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;&#x2F;tr&gt;</span><br><span class="line">	&lt;&#x2F;c:forEach&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Log4J" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/21/Log4J/" class="article-date">
+      <time datetime="2020-03-21T04:39:57.000Z" itemprop="datePublished">2020-03-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/21/Log4J/">Log4J</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Log4J"><a href="#Log4J" class="headerlink" title="Log4J"></a>Log4J</h1><blockquote>
+<p>apache推出的开源免费日志处理<strong>类库</strong></p>
+</blockquote>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><pre><code>1. 导入log4j-xxx.jar
+2. 在src目录下新建log4j.properties(不能改！！！)</code></pre><p><strong>log4j.properties文件：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;第一行写的是五种错别级别中的哪一种 是输出到console输出台 还是可以到文件LOGFILE</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;五种错误： fatal(致命错误 程序员无法解决) &gt; error(错误) &gt; warn(警告) &gt; info(普通信息) &gt; debug(调试信息)</span><br><span class="line"></span><br><span class="line">log4j.rootCategory&#x3D;INFO, CONSOLE</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;以下是关于输出到控制台的信息</span><br><span class="line"></span><br><span class="line">log4j.appender.CONSOLE&#x3D;org.apache.log4j.ConsoleAppender          &#x2F;&#x2F;使用的是这个类</span><br><span class="line">log4j.appender.CONSOLE.layout&#x3D;org.apache.log4j.PatternLayout    &#x2F;&#x2F;输出</span><br><span class="line">log4j.appender.CONSOLE.layout.ConversionPattern&#x3D;- %m%n          &#x2F;&#x2F;输出格式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;以下是关于输出到项目下面的信息</span><br><span class="line"></span><br><span class="line">log4j.appender.LOGFILE&#x3D;org.apache.log4j.FileAppender           &#x2F;&#x2F;使用这个类</span><br><span class="line">log4j.appender.LOGFILE.File&#x3D;axis.log                      &#x2F;&#x2F;输出的文件名称</span><br><span class="line">log4j.appender.LOGFILE.Append&#x3D;true        &#x2F;&#x2F;是否开启了添加功能(就是往文件里面存)</span><br><span class="line">log4j.appender.LOGFILE.layout&#x3D;org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.LOGFILE.layout.ConversionPattern&#x3D;%-4r [%t] %-5p %c %x - %m%n  &#x2F;&#x2F;输出的格式</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出pattern的几个表达式：</strong></p>
+<pre><code>%C                       包名+类名
+%d{YYYY-MM-dd HH:mm:ss}  时间
+%L   行号
+%m   信息
+%n   换行</code></pre><hr>
+<h1 id="settings-标签-全局配置文件"><a href="#settings-标签-全局配置文件" class="headerlink" title="settings 标签(全局配置文件)"></a>settings 标签(全局配置文件)</h1><blockquote>
+<p>在mybatis全局配置文件中通过settings标签控制mybatis全局开关</p>
+</blockquote>
+<p><strong>我们鼠标放到configuration上面就会弹出下面标签的顺序和使用个数</strong></p>
+<p><img src="/2020/03/21/Log4J/set.png" alt></p>
+<h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><pre><code>1. 准备好jar包 + 实体类 + mybatis全局配置文件 + log4j.properties配置文件
+2. configuration标签下写settings标签
+    &lt;settings&gt;
+        &lt;setting name=&quot;LogImpl&quot; value=&quot;LOG4J&quot;/&gt;      //settings里面属性就是LogImpl  然后值取log4j
+    &lt;/settings&gt;
+
+3. log4j可以配置指定内容日志(可以控制输出检查错误)</code></pre><p><strong>配置步骤第三步分析：</strong></p>
+<p><img src="/2020/03/21/Log4J/disan.png" alt></p>
+<hr>
+<h1 id="parameterType-属性-mapper包内配置"><a href="#parameterType-属性-mapper包内配置" class="headerlink" title="parameterType 属性(mapper包内配置)"></a>parameterType 属性(mapper包内配置)</h1><blockquote>
+<p>在mapper包里的xml配置文件中 select delete等标签的parameterType可以控制参数类型</p>
+</blockquote>
+<h2 id="配置步骤-1"><a href="#配置步骤-1" class="headerlink" title="配置步骤"></a>配置步骤</h2><pre><code>1. 需要在mapper包里的xml里面去配置select标签
+2. 需要在test测试类里面调用</code></pre><h2 id="具体分析"><a href="#具体分析" class="headerlink" title="具体分析"></a>具体分析</h2><p><strong>1. 分析mapper包配置文件的具体写法</strong></p>
+<pre><code>#{}获取参数
+
+    1. 使用索引       从0开始
+    2. 使用#{param1}  从1开始
+
+    里面只有一个参数 --#{随便写}
+    参数是对象 --#{属性名}
+    参数是map  --#{key}</code></pre><p><strong>实现代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id&#x3D;&quot;selById&quot; resultType&#x3D;&quot;com.bjsxt.pojo.People&quot; parameterType&#x3D;&quot;int&quot;&gt;  &#x2F;&#x2F;原来基础上加parametType属性 里面放的是你传进来数字的类型</span><br><span class="line"> 		select * from people where id&#x3D;#&#123;0&#125;    &#x2F;&#x2F;#&#123;0&#125; 就是把测试类里面的参数(属性就是parameterType的值)传进来</span><br><span class="line"> 	&lt;&#x2F;select&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. test测试类session调用</strong></p>
+<pre><code>三种方法使用：
+
+    1.session里面的selectList()和selectOne()是第二个参数传入
+    2.session里面的selectMap()就是第三个参数传入</code></pre><p><strong>实现代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">People p&#x3D;session.selectOne(&quot;com.bjsxt.mapper.selById&quot;,1);  &#x2F;&#x2F;传入查询id&#x3D;1的值</span><br><span class="line">System.out.println(p);  &#x2F;&#x2F;输出结果</span><br></pre></td></tr></table></figure>
+<p><strong>3. ${} 和 #{} 区别(面试题)</strong></p>
+<pre><code>#{}  索引获取 / param1获取指定位置参数 并且在SQL语句内使用?占位符
+${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写数字 就是一个数字)</code></pre><hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Mybatis全局配置文件详解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1769,252 +1972,9 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 
 
   
-    <article id="post-redis配合ajax实现显示下拉列表省份" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/" class="article-date">
-      <time datetime="2020-03-13T15:22:17.000Z" itemprop="datePublished">2020-03-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/">redis配合ajax实现显示下拉列表省份</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h1><pre><code>1. 提供：index.html页面，页面中有一个省份 下拉列表
-2. 页面加载完成后 发送ajax请求，加载所有省份</code></pre><hr>
-<h1 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h1><h2 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h2><p><img src="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/shujuku.png" alt></p>
-<h2 id="导入jar和配置文件以及各种包"><a href="#导入jar和配置文件以及各种包" class="headerlink" title="导入jar和配置文件以及各种包"></a>导入jar和配置文件以及各种包</h2><p><img src="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/gezhong.png" alt></p>
-<h2 id="druid连接池配置文件"><a href="#druid连接池配置文件" class="headerlink" title="druid连接池配置文件"></a>druid连接池配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">driverClassName&#x3D;com.mysql.jdbc.Driver</span><br><span class="line">url&#x3D;jdbc:mysql:&#x2F;&#x2F;&#x2F;day23</span><br><span class="line">username&#x3D;root</span><br><span class="line">password&#x3D;njdxrjgc7777777.</span><br><span class="line">initialSize&#x3D;5</span><br><span class="line">maxActive&#x3D;10</span><br><span class="line">maxWait&#x3D;3000</span><br></pre></td></tr></table></figure>
-<h2 id="jedis-properties配置redis文件"><a href="#jedis-properties配置redis文件" class="headerlink" title="jedis.properties配置redis文件"></a>jedis.properties配置redis文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">host&#x3D;127.0.0.1</span><br><span class="line">port&#x3D;6379</span><br><span class="line">maxTotal&#x3D;50</span><br><span class="line">maxIdle&#x3D;10</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="dao层及daoImpl层实现"><a href="#dao层及daoImpl层实现" class="headerlink" title="dao层及daoImpl层实现"></a>dao层及daoImpl层实现</h1><h2 id="dao层"><a href="#dao层" class="headerlink" title="dao层"></a>dao层</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface ProvinceDao &#123;</span><br><span class="line">    public List&lt;Province&gt; findAll();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="daoimpl层"><a href="#daoimpl层" class="headerlink" title="daoimpl层"></a>daoimpl层</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class ProvinceDaoImpl implements ProvinceDao &#123;</span><br><span class="line">    &#x2F;&#x2F;1.获取数据库连接池对象</span><br><span class="line">    private  JdbcTemplate template&#x3D;new JdbcTemplate(JDBCUtils.getDataSource());</span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;Province&gt; findAll() &#123;</span><br><span class="line">        &#x2F;&#x2F;1.定义sql</span><br><span class="line">            String sql&#x3D;&quot;select * from province&quot;;</span><br><span class="line">        &#x2F;&#x2F;2.执行sql</span><br><span class="line">            List&lt;Province&gt; list&#x3D;template.query(sql,new BeanPropertyRowMapper&lt;Province&gt;(Province.class));</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="domain层"><a href="#domain层" class="headerlink" title="domain层"></a>domain层</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Province &#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public int getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setId(int id) &#123;</span><br><span class="line">        this.id &#x3D; id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="service和servlet层"><a href="#service和servlet层" class="headerlink" title="service和servlet层"></a>service和servlet层</h1><h2 id="service层"><a href="#service层" class="headerlink" title="service层"></a>service层</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public interface ProvinceService &#123;</span><br><span class="line">    public List&lt;Province&gt; findAll();</span><br><span class="line"></span><br><span class="line">    public String findAllJson() throws JsonProcessingException;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="service实现层"><a href="#service实现层" class="headerlink" title="service实现层"></a>service实现层</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class ProvinceServiceImpl implements ProvinceService &#123;</span><br><span class="line">    &#x2F;&#x2F;面向接口编程</span><br><span class="line">    private ProvinceDao dao&#x3D;new ProvinceDaoImpl();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;Province&gt; findAll() &#123;</span><br><span class="line">        &#x2F;&#x2F;调用dao实现</span><br><span class="line">        return dao.findAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;使用redis缓存</span><br><span class="line">    @Override</span><br><span class="line">    public String findAllJson() throws JsonProcessingException &#123;</span><br><span class="line">        &#x2F;&#x2F;1.先从redis中查询数据</span><br><span class="line">            &#x2F;&#x2F;1.1先获取redis客户端连接</span><br><span class="line">               Jedis jedis &#x3D; JedisPoolUtils.getJedis();  &#x2F;&#x2F;调用写好的数据池工具类</span><br><span class="line">                   String province_json &#x3D; jedis.get(&quot;province&quot;);  &#x2F;&#x2F;获取key值为province</span><br><span class="line"></span><br><span class="line">         &#x2F;&#x2F;2.判断json数据是否为null</span><br><span class="line">            if(province_json&#x3D;&#x3D;null||province_json.length()&#x3D;&#x3D;0)  &#x2F;&#x2F;redis里面没有数据</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;2.1从数据中查询</span><br><span class="line">                    List&lt;Province&gt; ps &#x3D; dao.findAll();</span><br><span class="line">                &#x2F;&#x2F;2.将list序列化为json</span><br><span class="line">                     ObjectMapper mapper&#x3D;new ObjectMapper();</span><br><span class="line">                    province_json&#x3D;mapper.writeValueAsString(ps);</span><br><span class="line">                &#x2F;&#x2F;2.3将json数据存入redis</span><br><span class="line">                    jedis.set(&quot;province&quot;,province_json); &#x2F;&#x2F;获取key值为province</span><br><span class="line">                &#x2F;&#x2F;2.4归还连接</span><br><span class="line">                    jedis.close();</span><br><span class="line">            &#125;</span><br><span class="line">        return province_json;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="servlet层"><a href="#servlet层" class="headerlink" title="servlet层"></a>servlet层</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@WebServlet(&quot;&#x2F;provinceServlet&quot;)   &#x2F;&#x2F;配置路径 名字改为小写</span><br><span class="line">public class ProvinceServlet extends HttpServlet &#123;</span><br><span class="line">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">            &#x2F;&#x2F;1.调用service</span><br><span class="line">                 ProvinceService service&#x3D;new ProvinceServiceImpl();</span><br><span class="line">                     String json&#x3D;service.findAllJson();</span><br><span class="line">                           System.out.println(json);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;3.响应结果</span><br><span class="line">                response.setContentType(&quot;application&#x2F;json;charset&#x3D;utf-8&quot;);  &#x2F;&#x2F;json中文乱码</span><br><span class="line">                response.getWriter().write(json);  &#x2F;&#x2F;直接响应给客户端</span><br><span class="line">    &#125;</span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        this.doPost(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="redis数据池工具类和前端页面"><a href="#redis数据池工具类和前端页面" class="headerlink" title="redis数据池工具类和前端页面"></a>redis数据池工具类和前端页面</h1><h2 id="redis数据池工具类"><a href="#redis数据池工具类" class="headerlink" title="redis数据池工具类"></a>redis数据池工具类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    1.加载配置文件</span><br><span class="line">    2.配置连接池的参数</span><br><span class="line">    3.提供获取连接的方法</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class JedisPoolUtils &#123;</span><br><span class="line">    private static JedisPool jedisPool;</span><br><span class="line">    static&#123;</span><br><span class="line">        &#x2F;&#x2F;读取配置文件</span><br><span class="line">            InputStream is&#x3D;JedisPoolUtils.class.getClassLoader().getResourceAsStream(&quot;jedis.properties&quot;); &#x2F;&#x2F;使用类加载器</span><br><span class="line">        &#x2F;&#x2F;创建properties对象</span><br><span class="line">            Properties pro&#x3D;new Properties();</span><br><span class="line">        &#x2F;&#x2F;关联文件</span><br><span class="line">        try &#123;</span><br><span class="line">            pro.load(is);</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;获取数据 设置到JedisPoolConfig中</span><br><span class="line">            JedisPoolConfig config&#x3D;new JedisPoolConfig();</span><br><span class="line">            config.setMaxTotal(Integer.parseInt(pro.getProperty(&quot;maxTotal&quot;)));</span><br><span class="line">            config.setMaxIdle(Integer.parseInt(pro.getProperty(&quot;maxIdle&quot;)));</span><br><span class="line">         &#x2F;&#x2F;初始化JedisPool</span><br><span class="line">            jedisPool&#x3D;new JedisPool(config,pro.getProperty(&quot;host&quot;), Integer.parseInt(pro.getProperty(&quot;port&quot;)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;获取连接的方法</span><br><span class="line">    public static Jedis getJedis()&#123;</span><br><span class="line">        return jedisPool.getResource();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="前端index-html"><a href="#前端index-html" class="headerlink" title="前端index.html"></a>前端index.html</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;js&#x2F;jquery-3.3.1.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function()&#123;</span><br><span class="line">            &#x2F;&#x2F;发送ajax请求 加载所有省份数据</span><br><span class="line">            $.get(&quot;provinceServlet&quot;,&#123;&#125;,function (data) &#123;</span><br><span class="line">                &#x2F;&#x2F;[&#123;&quot;id&quot;:1,&quot;name&quot;:&quot;北京&quot;&#125;,&#123;&quot;id&quot;:2,&quot;name&quot;:&quot;上海&quot;&#125;,&#123;&quot;id&quot;:3,&quot;name&quot;:&quot;广州&quot;&#125;,&#123;&quot;id&quot;:4,&quot;name&quot;:&quot;陕西&quot;&#125;]</span><br><span class="line">                &#x2F;&#x2F;1.获取select</span><br><span class="line">                    var province&#x3D;$(&quot;#province&quot;);</span><br><span class="line">                &#x2F;&#x2F;2.遍历json数组</span><br><span class="line">                    $(data).each(function () &#123;</span><br><span class="line">                        &#x2F;&#x2F;3.创建&lt;option&gt;</span><br><span class="line">                            var option&#x3D;&quot;&lt;option name&#x3D;&#39;&quot;+this.id+&quot;&#39;&gt;&quot;+this.name+&quot;&lt;&#x2F;option&gt;&quot;;  &#x2F;&#x2F;相当于&lt;option name&#x3D;‘1’&gt;北京&lt;option&gt;需要动态变化  ‘’拼接字符串</span><br><span class="line">                        &#x2F;&#x2F;4.使用select的append追加option</span><br><span class="line">                            province.append(option);</span><br><span class="line">                    &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;select id&#x3D;&quot;province&quot;&gt;</span><br><span class="line">    &lt;option&gt;--请选择省份--&lt;&#x2F;option&gt;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/kuangjia.png" alt></p>
-<p>###注意</p>
-<pre><code>1.使用redis缓存比较适合：一些不经常发生变化的数据。
-2.数据库的数据一旦发生改变，则需要更新缓存。
-3.数据库的表执行 增删改的相关操作，需要将redis缓存数据情况，再次存入
-4.在service对应的增删改方法中，将redis数据删除。</code></pre><p>###使用心得</p>
-<pre><code>发现redis就是在第一次还是需要查数据库，然后service要给redis缓存起来，但是第二次开始已经从缓存redis去取。这种就比较适合于数据变动不大的情况，如果增删改三种操作的话就不太适合了。而且这个小demo是把处理放在service层去做(redis在此)。</code></pre><p>###ajax序列化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.先从redis中查询数据</span><br><span class="line">           &#x2F;&#x2F;1.1先获取redis客户端连接</span><br><span class="line">              Jedis jedis &#x3D; JedisPoolUtils.getJedis();  &#x2F;&#x2F;调用写好的数据池工具类</span><br><span class="line">                  String province_json &#x3D; jedis.get(&quot;province&quot;);  &#x2F;&#x2F;获取key值为province</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;2.判断json数据是否为null</span><br><span class="line">           if(province_json&#x3D;&#x3D;null||province_json.length()&#x3D;&#x3D;0)  &#x2F;&#x2F;redis里面没有数据</span><br><span class="line">           &#123;</span><br><span class="line">               &#x2F;&#x2F;2.1从数据中查询</span><br><span class="line">                   List&lt;Province&gt; ps &#x3D; dao.findAll();</span><br><span class="line">               &#x2F;&#x2F;2.将list序列化为json</span><br><span class="line">                    ObjectMapper mapper&#x3D;new ObjectMapper();    &#x2F;&#x2F;调用jar里面的ObjectMapper类</span><br><span class="line">                   province_json&#x3D;mapper.writeValueAsString(ps);	 &#x2F;&#x2F;调用方法直接转为json</span><br><span class="line">               &#x2F;&#x2F;2.3将json数据存入redis</span><br><span class="line">                   jedis.set(&quot;province&quot;,province_json); &#x2F;&#x2F;获取key值为province</span><br><span class="line">               &#x2F;&#x2F;2.4归还连接</span><br><span class="line">                   jedis.close();</span><br><span class="line">  			&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>执行demo(我用的tomcat7.0版本一定要在web.xml里面改成2.5)</strong></p>
-<p><img src="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/jieguo.png" alt></p>
-<p><strong>打开服务器–客户端–查询</strong></p>
-<p><img src="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/redisjieguo.png" alt></p>
-<hr>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Linux安装软件" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/" class="article-date">
-      <time datetime="2020-03-10T15:02:48.000Z" itemprop="datePublished">2020-03-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">Linux安装软件</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h1><ul>
-<li><strong>1.二进制发布包</strong><br>　　软件已经针对具体平台编译打包发布，只要解压，修改配置即可</li>
-<li><strong>2.RPM包(依赖)</strong><br>　　软件已经按照redhat的包管理工具规范RPM进行打包发布，需要获取到相应的软件RPM发布包，然后用RPM命令进行安装</li>
-<li><strong>3.Yum在线安装(必须有网络)</strong><br>　　软件已经以RPM规范打包，但发布在了网络上的一些服务器上，可用yum在线安装服务器上的rpm软件，并且会自动解决软件安装过程中的库依赖问题</li>
-<li><strong>4.源码编译安装</strong><br>　　软件以源码工程的形式发布，需要获取到源码工程后用相应开发工具进行编译打包部署。</li>
-</ul>
-<hr>
-<h1 id="上传下载文件软件"><a href="#上传下载文件软件" class="headerlink" title="上传下载文件软件"></a>上传下载文件软件</h1><h2 id="FileZilla软件"><a href="#FileZilla软件" class="headerlink" title="FileZilla软件"></a>FileZilla软件</h2><p><strong>1.下载安装之后直接使用</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/file.png" alt></p>
-<h2 id="lrzsz软件"><a href="#lrzsz软件" class="headerlink" title="lrzsz软件"></a>lrzsz软件</h2><p><strong>1.CRT软件下输入 yum install lrzsz</strong></p>
-<p><strong>2.CRT软件 –&gt; 选项 –&gt; 会话设置 –&gt; 设置上传下载目录</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/shezhi.png" alt></p>
-<p><strong>3.上传(rz)： CRT软件下输入 rz –&gt; 从uploads上传到linux当前目录下</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/chenggong.png" alt></p>
-<p><strong>4.下载(sz 文件名)： CRT软件下输入 sz 文件名 –&gt; 下载到downloads目录下</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/chenggonger.png" alt></p>
-<h2 id="sftp协议-Alt-p"><a href="#sftp协议-Alt-p" class="headerlink" title="sftp协议(Alt+p)"></a>sftp协议(Alt+p)</h2><p><strong>1. 上传(put)：通过Alt+p进入SFTP界面 –&gt; 输入 put F：//song.txt –&gt; 上传到linux当前目录下</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/put.png" alt></p>
-<p><strong>2.下载(get)：通过Alt+p进入SFTP界面 –&gt; 输入 get song.txt –&gt; 下载到电脑的文档目录下</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/get.png" alt></p>
-<hr>
-<h1 id="Linux安装JDK"><a href="#Linux安装JDK" class="headerlink" title="Linux安装JDK"></a>Linux安装JDK</h1><p><strong>先确定linux系统的版本 –&gt; 选择JDK版本</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/banebn.png" alt></p>
-<p><strong>1. 通过sftp进行上传</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/shangchuanjdk.png" alt></p>
-<p><strong>2. mv指令剪切到usr的local下面的jdk里面</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhuanyi.png" alt></p>
-<p><strong>3. 将原来的java的jdk卸载</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java –version &#x2F;&#x2F;查看java版本</span><br><span class="line">rpm -qa | grep java &#x2F;&#x2F;查看和java有关的内容</span><br><span class="line"></span><br><span class="line">rpm -e --nodeps java-1.6.0-openjdk-1.6.0.35-1.13.7.1.el6_6.i686  &#x2F;&#x2F;rpm -e --nodeps 然后后面跟自己电脑显示出来的java有关的内容</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.79-2.5.5.4.el6.i686</span><br></pre></td></tr></table></figure>
-
-<p><strong>4. 使用tar -zxvf jdk名字的形式 解压</strong></p>
-<p><strong>5. 配置环境变量</strong></p>
-<pre><code>1. 通过vim编辑器进入编译：vim /etc/profile
-2. 在后面添加
-    set java environment
-    JAVA_HOME=/usr/local/jdk/jdk1.7.0_71
-    CLASSPATH=.:$JAVA_HOME/lib.tools.jar
-    PATH=$JAVA_HOME/bin:$PATH
-    export JAVA_HOME CLASSPATH PATH
-3. ESC键之后：wq退出之后重新保存
-    source /etc/profile 使更改的配置立即生效</code></pre><p><strong>流程：</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/bianliang.png" alt></p>
-<hr>
-<h1 id="Linux安装Mysql"><a href="#Linux安装Mysql" class="headerlink" title="Linux安装Mysql"></a>Linux安装Mysql</h1><p><strong>1. 通过lrzsz的rz方式将uploads的文件上传</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/mysql.png" alt></p>
-<p><strong>2. 卸载当前已经有的mysql</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/mysqlxiezai.png" alt></p>
-<p><strong>3. 通tar -xvf(是jar而不是gz压缩包)指令解压</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/jarjieya.png" alt></p>
-<p><strong>4. rmp -ivh指令 安装服务端 【然后获得随机密码】</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/fuwuduan.png" alt></p>
-<p><strong>5. rmp -ivh指令 安装服务端</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/kehuduan.png" alt></p>
-<p><strong>6. 打开mysql服务</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/shibai.png" alt></p>
-<p><strong>7. 重新登陆数据库mysql</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/chong.png" alt></p>
-<p><strong>8. 重新设置密码打开数据库</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/dakaier.png" alt></p>
-<p><strong>9. 远程访问(Navicat访问linux里面安装的mysql)</strong></p>
-<p><strong>在navicat里面尝试新建连接(失败)</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/yuanyi.png" alt></p>
-<p><strong>需要使用语句打开远程访问并且刷新</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/yuaner.png" alt></p>
-<p><strong>双击之后即可使用</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/liansan.png" alt></p>
-<hr>
-<h1 id="Linux安装Tomcat"><a href="#Linux安装Tomcat" class="headerlink" title="Linux安装Tomcat"></a>Linux安装Tomcat</h1><p><strong>1. 通过put上传并且tar -zxvf指令解压文件</strong></p>
-<p><strong>2. 解压之后进入tomcat的bin目录执行start.sh文件</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhixing.png" alt></p>
-<p><strong>3. 打开浏览器输入：linux的地址：8080 (如果能看到tomcat显示正常就ok)</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhengchang.png" alt></p>
-<hr>
-<h1 id="Linux安装redis"><a href="#Linux安装redis" class="headerlink" title="Linux安装redis"></a>Linux安装redis</h1><p><strong>1. 先在local目录下下载gcc编译文件</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/gcc.png" alt></p>
-<p><strong>2. 去网络远程下载redis</strong></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/redisan.png" alt></p>
-<p><strong>3. 解压(tar -zxvf redis-3.0.4.tar.gz )</strong></p>
-<p><strong>4. 输入make进行编译</strong></p>
-<p>*<em>5. 安装(make /usr/local/redis install) *</em></p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/redismake.png" alt></p>
-<p><strong>6. 将redis-3.0.4里面的redis.conf 复制到redis/bin目录下</strong></p>
-<p><strong>7. 直接执行./redis-server服务器端</strong> </p>
-<p><img src="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/zhixingredis.png" alt></p>
-<p><strong>8. 可以再执行redis-client服务器端然后查询操作</strong></p>
-<hr>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/17/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/17/">Next &amp;raquo;</a>
     </nav>
   
 </div>

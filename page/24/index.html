@@ -332,6 +332,218 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-HTML网站首页案例" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/01/HTML%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E6%A1%88%E4%BE%8B/" class="article-date">
+      <time datetime="2020-02-01T13:07:44.000Z" itemprop="datePublished">2020-02-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/01/HTML%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E6%A1%88%E4%BE%8B/">HTML网站首页案例</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>一、分析设计</strong><br>　　将首页分为一个8*1的表格</p>
+<p>1.第一部分：<strong>LOGO部分</strong>嵌套一个1*3的表格</p>
+<p>2.第二部分：<strong>导航栏部分</strong> 放置5个超链接</p>
+<p>3.第三部分：<strong>轮播图</strong> 放置图片</p>
+<p>4.第四部分: <strong>展示产品</strong>嵌套一个3*7的表格</p>
+<p>5.第五部分：<strong>广告位置</strong>放置图片</p>
+<p>6.第六部分：<strong>展示产品</strong>嵌套一个3*7的表格</p>
+<p>7.第七部分：<strong>广告位置</strong>放置图片</p>
+<p>8.第八部分：<strong>最低端</strong>放置超链接</p>
+<p><strong>分析图</strong></p>
+<p><img src="/2020/02/01/HTML%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E6%A1%88%E4%BE%8B/fenxi.png" alt></p>
+<hr>
+<p><strong>二、详细设计</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;在线购物网址&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;table border&#x3D;&quot;1px&quot; width&#x3D;&quot;100%&quot;&gt; &lt;!--让表格显示边框之后宽度为100%填充全部--&gt;</span><br><span class="line">			</span><br><span class="line">		&lt;!--第1行  嵌套一个1*3的表格--&gt;	</span><br><span class="line">		&lt;tr bgcolor&#x3D;&quot;mintcream&quot;&gt; &lt;!--给第1部分给个背景色--&gt;	</span><br><span class="line">			&lt;td&gt;</span><br><span class="line">				&lt;table border&#x3D;&quot;1px&quot; width&#x3D;&quot;100%&quot;&gt;</span><br><span class="line">					&lt;tr&gt;</span><br><span class="line">						&lt;td&gt;&lt;img src&#x3D;&quot;..&#x2F;img&#x2F;logo2.png&quot; &gt;&lt;&#x2F;td&gt;   &lt;!--加图片--&gt;</span><br><span class="line">						&lt;td&gt;&lt;img src&#x3D;&quot;..&#x2F;img&#x2F;header.png&quot; &gt;&lt;&#x2F;td&gt;  &lt;!--加图片--&gt;</span><br><span class="line">						&lt;td&gt;</span><br><span class="line">							&lt;a href&#x3D;&quot;#&quot; &gt;登录&lt;&#x2F;a&gt;   &lt;!--#当做假链接 --&gt;</span><br><span class="line">							&lt;a href&#x3D;&quot;#&quot; &gt;注册&lt;&#x2F;a&gt;</span><br><span class="line">							&lt;a href&#x3D;&quot;#&quot; &gt;购物车&lt;&#x2F;a&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">					&lt;&#x2F;tr&gt;	</span><br><span class="line">				&lt;&#x2F;table&gt;</span><br><span class="line">			&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!--第2行  放置5个超链接--&gt;	</span><br><span class="line">		&lt;tr bgcolor&#x3D;&quot;black&quot;&gt;  &lt;!--背景色设置为黑色--&gt;</span><br><span class="line">			&lt;td hegith&#x3D;&quot;50px&quot;&gt;  &lt;!--给个高度--&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot; &gt;&lt;font color&#x3D;&quot;white&quot;&gt;首页&lt;&#x2F;font&gt;&lt;&#x2F;a&gt;      &lt;!--#当做假链接  给字体设定白色--&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot; &gt;&lt;font color&#x3D;&quot;white&quot;&gt;手机数码&lt;&#x2F;font&gt;&lt;&#x2F;a&gt;  </span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot; &gt;&lt;font color&#x3D;&quot;white&quot;&gt;鞋靴箱包&lt;&#x2F;font&gt;&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot; &gt;&lt;font color&#x3D;&quot;white&quot;&gt;电脑办公&lt;&#x2F;font&gt;&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot; &gt;&lt;font color&#x3D;&quot;white&quot;&gt;香烟酒水&lt;&#x2F;font&gt;&lt;&#x2F;a&gt;</span><br><span class="line">			&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!--第3行 放置图片--&gt;	</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">			&lt;td&gt;&lt;img src&#x3D;&quot;..&#x2F;img&#x2F;1.jpg&quot; width&#x3D;&quot;100%&quot;&gt;&lt;&#x2F;td&gt;  &lt;!--第3行 放置图片然后设置宽度为100%填充好-&gt;</span><br><span class="line">		&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		&lt;!--第4行  嵌套一个3*7的表格--&gt;	</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">			&lt;td&gt;</span><br><span class="line">				&lt;table border&#x3D;&quot;&quot; width&#x3D;&quot;100%&quot; height&#x3D;&quot;500px&quot;&gt;  &lt;!--让表格显示边框之后宽度为100%填充全部--&gt;</span><br><span class="line">					&lt;tr&gt;</span><br><span class="line">						&lt;td colspan&#x3D;&quot;7&quot;&gt;</span><br><span class="line">							&lt;h3&gt;最新商品&lt;img src&#x3D;..&#x2F;img&#x2F;title2.jpg&gt;&lt;&#x2F;h3&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">					&lt;&#x2F;tr&gt;</span><br><span class="line">				</span><br><span class="line">					&lt;tr align&#x3D;&quot;center&quot;&gt;</span><br><span class="line">						&lt;td rowspan&#x3D;&quot;2&quot; width&#x3D;&quot;206px&quot; height&#x3D;&quot;480px&quot;&gt;  &lt;!--左边大图--&gt;	</span><br><span class="line">							&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;big01.jpg&quot;&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">						</span><br><span class="line">						&lt;td colspan&#x3D;&quot;3&quot; heigth&#x3D;&quot;240px&quot; &gt;  &lt;!--中间大图--&gt;	</span><br><span class="line">							&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;middle01.jpg&quot; width&#x3D;&quot;100%&quot;  hegith&#x3D;&quot;100%&quot;&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">					</span><br><span class="line">						&lt;td&gt;</span><br><span class="line">							&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">								&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">								&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">						&lt;td&gt;</span><br><span class="line">							&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">								&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">								&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">						&lt;td&gt;</span><br><span class="line">							&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">								&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">								&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">					&lt;&#x2F;tr&gt;</span><br><span class="line">					</span><br><span class="line">					&lt;tr align&#x3D;&quot;center&quot;&gt;</span><br><span class="line">												</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">											&lt;&#x2F;tr&gt;</span><br><span class="line">				&lt;&#x2F;table&gt;</span><br><span class="line">			&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!--第5行  放置图片--&gt;	</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">			&lt;td&gt;</span><br><span class="line">				&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;ad.jpg&quot; width&#x3D;&quot;100%&quot; &#x2F;&gt;</span><br><span class="line">			&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!--第6行  嵌套一个3*7的表格--&gt;	</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">			&lt;td&gt;</span><br><span class="line">				&lt;table border&#x3D;&quot;&quot; width&#x3D;&quot;100%&quot; height&#x3D;&quot;500px&quot;&gt;  &lt;!--让表格显示边框之后宽度为100%填充全部--&gt;</span><br><span class="line">					&lt;tr&gt;</span><br><span class="line">						&lt;td colspan&#x3D;&quot;7&quot;&gt;</span><br><span class="line">							&lt;h3&gt;最新商品&lt;img src&#x3D;..&#x2F;img&#x2F;title2.jpg&gt;&lt;&#x2F;h3&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">					&lt;&#x2F;tr&gt;</span><br><span class="line">				</span><br><span class="line">					&lt;tr align&#x3D;&quot;center&quot;&gt;</span><br><span class="line">						&lt;td rowspan&#x3D;&quot;2&quot; width&#x3D;&quot;206px&quot; height&#x3D;&quot;480px&quot;&gt;  &lt;!--左边大图--&gt;	</span><br><span class="line">							&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;big01.jpg&quot;&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">						</span><br><span class="line">						&lt;td colspan&#x3D;&quot;3&quot; heigth&#x3D;&quot;240px&quot; &gt;  &lt;!--中间大图--&gt;	</span><br><span class="line">							&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;middle01.jpg&quot; width&#x3D;&quot;100%&quot;  hegith&#x3D;&quot;100%&quot;&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">					</span><br><span class="line">						&lt;td&gt;</span><br><span class="line">							&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">								&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">								&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">						&lt;td&gt;</span><br><span class="line">							&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">								&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">								&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">						&lt;td&gt;</span><br><span class="line">							&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">								&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">								&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">						&lt;&#x2F;td&gt;</span><br><span class="line">					&lt;&#x2F;tr&gt;</span><br><span class="line">					</span><br><span class="line">					&lt;tr align&#x3D;&quot;center&quot;&gt;			</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">												&lt;td&gt;</span><br><span class="line">													&lt;img src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small06.jpg&quot; &#x2F;&gt;</span><br><span class="line">													&lt;p&gt;洗衣机&lt;&#x2F;p&gt;</span><br><span class="line">													&lt;p&gt;&lt;font color&#x3D;&quot;red&quot;&gt;$998&lt;&#x2F;font&gt;&lt;&#x2F;p&gt;</span><br><span class="line">												&lt;&#x2F;td&gt;</span><br><span class="line">											&lt;&#x2F;tr&gt;</span><br><span class="line">				&lt;&#x2F;table&gt;</span><br><span class="line">			&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!--第7行  放置图片--&gt;	</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">			&lt;td&gt;</span><br><span class="line">				&lt;img src&#x3D;&quot;..&#x2F;image&#x2F;footer.jpg&quot; width&#x3D;&quot;100%&quot; &#x2F;&gt;</span><br><span class="line">			&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!--第8行  放置超链接--&gt;	</span><br><span class="line">		&lt;tr&gt;</span><br><span class="line">			&lt;td align&#x3D;&quot;center&quot;&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;关于我们&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;联系我们&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;招贤纳士&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;法律声明&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;友情链接&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;支付方式&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;配送方式&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;服务声明&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;a href&#x3D;&quot;#&quot;&gt;广告声明&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;br&#x2F;&gt;</span><br><span class="line">Copyright © 2005-2016 购物商城 版权所有</span><br><span class="line">			&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;&#x2F;table&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>最终样式展示：</strong></p>
+<p><img src="/2020/02/01/HTML%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E6%A1%88%E4%BE%8B/jieguo.jpg" alt></p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">Web前端知识点</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-HTML" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/01/HTML/" class="article-date">
+      <time datetime="2020-02-01T02:55:26.000Z" itemprop="datePublished">2020-02-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/01/HTML/">HTML</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>一、超文本标记语言</strong></p>
+<ol>
+<li><strong>HTML</strong>:Hyper Text Markup Language 超文本标记语言</li>
+<li><strong>标记语言</strong>：通过一组标签&lt;关键字&gt;</li>
+</ol>
+<hr>
+<p><strong>二、HTML语法规范</strong></p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&#x2F;&#x2F;头部head---浏览器的名字</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;&#x2F;&#x2F;默认字体</span><br><span class="line">		&lt;title&gt;H5的练习&lt;&#x2F;title&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&#x2F;&#x2F;内部body---浏览器内显示内容</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;p&gt;床前明月光&lt;&#x2F;p&gt;&#x2F;&#x2F;p为其中一个</span><br><span class="line">		&lt;p&gt;疑是地上霜&lt;&#x2F;p&gt;</span><br><span class="line">		&lt;p&gt;举头望明月&lt;&#x2F;p&gt;</span><br><span class="line">		&lt;p&gt;低头思故乡&lt;&#x2F;p&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;                                                                                                                                                                               </span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>三、各种标签学习(只展示body内部代码)</strong></p>
+<p><strong>总结：</strong></p>
+<p><img src="/2020/02/01/HTML/zongjie.png" alt></p>
+<ul>
+<li><h1 id="段落基础标签"><a href="#段落基础标签" class="headerlink" title="段落基础标签"></a>段落基础标签</h1><blockquote>
+<p><strong><code>hr</code></strong>    　　　　　水平线</p>
+</blockquote>
+</li>
+</ul>
+<p><strong><code>br</code></strong> 　　　　　换行<br><strong><code>p</code> 　　　　　分段(成对出现)<br><code>h1-h6</code></strong> 　　　分级标签(成对出现)<br><strong><code>font</code></strong> 　　　　变颜色(成对出现)<br><strong><code>b/strong(有语气)</code></strong>　 加粗(成对出现)<br><strong><code>i/em</code></strong> 　　　　　　　斜体(成对出现)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	&lt;h3&gt;寒假社会实践&lt;&#x2F;h3&gt;</span><br><span class="line">				</span><br><span class="line">			    &lt;!--水平线hr--&gt;</span><br><span class="line">				&lt;hr&gt;   </span><br><span class="line">				</span><br><span class="line">&lt;!--分段p--&gt;</span><br><span class="line">&lt;P&gt;为更好地推动青年志愿服务参与乡村振兴，按照中央文明办&lt;font color&#x3D;&quot;red&quot;&gt;“圆梦工程”&lt;&#x2F;font&gt;——农村未成年人思想道德建设志愿服务行动总体部署，团中央青年志愿者行动指导中心、中国青年志愿者协会拟继续支持基层团组织实施“助力乡村学校少年宫建设”志愿服务项目。&lt;&#x2F;P&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--加粗b&#x2F;strong(加语气) 斜体i&#x2F;em--&gt;				</span><br><span class="line">&lt;P&gt;&lt;b&gt;&lt;i&gt;“助力乡村学校少年宫建设”&lt;&#x2F;i&gt;&lt;&#x2F;b&gt;志愿服务项目是“关爱行动”和“圆梦工程”的子项目，由团中央青年志愿者行动指导中心、中国青年志愿者协会共同组织实施。主要内容是组织、动员基层志愿服务组织，与文体师资力量不够的“乡村学校少年宫”所在农村学校建立长期结对关系，围绕课外活动、素质拓展、安全自护、思想引导、心理辅导等内容，定期选派青年志愿者配合学校开展志愿服务活动，助力“乡村学校少年宫”建设。&lt;&#x2F;P&gt;</span><br><span class="line">				</span><br><span class="line">&lt;P&gt;拟从中西部18个省（自治区、直辖市）、新疆生产建设兵团中遴选、支持50个左右的贫困地区县级团委或地市级、县级青年志愿者协会，共覆盖250所学校示范实施“助力乡村学校少年宫建设”志愿服务项目。&lt;&#x2F;P&gt;</span><br><span class="line">				</span><br><span class="line">&lt;P&gt;相关省级团委青年志愿者工作机构要高度重视，精心组织，结合辖区内现有乡村学校少年宫分布和当地志愿服务团队等情况，做好相关申报工作，遴选、指导申报地填写《2019-2020年度“助力乡村学校少年宫建设”志愿服务项目基层团组织申报表》（附件1），于2020年2月10日前将经审核的申报表统一发送至工作邮箱zyzgzb_2@163.com。&lt;&#x2F;P&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下:</strong></p>
+<p><img src="/2020/02/01/HTML/diyige.png" alt></p>
+<hr>
+<ul>
+<li><h1 id="网站图片标签"><a href="#网站图片标签" class="headerlink" title="网站图片标签"></a>网站图片标签</h1></li>
+</ul>
+<blockquote>
+<p><strong><code>img src</code></strong>  指定图片路径</p>
+</blockquote>
+<p>　　1.<strong>width</strong> 宽度<br>　　2.<strong>heigth</strong> 高度<br>　　3.<strong>alt</strong> 文件加载失败时的提示信息</p>
+<pre><code>`&lt;img src=&quot;../img/10.jpg&quot;  width=&quot;200px&quot;  heigth=&quot;200px&quot; alt=&quot;这张图片可能加载有问题&quot;/&gt;`</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--</span><br><span class="line">常用属性：</span><br><span class="line">	src：指定图片路径</span><br><span class="line">		 width:宽度</span><br><span class="line">		 heigth:高度</span><br><span class="line">		 alt：文件加载失败时候的提示信息</span><br><span class="line">                                               --&gt;</span><br><span class="line">		</span><br><span class="line">&lt;!--</span><br><span class="line">路径寻找问题：</span><br><span class="line">			.&#x2F;    当前路径</span><br><span class="line">			..&#x2F;   上一级路径</span><br><span class="line">			..&#x2F;..&#x2F;      上上一级路径</span><br><span class="line">                                            --&gt;		</span><br><span class="line"> &lt;img src&#x3D;&quot;..&#x2F;img&#x2F;10.jpg&quot; width&#x3D;&quot;200px&quot;  alt&#x3D;&quot;这张图片可能加载有问题&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li><h1 id="链接标签"><a href="#链接标签" class="headerlink" title="链接标签"></a>链接标签</h1><blockquote>
+<p><strong><code>ul</code></strong> 　无序列表</p>
+</blockquote>
+</li>
+</ul>
+<p>　　1.<strong>li</strong> 一行<br>　　2.<strong>type</strong> 是哪种小图标disc(实心圆)/square(正方形)/circle(空心圆)</p>
+<blockquote>
+<p><strong><code>ol</code></strong> 　有序列表</p>
+</blockquote>
+<p>　　1.<strong>type</strong>(属性)   —1/a/i/I<br>　　2.<strong>start</strong>(属性)  —哪类型从哪个开始</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--无序列表  ul  </span><br><span class="line">	1. li(标签)    ---列</span><br><span class="line">	2. type(属性)  --- disc(实心圆)&#x2F;square(正方形)&#x2F;circle(空心圆)</span><br><span class="line">                                                                    --&gt;</span><br><span class="line">&lt;ul type&#x3D;&quot;square&quot;&gt; </span><br><span class="line">	  &lt;!--一列 li  --&gt;</span><br><span class="line">		&lt;li&gt;百度&lt;&#x2F;li&gt;</span><br><span class="line">		&lt;li&gt;新浪微博&lt;&#x2F;li&gt;</span><br><span class="line">		&lt;li&gt;黑马程序员&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;hr&gt;&lt;!--下划线--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--有序列表  ol  </span><br><span class="line">	1.type(属性)   ---1&#x2F;a&#x2F;i&#x2F;I</span><br><span class="line">	2.start(属性)  ---哪类型从哪个开始	</span><br><span class="line">　　　　　　　　　　　　　　　　　　　　     --&gt;</span><br><span class="line">&lt;ol type&#x3D;&quot;1&quot; start&#x3D;&quot;2&quot;&gt;</span><br><span class="line">      &lt;!--一列 li  --&gt;</span><br><span class="line">		&lt;li&gt;百度&lt;&#x2F;li&gt;</span><br><span class="line">		&lt;li&gt;新浪微博&lt;&#x2F;li&gt;</span><br><span class="line">		&lt;li&gt;黑马程序员&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ol&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下：</strong></p>
+<p><img src="/2020/02/01/HTML/dierge.png" alt></p>
+<blockquote>
+<p><strong><code>href</code></strong>　超链接标签a</p>
+</blockquote>
+<p>　1.<strong>href</strong>:指定跳转的链接地址 　http协议(别人的)/文件路径(自己的)<br>　2.<strong>target</strong>：用什么形式打开　　　　　当前窗口(_self)/新建窗口(_blank)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--无序列表--&gt;</span><br><span class="line">&lt;ul type&#x3D;&quot;circle&quot;&gt;</span><br><span class="line">	&lt;!--</span><br><span class="line">		超链接标签 a </span><br><span class="line">	         1.href(属性):指定要跳转去的链接地址 需要加上http协议(别人的)&#x2F;文件路径(自己的)</span><br><span class="line">			 2.target：用什么形式打开</span><br><span class="line">						2.1： _self   当前窗口(默认)</span><br><span class="line">						2.2： _blank  新开一个窗口</span><br><span class="line">	                                                       --&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&#x2F;&quot;  target&#x3D;&quot;_blank&quot;&gt;百度&lt;&#x2F;li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;&quot;&gt;哔哩哔哩&lt;&#x2F;li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;dasai.lanqiao.cn&#x2F;&quot;&gt;蓝桥杯&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<hr>
+<ul>
+<li><h1 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h1><blockquote>
+<p><strong><code>table</code></strong> 生成表格 </p>
+</blockquote>
+</li>
+</ul>
+<p><strong><code>tr</code></strong> 行<br><strong><code>td</code></strong> 列</p>
+<p>　　1.<strong>border</strong>:边框(表格有边框)<br>　　2.<strong>width</strong>:宽度<br>　　3.<strong>height</strong>：高度<br>　　4.<strong>bgcolor</strong>:背景色(tr td也可以用)<br>　　5.<strong>align</strong>:对齐方式(tr td也可以用)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--</span><br><span class="line">   表格:table</span><br><span class="line">		常用属性：</span><br><span class="line">				1.border:边框</span><br><span class="line">				2.width:宽度</span><br><span class="line">				3.height：高度</span><br><span class="line">				4.bgcolor:背景色(tr td也可以用)</span><br><span class="line">				5.align:对齐方式(tr td也可以用)</span><br><span class="line">		1.tr: 行</span><br><span class="line">		2.td: 列</span><br><span class="line">                                                      	--&gt;</span><br><span class="line">&lt;table border&#x3D;&quot;3px&quot; width&#x3D;&quot;400px&quot; height&#x3D;&quot;100px&quot; bgcolor&#x3D;&quot;crimson&quot; &gt;</span><br><span class="line">	&lt;!--第一行--&gt;</span><br><span class="line">	&lt;tr bgcolor&#x3D;&quot;blank&quot;&gt;</span><br><span class="line">		&lt;td&gt;1&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td bgcolor&#x3D;&quot;black&quot;&gt;2&lt;&#x2F;td&gt;    &lt;!--2的这一个为黑色--&gt;</span><br><span class="line">		&lt;td&gt;3&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;4&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;5&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!--第二行--&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;1&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;2&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;3&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;4&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;5&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;!--第三行--&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;1&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;2&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;3&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;4&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;5&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;!--第四行--&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;1&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;2&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;3&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;4&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;5&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;!--第五行--&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;1&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;2&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;3&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;4&lt;&#x2F;td&gt;</span><br><span class="line">		&lt;td&gt;5&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;&#x2F;tr&gt;</span><br><span class="line">		</span><br><span class="line">&lt;&#x2F;table&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下</strong></p>
+<p><img src="/2020/02/01/HTML/disange.png" alt></p>
+<p><strong>表格合并问题：</strong><br>　　1.<strong>colspan</strong> 跨行<br>　　2.<strong>rowspan</strong> 跨列<br>　　3.<strong>嵌套</strong>时候是在一个框框内加一个表格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">   表格:table</span><br><span class="line">		1.colspan 跨行&lt;tr&gt;</span><br><span class="line">		2.rowspan 跨列&lt;td&gt;</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;table border&#x3D;&quot;1px&quot; width&#x3D;&quot;400px&quot;&gt;</span><br><span class="line">&lt;!--第一行--&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td colspan&#x3D;&quot;2&quot;&gt;11&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;13&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;14&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;15&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;!--第二行--&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td&gt;21&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;22&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;23&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;24&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;25&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;!--第三行--&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td&gt;31&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;32&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td rowspan&#x3D;&quot;2&quot; colspan&#x3D;&quot;2&quot; align&#x3D;&quot;center&quot;&gt;</span><br><span class="line">		&lt;!--嵌套表格--&gt;</span><br><span class="line">		&lt;table border&#x3D;&quot;1px&quot; width&#x3D;&quot;100%&quot; height&#x3D;&quot;100%&quot;&gt;</span><br><span class="line">			&lt;tr&gt;	</span><br><span class="line">			  &lt;td&gt; &lt;img src&#x3D;&quot;..&#x2F;..&#x2F;img&#x2F;10.jpg&quot; width&#x3D;&quot;46px&quot;&#x2F;&gt;&lt;&#x2F;td&gt;			</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">		&lt;&#x2F;table&gt;</span><br><span class="line">	&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;35&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;!--第四行--&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td rowspan&#x3D;&quot;2&quot;&gt;41&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;42&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;45&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;!--第五行--&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td&gt;52&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;53&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;54&lt;&#x2F;td&gt;</span><br><span class="line">	&lt;td&gt;55&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码结果如下</strong></p>
+<p><img src="/2020/02/01/HTML/disige.png" alt></p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">Web前端知识点</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-反射" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1282,346 +1494,9 @@
 
 
   
-    <article id="post-等待唤醒机制" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/11/11/%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6/" class="article-date">
-      <time datetime="2019-11-11T12:39:46.000Z" itemprop="datePublished">2019-11-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/11/%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6/">等待唤醒机制</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>一、线程间通信</strong></p>
-<ul>
-<li>线程间通信：多个线程在处理同一个资源，但是处理的动作(线程任务)不同。</li>
-<li><strong>等待唤醒机制</strong>：—&gt;保证线程间通信有效利用<br>资源！</li>
-</ul>
-<hr>
-<p><strong>二、等待唤醒机制</strong></p>
-<ul>
-<li><strong>通信</strong>：对包子的状态进行判断</li>
-</ul>
-<ol>
-<li>没有包子–&gt;吃货线程唤醒包子铺线程–&gt;吃货线程等待–&gt;包子铺线程做包子–&gt;做好包子–&gt;修改包子的状态(无–&gt;有)</li>
-<li>有包子–&gt;包子铺线程唤醒吃货线程–&gt;包子铺线程等待–&gt;吃货吃包子–&gt;吃完包子–&gt;修改包子的状态(有–&gt;无)</li>
-</ol>
-<ul>
-<li>等待唤醒使用的<code>Object类</code><strong>方法</strong>：</li>
-</ul>
-<ol>
-<li><code>wait</code>：线程<strong>不再活动</strong>，不再参与调度，因此不会浪费cpu资源，也不会去竞争锁(进入waiting状态)–&gt;等待notify()方法进入调度队列。</li>
-<li><code>notify</code>：可以唤醒<strong>其中一个</strong>线程(有一定规律)。</li>
-<li><code>notifyAll</code>：可以唤醒<strong>所有</strong>线程。</li>
-</ol>
-<ul>
-<li>注意点：</li>
-</ul>
-<ol>
-<li>两个方法必须使用<strong>同一</strong>锁对象调用</li>
-<li>两个方法–&gt;Object类的方法</li>
-<li>两个方法必须在同步代码块(<code>synchronized(){}</code>)/同步函数中使用(保证唯一和同步机制)</li>
-</ol>
-<hr>
-<p><strong>三、生产者与消费者问题</strong></p>
-<ul>
-<li><p><strong>资源类：包子类：</strong><br>　包子的属性：皮/馅<br>　包子的状态：有true/无false</p>
-</li>
-<li><p><strong>生产者(包子铺)类：</strong>是一个线程类，可以继承Thread</p>
-</li>
-</ul>
-<ol>
-<li>线程任务(run):生产包子</li>
-<li>对包子状态判断</li>
-</ol>
-<ul>
-<li><p>true(有包子)：<br>　　(1)调用wait方法进入等待状态</p>
-</li>
-<li><p>false(没包子)：<br>　　(1)包子铺生产包子<br>　　(2)生产好包子将状态改为true<br>　　(3)唤醒吃货线程<br>　　(4)吃货线程吃包子</p>
-</li>
-<li><p><strong>消费者(吃货)类：</strong>是一个线程类，可以继承Thread</p>
-</li>
-</ul>
-<ol>
-<li>线程任务(run):吃包子</li>
-<li>对包子状态判断</li>
-</ol>
-<ul>
-<li><p>true(有包子)：<br>　　(1)调用wait方法进入等待状态</p>
-</li>
-<li><p>false(没包子)：<br>　　(1)吃货线程吃包子<br>　　(2)将状态改为false<br>　　(3)唤醒包子铺线程<br>　　(4)生产包子</p>
-</li>
-<li><p><strong>测试类(含main方法)</strong></p>
-</li>
-</ul>
-<ol>
-<li>创建包子对象：</li>
-<li>创建包子铺线程：</li>
-<li>创建吃货线程：</li>
-</ol>
-<hr>
-<p><strong>四、线程池(容器)</strong></p>
-<ul>
-<li>容器—&gt;集合(<code>ArrayList&lt;Thread&gt;</code>/<code>HashSet</code>/<code>LinkedList&lt;Thread&gt;</code>/<code>HashMap</code>)</li>
-</ul>
-<p><strong>(基本使用ArrayList集合/LinkedList集合)</strong></p>
-<ul>
-<li><strong>分析原理：</strong><br>  当程序第一次启动—&gt;创建多个线程(放入集合)—&gt;需要使用时从集合中取出线程<br>　1. 如果是<strong>List集合</strong>：<br>　　<code>Thread t=list.remove(0)</code>：返回的是被移除的元素(线程只能被一个任务使用)<br>　　<code>list.add(t)</code>:使用完线程，归还给线程池<br>　2. 如果是<strong>Linked集合</strong>：<br>　　<code>Thread t=linked.removeFirst()</code>:一个一个线程被调用<br>　　<code>linked.addLast(t)</code>:使用完线程，归还给线程池</li>
-</ul>
-<hr>
-<p><strong>五、线程池的使用(JDK1.5之后提供的)</strong><br><code>java.util.concurrent.Excutors</code>　　线程池的<strong>工厂类</strong>(用来产生线程池)<br>其中一个方法：<br><code>static ExecutorService newFixedThreadPool(int nThreads)</code>:创建一个可重用固定线程数的线程池<br>　　1. 参数(int nThreads)：创建线程池中包含的<strong>线程数量</strong><br>　　2. 返回值(ExecutorService接口)：返回的是ExecutorService接口的实现类对象，我们可以使用此接口来接受(面向接口编程)<br><strong>例如：</strong><br>    <code>ExecutorService es=Executors.newFixedThreadPool(2);//用ExecutorService接口接着</code></p>
-<p><code>java.util.concurrent.ExecutorService接口</code>　　<strong>线程池接口</strong><br>其中一个方法：<br>用来从线程池中获取线程，调用start()方法，执行线程任务：<br>    <code>submit(Runnable task)</code>:提交一个Runnable—任务用于执行<br>    <code>void shutdown()</code>: 关闭/销毁线程池的方法</p>
-<hr>
-<p><strong>六、线程池的使用步骤</strong></p>
-<ol>
-<li>使用线程池的工厂类Executors内的静态方法newFixedThreadPool生产一个指定的线程数量的线程池</li>
-<li>创建一个类实现Runnable接口—&gt;重写run方法—&gt;设置线程任务</li>
-<li>调用ExecutorService中的方法submit—&gt;传递线程任务(实现类)—&gt;开启线程—&gt;执行run方法</li>
-<li>调用ExecutorService中的方法shutdown—&gt;销毁线程池(不推荐！！)</li>
-</ol>
-<p><strong>代码实现如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import java.util.concurrent.ExecutorService;</span><br><span class="line">import java.util.concurrent.Executors;</span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	&#x2F;&#x2F;1.使用线程池的工厂类Executors内的静态方法newFixedThreadPool生产一个指定的线程数量的线程池</span><br><span class="line">	ExecutorService es&#x3D;Executors.newFixedThreadPool(2); &#x2F;&#x2F;右边返回的就是一个实现类用接口接着(面向接口编程)</span><br><span class="line">	&#x2F;&#x2F;3. 调用ExecutorService中的方法submit---&gt;传递线程任务(实现类)---&gt;开启线程---&gt;执行run方法	</span><br><span class="line">	es.submit(new RunnableImpl());	&#x2F;&#x2F;pool-1-thread-1创建了一个新的线程执行</span><br><span class="line">	&#x2F;&#x2F;线程池一直开启，使用完了会归还给线程池，线程可以继续使用</span><br><span class="line">	es.submit(new RunnableImpl());  &#x2F;&#x2F;pool-1-thread-1创建了一个新的线程执行</span><br><span class="line">	es.submit(new RunnableImpl());  &#x2F;&#x2F;pool-1-thread-2创建了一个新的线程执行</span><br><span class="line">	</span><br><span class="line">	es.shutdown();&#x2F;&#x2F;销毁线程池</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;2. 创建一个类实现Runnable接口---&gt;重写run方法---&gt;设置线程任务</span><br><span class="line">public class RunnableImpl implements Runnable &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		System.out.println(Thread.currentThread().getName()+&quot;创建了一个新的线程执行&quot;); &#x2F;&#x2F;获取线程名称的第一种方式	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>代码结果如下：</strong><br><img src="/2019/11/11/%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6/xianchengchi.png" alt></p>
-<p><strong>代码分析</strong></p>
-<ol>
-<li><p>使用线程池的工厂类Executors内的静态方法newFixedThreadPool生产一个指定的线程数量的线程池<br> <code>ExecutorService es=Executors.newFixedThreadPool(2);</code>　<strong>用接口来接着(面向接口编程)！！</strong></p>
-</li>
-<li><p>创建一个类实现Runnable接口—&gt;重写run方法—&gt;设置线程任务<br> <code>public class RunnableImpl implements Runnable {}</code></p>
-</li>
-<li><p>调用ExecutorService中的方法submit—&gt;传递线程任务(实现类)—&gt;开启线程—&gt;执行run方法<br> <code>es.submit(new RunnableImpl());</code>　<strong>要用实现类传递线程任务(new RunnableImpl())</strong></p>
-</li>
-<li><p>调用ExecutorService中的方法shutdown—&gt;销毁线程池(不推荐！！)<br> <code>es.shutdown();</code></p>
-</li>
-</ol>
-<hr>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">JAVA-多线程</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-蓝桥杯校赛" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A0%A1%E8%B5%9B/" class="article-date">
-      <time datetime="2019-11-07T07:41:19.000Z" itemprop="datePublished">2019-11-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A0%A1%E8%B5%9B/">蓝桥杯校赛</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>一、分核桃</strong></p>
-<ul>
-<li><strong>问题描述</strong><br>小张是软件项目经理，他带领3个开发组。工期紧，今天都在加班呢。为鼓舞士气，小张打算给每个组发一袋核桃（据传言能补脑）。他的要求是：</li>
-</ul>
-<ol>
-<li>各组的核桃数量必须相同</li>
-<li>各组内必须能平分核桃（当然是不能打碎的）</li>
-<li>尽量提供满足1,2条件的最小数量（节约闹革命嘛）</li>
-</ol>
-<p>输入格式<br>输入包含三个正整数a, b, c，表示每个组正在加班的人数，用空格分开（a,b,c&lt;30）<br>输出格式<br>输出一个正整数，表示每袋核桃的数量。</p>
-<p>样例输入1<br>2 4 5<br>样例输出1<br>20</p>
-<p>样例输入2<br>3 1 1<br>样例输出2<br>3</p>
-<ul>
-<li><strong>问题分析：</strong><br>　　很明显是两个两个人求<strong>最小公倍数</strong>的问题。</li>
-<li><strong>1.暴力法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package xiaosai;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">	int a&#x3D;input.nextInt();</span><br><span class="line">	int b&#x3D;input.nextInt();</span><br><span class="line">	int c&#x3D;input.nextInt();</span><br><span class="line">	</span><br><span class="line">	for(int i&#x3D;1;i&lt;1000;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(i%a&#x3D;&#x3D;0&amp;&amp;i%b&#x3D;&#x3D;0&amp;&amp;i%c&#x3D;&#x3D;0)  &#x2F;&#x2F;最小的值应该满足同时可以整除三个数字</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(i);</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li><strong>2.最小公倍数法：</strong></li>
-</ul>
-<ol>
-<li>求两个数的<strong>最大值</strong>。</li>
-<li>从最大值开始循环找到<strong>第一个</strong>能够<strong>同时整除</strong>的数字。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">package xiaosai;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">	int a&#x3D;input.nextInt();</span><br><span class="line">	int b&#x3D;input.nextInt();</span><br><span class="line">	int c&#x3D;input.nextInt();&#x2F;&#x2F;输入三个数字</span><br><span class="line">	int flag&#x3D;0;&#x2F;&#x2F;定义变量存储合适的那个值</span><br><span class="line">	</span><br><span class="line">	int d&#x3D;zuida(a,b);&#x2F;&#x2F;求前两数的最大值</span><br><span class="line">	for(int i&#x3D;d;;i++)&#x2F;&#x2F;从前两数的最大值开始</span><br><span class="line">	&#123;</span><br><span class="line">		if(i%a&#x3D;&#x3D;0&amp;&amp;i%b&#x3D;&#x3D;0) &#x2F;&#x2F;只要能够整除</span><br><span class="line">		&#123;</span><br><span class="line">			flag&#x3D;i;&#x2F;&#x2F;flag存储当前符合的最小公倍数</span><br><span class="line">			break;</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	int e&#x3D;zuida(flag,c); &#x2F;&#x2F;求第二次的最大值</span><br><span class="line">	for(int i&#x3D;e;;i++) &#x2F;&#x2F;从最大值开始</span><br><span class="line">	&#123;</span><br><span class="line">		if(i%flag&#x3D;&#x3D;0&amp;&amp;i%c&#x3D;&#x3D;0)&#x2F;&#x2F;只要能够整除</span><br><span class="line">		&#123;</span><br><span class="line">			flag&#x3D;i;&#x2F;&#x2F;存储最终满足的值</span><br><span class="line">			break;</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	System.out.println(flag); &#x2F;&#x2F;输出答案</span><br><span class="line">	</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">	public static int zuida(int i,int j) &#123;  &#x2F;&#x2F;求两个数的最大值</span><br><span class="line">		return i&gt;j?i:j;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>代码结果：</strong></li>
-</ul>
-<p><img src="/2019/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A0%A1%E8%B5%9B/fenhetao.png" alt></p>
-<hr>
-<p><strong>二、字符删除</strong></p>
-<ul>
-<li><strong>问题描述</strong><br>编写一个程序，先输入一个字符串str（长度不超过20），再输入单独的一个字符ch，然后程序会把字符串str当中出现的所有的ch字符都删掉，从而得到一个新的字符串str2，然后把这个字符串打印出来。　　</li>
-</ul>
-<p>输入格式：输入有两行，第一行是一个字符串（内部没有空格），第二行是一个字符。　　<br>输出格式：经过处理以后的字符串。</p>
-<p>样例输入<br>123-45-678-<br>样例输出<br>12345678</p>
-<ul>
-<li><strong>问题分析：</strong><br>将字符串转为数组(<code>toCharArray()</code>)，然后依次循环和ch字符对比，不相等就输出。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package xiaosai;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">	String str&#x3D;input.nextLine();  &#x2F;&#x2F;输入一个字符串</span><br><span class="line">	char ch&#x3D;input.next().charAt(0);  &#x2F;&#x2F;输入一个字符</span><br><span class="line">	char[] a&#x3D;str.toCharArray(); &#x2F;&#x2F;字符串转数组</span><br><span class="line">	</span><br><span class="line">	for(int i&#x3D;0;i&lt;a.length;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(a[i]!&#x3D;ch)</span><br><span class="line">			System.out.print(a[i]);  &#x2F;&#x2F;不相等就输出</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>代码结果：</strong></li>
-</ul>
-<p><img src="/2019/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A0%A1%E8%B5%9B/zifushanchu.png" alt></p>
-<hr>
-<p><strong>三、区间K大数查询</strong></p>
-<ul>
-<li><strong>问题描述</strong><br>给定一个序列，每次询问序列中第l个数到第r个数中第K大的数是哪个。</li>
-</ul>
-<p>输入格式<br>　　第一行包含一个数n，表示序列长度。<br>　　第二行包含n个正整数，表示给定的序列。<br>　　第三个包含一个正整数m，表示询问个数。</p>
-<p>　　接下来m行，每行三个数l,r,K，表示询问序列从左往右第l个数到第r个数中，从大往小第K大的数是哪个。序列元素从1开始标号。</p>
-<p>输出格式<br>　　总共输出m行，每行一个数，表示询问的答案。<br>样例输入<br>5<br>1 2 3 4 5<br>2<br>1 5 2<br>2 3 2<br>样例输出<br>4<br>2<br>数据规模与约定<br>　　对于30%的数据，n,m&lt;=100；<br>　　对于100%的数据，n,m&lt;=1000；</p>
-<ul>
-<li><strong>问题分析：</strong><br>　　定义一个数组a先往里面放值，然后定义一个r-l+1长的数组b存放要截取的数组，然后定义一个<strong>ans数组</strong>存放每一次循环判断的最k大值(很关键)，然后输入l，r，k之后按顺序存放进数组b，一定要记得<strong>sort</strong>一下(不一定存放的数组就是顺序的！！！)，最后将最k大值放入ans数组！</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Scanner in &#x3D; new Scanner(System.in);</span><br><span class="line">		int n &#x3D; in.nextInt();&#x2F;&#x2F;输入数组的长度</span><br><span class="line">		int[] a &#x3D; new int[n];&#x2F;&#x2F;定义一个n长度的数组a</span><br><span class="line">		for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i] &#x3D; in.nextInt(); &#x2F;&#x2F;一位一位输入内容</span><br><span class="line">		&#125;		</span><br><span class="line">		int m &#x3D; in.nextInt();&#x2F;&#x2F;定义找几次</span><br><span class="line">		int[] ans &#x3D; new int[m];&#x2F;&#x2F;按照m定义长度数组ans</span><br><span class="line">	 for(int i&#x3D;0;i&lt;m;i++)&#x2F;&#x2F;找几次就循环几次</span><br><span class="line">		&#123;</span><br><span class="line">			int l &#x3D; in.nextInt();&#x2F;&#x2F;输入要选的左边值</span><br><span class="line">			int r &#x3D; in.nextInt();&#x2F;&#x2F;输入要选的右边值</span><br><span class="line">			int k &#x3D; in.nextInt();&#x2F;&#x2F;输入要选的第k大值</span><br><span class="line">			int[] b &#x3D; new int[r-l+1];&#x2F;&#x2F;定义一个截取范围的数组b</span><br><span class="line">			for(int j&#x3D;0;j&lt;r-l+1;j++)&#x2F;&#x2F;从0到最大值赋值</span><br><span class="line">			&#123;</span><br><span class="line">				b[j]&#x3D;a[j+l-1];&#x2F;&#x2F;依次将对应的值放入b数组中</span><br><span class="line">			&#125;</span><br><span class="line">			Arrays.sort(b);&#x2F;&#x2F;一定要记得排序(输入的数字不一定按顺序排列)</span><br><span class="line">			ans[i]&#x3D;b[r-l+1-k];&#x2F;&#x2F;把那个最k大值放入ans数组值中</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">        for(int i&#x3D;0;i&lt;m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(ans[i]);&#x2F;&#x2F;依次输出的就是找几次的对应的答案</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>代码结果：</strong></li>
-</ul>
-<p><img src="/2019/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A0%A1%E8%B5%9B/chaoshi.png" alt></p>
-<hr>
-<p><strong>四、阶乘(第一个非0数)</strong></p>
-<ul>
-<li><strong>问题描述</strong><br>　　一个整数n的阶乘可以写成n!，它表示从1到n这n个整数的乘积。阶乘的增长速度非常快，例如，13!就已经比较大了，已经无法存放在一个整型变量中；而35!就更大了，它已经无法存放在一个浮点型变量中。因此，当n比较大时，去计算n!是非常困难的。幸运的是，在本题中，我们的任务不是去计算n!，而是去计算n!最右边的那个非0的数字是多少。例如，5! = 1<em>2</em>3<em>4</em>5 = 120，因此5!最右边的那个非0的数字是2。再如：7! = 5040，因此7!最右边的那个非0的数字是4。请编写一个程序，输入一个整数n(n&lt;=100)，然后输出n!<br>最右边的那个非0的数字是多少。<br>　　<br>　　输入格式：输入只有一个整数n。<br>　　输出格式：输出只有一个整数，即n! 最右边的那个非0的数字。输入输出样例</li>
-</ul>
-<p>样例输入<br>6<br>样例输出<br>2</p>
-<p>由于只需要阶乘后的最后一个非０数，所以每次阶乘后，如果尾数是０的直接／１０。</p>
-<ul>
-<li><strong>问题分析：</strong></li>
-</ul>
-<ol>
-<li>先编写一个递归方法求每一个数对应的阶乘。</li>
-<li>将结果暂存在数组内，然后设置变量m来遍历直至第一个非0数就跳出判断。</li>
-</ol>
-<p><strong>解法一(30%)：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">package xiaosai;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	Scanner input&#x3D;new Scanner(System.in);</span><br><span class="line">	int n&#x3D;input.nextInt();</span><br><span class="line">	int[] a&#x3D;new int[1000];</span><br><span class="line">	a[0]&#x3D;jiecheng(n);</span><br><span class="line">	int m&#x3D;1;</span><br><span class="line">	for(int i&#x3D;0;;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		m&#x3D;a[0]%10;</span><br><span class="line">		if(m!&#x3D;0)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(m);	</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">		a[0]&#x3D;a[0]&#x2F;10;		</span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	public static int jiecheng(int n) &#123;</span><br><span class="line">		if(n&#x3D;&#x3D;0||n&#x3D;&#x3D;1)</span><br><span class="line">			return 1;</span><br><span class="line">		else </span><br><span class="line">			return n*jiecheng(n-1);		</span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li><strong>问题分析：</strong></li>
-</ul>
-<ol>
-<li>和解法一相似使用<strong>数组</strong>一个数字存放数组一个元素之中得到结果。</li>
-<li>循环每次判断结果和考虑进位问题以此类推得到结果，最终还是循环判断非0数。</li>
-</ol>
-<p><strong>解法二(100%)：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package xiaosai;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Scanner sc&#x3D;new Scanner(System.in);</span><br><span class="line">		int n&#x3D;sc.nextInt();</span><br><span class="line">		int a[]&#x3D; new int[4000];</span><br><span class="line">		a[0]&#x3D;1;</span><br><span class="line">		int r1&#x3D;0;&#x2F;&#x2F;考虑进位情况</span><br><span class="line">		for(int i&#x3D;2;i&lt;&#x3D;n;i++) &#123;</span><br><span class="line">			for(int j&#x3D;0;j&lt;4000;j++) &#123;</span><br><span class="line">				r1&#x3D;a[j]*i+r1;</span><br><span class="line">				a[j]&#x3D;r1%10;  &#x2F;&#x2F;如果发生进位将个位赋给当前位置，十位或者和百位一起加到下一次数组乘法</span><br><span class="line">				r1&#x3D;r1&#x2F;10;   &#x2F;&#x2F;依次类推</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int s&#x3D;0;</span><br><span class="line">		for(int i&#x3D;3999;i&gt;&#x3D;0;i--) &#123;</span><br><span class="line">			if(a[i]!&#x3D;0) &#123;</span><br><span class="line">				System.out.print(a[i]);  &#x2F;&#x2F;从后往前倒排，然后判断首位不为空则输出</span><br><span class="line">				s&#x3D;i;   &#x2F;&#x2F;同时记录下标</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>问题分析：</strong></li>
-</ul>
-<ol>
-<li>像解法一一样，如果用int型和递归方法会导致超时等问题，所以考虑使用<strong>BigDecimal类型</strong>存放结果。</li>
-<li>考虑将结果用<strong>tosrtring方法</strong>转化为字符串，通过</li>
-</ol>
-<p><strong>charAt方法</strong>来循环判断是否为0找到最终结果。</p>
-<p><strong>解法三(100%)：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package xiaosai;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">import java.math.*;</span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		int n &#x3D; input.nextInt();</span><br><span class="line">		BigDecimal sum &#x3D; BigDecimal.ONE;&#x2F;&#x2F;使用BigDecimal类型存放答案</span><br><span class="line">		for(int i &#x3D; 1; i &lt;&#x3D; n; i++) </span><br><span class="line">		&#123;</span><br><span class="line">			sum &#x3D; sum.multiply(BigDecimal.valueOf(i));&#x2F;&#x2F;使用乘法(不使用递归方法！)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	String S &#x3D; sum.toString(); &#x2F;&#x2F;将结果转化为字符串</span><br><span class="line">		for(int i &#x3D; S.length()-1; i &gt;&#x3D; 0; i--)</span><br><span class="line">		&#123;</span><br><span class="line">			if(S.charAt(i) !&#x3D; &#39;0&#39;)&#x2F;&#x2F;遇到第一个非0的数字输出 </span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(S.charAt(i));</span><br><span class="line">  			      break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>代码结果如下:</strong></p>
-<p><img src="/2019/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A0%A1%E8%B5%9B/jiecheng.png" alt></p>
-<hr>
-<p><strong>五、最长子序列</strong></p>
-<ul>
-<li><p><strong>问题描述</strong><br>给定一个长为n的序列，求它的最长上升子序列的长度。<br>输入格式<br>　　输入第一行包含一个整数n。<br>　　第二行包含n个整数，为给定的序列。<br>输出格式<br>　　输出一个非负整数，表示最长上升子序列的长度。<br>样例输入<br>5<br>1 3 2 5 4<br>样例输出<br>3<br>数据规模和约定<br>　　0&lt;n&lt;=1000，每个数不超过10^6。</p>
-</li>
-<li><p><strong>问题分析：</strong><br>例如：数列(1, 7, 3, 5, 9, 4, 8)的有序上升子序列，像(1, 7)， (3, 4, 8)和许多其他的子序列。在所有的子序列中，最长的上升子序列的长度是4，如(1, 3, 5, 8)</p>
-</li>
-<li><p><strong>动态规划</strong></p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">package xiaosai;</span><br><span class="line">import java.math.*;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main&#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in); </span><br><span class="line">		int n &#x3D; input.nextInt();</span><br><span class="line">		int[] arr &#x3D; new int[10002];&#x2F;&#x2F;arr数组表示输入的序列</span><br><span class="line">		int[] dp &#x3D; new int[10002];&#x2F;&#x2F;dp数组中存放上升序列的长度，dp[i]表示以arr[i]结尾的子序列的最大长度</span><br><span class="line">		for(int i &#x3D; 1;i &lt;&#x3D; n;i++) &#123;&#x2F;&#x2F;输入序列</span><br><span class="line">			arr[i]&#x3D; input.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		int result &#x3D; -1;&#x2F;&#x2F;记录dp中最大的值				</span><br><span class="line">		for(int i &#x3D; 1;i &lt;&#x3D; n;i++)</span><br><span class="line">		&#123;&#x2F;&#x2F;按顺序计算dp[i]的值			</span><br><span class="line">			dp[i] &#x3D; 1;&#x2F;&#x2F;假设该子序列中只有arr[i]，故长度为1，即其自身成为一个子序列			</span><br><span class="line">			for(int j &#x3D; 1;j &lt; i;j++) </span><br><span class="line">			&#123;&#x2F;&#x2F;如果在i之前有比arr[i]小的数(arr[j])，并且把该数(arr[i])放到以arr[j]结尾的子序列末尾后，&#x2F;&#x2F;其长度比当前以arr[i]结尾的子序列长度要长				</span><br><span class="line">				if(arr[i] &gt; arr[j] &amp;&amp; dp[j] + 1 &gt; dp[i]) </span><br><span class="line">				&#123;					</span><br><span class="line">					dp[i] &#x3D; dp[j] + 1;&#x2F;&#x2F;把arr[i]放到以arr[j]结尾的子序列之后，原来的长度＋1				</span><br><span class="line">				&#125;			</span><br><span class="line">			&#125;</span><br><span class="line">			result &#x3D; Math.max(result, dp[i]);&#x2F;&#x2F;找出在dp数组中最大的一个，即子序列长度最长的一个		</span><br><span class="line">		&#125;</span><br><span class="line">		 System.out.println(result);	</span><br><span class="line">		 &#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>代码结果如下：</strong><br><img src="/2019/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A0%A1%E8%B5%9B/zuichangzixulie.png" alt></p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" rel="tag">蓝桥杯</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/23/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/25/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/23/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/25/">Next &amp;raquo;</a>
     </nav>
   
 </div>

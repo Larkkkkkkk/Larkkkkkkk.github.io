@@ -332,6 +332,224 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Spring事务" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/04/04/Spring%E4%BA%8B%E5%8A%A1/" class="article-date">
+      <time datetime="2020-04-04T15:37:26.000Z" itemprop="datePublished">2020-04-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/04/Spring%E4%BA%8B%E5%8A%A1/">Spring事务</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="编程式事务-程序员编写"><a href="#编程式事务-程序员编写" class="headerlink" title="编程式事务(程序员编写)"></a>编程式事务(程序员编写)</h1><blockquote>
+<p>程序员编程 事务控制代码</p>
+</blockquote>
+<ul>
+<li><strong>OpenSessionInView 编程式事务</strong></li>
+</ul>
+<hr>
+<h1 id="声明式事务-Spring编写好-程序员声明"><a href="#声明式事务-Spring编写好-程序员声明" class="headerlink" title="声明式事务(Spring编写好 程序员声明)"></a>声明式事务(Spring编写好 程序员声明)</h1><blockquote>
+<p>Spring写好 事务控制代码<br>程序员只需要声明哪些方法需要进行事务控制和如何进行事务控制</p>
+</blockquote>
+<h2 id="针对ServiceImpl类下的方法"><a href="#针对ServiceImpl类下的方法" class="headerlink" title="针对ServiceImpl类下的方法"></a>针对ServiceImpl类下的方法</h2><blockquote>
+<p><strong>事务管理器基于通知(advice) – 切点(AOP)</strong></p>
+</blockquote>
+<h2 id="在spring配置文件中配置声明式事务"><a href="#在spring配置文件中配置声明式事务" class="headerlink" title="在spring配置文件中配置声明式事务"></a>在spring配置文件中配置声明式事务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 导入xmlns：tx 和location地址</span><br><span class="line">2. 书写tx：advice --&gt; 基于通知所以导入spring-jdbc.jar中的类</span><br><span class="line">3. 然后需要配置数据源 --&gt; 导入整合mybatis的三步骤</span><br><span class="line">4. 三步骤中数据源要导入db.properties文件 --&gt; 添加context:property-placeholder --&gt; 利用$&#123;key&#125;方式导入</span><br><span class="line">5. 因为基于通知 所以还需要切点和通知的aop:config标签 --&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="分析-代码流向"><a href="#分析-代码流向" class="headerlink" title="分析(代码流向)"></a>分析(代码流向)</h2><p><img src="/2020/04/04/Spring%E4%BA%8B%E5%8A%A1/fenxi.png" alt></p>
+<h2 id="最终代码"><a href="#最终代码" class="headerlink" title="最终代码"></a>最终代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&quot;</span><br><span class="line">    xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">    xmlns:aop&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&quot;</span><br><span class="line">    xmlns:context&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&quot;</span><br><span class="line">    xmlns:tx&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx&quot;</span><br><span class="line">    xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;aop&#x2F;spring-aop.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&#x2F;spring-context.xsd</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx</span><br><span class="line">        http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;tx&#x2F;spring-tx.xsd&quot;&gt;</span><br><span class="line"> </span><br><span class="line"> 	&lt;!-- spring-jdbc.jar中  --&gt;</span><br><span class="line"> 		&lt;bean id&#x3D;&quot;txManager&quot; class&#x3D;&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line"> 			&lt;property name&#x3D;&quot;dataSource&quot; ref&#x3D;&quot;dataSource&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line"> 		&lt;&#x2F;bean&gt;</span><br><span class="line"> </span><br><span class="line">  &lt;context:property-placeholder location&#x3D;&quot;classpath:db.properties,classpath:second.properties&quot;&#x2F;&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;!-- 数据源 --&gt;</span><br><span class="line">    &lt;bean id&#x3D;&quot;dataSource&quot; class&#x3D;&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;</span><br><span class="line">    	&lt;property name&#x3D;&quot;driverClassName&quot; value&#x3D;&quot;$&#123;jdbc.driver&#125;&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">    	&lt;property name&#x3D;&quot;url&quot; value&#x3D;&quot;$&#123;jdbc.url&#125;&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">    	&lt;property name&#x3D;&quot;username&quot; value&#x3D;&quot;$&#123;jdbc.username&#125;&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">    	&lt;property name&#x3D;&quot;password&quot; value&#x3D;&quot;$&#123;jdbc.password&#125;&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">    &lt;&#x2F;bean&gt;</span><br><span class="line">    &lt;!-- SqlSessinFactory对象 --&gt;</span><br><span class="line">    &lt;bean id&#x3D;&quot;factory&quot; class&#x3D;&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</span><br><span class="line">    	&lt;property name&#x3D;&quot;typeAliasesPackage&quot; value&#x3D;&quot;com.bjsxt.pojo&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">    &lt;&#x2F;bean&gt;</span><br><span class="line">    &lt;!-- 扫描器 --&gt;</span><br><span class="line">    &lt;bean class&#x3D;&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;</span><br><span class="line">    	&lt;property name&#x3D;&quot;basePackage&quot; value&#x3D;&quot;com.bjsxt.mapper&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">    	&lt;property name&#x3D;&quot;sqlSessionFactoryBeanName&quot; value&#x3D;&quot;factory&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">    &lt;&#x2F;bean&gt;</span><br><span class="line">  </span><br><span class="line"> 	&lt;!-- 配置声明式事务 --&gt;</span><br><span class="line"> 		&lt;tx:advice id&#x3D;&quot;txAdvice&quot; transaction-manager&#x3D;&quot;txManager&quot;&gt;</span><br><span class="line"> 			&lt;tx:attributes&gt;</span><br><span class="line"> 				&lt;tx:method name&#x3D;&quot;insert&quot;&#x2F;&gt;  &lt;!-- 可以用通配符 --&gt;</span><br><span class="line"> 			&lt;&#x2F;tx:attributes&gt;</span><br><span class="line"> 		&lt;&#x2F;tx:advice&gt;</span><br><span class="line"> </span><br><span class="line">   		&lt;aop:config&gt;</span><br><span class="line">   			&lt;aop:pointcut expression&#x3D;&quot;execution(* com.bjsxt.service.impl.*.*(..))&quot; id&#x3D;&quot;mypoint&quot;&#x2F;&gt;</span><br><span class="line">   			&lt;aop:advisor advice-ref&#x3D;&quot;txAdvice&quot; pointcut-ref&#x3D;&quot;mypoint&quot;&#x2F;&gt;</span><br><span class="line">   		&lt;&#x2F;aop:config&gt;</span><br><span class="line">	</span><br><span class="line">&lt;&#x2F;beans&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="声明式事务-tx-method-属性解释"><a href="#声明式事务-tx-method-属性解释" class="headerlink" title="声明式事务(tx:method)属性解释"></a>声明式事务(tx:method)属性解释</h1><blockquote>
+<p><strong>声明式事务例子:</strong> </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 配置声明式事务 --&gt;</span><br><span class="line"> 		&lt;tx:advice id&#x3D;&quot;txAdvice&quot; transaction-manager&#x3D;&quot;txManager&quot;&gt;</span><br><span class="line"> 			&lt;tx:attributes&gt;</span><br><span class="line"> 				&lt;tx:method name&#x3D;&quot;insert&quot;&#x2F;&gt;  &lt;!-- 可以用通配符 --&gt;</span><br><span class="line">				&lt;tx:method name&#x3D;&quot;ins*&quot;&#x2F;&gt;</span><br><span class="line">				&lt;tx:method name&#x3D;&quot;saf&quot;&#x2F;&gt;</span><br><span class="line">				&lt;tx:method name&#x3D;&quot;adad*&quot;&#x2F;&gt;</span><br><span class="line"> 			&lt;&#x2F;tx:attributes&gt;</span><br><span class="line"> 		&lt;&#x2F;tx:advice&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="name-和-read-only"><a href="#name-和-read-only" class="headerlink" title="name 和 read-only"></a>name 和 read-only</h2><pre><code>1. name=&quot;&quot;   哪些方法需要被事务控制 (支持 * 通配符)
+
+2. read-only=&quot;true/false&quot;  是否是只读事务
+    2.1 true : 告诉数据库此事务是只读事务 数据化优化，会对性能有一定提升(查询)
+    2.2 false(默认) : 告诉数据库此事务是需要提交的事务 (新增/删除/修改)</code></pre><h2 id="propagation-控制事务传播行为"><a href="#propagation-控制事务传播行为" class="headerlink" title="propagation 控制事务传播行为"></a>propagation 控制事务传播行为</h2><blockquote>
+<p>当一个具有事务控制的方法被另外一个有事务控制的方法调用后，需要如何管理事务？</p>
+</blockquote>
+<pre><code>1. REQUIRED(默认) : 
+    1.1 有事务 --&gt; 在此事务中执行
+    1.2 无事务 --&gt; 新建事务
+
+2. SUPPORTS(随遇而安 有就有 没有就没有) : 
+    2.1 有事务 --&gt; 在此事务中执行
+    2.2 无事务 --&gt; 非事务状态下执行
+
+3. MANDATORY(必须在事务内执行) :
+    3.1 有事务 --&gt; 在此事务中执行
+    3.2 无事务 --&gt; 报错
+
+4. REQUIRES_NEW(必须在事务内执行) ：
+    4.1 有事务 --&gt; 挂起
+    4.2 无事务 --&gt; 新建事务
+
+5. NOT_SUPPORTED(必须在非事务执行) ：
+    5.1 有事务 --&gt; 挂起
+    5.2 无事务 --&gt; 正常执行
+
+6. NEVER(必须在非事务执行) ：
+    6.1 有事务 --&gt; 报错
+    6.2 无事务 --&gt; 正常执行
+
+7. NESTED(必须在事务内执行) :
+    7.1 有事务 --&gt; 创建一个嵌套事务
+    7.2 无事务 --&gt; 新建事务</code></pre><h2 id="isolation-事务隔离级别"><a href="#isolation-事务隔离级别" class="headerlink" title="isolation 事务隔离级别"></a>isolation 事务隔离级别</h2><blockquote>
+<p><strong>多线程/并发访问</strong>保证数据具有完整性</p>
+</blockquote>
+<ul>
+<li><p><strong>脏读(两个事务)</strong></p>
+<pre><code>事务A读取到事务B中未提交的数据 --&gt; B可能数据改变 --&gt; A读的数据可能和数据库中的不一致 </code></pre></li>
+<li><p><strong>不可重复读(同一事务)</strong></p>
+<pre><code>1. 主要针对某行数据数据 (行中某列)
+2. 主要针对 修改 操作
+3. 事务A读取事务 --&gt; 事务B对事务A读取的数据修改 --&gt; A再次读取和之前的不一致 </code></pre></li>
+</ul>
+<ul>
+<li><p><strong>幻读(两个事务)</strong></p>
+<pre><code>1. 主要针对 新增/删除 操作
+2. 事务A按照特定条件查询结果 --&gt; 事务B新增了数据(符合A查询条件) --&gt; A查询的数据和数据库的数据不一致</code></pre></li>
+</ul>
+<pre><code>1. DEFAULT(默认) ： 底层数据库自动判断用什么隔离界别
+
+2. READ_UNCOMMITTED(效率最高) : 可以读取未提交的数据 ( 可能出现 脏读 / 不可重复读 / 幻读 ) 
+
+3. READ_COMMITTED(避免脏读) : 只能读取其他事务已经提交的数据 (可能出现 不可重复读 / 幻读)    
+
+4. REPEATABLE_READ(避免脏读和不可重复读) ： 读的数据被添加锁(一行) (可能出现 幻读)
+
+5. SERIALIZABLE(最安全和效率最低) ： 整个表添加锁(排队操作) </code></pre><h2 id="rollback-for-事务回滚"><a href="#rollback-for-事务回滚" class="headerlink" title="rollback-for 事务回滚"></a>rollback-for 事务回滚</h2><pre><code>1. rollback-for=&quot;异常类型全限定路径&quot;  出现什么异常时候需要进行回滚
+
+    给定该属性值 (手动抛异常一定要给该属性值!!!)
+
+2. no-rollback-for=&quot; &quot;  当出现什么异常时不滚回事务</code></pre><hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Spring单例设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/04/04/Spring%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-date">
+      <time datetime="2020-04-04T15:36:53.000Z" itemprop="datePublished">2020-04-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/04/Spring%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Spring单例设计模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h1><blockquote>
+<p><strong>在应用程序中有保证最多只有一个实例</strong></p>
+</blockquote>
+<p><strong>单例设计模式好处：</strong><br>    1. 提升运行效率<br>    2. 实现数据共享 ( application对象 )</p>
+<p><strong>单例设计模式分类</strong><br>    1. 懒汉式<br>    2. 饿汉式</p>
+<hr>
+<h1 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h1><h2 id="创建SingleTon类"><a href="#创建SingleTon类" class="headerlink" title="创建SingleTon类"></a>创建SingleTon类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class SingleTon &#123;</span><br><span class="line"></span><br><span class="line">	private static SingleTon singleton;  &#x2F;&#x2F; 由于对象需要被静态方法调用 所以方法也要是static  也要讲改为private (public 就直接调用对象)</span><br><span class="line">	</span><br><span class="line">  &#x2F;&#x2F; 构造方法 (其他类不能实例化这个类对象  对外提供访问入口)</span><br><span class="line">	private SingleTon() &#123;&#125;</span><br><span class="line">	</span><br><span class="line">  &#x2F;&#x2F; 实例方法 (必须通过对象调用  )</span><br><span class="line">	public static SingleTon getInstance() &#123;</span><br><span class="line">		if(singleton&#x3D;&#x3D;null)</span><br><span class="line">		&#123;</span><br><span class="line">			&#x2F;&#x2F; 多线程访问下 可能if同时成立 -- 添加锁</span><br><span class="line">			synchronized(SingleTon.class) &#123;</span><br><span class="line">				if(singleton&#x3D;&#x3D;null)  &#x2F;&#x2F; 双重检验</span><br><span class="line">				&#123;</span><br><span class="line">					singleton&#x3D;new SingleTon();   &#x2F;&#x2F;创建实例化</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">			return new SingleTon();  &#x2F;&#x2F; 实例化</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建test类"><a href="#创建test类" class="headerlink" title="创建test类"></a>创建test类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	&#x2F;&#x2F;类加载时就进行实例化!!!</span><br><span class="line">		 SingleTon singleton&#x3D;SingleTon.getInstance();   &#x2F;&#x2F;不能直接new SingTon()  --  调用静态方法</span><br><span class="line">		 SingleTon singleton1&#x3D;SingleTon.getInstance();</span><br><span class="line">		 System.out.println(singleton&#x3D;&#x3D;singleton1);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h1><blockquote>
+<p>懒汉式加了锁(效率降低) – 解决懒汉式中可能同时访问一个对象的问题</p>
+</blockquote>
+<h2 id="只需要更改SingleTon类"><a href="#只需要更改SingleTon类" class="headerlink" title="只需要更改SingleTon类"></a>只需要更改SingleTon类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class SingleTon &#123;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;在类加载时就实例化</span><br><span class="line">	private static SingleTon singleton&#x3D;new SingleTon();   &#x2F;&#x2F;对比懒汉式 将实例方法内容删除 直接new一个对象</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;构造方法</span><br><span class="line">	private SingleTon() &#123;&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;实例方法</span><br><span class="line">	public static SingleTon getInstance() &#123;</span><br><span class="line">			return new SingleTon();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>1. private static SingleTon singleton=new SingleTon();  直接new一个对象
+2. 实例方法内容全部删除(不用管锁的事情)</code></pre><hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Spring加载属性文件和scope属性" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1180,278 +1398,9 @@ type：区别关键字和封装类（int和Integer）</code></pre><figure class=
 
 
   
-    <article id="post-Mybatis注解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/30/Mybatis%E6%B3%A8%E8%A7%A3/" class="article-date">
-      <time datetime="2020-03-30T15:31:49.000Z" itemprop="datePublished">2020-03-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/Mybatis%E6%B3%A8%E8%A7%A3/">Mybatis注解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="注解-简化配置文件"><a href="#注解-简化配置文件" class="headerlink" title="注解(简化配置文件)"></a>注解(简化配置文件)</h1><blockquote>
-<p>Mybatis的注解简化mapper.xml文件(涉及动态SQL就不可用(×))</p>
-</blockquote>
-<blockquote>
-<p>注解和全局配置文件mapper.xml共存!!!</p>
-</blockquote>
-<h1 id="注解的简单实用"><a href="#注解的简单实用" class="headerlink" title="注解的简单实用"></a>注解的简单实用</h1><pre><code>使用注解：
-        1. package标签(用接口里面写注解)
-        2. mapper标签里面用class属性(原来是resource取对应配置文件)
-
-例：
-    1. 第一种用package的方式：    
-     &lt;mappers&gt;
-        &lt;package name=&quot;com.bjsxt.com&quot;/&gt;  //因为后面的被对应的配置文件用别名起了
-    &lt;/mappers&gt;
-
-    2. 第二种更改class属性
-
-    &lt;mappers&gt;
-        &lt;mapper class=&quot;com.bjsxt.com.XXXMapper&quot;/&gt;
-    &lt;/mappers&gt;</code></pre><h2 id="package-接口内写注解"><a href="#package-接口内写注解" class="headerlink" title="package(接口内写注解)"></a>package(接口内写注解)</h2><p><strong>1. 查询 @Select</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;select * from teacher&quot;)</span><br><span class="line">	List&lt;Teacher&gt; selAll();</span><br></pre></td></tr></table></figure>
-
-<p><strong>2. 新增 @Insert</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Insert(&quot;insert into teacher values(default,#&#123;name&#125;)&quot; )</span><br><span class="line">	int insTeacher(Teacherteacher);</span><br></pre></td></tr></table></figure>
-
-<p><strong>3. 修改 @Update</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Update(&quot;update teacher set name&#x3D;#&#123;name&#125; where id&#x3D;#&#123;id&#125;&quot; )</span><br><span class="line">	int upd Teacher(Teacherteacher);</span><br></pre></td></tr></table></figure>
-
-<p><strong>4. 刪除 @Delete</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Delete(&quot;delete from teacher whereid&#x3D;#&#123;0&#125;&quot; )</span><br><span class="line">	int delById(intid);</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="注解实现resultMap功能-老师和学生的例子"><a href="#注解实现resultMap功能-老师和学生的例子" class="headerlink" title="注解实现resultMap功能(老师和学生的例子)"></a>注解实现resultMap功能(老师和学生的例子)</h1><blockquote>
-<p>其实就是一些注解名和resultMap标签对等</p>
-</blockquote>
-<h2 id="学生接口添加注解"><a href="#学生接口添加注解" class="headerlink" title="学生接口添加注解"></a>学生接口添加注解</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;select * from student wheret id&#x3D;#&#123;0&#125;&quot;)  &#x2F;&#x2F;相当于student配置文件里面写sql语句</span><br><span class="line">	List&lt;Student&gt; selByTid(int tid);</span><br></pre></td></tr></table></figure>
-
-<h2 id="老师接口添加注解"><a href="#老师接口添加注解" class="headerlink" title="老师接口添加注解"></a>老师接口添加注解</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Results(       &#x2F;&#x2F;相当于resultMap标签</span><br><span class="line">	value&#x3D;&#123;</span><br><span class="line">		@Result(id&#x3D;true,property&#x3D;&quot;id&quot;,column&#x3D;&quot;id&quot;),  &#x2F;&#x2F;相当于id&#x2F;result标签</span><br><span class="line">		@Result(property&#x3D;&quot;name&quot;,column&#x3D;&quot;name&quot;),</span><br><span class="line">		@Result(property&#x3D;&quot;list&quot;,column&#x3D;&quot;id&quot;,many&#x3D;@Many(select&#x3D;&quot;com.bjsxt.mapper.StudentMapper.selByTid&quot;)) &#x2F;&#x2F;Many相当于collection(集合对象)</span><br><span class="line">		  &#125;)</span><br><span class="line"></span><br><span class="line">@Select(&quot;select * from teacher&quot;)</span><br><span class="line">	List&lt;Teacher&gt; selTeacher();</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>1.     @Results()   == resultMap标签
-2.     @Result()    == id/result标签 (主键/其他键)
-3. @Result(id=true) == id标签
-4.      @Many()     == collection标签 (集合对象)
-5.      @One()      == association标签 (单个对象)</code></pre><hr>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-使用Mybatis的动态Sql实现多表查询" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" class="article-date">
-      <time datetime="2020-03-28T16:17:17.000Z" itemprop="datePublished">2020-03-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">使用Mybatis的动态Sql实现多表查询</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="具体实现-student项目"><a href="#具体实现-student项目" class="headerlink" title="具体实现(student项目)"></a>具体实现(student项目)</h1><h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create table teacher(</span><br><span class="line">id int(10) primary key auto_increment,</span><br><span class="line">name varchar(20)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table student(</span><br><span class="line">id int(10) primary key auto_increment,</span><br><span class="line">name varchar(20),</span><br><span class="line">age int(3),</span><br><span class="line">tid int(10)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p><strong>数据库情况:</strong></p>
-<p><img src="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/shujuku.png" alt></p>
-<p><strong>学生表添加外键：</strong></p>
-<p><img src="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/waijian.png" alt></p>
-<h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><pre><code>1. 导入相关jar包
-2. 准备mybatis.xml全局配置文件(里面利用package标签找那个接口!!!!)
-3. 准备student实体类
-4. 准备teacher实体类
-5. 准备pageInfo分页实体类
-6. 准备实现类接口StudentMapper
-...</code></pre><hr>
-<h1 id="Mybatis实现多表查询方式"><a href="#Mybatis实现多表查询方式" class="headerlink" title="Mybatis实现多表查询方式"></a>Mybatis实现多表查询方式</h1><h2 id="多表查询三种方式"><a href="#多表查询三种方式" class="headerlink" title="多表查询三种方式"></a>多表查询三种方式</h2><pre><code>1. 业务装配：
-    两表单表查询 -- 在业务(service)将查询结果关联
-2. 通过Auto Mapping特性
-    两表联合查询 -- 通过别名完成映射    
-3. 使用Mybatis的resultMap标签进行实现</code></pre><h2 id="类中-其他类-分类"><a href="#类中-其他类-分类" class="headerlink" title="类中(其他类) 分类"></a>类中(其他类) 分类</h2><pre><code>1. 单个对象
-
-2. 集合对象</code></pre><hr>
-<h1 id="单表resultMap"><a href="#单表resultMap" class="headerlink" title="单表resultMap"></a>单表resultMap</h1><h2 id="resultMap标签-mapper-xml中"><a href="#resultMap标签-mapper-xml中" class="headerlink" title="resultMap标签(mapper.xml中)"></a>resultMap标签(mapper.xml中)</h2><blockquote>
-<p>程序员控制sql查询结果与实体类的映射关系<br>    默认：Mybatis使用Auto Mapping特性(resultType属性)<br>    更改：Mybatis使用resultMap属性引用resultMap标签(不写resultType属性)</p>
-</blockquote>
-<h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2><p><strong>1. 数据库(id和name两列)：</strong></p>
-<p><img src="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/laoshi.png" alt></p>
-<p><strong>2. 实体类(我们用id1和name1区别)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Teacher &#123;</span><br><span class="line">	private int id1;</span><br><span class="line">	private String name1;</span><br><span class="line">	</span><br><span class="line">	public int getId1() &#123;</span><br><span class="line">		return id1;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setId1(int id1) &#123;</span><br><span class="line">		this.id1 &#x3D; id1;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getName1() &#123;</span><br><span class="line">		return name1;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setName1(String name1) &#123;</span><br><span class="line">		this.name1 &#x3D; name1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>3. 在TeacherMapper.xml配置文件中使用resultMap标签：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace&#x3D;&quot;com.bjsxt.mapper.TeacherMapper&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;resultMap type&#x3D;&quot;teacher&quot; id&#x3D;&quot;mymap&quot;&gt;</span><br><span class="line">	  &lt;!-- 主键用id --&gt;</span><br><span class="line">		&lt;id column&#x3D;&quot;id&quot; property&#x3D;&quot;id1&quot;&#x2F;&gt;</span><br><span class="line">	  &lt;!-- 其他列用result --&gt;		</span><br><span class="line">		&lt;result column&#x3D;&quot;name&quot; property&#x3D;&quot;name1&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;resultMap&gt;</span><br><span class="line"></span><br><span class="line">	&lt;select id&#x3D;&quot;selAll&quot; resultMap&#x3D;&quot;mymap&quot;&gt;</span><br><span class="line">		select * from teacher</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line">	</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="单表总结使用"><a href="#单表总结使用" class="headerlink" title="单表总结使用"></a>单表总结使用</h2><pre><code>1. 实体类去写需要映射的名称(id和name 实体类就写id1和name1)
-2. 配置文件中select里面把resultType改成使用resultMap属性 
-    注： resultMap属性值 == resultMap标签的id值
-3. 书写resultMap标签
-    注： resultMap两个属性一个是类型 一个是和select里面属性匹配的id
-         主键使用id标签 其他列用result标签
-         里面column写的是数据库的名称 property写的是映射的实体类名称</code></pre><hr>
-<h1 id="resultMap实现关联单个对象-N-1方式-association标签"><a href="#resultMap实现关联单个对象-N-1方式-association标签" class="headerlink" title="resultMap实现关联单个对象(N+1方式) association标签"></a>resultMap实现关联单个对象(N+1方式) association标签</h1><blockquote>
-<p>就是先查询出一个表的全部信息 然后根据这个表的信息再查另外一个表的信息(<strong>两个表合并</strong>)</p>
-</blockquote>
-<h2 id="具体操作-1"><a href="#具体操作-1" class="headerlink" title="具体操作"></a>具体操作</h2><p><strong>1. 学生数据库的tid是刚才老师id的外键</strong></p>
-<p><strong>2. 学生实体类除了自己的属性还要有一个老师的对象</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> &#x2F;&#x2F;只列举了变量</span><br><span class="line">private int id;</span><br><span class="line">private String name;</span><br><span class="line">private int age;</span><br><span class="line">private int tid;</span><br><span class="line">private Teacher teacher;  &#x2F;&#x2F;老师类的对象!!!!!!</span><br></pre></td></tr></table></figure>
-
-<p><strong>3. 学生配置文件(通过association标签把tid给老师的sql语句中当做id)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace&#x3D;&quot;com.bjsxt.mapper.StudentMapper&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;resultMap type&#x3D;&quot;student&quot; id&#x3D;&quot;linahe&quot;&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;id column&#x3D;&quot;id&quot; property&#x3D;&quot;id&quot;&#x2F;&gt;</span><br><span class="line">		&lt;result column&#x3D;&quot;name&quot; property&#x3D;&quot;name&quot;&#x2F;&gt;</span><br><span class="line">		&lt;result column&#x3D;&quot;age&quot; property&#x3D;&quot;age&quot;&#x2F;&gt;</span><br><span class="line">		&lt;result column&#x3D;&quot;tid&quot; property&#x3D;&quot;tid&quot;&#x2F;&gt;</span><br><span class="line">	&lt;association property&#x3D;&quot;teacher&quot; select&#x3D;&quot;com.bjsxt.com.TeacherMapper.selById&quot; column&#x3D;&quot;tid&quot;&gt;&lt;&#x2F;association&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;&#x2F;resultMap&gt;</span><br><span class="line"></span><br><span class="line">	&lt;select id&#x3D;&quot;selAll&quot; resultMap&#x3D;&quot;lianhe&quot;&gt;</span><br><span class="line">		select * from student</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line">	</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>4. 老师配置文件(只写根据id查老师信息的sql语句)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace&#x3D;&quot;com.bjsxt.mapper.TeacherMapper&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;select id&#x3D;&quot;selById&quot; resultType&#x3D;&quot;teacher&quot; parameterType&#x3D;&quot;int&quot;&gt;   &#x2F;&#x2F;只需要写好根据id查老师的sql操作</span><br><span class="line">		select * from teacher where id&#x3D;#&#123;id&#125;</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h2><p><strong>图例分析流程：</strong></p>
-<p><img src="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/fenxi.png" alt></p>
-<p><strong>具体实现过程：</strong></p>
-<pre><code>1. 准备老师和学生类(要有老师类对象)
-2. 准备老师的配置文件(通过id查询结果)
-3. 准备学生的配置文件
-    3.1 先写自己的sql语句 -- resultMap属性连接到resultMap标签的id  -- id标签写学生的主键映射 result标签写学生的其他列映射
-    3.2 一定要用association标签!!!(column属性把学生的tid拿过来 select去掉老师配置文件的sql语句的方法名一定是全路径！！)</code></pre><hr>
-<h1 id="resultMap实现关联集合对象-N-1方式-colloction标签"><a href="#resultMap实现关联集合对象-N-1方式-colloction标签" class="headerlink" title="resultMap实现关联集合对象(N+1方式) colloction标签"></a>resultMap实现关联集合对象(N+1方式) colloction标签</h1><blockquote>
-<p>其实关联 集合对象(老师返回学生的list集合) / 单个对象(学生传老师一个对象) 只是从不同角度来看!!!!!! </p>
-</blockquote>
-<h2 id="具体操作-2"><a href="#具体操作-2" class="headerlink" title="具体操作"></a>具体操作</h2><p><strong>1. teacher实体类(放的就是list集合)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private int id;</span><br><span class="line">private String name;</span><br><span class="line">private List&lt;Student&gt; list;  &#x2F;&#x2F;list集合返回结果</span><br></pre></td></tr></table></figure>
-
-<p><strong>2. student配置文件(只需要写简单的sql语句让老师传过来id当tid用)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace&#x3D;&quot;com.bjsxt.mapper.StudentMapper&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;select id&#x3D;&quot;selByTid&quot; resultType&#x3D;&quot;student&quot; parameterType&#x3D;&quot;int&quot;&gt;</span><br><span class="line">		select * from student where tid&#x3D;#&#123;id&#125;</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line">	</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>3. teacher老师配置文件(通过collection标签将id传过去当tid查)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace&#x3D;&quot;com.bjsxt.mapper.TeacherMapper&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;resultMap type&#x3D;&quot;teacher&quot; id&#x3D;&quot;mymap&quot;&gt;</span><br><span class="line">		&lt;id column&#x3D;&quot;id&quot; property&#x3D;&quot;id&quot;&#x2F;&gt;	</span><br><span class="line">		&lt;result column&#x3D;&quot;name&quot; property&#x3D;&quot;name&quot;&#x2F;&gt;</span><br><span class="line">		&lt;collection property&#x3D;&quot;list&quot; ofType&#x3D;&quot;student&quot; select&#x3D;&quot;com.bjsxt.mapper.StudentMapper.selByTid&quot; column&#x3D;&quot;id&quot;&gt;&lt;&#x2F;collection&gt;</span><br><span class="line">	&lt;&#x2F;resultMap&gt;</span><br><span class="line"></span><br><span class="line">	&lt;select id&#x3D;&quot;selAll&quot; resultMap&#x3D;&quot;mymap&quot;&gt;</span><br><span class="line">		select * from teacher</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line">		</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="结果分析-1"><a href="#结果分析-1" class="headerlink" title="结果分析"></a>结果分析</h2><p><strong>图例分析流程：</strong></p>
-<p><img src="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/fenxier.png" alt></p>
-<p><strong>具体实现过程：</strong></p>
-<pre><code>1. 准备老师类(要有list集合返回学生类信息)和学生类
-2. 准备学生的配置文件(只需要sql语句通过id查所有信息)
-3. 准备老师的配置文件
-    3.1 通过查询的sql语句去找resultMap标签 然后标签去找学生配置文件的方法查处结果(将id传过去当tid用)</code></pre><hr>
-<h1 id="多表resultMap加载集合对象联合查询方式"><a href="#多表resultMap加载集合对象联合查询方式" class="headerlink" title="多表resultMap加载集合对象联合查询方式"></a>多表resultMap加载集合对象联合查询方式</h1><blockquote>
-<p>假设老师1有多个学生(数据库会一下子很多行) – 我们现在让老师1 后面跟学生(减少重复每次都要出现老师1)  </p>
-</blockquote>
-<h2 id="具体操作-3"><a href="#具体操作-3" class="headerlink" title="具体操作"></a>具体操作</h2><p><strong>1. teacher实体类(放的就是list集合)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private int id;</span><br><span class="line">private String name;</span><br><span class="line">private List&lt;Student&gt; list;  &#x2F;&#x2F;list集合返回结果</span><br></pre></td></tr></table></figure>
-
-<p><strong>2. 只在teacher配置文件改</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace&#x3D;&quot;com.bjsxt.mapper.TeacherMapper&quot;&gt;</span><br><span class="line">	&lt;resultMap type&#x3D;&quot;teacher&quot; id&#x3D;&quot;mymap&quot;&gt;</span><br><span class="line">		&lt;id column&#x3D;&quot;id&quot; property&#x3D;&quot;id&quot;&#x2F;&gt;</span><br><span class="line">		&lt;result column&#x3D;&quot;name&quot; property&#x3D;&quot;name&quot;&#x2F;&gt;</span><br><span class="line">		&lt;collection property&#x3D;&quot;list&quot; select&#x3D;&quot;com.bjsxt.mapper.StudentMapper.selByTid&quot; column&#x3D;&quot;id&quot;&gt;&lt;&#x2F;collection&gt;</span><br><span class="line">	&lt;&#x2F;resultMap&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;select id&#x3D;&quot;selAll&quot; resultMap&#x3D;&quot;mymap&quot;&gt;</span><br><span class="line">		select * from teacher</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;resultMap type&#x3D;&quot;teacher&quot; id&#x3D;&quot;mymap1&quot;&gt;</span><br><span class="line">		&lt;id column&#x3D;&quot;tid&quot; property&#x3D;&quot;id&quot;&#x2F;&gt;</span><br><span class="line">		&lt;result column&#x3D;&quot;tname&quot; property&#x3D;&quot;name&quot;&#x2F;&gt;</span><br><span class="line">		&lt;collection property&#x3D;&quot;list&quot; ofType&#x3D;&quot;student&quot; &gt;</span><br><span class="line">			&lt;id column&#x3D;&quot;sid&quot; property&#x3D;&quot;id&quot;&#x2F;&gt;</span><br><span class="line">			&lt;result column&#x3D;&quot;sname&quot; property&#x3D;&quot;name&quot;&#x2F;&gt;</span><br><span class="line">			&lt;result column&#x3D;&quot;age&quot; property&#x3D;&quot;age&quot;&#x2F;&gt;</span><br><span class="line">			&lt;result column&#x3D;&quot;tid&quot; property&#x3D;&quot;tid&quot;&#x2F;&gt;</span><br><span class="line">		&lt;&#x2F;collection&gt;</span><br><span class="line">	&lt;&#x2F;resultMap&gt;</span><br><span class="line"></span><br><span class="line">	&lt;select id&#x3D;&quot;selAll1&quot; resultMap&#x3D;&quot;mymap1&quot;&gt;</span><br><span class="line">		select t.id tid,t.name tname,s.id sid,s.name sname,age,tid from teacher t LEFT JOIN student s on t.id&#x3D;s.tid;</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line">	</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="结果分析-2"><a href="#结果分析-2" class="headerlink" title="结果分析"></a>结果分析</h2><p><strong>图例分析流程：</strong></p>
-<p><img src="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/fenxisan.png" alt></p>
-<p><strong>具体实现过程：</strong></p>
-<pre><code>1. 准备老师类(要有list集合返回学生类信息)和学生类
-2. 准备学生的配置文件(只需要sql语句通过id查所有信息)
-3. 准备老师的配置文件
-    3.1 通过查询的sql语句去找resultMap标签 然后标签去找学生配置文件的方法查处结果(将id传过去当tid用)
-    3.2 因为他返回的结果我需要一个老师对应很多学生 -- 所以我们要再写一个resultMap标签去映射list(一行一行给) --最终通过这个标签返回答案</code></pre><hr>
-<h1 id="AutoMapping加载单个对象-添加反单引号"><a href="#AutoMapping加载单个对象-添加反单引号" class="headerlink" title="AutoMapping加载单个对象     ( 添加反单引号 )"></a>AutoMapping加载单个对象     ( 添加反单引号 )</h1><blockquote>
-<p><strong>使用多表联合查询(起别名!!)</strong></p>
-</blockquote>
-<h2 id="具体操作-4"><a href="#具体操作-4" class="headerlink" title="具体操作"></a>具体操作</h2><p><strong>1. 学生实体类(老师类对象)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> &#x2F;&#x2F;只列举了变量</span><br><span class="line">private int id;</span><br><span class="line">private String name;</span><br><span class="line">private int age;</span><br><span class="line">private int tid;</span><br><span class="line">private Teacher teacher;  &#x2F;&#x2F;老师类的对象!!!!!!</span><br></pre></td></tr></table></figure>
-
-<p><strong>2. teacher配置文件(一个是student)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mapper namespace&#x3D;&quot;com.bjsxt.mapper.TeacherMapper&quot;&gt;</span><br><span class="line">	&lt;select id&#x3D;&quot;selAll&quot; resultType&#x3D;&quot;teacher&quot;&gt;</span><br><span class="line">		select t.id id,t.name name,s.id &#96;list.id&#96;,s.name &#96;list.name&#96;,age &#96;list.age&#96;,tid &#96;list.tid&#96;</span><br><span class="line">		 from teacher t LEFT JOIN student s on t.id&#x3D;s.tid  &#x2F;&#x2F;展示的是list集合输出</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>3. student配置文件(里面通过老师对象(反单引号) teacher.id等传过来用)</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;mapper namespace&#x3D;&quot;com.bjsxt.mapper.StudentMapper&quot;&gt;</span><br><span class="line">	&lt;select id&#x3D;&quot;selAll&quot; resultType&#x3D;&quot;student&quot;&gt;</span><br><span class="line">		select t.id &#96;teacher.id&#96;,t.name &#96;teacher.name&#96;,s.id id,s.name name,age,tid </span><br><span class="line">		from student s LEFT JOIN teacher t on t.id&#x3D;s.tid  &#x2F;&#x2F;里面通过老师对象(反单引号) teacher.id等传过来用)</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
-
-<hr>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/13/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/15/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/13/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/15/">Next &amp;raquo;</a>
     </nav>
   
 </div>

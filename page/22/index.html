@@ -332,6 +332,168 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Bootstrap" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/10/Bootstrap/" class="article-date">
+      <time datetime="2020-02-10T04:23:27.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/10/Bootstrap/">Bootstrap</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、Bootstrap概述"><a href="#一、Bootstrap概述" class="headerlink" title="一、Bootstrap概述"></a>一、Bootstrap概述</h1><p>　　是目前受欢迎的<strong>前端框架(CSS/HTML框架)</strong>，基于HTML、CSS、JAVASCRIPT的比较简单灵活。可以直接去调用类加载器！！！很方便！！！</p>
+<p><strong>参考文档：</strong><br><a href="file:///F:/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/%E4%BB%A3%E7%A0%81/%E8%B5%84%E6%96%99/Bootstrap3.3.4%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/v3.bootcss.com/css/index.htm" title="bootstrap资料">file:///F:/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/%E4%BB%A3%E7%A0%81/%E8%B5%84%E6%96%99/Bootstrap3.3.4%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/v3.bootcss.com/css/index.htm</a></p>
+<p><strong>以后写代码之前一定要引入的文件(head内)：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- 最新版本的 Bootstrap 核心 CSS 文件 --&gt;</span><br><span class="line">		&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;..&#x2F;css&#x2F;bootstrap.css&quot; &#x2F;&gt;</span><br><span class="line">		</span><br><span class="line">&lt;!-先引入JQuery才可以引入Bootstrap文件--&gt;</span><br><span class="line">		&lt;!--&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;..&#x2F;js&#x2F;jquery-1.11.0.js&quot; &gt;&lt;&#x2F;script&gt;--&gt;</span><br><span class="line">		</span><br><span class="line">&lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;..&#x2F;js&#x2F;bootstrap.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--为了保证适当的绘制和触屏缩放，需要在head之内添加viewport元数据标签--&gt;</span><br><span class="line">		&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="二、布局容器-container容器"><a href="#二、布局容器-container容器" class="headerlink" title="二、布局容器(.container容器)"></a>二、布局容器(.container容器)</h1><p><strong>1. <code>.container</code>类—用于固定宽度并且支持响应式布局的容器</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">	代码内容</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. <code>.container-fluid</code>类—用于100%宽度，占据全部视口(vewport)的容器</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">	代码内容</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>完整代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!-- 最新版本的 Bootstrap 核心 CSS 文件 --&gt;</span><br><span class="line">		&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;..&#x2F;css&#x2F;bootstrap.css&quot; &#x2F;&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!--先引入JQuery才可以引入Bootstrap--&gt;</span><br><span class="line">		&lt;!--&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;..&#x2F;js&#x2F;jquery-1.11.0.js&quot; &gt;&lt;&#x2F;script&gt;--&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;..&#x2F;js&#x2F;bootstrap.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!--为了保证适当的绘制和触屏缩放，需要在head之内添加viewport元数据标签--&gt;</span><br><span class="line">		&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1&quot;&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div class&#x3D;&quot;container&quot;&gt;  &lt;!--使用外部引入的文件container类会给输出两边留一定的空白处 让页面更好看点--&gt;</span><br><span class="line">			我们去吃饭吧!我们去吃饭吧!我们去吃饭吧!我们去吃饭吧!我们</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>代码结果如下：</strong></p>
+<p><img src="/2020/02/10/Bootstrap/diyige.png" alt></p>
+<hr>
+<h1 id="三、bootstrap栅格"><a href="#三、bootstrap栅格" class="headerlink" title="三、bootstrap栅格"></a>三、bootstrap栅格</h1><p>　　Bootstrap提供一套<strong>响应式</strong>、<strong>移动设备优先</strong>的流式栅格系统，随着屏幕/视角尺寸的增加，一行会分配(最多12列)。</p>
+<pre><code>适应手机：.col-xs
+适应平板：.col-sm
+适应桌面：.col-md</code></pre><p><strong>主要是分区域：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!-- 最新版本的 Bootstrap 核心 CSS 文件 --&gt;</span><br><span class="line">		&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;..&#x2F;css&#x2F;bootstrap.css&quot; &#x2F;&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!--先引入JQuery才可以引入Bootstrap--&gt;</span><br><span class="line">		&lt;!--&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;..&#x2F;js&#x2F;jquery-1.11.0.js&quot; &gt;&lt;&#x2F;script&gt;--&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;..&#x2F;js&#x2F;bootstrap.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!--为了保证适当的绘制和触屏缩放，需要在head之内添加viewport元数据标签--&gt;</span><br><span class="line">		&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1&quot;&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div class&#x3D;&quot;container&quot;&gt;  &lt;!--使用外部引入的文件container类会给输出两边留一定的空白处 让页面更好看点--&gt;</span><br><span class="line">			&lt;div class&#x3D;&quot;row&quot;&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1 col-sm-2 col-xs-4&quot;&gt;.col-md-1&lt;&#x2F;div&gt;  </span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1 col-sm-2 col-xs-4&quot;&gt;.col-md-1&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1 col-sm-2 col-xs-4&quot;&gt;.col-md-1&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1 col-sm-2&quot;&gt;.col-md-1&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1 col-sm-2&quot;&gt;.col-md-1&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1 col-sm-2&quot;&gt;.col-md-1&lt;&#x2F;div&gt;</span><br><span class="line">							</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1&quot;&gt;.col-md-1&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1&quot;&gt;.col-md-1&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1&quot;&gt;.col-md-1&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1&quot;&gt;.col-md-1&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1&quot;&gt;.col-md-1&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-1&quot;&gt;.col-md-1&lt;&#x2F;div&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">						&lt;div class&#x3D;&quot;row&quot;&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-8&quot;&gt;.col-md-8&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-4&quot;&gt;.col-md-4&lt;&#x2F;div&gt;</span><br><span class="line">						&lt;&#x2F;div&gt;</span><br><span class="line">						&lt;div class&#x3D;&quot;row&quot;&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-4&quot;&gt;.col-md-4&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-4&quot;&gt;.col-md-4&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-4&quot;&gt;.col-md-4&lt;&#x2F;div&gt;</span><br><span class="line">						&lt;&#x2F;div&gt;</span><br><span class="line">						&lt;div class&#x3D;&quot;row&quot;&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-6&quot;&gt;.col-md-6&lt;&#x2F;div&gt;</span><br><span class="line">							&lt;div class&#x3D;&quot;col-md-6&quot;&gt;.col-md-6&lt;&#x2F;div&gt;</span><br><span class="line">						&lt;&#x2F;div&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>页面分布格局：</strong></p>
+<p><img src="/2020/02/10/Bootstrap/zhage.png" alt></p>
+<hr>
+<h1 id="四、表格-class-”table”"><a href="#四、表格-class-”table”" class="headerlink" title="四、表格(class=”table”)"></a>四、表格(class=”table”)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;..&#x2F;css&#x2F;bootstrap.css&quot; &#x2F;&gt;  &#x2F;&#x2F;调用css文件</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body &gt;</span><br><span class="line">		&lt;table class&#x3D;&quot;table&quot;&gt;  &#x2F;&#x2F;只需要给它一个table类</span><br><span class="line">			&lt;tr &gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类ID&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类名称&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类商品&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类描述&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;操作&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;1&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;手机数码&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;华为,小米,尼康&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;黑马数码产品质量最好&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;2&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;成人用品&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;充气的&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;这里面的充气电动硅胶的&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;3&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;电脑办公&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;联想,小米&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;笔记本特卖&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;4&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;馋嘴零食&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;辣条,麻花,黄瓜&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;年货&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;5&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;床上用品&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;床单,被套,四件套&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;都是套子&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">		&lt;&#x2F;table&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用其中的table：</strong></p>
+<p><img src="/2020/02/10/Bootstrap/biaoge.png" alt></p>
+<hr>
+<h1 id="五、bootstrap组件-font文件夹里面"><a href="#五、bootstrap组件-font文件夹里面" class="headerlink" title="五、bootstrap组件(font文件夹里面)"></a>五、bootstrap组件(font文件夹里面)</h1>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">Web前端知识点</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JQ实现商品左右选择" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/" class="article-date">
+      <time datetime="2020-02-09T08:59:57.000Z" itemprop="datePublished">2020-02-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/">JQ实现商品左右选择</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、实现商品左右移动-只需要更改script代码"><a href="#一、实现商品左右移动-只需要更改script代码" class="headerlink" title="一、实现商品左右移动(只需要更改script代码)#"></a>一、实现商品左右移动(只需要更改script代码)#</h1><pre><code>1.主要通过按钮事件加载文件事件
+2.通过append()方法添加
+3.leftSelect option：selected 之前学过用来选择当前选项</code></pre><p><strong>主要代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$(function()&#123;</span><br><span class="line">		$(&quot;#a1&quot;).click(function()&#123; &#x2F;&#x2F;&gt;&gt;这个选项</span><br><span class="line">						</span><br><span class="line">		&#x2F;&#x2F;将被选中项添加到右边</span><br><span class="line">			$(&quot;#rightSelect&quot;).append($(&quot;#leftSelect option:selected&quot;));</span><br><span class="line">									</span><br><span class="line">		&#x2F;&#x2F;将左边所有商品移动到右边</span><br><span class="line">		$(&quot;#a2&quot;).click(function()&#123;</span><br><span class="line">			$(&quot;#rightSelect&quot;).append($(&quot;#leftSelect option&quot;));</span><br><span class="line">								&#125;);</span><br><span class="line">			&#125;);	</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>具体代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;..&#x2F;js&#x2F;jquery-1.11.0.js&quot; &gt;&lt;&#x2F;script&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">				$(function()&#123;</span><br><span class="line">					$(&quot;#a1&quot;).click(function()&#123; &#x2F;&#x2F;&gt;&gt;这个选项</span><br><span class="line">						</span><br><span class="line">						&#x2F;&#x2F;将被选中项添加到右边</span><br><span class="line">						$(&quot;#rightSelect&quot;).append($(&quot;#leftSelect option:selected&quot;));</span><br><span class="line">									</span><br><span class="line">						&#x2F;&#x2F;将左边所有商品移动到右边</span><br><span class="line">					$(&quot;#a2&quot;).click(function()&#123;</span><br><span class="line">						$(&quot;#rightSelect&quot;).append($(&quot;#leftSelect option&quot;));</span><br><span class="line">										&#125;);</span><br><span class="line">					&#125;);	</span><br><span class="line">				&#125;);								</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;			</span><br><span class="line">			&lt;table border&#x3D;&quot;1px&quot; width&#x3D;&quot;400px&quot;&gt;</span><br><span class="line">				&lt;tr&gt;</span><br><span class="line">					&lt;td&gt;分类名称&lt;&#x2F;td&gt;</span><br><span class="line">					&lt;td&gt;&lt;input type&#x3D;&quot;text&quot; value&#x3D;&quot;手机数码&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;&#x2F;tr&gt;</span><br><span class="line">				&lt;tr&gt;</span><br><span class="line">					&lt;td&gt;分类描述&lt;&#x2F;td&gt;</span><br><span class="line">					&lt;td&gt;&lt;input type&#x3D;&quot;text&quot; value&#x3D;&quot;这里面都是手机数码&quot;&#x2F;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;&#x2F;tr&gt;</span><br><span class="line">				&lt;tr&gt;</span><br><span class="line">					&lt;td&gt;分类商品&lt;&#x2F;td&gt;</span><br><span class="line">					&lt;td&gt;</span><br><span class="line">						&lt;!--左边--&gt;</span><br><span class="line">						&lt;div style&#x3D;&quot;float: left;&quot;&gt;</span><br><span class="line">							已有商品&lt;br &#x2F;&gt;</span><br><span class="line">							&lt;select multiple&#x3D;&quot;multiple&quot; id&#x3D;&quot;leftSelect&quot;&gt;</span><br><span class="line">								&lt;option&gt;华为&lt;&#x2F;option&gt;</span><br><span class="line">								&lt;option&gt;小米&lt;&#x2F;option&gt;</span><br><span class="line">								&lt;option&gt;锤子&lt;&#x2F;option&gt;</span><br><span class="line">								&lt;option&gt;oppo&lt;&#x2F;option&gt;</span><br><span class="line">							&lt;&#x2F;select&gt;</span><br><span class="line">							&lt;br &#x2F;&gt;</span><br><span class="line">							&lt;a href&#x3D;&quot;#&quot; id&#x3D;&quot;a1&quot; &gt; &gt;&gt; &lt;&#x2F;a&gt; &lt;br &#x2F;&gt;</span><br><span class="line">							&lt;a href&#x3D;&quot;#&quot; id&#x3D;&quot;a2&quot;&gt; &gt;&gt;&gt; &lt;&#x2F;a&gt;</span><br><span class="line">						&lt;&#x2F;div&gt;</span><br><span class="line">						&lt;!--右边--&gt;</span><br><span class="line">						&lt;div style&#x3D;&quot;float: right;&quot;&gt; </span><br><span class="line">							未有商品&lt;br &#x2F;&gt;</span><br><span class="line">							&lt;select multiple&#x3D;&quot;multiple&quot; id&#x3D;&quot;rightSelect&quot;&gt;</span><br><span class="line">								&lt;option&gt;苹果6&lt;&#x2F;option&gt;</span><br><span class="line">								&lt;option&gt;肾7&lt;&#x2F;option&gt;</span><br><span class="line">								&lt;option&gt;诺基亚&lt;&#x2F;option&gt;</span><br><span class="line">								&lt;option&gt;波导&lt;&#x2F;option&gt;</span><br><span class="line">							&lt;&#x2F;select&gt;</span><br><span class="line">							&lt;br &#x2F;&gt;</span><br><span class="line">							&lt;a href&#x3D;&quot;#&quot;&gt; &lt;&lt; &lt;&#x2F;a&gt; &lt;br &#x2F;&gt;</span><br><span class="line">							&lt;a href&#x3D;&quot;#&quot;&gt; &lt;&lt;&lt; &lt;&#x2F;a&gt;</span><br><span class="line">						&lt;&#x2F;div&gt;</span><br><span class="line">					&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;&#x2F;tr&gt;</span><br><span class="line">				&lt;tr&gt;</span><br><span class="line">					&lt;td colspan&#x3D;&quot;2&quot;&gt;</span><br><span class="line">						&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;提交&quot;&#x2F;&gt;</span><br><span class="line">					&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;&#x2F;tr&gt;</span><br><span class="line">			&lt;&#x2F;table&gt;			</span><br><span class="line">		&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>oppo右移之前：</strong></p>
+<p><img src="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/zhiqian.png" alt></p>
+<p><strong>选择oppo右移之后</strong></p>
+<p><img src="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/zhihou.png" alt></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">Web前端知识点</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JQ实现省市联动" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1075,241 +1237,9 @@ onkeyup事件:按键抬起事件()----onkeyup=&quot;checkUsername&quot;检验</c
 
 
   
-    <article id="post-JS实现表格变色和全选问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/" class="article-date">
-      <time datetime="2020-02-07T06:31:40.000Z" itemprop="datePublished">2020-02-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/">JS实现表格变色和全选问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="三、表格问题"><a href="#三、表格问题" class="headerlink" title="三、表格问题"></a>三、表格问题</h1><ul>
-<li><strong>表格隔行变色：</strong></li>
-</ul>
-<p>　　使用<strong>数组</strong>(row=rows[i])存放<strong>每一行</strong>(tab.rows)然后奇偶数的方式换颜色。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- &lt;!DOCTYPE html&gt; --&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;!--</span><br><span class="line">			1.确定事件：文档加载完成 onload</span><br><span class="line">			2.事件触发函数：init()</span><br><span class="line">			3.函数：操作页面的元素</span><br><span class="line">					要操作表格每一行--动态改变背景颜色</span><br><span class="line">		</span><br><span class="line">		--&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			function init()&#123;</span><br><span class="line">				&#x2F;&#x2F;得到表格</span><br><span class="line">				var tab&#x3D;document.getElementById(&quot;tab&quot;);</span><br><span class="line">				&#x2F;&#x2F;得到表格每一行</span><br><span class="line">				var rows&#x3D;tab.rows;</span><br><span class="line">				&#x2F;&#x2F;奇偶数更改颜色</span><br><span class="line">				for(var i&#x3D;1;i&lt;rows.length;i++)</span><br><span class="line">				&#123;</span><br><span class="line">					var row&#x3D;rows[i];   &#x2F;&#x2F;得到其中的某行</span><br><span class="line">					if(i%2&#x3D;&#x3D;0)</span><br><span class="line">					&#123;</span><br><span class="line">						row.bgColor&#x3D;&quot;red&quot;;</span><br><span class="line">					&#125;</span><br><span class="line">					else</span><br><span class="line">					&#123;</span><br><span class="line">						row.bgColor&#x3D;&quot;blue&quot;;</span><br><span class="line">					&#125;		</span><br><span class="line">				&#125;		</span><br><span class="line">			&#125;	</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body onload&#x3D;&quot;init()&quot;&gt;   &#x2F;&#x2F;onload时间放在body体内</span><br><span class="line">		&lt;table border&#x3D;&quot;1px&quot; width&#x3D;&quot;600px&quot; id&#x3D;&quot;tab&quot;&gt;  给表格一个id名方便得到表格</span><br><span class="line">			</span><br><span class="line">			&lt;tr &gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;   &lt;!--复选框--&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类ID&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类名称&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类商品&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类描述&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;操作&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;!--第一行--&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;  &lt;!--复选框--&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;1&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;手机数码&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;华为,小米,尼康&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;黑马数码产品质量最好&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;!--第二行--&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;  &lt;!--复选框--&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;2&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;日用品&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;洗衣粉&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;这里面的洗衣服很干净的&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;!--第三行--&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;  &lt;!--复选框--&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;3&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;电脑办公&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;联想,小米&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;笔记本特卖&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt; </span><br><span class="line">			</span><br><span class="line">			&lt;!--第四行--&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;  &lt;!--复选框--&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;4&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;馋嘴零食&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;辣条,麻花,黄瓜&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;年货&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;!--第五行--&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; &#x2F;&gt;  &lt;!--复选框--&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;5&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;床上用品&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;床单,被套,四件套&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;都是套子&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">		&lt;&#x2F;table&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>页面成果展示如下：</strong></p>
-<p><img src="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/gehang.png" alt></p>
-<ul>
-<li><p><strong>表格的全选和全不选(在前面的基础上)</strong></p>
-<p>  使用<code>getElementsByTagName()/getElementsByName()</code>获取每个分类项目的当前值存入一个数组<br>  1.<code>var checks=document.getElementsByTagName(&quot;input&quot;);</code>直接是将所有的input选项拿出来(但是不一定所有的input都有单选框)。<br>  2.<code>var checks = document.getElementsByName(&quot;checkone&quot;);</code>可以在要选的input里面加id为checkone，可以获取。</p>
-</li>
-</ul>
-<p><strong>主要代码：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function checkAll()&#123;</span><br><span class="line">					&#x2F;&#x2F;获取当前第一个按钮的状态</span><br><span class="line">					var check1&#x3D;document.getElementById(&quot;check1&quot;);  &#x2F;&#x2F;给第一个input加一个id名为check1</span><br><span class="line">					var checked&#x3D;check1.checked; &#x2F;&#x2F;把第一个值放在一个checked里面存着</span><br><span class="line">					</span><br><span class="line">					&#x2F;&#x2F;获得所有分类项的checkbox</span><br><span class="line">					var checks&#x3D;document.getElementsByTagName(&quot;input&quot;);</span><br><span class="line">					&#x2F;&#x2F;var checks &#x3D; document.getElementsByName(&quot;checkone&quot;);</span><br><span class="line">					</span><br><span class="line">					&#x2F;&#x2F;修改每一个checkbox的状态</span><br><span class="line">					for(var i &#x3D; 0; i &lt; checks.length; i++)</span><br><span class="line">					&#123;</span><br><span class="line">						var checkone &#x3D; checks[i];&#x2F;&#x2F;让之前的每个数取出来</span><br><span class="line">						checkone.checked &#x3D; checked;&#x2F;&#x2F;设置成和第一个一样的值(全选&#x2F;全不选)</span><br><span class="line">					&#125;</span><br><span class="line">				</span><br><span class="line">				&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>以下是完整代码：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- &lt;!DOCTYPE html&gt; --&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;!--</span><br><span class="line">			1.确定事件：文档加载完成 onload</span><br><span class="line">			2.事件触发函数：init()</span><br><span class="line">			3.函数：操作页面的元素</span><br><span class="line">					要操作表格每一行--动态改变背景颜色	</span><br><span class="line">		--&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			function init()&#123;</span><br><span class="line">				&#x2F;&#x2F;得到表格</span><br><span class="line">				var tab&#x3D;document.getElementById(&quot;tab&quot;);</span><br><span class="line">				&#x2F;&#x2F;得到表格每一行</span><br><span class="line">				var rows&#x3D;tab.rows;</span><br><span class="line">				&#x2F;&#x2F;奇偶数更改颜色</span><br><span class="line">				for(var i&#x3D;1;i&lt;rows.length;i++)</span><br><span class="line">				&#123;</span><br><span class="line">					var row&#x3D;rows[i];&#x2F;&#x2F;得到其中的某行</span><br><span class="line">					if(i%2&#x3D;&#x3D;0)</span><br><span class="line">					&#123;</span><br><span class="line">						row.bgColor&#x3D;&quot;red&quot;;</span><br><span class="line">					&#125;</span><br><span class="line">					else</span><br><span class="line">					&#123;</span><br><span class="line">						row.bgColor&#x3D;&quot;blue&quot;;</span><br><span class="line">					&#125;					</span><br><span class="line">				&#125;					</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			&#x2F;*</span><br><span class="line">					全选和全不选步骤分析:</span><br><span class="line">						 1.确定事件: onclick 单击事件</span><br><span class="line">						 2.事件触发函数: checkAll()</span><br><span class="line">						 3.函数要去做一些事情:</span><br><span class="line">								    获得当前第一个checkbox的状态</span><br><span class="line">								 	获得所有分类项的checkbox</span><br><span class="line">								 	修改每一个checkbox的状态	</span><br><span class="line">			*&#x2F;</span><br><span class="line">			</span><br><span class="line">			function checkAll()&#123;</span><br><span class="line">					&#x2F;&#x2F;获取当前第一个按钮的状态</span><br><span class="line">					var check1&#x3D;document.getElementById(&quot;check1&quot;);</span><br><span class="line">					var checked&#x3D;check1.checked;</span><br><span class="line">					</span><br><span class="line">					&#x2F;&#x2F;获得所有分类项的checkbox</span><br><span class="line">					var checks&#x3D;document.getElementsByTagName(&quot;input&quot;);</span><br><span class="line">					&#x2F;&#x2F;var checks &#x3D; document.getElementsByName(&quot;checkone&quot;);</span><br><span class="line">					&#x2F;&#x2F;测试是不是有六个：alert(checks.length);</span><br><span class="line">					for(var i &#x3D; 0; i &lt; checks.length; i++)</span><br><span class="line">					&#123;</span><br><span class="line">					&#x2F;&#x2F;修改每一个checkbox的状态</span><br><span class="line">						var checkone &#x3D; checks[i];</span><br><span class="line">						checkone.checked &#x3D; checked;</span><br><span class="line">					&#125;</span><br><span class="line">				</span><br><span class="line">				&#125;</span><br><span class="line">			</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body onload&#x3D;&quot;init()&quot;&gt;</span><br><span class="line">		&lt;table border&#x3D;&quot;1px&quot; width&#x3D;&quot;600px&quot; id&#x3D;&quot;tab&quot;&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;tr &gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; onclick&#x3D;&quot;checkAll()&quot; id&#x3D;&quot;check1&quot; &gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类ID&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类名称&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类商品&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;分类描述&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;操作&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;!--第一行--&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;checkone&quot; &gt;  &lt;!--复选框--&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;1&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;手机数码&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;华为,小米,尼康&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;黑马数码产品质量最好&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;!--第二行--&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;checkone&quot;&gt;  &lt;!--复选框--&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;2&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;日用品&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;洗衣粉&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;这里面的洗衣服很干净的&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;!--第三行--&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;checkone&quot;&gt;  &lt;!--复选框--&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;3&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;电脑办公&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;联想,小米&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;笔记本特卖&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt; </span><br><span class="line">			</span><br><span class="line">			&lt;!--第四行--&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot;  name&#x3D;&quot;checkone&quot;&gt;  &lt;!--复选框--&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;4&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;馋嘴零食&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;辣条,麻花,黄瓜&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;年货&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;!--第五行--&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;</span><br><span class="line">					&lt;input type&#x3D;&quot;checkbox&quot;  name&#x3D;&quot;checkone&quot;&gt;  &lt;!--复选框--&gt;</span><br><span class="line">				&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;5&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;床上用品&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;床单,被套,四件套&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;都是套子&lt;&#x2F;td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a href&#x3D;&quot;#&quot;&gt;修改&lt;&#x2F;a&gt;|&lt;a href&#x3D;&quot;#&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">			&lt;&#x2F;tr&gt;</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">		&lt;&#x2F;table&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>页面成果展示如下：</strong></p>
-<p><img src="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/quanxuan.png" alt></p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">Web前端知识点</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS实现DOM操作（关于select标签的下拉省市联动）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0DOM%E6%93%8D%E4%BD%9C%EF%BC%88%E5%85%B3%E4%BA%8Eselect%E6%A0%87%E7%AD%BE%E7%9A%84%E4%B8%8B%E6%8B%89%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8%EF%BC%89/" class="article-date">
-      <time datetime="2020-02-07T06:30:58.000Z" itemprop="datePublished">2020-02-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0DOM%E6%93%8D%E4%BD%9C%EF%BC%88%E5%85%B3%E4%BA%8Eselect%E6%A0%87%E7%AD%BE%E7%9A%84%E4%B8%8B%E6%8B%89%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8%EF%BC%89/">JS实现DOM操作（关于select标签的下拉省市联动）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="一、DOM介绍"><a href="#一、DOM介绍" class="headerlink" title="一、DOM介绍"></a>一、DOM介绍</h1><ul>
-<li><p><strong>DOM(增删查改)</strong>：DOcument Object Model–控制我们的文档(页面显示的部分) </p>
-<p>  <strong>DOM节点细节展示：</strong></p>
-<p>  <img src="/2020/02/07/JS%E5%AE%9E%E7%8E%B0DOM%E6%93%8D%E4%BD%9C%EF%BC%88%E5%85%B3%E4%BA%8Eselect%E6%A0%87%E7%AD%BE%E7%9A%84%E4%B8%8B%E6%8B%89%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8%EF%BC%89/domzhanshi.png" alt></p>
-</li>
-</ul>
-<ul>
-<li><p><strong>DOM关于不断添加p标签的例子</strong>：</p>
-<p>  1.创建一个p标签—createElement(“p”);<br>  2.创建一个文本节点—document.createTextNode(“里面写要添加什么”);<br>  3.然后将两者连接起来—p.appendChild(textNode)<br>  4.将前两个连接的节点连接到div标签内—div.appendChild(p)</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			&#x2F;*动态添加*&#x2F;</span><br><span class="line">			function dianji()</span><br><span class="line">			&#123;</span><br><span class="line">				var div&#x3D;document.getElementById(&quot;div1&quot;); &#x2F;&#x2F;获取当前div标签</span><br><span class="line">				</span><br><span class="line">				var p&#x3D;document.createElement(&quot;p&quot;);&#x2F;&#x2F;创建了一个 &lt;P&gt;节点</span><br><span class="line">				var textNode&#x3D;document.createTextNode(&quot;文本内容&quot;); &#x2F;&#x2F;创建了一个 文本节点</span><br><span class="line">				p.appendChild(textNode);&#x2F;&#x2F;将p和文本节点关联起来</span><br><span class="line">				div.appendChild(p);&#x2F;&#x2F;将p添加到目标div中</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">					</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;点击&quot; onclick&#x3D;&quot;dianji()&quot;&gt;</span><br><span class="line">		&lt;!--动态的向div添加节点--&gt;</span><br><span class="line">		&lt;div id&#x3D;&quot;div1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>结果展示如下：</strong></p>
-<p><img src="/2020/02/07/JS%E5%AE%9E%E7%8E%B0DOM%E6%93%8D%E4%BD%9C%EF%BC%88%E5%85%B3%E4%BA%8Eselect%E6%A0%87%E7%AD%BE%E7%9A%84%E4%B8%8B%E6%8B%89%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8%EF%BC%89/domcaozuo.png" alt></p>
-<hr>
-<h1 id="二、省市联动-主要使用DOM创建节点知识点"><a href="#二、省市联动-主要使用DOM创建节点知识点" class="headerlink" title="二、省市联动(主要使用DOM创建节点知识点)"></a>二、省市联动(主要使用DOM创建节点知识点)</h1><pre><code>省市联动：将select标签选择陕西省时候--后面的选择要弹出陕西省的市。</code></pre><p>有个关键点(为了防止选完省之后清除掉能够选其他的省)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">	&#x2F;&#x2F;创建option节点</span><br><span class="line">		var option1&#x3D;document.createElement(&quot;option&quot;);</span><br><span class="line">					</span><br><span class="line">	&#x2F;&#x2F;创建城市文本节点</span><br><span class="line">		var textNode&#x3D;document.createTextNode(cityText);</span><br><span class="line">				</span><br><span class="line">	&#x2F;&#x2F;将两个节点关联起来</span><br><span class="line">		option1.appendChild(textNode);</span><br><span class="line">					</span><br><span class="line">	&#x2F;&#x2F;添加到城市的select中</span><br><span class="line">	</span><br><span class="line">		var tian&#x3D; document.getElementById(&quot;city&quot;);  &#x2F;&#x2F;通过id把城市的select标签找到</span><br><span class="line">		tian.appendChild(option1);  &#x2F;&#x2F;把之前两个节点连接好的东西连接起来</span><br><span class="line">		tian.options.length&#x3D;0; &#x2F;&#x2F;每次选完省之后清空</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line">- **总结:**</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	创建标签节点：createElement(&quot;标签名&quot;)</span><br><span class="line">	创建标签内文字节点：createTextNode(内容)</span><br><span class="line">	两个节点关联：标签节点.appendChild(文字节点)</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">**具体代码实现：**</span><br></pre></td></tr></table></figure>
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <script>    
-        //先准备好每个市
-            var  provinces = [
-                ["深圳市","东莞市","惠州市","广州市"],
-                ["长沙市","岳阳市","株洲市","湘潭市"],
-                ["厦门市","福州市","漳州市","泉州市"],
-                ];                        
-            /*
-              1.确定事件：
-              2.函数selectProvince()
-              3.函数里：
-                        得到当前操作元素
-                        得到当前选中的那一个省份
-                        从数组中选中对于的城市信息
-
-<pre><code>                    动态创建城市元素节点
-                    添加到城市的select中
-         */                    
-
-        function selectProvince()
-        {
-            //得到当前操作元素
-            var province=document.getElementById(&quot;province&quot;);
-
-            //得到当前选中的省份
-            var value=province.value;
-
-            //从数组中选中对于的城市信息
-            var cities=provinces[value];
-
-            var tian= document.getElementById(&quot;city&quot;);//为了方便将tian提到for外面
-            tian.options.length=0; //每次选完省之后清空
-
-
-            for (var i=0; i &lt; cities.length; i++) 
-            {
-                var cityText=cities[i];
-                //动态创建城市元素节点 &lt;option&gt;东莞市&lt;/option&gt;
-
-                //创建option节点
-                var option1=document.createElement(&quot;option&quot;);
-
-                //创建城市文本节点
-                var textNode=document.createTextNode(cityText);
-
-                //将两个节点关联起来
-                option1.appendChild(textNode);
-
-                //添加到城市的select中
-                tian.appendChild(option1);
-            }        
-        }        
-    &lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-    &lt;!--选择省份--&gt;
-    &lt;select onchange=&quot;selectProvince()&quot; id=&quot;province&quot;&gt;
-            &lt;option value=&quot;-1&quot;&gt;---选择省份&lt;/option&gt;
-            &lt;option value=&quot;0&quot;&gt;广东省&lt;/option&gt;
-            &lt;option value=&quot;1&quot;&gt;湖南省&lt;/option&gt;
-            &lt;option value=&quot;2&quot;&gt;福建省&lt;/option&gt;
-    &lt;/select&gt;        
-    &lt;!--选择城市--&gt;
-        &lt;select id=&quot;city&quot;&gt;&lt;/select&gt;  //添加一个id为了方便寻找
-&lt;/body&gt;</code></pre></html>
-
-<p>```</p>
-<p><strong>代码结果如下：</strong></p>
-<p><img src="jieguo.png" alt=""></p>
-</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
-</head></html>
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">Web前端知识点</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/21/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/23/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/21/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/23/">Next &amp;raquo;</a>
     </nav>
   
 </div>
