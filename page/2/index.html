@@ -599,7 +599,8 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071408366.png" alt="image-20240321092839447"></p>
 </li>
 </ul>
-<h1 id="7-RabbitMQ使用总结"><a href="#7-RabbitMQ使用总结" class="headerlink" title="==7.RabbitMQ使用总结=="></a>==7.RabbitMQ使用总结==</h1><h2 id="7-1-maven引入maven坐标"><a href="#7-1-maven引入maven坐标" class="headerlink" title="7.1 maven引入maven坐标"></a>7.1 maven引入maven坐标</h2><p>在生产者和消费者的pom.xml文件中配置：</p>
+<h1 id="7-RabbitMQ使用总结-【直接看这里写代码】"><a href="#7-RabbitMQ使用总结-【直接看这里写代码】" class="headerlink" title="==7.RabbitMQ使用总结==【直接看这里写代码】"></a>==7.RabbitMQ使用总结==【直接看这里写代码】</h1><p>==可以参考&lt;RabbitMQ-黑马商城为例&gt;这篇文章，有详细的操作介绍和步骤==</p>
+<h2 id="7-1-maven引入maven坐标"><a href="#7-1-maven引入maven坐标" class="headerlink" title="7.1 maven引入maven坐标"></a>7.1 maven引入maven坐标</h2><p>在生产者和消费者的pom.xml文件中配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--消息发送--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-amqp&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="7-2-子工程配置RabbitMQ信息"><a href="#7-2-子工程配置RabbitMQ信息" class="headerlink" title="7.2 子工程配置RabbitMQ信息"></a>7.2 子工程配置RabbitMQ信息</h2><p>在生产者和消费者的application.yml文件中配置：</p>
@@ -968,7 +969,8 @@
 <h3 id="11-2-4-发送延迟消息"><a href="#11-2-4-发送延迟消息" class="headerlink" title="11.2.4 发送延迟消息"></a>11.2.4 发送延迟消息</h3><p>发送消息时：只需要通过设定x-delay属性设定延迟时间：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404071409934.png" alt="image-20240402135204953"></p>
 <p>延迟消息插件内部会维护一个本地数据库表，同时使用Elang Timers功能实现计时。如果消息的延迟时间设置较长，可能会导致堆积的延迟消息非常多，会带来较大的CPU开销，同时延迟消息的时间会存在误差。<br>因此，<strong>不建议设置延迟时间过长的延迟消息</strong>。</p>
-<h1 id="12-实际操作-日后补充"><a href="#12-实际操作-日后补充" class="headerlink" title="12. 实际操作(日后补充)"></a>12. 实际操作(日后补充)</h1>
+<h1 id="12-实际操作-日后补充"><a href="#12-实际操作-日后补充" class="headerlink" title="12. 实际操作(日后补充)"></a>12. 实际操作(日后补充)</h1><p>==可以参考&lt;RabbitMQ-黑马商城为例&gt;这篇文章，有详细的操作介绍和步骤==</p>
+
       
       
     </div>

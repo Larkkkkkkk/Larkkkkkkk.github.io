@@ -467,10 +467,10 @@
 <h2 id="3-1-pom-xml导入依赖"><a href="#3-1-pom-xml导入依赖" class="headerlink" title="3.1 pom.xml导入依赖"></a>3.1 pom.xml导入依赖</h2><p>在生产者和消费者的pom.xml文件中配置：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--消息发送--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="3-2-yml配置RabbitMQ"><a href="#3-2-yml配置RabbitMQ" class="headerlink" title="3.2 yml配置RabbitMQ"></a>3.2 yml配置RabbitMQ</h2><h3 id="3-2-1-简单配置"><a href="#3-2-1-简单配置" class="headerlink" title="3.2.1 简单配置"></a>3.2.1 简单配置</h3><p>在生产者和消费者的application.yml文件中配置：</p>
+<h2 id="3-2-yml配置RabbitMQ信息"><a href="#3-2-yml配置RabbitMQ信息" class="headerlink" title="3.2 yml配置RabbitMQ信息"></a>3.2 yml配置RabbitMQ信息</h2><h3 id="3-2-1-简单配置"><a href="#3-2-1-简单配置" class="headerlink" title="3.2.1 简单配置"></a>3.2.1 简单配置</h3><p>在生产者和消费者的application.yml文件中配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  rabbitmq:</span><br><span class="line">    host: 192.168.92.129 # 你的虚拟机IP</span><br><span class="line">    port: 5672 # 端口</span><br><span class="line">    virtual-host: &#x2F;hmall2 # 虚拟主机</span><br><span class="line">    username: hmall # 用户名</span><br><span class="line">    password: 123456 # 密码</span><br><span class="line">    </span><br><span class="line">&#x2F;&#x2F;消费者和生产者会在对应位置添加配置 【例如：生产者消费者的确认机制，重试机制等】</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-2-2-统一配置管理"><a href="#3-2-2-统一配置管理" class="headerlink" title="3.2.2 统一配置管理"></a>3.2.2 统一配置管理</h3><ul>
+<h3 id="3-2-2-nacos统一配置管理"><a href="#3-2-2-nacos统一配置管理" class="headerlink" title="3.2.2 nacos统一配置管理"></a>3.2.2 nacos统一配置管理</h3><ul>
 <li>将rabbitmq配置放在nacos平台：【如果使用统一配置管理，记得导入对应nacos统一配置的config依赖和读取bootstrap.yml文件依赖】</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406230027202.png" alt="image-20240623002711143"></p>
@@ -479,7 +479,7 @@
 </ul>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406222242743.png" alt="image-20240622224211688" style="zoom:50%;">
 
-<h2 id="3-3-支付服务–发送消息"><a href="#3-3-支付服务–发送消息" class="headerlink" title="3.3 支付服务–发送消息"></a>3.3 支付服务–发送消息</h2><h3 id="3-3-1-修改为RabbitMQ异步调用"><a href="#3-3-1-修改为RabbitMQ异步调用" class="headerlink" title="3.3.1 修改为RabbitMQ异步调用"></a>3.3.1 修改为RabbitMQ异步调用</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406222302954.png" alt="image-20240622230216876"></p>
+<h2 id="3-3-支付服务–发送消息"><a href="#3-3-支付服务–发送消息" class="headerlink" title="3.3 支付服务–发送消息"></a>3.3 支付服务–发送消息</h2><h3 id="3-3-1-修改原来业务"><a href="#3-3-1-修改原来业务" class="headerlink" title="3.3.1 修改原来业务"></a>3.3.1 修改原来业务</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406222302954.png" alt="image-20240622230216876"></p>
 <h3 id="3-3-2-配置Jackson消息转换器"><a href="#3-3-2-配置Jackson消息转换器" class="headerlink" title="3.3.2 配置Jackson消息转换器"></a>3.3.2 配置Jackson消息转换器</h3><ul>
 <li>导入依赖：</li>
 </ul>
@@ -494,9 +494,12 @@
 </ul>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406222320694.png" alt="image-20240622232005648" style="zoom: 67%;">
 
+<ul>
+<li>然后在生产者和消费者启动类添加bean注入：</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406231250160.png" alt="image-20240623124959823" style="zoom:67%;">
 
-
-<h2 id="3-4-交易服务–接受消息"><a href="#3-4-交易服务–接受消息" class="headerlink" title="3.4 交易服务–接受消息"></a>3.4 交易服务–接受消息</h2><p>在trade-service服务中定义一个消息监听类：</p>
+<h2 id="3-4-交易服务–接受消息"><a href="#3-4-交易服务–接受消息" class="headerlink" title="3.4 交易服务–接受消息"></a>3.4 交易服务–接受消息</h2><p>在trade-service服务中定义一个消息监听类，方法外用注解标注队列，交换机和路由key，方法内写之前调用的方法：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406222334214.png" alt="image-20240622233402122"></p>
 <h2 id="3-5-测试"><a href="#3-5-测试" class="headerlink" title="3.5 测试"></a>3.5 测试</h2><h3 id="3-5-1-重启两个服务"><a href="#3-5-1-重启两个服务" class="headerlink" title="3.5.1 重启两个服务"></a>3.5.1 重启两个服务</h3><p>可以通过hmall用户的hmall虚拟主机看到队列：</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406230037080.png" alt="image-20240623003731861" style="zoom: 50%;">
@@ -505,6 +508,11 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406230038295.png" alt="image-20240623003857226"></p>
 <h3 id="3-5-2-前端下单"><a href="#3-5-2-前端下单" class="headerlink" title="3.5.2 前端下单"></a>3.5.2 前端下单</h3><p>前端下单然后支付成功之后，查看数据库信息变化了，并且有一条消息进入到mq之中。</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406230042563.png" alt="image-20240623004203477"></p>
+<h1 id="4-更改清除购物车需求"><a href="#4-更改清除购物车需求" class="headerlink" title="4.更改清除购物车需求"></a>4.更改清除购物车需求</h1><p>==这个需求参考3步骤做的，以下只介绍生产者和消费者部分代码修改==</p>
+<h2 id="4-1-订单服务–发送消息"><a href="#4-1-订单服务–发送消息" class="headerlink" title="4.1 订单服务–发送消息"></a>4.1 订单服务–发送消息</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406231355009.png" alt="image-20240623135513712"></p>
+<h2 id="4-2-购物车服务–接收消息"><a href="#4-2-购物车服务–接收消息" class="headerlink" title="4.2 购物车服务–接收消息"></a>4.2 购物车服务–接收消息</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406231355460.png" alt="image-20240623135542378"></p>
+<h1 id="5-改造总结"><a href="#5-改造总结" class="headerlink" title="5.改造总结"></a>5.改造总结</h1><p>原来的设计：我在方法位置直接调用tradeClient的方法<br>现在的设计：①生产者只需要传递原来的参数和声明交换机名和key路由；②消费者需要声明交换机名，key路由和队列名，在方法里面直接调用底层方法(serviceimpl层方法)，就不用像openFeign方式。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406231257241.png" alt="image-20240623125707127"></p>
 
       
       
