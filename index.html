@@ -432,15 +432,38 @@
 <li>坎特[tk新项目使用]</li>
 </ul>
 <h1 id="3-Jenkins-老头"><a href="#3-Jenkins-老头" class="headerlink" title="3.Jenkins(老头)"></a>3.Jenkins(老头)</h1><p>Jenkins是一个开源的实现持续集成的软件工具：<a href="https://www.jenkins.io/zh/" target="_blank" rel="noopener">Jenkins</a></p>
-<p>==<strong>原理图</strong>：==</p>
+<p>==<strong>原理图</strong>：每当我们push代码时候就触发项目完成自动编译和打包==</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png" alt="image-20240812101022218" style="zoom:150%;">
 
-<p>项目已经基于Jenkins实现持续集成；每当我们push代码时候就触发项目完成自动编译和打包。</p>
-<p>如果需要运行某个微服务时，只需要以下两步：</p>
+
+
+
+
+<h1 id="4-项目部署"><a href="#4-项目部署" class="headerlink" title="4.项目部署"></a>4.项目部署</h1><p>微服务部署比较麻烦，所以企业中都会采用持续集成的方式，快捷实现开发、部署一条龙服务。</p>
+<p>为了模拟真实环境，我们在虚拟机中已经提供了一套持续集成的开发环境，代码一旦自测完成，push到Git私服后即可自动编译部署。</p>
+<p>==<strong>原理图</strong>：每当我们push代码时候就触发项目完成自动编译和打包==</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png" alt="image-20240812101022218" style="zoom:150%;">
+
+
+
+
+
+<p>而开发我们负责的微服务时，则需要在本地启动运行部分微服务。</p>
+<h2 id="4-1-虚拟机部署"><a href="#4-1-虚拟机部署" class="headerlink" title="4.1 虚拟机部署"></a>4.1 虚拟机部署</h2><h2 id="4-2-本地部署"><a href="#4-2-本地部署" class="headerlink" title="4.2 本地部署"></a>4.2 本地部署</h2><p>如果需要运行某个微服务时，只需要以下两步：</p>
 <ul>
 <li>第一步：访问Jenkins控制台</li>
 <li>第二步：点击对应微服务后面的绿色运行按钮</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122119180.png" alt="image-20240812211957065"></p>
+<p>构建过程中，可以在页面左侧看到构建进度，如果没有说明构建已经结束了（你的机器速度太快了！）：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122120448.png" alt="image-20240812212051332" style="zoom:67%;">
+
+
+
+
+
+
+
 
       
       

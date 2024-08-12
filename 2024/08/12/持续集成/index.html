@@ -13,8 +13,11 @@
 <meta property="og:description" content="1.项目部署 项目打成jar包 Docker部署(项目打成jar包 —&gt;docker镜像文件—&gt;docker容器) K8S  2.持续集成CI持续集成是一种软件开发实践，即团队开发成员经常集成他们的工作，通常每个成员每天至少集成一次，就意味着每天有多次集成。每次集成都通过自动化的构建(包括编译，发布，自动化测试)来验证，从而尽早发现集成错误。 2.1 优点 1.自动构建，发布，测试 2">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122119180.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122120448.png">
 <meta property="article:published_time" content="2024-08-12T01:43:11.000Z">
-<meta property="article:modified_time" content="2024-08-12T02:14:04.061Z">
+<meta property="article:modified_time" content="2024-08-12T13:31:23.294Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -387,15 +390,38 @@
 <li>坎特[tk新项目使用]</li>
 </ul>
 <h1 id="3-Jenkins-老头"><a href="#3-Jenkins-老头" class="headerlink" title="3.Jenkins(老头)"></a>3.Jenkins(老头)</h1><p>Jenkins是一个开源的实现持续集成的软件工具：<a href="https://www.jenkins.io/zh/" target="_blank" rel="noopener">Jenkins</a></p>
-<p>==<strong>原理图</strong>：==</p>
+<p>==<strong>原理图</strong>：每当我们push代码时候就触发项目完成自动编译和打包==</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png" alt="image-20240812101022218" style="zoom:150%;">
 
-<p>项目已经基于Jenkins实现持续集成；每当我们push代码时候就触发项目完成自动编译和打包。</p>
-<p>如果需要运行某个微服务时，只需要以下两步：</p>
+
+
+
+
+<h1 id="4-项目部署"><a href="#4-项目部署" class="headerlink" title="4.项目部署"></a>4.项目部署</h1><p>微服务部署比较麻烦，所以企业中都会采用持续集成的方式，快捷实现开发、部署一条龙服务。</p>
+<p>为了模拟真实环境，我们在虚拟机中已经提供了一套持续集成的开发环境，代码一旦自测完成，push到Git私服后即可自动编译部署。</p>
+<p>==<strong>原理图</strong>：每当我们push代码时候就触发项目完成自动编译和打包==</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png" alt="image-20240812101022218" style="zoom:150%;">
+
+
+
+
+
+<p>而开发我们负责的微服务时，则需要在本地启动运行部分微服务。</p>
+<h2 id="4-1-虚拟机部署"><a href="#4-1-虚拟机部署" class="headerlink" title="4.1 虚拟机部署"></a>4.1 虚拟机部署</h2><h2 id="4-2-本地部署"><a href="#4-2-本地部署" class="headerlink" title="4.2 本地部署"></a>4.2 本地部署</h2><p>如果需要运行某个微服务时，只需要以下两步：</p>
 <ul>
 <li>第一步：访问Jenkins控制台</li>
 <li>第二步：点击对应微服务后面的绿色运行按钮</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122119180.png" alt="image-20240812211957065"></p>
+<p>构建过程中，可以在页面左侧看到构建进度，如果没有说明构建已经结束了（你的机器速度太快了！）：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122120448.png" alt="image-20240812212051332" style="zoom:67%;">
+
+
+
+
+
+
+
 
       
       
@@ -454,7 +480,7 @@
         <p><span>本文标题:</span><a href="/2024/08/12/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年08月12日 - 09时43分</p>
-        <p><span>最后更新:</span>2024年08月12日 - 10时14分</p>
+        <p><span>最后更新:</span>2024年08月12日 - 21时31分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/08/12/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" title="持续集成">https://larkkkkkkk.github.io/2024/08/12/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/08/12/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -492,7 +518,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-项目部署"><span class="toc-number">1.</span> <span class="toc-text">1.项目部署</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-持续集成CI"><span class="toc-number">2.</span> <span class="toc-text">2.持续集成CI</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-优点"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-分类"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Jenkins-老头"><span class="toc-number">3.</span> <span class="toc-text">3.Jenkins(老头)</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-项目部署"><span class="toc-number">1.</span> <span class="toc-text">1.项目部署</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-持续集成CI"><span class="toc-number">2.</span> <span class="toc-text">2.持续集成CI</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-优点"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-分类"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Jenkins-老头"><span class="toc-number">3.</span> <span class="toc-text">3.Jenkins(老头)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-项目部署"><span class="toc-number">4.</span> <span class="toc-text">4.项目部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-虚拟机部署"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 虚拟机部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-本地部署"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 本地部署</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
