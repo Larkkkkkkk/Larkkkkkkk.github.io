@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://larkkkkkkk.github.io/"/>
-  <updated>2024-08-12T04:28:31.911Z</updated>
+  <updated>2024-08-13T13:34:38.738Z</updated>
   <id>https://larkkkkkkk.github.io/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="https://larkkkkkkk.github.io/2024/08/12/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82/"/>
     <id>https://larkkkkkkk.github.io/2024/08/12/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82/</id>
     <published>2024-08-12T02:14:44.000Z</published>
-    <updated>2024-08-12T04:28:31.911Z</updated>
+    <updated>2024-08-13T13:34:38.738Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="1-本地部署"><a href="#1-本地部署" class="headerlink" title="1.本地部署"></a>1.本地部署</h1><h1 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="1-本地部署"><a href="#1-本地部署" class="headerlink" title="1.本地部署"></a>1.本地部署</h1><h1 id="我负责的业务"><a href="#我负责的业务" class="headerlink" title="==我负责的业务=="></a>==我负责的业务==</h1><h1 id="1-我的课表"><a href="#1-我的课表" class="headerlink" title="1.我的课表"></a>1.我的课表</h1><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408132134374.png" alt="image-20240813213435263"></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;1-本地部署&quot;&gt;&lt;a href=&quot;#1-本地部署&quot; class=&quot;headerlink&quot; title=&quot;1.本地部署&quot;&gt;&lt;/a&gt;1.本地部署&lt;/h1&gt;&lt;h1 id=&quot;2&quot;&gt;&lt;a href=&quot;#2&quot; class=&quot;headerlink&quot; title=&quot;2.&quot;&gt;&lt;/a
+        &lt;h1 id=&quot;1-本地部署&quot;&gt;&lt;a href=&quot;#1-本地部署&quot; class=&quot;headerlink&quot; title=&quot;1.本地部署&quot;&gt;&lt;/a&gt;1.本地部署&lt;/h1&gt;&lt;h1 id=&quot;我负责的业务&quot;&gt;&lt;a href=&quot;#我负责的业务&quot; class=&quot;headerlink&quot; titl
       
     
     </summary>
@@ -45,9 +45,9 @@
     <link href="https://larkkkkkkk.github.io/2024/08/12/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
     <id>https://larkkkkkkk.github.io/2024/08/12/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</id>
     <published>2024-08-12T01:43:11.000Z</published>
-    <updated>2024-08-12T13:31:23.294Z</updated>
+    <updated>2024-08-13T11:18:29.537Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="1-项目部署"><a href="#1-项目部署" class="headerlink" title="1.项目部署"></a>1.项目部署</h1><ul><li>项目打成jar包</li><li>Docker部署(项目打成jar包 —&gt;docker镜像文件—&gt;docker容器)</li><li>K8S</li></ul><h1 id="2-持续集成CI"><a href="#2-持续集成CI" class="headerlink" title="2.持续集成CI"></a>2.持续集成CI</h1><p>持续集成是一种<strong>软件开发实践</strong>，即团队开发成员经常集成他们的工作，通常每个成员每天至少集成一次，就意味着每天有多次集成。每次集成都通过自动化的构建(包括编译，发布，自动化测试)来验证，从而尽早发现集成错误。</p><h2 id="2-1-优点"><a href="#2-1-优点" class="headerlink" title="2.1 优点"></a>2.1 优点</h2><ul><li>1.自动构建，发布，测试</li><li>2.降低风险</li></ul><h2 id="2-2-分类"><a href="#2-2-分类" class="headerlink" title="2.2 分类"></a>2.2 分类</h2><ul><li>Jenkins[tk旧项目使用]</li><li>坎特[tk新项目使用]</li></ul><h1 id="3-Jenkins-老头"><a href="#3-Jenkins-老头" class="headerlink" title="3.Jenkins(老头)"></a>3.Jenkins(老头)</h1><p>Jenkins是一个开源的实现持续集成的软件工具：<a href="https://www.jenkins.io/zh/" target="_blank" rel="noopener">Jenkins</a></p><p>==<strong>原理图</strong>：每当我们push代码时候就触发项目完成自动编译和打包==</p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png" alt="image-20240812101022218" style="zoom:150%;"><h1 id="4-项目部署"><a href="#4-项目部署" class="headerlink" title="4.项目部署"></a>4.项目部署</h1><p>微服务部署比较麻烦，所以企业中都会采用持续集成的方式，快捷实现开发、部署一条龙服务。</p><p>为了模拟真实环境，我们在虚拟机中已经提供了一套持续集成的开发环境，代码一旦自测完成，push到Git私服后即可自动编译部署。</p><p>==<strong>原理图</strong>：每当我们push代码时候就触发项目完成自动编译和打包==</p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png" alt="image-20240812101022218" style="zoom:150%;"><p>而开发我们负责的微服务时，则需要在本地启动运行部分微服务。</p><h2 id="4-1-虚拟机部署"><a href="#4-1-虚拟机部署" class="headerlink" title="4.1 虚拟机部署"></a>4.1 虚拟机部署</h2><h2 id="4-2-本地部署"><a href="#4-2-本地部署" class="headerlink" title="4.2 本地部署"></a>4.2 本地部署</h2><p>如果需要运行某个微服务时，只需要以下两步：</p><ul><li>第一步：访问Jenkins控制台</li><li>第二步：点击对应微服务后面的绿色运行按钮</li></ul><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122119180.png" alt="image-20240812211957065"></p><p>构建过程中，可以在页面左侧看到构建进度，如果没有说明构建已经结束了（你的机器速度太快了！）：</p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122120448.png" alt="image-20240812212051332" style="zoom:67%;">]]></content>
+    <content type="html"><![CDATA[<h1 id="1-项目部署"><a href="#1-项目部署" class="headerlink" title="1.项目部署"></a>1.项目部署</h1><ul><li>项目打成jar包</li><li>Docker部署(项目打成jar包 —&gt;docker镜像文件—&gt;docker容器)</li><li>K8S</li></ul><h1 id="2-持续集成CI"><a href="#2-持续集成CI" class="headerlink" title="2.持续集成CI"></a>2.持续集成CI</h1><p>持续集成是一种<strong>软件开发实践</strong>，即团队开发成员经常集成他们的工作，通常每个成员每天至少集成一次，就意味着每天有多次集成。每次集成都通过自动化的构建(包括编译，发布，自动化测试)来验证，从而尽早发现集成错误。</p><h2 id="2-1-优点"><a href="#2-1-优点" class="headerlink" title="2.1 优点"></a>2.1 优点</h2><ul><li>1.自动构建，发布，测试</li><li>2.降低风险</li></ul><h2 id="2-2-分类"><a href="#2-2-分类" class="headerlink" title="2.2 分类"></a>2.2 分类</h2><ul><li>Jenkins[tk旧项目使用]</li><li>坎特[tk新项目使用]</li></ul><h1 id="3-Jenkins-老头"><a href="#3-Jenkins-老头" class="headerlink" title="3.Jenkins(老头)"></a>3.Jenkins(老头)</h1><p>Jenkins是一个开源的实现持续集成的软件工具：<a href="https://www.jenkins.io/zh/" target="_blank" rel="noopener">Jenkins</a></p><p>==<strong>原理图</strong>：每当我们push代码时候就触发项目完成自动编译和打包==</p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png" alt="image-20240812101022218" style="zoom:150%;"> <h1 id="4-项目部署"><a href="#4-项目部署" class="headerlink" title="4.项目部署"></a>4.项目部署</h1><p>微服务部署比较麻烦，所以企业中都会采用持续集成的方式，快捷实现开发、部署一条龙服务。</p><p>为了模拟真实环境，我们在虚拟机中已经提供了一套持续集成的开发环境，代码一旦自测完成，push到Git私服后即可自动编译部署。</p><p>==<strong>原理图</strong>：每当我们push代码时候就触发项目完成自动编译和打包==</p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png" alt="image-20240812101022218" style="zoom:150%;"><p>而开发我们负责的微服务时，则需要在本地启动运行部分微服务。</p><h2 id="4-1-虚拟机部署"><a href="#4-1-虚拟机部署" class="headerlink" title="4.1 虚拟机部署"></a>4.1 虚拟机部署</h2><h2 id="4-2-本地部署"><a href="#4-2-本地部署" class="headerlink" title="4.2 本地部署"></a>4.2 本地部署</h2><p>如果需要运行某个微服务时，只需要以下两步：</p><ul><li>第一步：访问Jenkins控制台</li><li>第二步：点击对应微服务后面的绿色运行按钮</li></ul><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122119180.png" alt="image-20240812211957065"></p><p>构建过程中，可以在页面左侧看到构建进度，如果没有说明构建已经结束了（你的机器速度太快了！）：</p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122120448.png" alt="image-20240812212051332" style="zoom:67%;">]]></content>
     
     <summary type="html">
     
