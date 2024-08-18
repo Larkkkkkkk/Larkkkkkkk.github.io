@@ -5,81 +5,18 @@
   
   <title>东林在线微课堂 | Larkkkkkkk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.我的课表准备阶段—业务流程 准备阶段—字段分析【主要涉及主键id，学员id和课程id也要记录[要考虑是谁学了什么课程]】 课表要记录的是用户的学习状态，所谓学习状态就是记录谁在学习哪个课程，学习的进度如何。  其中，谁在学习哪个课程，就是一种关系。也就是说课表就是用户和课程的中间关系表。因此一定要包含三个字段：  userId：用户id，也就是谁 courseId：课程id，也就是学的课程 i">
+  <meta name="description" content="1.项目概述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="东林在线微课堂">
 <meta property="og:url" content="https://larkkkkkkk.github.io/2024/08/12/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82/index.html">
 <meta property="og:site_name" content="Larkkkkkkk">
-<meta property="og:description" content="1.我的课表准备阶段—业务流程 准备阶段—字段分析【主要涉及主键id，学员id和课程id也要记录[要考虑是谁学了什么课程]】 课表要记录的是用户的学习状态，所谓学习状态就是记录谁在学习哪个课程，学习的进度如何。  其中，谁在学习哪个课程，就是一种关系。也就是说课表就是用户和课程的中间关系表。因此一定要包含三个字段：  userId：用户id，也就是谁 courseId：课程id，也就是学的课程 i">
+<meta property="og:description" content="1.项目概述">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172043546.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172127956.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172052867.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172050280.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408141519620.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408141521880.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408132134374.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151658196.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172133522.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172134616.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152124144.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172111462.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152122557.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408141457877.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408141521880.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408141519620.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151620820.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151624663.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151652348.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151651884.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151701679.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172106757.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172109033.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152119555.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151707675.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151952385.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151952827.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151955124.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172046051.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152001995.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152107195.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152001960.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152115998.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152115196.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152114377.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161506339.png">
-<meta property="og:image" content="https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ODg4NjdmYWQwYWFjOTdjMGJiMGVlMThjODNkODA2OTBfYTRpZ3pFNU5sSUVqcjMwcFdLOU55cE9qTjg1dmhkd1FfVG9rZW46UFBjb2JtOXFpb01wVTh4TU9aMGNIcHJObmpjXzE3MjM5MDA2NTc6MTcyMzkwNDI1N19WNA">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172117207.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161446074.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161447157.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161513754.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161513942.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161514679.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161513482.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161644903.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161621711.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161606364.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161638997.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161607824.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161638069.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161607360.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161643160.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161656961.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161646815.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161658298.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161658718.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161659938.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161659486.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161732734.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161732033.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161733833.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161733551.png">
 <meta property="article:published_time" content="2024-08-12T02:14:44.000Z">
-<meta property="article:modified_time" content="2024-08-18T08:37:23.956Z">
+<meta property="article:modified_time" content="2024-08-18T08:47:38.941Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="微服务">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172043546.png">
   
     <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
   
@@ -433,318 +370,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="1-我的课表"><a href="#1-我的课表" class="headerlink" title="1.我的课表"></a>1.我的课表</h1><h2 id="准备阶段—业务流程"><a href="#准备阶段—业务流程" class="headerlink" title="准备阶段—业务流程"></a>准备阶段—业务流程</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172043546.png" alt="image-20240817204359442"></p>
-<h2 id="准备阶段—字段分析"><a href="#准备阶段—字段分析" class="headerlink" title="准备阶段—字段分析"></a>准备阶段—字段分析</h2><p>【主要涉及主键id，学员id和课程id也要记录[要考虑是谁学了什么课程]】</p>
-<p>课表要记录的是用户的学习状态，所谓学习状态就是记录<strong>谁</strong>在学习<strong>哪个课程</strong>，<strong>学习的进度</strong>如何。</p>
-<ul>
-<li><p>其中，谁在学习哪个课程，就是一种关系。也就是说<strong>课表就是用户和课程的中间关系表</strong>。因此一定要包含三个字段：</p>
-<ul>
-<li>userId：用户id，也就是<strong>谁</strong></li>
-<li>courseId：课程id，也就是学的<strong>课程</strong></li>
-<li>id：唯一主键</li>
-</ul>
-</li>
-<li><p>而学习进度，则是一些附加的功能字段，页面需要哪些功能就添加哪些字段即可：</p>
-</li>
-</ul>
-<ul>
-<li><p>status：课程学习状态。0-未学习，1-学习中，2-已学完，3-已过期</p>
-</li>
-<li><p>planStatus：学习计划状态，0-没有计划，1-计划进行中</p>
-</li>
-<li><p>weekFreq：计划的学习频率</p>
-</li>
-<li><p>learnedSections：已学习小节数量，【注意：课程总小节数、课程名称、封面等可由课程id查询得出，无需重复记录】</p>
-</li>
-<li><p>latestSectionId：最近一次学习的小节id，方便根据id查询最近学习的课程正在学第几节</p>
-</li>
-<li><p>latestLearnTime：最近一次学习时间，用于分页查询的排序：</p>
-</li>
-<li><p>createTime和expireTime，也就是课程加入时间和过期时间</p>
-</li>
-</ul>
-<h2 id="准备阶段—ER图"><a href="#准备阶段—ER图" class="headerlink" title="准备阶段—ER图"></a>准备阶段—ER图</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172127956.png" alt="image-20240817212711903"></p>
-<h2 id="准备阶段—表结构"><a href="#准备阶段—表结构" class="headerlink" title="准备阶段—表结构"></a>准备阶段—表结构</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172052867.png" alt="image-20240817205247815"></p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172050280.png" alt="image-20240817205028215"></p>
-<h2 id="准备阶段—Mybatis-plus代码生成"><a href="#准备阶段—Mybatis-plus代码生成" class="headerlink" title="准备阶段—Mybatis-plus代码生成"></a>准备阶段—Mybatis-plus代码生成</h2><p>参考我的Mybatis-plus笔记-代码生成步骤：</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408141519620.png" alt="image-20240814151956565"></p>
-<h2 id="准备阶段—状态枚举"><a href="#准备阶段—状态枚举" class="headerlink" title="准备阶段—状态枚举"></a>准备阶段—状态枚举</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408141521880.png" alt="image-20240814152152815"></p>
-<h2 id="准备阶段—所有接口"><a href="#准备阶段—所有接口" class="headerlink" title="准备阶段—所有接口"></a>准备阶段—所有接口</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408132134374.png" alt="image-20240813213435263"></p>
-<h1 id="具体实现"><a href="#具体实现" class="headerlink" title="==具体实现=="></a>==<strong>具体实现</strong>==</h1><h2 id="1-1-支付-报名课程后添加课表"><a href="#1-1-支付-报名课程后添加课表" class="headerlink" title="1.1 支付/报名课程后添加课表"></a>1.1 支付/报名课程后添加课表</h2><h3 id="1-原型图"><a href="#1-原型图" class="headerlink" title="1.原型图"></a>1.原型图</h3><h3 id="2-设计数据库"><a href="#2-设计数据库" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">create table learning_lesson</span><br><span class="line">(</span><br><span class="line">    id                bigint                             not null comment &#39;主键&#39;</span><br><span class="line">        primary key,</span><br><span class="line">    user_id           bigint                             not null comment &#39;学员id&#39;,</span><br><span class="line">    course_id         bigint                             not null comment &#39;课程id&#39;,</span><br><span class="line">    status            tinyint  default 0                 null comment &#39;课程状态，0-未学习，1-学习中，2-已学完，3-已失效&#39;,</span><br><span class="line">    week_freq         tinyint                            null comment &#39;每周学习频率，例如每周学习6小节，则频率为6&#39;,</span><br><span class="line">    plan_status       tinyint  default 0                 not null comment &#39;学习计划状态，0-没有计划，1-计划进行中&#39;,</span><br><span class="line">    learned_sections  int      default 0                 not null comment &#39;已学习小节数量&#39;,</span><br><span class="line">    latest_section_id bigint                             null comment &#39;最近一次学习的小节id&#39;,</span><br><span class="line">    latest_learn_time datetime                           null comment &#39;最近一次学习的时间&#39;,</span><br><span class="line">    create_time       datetime default CURRENT_TIMESTAMP not null comment &#39;创建时间&#39;,</span><br><span class="line">    expire_time       datetime                           not null comment &#39;过期时间&#39;,</span><br><span class="line">    update_time       datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment &#39;更新时间&#39;,</span><br><span class="line">    constraint idx_user_id</span><br><span class="line">        unique (user_id, course_id)</span><br><span class="line">)</span><br><span class="line">    comment &#39;学生课程表&#39; row_format &#x3D; DYNAMIC;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151658196.png" alt="image-20240815165857129"></p>
-<h3 id="3-业务逻辑图"><a href="#3-业务逻辑图" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h3><p>接下来，我们来分析一下添加课表逻辑的业务流程。首先来对比一下请求参数和数据库字段：</p>
-<p>参数：</p>
-<ul>
-<li>Long userId</li>
-<li>List<Long> courseIds</Long></li>
-</ul>
-<p>数据表：</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172133522.png" alt="img"></p>
-<p>一个userId和一个courseId是learning_lesson表中的一条数据。而订单中一个用户可能购买多个课程。因此请求参数中的courseId集合就需要逐个处理，将来会有多条课表数据。</p>
-<p>另外，可以发现参数中只有userId和courseId，表中的其它字段都需要我们想办法来组织：</p>
-<ul>
-<li>status：课程状态，可以默认为0，代表未学习</li>
-<li>week_freq：学习计划频率，可以为空，代表没有设置学习计划</li>
-<li>plan_status：学习计划状态，默认为0，代表没有设置学习计划</li>
-<li>learned_sections：已学习小节数，默认0，代表没有学习</li>
-<li>latest_section_id：最近学习小节id，可以为空，代表最近没有学习任何小节</li>
-<li>latest_learn_time：最近学习时间，可以为空，代表最近没有学习</li>
-<li>create_time：创建时间，也就是当前时间</li>
-<li><strong>expire_time</strong>：过期时间，这个要结合课程来计算。每个课程都有自己的有效期（valid_duration），因此过期时间就是create_time加上课程的有效期</li>
-<li>update_time：更新时间，默认当前时间，有数据库实时更新，不用管</li>
-</ul>
-<p>可见在整张表中，需要我们在新增时处理的字段就剩下过期时间<code>expire_time</code>了。而要知道这个就必须根据courseId查询课程的信息，找到其中的课程有效期（<code>valid_duration</code>）。课程表结构如图：</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172134616.png" alt="image-20240817213419509"></p>
-<p>因此，我们要做的事情就是根据courseId集合查询课程信息，然后分别计算每个课程的有效期，组织多个LearingLesson的数据，形成集合。最终批量新增到数据库即可。</p>
-<p>流程如图：</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152124144.png" alt="image-20240815212456046"></p>
-<p>其中消息发送者信息：</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172111462.png" alt="image-20240817211108395"></p>
-<h3 id="4-接口分析"><a href="#4-接口分析" class="headerlink" title="4.接口分析"></a>4.接口分析</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152122557.png" alt="image-20240815212239468"></p>
-<h3 id="5-具体实现"><a href="#5-具体实现" class="headerlink" title="5.具体实现"></a>5.具体实现</h3><ul>
-<li>1.数据库设计：</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408141457877.png" alt="image-20240814145734802"></p>
-<ul>
-<li>2.准备PO和枚举类：</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408141521880.png" alt="image-20240814152152815"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">使用枚举类的优点：</span><br><span class="line">1.类型安全：枚举提供了一种类型安全的方式来处理一组固定的常量。使用枚举可以确保status字段的值只限于预定义的四个选项，防止出现无效的值。【更安全】</span><br><span class="line">2.代码可读性：枚举使得代码更易读，更易于维护。开发者可以很容易地理解每个枚举值的含义，而不需要去查看数据库字段的注释或文档。【易读】</span><br><span class="line">3.减少错误：使用枚举可以减少因拼写错误或使用错误的整数值而导致的bug。【防止写错】</span><br><span class="line">4.便于比较：枚举类型之间的比较可以直接使用&#x3D;&#x3D;操作符，而不需要使用equals方法。【直接使用&#x3D;&#x3D;对比】</span><br><span class="line">5.可扩展性：如果未来需要添加更多的状态，枚举类可以很容易地进行扩展。【更容易扩展】</span><br><span class="line">6.方法和属性：枚举类型可以包含字段、方法和构造函数，这使得你可以在枚举值上添加更多的行为和数据。</span><br><span class="line">7.序列化：枚举类型默认实现了Serializable接口，这使得它们可以很容易地被序列化和反序列化。【搭配@JsonValue&#x2F;&#x2F;序列化的时候转为响应值 @EnumValue &#x2F;&#x2F;和数据库打交道时转为相对应值】</span><br><span class="line">8.switch语句支持：枚举类型可以作为switch语句的合法变量类型，使得代码更加清晰。</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>3.使用MybatisPlus生成其余基础代码：</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408141519620.png" alt="image-20240814151956565"></p>
-<ul>
-<li>4.设计MQ消费者信息</li>
-</ul>
-<p><strong>【我和课程下单统一OrderBasicDTO，主要传递orderId和courseID和userID以及完成时间】</strong></p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151620820.png" alt="image-20240815162011652"></p>
-<ul>
-<li>5.具体逻辑</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151624663.png" alt="image-20240815162411566"></p>
-<h3 id="6-具体难点和亮点"><a href="#6-具体难点和亮点" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h3><ul>
-<li><p>问题一：课程过期时间怎么算？</p>
-<p>课程过期时间=课程加入课程时间(当前)+课程有效期(通过传入的courseId课程id远程调用课程微服务获取media_duration有效时间)</p>
-</li>
-<li><p>问题二：如果这个人网络不好，重复下单怎么保证幂等性？</p>
-<p>1.我给(courseId,userId)创建唯一索引，保证幂等性</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151652348.png" alt="image-20240815165221302"></p>
-<p>2.我使用redis：进来的时候判断OrderId订单id是否有，有的话就重复，没有的话就存在redis[设置60s]</p>
-</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151651884.png" alt="image-20240815165141761"></p>
-<ul>
-<li><p>问题三：Id如何设计？</p>
-<p>分为分库和不分库情况：我考虑并发就分库，然后使用雪花算法【还有其他方法，在tk实习时候考虑的那个笔记里面】<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151701679.png" alt="image-20240815170139617"></p>
-</li>
-</ul>
-<p>参考本文：<a href="https://mp.weixin.qq.com/s/zQNfcpCbPoo4yQFJR7FpqQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/zQNfcpCbPoo4yQFJR7FpqQ</a></p>
-<h2 id="1-2-分页查询我的课表"><a href="#1-2-分页查询我的课表" class="headerlink" title="1.2 分页查询我的课表"></a>1.2 分页查询我的课表</h2><h3 id="1-原型图-1"><a href="#1-原型图-1" class="headerlink" title="1.原型图"></a>1.原型图</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172106757.png" alt="image-20240817210643678"></p>
-<h3 id="2-设计数据库-1"><a href="#2-设计数据库-1" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h3><h3 id="3-业务逻辑图-1"><a href="#3-业务逻辑图-1" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172109033.png" alt="image-20240817210943970"></p>
-<p>肉眼可见的字段就包含：</p>
-<ul>
-<li>课程名称</li>
-<li>课程加入课表时间</li>
-<li>课程有效期结束时间</li>
-<li>课程状态</li>
-<li>课程已学习小节数</li>
-<li>课程总小节数</li>
-<li>课程是否创建了学习计划</li>
-</ul>
-<p>还有一些字段是页面中没有的，但是可以从功能需要中推测出来，例如：</p>
-<ul>
-<li>课程id：因为我们点击卡片，需要跳转到对应课程页面，必须知道课程id</li>
-<li>课程封面：页面渲染时为了美观，一定会展示一个课程的封面图片</li>
-<li>学习计划频率：当用户点击修改学习计划时，需要回显目前的学习计划频率</li>
-<li>课表id，当前课程在课表中的对应id，当用户点击继续学习，或创建集合，需要根据课表来操作</li>
-</ul>
-<h3 id="4-接口分析-1"><a href="#4-接口分析-1" class="headerlink" title="4.接口分析"></a>4.接口分析</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152119555.png" alt="image-20240815211955503"></p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151707675.png" alt></p>
-<h3 id="5-具体实现-1"><a href="#5-具体实现-1" class="headerlink" title="5.具体实现"></a>5.具体实现</h3><ul>
-<li>1.controller层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151952385.png" alt="image-20240815195224271"></p>
-<ul>
-<li>2.service层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151952827.png" alt="image-20240815195238771"></p>
-<ul>
-<li>3.serviceImp层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408151955124.png" alt="image-20240815195504036"></p>
-<h3 id="6-具体难点和亮点-1"><a href="#6-具体难点和亮点-1" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h3><ul>
-<li>问题一：如何查询避免封装时候两次for循环</li>
-</ul>
-<p>​        使用courseList.stream().collect(Collectors.toMap(CourseSimpleInfoDTO::getId, c -&gt; c))转换为map，在后续直接取出来就行</p>
-<h2 id="1-3-查看最近学习的课程-一门"><a href="#1-3-查看最近学习的课程-一门" class="headerlink" title="1.3 查看最近学习的课程(一门)"></a>1.3 查看最近学习的课程(一门)</h2><h3 id="1-原型图-2"><a href="#1-原型图-2" class="headerlink" title="1.原型图"></a>1.原型图</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172046051.png" alt="image-20240817204641999"></p>
-<h3 id="2-设计数据库-2"><a href="#2-设计数据库-2" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h3><p>learning_lesson</p>
-<p>course</p>
-<p>course_catalogue</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152001995.png" alt="image-20240815200109908"></p>
-<h3 id="3-业务逻辑图-2"><a href="#3-业务逻辑图-2" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h3><p>主要分为四个部分数据：</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152107195.png" alt="image-20240815210724100"></p>
-<h3 id="4-接口分析-2"><a href="#4-接口分析-2" class="headerlink" title="4.接口分析"></a>4.接口分析</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152001960.png" alt="image-20240815200138868"></p>
-<h3 id="5-具体实现-2"><a href="#5-具体实现-2" class="headerlink" title="5.具体实现"></a>5.具体实现</h3><ul>
-<li>1.controller层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152115998.png" alt="image-20240815211536963"></p>
-<ul>
-<li>2.service层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152115196.png" alt="image-20240815211548167"></p>
-<ul>
-<li><p>3.serviceimpl层</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408152114377.png" alt="image-20240815211458287"></p>
-</li>
-<li><p>4.mapper层</p>
-</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161506339.png" alt="image-20240816150635247"></p>
-<h3 id="6-具体难点和亮点-2"><a href="#6-具体难点和亮点-2" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h3><ul>
-<li><p>问题一：什么是最近学习的一门课程【基本上围绕learning-lesson和course以及course-catalogue三个数据库表获取数据】</p>
-<p>可以在学习中心位置查看最近学习的一门课程，主要是通过userId用户id查询一条课程表信息；通过课程表信息的courseId课程id查询课程的具体信息；通过课程表信息的latest_section_id最近一次学习的小节名称远程调用课程学习微服务获取(通过latest_section_id查询course-catalogue表数据)；通过userId用户id来count(*)获得数据</p>
-</li>
-</ul>
-<h2 id="1-4-根据id查询某个课程学习状态"><a href="#1-4-根据id查询某个课程学习状态" class="headerlink" title="1.4 根据id查询某个课程学习状态"></a>1.4 根据id查询某个课程学习状态</h2><h3 id="1-原型图-3"><a href="#1-原型图-3" class="headerlink" title="1.原型图"></a>1.原型图</h3><p>在课程详情页，课程展示有两种不同形式：</p>
-<ul>
-<li>对于未购买的课程：展示为立刻购买或加入购物车</li>
-</ul>
-<p><img src="https://b11et3un53m.feishu.cn/space/api/box/stream/download/asynccode/?code=ODg4NjdmYWQwYWFjOTdjMGJiMGVlMThjODNkODA2OTBfYTRpZ3pFNU5sSUVqcjMwcFdLOU55cE9qTjg1dmhkd1FfVG9rZW46UFBjb2JtOXFpb01wVTh4TU9aMGNIcHJObmpjXzE3MjM5MDA2NTc6MTcyMzkwNDI1N19WNA" alt="img"></p>
-<ul>
-<li>对于已经购买的课程：展示为马上学习，并且显示学习的进度、有效期</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408172117207.png" alt="img"></p>
-<h3 id="2-设计数据库-3"><a href="#2-设计数据库-3" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h3><h3 id="3-业务逻辑图-3"><a href="#3-业务逻辑图-3" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161446074.png" alt="image-20240816144647955"></p>
-<h3 id="4-接口分析-3"><a href="#4-接口分析-3" class="headerlink" title="4.接口分析"></a>4.接口分析</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161447157.png" alt="image-20240816144722047"></p>
-<h3 id="5-具体实现-3"><a href="#5-具体实现-3" class="headerlink" title="5.具体实现"></a>5.具体实现</h3><ul>
-<li>1.controller层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161513754.png" alt="image-20240816151331705"></p>
-<ul>
-<li>2.service层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161513942.png" alt="image-20240816151336910"></p>
-<ul>
-<li>3.serviceimpl层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161514679.png" alt="image-20240816151452627"></p>
-<ul>
-<li>4.mapper层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161513482.png" alt="image-20240816151350430"></p>
-<h3 id="6-具体难点和亮点-3"><a href="#6-具体难点和亮点-3" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h3><ul>
-<li>问题一：查询课表的课程还是课程表的信息？</li>
-</ul>
-<p>​        ①根据courseId和UserId(两者是唯一索引，能保证只有得到一条数据)查询课表得到公共数据，针对课程具体信息要传入courseId课程id远程调用查询</p>
-<h2 id="1-5-删除课表中的课程"><a href="#1-5-删除课表中的课程" class="headerlink" title="1.5 删除课表中的课程"></a>1.5 删除课表中的课程</h2><h3 id="1-原型图-4"><a href="#1-原型图-4" class="headerlink" title="1.原型图"></a>1.原型图</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161644903.png" alt="image-20240816164422835"></p>
-<h3 id="2-设计数据库-4"><a href="#2-设计数据库-4" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h3><h3 id="3-业务逻辑图-4"><a href="#3-业务逻辑图-4" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h3><p>删除课表中的课程有两种场景：</p>
-<ul>
-<li>①用户直接删除已失效的课程【比较简单】</li>
-<li>②用户退款后触发课表自动删除【涉及发送MQ消息给learning-service服务】</li>
-</ul>
-<p>现在那边退款成功之后增加步骤4[发送消息，我需要负责接受消息]</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161621711.png" alt="image-20240816162139654"></p>
-<h3 id="4-接口分析-4"><a href="#4-接口分析-4" class="headerlink" title="4.接口分析"></a>4.接口分析</h3><p>这里我们可以按照Restful的规范来定义这个删除接口：</p>
-<ul>
-<li>请求方式：删除业务的请求方式都是DELETE</li>
-<li>请求路径：一般是资源名 + 标示，这里删除的是课表中的课程，因此：<code>/ls/lessons/{courseId}</code></li>
-<li>请求参数：自然是路径中传递的课程id</li>
-<li>返回值：无</li>
-</ul>
-<h3 id="5-具体实现-4"><a href="#5-具体实现-4" class="headerlink" title="5.具体实现"></a>5.具体实现</h3><ul>
-<li>1.controller层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161606364.png" alt="image-20240816160647290"></p>
-<ul>
-<li><p>2.service层</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161638997.png" alt="image-20240816163813941"></p>
-</li>
-<li><p>3.serviceimpl层</p>
-</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161607824.png" alt="image-20240816160731775"></p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161638069.png" alt="image-20240816163833033"></p>
-<ul>
-<li>4.mapper层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161607360.png" alt="image-20240816160747311"></p>
-<ul>
-<li>5.learning-service微服务接收MQ消息</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161643160.png" alt="image-20240816164326102"></p>
-<h3 id="6-具体难点和亮点-4"><a href="#6-具体难点和亮点-4" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h3><ul>
-<li><p>问题一：删除的有哪几种情况？</p>
-<p>①根据用户下单，然后取消报名的时候发送MQ消息给learning-service微服务告知删除</p>
-<p>②已经学习了很久，课程失效了就直接根据情况删除</p>
-</li>
-</ul>
-<h2 id="1-6-检查课程是否有效"><a href="#1-6-检查课程是否有效" class="headerlink" title="1.6 检查课程是否有效"></a>1.6 检查课程是否有效</h2><h3 id="1-原型图-5"><a href="#1-原型图-5" class="headerlink" title="1.原型图"></a>1.原型图</h3><h3 id="2-设计数据库-5"><a href="#2-设计数据库-5" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h3><h3 id="3-业务逻辑图-5"><a href="#3-业务逻辑图-5" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h3><p>这是一个微服务内部接口，当用户学习课程时，可能需要播放课程视频。此时提供视频播放功能的媒资系统就需要校验<code>用户是否有播放视频的资格</code>。所以，开发媒资服务（<code>tj-media</code>）的同事就请你提供这样一个接口。</p>
-<p>用户要想有播放视频的资格，那就必须满足两个条件：</p>
-<ul>
-<li>用户课表中是否有该课程</li>
-<li>课程状态是否是有效的状态（未过期）</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161656961.png" alt="image-20240816165647909"></p>
-<h3 id="4-接口分析-5"><a href="#4-接口分析-5" class="headerlink" title="4.接口分析"></a>4.接口分析</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161646815.png" alt="image-20240816164643768"></p>
-<h3 id="5-具体实现-5"><a href="#5-具体实现-5" class="headerlink" title="5.具体实现"></a>5.具体实现</h3><ul>
-<li>1.controller层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161658298.png" alt="image-20240816165802260"></p>
-<ul>
-<li>2.service层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161658718.png" alt="image-20240816165837661"></p>
-<ul>
-<li>3.serviceimpl层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161659938.png" alt="image-20240816165901892"></p>
-<ul>
-<li>4.mapper层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161659486.png" alt="image-20240816165912431"></p>
-<h3 id="6-具体难点和亮点-5"><a href="#6-具体难点和亮点-5" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h3><ul>
-<li><p>问题一：如何判断课程是否有效</p>
-<p>就是①判断课表是否有这个课程，②这个课程的expire过期时间是否失效了，没办法学了</p>
-</li>
-</ul>
-<h2 id="1-7-统计课程的学习人数"><a href="#1-7-统计课程的学习人数" class="headerlink" title="1.7 统计课程的学习人数"></a>1.7 统计课程的学习人数</h2><h3 id="1-原型图-6"><a href="#1-原型图-6" class="headerlink" title="1.原型图"></a>1.原型图</h3><p>课程微服务中需要统计每个课程的报名人数，同样是一个内部调用接口，在tj-api模块中已经定义好了：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 统计课程学习人数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> courseId 课程id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 学习人数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/lessons/&#123;courseId&#125;/count"</span>)</span><br><span class="line"><span class="function">Integer <span class="title">countLearningLessonByCourse</span><span class="params">(@PathVariable(<span class="string">"courseId"</span>)</span> Long courseId)</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-设计数据库-6"><a href="#2-设计数据库-6" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h3><h3 id="3-业务逻辑图-6"><a href="#3-业务逻辑图-6" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h3><h3 id="4-接口分析-6"><a href="#4-接口分析-6" class="headerlink" title="4.接口分析"></a>4.接口分析</h3><p>这里我们可以按照Restful的规范来定义这个统计接口：</p>
-<ul>
-<li>请求方式：删除业务的请求方式都是GET</li>
-<li>请求路径：一般是资源名 + 标示，这里删除的是课表中的课程，因此：<code>/lessons/{courseId}</code></li>
-<li>请求参数：自然是路径中传递的课程id</li>
-<li>返回值：Integer学习人数</li>
-</ul>
-<h3 id="5-具体实现-6"><a href="#5-具体实现-6" class="headerlink" title="5.具体实现"></a>5.具体实现</h3><ul>
-<li>1.controller层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161732734.png" alt="image-20240816173242686"></p>
-<ul>
-<li>2.service层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161732033.png" alt="image-20240816173248999"></p>
-<ul>
-<li>3.serviceimpl层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161733833.png" alt="image-20240816173314799"></p>
-<ul>
-<li>4.mapper层</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408161733551.png" alt="image-20240816173300519"></p>
-<h3 id="6-具体难点和亮点-6"><a href="#6-具体难点和亮点-6" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h3><ul>
-<li><p>问题一：sql怎么写？怎么统计</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select count(user_id) </span><br><span class="line">from learning_lesson </span><br><span class="line">where course_id&#x3D;xx   【根据课程id分类】</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
+        <h2 id="1-项目概述"><a href="#1-项目概述" class="headerlink" title="1.项目概述"></a>1.项目概述</h2>
       
       
         <div class="page-reward">
@@ -802,7 +428,7 @@
         <p><span>本文标题:</span><a href="/2024/08/12/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82/">东林在线微课堂</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年08月12日 - 10时14分</p>
-        <p><span>最后更新:</span>2024年08月18日 - 16时37分</p>
+        <p><span>最后更新:</span>2024年08月18日 - 16时47分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/08/12/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82/" title="东林在线微课堂">https://larkkkkkkk.github.io/2024/08/12/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/08/12/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -840,7 +466,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-我的课表"><span class="toc-number">1.</span> <span class="toc-text">1.我的课表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—业务流程"><span class="toc-number">1.1.</span> <span class="toc-text">准备阶段—业务流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—字段分析"><span class="toc-number">1.2.</span> <span class="toc-text">准备阶段—字段分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—ER图"><span class="toc-number">1.3.</span> <span class="toc-text">准备阶段—ER图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—表结构"><span class="toc-number">1.4.</span> <span class="toc-text">准备阶段—表结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—Mybatis-plus代码生成"><span class="toc-number">1.5.</span> <span class="toc-text">准备阶段—Mybatis-plus代码生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—状态枚举"><span class="toc-number">1.6.</span> <span class="toc-text">准备阶段—状态枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—所有接口"><span class="toc-number">1.7.</span> <span class="toc-text">准备阶段—所有接口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#具体实现"><span class="toc-number">2.</span> <span class="toc-text">&#x3D;&#x3D;具体实现&#x3D;&#x3D;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-支付-报名课程后添加课表"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 支付&#x2F;报名课程后添加课表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原型图"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.原型图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设计数据库"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.设计数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-业务逻辑图"><span class="toc-number">2.1.3.</span> <span class="toc-text">3.业务逻辑图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-接口分析"><span class="toc-number">2.1.4.</span> <span class="toc-text">4.接口分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-具体实现"><span class="toc-number">2.1.5.</span> <span class="toc-text">5.具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-具体难点和亮点"><span class="toc-number">2.1.6.</span> <span class="toc-text">6.具体难点和亮点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-分页查询我的课表"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 分页查询我的课表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原型图-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.原型图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设计数据库-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.设计数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-业务逻辑图-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">3.业务逻辑图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-接口分析-1"><span class="toc-number">2.2.4.</span> <span class="toc-text">4.接口分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-具体实现-1"><span class="toc-number">2.2.5.</span> <span class="toc-text">5.具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-具体难点和亮点-1"><span class="toc-number">2.2.6.</span> <span class="toc-text">6.具体难点和亮点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-查看最近学习的课程-一门"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 查看最近学习的课程(一门)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原型图-2"><span class="toc-number">2.3.1.</span> <span class="toc-text">1.原型图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设计数据库-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.设计数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-业务逻辑图-2"><span class="toc-number">2.3.3.</span> <span class="toc-text">3.业务逻辑图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-接口分析-2"><span class="toc-number">2.3.4.</span> <span class="toc-text">4.接口分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-具体实现-2"><span class="toc-number">2.3.5.</span> <span class="toc-text">5.具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-具体难点和亮点-2"><span class="toc-number">2.3.6.</span> <span class="toc-text">6.具体难点和亮点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-根据id查询某个课程学习状态"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 根据id查询某个课程学习状态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原型图-3"><span class="toc-number">2.4.1.</span> <span class="toc-text">1.原型图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设计数据库-3"><span class="toc-number">2.4.2.</span> <span class="toc-text">2.设计数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-业务逻辑图-3"><span class="toc-number">2.4.3.</span> <span class="toc-text">3.业务逻辑图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-接口分析-3"><span class="toc-number">2.4.4.</span> <span class="toc-text">4.接口分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-具体实现-3"><span class="toc-number">2.4.5.</span> <span class="toc-text">5.具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-具体难点和亮点-3"><span class="toc-number">2.4.6.</span> <span class="toc-text">6.具体难点和亮点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-删除课表中的课程"><span class="toc-number">2.5.</span> <span class="toc-text">1.5 删除课表中的课程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原型图-4"><span class="toc-number">2.5.1.</span> <span class="toc-text">1.原型图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设计数据库-4"><span class="toc-number">2.5.2.</span> <span class="toc-text">2.设计数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-业务逻辑图-4"><span class="toc-number">2.5.3.</span> <span class="toc-text">3.业务逻辑图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-接口分析-4"><span class="toc-number">2.5.4.</span> <span class="toc-text">4.接口分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-具体实现-4"><span class="toc-number">2.5.5.</span> <span class="toc-text">5.具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-具体难点和亮点-4"><span class="toc-number">2.5.6.</span> <span class="toc-text">6.具体难点和亮点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-检查课程是否有效"><span class="toc-number">2.6.</span> <span class="toc-text">1.6 检查课程是否有效</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原型图-5"><span class="toc-number">2.6.1.</span> <span class="toc-text">1.原型图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设计数据库-5"><span class="toc-number">2.6.2.</span> <span class="toc-text">2.设计数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-业务逻辑图-5"><span class="toc-number">2.6.3.</span> <span class="toc-text">3.业务逻辑图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-接口分析-5"><span class="toc-number">2.6.4.</span> <span class="toc-text">4.接口分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-具体实现-5"><span class="toc-number">2.6.5.</span> <span class="toc-text">5.具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-具体难点和亮点-5"><span class="toc-number">2.6.6.</span> <span class="toc-text">6.具体难点和亮点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-统计课程的学习人数"><span class="toc-number">2.7.</span> <span class="toc-text">1.7 统计课程的学习人数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原型图-6"><span class="toc-number">2.7.1.</span> <span class="toc-text">1.原型图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设计数据库-6"><span class="toc-number">2.7.2.</span> <span class="toc-text">2.设计数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-业务逻辑图-6"><span class="toc-number">2.7.3.</span> <span class="toc-text">3.业务逻辑图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-接口分析-6"><span class="toc-number">2.7.4.</span> <span class="toc-text">4.接口分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-具体实现-6"><span class="toc-number">2.7.5.</span> <span class="toc-text">5.具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-具体难点和亮点-6"><span class="toc-number">2.7.6.</span> <span class="toc-text">6.具体难点和亮点</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-项目概述"><span class="toc-number">1.</span> <span class="toc-text">1.项目概述</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 

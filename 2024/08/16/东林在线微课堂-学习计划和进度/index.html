@@ -5,18 +5,26 @@
   
   <title>东林在线微课堂-学习计划和进度 | Larkkkkkkk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.学习计划相关准备阶段—字段分析准备阶段—字段分析准备阶段—ER图准备阶段—表结构准备阶段—Mybatis-plus代码生成准备阶段—状态枚举">
+  <meta name="description" content="0.前提回顾在东林在线微课堂-我的课表相关：已经可以实现课表的增删改查接口，但是在查看已学习课程时候有两个字段没有返回： 我们需要在查询结果中返回已学习课时数、正在学习的章节名称。虽然我们在learning_lesson表中设计了两个字段：  learned_sections：已学习章节数 latest_learn_time：最近学习时间   以上的问题归纳下来，就是一个学习进度统计问题，这在在线">
 <meta property="og:type" content="article">
 <meta property="og:title" content="东林在线微课堂-学习计划和进度">
 <meta property="og:url" content="https://larkkkkkkk.github.io/2024/08/16/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E5%92%8C%E8%BF%9B%E5%BA%A6/index.html">
 <meta property="og:site_name" content="Larkkkkkkk">
-<meta property="og:description" content="1.学习计划相关准备阶段—字段分析准备阶段—字段分析准备阶段—ER图准备阶段—表结构准备阶段—Mybatis-plus代码生成准备阶段—状态枚举">
+<meta property="og:description" content="0.前提回顾在东林在线微课堂-我的课表相关：已经可以实现课表的增删改查接口，但是在查看已学习课程时候有两个字段没有返回： 我们需要在查询结果中返回已学习课时数、正在学习的章节名称。虽然我们在learning_lesson表中设计了两个字段：  learned_sections：已学习章节数 latest_learn_time：最近学习时间   以上的问题归纳下来，就是一个学习进度统计问题，这在在线">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181654890.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181655768.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181704360.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181706034.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181709893.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181713079.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181730459.png">
 <meta property="article:published_time" content="2024-08-16T09:46:01.000Z">
-<meta property="article:modified_time" content="2024-08-17T05:20:33.893Z">
+<meta property="article:modified_time" content="2024-08-18T09:35:47.528Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="微服务">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181654890.png">
   
     <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
   
@@ -370,7 +378,102 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="1-学习计划相关"><a href="#1-学习计划相关" class="headerlink" title="1.学习计划相关"></a>1.学习计划相关</h1><h2 id="准备阶段—字段分析"><a href="#准备阶段—字段分析" class="headerlink" title="准备阶段—字段分析"></a>准备阶段—字段分析</h2><h2 id="准备阶段—字段分析-1"><a href="#准备阶段—字段分析-1" class="headerlink" title="准备阶段—字段分析"></a>准备阶段—字段分析</h2><h2 id="准备阶段—ER图"><a href="#准备阶段—ER图" class="headerlink" title="准备阶段—ER图"></a>准备阶段—ER图</h2><h2 id="准备阶段—表结构"><a href="#准备阶段—表结构" class="headerlink" title="准备阶段—表结构"></a>准备阶段—表结构</h2><h2 id="准备阶段—Mybatis-plus代码生成"><a href="#准备阶段—Mybatis-plus代码生成" class="headerlink" title="准备阶段—Mybatis-plus代码生成"></a>准备阶段—Mybatis-plus代码生成</h2><h2 id="准备阶段—状态枚举"><a href="#准备阶段—状态枚举" class="headerlink" title="准备阶段—状态枚举"></a>准备阶段—状态枚举</h2>
+        <h1 id="0-前提回顾"><a href="#0-前提回顾" class="headerlink" title="0.前提回顾"></a>0.前提回顾</h1><p>在东林在线微课堂-我的课表相关：已经可以实现课表的增删改查接口，但是在查看已学习课程时候有两个字段没有返回：<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181654890.png" alt="image-20240818165409837"></p>
+<p>我们需要在查询结果中返回已学习课时数、正在学习的章节名称。虽然我们在learning_lesson表中设计了两个字段：</p>
+<ul>
+<li>learned_sections：已学习章节数</li>
+<li>latest_learn_time：最近学习时间</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181655768.png" alt="image-20240818165508732"></p>
+<p>以上的问题归纳下来，就是一个<strong>学习进度统计</strong>问题，这在在线教育、视频播放领域是一个非常常见的问题。</p>
+<ul>
+<li>提出原因：</li>
+</ul>
+<p>大部分人的学习自律性是比较差的，属于“买了就算会了”的状态。如果学员学习积极性下降，学习结果也会不尽人意，从而产生挫败感。导致购买课程的欲望也会随之下降，形成恶性循环，不利于我们卖课。</p>
+<p>所以，我们推出<strong>学习计划</strong>的功能，让学员制定一套学习计划，每周要学几节课。系统会做数据统计，每一周计划是否达标，达标后给予奖励，未达标则提醒用户，达到督促用户持续学习的目的。</p>
+<p>用户学习效果好了，产生了好的结果，就会有继续学习、购买课程的欲望，形成良性循环。</p>
+<p>因此，学习计划、学习进度统计其实是学习辅助中必不可少的环节。</p>
+<h1 id="1-学习计划相关"><a href="#1-学习计划相关" class="headerlink" title="1.学习计划相关"></a>1.学习计划相关</h1><h2 id="准备阶段—分析业务流程"><a href="#准备阶段—分析业务流程" class="headerlink" title="准备阶段—分析业务流程"></a>准备阶段—分析业务流程</h2><h2 id="1-学习计划"><a href="#1-学习计划" class="headerlink" title="1.==学习计划=="></a>1.==<strong>学习计划</strong>==</h2><p>在我的课程页面，可以对有效的课程添加学习计划：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181704360.png" alt="img"></p>
+<p>学习计划就是简单设置一下用户每周计划学习几节课：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181706034.png" alt></p>
+<p>有了计划以后，我们就可以在我的课程页面展示用户计划的完成情况，提醒用户尽快学习：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181709893.png" alt="image-20240818170916834"></p>
+<p>可以看到，在学习计划中是需要统计用户“已经学习的课时数量”。</p>
+<h2 id="2-学习进度统计"><a href="#2-学习进度统计" class="headerlink" title="2.==学习进度统计=="></a>2.<strong>==学习进度统计==</strong></h2><p>在原型图《课程学习页-录播课-课程学习页-目录》中，可以看到学习课程的原型图：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181713079.png" alt="image-20240818171318018"></p>
+<p>一个课程往往包含很多个<strong>章（chapter）</strong>，每一章下又包含了很多<strong>小节（section）</strong>。章本身没有课程内容，只是划分课程的一个概念。小节分两种，一种是<strong>视频</strong>；一种是每章最后的阶段<strong>考试</strong>  —-&gt; 用户学完一个视频/参加了最终的考试都算学完了一个小节。</p>
+<blockquote>
+<p> <strong>==统计学习进度：====用户学了多少小节[①视频：完播率超过75%②考试：考试提交]==</strong></p>
+</blockquote>
+<p>因而引出几个问题：</p>
+<blockquote>
+<p> 因此，用户在播放视频的过程中，需要不断地提交视频的播放进度，当我们发现视频进度超过75%的时候就标记这一小节为<strong>已完成</strong><br> 因此，我们需要记录<strong>视频是否完成</strong>，也需要记录<strong>用户具体播放到第几秒视频</strong>[这样下次播放就可以实现视频自动续播]</p>
+</blockquote>
+<p>也就是说，要记录用户学习进度，需要记录下列核心信息：</p>
+<ul>
+<li>小节的基础信息（id、关联的课程id等）</li>
+<li>当前的播放进度（第几秒）</li>
+<li>当前小节是否已学完（播放进度是否超75%）</li>
+</ul>
+<p>用户每学习一个小节，就会新增一条学习记录，当该课程的全部小节学习完毕，则该课程就从<strong>学习中</strong>进入<strong>已学完</strong>状态了。整体流程如图：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408181730459.png" alt="image-20240818173039394"></p>
+<h2 id="准备阶段—字段分析"><a href="#准备阶段—字段分析" class="headerlink" title="准备阶段—字段分析"></a>准备阶段—字段分析</h2><h2 id="准备阶段—ER图"><a href="#准备阶段—ER图" class="headerlink" title="准备阶段—ER图"></a>准备阶段—ER图</h2><h2 id="准备阶段—表结构"><a href="#准备阶段—表结构" class="headerlink" title="准备阶段—表结构"></a>准备阶段—表结构</h2><h1 id="具体实现"><a href="#具体实现" class="headerlink" title="==具体实现=="></a>==具体实现==</h1><p>按照用户的学习顺序，依次有下面几个接口：</p>
+<ul>
+<li>创建学习计划</li>
+<li>查询学习记录</li>
+<li>提交学习记录</li>
+<li>查询我的计划</li>
+</ul>
+<h1 id="1-创建学习计划"><a href="#1-创建学习计划" class="headerlink" title="1.创建学习计划"></a>1.创建学习计划</h1><h2 id="1-原型图"><a href="#1-原型图" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库"><a href="#2-设计数据库" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图"><a href="#3-业务逻辑图" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析"><a href="#4-接口分析" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现"><a href="#5-具体实现" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<li>1.controller层</li>
+</ul>
+<ul>
+<li>2.service层</li>
+</ul>
+<ul>
+<li>3.serviceimpl层</li>
+</ul>
+<ul>
+<li>4.mapper层</li>
+</ul>
+<h2 id="6-具体难点和亮点"><a href="#6-具体难点和亮点" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><h1 id="2-查询学习记录"><a href="#2-查询学习记录" class="headerlink" title="2.查询学习记录"></a>2.查询学习记录</h1><h2 id="1-原型图-1"><a href="#1-原型图-1" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-1"><a href="#2-设计数据库-1" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-1"><a href="#3-业务逻辑图-1" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-1"><a href="#4-接口分析-1" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-1"><a href="#5-具体实现-1" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<li>1.controller层</li>
+</ul>
+<ul>
+<li>2.service层</li>
+</ul>
+<ul>
+<li>3.serviceimpl层</li>
+</ul>
+<ul>
+<li>4.mapper层</li>
+</ul>
+<h2 id="6-具体难点和亮点-1"><a href="#6-具体难点和亮点-1" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><h1 id="3-提交学习记录"><a href="#3-提交学习记录" class="headerlink" title="3.提交学习记录"></a>3.提交学习记录</h1><h2 id="1-原型图-2"><a href="#1-原型图-2" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-2"><a href="#2-设计数据库-2" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-2"><a href="#3-业务逻辑图-2" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-2"><a href="#4-接口分析-2" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-2"><a href="#5-具体实现-2" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<li>1.controller层</li>
+</ul>
+<ul>
+<li>2.service层</li>
+</ul>
+<ul>
+<li>3.serviceimpl层</li>
+</ul>
+<ul>
+<li>4.mapper层</li>
+</ul>
+<h2 id="6-具体难点和亮点-2"><a href="#6-具体难点和亮点-2" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><h1 id="4-查询我的计划"><a href="#4-查询我的计划" class="headerlink" title="4.查询我的计划"></a>4.查询我的计划</h1><h2 id="1-原型图-3"><a href="#1-原型图-3" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-3"><a href="#2-设计数据库-3" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-3"><a href="#3-业务逻辑图-3" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-3"><a href="#4-接口分析-3" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-3"><a href="#5-具体实现-3" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<li>1.controller层</li>
+</ul>
+<ul>
+<li>2.service层</li>
+</ul>
+<ul>
+<li>3.serviceimpl层</li>
+</ul>
+<ul>
+<li>4.mapper层</li>
+</ul>
+<h2 id="6-具体难点和亮点-3"><a href="#6-具体难点和亮点-3" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2>
       
       
         <div class="page-reward">
@@ -428,7 +531,7 @@
         <p><span>本文标题:</span><a href="/2024/08/16/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E5%92%8C%E8%BF%9B%E5%BA%A6/">东林在线微课堂-学习计划和进度</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年08月16日 - 17时46分</p>
-        <p><span>最后更新:</span>2024年08月17日 - 13时20分</p>
+        <p><span>最后更新:</span>2024年08月18日 - 17时35分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/08/16/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E5%92%8C%E8%BF%9B%E5%BA%A6/" title="东林在线微课堂-学习计划和进度">https://larkkkkkkk.github.io/2024/08/16/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E5%92%8C%E8%BF%9B%E5%BA%A6/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/08/16/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E5%92%8C%E8%BF%9B%E5%BA%A6/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -466,7 +569,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-学习计划相关"><span class="toc-number">1.</span> <span class="toc-text">1.学习计划相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—字段分析"><span class="toc-number">1.1.</span> <span class="toc-text">准备阶段—字段分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—字段分析-1"><span class="toc-number">1.2.</span> <span class="toc-text">准备阶段—字段分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—ER图"><span class="toc-number">1.3.</span> <span class="toc-text">准备阶段—ER图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—表结构"><span class="toc-number">1.4.</span> <span class="toc-text">准备阶段—表结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—Mybatis-plus代码生成"><span class="toc-number">1.5.</span> <span class="toc-text">准备阶段—Mybatis-plus代码生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—状态枚举"><span class="toc-number">1.6.</span> <span class="toc-text">准备阶段—状态枚举</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0-前提回顾"><span class="toc-number">1.</span> <span class="toc-text">0.前提回顾</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-学习计划相关"><span class="toc-number">2.</span> <span class="toc-text">1.学习计划相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—分析业务流程"><span class="toc-number">2.1.</span> <span class="toc-text">准备阶段—分析业务流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-学习计划"><span class="toc-number">2.2.</span> <span class="toc-text">1.&#x3D;&#x3D;学习计划&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-学习进度统计"><span class="toc-number">2.3.</span> <span class="toc-text">2.&#x3D;&#x3D;学习进度统计&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—字段分析"><span class="toc-number">2.4.</span> <span class="toc-text">准备阶段—字段分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—ER图"><span class="toc-number">2.5.</span> <span class="toc-text">准备阶段—ER图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备阶段—表结构"><span class="toc-number">2.6.</span> <span class="toc-text">准备阶段—表结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#具体实现"><span class="toc-number">3.</span> <span class="toc-text">&#x3D;&#x3D;具体实现&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-创建学习计划"><span class="toc-number">4.</span> <span class="toc-text">1.创建学习计划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-原型图"><span class="toc-number">4.1.</span> <span class="toc-text">1.原型图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-设计数据库"><span class="toc-number">4.2.</span> <span class="toc-text">2.设计数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-业务逻辑图"><span class="toc-number">4.3.</span> <span class="toc-text">3.业务逻辑图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-接口分析"><span class="toc-number">4.4.</span> <span class="toc-text">4.接口分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-具体实现"><span class="toc-number">4.5.</span> <span class="toc-text">5.具体实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-具体难点和亮点"><span class="toc-number">4.6.</span> <span class="toc-text">6.具体难点和亮点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-查询学习记录"><span class="toc-number">5.</span> <span class="toc-text">2.查询学习记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-原型图-1"><span class="toc-number">5.1.</span> <span class="toc-text">1.原型图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-设计数据库-1"><span class="toc-number">5.2.</span> <span class="toc-text">2.设计数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-业务逻辑图-1"><span class="toc-number">5.3.</span> <span class="toc-text">3.业务逻辑图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-接口分析-1"><span class="toc-number">5.4.</span> <span class="toc-text">4.接口分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-具体实现-1"><span class="toc-number">5.5.</span> <span class="toc-text">5.具体实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-具体难点和亮点-1"><span class="toc-number">5.6.</span> <span class="toc-text">6.具体难点和亮点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-提交学习记录"><span class="toc-number">6.</span> <span class="toc-text">3.提交学习记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-原型图-2"><span class="toc-number">6.1.</span> <span class="toc-text">1.原型图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-设计数据库-2"><span class="toc-number">6.2.</span> <span class="toc-text">2.设计数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-业务逻辑图-2"><span class="toc-number">6.3.</span> <span class="toc-text">3.业务逻辑图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-接口分析-2"><span class="toc-number">6.4.</span> <span class="toc-text">4.接口分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-具体实现-2"><span class="toc-number">6.5.</span> <span class="toc-text">5.具体实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-具体难点和亮点-2"><span class="toc-number">6.6.</span> <span class="toc-text">6.具体难点和亮点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-查询我的计划"><span class="toc-number">7.</span> <span class="toc-text">4.查询我的计划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-原型图-3"><span class="toc-number">7.1.</span> <span class="toc-text">1.原型图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-设计数据库-3"><span class="toc-number">7.2.</span> <span class="toc-text">2.设计数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-业务逻辑图-3"><span class="toc-number">7.3.</span> <span class="toc-text">3.业务逻辑图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-接口分析-3"><span class="toc-number">7.4.</span> <span class="toc-text">4.接口分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-具体实现-3"><span class="toc-number">7.5.</span> <span class="toc-text">5.具体实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-具体难点和亮点-3"><span class="toc-number">7.6.</span> <span class="toc-text">6.具体难点和亮点</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
