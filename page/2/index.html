@@ -1630,7 +1630,7 @@
 <h3 id="3-7-2-复杂业务-原始模式优化"><a href="#3-7-2-复杂业务-原始模式优化" class="headerlink" title="3.7.2 复杂业务-原始模式优化"></a>3.7.2 复杂业务-原始模式优化</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261711105.png" alt="image-20240426171113039"></p>
 <p>之后调用mapper层的sql：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261707032.png" alt="image-20240426170626547"></p>
-<h2 id="3-8-Lambda查询"><a href="#3-8-Lambda查询" class="headerlink" title="3.8 Lambda查询"></a>3.8 Lambda查询</h2><p>就是在基本的方法上(属性，最新值)再多使用一个属性(==判断条件==，属性，最新值)</p>
+<h2 id="3-8-Lambda查询-添加属性"><a href="#3-8-Lambda查询-添加属性" class="headerlink" title="3.8 Lambda查询[添加属性]"></a>3.8 Lambda查询[添加属性]</h2><p>就是在基本的方法上(属性，最新值)再多使用一个属性(==判断条件==，属性，最新值)</p>
 <p>这样就可以把动态sql里面<if>标签这种麻烦的操作放在serviceImpl类上进行操作</if></p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261752712.png" alt="image-20240426175243646"></p>
 <h2 id="3-9-批量新增"><a href="#3-9-批量新增" class="headerlink" title="3.9 批量新增"></a>3.9 批量新增</h2><p>三种方案：</p>
