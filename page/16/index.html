@@ -332,6 +332,88 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Mybatis缓存" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/28/Mybatis%E7%BC%93%E5%AD%98/" class="article-date">
+      <time datetime="2020-03-28T15:36:17.000Z" itemprop="datePublished">2020-03-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/28/Mybatis%E7%BC%93%E5%AD%98/">Mybatis缓存</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="缓存概述"><a href="#缓存概述" class="headerlink" title="缓存概述"></a>缓存概述</h1><blockquote>
+<p><strong>提升运行效率</strong>(让应用程序减少对数据库的访问)</p>
+</blockquote>
+<hr>
+<h1 id="默认SqlSession缓存开启"><a href="#默认SqlSession缓存开启" class="headerlink" title="默认SqlSession缓存开启"></a>默认SqlSession缓存开启</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 一旦你创建select标签 就会有一个对应statement对象</span><br><span class="line"></span><br><span class="line">2. 同一个SqlSession对象调用同一个select --&gt; 只有第一次访问数据库(后面都是将查询结果缓存到SqlSession缓存区)</span><br><span class="line"></span><br><span class="line">   3. 有效范围: 必须是同一个SqlSession对象(多个sqlsession对象就会执行多次！！)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="SqlSessionFactory-二级缓存"><a href="#SqlSessionFactory-二级缓存" class="headerlink" title="SqlSessionFactory 二级缓存"></a>SqlSessionFactory 二级缓存</h1><h2 id="引入原因"><a href="#引入原因" class="headerlink" title="引入原因"></a>引入原因</h2><pre><code>//问题概述：
+    以前要是写两个sql语句两个sqlsession对象 --就会有两个缓存区域 --然后执行就会有两次执行(效率低)
+
+//使用二次缓存:
+    让两个sqlsession是获取同一个factory --就只有一个大的单独的缓存区域 -- 就只有一次执行</code></pre><h2 id="使用注意事项"><a href="#使用注意事项" class="headerlink" title="使用注意事项"></a>使用注意事项</h2><pre><code>1. 有效范围: 
+     就是同一个factory的所有SqlSession都可以获取
+
+2. 使用范围
+     主要用于数据频繁使用但是很少修改
+
+3. 使用步骤
+     只需要在mapper.xml的select标签中添加
+            &lt;cache readOnly=&quot;true&quot;&gt;&lt;/cache&gt;
+
+4. 当SqlSession对象进行close() / commit()  --&gt; sqlsession缓存的数据刷  --&gt; SqlSessionFactory缓存区
+</code></pre><hr>
+<h1 id="缓存流程"><a href="#缓存流程" class="headerlink" title="缓存流程"></a>缓存流程</h1><p><img src="/2020/03/28/Mybatis%E7%BC%93%E5%AD%98/huancun.png" alt></p>
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-ThreadLocal" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1183,99 +1265,6 @@
 <p><strong>3. ${} 和 #{} 区别(面试题)</strong></p>
 <pre><code>#{}  索引获取 / param1获取指定位置参数 并且在SQL语句内使用?占位符
 ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写数字 就是一个数字)</code></pre><hr>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Mybatis全局配置文件详解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="article-date">
-      <time datetime="2020-03-20T15:40:04.000Z" itemprop="datePublished">2020-03-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">Mybatis全局配置文件详解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="全局配置文件内容"><a href="#全局配置文件内容" class="headerlink" title="全局配置文件内容"></a>全局配置文件内容</h1><h2 id="transactionManager属性中type取值"><a href="#transactionManager属性中type取值" class="headerlink" title="transactionManager属性中type取值"></a>transactionManager属性中type取值</h2><p>　</p>
-<ol>
-<li><strong>JDBC</strong> 　　　事务管理使用JDBC原生事务管理方式</li>
-<li><strong>MANAGED</strong> 　把事务管理转交给其他容器(spring框架)</li>
-</ol>
-<p>setAutoMapping(false);</p>
-<h2 id="dataSource中type取值"><a href="#dataSource中type取值" class="headerlink" title="dataSource中type取值"></a>dataSource中type取值</h2><ol>
-<li><strong>POOLED</strong>　 　使用数据库连接池</li>
-<li><strong>UNPOOLED</strong> 　不使用数据库连接池，和直接使用JDBC一样</li>
-<li><strong>JNDI</strong>　　　　为了使用如spring或者应用服务器这类的容器</li>
-</ol>
-<hr>
-<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><blockquote>
-<p>在内存中开辟一块空间，存放多个数据库连接对象</p>
-</blockquote>
-<h2 id="JDBC-tomcat-Pool"><a href="#JDBC-tomcat-Pool" class="headerlink" title="JDBC tomcat Pool"></a>JDBC tomcat Pool</h2><blockquote>
-<p>直接由tomcat产生数据库连接池</p>
-</blockquote>
-<ul>
-<li><strong>图示</strong></li>
-</ul>
-<p><img src="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/chizi.png" alt></p>
-<h2 id="实现JDBC-tomcat-Pool步骤"><a href="#实现JDBC-tomcat-Pool步骤" class="headerlink" title="实现JDBC tomcat Pool步骤"></a>实现JDBC tomcat Pool步骤</h2><ol>
-<li><strong>在web项目的WebContent/META-INF存放context.xml文件</strong></li>
-</ol>
-<p><img src="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/diyi.png" alt></p>
-<ol start="2">
-<li><strong>书写十个属性(前四个是数据库属性)</strong></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;    </span><br><span class="line">&lt;Context&gt;</span><br><span class="line">  	&lt;Resoure</span><br><span class="line">  		driverClassName&#x3D;&quot;com.mysql.jdbc.Driver&quot;</span><br><span class="line">  		url&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;eesy&quot;</span><br><span class="line">  		username&#x3D;&quot;root&quot;</span><br><span class="line">  		password&#x3D;&quot;njdxrjgc7777777.&quot;</span><br><span class="line">		maxActive&#x3D;&quot;50&quot;  &#x2F;&#x2F;运行的最大数字</span><br><span class="line">		maxIdle&#x3D;&quot;10&quot;   &#x2F;&#x2F;等待的最大数字</span><br><span class="line">		name&#x3D;&quot;test&quot;</span><br><span class="line">		auth&#x3D;&quot;Container&quot; &#x2F;&#x2F;由tomcat自动启动</span><br><span class="line">		maxWait&#x3D;&quot;10000&quot;  &#x2F;&#x2F;等待最大实现</span><br><span class="line">		type&#x3D;&quot;java.sql.DataSoure&quot;   &#x2F;&#x2F;我去name找到数据库连接池的时候对象什么样子   </span><br><span class="line">		</span><br><span class="line">  	&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;Context&gt;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="三种查询方式-session-方法"><a href="#三种查询方式-session-方法" class="headerlink" title="三种查询方式  session.方法"></a>三种查询方式  session.方法</h1><h2 id="selectList-结果需要遍历"><a href="#selectList-结果需要遍历" class="headerlink" title="selectList()结果需要遍历"></a>selectList()结果需要遍历</h2><p><img src="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/chayi.png" alt></p>
-<h2 id="selectOne-结果只是变量-一行数据"><a href="#selectOne-结果只是变量-一行数据" class="headerlink" title="selectOne()结果只是变量/一行数据"></a>selectOne()结果只是变量/一行数据</h2><p><img src="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/chaer.png" alt></p>
-<h2 id="selectMap-结果只查某列的值"><a href="#selectMap-结果只查某列的值" class="headerlink" title="selectMap()结果只查某列的值"></a>selectMap()结果只查某列的值</h2><p><img src="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/chasna.png" alt></p>
-<hr>
 
       
       

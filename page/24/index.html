@@ -332,6 +332,89 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JS实现自动播放广告" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/05/JS%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE%E5%B9%BF%E5%91%8A/" class="article-date">
+      <time datetime="2020-02-05T09:41:13.000Z" itemprop="datePublished">2020-02-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/05/JS%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE%E5%B9%BF%E5%91%8A/">JS实现页面表单表格</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一、页面定时弹出广告-setInterval定时器和xxx-style-display属性"><a href="#一、页面定时弹出广告-setInterval定时器和xxx-style-display属性" class="headerlink" title="一、页面定时弹出广告(setInterval定时器和xxx.style.display属性)"></a>一、页面定时弹出广告(setInterval定时器和xxx.style.display属性)</h1><p>1.1 <strong>技术分析</strong></p>
+<ul>
+<li><strong>定时器</strong><br>  <strong>setInterval</strong>:每隔多少毫秒执行一次函数<br>  <strong>setTimeout</strong>：多少毫秒之后执行一次函数(只执行一次)<br><strong>clearInterval：</strong>清除<br>  <strong>clearTimeout：</strong>清除</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			&#x2F;&#x2F;window对象是一个最顶层对象(setInterval之前的window.可以取消)</span><br><span class="line">			</span><br><span class="line">			function test()</span><br><span class="line">			&#123;</span><br><span class="line">				console.log(&quot;setInterval 调用了&quot;);  &#x2F;&#x2F;输出  &quot;setInterval 调用了&quot;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">			var timeID;&#x2F;&#x2F;用于存设置变量</span><br><span class="line">			function start()</span><br><span class="line">			&#123;</span><br><span class="line">				timeID&#x3D;setInterval(&quot;test()&quot;,2000); &#x2F;&#x2F;隔2秒打开一次test()方法</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			function end()</span><br><span class="line">			&#123;</span><br><span class="line">				clearInterval(timeID);  &#x2F;&#x2F;清除</span><br><span class="line">			&#125;		</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;开启定时器&quot; onclick&#x3D;&quot;start()&quot;&gt;&lt;br &#x2F;&gt; &#x2F;&#x2F;定义两个触发事件按钮</span><br><span class="line">		&lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;关闭定时器&quot; onclick&#x3D;&quot;end()&quot;&gt;&lt;br &#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p><strong>显示广告</strong><br>  <code>xxx.style.display=&quot;none&quot;;</code></p>
+</li>
+<li><p><strong>隐藏广告</strong><br>  <code>xxx.style.display=&quot;block&quot;;</code></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;文档加载顺序:从上到下</span><br><span class="line">			function hideImg()&#123;</span><br><span class="line">				var img&#x3D;document.getElementById(&quot;img1&quot;);&#x2F;&#x2F;1.先获取当按钮对象</span><br><span class="line">				img.style.display&#x3D;&quot;none&quot;;  &#x2F;&#x2F;2.display属性---无(×)</span><br><span class="line">			&#125;</span><br><span class="line">		</span><br><span class="line">			function showImg()&#123;</span><br><span class="line">				var img&#x3D;document.getElementById(&quot;img1&quot;);&#x2F;&#x2F;1.先获取当按钮对象</span><br><span class="line">				img.style.display&#x3D;&quot;block&quot;;  &#x2F;&#x2F;2.display属性---有(√)</span><br><span class="line">			&#125;</span><br><span class="line">		</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;显示&quot; onclick&#x3D;&quot;showImg()&quot;&gt;</span><br><span class="line">		&lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;隐藏&quot;  onclick&#x3D;&quot;hideImg()&quot;&gt;&lt;br&gt;</span><br><span class="line">		&lt;img src&#x3D;&quot;..&#x2F;img&#x2F;1.jpg&quot; id&#x3D;&quot;img1&quot; &gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>1.2 <strong>步骤分析</strong></p>
+<pre><code>1. 确定事件：页面加载完成时间 onload触发
+2. 时间要触发函数 init()
+3. init函数里面做一件事情：
+   3.1 启动定时器(setTimeout)
+   3.2 显示一个广告
+     3.2.1 在开启一个定时器五秒钟后取消广告</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			&#x2F;&#x2F;三秒后显示广告</span><br><span class="line">			function show()&#123;</span><br><span class="line">				var img&#x3D;document.getElementById(&quot;div1&quot;);</span><br><span class="line">					img.style.display&#x3D;&quot;block&quot;;	&#x2F;&#x2F;display改为√	</span><br><span class="line">					setTimeout(&quot;hide()&quot;,5000);&#x2F;&#x2F; 放过一个定时器 选择一次性的setTimeout(函数，时间间隔)</span><br><span class="line">					&#125;</span><br><span class="line">				</span><br><span class="line">				&#x2F;&#x2F;五秒后关闭广告</span><br><span class="line">				function hide()&#123;</span><br><span class="line">				var img&#x3D;document.getElementById(&quot;div1&quot;);</span><br><span class="line">					img.style.display&#x3D;&quot;none&quot;;			&#x2F;&#x2F;display改为×	</span><br><span class="line">				&#125;</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;按钮触发的事件</span><br><span class="line">			function init()&#123;</span><br><span class="line">				setTimeout(&quot;show()&quot;,3000);&#x2F;&#x2F; 放过一个定时器 选择一次性的setTimeout(函数，时间间隔)</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br><span class="line">	&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">	&lt;body onload&#x3D;&quot;init()&quot;&gt;</span><br><span class="line">		&lt;img id&#x3D;&quot;div1&quot; src&#x3D;&quot;..&#x2F;products&#x2F;hao&#x2F;small02.jpg&quot; width&#x3D;&quot;100%&quot;  style&#x3D;&quot;display: none;&quot; &gt;</span><br><span class="line">	&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">Web前端知识点</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JS实现轮播图" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1188,107 +1271,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">Web前端知识点</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-反射" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/01/30/%E5%8F%8D%E5%B0%84/" class="article-date">
-      <time datetime="2020-01-30T04:37:51.000Z" itemprop="datePublished">2020-01-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/30/%E5%8F%8D%E5%B0%84/">反射</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>一、反射</strong><br>　　动态获取信息以及动态调用对象的方法的功能。能够对任意一个类，获取类的所有属性和方法</p>
-<ul>
-<li>解剖类—–&gt;获取字节码文件对象</li>
-</ul>
-<p><strong>三种获取字节码对象方式：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package 反射联系;</span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) throws ClassNotFoundException &#123;</span><br><span class="line">		&#x2F;&#x2F;1. Class的方法forName</span><br><span class="line">		Class clazz1&#x3D;Class.forName(&quot;反射联系.Main&quot;);	&#x2F;&#x2F;需要包.类名</span><br><span class="line">		&#x2F;&#x2F;2. 为类的静态方法</span><br><span class="line">		Class clazz2&#x3D;Main.class;</span><br><span class="line">		&#x2F;&#x2F;3. 创建对象调用方法getClass方法</span><br><span class="line">		Main m&#x3D;new Main();</span><br><span class="line">		Class clazz3&#x3D;m.getClass();</span><br><span class="line">		System.out.println(clazz1&#x3D;&#x3D;clazz2);&#x2F;&#x2F;判断三个是不是相等</span><br><span class="line">		System.out.println(clazz3&#x3D;&#x3D;clazz2);</span><br><span class="line">		&#x2F;&#x2F;结果都是true	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li><strong>反射(Class.forName(“包.类名”))</strong></li>
-</ul>
-<p>榨汁机榨汁的案例<br>分别有 水果(Fruit) 苹果(Apple) 香蕉(Banana) 桔子(Orange) 榨汁(squeeze)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line">		Juicer j&#x3D;new Juicer();&#x2F;&#x2F;购买榨汁机</span><br><span class="line">		j.run(new Apple()); &#x2F;&#x2F;榨汁机炸苹果</span><br><span class="line">		&#x2F;&#x2F;j.run(new Orange()x);&#x2F;&#x2F;Apple a&#x3D;new Orange(); 类型不匹配		</span><br><span class="line">		j.run(new Orange());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Apple &#123;	</span><br><span class="line">	public void squeeze() &#123;</span><br><span class="line">		System.out.println(&quot;榨出苹果汁儿&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Orange &#123;</span><br><span class="line">	public void squeeze() &#123;</span><br><span class="line">		System.out.println(&quot;榨出橘子汁儿&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;榨汁机负责榨水果</span><br><span class="line">class Juicer&#123;</span><br><span class="line">	public void run(Apple a)&#x2F;&#x2F;榨苹果</span><br><span class="line">	&#123;</span><br><span class="line">		a.squeeze();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public void run(Orange o)&#x2F;&#x2F;榨橘子</span><br><span class="line">	&#123;</span><br><span class="line">		o.squeeze();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>　　但是这种问题就是如果有很多水果就不停的要建立水果类，然后不停的在Juicer类中写出榨水果的run方法比较麻烦，所以我们要考虑使用<strong>多态</strong>的方法Fruit实现squeeze()榨汁。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line">		Fruit f&#x3D;new Apple();&#x2F;&#x2F;多态 -----左父右子</span><br><span class="line">		f.squeeze();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Fruit&#123; &#x2F;&#x2F;实现榨汁</span><br><span class="line">	public void squeeze();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Apple implements Fruit&#123;&#x2F;&#x2F;所有要用的类实现接口Fruit</span><br><span class="line">	</span><br><span class="line">	public void squeeze() &#123;</span><br><span class="line">		System.out.println(&quot;榨出苹果汁儿&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Orange implements Fruit&#123;</span><br><span class="line">	public void squeeze() &#123;</span><br><span class="line">		System.out.println(&quot;榨出橘子汁儿&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Juicer&#123;</span><br><span class="line">	public void run(Fruit f)&#x2F;&#x2F;run对象为接口的 f</span><br><span class="line">	&#123;</span><br><span class="line">		f.squeeze();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>而使用<strong>反射</strong>：<br>主要是添加一个文件名为<code>config.properties(里面写包名.你需要的实现的类名)</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line">		&#x2F;&#x2F;使用反射配置文件</span><br><span class="line">		BufferedReader br&#x3D;new BufferedReader(new FileReader(&quot;config.properties&quot;));&#x2F;&#x2F;字符流</span><br><span class="line">		Class c&#x3D;Class.forName(br.readLine());  &#x2F;&#x2F;读取一行(\u53CD\u5C04\u8054\u7CFB.Apple)</span><br><span class="line">	    Fruit f&#x3D;(Fruit)c.newInstance();  &#x2F;&#x2F;---父类引用指向子类对象  	</span><br><span class="line">		&#x2F;&#x2F;建立榨汁机对象然后调用run方法run(f)	    </span><br><span class="line">		Juicer j&#x3D;new Juicer();</span><br><span class="line">	    j.run(f);&#x2F;&#x2F;执行结果为 榨出苹果汁 </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<hr>
-<ul>
-<li><strong>通过反射—&gt;带参构造方法</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package 反射联系;</span><br><span class="line">import java.lang.reflect.Constructor;</span><br><span class="line">import java.lang.reflect.InvocationTargetException;</span><br><span class="line">public class Main2 &#123;</span><br><span class="line">		public static void main(String[] args) throws Exception&#123;</span><br><span class="line">			Class clazz&#x3D;Class.forName(&quot;反射联系.Main&quot;);&#x2F;&#x2F;拿到字节码</span><br><span class="line">			&#x2F;&#x2F;无参构造创建对象</span><br><span class="line">			Main m&#x3D;(Main) clazz.newInstance();</span><br><span class="line">			System.out.println(m);</span><br><span class="line">			</span><br><span class="line">			Constructor c&#x3D;clazz.getConstructor(Fruit.class);&#x2F;&#x2F;获取有参构造</span><br><span class="line">			Main m1&#x3D;(Main) c.newInstance(&quot;Apple&quot;);&#x2F;&#x2F;有参构造创建对象</span><br><span class="line">			System.out.println(m1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li><strong>通过反射成员变量(私有/共有)</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import java.lang.reflect.Constructor;</span><br><span class="line">public class Main2 &#123;</span><br><span class="line">		public static void main(String[] args) throws Exception&#123;</span><br><span class="line">			Class clazz&#x3D;Class.forName(&quot;反射联系.Main&quot;);&#x2F;&#x2F;拿到字节码</span><br><span class="line">			Constructor c&#x3D;clazz.getConstructor(String.class);&#x2F;&#x2F;获取有参构造getConstructor</span><br><span class="line">			Main m1&#x3D;(Main) c.newInstance(&quot;Apple&quot;);&#x2F;&#x2F;有参构造创建对象</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;1 共有的public</span><br><span class="line">			java.lang.reflect.Field f1&#x3D;clazz.getField(&quot;Fruit&quot;);&#x2F;&#x2F;获取姓名字段------getField</span><br><span class="line">			f1.set(m1,&quot;Orange&quot;);&#x2F;&#x2F;将苹果apple改成orange</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F;2.私有的private</span><br><span class="line">			java.lang.reflect.Field f2&#x3D;clazz.getDeclaredField(&quot;Fruit&quot;);&#x2F;&#x2F;暴力反射获取姓名字段-----getDeclaredField</span><br><span class="line">			f2.setAccessible(true); &#x2F;&#x2F;去除私有private权限</span><br><span class="line">			f2.set(m1,&quot;Orange&quot;);&#x2F;&#x2F;将苹果apple改成orange</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<ul>
-<li><strong>通过反射方法(有参/无参)</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import java.lang.reflect.Constructor;</span><br><span class="line">import java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line">public class Main3 &#123;</span><br><span class="line">	public static void main(String[] args) throws Exception&#123;</span><br><span class="line">		Class clazz&#x3D;Class.forName(&quot;反射联系.Main&quot;);&#x2F;&#x2F;拿到字节码</span><br><span class="line">		Constructor c&#x3D;clazz.getConstructor(String.class);&#x2F;&#x2F;获取有参构造getConstructor</span><br><span class="line">		Main m1&#x3D;(Main) c.newInstance(&quot;Apple&quot;);&#x2F;&#x2F;有参构造创建对象</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;无参方法</span><br><span class="line">		Method m3&#x3D;clazz.getMethod(&quot;squeeze&quot;);</span><br><span class="line">		m3.invoke(m3);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;有参方法</span><br><span class="line">		Method m2&#x3D;clazz.getMethod(&quot;squeeze&quot;,int.class);</span><br><span class="line">		m2.invoke(m2);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p><strong>二、越过泛型检查</strong><br>　　泛型只在编译期间有效，运行期(字节码文件)会被擦除掉。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import java.lang.reflect.Method;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">public class Main4 &#123;</span><br><span class="line">	public static void main(String[] args) throws Exception&#123;</span><br><span class="line">		ArrayList&lt;Integer&gt; l&#x3D;new ArrayList&lt;Integer&gt;();</span><br><span class="line">		l.add(111);</span><br><span class="line">		l.add(222);</span><br><span class="line">		Class c&#x3D;Class.forName(&quot;java.util.ArrayList&quot;); &#x2F;&#x2F;拿到字节码文件</span><br><span class="line">		Method m&#x3D;c.getMethod(&quot;add&quot;,Object.class);  &#x2F;&#x2F;更改add方法</span><br><span class="line">		m.invoke(l,&quot;abc&quot;);调用Method方法的invoke修改方法添加add</span><br><span class="line">		System.out.println(l); &#x2F;&#x2F;------&gt;[111, 222, abc]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>三、指定值(setProperty)</strong><br>　    <strong><code>public void setProperty(Object o,String qian,Object hou)</code></strong>:把o对象中名字是qian的属性值—&gt;改成hou</p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA-%E5%8F%8D%E5%B0%84/" rel="tag">JAVA-反射</a></li></ul>
     </div>
 
       
