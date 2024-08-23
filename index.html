@@ -434,7 +434,7 @@
 <li>隐藏/显示指定回答或评论</li>
 <li>回答某个提问、评论他人回答、评论（与用户端共用）</li>
 </ul>
-<h1 id="————————具体实现-用户端-———————"><a href="#————————具体实现-用户端-———————" class="headerlink" title="==————————具体实现(用户端)———————-=="></a>==————————具体实现(用户端)———————-==</h1><h1 id="1-新增互动问题-用户端"><a href="#1-新增互动问题-用户端" class="headerlink" title="1.新增互动问题(用户端)"></a>1.新增互动问题(用户端)</h1><h2 id="1-原型图"><a href="#1-原型图" class="headerlink" title="1.原型图"></a>1.原型图</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231610729.png" alt="image-20240823161022682"></p>
+<h1 id="—–具体实现-用户端–问题相关接口-—–"><a href="#—–具体实现-用户端–问题相关接口-—–" class="headerlink" title="==—–具体实现(用户端–问题相关接口)—–=="></a>==—–具体实现(用户端–问题相关接口)—–==</h1><h1 id="1-新增互动问题-用户端"><a href="#1-新增互动问题-用户端" class="headerlink" title="1.新增互动问题(用户端)"></a>1.新增互动问题(用户端)</h1><h2 id="1-原型图"><a href="#1-原型图" class="headerlink" title="1.原型图"></a>1.原型图</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231610729.png" alt="image-20240823161022682"></p>
 <h2 id="2-设计数据库"><a href="#2-设计数据库" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图"><a href="#3-业务逻辑图" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><p>比较简单，通过前端传递给我{课程id，章id，小节id，问题标题，问题具体描述，问题是否匿名}</p>
 <h2 id="4-接口分析"><a href="#4-接口分析" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231611595.png" alt="image-20240823161128538"></p>
 <p>通过新增的问题的表单即可分析出接口的请求参数信息了，然后按照Restful的风格设计即可：</p>
@@ -475,19 +475,59 @@
 </ul>
 <p>无</p>
 <h2 id="6-具体难点和亮点-1"><a href="#6-具体难点和亮点-1" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><p>要注意校验问题是否是自己的，校验是否有这条问题</p>
-<h1 id="3-分页查询问题-用户端"><a href="#3-分页查询问题-用户端" class="headerlink" title="3.分页查询问题(用户端)"></a>3.分页查询问题(用户端)</h1><h2 id="1-原型图-2"><a href="#1-原型图-2" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-2"><a href="#2-设计数据库-2" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-2"><a href="#3-业务逻辑图-2" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-2"><a href="#4-接口分析-2" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-2"><a href="#5-具体实现-2" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<h1 id="3-分页查询问题-用户端"><a href="#3-分页查询问题-用户端" class="headerlink" title="3.分页查询问题(用户端)"></a>3.分页查询问题(用户端)</h1><h2 id="1-原型图-2"><a href="#1-原型图-2" class="headerlink" title="1.原型图"></a>1.原型图</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232035487.png" alt="image-20240823203525426"></p>
+<h2 id="2-设计数据库-2"><a href="#2-设计数据库-2" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-2"><a href="#3-业务逻辑图-2" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><p>这就是一个典型的分页查询。主要分析请求参数和返回值就行了。</p>
+<p>请求参数就是过滤条件，页面可以看到的条件有：</p>
+<ul>
+<li>分页条件</li>
+<li>全部回答/我的回答：也就是要不要基于用户id过滤</li>
+<li>课程id：隐含条件，因为问题列表是在某课程详情页面查看的，所以一定要以课程id为条件</li>
+<li>章节id：可选条件，当用户点击小节时传递</li>
+</ul>
+<p>返回值格式，从页面可以看到属性有：</p>
+<ul>
+<li>是否匿名：如果提交问题是选择了匿名，则页面不能展示用户信息</li>
+<li>用户id：匿名则不显示</li>
+<li>用户头像：匿名则不显示</li>
+<li>用户名称：匿名则不显示</li>
+<li>问题标题</li>
+<li>提问时间</li>
+<li>回答数量</li>
+<li>最近一次回答的信息：<ul>
+<li>回答人名称</li>
+<li>回答内容</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232043572.png" alt="image-20240823204307508"></p>
+<h2 id="4-接口分析-2"><a href="#4-接口分析-2" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><p>综上，按照Restful来设计接口，信息如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232036669.png" alt="image-20240823203613606"></p>
+<h2 id="5-具体实现-2"><a href="#5-具体实现-2" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
 <li>1.controller层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232123047.png" alt="image-20240823212331980"></p>
 <ul>
 <li>2.service层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232123875.png" alt="image-20240823212338832"></p>
 <ul>
 <li>3.serviceimpl层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232133199.png" alt="image-20240823213318136"></p>
+<p>[for循环遍历组装数据]</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232129522.png" alt="image-20240823212921387"></p>
 <ul>
 <li>4.mapper层</li>
 </ul>
-<h2 id="6-具体难点和亮点-2"><a href="#6-具体难点和亮点-2" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><h1 id="4-根据id查询问题详情-客户端"><a href="#4-根据id查询问题详情-客户端" class="headerlink" title="4.根据id查询问题详情(客户端)"></a>4.根据id查询问题详情(客户端)</h1><h2 id="1-原型图-3"><a href="#1-原型图-3" class="headerlink" title="1.原型图"></a>1.原型图</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231755685.png" alt="image-20240823175553623"></p>
+<p>无</p>
+<h2 id="6-具体难点和亮点-2"><a href="#6-具体难点和亮点-2" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><p>主要就是根据问题表和问答表查询对应信息：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232044754.png" alt="image-20240823204407682"></p>
+<p>测试结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;total&quot;: &quot;2&quot;,</span><br><span class="line">  &quot;pages&quot;: &quot;1&quot;,</span><br><span class="line">  &quot;list&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: &quot;1552212554946768897&quot;,</span><br><span class="line">      &quot;title&quot;: &quot;redis安装的时候有问题，一直报错是怎么回事？&quot;,</span><br><span class="line">      &quot;answerTimes&quot;: 1,</span><br><span class="line">      &quot;createTime&quot;: &quot;2022-07-27 16:41:27&quot;,</span><br><span class="line">      &quot;userId&quot;: &quot;2&quot;,</span><br><span class="line">      &quot;userName&quot;: &quot;jack&quot;,</span><br><span class="line">      &quot;userIcon&quot;: &quot;&#x2F;img-tx&#x2F;0abcd1d7a66a4fad98b80c1bb48ec6ec.png&quot;,</span><br><span class="line">      &quot;latestReplyContent&quot;: &quot;是不是Redis的依赖没有安装呢？&quot;,</span><br><span class="line">      &quot;latestReplyUser&quot;: &quot;13500010005&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x2F;&#x2F;如果问题的提问者是匿名的就不显示userName userId userIcon属性</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: &quot;1585589766919852033&quot;,</span><br><span class="line">      &quot;title&quot;: &quot;Java的IO是阻塞IO吗？&quot;,</span><br><span class="line">      &quot;answerTimes&quot;: 1,</span><br><span class="line">      &quot;createTime&quot;: &quot;2022-10-27 12:31:44&quot;,</span><br><span class="line">      &quot;latestReplyContent&quot;: &quot;阻塞IO和非阻塞IO都有。java.io包下的都是阻塞IO，java.nio下的是非阻塞IO&quot;,</span><br><span class="line">      &quot;latestReplyUser&quot;: &quot;admin&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>封装过程：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232129522.png" alt></p>
+<h1 id="4-根据id查询问题详情-用户端"><a href="#4-根据id查询问题详情-用户端" class="headerlink" title="4.根据id查询问题详情(用户端)"></a>4.根据id查询问题详情(用户端)</h1><h2 id="1-原型图-3"><a href="#1-原型图-3" class="headerlink" title="1.原型图"></a>1.原型图</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231755685.png" alt="image-20240823175553623"></p>
 <p>由此可以看出详情页所需要的信息相比分页时，主要多了问题详情，主要字段有：</p>
 <ul>
 <li>是否匿名</li>
@@ -499,22 +539,31 @@
 <li>回答数量</li>
 <li>问题描述详情</li>
 </ul>
-<h2 id="2-设计数据库-3"><a href="#2-设计数据库-3" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-3"><a href="#3-业务逻辑图-3" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-3"><a href="#4-接口分析-3" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><p>而请求参数则更加简单了，就是问题的id</p>
+<h2 id="2-设计数据库-3"><a href="#2-设计数据库-3" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-3"><a href="#3-业务逻辑图-3" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.根据问题id获取一条问题</span><br><span class="line">2.根据1步骤信息判断是否匿名情况：不匿名才赋用户信息</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-接口分析-3"><a href="#4-接口分析-3" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><p>而请求参数则更加简单了，就是问题的id</p>
 <p>然后，再按照Restful风格设计，接口就出来了：</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240823175701421.png" alt="image-20240823175701421"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231757470.png" alt="image-20240823175701421"></p>
 <h2 id="5-具体实现-3"><a href="#5-具体实现-3" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
 <li>1.controller层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232025723.png" alt="image-20240823202537651"></p>
 <ul>
 <li>2.service层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232025492.png" alt="image-20240823202543455"></p>
 <ul>
 <li>3.serviceimpl层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408232026385.png" alt="image-20240823202608324"></p>
 <ul>
 <li>4.mapper层</li>
 </ul>
-<h2 id="6-具体难点和亮点-3"><a href="#6-具体难点和亮点-3" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><h1 id="5-删除问题-用户端"><a href="#5-删除问题-用户端" class="headerlink" title="5.删除问题(用户端)"></a>5.删除问题(用户端)</h1><h2 id="1-原型图-4"><a href="#1-原型图-4" class="headerlink" title="1.原型图"></a>1.原型图</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231734595.png" alt="image-20240823173457552"></p>
+<p>无</p>
+<h2 id="6-具体难点和亮点-3"><a href="#6-具体难点和亮点-3" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><p>要注意只有不匿名的情况下才能获取用户信息</p>
+<h1 id="5-删除问题-用户端"><a href="#5-删除问题-用户端" class="headerlink" title="5.删除问题(用户端)"></a>5.删除问题(用户端)</h1><h2 id="1-原型图-4"><a href="#1-原型图-4" class="headerlink" title="1.原型图"></a>1.原型图</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231734595.png" alt="image-20240823173457552"></p>
 <h2 id="2-设计数据库-4"><a href="#2-设计数据库-4" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231754864.png" alt="image-20240823175401802"></p>
 <h2 id="3-业务逻辑图-4"><a href="#3-业务逻辑图-4" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><p>需要注意的是，当用户删除某个问题时，也需要删除问题下的回答、评论。</p>
 <p>整体业务流程如下：</p>
@@ -545,18 +594,13 @@
 <h2 id="6-具体难点和亮点-4"><a href="#6-具体难点和亮点-4" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><p>需要注意的是，当用户删除某个问题时，也需要删除问题下的回答、评论。</p>
 <p>整体业务流程如下：</p>
 <ul>
-<li><p>查询问题是否存在</p>
-</li>
-<li><p>判断是否是当前用户提问的</p>
-</li>
-<li><p>如果不是则报错</p>
-</li>
-<li><p>如果是则删除问题</p>
-</li>
-<li><p>然后删除问题下的回答及评论 【两个表根据问题表的主键id和评论问答表的question_id对应(1对多)】</p>
-</li>
+<li>查询问题是否存在</li>
+<li>判断是否是当前用户提问的</li>
+<li>如果不是则报错</li>
+<li>如果是则删除问题</li>
+<li>然后删除问题下的回答及评论 【两个表根据问题表的主键id和评论问答表的question_id对应(1对多)】</li>
 </ul>
-<h1 id="————————具体实现-管理端-———————"><a href="#————————具体实现-管理端-———————" class="headerlink" title="==————————具体实现(管理端)———————-=="></a>==————————具体实现(管理端)———————-==</h1><h1 id="1-分页查询问题-管理端"><a href="#1-分页查询问题-管理端" class="headerlink" title="1.分页查询问题(管理端)"></a>1.分页查询问题(管理端)</h1><h2 id="1-原型图-5"><a href="#1-原型图-5" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-5"><a href="#2-设计数据库-5" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-5"><a href="#3-业务逻辑图-5" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-5"><a href="#4-接口分析-5" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-5"><a href="#5-具体实现-5" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<h1 id="—–具体实现-用户端–评论相关接口-—–"><a href="#—–具体实现-用户端–评论相关接口-—–" class="headerlink" title="==—–具体实现(用户端–评论相关接口)—–=="></a>==—–具体实现(用户端–评论相关接口)—–==</h1><h1 id="1-新增回答-评论"><a href="#1-新增回答-评论" class="headerlink" title="1.新增回答/评论"></a>1.新增回答/评论</h1><h2 id="1-原型图-5"><a href="#1-原型图-5" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-5"><a href="#2-设计数据库-5" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-5"><a href="#3-业务逻辑图-5" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-5"><a href="#4-接口分析-5" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-5"><a href="#5-具体实现-5" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
 <li>1.controller层</li>
 </ul>
 <ul>
@@ -568,7 +612,19 @@
 <ul>
 <li>4.mapper层</li>
 </ul>
-<h2 id="6-具体难点和亮点-5"><a href="#6-具体难点和亮点-5" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2>
+<h2 id="6-具体难点和亮点-5"><a href="#6-具体难点和亮点-5" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><h1 id="—–具体实现-管理端-问题相关接口-—–"><a href="#—–具体实现-管理端-问题相关接口-—–" class="headerlink" title="==—–具体实现(管理端-问题相关接口)—–=="></a>==—–具体实现(管理端-问题相关接口)—–==</h1><h1 id="1-分页查询问题-管理端"><a href="#1-分页查询问题-管理端" class="headerlink" title="1.分页查询问题(管理端)"></a>1.分页查询问题(管理端)</h1><h2 id="1-原型图-6"><a href="#1-原型图-6" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-6"><a href="#2-设计数据库-6" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-6"><a href="#3-业务逻辑图-6" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-6"><a href="#4-接口分析-6" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-6"><a href="#5-具体实现-6" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<li>1.controller层</li>
+</ul>
+<ul>
+<li>2.service层</li>
+</ul>
+<ul>
+<li>3.serviceimpl层</li>
+</ul>
+<ul>
+<li>4.mapper层</li>
+</ul>
+<h2 id="6-具体难点和亮点-6"><a href="#6-具体难点和亮点-6" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><h1 id="—–具体实现-管理端–评论相关接口-—–"><a href="#—–具体实现-管理端–评论相关接口-—–" class="headerlink" title="==—–具体实现(管理端–评论相关接口)—–=="></a>==—–具体实现(管理端–评论相关接口)—–==</h1>
       
       
     </div>
