@@ -372,6 +372,7 @@
 <li>老师可以在管理端管理问题、回答、评论的状态</li>
 </ul>
 <h2 id="准备阶段—字段分析"><a href="#准备阶段—字段分析" class="headerlink" title="准备阶段—字段分析"></a>准备阶段—字段分析</h2><p>根据原型图可以得到对应字段</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408241502965.png" alt="image-20240824150214835"></p>
 <h2 id="准备阶段—ER图"><a href="#准备阶段—ER图" class="headerlink" title="准备阶段—ER图"></a>准备阶段—ER图</h2><p>基本上根据页面原型图得到的字段：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231536709.png" alt="image-20240823153635633"></p>
 <h2 id="准备阶段—表结构"><a href="#准备阶段—表结构" class="headerlink" title="准备阶段—表结构"></a>准备阶段—表结构</h2><ul>
@@ -381,7 +382,7 @@
 <ul>
 <li>回答/评论表</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231548879.png" alt="image-20240823154822813"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408241506442.png" alt="image-20240824150648355"></p>
 <h2 id="准备阶段—Mybatis-Plus代码生成"><a href="#准备阶段—Mybatis-Plus代码生成" class="headerlink" title="准备阶段—Mybatis-Plus代码生成"></a>准备阶段—Mybatis-Plus代码生成</h2><p>可以生成对应的文件和实体类等信息</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231456518.png" alt="image-20240823145646440"></p>
 <h2 id="准备阶段–类型枚举"><a href="#准备阶段–类型枚举" class="headerlink" title="准备阶段–类型枚举"></a>准备阶段–类型枚举</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408231519881.png" alt="image-20240823151906796"></p>
@@ -772,7 +773,7 @@
 <p> 问题表中有一个status字段，标记管理员是否已经查看过该问题。因此每当调用根据id查询问题接口，我们可以认为管理员查看了该问题，应该将问题status标记为<strong>已查看</strong>。</p>
 </blockquote>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408241057585.png" alt="image-20240824105707505"></p>
-<h1 id="—–管理端–评论相关接口—–"><a href="#—–管理端–评论相关接口—–" class="headerlink" title="==—–管理端–评论相关接口—–=="></a>==—–管理端–评论相关接口—–==</h1><h1 id="1-分页查询问答-评论列表"><a href="#1-分页查询问答-评论列表" class="headerlink" title="1.分页查询问答/评论列表"></a>1.分页查询问答/评论列表</h1><h2 id="1-原型图-10"><a href="#1-原型图-10" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-10"><a href="#2-设计数据库-10" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-10"><a href="#3-业务逻辑图-10" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-10"><a href="#4-接口分析-10" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-10"><a href="#5-具体实现-10" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<h1 id="—–管理端–评论相关接口—–"><a href="#—–管理端–评论相关接口—–" class="headerlink" title="==—–管理端–评论相关接口—–=="></a>==—–管理端–评论相关接口—–==</h1><h1 id="1-分页查询问答-评论列表-管理端"><a href="#1-分页查询问答-评论列表-管理端" class="headerlink" title="1.分页查询问答/评论列表(管理端)"></a>1.分页查询问答/评论列表(管理端)</h1><h2 id="1-原型图-10"><a href="#1-原型图-10" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-10"><a href="#2-设计数据库-10" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-10"><a href="#3-业务逻辑图-10" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-10"><a href="#4-接口分析-10" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-10"><a href="#5-具体实现-10" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
 <li>1.controller层</li>
 </ul>
 <ul>
@@ -784,18 +785,36 @@
 <ul>
 <li>4.mapper层</li>
 </ul>
-<h2 id="6-具体难点和亮点-10"><a href="#6-具体难点和亮点-10" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><h1 id="2-隐藏-显示评论"><a href="#2-隐藏-显示评论" class="headerlink" title="2.隐藏/显示评论"></a>2.隐藏/显示评论</h1><h2 id="1-原型图-11"><a href="#1-原型图-11" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-11"><a href="#2-设计数据库-11" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-11"><a href="#3-业务逻辑图-11" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-11"><a href="#4-接口分析-11" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-11"><a href="#5-具体实现-11" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<h2 id="6-具体难点和亮点-10"><a href="#6-具体难点和亮点-10" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><h1 id="2-隐藏-显示评论-管理端"><a href="#2-隐藏-显示评论-管理端" class="headerlink" title="2.隐藏/显示评论(管理端)"></a>2.隐藏/显示评论(管理端)</h1><h2 id="1-原型图-11"><a href="#1-原型图-11" class="headerlink" title="1.原型图"></a>1.原型图</h2><p>与问题类似，管理员也可以显示或隐藏某个评论或评论：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408241407255.png" alt="image-20240824140709151"></p>
+<p>与隐藏问题类似，同样是修改hidden字段。</p>
+<h2 id="2-设计数据库-11"><a href="#2-设计数据库-11" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-11"><a href="#3-业务逻辑图-11" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><p>与隐藏问题类似，同样是修改hidden字段</p>
+<p>【<strong>注意</strong>：如果隐藏的是回答，则回答下的评论也要隐藏】</p>
+<h2 id="4-接口分析-11"><a href="#4-接口分析-11" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><ul>
+<li><strong>接口地址：</strong><code>/admin/replies/{id}/hidden/{hidden}</code></li>
+<li><strong>请求方式：</strong><code>PUT</code></li>
+<li><strong>请求参数：</strong>路径占位符参数<ul>
+<li>id：回答或评论id</li>
+<li>hidden：是否被隐藏</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-具体实现-11"><a href="#5-具体实现-11" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
 <li>1.controller层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408241614929.png" alt="image-20240824161407864"></p>
 <ul>
 <li>2.service层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408241614435.png" alt="image-20240824161414397"></p>
 <ul>
 <li>3.serviceimpl层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408241615550.png" alt="image-20240824161530474"></p>
 <ul>
 <li>4.mapper层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408241615800.png" alt="image-20240824161535756"></p>
 <h2 id="6-具体难点和亮点-11"><a href="#6-具体难点和亮点-11" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2>
       
       
