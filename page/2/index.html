@@ -1823,12 +1823,14 @@
 <p>2.根据mybatis插件生成:</p>
 <p>​    po(可以添加注解保证数据库和Java实体类对应，对于枚举和Json类型都有新推出的处理器解决)，</p>
 <p>​    service(extends IService<Xxx>)，</Xxx></p>
-<p>​    serviceImpl( extends ServiceImpl&lt;XxxMapper, Xxx&gt; implements IAddressService)，</p>
+<p>​    serviceImpl( extends ServiceImpl&lt;XxxMapper, Xxx&gt; implements IAddressService)， [引入mapper方法：①注入xxxMapper ②直接getBaseMapper]</p>
 <p>​    controller，</p>
 <p>​    mapper(extends BaseMapper<Xxx>)</Xxx></p>
 <p>3.按照原有的设计思路写代码：</p>
 <p>​    3.1 简单的就直接调用service的CRUD方法【service接口默认也有实现类ServiceImpl&lt;XXXMapper,实体类&gt;，这样也说明底层还是直接调用BaseMapper方法】</p>
-<p>​    3.2 复杂的话就还是原来的动态sql书写</p>
+<p>​    3.2 复杂的话，①xml文件按照原来的动态sql书写</p>
+<p>​    3.3 复杂的话，②使用xxxMapper.条件构造器[创建复杂where语句]</p>
+<p>​    3.4 复杂的话，③使用lambdaQuery()/lambdaUpdate()添加一些where语句  –新特性【好用】</p>
 <p>【只不过在书写过程中有很多好用的扩展功能】</p>
 
       

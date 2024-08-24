@@ -79,7 +79,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301522267.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301643474.png">
 <meta property="article:published_time" content="2024-04-25T08:17:17.000Z">
-<meta property="article:modified_time" content="2024-08-21T07:00:08.019Z">
+<meta property="article:modified_time" content="2024-08-24T09:15:47.254Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="MybatisPlus">
 <meta name="twitter:card" content="summary">
@@ -641,12 +641,14 @@
 <p>2.根据mybatis插件生成:</p>
 <p>​    po(可以添加注解保证数据库和Java实体类对应，对于枚举和Json类型都有新推出的处理器解决)，</p>
 <p>​    service(extends IService<Xxx>)，</Xxx></p>
-<p>​    serviceImpl( extends ServiceImpl&lt;XxxMapper, Xxx&gt; implements IAddressService)，</p>
+<p>​    serviceImpl( extends ServiceImpl&lt;XxxMapper, Xxx&gt; implements IAddressService)， [引入mapper方法：①注入xxxMapper ②直接getBaseMapper]</p>
 <p>​    controller，</p>
 <p>​    mapper(extends BaseMapper<Xxx>)</Xxx></p>
 <p>3.按照原有的设计思路写代码：</p>
 <p>​    3.1 简单的就直接调用service的CRUD方法【service接口默认也有实现类ServiceImpl&lt;XXXMapper,实体类&gt;，这样也说明底层还是直接调用BaseMapper方法】</p>
-<p>​    3.2 复杂的话就还是原来的动态sql书写</p>
+<p>​    3.2 复杂的话，①xml文件按照原来的动态sql书写</p>
+<p>​    3.3 复杂的话，②使用xxxMapper.条件构造器[创建复杂where语句]</p>
+<p>​    3.4 复杂的话，③使用lambdaQuery()/lambdaUpdate()添加一些where语句  –新特性【好用】</p>
 <p>【只不过在书写过程中有很多好用的扩展功能】</p>
 
       
@@ -706,7 +708,7 @@
         <p><span>本文标题:</span><a href="/2024/04/25/MybatisPlus/">MybatisPlus</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年04月25日 - 16时17分</p>
-        <p><span>最后更新:</span>2024年08月21日 - 15时00分</p>
+        <p><span>最后更新:</span>2024年08月24日 - 17时15分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/04/25/MybatisPlus/" title="MybatisPlus">https://larkkkkkkk.github.io/2024/04/25/MybatisPlus/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/04/25/MybatisPlus/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
