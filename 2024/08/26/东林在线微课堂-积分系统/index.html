@@ -22,9 +22,16 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271158460.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271159112.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271159490.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271304884.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271255804.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271256542.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271305901.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271307108.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271307373.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271308920.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271127796.png">
 <meta property="article:published_time" content="2024-08-26T13:37:25.000Z">
-<meta property="article:modified_time" content="2024-08-27T03:59:59.173Z">
+<meta property="article:modified_time" content="2024-08-27T05:30:27.352Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="微服务">
 <meta name="twitter:card" content="summary">
@@ -450,6 +457,7 @@
 <ul>
 <li>3.serviceimpl层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271304884.png" alt="image-20240827130422747"></p>
 <ul>
 <li>4.mapper层</li>
 </ul>
@@ -457,18 +465,41 @@
 <h2 id="6-具体难点和亮点"><a href="#6-具体难点和亮点" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><ul>
 <li>问题一：如何涉及签到的数据类型？为什么选redis的bitMap？怎么扩容的？一次扩充8位</li>
 </ul>
+<p>考虑签到只需要1/0，那就使用bitMap；然后YYMM:Userid就是一个bitMap【代表某人某年某月的登录】，一共设计31个bit位就可以代表一个月的签到数据；扩容的话是8位一组，一般一个月就是4组32位(最后一位暂时没有用)</p>
 <ul>
-<li>问题二：连续签到天数怎么计算？怎么从redisbit获取？怎么从后往前遍历？</li>
+<li>问题二：连续签到天数怎么计算？怎么从bitMap获取？怎么从后往前遍历？</li>
 </ul>
+<p>连续登录天数：从当前天从后往前算连续1的个数【一定是从后往前】；从后往前就用算出来的十进制数&amp;1做与运算【只关心最后一位结果】，然后右移十进制得到前面的一位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int count &#x3D; 0; &#x2F;&#x2F; 定义一个计数器</span><br><span class="line">for(&#x2F;*从后向前遍历签到记录中的每一个bit位*&#x2F;)&#123;</span><br><span class="line">    &#x2F;&#x2F; 判断是否是1</span><br><span class="line">    &#x2F;&#x2F; 如果是，则count++</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271255804.png" alt="image-20240827125513753"></p>
 <ul>
-<li>问题三：怎么判断重复签到？</li>
+<li><p>问题三：怎么判断重复签到？</p>
+<p><strong>利用setbit返回值的特性</strong></p>
+</li>
 </ul>
-<h1 id="2-查询我的本月签到记录"><a href="#2-查询我的本月签到记录" class="headerlink" title="2.查询我的本月签到记录"></a>2.查询我的本月签到记录</h1><h2 id="1-原型图-1"><a href="#1-原型图-1" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-1"><a href="#2-设计数据库-1" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-1"><a href="#3-业务逻辑图-1" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-1"><a href="#4-接口分析-1" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-1"><a href="#5-具体实现-1" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271256542.png" alt="image-20240827125629493"></p>
+<ul>
+<li><p>问题四：bitmap用哪些指令了？</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271305901.png" alt="image-20240827130515836" style="zoom:67%;">
+
+
+
+</li>
+</ul>
+<h1 id="2-查询我的本月签到记录"><a href="#2-查询我的本月签到记录" class="headerlink" title="2.查询我的本月签到记录"></a>2.查询我的本月签到记录</h1><h2 id="1-原型图-1"><a href="#1-原型图-1" class="headerlink" title="1.原型图"></a>1.原型图</h2><p>在签到日历中，需要把本月(第一天-今天)的所有签到过的日期高亮显示。</p>
+<p>因此我们必须把签到记录返回，具体来说就是每一天是否签到的数据。是否签到，就是0或1，刚好在前端0和1代表false和true，也就是签到或没签到。</p>
+<p>因此，每一天的签到结果就是一个0或1的数字，我们最终返回的结果是一个0或1组成的数组，对应从本月第1天到今天为止每一天的签到情况。</p>
+<h2 id="2-设计数据库-1"><a href="#2-设计数据库-1" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-1"><a href="#3-业务逻辑图-1" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-1"><a href="#4-接口分析-1" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><p>综上，最终的接口如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271307108.png" alt="image-20240827130734059"></p>
+<h2 id="5-具体实现-1"><a href="#5-具体实现-1" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
 <li>1.controller层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271307373.png" alt="image-20240827130758330"></p>
 <ul>
 <li>2.service层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408271308920.png" alt="image-20240827130814871"></p>
 <ul>
 <li>3.serviceimpl层</li>
 </ul>
@@ -571,7 +602,7 @@
         <p><span>本文标题:</span><a href="/2024/08/26/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E7%A7%AF%E5%88%86%E7%B3%BB%E7%BB%9F/">东林在线微课堂-积分系统</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年08月26日 - 21时37分</p>
-        <p><span>最后更新:</span>2024年08月27日 - 11时59分</p>
+        <p><span>最后更新:</span>2024年08月27日 - 13时30分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/08/26/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E7%A7%AF%E5%88%86%E7%B3%BB%E7%BB%9F/" title="东林在线微课堂-积分系统">https://larkkkkkkk.github.io/2024/08/26/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E7%A7%AF%E5%88%86%E7%B3%BB%E7%BB%9F/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/08/26/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E7%A7%AF%E5%88%86%E7%B3%BB%E7%BB%9F/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
