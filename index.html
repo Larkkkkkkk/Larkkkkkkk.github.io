@@ -631,7 +631,7 @@
 <ul>
 <li>赛季id【关联赛季表】</li>
 </ul>
-<h2 id="准备阶段—ER图-2"><a href="#准备阶段—ER图-2" class="headerlink" title="准备阶段—ER图"></a>准备阶段—ER图</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281719609.png" alt="image-20240828171955549"></p>
+<h2 id="准备阶段—ER图-2"><a href="#准备阶段—ER图-2" class="headerlink" title="准备阶段—ER图"></a>准备阶段—ER图</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281747829.png" alt="image-20240828174731750"></p>
 <h2 id="准备阶段—表结构-2"><a href="#准备阶段—表结构-2" class="headerlink" title="准备阶段—表结构"></a>准备阶段—表结构</h2><ul>
 <li>赛季表</li>
 </ul>
@@ -674,7 +674,78 @@
 </ul>
 <p>查询赛季列表—&gt;必须是当前赛季【开始时间小于等于当前时间】</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281735252.png" alt></p>
+<h1 id="实时数据"><a href="#实时数据" class="headerlink" title="==实时数据=="></a>==实时数据==</h1><h1 id="2-1-生成本赛季榜单【实时数据-Zset】"><a href="#2-1-生成本赛季榜单【实时数据-Zset】" class="headerlink" title="2.1 生成本赛季榜单【实时数据-Zset】"></a>2.1 生成本赛季榜单【实时数据-Zset】</h1><h2 id="1-原型图-5"><a href="#1-原型图-5" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-5"><a href="#2-设计数据库-5" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-5"><a href="#3-业务逻辑图-5" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><ul>
+<li>Mysql：要不停计算，不停添加数据【很繁琐】</li>
+<li>Redis：既然考虑积分排名，就是用redis的Zset数据结构【key=赛季日期，member=用户id，score=积分和】—如果有用户新增积分，那就<strong>累加</strong>到对应score上，zset就可以实时更新</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281925032.png" alt="image-20240828192525979"></p>
+<p>既然要使用Redis的SortedSet来实现排行榜，就需要在<strong>用户每次积分变更时，累加积分到Redis的SortedSet中</strong>。因此，我们要对之前的新增积分功能做简单改造，如图中绿色部分：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281947021.png" alt="image-20240828194705961"></p>
+<p>在Redis中，使用SortedSet结构，<strong>以赛季的日期为key，以用户id为member，以积分和为score. 每当用户新增积分，就累加到score中</strong>，SortedSet排名就会实时更新。这样一个实时的当前赛季榜单就出现了</p>
+<h2 id="4-接口分析-5"><a href="#4-接口分析-5" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><p>一旦积分微服务获取到积分，然后将积分新增到积分明细表之后，我就可以发送积分【累加】到redis！！！！</p>
+<h2 id="5-具体实现-5"><a href="#5-具体实现-5" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<li>在原有的新增积分上：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281941986.png" alt></p>
+<h2 id="6-具体难点和亮点-5"><a href="#6-具体难点和亮点-5" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><ul>
+<li><p>问题一：如何做排行榜？</p>
+<p>redis的Zset数据结构【key=赛季日期，member=用户id，score=积分和】—如果有用户新增积分，那就<strong>累加</strong>到对应score上，zset就可以实时更新</p>
+</li>
+<li><p>问题二：积分怎么新增还是累加？</p>
+</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281944640.png" alt="image-20240828194446571" style="zoom:67%;">
 
+
+
+<h1 id="2-2-查询积分榜"><a href="#2-2-查询积分榜" class="headerlink" title="2.2 查询积分榜"></a>2.2 查询积分榜</h1><h2 id="1-原型图-6"><a href="#1-原型图-6" class="headerlink" title="1.原型图"></a>1.原型图</h2><p> 在个人中心，学生可以查看指定赛季积分排行榜（只显示前100 ），还可以查看自己总积分和排名。而且排行榜分为本赛季榜单和历史赛季榜单。</p>
+<p>我们可以在一个接口中同时实现这两类榜单的查询</p>
+<p>首先，我们来看一下页面原型（这里我给出的是原型对应的设计稿，也就是最终前端设计的页面效果）：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281921904.png" alt="image-20240828192147851" style="zoom: 67%;">
+
+<h2 id="2-设计数据库-6"><a href="#2-设计数据库-6" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-6"><a href="#3-业务逻辑图-6" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><p>首先我们分析一下请求参数：</p>
+<ul>
+<li>榜单数据非常多，不可能一次性查询出来，因此这里一定是分页查询（滚动分页），需要分页参数。</li>
+<li>由于要查询历史榜单需要知道赛季，因此参数中需要指定赛季id。【当赛季id为空，我们认定是查询当前赛季。这样就可以把两个接口合二为一】</li>
+</ul>
+<p>然后是返回值，无论是历史榜单还是当前榜单，结构都一样。分为两部分：</p>
+<ul>
+<li>当前用户的积分和排名。【当前用户不一定上榜，因此需要单独查询】</li>
+<li>榜单数据。就是N个用户的积分、排名形成的集合。</li>
+</ul>
+<h2 id="4-接口分析-6"><a href="#4-接口分析-6" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><p>综上，接口信息如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281952424.png" alt="image-20240828195228359"></p>
+<h2 id="5-具体实现-6"><a href="#5-具体实现-6" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<li>1.controller层</li>
+</ul>
+<ul>
+<li>2.service层</li>
+</ul>
+<ul>
+<li>3.serviceimpl层</li>
+</ul>
+<ul>
+<li>4.mapper层</li>
+</ul>
+<h2 id="6-具体难点和亮点-6"><a href="#6-具体难点和亮点-6" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><ul>
+<li>问题一：如何获取用户(User_id)我的排名和积分？</li>
+</ul>
+<p>todo</p>
+<h1 id="历史数据"><a href="#历史数据" class="headerlink" title="==历史数据=="></a>==历史数据==</h1><h1 id="3-历史赛季榜单【历史数据】"><a href="#3-历史赛季榜单【历史数据】" class="headerlink" title="3.历史赛季榜单【历史数据】"></a>3.历史赛季榜单【历史数据】</h1><h2 id="1-原型图-7"><a href="#1-原型图-7" class="headerlink" title="1.原型图"></a>1.原型图</h2><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281922432.png" alt="image-20240828192210376" style="zoom:67%;">
+
+<h2 id="2-设计数据库-7"><a href="#2-设计数据库-7" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-7"><a href="#3-业务逻辑图-7" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-7"><a href="#4-接口分析-7" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-7"><a href="#5-具体实现-7" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<li>1.controller层</li>
+</ul>
+<ul>
+<li>2.service层</li>
+</ul>
+<ul>
+<li>3.serviceimpl层</li>
+</ul>
+<ul>
+<li>4.mapper层</li>
+</ul>
+<h2 id="6-具体难点和亮点-7"><a href="#6-具体难点和亮点-7" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2>
       
       
     </div>
