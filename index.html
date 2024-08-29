@@ -674,7 +674,7 @@
 </ul>
 <p>查询赛季列表—&gt;必须是当前赛季【开始时间小于等于当前时间】</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281735252.png" alt></p>
-<h1 id="实时数据"><a href="#实时数据" class="headerlink" title="==实时数据=="></a>==实时数据==</h1><h1 id="2-1-生成本赛季榜单【实时数据-Zset】"><a href="#2-1-生成本赛季榜单【实时数据-Zset】" class="headerlink" title="2.1 生成本赛季榜单【实时数据-Zset】"></a>2.1 生成本赛季榜单【实时数据-Zset】</h1><h2 id="1-原型图-5"><a href="#1-原型图-5" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-5"><a href="#2-设计数据库-5" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-5"><a href="#3-业务逻辑图-5" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><ul>
+<h1 id="实时数据-Zset数据类型"><a href="#实时数据-Zset数据类型" class="headerlink" title="==实时数据[Zset数据类型]=="></a>==实时数据[Zset数据类型]==</h1><h1 id="2-1-生成本赛季榜单"><a href="#2-1-生成本赛季榜单" class="headerlink" title="2.1 生成本赛季榜单"></a>2.1 生成本赛季榜单</h1><h2 id="1-原型图-5"><a href="#1-原型图-5" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-5"><a href="#2-设计数据库-5" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-5"><a href="#3-业务逻辑图-5" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><ul>
 <li>Mysql：要不停计算，不停添加数据【很繁琐】</li>
 <li>Redis：既然考虑积分排名，就是用redis的Zset数据结构【key=赛季日期，member=用户id，score=积分和】—如果有用户新增积分，那就<strong>累加</strong>到对应score上，zset就可以实时更新</li>
 </ul>
@@ -692,6 +692,7 @@
 <p>redis的Zset数据结构【key=赛季日期，member=用户id，score=积分和】—如果有用户新增积分，那就<strong>累加</strong>到对应score上，zset就可以实时更新</p>
 </li>
 <li><p>问题二：积分怎么新增还是累加？</p>
+<p>  使用Zset的incrementScore方法</p>
 </li>
 </ul>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281944640.png" alt="image-20240828194446571" style="zoom:67%;">
@@ -718,22 +719,41 @@
 <h2 id="5-具体实现-6"><a href="#5-具体实现-6" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
 <li>1.controller层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408290956496.png" alt="image-20240829095637423"></p>
 <ul>
 <li>2.service层</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408290957223.png" alt="image-20240829095718181"></p>
 <ul>
 <li>3.serviceimpl层</li>
 </ul>
+<p>分为整体：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408290959586.png" alt="image-20240829095931498"></p>
+<p>其中查询我的积分和排名：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291000100.png" alt="image-20240829100041040"></p>
+<p>其中查询榜单列表：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291001504.png" alt="image-20240829100117423"></p>
 <ul>
 <li>4.mapper层</li>
 </ul>
+<p>无</p>
 <h2 id="6-具体难点和亮点-6"><a href="#6-具体难点和亮点-6" class="headerlink" title="6.具体难点和亮点"></a>6.具体难点和亮点</h2><ul>
 <li>问题一：如何获取用户(User_id)我的排名和积分？</li>
 </ul>
-<p>todo</p>
-<h1 id="历史数据"><a href="#历史数据" class="headerlink" title="==历史数据=="></a>==历史数据==</h1><h1 id="3-历史赛季榜单【历史数据】"><a href="#3-历史赛季榜单【历史数据】" class="headerlink" title="3.历史赛季榜单【历史数据】"></a>3.历史赛季榜单【历史数据】</h1><h2 id="1-原型图-7"><a href="#1-原型图-7" class="headerlink" title="1.原型图"></a>1.原型图</h2><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281922432.png" alt="image-20240828192210376" style="zoom:67%;">
+<p>​        获得我的积分  zscore boards:202408 userId</p>
+<p>​        获得我的排名 zrevrank boards:202408 userId</p>
+<ul>
+<li><p>问题二：如何分页获取排行榜(用户，积分，排名)？</p>
+<p>获取我的排行榜 zrevRangeWithScore start stop[start和stop要根据pageSize和pageNo推断]</p>
+</li>
+</ul>
+<h1 id="历史数据-Redis和Mysql数据持久化"><a href="#历史数据-Redis和Mysql数据持久化" class="headerlink" title="==历史数据[Redis和Mysql数据持久化]=="></a>==历史数据[Redis和Mysql数据持久化]==</h1><h1 id="3-历史赛季榜单【历史数据】"><a href="#3-历史赛季榜单【历史数据】" class="headerlink" title="3.历史赛季榜单【历史数据】"></a>3.历史赛季榜单【历史数据】</h1><h2 id="1-原型图-7"><a href="#1-原型图-7" class="headerlink" title="1.原型图"></a>1.原型图</h2><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281922432.png" alt="image-20240828192210376" style="zoom:67%;">
 
-<h2 id="2-设计数据库-7"><a href="#2-设计数据库-7" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-7"><a href="#3-业务逻辑图-7" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-7"><a href="#4-接口分析-7" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-7"><a href="#5-具体实现-7" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
+<h2 id="2-设计数据库-7"><a href="#2-设计数据库-7" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-7"><a href="#3-业务逻辑图-7" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><p>积分排行榜是分赛季的，每一个月是一个赛季。因此每到每个月的月初，就会进入一个新的赛季。所有用户的积分应该清零，重新累积。</p>
+<p>如果直接删除Redis数据，那就丢失了一个赛季 —-==<strong>持久化</strong>==—-&gt; Mysql。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291031970.png" alt="image-20240829103104877"></p>
+<p>假如有数百万用户，每个赛季榜单都有数百万数据。随着时间推移，历史赛季越来越多，如果全部保存到一张表中，数据量会非常恐怖！–&gt;<strong>==海量数据存储策略==</strong></p>
+<h2 id="4-接口分析-7"><a href="#4-接口分析-7" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><h2 id="5-具体实现-7"><a href="#5-具体实现-7" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
 <li>1.controller层</li>
 </ul>
 <ul>
