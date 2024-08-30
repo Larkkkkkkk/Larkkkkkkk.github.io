@@ -1150,7 +1150,7 @@
 </ul>
 <h1 id="——————————————-2"><a href="#——————————————-2" class="headerlink" title="==——————————————=="></a><strong>==——————————————==</strong></h1><h1 id="历史数据-Redis和Mysql数据持久化"><a href="#历史数据-Redis和Mysql数据持久化" class="headerlink" title="==历史数据[Redis和Mysql数据持久化]=="></a>==历史数据[Redis和Mysql数据持久化]==</h1><h1 id="0-业务分析-1"><a href="#0-业务分析-1" class="headerlink" title="0.业务分析"></a>0.业务分析</h1><p>积分排行榜是分赛季的，每一个月是一个赛季。因此每到每个月的月初，就会进入一个新的赛季。所有用户的积分应该清零，重新累积。</p>
 <p>如果直接删除Redis数据，那就丢失了一个赛季 —-==<strong>持久化</strong>==—-&gt; Mysql</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291031970.png" alt="image-20240829103104877"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301959223.png" alt="image-20240830195901104"></p>
 <p>假如有数百万用户，每个赛季榜单都有数百万数据。随着时间推移，历史赛季越来越多，如果全部保存到一张表中，数据量会非常恐怖！–&gt;<strong>==海量数据存储策略==</strong></p>
 <h1 id="1-海量数据存储策略-四种策略"><a href="#1-海量数据存储策略-四种策略" class="headerlink" title="1.海量数据存储策略[四种策略]"></a>1.海量数据存储策略[四种策略]</h1><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291043810.png" alt="image-20240829104320737"></p>
 <h2 id="1-1-分区"><a href="#1-1-分区" class="headerlink" title="1.1 分区"></a>1.1 分区</h2><p> <strong>表分区（Partition）</strong>是一种数据存储方案，可以解决单表数据较多的问题【MySQL5.1开始支持表分区功能】</p>
@@ -1267,7 +1267,8 @@
 <h1 id="——–具体实现——–-3"><a href="#——–具体实现——–-3" class="headerlink" title="==——–具体实现——–=="></a>==——–具体实现——–==</h1><h1 id="1-定时-生成历史榜单表"><a href="#1-定时-生成历史榜单表" class="headerlink" title="1.[定时]生成历史榜单表"></a>1.[定时]生成历史榜单表</h1><h2 id="1-1-业务设计"><a href="#1-1-业务设计" class="headerlink" title="1.1 业务设计"></a>1.1 业务设计</h2><p>每个赛季刚开始的时候（月初）来创建新的赛季榜单表。每个月的月初执行一个创建表的任务，我们可以利用<strong>定时任务</strong>来实现。</p>
 <p>【由于表的名称中包含赛季id，因此在定时任务中我们还要先查询赛季信息，获取赛季id，拼接得到表名，最后创建表】</p>
 <p>大概流程如图：</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291649510.png" alt="image-20240829164908368"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291649510.png" alt="image-20240829164908368" style="zoom:200%;">
+
 <h2 id="1-2-实现思路"><a href="#1-2-实现思路" class="headerlink" title="1.2 实现思路"></a>1.2 实现思路</h2><ul>
 <li><p>①生成上赛季表：</p>
 <p>通过xxl-job设定定时任务[每月初]：查询赛季表上个月对应的赛季id。通过传递(表名+赛季id)在mapper层创建历史赛季表  </p>
@@ -1306,7 +1307,11 @@
 <li>③清除redis数据：unlike命令会在另外一个线程中回收内存，非阻塞【del会阻塞】</li>
 </ul>
 <p>​    使用unlike指令删除【非阻塞式】</p>
-<h1 id="2-MybatisPlus动态表名插件"><a href="#2-MybatisPlus动态表名插件" class="headerlink" title="2.MybatisPlus动态表名插件"></a>2.MybatisPlus动态表名插件</h1><ul>
+<h1 id="2-MybatisPlus动态表名插件"><a href="#2-MybatisPlus动态表名插件" class="headerlink" title="2.MybatisPlus动态表名插件"></a>2.MybatisPlus动态表名插件</h1><h2 id="2-1-原始情况"><a href="#2-1-原始情况" class="headerlink" title="2.1 原始情况"></a>2.1 原始情况</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301934081.png" alt="image-20240830193434978"></p>
+<h2 id="2-2-实现思路"><a href="#2-2-实现思路" class="headerlink" title="2.2 实现思路"></a>2.2 实现思路</h2><p>流程中，我们会先计算表名，然后去执行持久化，而动态表名插件就会生效，去替换表名。</p>
+<p>因此，一旦我们计算完表名，以某种方式传递给插件中的TableNameHandler，那么就无需重复计算表名了。都是MybatisPlus内部调用的，我们无法传递参数。—&gt; 但是可以在一个线程中实现数据共享</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301936988.png" alt="image-20240830193650901"></p>
+<h2 id="2-3-具体实现"><a href="#2-3-具体实现" class="headerlink" title="2.3 具体实现"></a>2.3 具体实现</h2><ul>
 <li>配置Mybatis动态表名拦截器</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301625378.png" alt="image-20240830162523297"></p>
@@ -1356,7 +1361,7 @@
 <p>因此我们就不需要用到分库分表的插件了，直接在业务层利用MybatisPlus就可以实现动态表名，动态插入了。简单高效。</p>
 <p>我们会利用一个定时任务在每月初生成上赛季的榜单表，然后再用一个定时任务读取Redis中的上赛季榜单数据，持久化到数据库中。最后再有一个定时任务清理Redis中的历史数据。</p>
 <p>这里要说明一下，这里三个任务是有关联的，之所以让任务分开定义，是为了避免任务耦合。这样在部分任务失败时，可以单独重试，无需所有任务从头重试。</p>
-<p>当然，最终我们肯定要确保这三个任务的执行顺序，一定是依次执行的。</p>
+<p>当然，最终我们肯定要确保这三个任务的执行顺序，一定是依次执行的[通过xxlJob分布式调度完成，弥补单体的springtask框架]</p>
 <p>面试官追问：你们使用Redis的SortedSet来保存榜单数据，如果用户量非常多怎么办？</p>
 <p>​    首先Redis的SortedSet底层利用了跳表机制，性能还是非常不错的。即便有百万级别的用户量，利用SortedSet也没什么问题，性能上也能得到保证。在我们的项目用户量下，完全足够。</p>
 <p>当系统用户量规模达到数千万，乃至数亿时，我们可以采用分治的思想，将用户数据按照积分范围划分为多个桶。</p>
