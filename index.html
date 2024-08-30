@@ -362,10 +362,22 @@
         <h1 id="1-提出场景"><a href="#1-提出场景" class="headerlink" title="1.提出场景"></a>1.提出场景</h1><p>目前，我们的定时任务都是基于SpringTask来实现的。但是SpringTask存在一些问题：</p>
 <ul>
 <li>当微服务多实例部署时，定时任务会被执行多次。而事实上我们只需要这个任务被执行一次即可。</li>
-<li>我们除了要定时创建表，还要定时持久化Redis数据到数据库，我们希望这多个定时任务能够按照顺序依次执行，SpringTask无法控制任务顺序</li>
+<li>我们除了要定时创建表，还要定时持久化Redis数据到数据库，我们希望这多个定时任务能够按照<strong>顺序依次执行</strong>，SpringTask无法控制任务顺序(×)</li>
 </ul>
 <p>不仅仅是SpringTask，其它单机使用的定时任务工具，都无法实现像这种任务执行者的调度、任务执行顺序的编排、任务监控等功能。这些功能必须要用到分布式任务调度组件。</p>
-<h1 id="2-原理"><a href="#2-原理" class="headerlink" title="2.原理"></a>2.原理</h1><h1 id="3-技术对比"><a href="#3-技术对比" class="headerlink" title="3.技术对比"></a>3.技术对比</h1><p>能够实现分布式任务调度的技术有很多，常见的有：【越往右越牛逼】</p>
+<h1 id="2-原理-统一管理"><a href="#2-原理-统一管理" class="headerlink" title="2.原理[统一管理]"></a>2.原理[统一管理]</h1><p>我们先来看看普通定时任务的实现原理，一般定时任务中会有两个组件：</p>
+<ul>
+<li>任务：要执行的代码</li>
+<li>任务触发器：基于定义好的规则触发任务</li>
+</ul>
+<p>因此在多实例部署的时候，每个启动的服务实例都会有自己的<strong>任务触发器</strong>，这样就会导致各个实例各自运行，无法统一控制：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301715226.png" alt="image-20240830171522168"></p>
+<p>如果我们想统一控制各服务实例的任务执行和调度—&gt;<strong>统一控制[统一出发、统一调度]</strong></p>
+<p>事实上，大多数的分布式任务调度组件都是这样做的：</p>
+<img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20240830172305957.png" alt="image-20240830172305858" style="zoom:67%;">
+
+<p>这样一来，具体哪个任务该执行，什么时候执行，交给哪个应用实例来执行，全部都有统一的任务调度服务来统一控制。并且执行过程中的任务结果还可以通过回调接口返回，让我们方便的查看任务执行状态、执行日志。这样的服务就是<strong>分布式调度服务</strong></p>
+<h1 id="3-技术对比"><a href="#3-技术对比" class="headerlink" title="3.技术对比"></a>3.技术对比</h1><p>能够实现分布式任务调度的技术有很多，常见的有：【越往右越牛逼】</p>
 <table>
 <thead>
 <tr>
@@ -450,12 +462,24 @@
 <li>页面：</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291654151.png" alt="image-20240829165442027"></p>
-<h1 id="2-XXL-Job实战"><a href="#2-XXL-Job实战" class="headerlink" title="2.XXL-Job实战"></a>2.XXL-Job实战</h1><h2 id="2-1-需求"><a href="#2-1-需求" class="headerlink" title="2.1 需求"></a>2.1 需求</h2><p>每10s打印一次hello…</p>
-<h2 id="2-2-实现步骤"><a href="#2-2-实现步骤" class="headerlink" title="2.2 实现步骤"></a>2.2 实现步骤</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291701420.png" alt="image-20240829170153373"></p>
-<h3 id="2-2-1-引入xxl-job依赖-微服务"><a href="#2-2-1-引入xxl-job依赖-微服务" class="headerlink" title="2.2.1 引入xxl-job依赖(微服务)"></a>2.2.1 引入xxl-job依赖(微服务)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291706253.png" alt="image-20240829170654201"></p>
+<h1 id="2-XXL-Job部署-调度中心"><a href="#2-XXL-Job部署-调度中心" class="headerlink" title="2.XXL-Job部署[调度中心]"></a>2.XXL-Job部署[调度中心]</h1><p>自己部署，分为两步：</p>
+<ul>
+<li>运行初始化SQL，创建数据库表</li>
+<li>利用Docker命令，创建并运行容器</li>
+</ul>
+<h2 id="2-1-创建数据库表"><a href="#2-1-创建数据库表" class="headerlink" title="2.1 创建数据库表"></a>2.1 创建数据库表</h2><p>sql语句在对应github文件夹下:</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301738464.png" alt="image-20240830173817398"></p>
+<h2 id="2-2-Docker部署"><a href="#2-2-Docker部署" class="headerlink" title="2.2 Docker部署"></a>2.2 Docker部署</h2><p>docker命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">-e PARAMS&#x3D;&quot;--spring.datasource.url&#x3D;jdbc:mysql:&#x2F;&#x2F;192.168.150.101:3306&#x2F;xxl_job?Unicode&#x3D;true&amp;characterEncoding&#x3D;UTF-8 \</span><br><span class="line">--spring.datasource.username&#x3D;root \</span><br><span class="line">--spring.datasource.password&#x3D;123&quot; \</span><br><span class="line">--restart&#x3D;always \</span><br><span class="line">-p 28080:8080 \</span><br><span class="line">-v xxl-job-admin-applogs:&#x2F;data&#x2F;applogs \</span><br><span class="line">--name xxl-job-admin \</span><br><span class="line">-d \</span><br><span class="line">xuxueli&#x2F;xxl-job-admin:2.3.0</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3-XXL-Job实战"><a href="#3-XXL-Job实战" class="headerlink" title="3.XXL-Job实战"></a>3.XXL-Job实战</h1><h2 id="3-1-需求"><a href="#3-1-需求" class="headerlink" title="3.1 需求"></a>3.1 需求</h2><p>每10s打印一次hello…</p>
+<h2 id="3-2-实现步骤"><a href="#3-2-实现步骤" class="headerlink" title="3.2 实现步骤"></a>3.2 实现步骤</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291701420.png" alt="image-20240829170153373"></p>
+<h3 id="3-2-1-引入xxl-job依赖-微服务"><a href="#3-2-1-引入xxl-job依赖-微服务" class="headerlink" title="3.2.1 引入xxl-job依赖(微服务)"></a>3.2.1 引入xxl-job依赖(微服务)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291706253.png" alt="image-20240829170654201"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--xxl-job--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.xuxueli&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;xxl-job-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-2-2-配置xxl-job-微服务"><a href="#2-2-2-配置xxl-job-微服务" class="headerlink" title="2.2.2 配置xxl-job(微服务)"></a>2.2.2 配置xxl-job(微服务)</h3><ul>
+<h3 id="3-2-2-yml配置xxl-job-微服务"><a href="#3-2-2-yml配置xxl-job-微服务" class="headerlink" title="3.2.2 yml配置xxl-job(微服务)"></a>3.2.2 yml配置xxl-job(微服务)</h3><ul>
 <li>配置文件内容【nacos共享文件地址】</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291709492.png" alt="image-20240829170954454"></p>
@@ -469,11 +493,11 @@
 </ul>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291720342.png" alt="image-20240829172008280" style="zoom:67%;">
 
-<h3 id="2-2-3-配置执行器–XxlJobConfig-微服务"><a href="#2-2-3-配置执行器–XxlJobConfig-微服务" class="headerlink" title="2.2.3 配置执行器–XxlJobConfig(微服务)"></a>2.2.3 配置执行器–XxlJobConfig(微服务)</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291721532.png" alt="image-20240829172105476" style="zoom:67%;">
+<h3 id="3-2-3-配置执行器类–XxlJobConfig-微服务"><a href="#3-2-3-配置执行器类–XxlJobConfig-微服务" class="headerlink" title="3.2.3 配置执行器类–XxlJobConfig(微服务)"></a>3.2.3 配置执行器类–XxlJobConfig(微服务)</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291721532.png" alt="image-20240829172105476" style="zoom:67%;">
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- adminAddress：调度中心地址，天机学堂中就是填虚拟机地址</span><br><span class="line">- appname：微服务名称</span><br><span class="line">- ip和port：当前执行器的ip和端口，无需配置，自动获取</span><br><span class="line">- accessToken：访问令牌，在调度中心中配置令牌，所有执行器访问时都必须携带该令牌，否则无法访问【修改虚拟机的&#x2F;usr&#x2F;local&#x2F;src&#x2F;xxl-job&#x2F;application.properties文件中，修改xxl.job.accessToken属性，然后重启XXL-JOB即可】</span><br><span class="line">- logPath：任务运行日志的保存目录</span><br><span class="line">- logRetentionDays：日志最长保留时长</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-2-4-配置执行器和任务-页面"><a href="#2-2-4-配置执行器和任务-页面" class="headerlink" title="2.2.4 配置执行器和任务(页面)"></a>2.2.4 配置执行器和任务(页面)</h3><ul>
+<h3 id="3-2-4-配置执行器和任务-页面"><a href="#3-2-4-配置执行器和任务-页面" class="headerlink" title="3.2.4 配置执行器和任务(页面)"></a>3.2.4 配置执行器和任务(页面)</h3><ul>
 <li>新建执行器【微服务名称和yml配置一致】</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291725418.png" alt="image-20240829172534332"></p>
@@ -481,18 +505,45 @@
 <li>新建任务【JobHandler一定要和方法@XXlJob内容一致】</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291732342.png" alt="image-20240829173240249"></p>
-<h3 id="2-2-5-创建方法–添加-XxlJob注解-页面"><a href="#2-2-5-创建方法–添加-XxlJob注解-页面" class="headerlink" title="2.2.5 创建方法–添加@XxlJob注解(页面)"></a>2.2.5 创建方法–添加@XxlJob注解(页面)</h3><p><strong>JobHandler一定要和方法@XXlJob内容一致</strong></p>
+<h3 id="3-2-5-创建方法–添加-XxlJob注解-微服务"><a href="#3-2-5-创建方法–添加-XxlJob注解-微服务" class="headerlink" title="3.2.5 创建方法–添加@XxlJob注解(微服务)"></a>3.2.5 创建方法–添加@XxlJob注解(微服务)</h3><p><strong>JobHandler一定要和方法@XXlJob内容一致</strong></p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291737492.png" alt="image-20240829173755449"></p>
-<h2 id="2-2-6-启动测试"><a href="#2-2-6-启动测试" class="headerlink" title="2.2.6 启动测试"></a>2.2.6 启动测试</h2><ul>
+<h2 id="3-2-6-启动测试-页面"><a href="#3-2-6-启动测试-页面" class="headerlink" title="3.2.6 启动测试(页面)"></a>3.2.6 启动测试(页面)</h2><ul>
 <li>启动本地微服务，会发现网页端执行器变化</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291734309.png" alt="image-20240829173441228"></p>
 <ul>
 <li>启动任务</li>
 </ul>
+<p>【想要测试的话也可以手动执行一次任务，但是要设置好调度策略】</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291739478.png" alt="image-20240829173930400"></p>
 <p>也可以在页面看到日志：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291740088.png" alt="image-20240829174046001"></p>
+<h1 id="4-XXL-Job任务分片-不同部署处理不同数据"><a href="#4-XXL-Job任务分片-不同部署处理不同数据" class="headerlink" title="4.XXL-Job任务分片[不同部署处理不同数据]"></a>4.XXL-Job任务分片[不同部署处理不同数据]</h1><h2 id="3-1-原理"><a href="#3-1-原理" class="headerlink" title="3.1 原理"></a>3.1 原理</h2><p>刚才定义的定时持久化任务，通过while死循环，不停的查询数据，直到把所有数据都持久化为止。这样如果数据量达到数百万，交给一个任务执行器来处理会耗费非常多时间—-&gt;<strong>实例多个部署</strong>，这样就会有多个执行器并行执行(但是多个执行器执行相同代码，都从第一页开始也会重复处理)—-&gt;<strong>任务分片</strong></p>
+<p>举例[类似于<strong>发牌</strong>]：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301643407.png" alt="image-20240830164322338"></p>
+<p>最终，每个执行器处理的数据页情况：</p>
+<ul>
+<li>执行器1：处理第1、4、7、10、13、…页数据</li>
+<li>执行器2：处理第2、5、8、11、14、…页数据</li>
+<li>执行器3：处理第3、6、9、12、15、…页数据</li>
+</ul>
+<p>要想知道每一个执行器执行哪些页数据，只要弄清楚两个关键参数即可：</p>
+<ul>
+<li>起始页码：pageNo【执行器编号是多少，起始页码就是多少】</li>
+<li>下一页的跨度：step【执行器有几个，跨度就是多少。也就是说你要跳过别人读取过的页码，类似于分布式ID的步长】</li>
+</ul>
+<p>因此，现在的关键就是获取两个数据：</p>
+<ul>
+<li>执行器编号</li>
+<li>执行器数量</li>
+</ul>
+<p>这两个参数XXL-JOB作为任务调度中心，肯定是知道的，而且也提供了API帮助我们获取：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301647099.png" alt="image-20240830164735039"></p>
+<p>这里的分片序号其实就是执行器序号，不过是从0开始，那我们只要对序号+1，就可以作为起始页码了</p>
+<h2 id="3-2-业务优化"><a href="#3-2-业务优化" class="headerlink" title="3.2 业务优化"></a>3.2 业务优化</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301649455.png" alt="image-20240830164953405"></p>
+<h2 id="3-3-引发问题解决方案"><a href="#3-3-引发问题解决方案" class="headerlink" title="3.3 引发问题解决方案"></a>3.3 引发问题解决方案</h2><p>使用xxl-job定时每月初进行持久化：</p>
+<p>①根据计算上个月时间创建上赛季mysql表</p>
+<p>②根据查询出来上赛季redis数据，数据库新表名通过mp动态表名插件(本质是一个拦截器，在与mapper数据库接触过程中通过threadlocal更改数据库名)】然后查询数据<br>③根据非阻塞语句del删除redis上赛季数据—但是我考虑使用分片，这样导致分片1执行完异步执行删除，但是分片2执行完数据好像又回来了【针对②查询结果分页用xxlJob分片，log查日志没解决，我就打断点发现是分片次数问题，我就redis添加一个总数，一个分片执行次数，然后将删除逻辑放在一个新的定时任务，判断总数==分片执行次数，符合的情况才删除】</p>
 
       
       
@@ -1032,7 +1083,7 @@
 <p>既然要使用Redis的SortedSet来实现排行榜，就需要在<strong>用户每次积分变更时，累加积分到Redis的SortedSet中</strong>。因此，我们要对之前的新增积分功能做简单改造，如图中绿色部分：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281947021.png" alt="image-20240828194705961"></p>
 <p>在Redis中，使用SortedSet结构，<strong>以赛季的日期为key，以用户id为member，以积分和为score. 每当用户新增积分，就累加到score中</strong>，SortedSet排名就会实时更新。这样一个实时的当前赛季榜单就出现了</p>
-<h1 id="——–具体实现——–-2"><a href="#——–具体实现——–-2" class="headerlink" title="==——–具体实现——–=="></a>==——–具体实现——–==</h1><h1 id="1-生成本赛季榜单"><a href="#1-生成本赛季榜单" class="headerlink" title="1.生成本赛季榜单"></a>1.生成本赛季榜单</h1><h2 id="1-原型图-5"><a href="#1-原型图-5" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-5"><a href="#2-设计数据库-5" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-5"><a href="#3-业务逻辑图-5" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-5"><a href="#4-接口分析-5" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><p>一旦积分微服务获取到积分，然后将积分新增到积分明细表之后，我就可以发送积分【累加】到redis！！！！</p>
+<h1 id="——–具体实现——–-2"><a href="#——–具体实现——–-2" class="headerlink" title="==——–具体实现——–=="></a>==——–具体实现——–==</h1><h1 id="1-生成本赛季榜单-实时数据"><a href="#1-生成本赛季榜单-实时数据" class="headerlink" title="1.生成本赛季榜单(实时数据)"></a>1.生成本赛季榜单(实时数据)</h1><h2 id="1-原型图-5"><a href="#1-原型图-5" class="headerlink" title="1.原型图"></a>1.原型图</h2><h2 id="2-设计数据库-5"><a href="#2-设计数据库-5" class="headerlink" title="2.设计数据库"></a>2.设计数据库</h2><h2 id="3-业务逻辑图-5"><a href="#3-业务逻辑图-5" class="headerlink" title="3.业务逻辑图"></a>3.业务逻辑图</h2><h2 id="4-接口分析-5"><a href="#4-接口分析-5" class="headerlink" title="4.接口分析"></a>4.接口分析</h2><p>一旦积分微服务获取到积分，然后将积分新增到积分明细表之后，我就可以发送积分【累加】到redis！！！！</p>
 <h2 id="5-具体实现-5"><a href="#5-具体实现-5" class="headerlink" title="5.具体实现"></a>5.具体实现</h2><ul>
 <li>在原有的新增积分上：</li>
 </ul>
@@ -1049,7 +1100,7 @@
 
 
 
-<h1 id="2-查询积分榜"><a href="#2-查询积分榜" class="headerlink" title="2.查询积分榜"></a>2.查询积分榜</h1><h2 id="1-原型图-6"><a href="#1-原型图-6" class="headerlink" title="1.原型图"></a>1.原型图</h2><p> 在个人中心，学生可以查看指定赛季积分排行榜（只显示前100 ），还可以查看自己总积分和排名。而且排行榜分为本赛季榜单和历史赛季榜单。</p>
+<h1 id="2-查询积分榜-实时数据"><a href="#2-查询积分榜-实时数据" class="headerlink" title="2.查询积分榜(实时数据)"></a>2.查询积分榜(实时数据)</h1><h2 id="1-原型图-6"><a href="#1-原型图-6" class="headerlink" title="1.原型图"></a>1.原型图</h2><p> 在个人中心，学生可以查看指定赛季积分排行榜（只显示前100 ），还可以查看自己总积分和排名。而且排行榜分为本赛季榜单和历史赛季榜单。</p>
 <p>我们可以在一个接口中同时实现这两类榜单的查询</p>
 <p>首先，我们来看一下页面原型（这里我给出的是原型对应的设计稿，也就是最终前端设计的页面效果）：</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408281921904.png" alt="image-20240828192147851" style="zoom: 67%;">
@@ -1097,7 +1148,7 @@
 <p>获取我的排行榜 zrevRangeWithScore start stop[start和stop要根据pageSize和pageNo推断]</p>
 </li>
 </ul>
-<h1 id="历史数据-Redis和Mysql数据持久化"><a href="#历史数据-Redis和Mysql数据持久化" class="headerlink" title="==历史数据[Redis和Mysql数据持久化]=="></a>==历史数据[Redis和Mysql数据持久化]==</h1><h1 id="0-业务分析-1"><a href="#0-业务分析-1" class="headerlink" title="0.业务分析"></a>0.业务分析</h1><p>积分排行榜是分赛季的，每一个月是一个赛季。因此每到每个月的月初，就会进入一个新的赛季。所有用户的积分应该清零，重新累积。</p>
+<h1 id="——————————————-2"><a href="#——————————————-2" class="headerlink" title="==——————————————=="></a><strong>==——————————————==</strong></h1><h1 id="历史数据-Redis和Mysql数据持久化"><a href="#历史数据-Redis和Mysql数据持久化" class="headerlink" title="==历史数据[Redis和Mysql数据持久化]=="></a>==历史数据[Redis和Mysql数据持久化]==</h1><h1 id="0-业务分析-1"><a href="#0-业务分析-1" class="headerlink" title="0.业务分析"></a>0.业务分析</h1><p>积分排行榜是分赛季的，每一个月是一个赛季。因此每到每个月的月初，就会进入一个新的赛季。所有用户的积分应该清零，重新累积。</p>
 <p>如果直接删除Redis数据，那就丢失了一个赛季 —-==<strong>持久化</strong>==—-&gt; Mysql</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291031970.png" alt="image-20240829103104877"></p>
 <p>假如有数百万用户，每个赛季榜单都有数百万数据。随着时间推移，历史赛季越来越多，如果全部保存到一张表中，数据量会非常恐怖！–&gt;<strong>==海量数据存储策略==</strong></p>
@@ -1201,30 +1252,127 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291515133.png" alt="image-20240829151509972"></p>
 <h2 id="1-4-集群-主写从读"><a href="#1-4-集群-主写从读" class="headerlink" title="1.4 集群[主写从读]"></a>1.4 集群[主写从读]</h2><p>[保证单节点的高可用性]给数据库建立主从集群，主节点向从节点同步数据，两者结构一样</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291516533.png" alt="image-20240829151628463"></p>
-<h1 id="——–具体实现——–-3"><a href="#——–具体实现——–-3" class="headerlink" title="==——–具体实现——–=="></a>==——–具体实现——–==</h1><h1 id="1-定时-生成历史榜单表"><a href="#1-定时-生成历史榜单表" class="headerlink" title="1.[定时]生成历史榜单表"></a>1.[定时]生成历史榜单表</h1><h2 id="1-1-历史榜单的存储策略–水平分表"><a href="#1-1-历史榜单的存储策略–水平分表" class="headerlink" title="1.1 历史榜单的存储策略–水平分表"></a>1.1 历史榜单的存储策略–水平分表</h2><p>东林微课堂是一个教育类项目，用户规模并不会很高，一般在十多万到百万级别。因此最终的数据规模也并不会非常庞大。综合之前的分析，结合天机学堂的项目情况，我们可以对榜单数据做分表，但是暂时不需要做分库和集群。</p>
+<h1 id="2-历史榜单-存储策略—水平分表"><a href="#2-历史榜单-存储策略—水平分表" class="headerlink" title="2.[历史榜单]存储策略—水平分表"></a>2.[历史榜单]存储策略—水平分表</h1><p>东林微课堂是一个教育类项目，用户规模并不会很高，一般在十多万到百万级别。因此最终的数据规模也并不会非常庞大。综合之前的分析，结合天机学堂的项目情况，我们可以对榜单数据做分表，但是暂时不需要做分库和集群。</p>
 <p>由于我们要解决的是数据过多问题，因此分表的方式选择<strong>水平分表</strong>。具体来说，就是按照赛季拆分，每一个赛季是一个独立的表，如图：</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291524846.png" alt="image-20240829152437762" style="zoom: 80%;">
 
 <p>但是，考虑我们只需要排名，积分，用户id即可—&gt;可以删除掉season，rank两个字段【也可以减少单表存储】</p>
-<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291526164.png" alt="image-20240829152656094" style="zoom:80%;">
-
 <ul>
 <li>表结构如下：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE IF NOT EXISTS &#96;points_board_X&#96;</span><br><span class="line">(</span><br><span class="line">   &#96;id&#96;      BIGINT NOT NULL AUTO_INCREMENT COMMENT &#39;榜单id&#39;,</span><br><span class="line">   &#96;user_id&#96; BIGINT NOT NULL COMMENT &#39;学生id&#39;,</span><br><span class="line">   &#96;points&#96;  INT    NOT NULL COMMENT &#39;积分值&#39;,</span><br><span class="line">   PRIMARY KEY (&#96;id&#96;) USING BTREE,</span><br><span class="line">   INDEX &#96;idx_user_id&#96; (&#96;user_id&#96;) USING BTREE</span><br><span class="line">)COMMENT &#x3D;&#39;学霸天梯榜&#39; COLLATE &#x3D; &#39;utf8mb4_0900_ai_ci&#39; ENGINE &#x3D; InnoDB ROW_FORMAT &#x3D; DYNAMIC;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>实体类：</li>
-</ul>
-<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291547049.png" alt="image-20240829154729957" style="zoom:67%;">
 
-<ul>
-<li>代码中实现：MybatisPlus–动态表名插件【其实就是根据threadlocal存储_X的值通过拦截器添加进去】</li>
-</ul>
-<h2 id="1-2-定时任务-业务设计"><a href="#1-2-定时任务-业务设计" class="headerlink" title="1.2 [定时任务]业务设计"></a>1.2 [定时任务]业务设计</h2><p>每个赛季刚开始的时候（月初）来创建新的赛季榜单表。每个月的月初执行一个创建表的任务，我们可以利用<strong>定时任务</strong>来实现。</p>
+
+<h1 id="——–具体实现——–-3"><a href="#——–具体实现——–-3" class="headerlink" title="==——–具体实现——–=="></a>==——–具体实现——–==</h1><h1 id="1-定时-生成历史榜单表"><a href="#1-定时-生成历史榜单表" class="headerlink" title="1.[定时]生成历史榜单表"></a>1.[定时]生成历史榜单表</h1><h2 id="1-1-业务设计"><a href="#1-1-业务设计" class="headerlink" title="1.1 业务设计"></a>1.1 业务设计</h2><p>每个赛季刚开始的时候（月初）来创建新的赛季榜单表。每个月的月初执行一个创建表的任务，我们可以利用<strong>定时任务</strong>来实现。</p>
 <p>【由于表的名称中包含赛季id，因此在定时任务中我们还要先查询赛季信息，获取赛季id，拼接得到表名，最后创建表】</p>
 <p>大概流程如图：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291649510.png" alt="image-20240829164908368"></p>
+<h2 id="1-2-实现思路"><a href="#1-2-实现思路" class="headerlink" title="1.2 实现思路"></a>1.2 实现思路</h2><ul>
+<li><p>①生成上赛季表：</p>
+<p>通过xxl-job设定定时任务[每月初]：查询赛季表上个月对应的赛季id。通过传递(表名+赛季id)在mapper层创建历史赛季表  </p>
+</li>
+<li><p>②redis数据进入mysql表：</p>
+</li>
+</ul>
+<p>​        根据(key,pageNo,pageSize)分页查询redis数据[id(改为input自己输入,按照rank属性设置),user_id,points]，然后通过saveBatch分批插入新建的数据库内[数据库名根据mybatisplus动态插件底层通过threadlocal存储表名，本质是一个拦截器，在数据到mapper和数据库打交道的时候更改数据库名]，插入结束记得remove删除</p>
+<ul>
+<li>③清除redis数据：unlike命令会在另外一个线程中回收内存，非阻塞【del会阻塞】</li>
+</ul>
+<p>​    使用unlike指令删除【非阻塞式】</p>
+<h2 id="1-3-具体实现"><a href="#1-3-具体实现" class="headerlink" title="1.3 具体实现"></a>1.3 具体实现</h2><ul>
+<li>定时任务</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301554837.png" alt="image-20240830155440727"></p>
+<ul>
+<li>具体执行业务</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301120656.png" alt="image-20240830112047591" style="zoom:67%;">
+
+<ul>
+<li>(页面)创建任务</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301047888.png" alt="image-20240830104732769" style="zoom: 67%;">
+
+<h2 id="1-4-具体难点和亮点"><a href="#1-4-具体难点和亮点" class="headerlink" title="1.4 具体难点和亮点"></a>1.4 具体难点和亮点</h2><ul>
+<li><p>①生成上赛季表：</p>
+<p>通过xxl-job设定定时任务[每月初]：查询赛季表上个月对应的赛季id。通过传递(表名+赛季id)在mapper层创建历史赛季表  </p>
+</li>
+<li><p>②redis数据进入mysql表：</p>
+</li>
+</ul>
+<p>​        根据(key,pageNo,pageSize)分页查询redis数据[id(改为input自己输入,按照rank属性设置),user_id,points]，然后通过saveBatch分批插入新建的数据库内[数据库名根据mybatisplus动态插件底层通过threadlocal存储表名，本质是一个拦截器，在数据到mapper和数据库打交道的时候更改数据库名]，插入结束记得remove删除</p>
+<ul>
+<li>③清除redis数据：unlike命令会在另外一个线程中回收内存，非阻塞【del会阻塞】</li>
+</ul>
+<p>​    使用unlike指令删除【非阻塞式】</p>
+<h1 id="2-MybatisPlus动态表名插件"><a href="#2-MybatisPlus动态表名插件" class="headerlink" title="2.MybatisPlus动态表名插件"></a>2.MybatisPlus动态表名插件</h1><ul>
+<li>配置Mybatis动态表名拦截器</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301625378.png" alt="image-20240830162523297"></p>
+<ul>
+<li>TableInfoContext底层：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301625224.png" alt="image-20240830162537173"></p>
+<ul>
+<li>MybatisConfig配置：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301625930.png" alt="image-20240830162550841"></p>
+<h1 id="3-XxlJob分片"><a href="#3-XxlJob分片" class="headerlink" title="3.XxlJob分片"></a>3.XxlJob分片</h1><h2 id="3-1-原理"><a href="#3-1-原理" class="headerlink" title="3.1 原理"></a>3.1 原理</h2><p>刚才定义的定时持久化任务，通过while死循环，不停的查询数据，直到把所有数据都持久化为止。这样如果数据量达到数百万，交给一个任务执行器来处理会耗费非常多时间—-&gt;<strong>实例多个部署</strong>，这样就会有多个执行器并行执行(但是多个执行器执行相同代码，都从第一页开始也会重复处理)—-&gt;<strong>任务分片</strong></p>
+<p>举例[类似于<strong>发牌</strong>]：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301643407.png" alt="image-20240830164322338"></p>
+<p>最终，每个执行器处理的数据页情况：</p>
+<ul>
+<li>执行器1：处理第1、4、7、10、13、…页数据</li>
+<li>执行器2：处理第2、5、8、11、14、…页数据</li>
+<li>执行器3：处理第3、6、9、12、15、…页数据</li>
+</ul>
+<p>要想知道每一个执行器执行哪些页数据，只要弄清楚两个关键参数即可：</p>
+<ul>
+<li>起始页码：pageNo【执行器编号是多少，起始页码就是多少】</li>
+<li>下一页的跨度：step【执行器有几个，跨度就是多少。也就是说你要跳过别人读取过的页码，类似于分布式ID的步长】</li>
+</ul>
+<p>因此，现在的关键就是获取两个数据：</p>
+<ul>
+<li>执行器编号</li>
+<li>执行器数量</li>
+</ul>
+<p>这两个参数XXL-JOB作为任务调度中心，肯定是知道的，而且也提供了API帮助我们获取：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301647099.png" alt="image-20240830164735039"></p>
+<p>这里的分片序号其实就是执行器序号，不过是从0开始，那我们只要对序号+1，就可以作为起始页码了</p>
+<h2 id="3-2-业务优化"><a href="#3-2-业务优化" class="headerlink" title="3.2 业务优化"></a>3.2 业务优化</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301649455.png" alt="image-20240830164953405"></p>
+<h2 id="3-3-引发问题解决方案"><a href="#3-3-引发问题解决方案" class="headerlink" title="3.3 引发问题解决方案"></a>3.3 引发问题解决方案</h2><p>使用xxl-job定时每月初进行持久化：</p>
+<p>①根据计算上个月时间创建上赛季mysql表</p>
+<p>②根据查询出来上赛季redis数据，数据库新表名通过mp动态表名插件(本质是一个拦截器，在与mapper数据库接触过程中通过threadlocal更改数据库名)】然后查询数据<br>③根据非阻塞语句del删除redis上赛季数据—但是我考虑使用分片，这样导致分片1执行完异步执行删除，但是分片2执行完数据好像又回来了【针对②查询结果分页用xxlJob分片，log查日志没解决，我就打断点发现是分片次数问题，我就redis添加一个总数，一个分片执行次数，然后将删除逻辑放在一个新的定时任务，判断总数==分片执行次数，符合的情况才删除】</p>
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><p>面试官：你在项目中负责积分排行榜功能，说说看你们排行榜怎么设计实现的？</p>
+<p>​    答：我们的排行榜功能分为两部分：一个是当前赛季排行榜，一个是历史排行榜。</p>
+<p>因为我们的产品设计是每个月为一个赛季，月初清零积分记录，这样学员就有持续的动力去学习。这就有了赛季的概念，因此也就有了当前赛季榜单和历史榜单的区分，其实现思路也不一样。</p>
+<p>首先说当前赛季榜单，我们采用了Redis的SortedSet来实现。member是用户id，score就是当月积分总值。每当用户产生积分行为的时候，获取积分时，就会更新score值。这样Redis就会自动形成榜单了。非常方便且高效。</p>
+<p>然后再说历史榜单，历史榜单肯定是保存到数据库了。不过由于数据过多，所以需要对数据做水平拆分，我们目前的思路是按照赛季来拆分，也就是每一个赛季的榜单单独一张表。这样做有几个好处：</p>
+<ul>
+<li>拆分数据时比较自然，无需做额外处理</li>
+<li>查询数据时往往都是按照赛季来查询，这样一次只需要查一张表，不存在跨表查询问题</li>
+</ul>
+<p>因此我们就不需要用到分库分表的插件了，直接在业务层利用MybatisPlus就可以实现动态表名，动态插入了。简单高效。</p>
+<p>我们会利用一个定时任务在每月初生成上赛季的榜单表，然后再用一个定时任务读取Redis中的上赛季榜单数据，持久化到数据库中。最后再有一个定时任务清理Redis中的历史数据。</p>
+<p>这里要说明一下，这里三个任务是有关联的，之所以让任务分开定义，是为了避免任务耦合。这样在部分任务失败时，可以单独重试，无需所有任务从头重试。</p>
+<p>当然，最终我们肯定要确保这三个任务的执行顺序，一定是依次执行的。</p>
+<p>面试官追问：你们使用Redis的SortedSet来保存榜单数据，如果用户量非常多怎么办？</p>
+<p>​    首先Redis的SortedSet底层利用了跳表机制，性能还是非常不错的。即便有百万级别的用户量，利用SortedSet也没什么问题，性能上也能得到保证。在我们的项目用户量下，完全足够。</p>
+<p>当系统用户量规模达到数千万，乃至数亿时，我们可以采用分治的思想，将用户数据按照积分范围划分为多个桶。</p>
+<p>然后为每个桶创建一个SortedSet类型的key，这样就可以将数据分散，减少单个KEY的数据规模了。</p>
+<p>而要计算排名时，只需要按照范围查询出用户积分所在的桶，再累加分值范围比他高的桶的用户数量即可。依然非常简单、高效。</p>
+<p>面试官追问：你们使用历史榜单采用的定时任务框架是哪个？处理数百万的榜单数据时任务是如何分片的？你们是如何确保多个任务依次执行的呢？</p>
+<p>​    答：我们采用的是XXL-JOB框架。</p>
+<p>XXL-JOB自带任务分片广播机制，每一个任务执行器都能通过API得到自己的分片编号、总分片数量。在做榜单数据批处理时，我们是按照分页查询的方式：</p>
+<ul>
+<li>每个执行器的读取的起始页都是自己的分片编号+1，例如第一个执行器，其起始页就是1，第二个执行器，其起始页就是2，以此类推</li>
+<li>然后不是逐页查询，而是有一个页的跨度，跨度值就是分片总数量。例如分了3片，那么跨度就是3</li>
+</ul>
+<p>此时，第一个分片处理的数据就是第1、4、7、10、13等几页数据，第二个分片处理的就是第2、5、8、11、14等页的数据，第三个分片处理的就是第3、6、9、12、15等页的数据。</p>
+<p>这样就能确保所有数据都会被处理，而且每一个执行器都执行的是不同的数据了。</p>
+<p>最后，要确保多个任务的执行顺序，可以利用XXL-JOB中的子任务功能。比如有任务A、B、C，要按照字母顺序依次执行，我们就可以将C设置为B的子任务，再将B设置为A的子任务。然后给A设置一个触发器。</p>
+<p>这样，当A触发时，就会依次执行这三个任务了。</p>
 
       
       
