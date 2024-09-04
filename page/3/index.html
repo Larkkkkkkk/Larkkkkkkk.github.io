@@ -760,6 +760,42 @@
 <li>两者再基于某种方式，实现数据的同步，保证一致性</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405082312525.png" alt="image-20240508231244479"></p>
+<h2 id="3-4-数据一致性"><a href="#3-4-数据一致性" class="headerlink" title="3.4 数据一致性"></a>3.4 数据一致性</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">方法一：同步双写，课程上架的时候数据写入Mysql，同步也写入ES</span><br><span class="line">方法二：异步双写，课程上架的时候数据写入Mysql，发送消息给MQ，MQ通知ES更新  【项目使用】</span><br><span class="line">方法三：定时同步，对于数据库新增的时候，定时批量&#x2F;全量同步到ES</span><br><span class="line">方法四：基于Logstash输入输出插件</span><br><span class="line">方法五：基于cancal数据库增量日志解析工具，伪装主从数据库进行同步</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>同步双写</td>
+<td>- 简单易实现<br>- 实时性高</td>
+<td>- 代码侵入性强<br>- 存在不一致的风险<br>- 可能影响系统性能</td>
+</tr>
+<tr>
+<td>异步双写（MQ方式）</td>
+<td>- 解耦数据写入操作<br>- 通过消息队列提升性能和扩展性</td>
+<td>- 系统复杂度增加<br>- 可能存在消息丢失的风险<br>- 引入了消息中间件的依赖</td>
+</tr>
+<tr>
+<td>定期同步</td>
+<td>- 实现简单<br>- 无需改变现有业务逻辑</td>
+<td>- 实时性差<br>- 可能给数据库带来额外压力</td>
+</tr>
+<tr>
+<td>基于Binlog实时同步</td>
+<td>- 无代码侵入<br>- 实时性较好<br>- 业务逻辑与数据同步解耦</td>
+<td>- 构建Binlog系统复杂<br>- 可能存在MQ延时风险</td>
+</tr>
+<tr>
+<td>使用Canal监听Binlog同步数据到ES</td>
+<td>- 基于MySQL的Binlog，实现数据的实时同步<br>- 减少系统耦合</td>
+<td>- 需要维护额外的Canal服务</td>
+</tr>
+</tbody></table>
 <h1 id="4-IK分词器-ikun"><a href="#4-IK分词器-ikun" class="headerlink" title="4.IK分词器(ikun)"></a>4.IK分词器(ikun)</h1><p>Elasticsearch的关键就是倒排索引，而倒排索引依赖于对文档内容的分词情况(分词好那就效率高)，而分词则需要高效、精准的分词算法，IK分词器就是这样一个中文分词算法</p>
 <h2 id="4-1-安装IK分词器"><a href="#4-1-安装IK分词器" class="headerlink" title="4.1 安装IK分词器"></a>4.1 安装IK分词器</h2><p>方案一：在线安装</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it es .&#x2F;bin&#x2F;elasticsearch-plugin  install https:&#x2F;&#x2F;github.com&#x2F;medcl&#x2F;elasticsearch-analysis-ik&#x2F;releases&#x2F;download&#x2F;v7.12.1&#x2F;elasticsearch-analysis-ik-7.12.1.zip</span><br></pre></td></tr></table></figure>
