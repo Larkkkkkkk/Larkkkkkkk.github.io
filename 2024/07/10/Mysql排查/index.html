@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101854479.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101854968.png">
 <meta property="article:published_time" content="2024-07-10T05:31:21.000Z">
-<meta property="article:modified_time" content="2024-07-10T10:59:59.269Z">
+<meta property="article:modified_time" content="2024-09-05T09:52:45.871Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
@@ -411,8 +411,7 @@
 <h2 id="1-2-线上排查方向"><a href="#1-2-线上排查方向" class="headerlink" title="1.2 线上排查方向"></a>1.2 线上排查方向</h2><p>==①发生问题的大体定位，②逐步推导出具体问题的位置==</p>
 <ul>
 <li><p>1.应用程序本身导致的问题</p>
-</li>
-<li><ul>
+<ul>
 <li>程序内部频繁触发GC，造成系统出现长时间停顿，导致客户端堆积大量请求。</li>
 <li>JVM参数配置不合理，导致线上运行失控，如堆内存、各内存区域太小等。【遇到启动项目OOM,在idea创建设置堆空间大小700到10000解决】</li>
 <li>Java程序代码存在缺陷，导致线上运行出现Bug，如死锁/内存泄漏、溢出等。</li>
@@ -420,29 +419,26 @@
 </ul>
 </li>
 <li><p>2.上下游内部系统导致的问题</p>
-</li>
-<li><ul>
+<ul>
 <li>上游服务出现并发情况，导致当前程序请求量急剧增加，从而引发问题拖垮系统。</li>
 <li>下游服务出现问题，导致当前程序堆积大量请求拖垮系统，如Redis宕机/DB阻塞等。</li>
 </ul>
 </li>
 <li><p>3.程序所部署的机器本身导致的问题</p>
-</li>
-<li><ul>
+<ul>
 <li>服务器机房网络出现问题，导致网络出现阻塞、当前程序假死等故障。</li>
 <li>服务器中因其他程序原因、硬件问题、环境因素（如断电）等原因导致系统不可用。</li>
 <li>服务器因遭到入侵导致Java程序受到影响，如木马病毒/矿机、劫持脚本等。</li>
 </ul>
 </li>
 <li><p>4.第三方的RPC远程调用导致的问题</p>
-</li>
-<li><ul>
+<ul>
 <li>作为被调用者提供给第三方调用，第三方流量突增，导致当前程序负载过重出现问题。</li>
 <li>作为调用者调用第三方，但因第三方出现问题，引发雪崩问题而造成当前程序崩溃。</li>
 </ul>
 </li>
 </ul>
-<h1 id="2-Sql语句执行出错—排查"><a href="#2-Sql语句执行出错—排查" class="headerlink" title="2.Sql语句执行出错—排查"></a>2.Sql语句执行出错—排查</h1><p>作为一个程序员，对<code>MySQL</code>数据库而言，接触最多的就是<code>SQL</code>语句的撰写，和写业务代码时一样，写代码时会碰到异常、错误，而写<code>SQL</code>时同样如此，比如：</p>
+<h1 id="——三大类错误排查——"><a href="#——三大类错误排查——" class="headerlink" title="==——三大类错误排查——=="></a>==——三大类错误排查——==</h1><h1 id="2-Sql语句执行出错—排查"><a href="#2-Sql语句执行出错—排查" class="headerlink" title="2.Sql语句执行出错—排查"></a>2.Sql语句执行出错—排查</h1><p>作为一个程序员，对<code>MySQL</code>数据库而言，接触最多的就是<code>SQL</code>语句的撰写，和写业务代码时一样，写代码时会碰到异常、错误，而写<code>SQL</code>时同样如此，比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR 1064 (42000):</span><br><span class="line">You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;xxxxxxx&#39; at line 1</span><br></pre></td></tr></table></figure>
 
 <p>Mysql的错误信息会由三部分组成：</p>
@@ -451,17 +447,17 @@
 </li>
 <li><p>SQLState：Sql状态【42000这种】</p>
 </li>
-<li><p>ErrorInfo：错误详情【；之后跟一长串描述具体错误详情】</p>
+<li><p>ErrorInfo：错误详情【在；之后跟一长串描述具体错误详情】</p>
 </li>
 </ul>
 <p>Mysql的错误类型：</p>
 <ul>
 <li>根据ErrorInfo位置根据错误类型定位，认真对准之后百度搜索</li>
-<li>没有定位，只能通过SQLstate和网上办法解决</li>
+<li>没有定位，只能通过SQLState和网上办法解决</li>
 </ul>
 <h1 id="3-Mysql线上慢查询语句—排查"><a href="#3-Mysql线上慢查询语句—排查" class="headerlink" title="3.Mysql线上慢查询语句—排查"></a>3.Mysql线上慢查询语句—排查</h1><p>有些SQL可能在开发环境没有任何问题，但放到线上时就会出现偶发式执行耗时较长的情况，所以这类情况就只能真正在线上环境才能测出来，尤其是一些不支持灰度发布的中小企业，也只能放到线上测才能发现问题。</p>
 <h2 id="3-1-打开Mysql慢查询日志"><a href="#3-1-打开Mysql慢查询日志" class="headerlink" title="3.1 打开Mysql慢查询日志"></a>3.1 打开Mysql慢查询日志</h2><p>一般在上线前，Mysql手动打开慢查询日志：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">开启慢查询日志需要配置两个关键参数：</span><br><span class="line">• slow_query_log：取值为on&#x2F;off[默认]-----项目上线前需要手动开启。</span><br><span class="line">• long_query_time：指定记录慢查询日志的阈值，[单位是秒,指定更细粒度用小数表示]-----阈值根据不同的业务系统取值也不同【①设置一个大概值，灰度发布时走正式运营场景效果更好②开启查询日志，压测所有业务，紧接着分析查询日志中sql的平均耗时，再根据正常的sql执行时间，设置一个偏大的慢查询阈值即可】---公司内设置的是3s</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">开启慢查询日志需要配置两个关键参数：</span><br><span class="line">• slow_query_log：取值为on&#x2F;off[默认]-----项目上线前需要手动开启。</span><br><span class="line">• long_query_time：指定记录慢查询日志的阈值，[单位是秒,指定更细粒度用小数表示]-----阈值根据不同的业务系统取值也不同</span><br><span class="line">【</span><br><span class="line">①设置一个大概值，灰度发布时走正式运营场景效果更好</span><br><span class="line">②开启查询日志，压测所有业务，紧接着分析查询日志中sql的平均耗时，再根据正常的sql执行时间，设置一个偏大的慢查询阈值即可</span><br><span class="line">】</span><br><span class="line">---公司内设置的是3s</span><br></pre></td></tr></table></figure>
 
 
 
@@ -541,7 +537,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">因为数据库连接的本质，在MySQL内部是一条条的工作线程，要牢记的一点是：操作系统在创建一条线程时，都需要为其分配相关的资源，如果一个客户端尝试与数据库建立新的连接时，此刻正好有一个数据库连接在执行某个操作，导致CPU被打满，这时就会由于没有资源来创建新的线程，因此会向客户端直接返回连接异常的信息。</span><br></pre></td></tr></table></figure>
 
 <p>先找到导致资源耗尽的连接/线程，然后找到它当时正在执行的<code>SQL</code>语句，最后需要优化相应的<code>SQL</code>语句后才能彻底根治问题。</p>
-<h2 id="4-2-Mysql死锁频发-业务出发解决"><a href="#4-2-Mysql死锁频发-业务出发解决" class="headerlink" title="4.2 Mysql死锁频发[业务出发解决]"></a>4.2 Mysql死锁频发[业务出发解决]</h2><p><code>MySQL</code>内部其实会【默认】开启死锁检测算法，当运行期间出现死锁问题时，会主动介入并解除死锁，但要记住：<strong>虽然数据库能够主动介入解除死锁问题，但这种方法治标不治本</strong>因为死锁现象是由于业务不合理造成的，能出现一次死锁问题，自然后续也可能会多次出现，因此优化业务才是最好的选择，这样才能根治死锁问题。</p>
+<h2 id="4-2-Mysql死锁频发-查看innodb存储引擎运行状态日志"><a href="#4-2-Mysql死锁频发-查看innodb存储引擎运行状态日志" class="headerlink" title="4.2 Mysql死锁频发[查看innodb存储引擎运行状态日志]"></a>4.2 Mysql死锁频发[查看innodb存储引擎运行状态日志]</h2><p><code>MySQL</code>内部其实会【默认】开启死锁检测算法，当运行期间出现死锁问题时，会主动介入并解除死锁，但要记住：<strong>虽然数据库能够主动介入解除死锁问题，但这种方法治标不治本</strong>因为死锁现象是由于业务不合理造成的，能出现一次死锁问题，自然后续也可能会多次出现，因此优化业务才是最好的选择，这样才能根治死锁问题。</p>
 <p>从业务上解决死锁问题：①先定准定位到产生死锁的<code>SQL</code>语句，根据查看<strong>innodb存储引擎的运行状态日志</strong>【找到内部latest detected deadlock区域日志】</p>
 <p>例如：<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101832765.png" alt="image-20240710183226640"></p>
 <p>在上面的日志中，基本上已经写的很清楚了，在<code>2022-11-04 23:04:34</code>这个时间点上，检测到了一个死锁出现，该死锁主要由两个事务产生，<code>SQL</code>如下：</p>
@@ -554,7 +550,7 @@
 <p>最后一条信息中，给出了<code>MySQL</code>介入解除死锁的方案，也就是回滚了事务<code>(2)</code>的操作，强制结束了事务<code>(2)</code>并释放了其持有的锁资源，从而能够让事务<code>(1)</code>继续运行。</p>
 <p>经过查看上述日志后，其实<code>MySQL</code>已经为我们记录了产生死锁的事务、线程、<code>SQL</code>、时间、地点等各类信息，因此想要彻底解决死锁问题的方案也很简单了，<strong>根据日志中给出的信息，去找到执行相应<code>SQL</code>的业务和库表，优化<code>SQL</code>语句的执行顺序，或<code>SQL</code>的执行逻辑，从而避免死锁产生即可。</strong></p>
 <p>最后要注意：如果是一些偶发类的死锁问题，也就是很少出现的死锁现象，其实不解决也行，毕竟只有在一些特殊场景下才有可能触发，重点是要关注死锁日志中那些频繁出现的死锁问题，也就是多次死锁时，每次死锁出现的库、表、字段都相同，这种情况时需要额外重视并着手解决。</p>
-<h2 id="4-3-服务器CPU100"><a href="#4-3-服务器CPU100" class="headerlink" title="4.3 服务器CPU100%"></a>4.3 服务器CPU100%</h2><p>排查思路：</p>
+<h2 id="4-3-服务器CPU100-两种思路"><a href="#4-3-服务器CPU100-两种思路" class="headerlink" title="4.3 服务器CPU100%[两种思路]"></a>4.3 服务器CPU100%[两种思路]</h2><p>排查思路：</p>
 <ul>
 <li>①先找到<code>CPU</code>过高的<strong>服务器</strong>。</li>
 <li>②然后在其中定位到具体的进程。【top指令】</li>
@@ -661,7 +657,7 @@
         <p><span>本文标题:</span><a href="/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/">Mysql排查</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年07月10日 - 13时31分</p>
-        <p><span>最后更新:</span>2024年07月10日 - 18时59分</p>
+        <p><span>最后更新:</span>2024年09月05日 - 17时52分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/" title="Mysql排查">https://larkkkkkkk.github.io/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -699,7 +695,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-前言"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-线上排查和解决问题思路"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 线上排查和解决问题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-线上排查方向"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 线上排查方向</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Sql语句执行出错—排查"><span class="toc-number">2.</span> <span class="toc-text">2.Sql语句执行出错—排查</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Mysql线上慢查询语句—排查"><span class="toc-number">3.</span> <span class="toc-text">3.Mysql线上慢查询语句—排查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-打开Mysql慢查询日志"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 打开Mysql慢查询日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-查看Mysql慢查询日志"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 查看Mysql慢查询日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-排查sql执行缓慢问题"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 排查sql执行缓慢问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-长时间锁阻塞的排查方法-查看lock-time时间"><span class="toc-number">3.3.1.</span> <span class="toc-text">3.3.1 长时间锁阻塞的排查方法[查看lock_time时间]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-非锁阻塞的排查方法-explain-拆分语句"><span class="toc-number">3.3.2.</span> <span class="toc-text">3.3.2 非锁阻塞的排查方法[explain&#x2F;拆分语句]</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Mysql线上机器故障排查"><span class="toc-number">4.</span> <span class="toc-text">4.Mysql线上机器故障排查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-客户端连接异常"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 客户端连接异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Mysql死锁频发-业务出发解决"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 Mysql死锁频发[业务出发解决]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-服务器CPU100"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 服务器CPU100%</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-Mysql刷盘100"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 Mysql刷盘100%</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-前言"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-线上排查和解决问题思路"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 线上排查和解决问题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-线上排查方向"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 线上排查方向</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#——三大类错误排查——"><span class="toc-number">2.</span> <span class="toc-text">&#x3D;&#x3D;——三大类错误排查——&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Sql语句执行出错—排查"><span class="toc-number">3.</span> <span class="toc-text">2.Sql语句执行出错—排查</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Mysql线上慢查询语句—排查"><span class="toc-number">4.</span> <span class="toc-text">3.Mysql线上慢查询语句—排查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-打开Mysql慢查询日志"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 打开Mysql慢查询日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-查看Mysql慢查询日志"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 查看Mysql慢查询日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-排查sql执行缓慢问题"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 排查sql执行缓慢问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-长时间锁阻塞的排查方法-查看lock-time时间"><span class="toc-number">4.3.1.</span> <span class="toc-text">3.3.1 长时间锁阻塞的排查方法[查看lock_time时间]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-非锁阻塞的排查方法-explain-拆分语句"><span class="toc-number">4.3.2.</span> <span class="toc-text">3.3.2 非锁阻塞的排查方法[explain&#x2F;拆分语句]</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Mysql线上机器故障排查"><span class="toc-number">5.</span> <span class="toc-text">4.Mysql线上机器故障排查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-客户端连接异常"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 客户端连接异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Mysql死锁频发-查看innodb存储引擎运行状态日志"><span class="toc-number">5.2.</span> <span class="toc-text">4.2 Mysql死锁频发[查看innodb存储引擎运行状态日志]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-服务器CPU100-两种思路"><span class="toc-number">5.3.</span> <span class="toc-text">4.3 服务器CPU100%[两种思路]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-Mysql刷盘100"><span class="toc-number">5.4.</span> <span class="toc-text">4.4 Mysql刷盘100%</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
