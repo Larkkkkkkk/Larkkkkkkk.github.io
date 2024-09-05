@@ -884,7 +884,7 @@
 <li>在<code>MySQL5.7</code>及以上的版本中，<code>MySQL</code>会自带一个名为<code>performance_schema</code>的库，在其中有一张名为<code>threads</code>的表，其中表中有一个<code>thread_os_id</code>字段，其中会保存每个连接/工作线程与操作系统线程之间的关系（在<code>5.7</code>以下的版本是隐式的，存在于<code>MySQL</code>内部无法查看）。</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101851349.png" alt="image-20240710185143259"></p>
-<p>可以通过查询threads表，输出所有已经创建的线程：</p>
+<p>可以通过查询threads表，输出所有已经创建的线程：【select查询–对应processlist_info就是对应的sql语句】</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101852819.png" alt="image-20240710185225772"></p>
 <p>从上述中可以明显看出<code>MySQL</code>线程和<code>OS</code>线程之间的关系，当通过前面的<code>top</code>指令拿到<code>CPU</code>利用率最高的线程<code>ID</code>后，在再这里找到与之对应的<code>MySQL</code>线程，同时也能够看到此线程正在执行的<code>SQL</code>语句，最后优化对应<code>SQL</code>语句的逻辑即可。</p>
 <ul>
@@ -1530,7 +1530,7 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405291107820.png" alt="image-20240529110754747"></p>
 <p>具体操作：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405291104162.png" alt="image-20240529110418958"></p>
-<h1 id="服务治理–更高效管理调用者和被调用者"><a href="#服务治理–更高效管理调用者和被调用者" class="headerlink" title="==服务治理–更高效管理调用者和被调用者=="></a>==服务治理–更高效管理调用者和被调用者==</h1><h1 id="1-注册中心-增加调用中间商"><a href="#1-注册中心-增加调用中间商" class="headerlink" title="1.注册中心(增加调用中间商)"></a>1.注册中心(增加调用中间商)</h1><p>为了解决RestTemplate发送http请求时会写死url问题【如果被调用服务有多台负载均衡，就会报错更改也很麻烦】。==其实注册中心就相当于docker中的数据卷一样，我们可以当做中间商然后把调用者(服务调用者)和被调用者(服务注册者)联系起来。==</p>
+<h1 id="服务治理–更高效管理调用者和被调用者"><a href="#服务治理–更高效管理调用者和被调用者" class="headerlink" title="==服务治理–更高效管理调用者和被调用者=="></a>==服务治理–更高效管理调用者和被调用者==</h1><h1 id="1-注册中心-调用中间商"><a href="#1-注册中心-调用中间商" class="headerlink" title="1.注册中心(+调用中间商)"></a>1.注册中心(+调用中间商)</h1><p>为了解决RestTemplate发送http请求时会写死url问题【如果被调用服务有多台负载均衡，就会报错更改也很麻烦】。==其实注册中心就相当于docker中的数据卷一样，我们可以当做中间商然后把调用者(服务调用者)和被调用者(服务注册者)联系起来。==</p>
 <h2 id="1-1-注册中心原理"><a href="#1-1-注册中心原理" class="headerlink" title="1.1 注册中心原理"></a>1.1 注册中心原理</h2><p>流程如下：</p>
 <ul>
 <li>服务启动时就会注册自己的服务信息（服务名、IP、端口）到注册中心   –<strong>让注册中心知道我可以被调用</strong></li>
@@ -1550,14 +1550,14 @@
 </ul>
 <p>​        服务提供者会在启动时注册自己信息到注册中心，消费者可以从注册中心订阅和拉取服务信息</p>
 <ul>
-<li>消费者如何得知服务状态变更？</li>
+<li>消费者如何得知服务状态变更？【<strong>Nacos会15s检测一次，30s删除一次</strong>】</li>
 </ul>
 <p>​        服务提供者通过心跳机制向注册中心报告自己的健康状态，当心跳异常时注册中心会将异常服务剔除，并通知订阅了该服务的消费者</p>
 <ul>
 <li>当提供者有多个实例时，消费者该选择哪一个？</li>
 </ul>
-<p>​        消费者可以通过负载均衡算法，从多个实例中选择一个【==以前SpringMVC默认是Ribbon负载均衡，后来默认是loadbalancer负载均衡==】</p>
-<h2 id="1-2注册中心方式"><a href="#1-2注册中心方式" class="headerlink" title="1.2注册中心方式"></a>1.2注册中心方式</h2><h3 id="1-1-1-Eureka-之前使用"><a href="#1-1-1-Eureka-之前使用" class="headerlink" title="1.1.1 Eureka(之前使用)"></a>1.1.1 Eureka(之前使用)</h3><p>具体使用可以去SpringCloud篇笔记查找。</p>
+<p>​        消费者通过负载均衡算法，从多个实例中选择一个【==以前SpringMVC默认是Ribbon负载均衡，后来默认是loadbalancer负载均衡==】</p>
+<h2 id="1-2-注册中心方式"><a href="#1-2-注册中心方式" class="headerlink" title="1.2 注册中心方式"></a>1.2 注册中心方式</h2><h3 id="1-1-1-Eureka-之前使用"><a href="#1-1-1-Eureka-之前使用" class="headerlink" title="1.1.1 Eureka(之前使用)"></a>1.1.1 Eureka(之前使用)</h3><p>具体使用可以去SpringCloud篇笔记查找</p>
 <h3 id="1-1-2-Nacos-目前使用"><a href="#1-1-2-Nacos-目前使用" class="headerlink" title="1.1.2 Nacos(目前使用)"></a>1.1.2 Nacos(目前使用)</h3><h4 id="1-角色1-注册中心"><a href="#1-角色1-注册中心" class="headerlink" title="1.角色1-注册中心"></a>1.角色1-注册中心</h4><ul>
 <li><p>1.准备配置文件和tar包</p>
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405311725981.png" alt="image-20240531172545922" style="zoom: 80%;">
@@ -1596,8 +1596,8 @@
   <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404232026757.png" alt="image-20240423202621703" style="zoom:150%;">
 
 <p>存在下面的问题：</p>
-<p>•代码可读性差，编程体验不统一</p>
-<p>•参数复杂URL难以维护</p>
+<p>• 代码可读性差，编程体验不统一</p>
+<p>• 参数复杂URL难以维护</p>
 <p>==Feign==是一个声明式的http客户端。其作用是帮助我们优雅地实现http请求发送，解决了上述的问题</p>
 <h2 id="1-1-使用步骤"><a href="#1-1-使用步骤" class="headerlink" title="1.1 使用步骤"></a>1.1 使用步骤</h2><ul>
 <li>1.导入依赖</li>
@@ -1689,7 +1689,7 @@
 <li>第二章：网关鉴权，解决统一登录校验和用户信息获取的问题。</li>
 <li>第三章：统一配置管理，解决微服务的配置文件重复和配置热更新问题。</li>
 </ul>
-<h1 id="服务管理–帮助前端和后端联调，全局门卫"><a href="#服务管理–帮助前端和后端联调，全局门卫" class="headerlink" title="==服务管理–帮助前端和后端联调，全局门卫=="></a>==服务管理–帮助前端和后端联调，全局门卫==</h1><h1 id="1-网关路由"><a href="#1-网关路由" class="headerlink" title="1.网关路由"></a>1.网关路由</h1><h2 id="1-1-网关概述-门卫"><a href="#1-1-网关概述-门卫" class="headerlink" title="1.1 网关概述(门卫)"></a>1.1 网关概述(门卫)</h2><p>顾明思议，网关就是网络的==关口==。数据在网络间传输，当一个网络  –传输–&gt; 另一网络时,就需要经过网关来做数据的<strong>路由</strong>，<strong>转发</strong>，<strong>数据安全的校验</strong>。</p>
+<h1 id="服务管理–帮助前后端联调，全局门卫"><a href="#服务管理–帮助前后端联调，全局门卫" class="headerlink" title="==服务管理–帮助前后端联调，全局门卫=="></a>==服务管理–帮助前后端联调，全局门卫==</h1><h1 id="1-网关路由"><a href="#1-网关路由" class="headerlink" title="1.网关路由"></a>1.网关路由</h1><h2 id="1-1-网关概述-门卫"><a href="#1-1-网关概述-门卫" class="headerlink" title="1.1 网关概述(门卫)"></a>1.1 网关概述(门卫)</h2><p>顾明思议，网关就是网络的==关口==。数据在网络间传输，当一个网络  –传输–&gt; 另一网络时,就需要经过网关来做数据的<strong>路由</strong>，<strong>转发</strong>，<strong>数据安全的校验</strong>。</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406061723224.png" alt="image-20240606172320142"></p>
 <p>现在，微服务网关就起到同样的作用。前端请求不能直接访问微服务，而是要请求网关：</p>
 <ul>

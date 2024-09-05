@@ -2108,6 +2108,20 @@ src/main/webapps      页面资源(js css 图片等等)</code></pre><hr>
 <h4 id="6-2-3-StringRedisTeplate举例"><a href="#6-2-3-StringRedisTeplate举例" class="headerlink" title="6.2.3 StringRedisTeplate举例"></a>6.2.3 StringRedisTeplate举例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedisStringTests</span> </span>&#123;  <span class="comment">//测试类</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StringRedisTemplate stringRedisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testHash</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        stringRedisTemplate.opsForHash().put(<span class="string">"user:400"</span>, <span class="string">"name"</span>, <span class="string">"虎哥"</span>);</span><br><span class="line">        stringRedisTemplate.opsForHash().put(<span class="string">"user:400"</span>, <span class="string">"age"</span>, <span class="string">"21"</span>);</span><br><span class="line"></span><br><span class="line">        Map&lt;Object, Object&gt; entries = stringRedisTemplate.opsForHash().entries(<span class="string">"user:400"</span>);</span><br><span class="line">        System.out.println(<span class="string">"entries = "</span> + entries);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202312281716131.png" alt="image-20231228171636022" style="zoom:80%;">
+
+
+
+<h1 id="7-Redis底层"><a href="#7-Redis底层" class="headerlink" title="7.Redis底层"></a>7.Redis底层</h1><h2 id="7-1-跳表"><a href="#7-1-跳表" class="headerlink" title="7.1 跳表"></a>7.1 跳表</h2><p>基本原理和查询步骤：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202409051955508.png" alt="image-20240905195515341"></p>
+<ul>
+<li>跳跃表基于单链表加索引的方式实现</li>
+<li>跳跃表以空间换时间的方式提升了查找速度</li>
+<li>Redis有序集合在节点元素较大或者元素数量较多时使用跳跃表实现</li>
+<li>Redis的跳跃表实现由 zskiplist和 zskiplistnode两个结构组成,其中 zskiplist用于保存跳跃表信息(比如表头节点、表尾节点、长度),而zskiplistnode则用于表示跳跃表节点</li>
+<li>Redis每个跳跃表节点的层高都是1至32之间的随机数</li>
+<li>在同一个跳跃表中,多个节点可以包含相同的分值,但每个节点的成员对象必须是唯一的跳跃表中的节点按照分值大小进行排序,当分值相同时,节点按照成员对象的大小进行排序</li>
+</ul>
+
       
       
     </div>

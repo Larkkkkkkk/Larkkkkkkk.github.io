@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101854479.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101854968.png">
 <meta property="article:published_time" content="2024-07-10T05:31:21.000Z">
-<meta property="article:modified_time" content="2024-09-05T09:52:45.871Z">
+<meta property="article:modified_time" content="2024-09-05T12:53:38.876Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
@@ -570,7 +570,7 @@
 <li>在<code>MySQL5.7</code>及以上的版本中，<code>MySQL</code>会自带一个名为<code>performance_schema</code>的库，在其中有一张名为<code>threads</code>的表，其中表中有一个<code>thread_os_id</code>字段，其中会保存每个连接/工作线程与操作系统线程之间的关系（在<code>5.7</code>以下的版本是隐式的，存在于<code>MySQL</code>内部无法查看）。</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101851349.png" alt="image-20240710185143259"></p>
-<p>可以通过查询threads表，输出所有已经创建的线程：</p>
+<p>可以通过查询threads表，输出所有已经创建的线程：【select查询–对应processlist_info就是对应的sql语句】</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101852819.png" alt="image-20240710185225772"></p>
 <p>从上述中可以明显看出<code>MySQL</code>线程和<code>OS</code>线程之间的关系，当通过前面的<code>top</code>指令拿到<code>CPU</code>利用率最高的线程<code>ID</code>后，在再这里找到与之对应的<code>MySQL</code>线程，同时也能够看到此线程正在执行的<code>SQL</code>语句，最后优化对应<code>SQL</code>语句的逻辑即可。</p>
 <ul>
@@ -657,7 +657,7 @@
         <p><span>本文标题:</span><a href="/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/">Mysql排查</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年07月10日 - 13时31分</p>
-        <p><span>最后更新:</span>2024年09月05日 - 17时52分</p>
+        <p><span>最后更新:</span>2024年09月05日 - 20时53分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/" title="Mysql排查">https://larkkkkkkk.github.io/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
