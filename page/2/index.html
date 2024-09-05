@@ -2195,7 +2195,8 @@
 <li><strong>AT（Automatic Transaction）</strong></li>
 <li><strong>SAGA</strong></li>
 </ul>
-<h1 id="使用过程中，只是yml配置多一个属性"><a href="#使用过程中，只是yml配置多一个属性" class="headerlink" title="==使用过程中，只是yml配置多一个属性=="></a>==使用过程中，只是yml配置多一个属性==</h1><h1 id="1-XA模式"><a href="#1-XA模式" class="headerlink" title="1.XA模式"></a>1.XA模式</h1><p><code>XA</code> 规范 是<code>X/Open</code> 组织定义的分布式事务处理（DTP，Distributed Transaction Processing）标准，XA 规范 描述了全局的<code>TM</code>与局部的<code>RM</code>之间的接口，几乎所有主流的数据库都对 XA 规范提供了支持。</p>
+<h1 id="使用过程中，只是yml配置多一个属性"><a href="#使用过程中，只是yml配置多一个属性" class="headerlink" title="==使用过程中，只是yml配置多一个属性=="></a>==使用过程中，只是yml配置多一个属性==</h1><h1 id="1-XA模式-统一处理"><a href="#1-XA模式-统一处理" class="headerlink" title="1.XA模式[统一处理]"></a>1.XA模式[统一处理]</h1><p>==①各事务执行完都锁住②统一判断是全部提交/全部撤回==</p>
+<p><code>XA</code> 规范 是<code>X/Open</code> 组织定义的分布式事务处理（DTP，Distributed Transaction Processing）标准，XA 规范 描述了全局的<code>TM</code>与局部的<code>RM</code>之间的接口，几乎所有主流的数据库都对 XA 规范提供了支持。</p>
 <h2 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h2><p>主要分为==两个阶段==提交：</p>
 <p><strong>一阶段</strong>的工作：【TM通知各个RM执行本地事务，RM向TC注册和报告完成情况，但是不提交保持数据库锁】</p>
 <p>①RM注册分支事务到TC【告知我是哪个TM的，我完成什么任务】</p>
@@ -2255,6 +2256,7 @@
 </li>
 </ul>
 <h1 id="2-AT模式-Automatic-Transaction-—seata主推"><a href="#2-AT模式-Automatic-Transaction-—seata主推" class="headerlink" title="2.AT模式(Automatic Transaction)—seata主推"></a>2.AT模式(Automatic Transaction)—seata主推</h1><p>分阶段提交的事务模型，不过弥补了XA模型中资源锁定周期过长的缺陷(一直阻塞等到第二阶段TC告知RM才可以进行操作)</p>
+<p>==①你可以自己提交，然后提交的时候搞个快照(备份)，不用锁定资源②如果都成功就删除快照(备份)，不成功就用快照(备份)恢复==</p>
 <h2 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h2><p>主要分为==两个阶段==提交：</p>
 <p><strong>一阶段</strong>的工作：</p>
 <ol>
@@ -2330,7 +2332,7 @@
 <h1 id="4-代码实现思路"><a href="#4-代码实现思路" class="headerlink" title="4.代码实现思路"></a>4.代码实现思路</h1><p>其实就是Seata实现步骤:</p>
 <p>①导入依赖</p>
 <p>②yml配置(基础配置+模式配置属性)       —-<strong>多了一个配置data-source-proxy-mode</strong></p>
-<p>③全局事务位置加注解@GlobalTransanctional</p>
+<p>③全局事务位置加注解@GlobalTransactional，分支事务加@Transactional</p>
 
       
       
