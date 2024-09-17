@@ -5,14 +5,17 @@
   
   <title>Mysql分表分库-Sharding-Sphere | Larkkkkkkk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.分表分库概念1.1 分表 水平分表[根据一些维度横向]  水平分表是将表中的数据行拆分到多个不同的表&#x2F;数据库，通常是根据某种键值来拆分  垂直分表[部分字段拆分到别的表]  垂直分表是将表中的列拆分到多个不同的表，通常是根据列的使用频率或者业务逻辑来拆分  两者区别      垂直分表 水平分表    拆分依据 列的使用频率&#x2F;业务逻辑 某种键值[用户ID,时间戳]   目的 优化表结构，提高访">
+  <meta name="description" content="title: Mysql分表分库-Sharding-Spheredate: 2024-07-22 09:39:47tags: Mysql 1.分表分库概念1.1 分表开发者自己对表的处理，与数据库无关  从物理上来看，一张表的数据被拆到多个表文件存储了【多张表】  从逻辑上来看，【多张表】  — CRUD会变化，需要考虑取哪张表做数据处理   在开发中我们很多情况下业务需求复杂，更看重分表的灵活性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql分表分库-Sharding-Sphere">
 <meta property="og:url" content="https://larkkkkkkk.github.io/2024/07/22/Mysql%E5%88%86%E8%A1%A8%E5%88%86%E5%BA%93-Sharding-Sphere/index.html">
 <meta property="og:site_name" content="Larkkkkkkk">
-<meta property="og:description" content="1.分表分库概念1.1 分表 水平分表[根据一些维度横向]  水平分表是将表中的数据行拆分到多个不同的表&#x2F;数据库，通常是根据某种键值来拆分  垂直分表[部分字段拆分到别的表]  垂直分表是将表中的列拆分到多个不同的表，通常是根据列的使用频率或者业务逻辑来拆分  两者区别      垂直分表 水平分表    拆分依据 列的使用频率&#x2F;业务逻辑 某种键值[用户ID,时间戳]   目的 优化表结构，提高访">
+<meta property="og:description" content="title: Mysql分表分库-Sharding-Spheredate: 2024-07-22 09:39:47tags: Mysql 1.分表分库概念1.1 分表开发者自己对表的处理，与数据库无关  从物理上来看，一张表的数据被拆到多个表文件存储了【多张表】  从逻辑上来看，【多张表】  — CRUD会变化，需要考虑取哪张表做数据处理   在开发中我们很多情况下业务需求复杂，更看重分表的灵活性">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202409172038750.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202409172038376.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407220944195.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202409172036210.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407220946256.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407220951753.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407220952897.png">
@@ -21,12 +24,11 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407221104028.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407221129198.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407221341864.png">
-<meta property="article:published_time" content="2024-07-22T01:39:47.000Z">
-<meta property="article:modified_time" content="2024-07-22T08:28:57.018Z">
+<meta property="article:published_time" content="2024-07-22T01:39:47.129Z">
+<meta property="article:modified_time" content="2024-09-17T13:03:22.635Z">
 <meta property="article:author" content="Larkkkkkkk">
-<meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407220944195.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202409172038750.png">
   
     <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
   
@@ -209,7 +211,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Ajax/" style="font-size: 11.82px;">Ajax</a> <a href="/tags/Cookie%E5%92%8CSession/" style="font-size: 13.64px;">Cookie和Session</a> <a href="/tags/DBUtils/" style="font-size: 10.91px;">DBUtils</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">EL表达式</a> <a href="/tags/Elasticsearch/" style="font-size: 10.91px;">Elasticsearch</a> <a href="/tags/Filter/" style="font-size: 10.91px;">Filter</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPServletReauest%E5%92%8CHTTPServletResponse/" style="font-size: 10px;">HTTPServletReauest和HTTPServletResponse</a> <a href="/tags/Hexo%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">Hexo博客</a> <a href="/tags/IDEA%E5%AE%89%E8%A3%85%E5%92%8C%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">IDEA安装和破解</a> <a href="/tags/JAVA/" style="font-size: 19.09px;">JAVA</a> <a href="/tags/JAVA-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-Lambda表达式</a> <a href="/tags/JAVA-Set%E9%9B%86%E5%90%88/" style="font-size: 10px;">JAVA-Set集合</a> <a href="/tags/JAVA-%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">JAVA-反射</a> <a href="/tags/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 11.82px;">JAVA-多线程</a> <a href="/tags/JAVA-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-正则表达式</a> <a href="/tags/JAVA-%E6%B3%9B%E5%9E%8B/" style="font-size: 10px;">JAVA-泛型</a> <a href="/tags/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 11.82px;">JAVA-网络编程</a> <a href="/tags/JAVA-%E9%9B%86%E5%90%88/" style="font-size: 11.82px;">JAVA-集合</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0/" style="font-size: 10.91px;">JAVA练习</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">JAVA练习-动态规划</a> <a href="/tags/JQuery/" style="font-size: 12.73px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Jmeter/" style="font-size: 10px;">Jmeter</a> <a href="/tags/LeetCode/" style="font-size: 16.36px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 14.55px;">Linux</a> <a href="/tags/Listener/" style="font-size: 10px;">Listener</a> <a href="/tags/Mybatis/" style="font-size: 18.18px;">Mybatis</a> <a href="/tags/MybatisPlus/" style="font-size: 10px;">MybatisPlus</a> <a href="/tags/Mysql/" style="font-size: 11.82px;">Mysql</a> <a href="/tags/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CJDBC/" style="font-size: 14.55px;">Mysql数据库和JDBC</a> <a href="/tags/RabbitMQ/" style="font-size: 10px;">RabbitMQ</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Servlet/" style="font-size: 10.91px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 15.45px;">Spring</a> <a href="/tags/SpringMVC/" style="font-size: 14.55px;">SpringMVC</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 20px;">Web前端知识点</a> <a href="/tags/XML/" style="font-size: 10.91px;">XML</a> <a href="/tags/Zookeeper/" style="font-size: 10px;">Zookeeper</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/flask%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">flask框架</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/jsp%E6%A0%87%E5%87%86%E6%A0%87%E7%AD%BE%E5%BA%93/" style="font-size: 10px;">jsp标准标签库</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/picture/" style="font-size: 10px;">picture</a> <a href="/tags/python/" style="font-size: 11.82px;">python</a> <a href="/tags/pytorch/" style="font-size: 10px;">pytorch</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/ssm%E6%A1%86%E6%9E%B6%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">ssm框架模板</a> <a href="/tags/webserver%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">webserver编程</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E4%BA%AC%E4%B8%9C/" style="font-size: 10.91px;">京东</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91/" style="font-size: 10px;">后缀树</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10px;">哈希表</a> <a href="/tags/%E5%9B%BE/" style="font-size: 10px;">图</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 10px;">复杂度分析</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">学生管理系统</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2-0/" style="font-size: 11.82px;">学生管理系统2.0</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 17.27px;">微服务</a> <a href="/tags/%E6%8B%BC%E5%A4%9A%E5%A4%9A/" style="font-size: 10px;">拼多多</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" style="font-size: 10px;">数据库连接池</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数据结构-稀疏数组</a> <a href="/tags/%E6%96%87%E5%AD%97%E7%AF%87-%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">文字篇-记录</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 11.82px;">机器学习</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%91/" style="font-size: 11.82px;">树</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">注解</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 13.64px;">深度学习</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10.91px;">爬虫</a> <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" style="font-size: 10px;">生物信息学</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 11.82px;">知识图谱</a> <a href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%88%9D%E8%AF%95/" style="font-size: 11.82px;">研究生初试</a> <a href="/tags/%E7%A7%8B%E6%8B%9B/" style="font-size: 10px;">秋招</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">算法-动态规划</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%BA%AF%E6%B3%95/" style="font-size: 10px;">算法-回溯法</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法-贪心算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 10px;">考研</a> <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 12.73px;">蓝桥杯</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.91px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE-%E8%BD%AF%E4%BB%B6%E4%B8%93%E4%B8%9A%E9%A2%98%E7%9B%AE/" style="font-size: 10px;">计算机网络课设(软件专业题目)</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 11.82px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 10px;">软件体系结构</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">重新部署</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%A1%B5%E9%9D%A2%EF%BC%88H5-CSS%EF%BC%89/" style="font-size: 10px;">页面（H5+CSS）</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0/" style="font-size: 10px;">项目上传</a>
+                        <a href="/tags/Ajax/" style="font-size: 11.82px;">Ajax</a> <a href="/tags/Cookie%E5%92%8CSession/" style="font-size: 13.64px;">Cookie和Session</a> <a href="/tags/DBUtils/" style="font-size: 10.91px;">DBUtils</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">EL表达式</a> <a href="/tags/Elasticsearch/" style="font-size: 10.91px;">Elasticsearch</a> <a href="/tags/Filter/" style="font-size: 10.91px;">Filter</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPServletReauest%E5%92%8CHTTPServletResponse/" style="font-size: 10px;">HTTPServletReauest和HTTPServletResponse</a> <a href="/tags/Hexo%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">Hexo博客</a> <a href="/tags/IDEA%E5%AE%89%E8%A3%85%E5%92%8C%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">IDEA安装和破解</a> <a href="/tags/JAVA/" style="font-size: 19.09px;">JAVA</a> <a href="/tags/JAVA-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-Lambda表达式</a> <a href="/tags/JAVA-Set%E9%9B%86%E5%90%88/" style="font-size: 10px;">JAVA-Set集合</a> <a href="/tags/JAVA-%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">JAVA-反射</a> <a href="/tags/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 11.82px;">JAVA-多线程</a> <a href="/tags/JAVA-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-正则表达式</a> <a href="/tags/JAVA-%E6%B3%9B%E5%9E%8B/" style="font-size: 10px;">JAVA-泛型</a> <a href="/tags/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 11.82px;">JAVA-网络编程</a> <a href="/tags/JAVA-%E9%9B%86%E5%90%88/" style="font-size: 11.82px;">JAVA-集合</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0/" style="font-size: 10.91px;">JAVA练习</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">JAVA练习-动态规划</a> <a href="/tags/JQuery/" style="font-size: 12.73px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Jmeter/" style="font-size: 10px;">Jmeter</a> <a href="/tags/LeetCode/" style="font-size: 16.36px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 14.55px;">Linux</a> <a href="/tags/Listener/" style="font-size: 10px;">Listener</a> <a href="/tags/Mybatis/" style="font-size: 18.18px;">Mybatis</a> <a href="/tags/MybatisPlus/" style="font-size: 10px;">MybatisPlus</a> <a href="/tags/Mysql/" style="font-size: 10.91px;">Mysql</a> <a href="/tags/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CJDBC/" style="font-size: 14.55px;">Mysql数据库和JDBC</a> <a href="/tags/RabbitMQ/" style="font-size: 10px;">RabbitMQ</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Servlet/" style="font-size: 10.91px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 15.45px;">Spring</a> <a href="/tags/SpringMVC/" style="font-size: 14.55px;">SpringMVC</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 20px;">Web前端知识点</a> <a href="/tags/XML/" style="font-size: 10.91px;">XML</a> <a href="/tags/Zookeeper/" style="font-size: 10px;">Zookeeper</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/flask%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">flask框架</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/jsp%E6%A0%87%E5%87%86%E6%A0%87%E7%AD%BE%E5%BA%93/" style="font-size: 10px;">jsp标准标签库</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/picture/" style="font-size: 10px;">picture</a> <a href="/tags/python/" style="font-size: 11.82px;">python</a> <a href="/tags/pytorch/" style="font-size: 10px;">pytorch</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/ssm%E6%A1%86%E6%9E%B6%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">ssm框架模板</a> <a href="/tags/webserver%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">webserver编程</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E4%BA%AC%E4%B8%9C/" style="font-size: 10.91px;">京东</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91/" style="font-size: 10px;">后缀树</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10px;">哈希表</a> <a href="/tags/%E5%9B%BE/" style="font-size: 10px;">图</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 10px;">复杂度分析</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">学生管理系统</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2-0/" style="font-size: 11.82px;">学生管理系统2.0</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 17.27px;">微服务</a> <a href="/tags/%E6%8B%BC%E5%A4%9A%E5%A4%9A/" style="font-size: 10px;">拼多多</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" style="font-size: 10px;">数据库连接池</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数据结构-稀疏数组</a> <a href="/tags/%E6%96%87%E5%AD%97%E7%AF%87-%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">文字篇-记录</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 11.82px;">机器学习</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%91/" style="font-size: 11.82px;">树</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">注解</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 13.64px;">深度学习</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10.91px;">爬虫</a> <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" style="font-size: 10px;">生物信息学</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 11.82px;">知识图谱</a> <a href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%88%9D%E8%AF%95/" style="font-size: 11.82px;">研究生初试</a> <a href="/tags/%E7%A7%8B%E6%8B%9B/" style="font-size: 10px;">秋招</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">算法-动态规划</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%BA%AF%E6%B3%95/" style="font-size: 10px;">算法-回溯法</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法-贪心算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 10px;">考研</a> <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 12.73px;">蓝桥杯</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.91px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE-%E8%BD%AF%E4%BB%B6%E4%B8%93%E4%B8%9A%E9%A2%98%E7%9B%AE/" style="font-size: 10px;">计算机网络课设(软件专业题目)</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 11.82px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 10px;">软件体系结构</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">重新部署</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%A1%B5%E9%9D%A2%EF%BC%88H5-CSS%EF%BC%89/" style="font-size: 10px;">页面（H5+CSS）</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0/" style="font-size: 10px;">项目上传</a>
                     </div>
                 </section>
                 
@@ -346,7 +348,7 @@
   
     <div class="article-meta">
       <a href="/2024/07/22/Mysql%E5%88%86%E8%A1%A8%E5%88%86%E5%BA%93-Sharding-Sphere/" class="article-date">
-      <time datetime="2024-07-22T01:39:47.000Z" itemprop="datePublished">2024-07-22</time>
+      <time datetime="2024-07-22T01:39:47.129Z" itemprop="datePublished">2024-07-22</time>
 </a>
     </div>
   
@@ -369,10 +371,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -380,7 +378,33 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="1-分表分库概念"><a href="#1-分表分库概念" class="headerlink" title="1.分表分库概念"></a>1.分表分库概念</h1><h2 id="1-1-分表"><a href="#1-1-分表" class="headerlink" title="1.1 分表"></a>1.1 分表</h2><ul>
+        <p>title: Mysql分表分库-Sharding-Sphere<br>date: 2024-07-22 09:39:47<br>tags: Mysql</p>
+<h1 id="1-分表分库概念"><a href="#1-分表分库概念" class="headerlink" title="1.分表分库概念"></a>1.分表分库概念</h1><h2 id="1-1-分表"><a href="#1-1-分表" class="headerlink" title="1.1 分表"></a>1.1 分表</h2><p>开发者自己对表的处理，与数据库无关</p>
+<ul>
+<li><p>从物理上来看，一张表的数据被拆到多个表文件存储了【<strong>多张表</strong>】</p>
+</li>
+<li><p>从逻辑上来看，【<strong>多张表</strong>】  — CRUD会变化，需要考虑取哪张表做数据处理</p>
+</li>
+</ul>
+<p>在开发中我们很多情况下业务需求复杂，更看重分表的灵活性。因此，我们大多数情况下都会选择分表方案。</p>
+<ul>
+<li><p>分表的好处：</p>
+<ul>
+<li><p>1.拆分方式更加灵活【可以水平也可以垂直】</p>
+</li>
+<li><p>2.可以解决单表字段过多问题【垂直分表，分在多个表】</p>
+</li>
+</ul>
+</li>
+<li><p>分表的坏处：</p>
+<ul>
+<li>1.CRUD需要自己判断访问哪张表</li>
+<li>2.垂直拆分还会导致事务问题及数据关联问题：【原本一张表的操作，变为多张表操作，要考虑长事务情况】</li>
+</ul>
+</li>
+</ul>
+<p>而分表有两种分法：</p>
+<ul>
 <li><strong>水平分表</strong>[根据一些维度横向]</li>
 </ul>
 <p>水平分表是将表中的数据行拆分到多个不同的表/数据库，通常是根据某种键值来拆分</p>
@@ -421,7 +445,7 @@
 </tr>
 <tr>
 <td>应用场景</td>
-<td>表中有大量列，但是访问只有少数几个列情况</td>
+<td>表中有大量列，访问只有少数 几个列情况</td>
 <td>处理具有明显数据划分界限情况</td>
 </tr>
 <tr>
@@ -430,12 +454,51 @@
 <td>1.分表操作可能会影响数据库的事务管理，需要考虑跨表操作的一致性2.分表策略应该基于实际的业务需求和数据访问模式来设计3.分表后的数据迁移和数据完整性保持是实施过程中最难的挑战</td>
 </tr>
 </tbody></table>
-<h2 id="1-2-分库"><a href="#1-2-分库" class="headerlink" title="1.2 分库"></a>1.2 分库</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407220944195.png" alt="image-20240722094437153"></p>
+<h3 id="1-1-1-水平分表"><a href="#1-1-1-水平分表" class="headerlink" title="1.1.1 水平分表"></a>1.1.1 水平分表</h3><p>例如，对于赛季榜单，我们可以按照赛季拆分为多张表，<strong>每一个赛季一张新的表</strong>。如图：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202409172038750.png" alt="image-20240917203826700"></p>
+<p>这种方式就是水平分表，<strong>表结构不变</strong>，仅仅是每张表<strong>数据不同</strong>。查询赛季1，就找第一张表。查询赛季2，就找第二张表。</p>
+<h3 id="1-1-2-垂直分表"><a href="#1-1-2-垂直分表" class="headerlink" title="1.1.2 垂直分表"></a>1.1.2 垂直分表</h3><p>如果一张表的字段非常多(比如达到30个以上，这样的表我们称为<strong>宽表</strong>)。宽表由于字段太多，单行数据体积就会非常大，虽然数据不多，但可能表体积也会非常大！从而影响查询效率。</p>
+<p>例如一个用户信息表，除了用户基本信息，还包含很多其它功能信息：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202409172038376.png" alt="image-20240917203845323"></p>
+<h2 id="1-2-分库-垂直分库"><a href="#1-2-分库-垂直分库" class="headerlink" title="1.2 分库[垂直分库]"></a>1.2 分库[垂直分库]</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407220944195.png" alt="image-20240722094437153"></p>
 <ul>
 <li>1.考虑分库的目标：提高读写性能，写入性能还是两者兼顾</li>
 <li>2.考虑分片键的选择：通常是表中某个字段</li>
 <li>3.考虑分片策略：①范围分片(基于数值范围)②哈希分片(基于哈希算法)③列表分片(基于枚举值)</li>
 </ul>
+<p>无论是分区，还是分表，我们刚才的分析都是建立在<strong>单个数据库</strong>的基础上。但是单个数据库也存在一些问题：</p>
+<ul>
+<li>单点故障问题：数据库发生故障，整个系统就会瘫痪【鸡蛋都在一个篮子里】</li>
+<li>单库的性能瓶颈问题：单库受服务器限制，其网络带宽、CPU、连接数都有瓶颈【性能有限制】</li>
+<li>单库的存储瓶颈问题：单库的磁盘空间有上限，如果磁盘过大，数据检索的速度又会变慢【存储有限制】</li>
+</ul>
+<p>综上，在大型系统中，我们除了要做①分表、还需要对数据做②分库—&gt;建立综合集群。</p>
+<ul>
+<li><p>优点：【解决了单个数据库的三大问题】</p>
+<ul>
+<li><p>1.解决了海量数据存储问题，突破了单机存储瓶颈</p>
+</li>
+<li><p>2.提高了并发能力，突破了单机性能瓶颈</p>
+</li>
+<li><p>3.避免了单点故障</p>
+</li>
+</ul>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li><p>1.成本非常高【要多个服务器，多个数据库】</p>
+</li>
+<li><p>2.数据聚合统计比较麻烦【因为牵扯多个数据库，有些语句会很麻烦】</p>
+</li>
+<li><p>3.主从同步的一致性问题【主数据库往从数据库更新，会有不可取消的延误时间，只能通过提高主从数据库网络带宽，机器性能等操作(↓)延误时间】</p>
+</li>
+<li><p>4.分布式事务问题【因为涉及多个数据库多个表，使用seata分布式事务可以解决】</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>微服务项目中，我们会按照项目模块，每个微服务使用独立的数据库，因此每个库的表是不同的</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202409172036210.png" alt="image-20240917203647097"></p>
 <h1 id="2-Sharding-Sphere概念"><a href="#2-Sharding-Sphere概念" class="headerlink" title="2.Sharding-Sphere概念"></a>2.Sharding-Sphere概念</h1><h2 id="2-1-Sharding-JDBC框架简介-配置麻烦"><a href="#2-1-Sharding-JDBC框架简介-配置麻烦" class="headerlink" title="2.1 Sharding-JDBC框架简介[配置麻烦]"></a>2.1 Sharding-JDBC框架简介[配置麻烦]</h2><p><code>Sharding-JDBC</code>的定位是一款轻量级<code>Java</code>框架，它会以<code>POM</code>依赖的形式嵌入程序，运行期间会和<code>Java</code>应用共享资源，这款框架的本质可以理解成是<code>JDBC</code>的增强版，只不过<code>Java</code>原生的<code>JDBC</code>仅支持单数据源的连接，而<code>Sharding-JDBC</code>则支持多数据源的管理，部署形态如下:</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407220946256.png" alt="image-20240722094656183"></p>
 <p><code>Java-ORM</code>框架在执行<code>SQL</code>语句时，<code>Sharding-JDBC</code>会以切面的形式拦截发往数据库的语句，接着根据配置好的数据源、分片规则和路由键，为<code>SQL</code>选择一个目标数据源，然后再发往对应的数据库节点处理。</p>
@@ -516,14 +579,12 @@
 <li><p>1.内置的自动化分片算法：[取模分片、哈希分片、范围分片、时间分片等这积累常规算法]</p>
 </li>
 <li><p>2.用户自定义的分片算法：[标准分片、复合分片、强制分片]</p>
-<ul>
+</li>
 <li><p>2.1 标准分片算法：适合基于单一路由键进行<code>=、in、between、&gt;、&lt;、&gt;=、&lt;=...</code>进行查询的场景。</p>
 </li>
 <li><p>2.2 复合分片算法：适用于多个字段组成路由键的场景，但路由算法需要自己继承接口重写实现。</p>
 </li>
 <li><p>2.3 强制分片算法：适用于一些特殊<code>SQL</code>的强制执行，在这种模式中可以强制指定处理语句的节点。</p>
-</li>
-</ul>
 </li>
 </ul>
 <p>综上所述，在<code>Sharding-Sphere</code>内部将这四种<strong>分片策略</strong>称为：<code>Inline、Standard、Complex、Hint</code>，分别与上述四种策略一一对应，但这四种仅代表四种策略，具体的数据分片算法，可以由使用者自身来定义。</p>
@@ -716,7 +777,7 @@
         <p><span>本文标题:</span><a href="/2024/07/22/Mysql%E5%88%86%E8%A1%A8%E5%88%86%E5%BA%93-Sharding-Sphere/">Mysql分表分库-Sharding-Sphere</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年07月22日 - 09时39分</p>
-        <p><span>最后更新:</span>2024年07月22日 - 16时28分</p>
+        <p><span>最后更新:</span>2024年09月17日 - 21时03分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/07/22/Mysql%E5%88%86%E8%A1%A8%E5%88%86%E5%BA%93-Sharding-Sphere/" title="Mysql分表分库-Sharding-Sphere">https://larkkkkkkk.github.io/2024/07/22/Mysql%E5%88%86%E8%A1%A8%E5%88%86%E5%BA%93-Sharding-Sphere/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/07/22/Mysql%E5%88%86%E8%A1%A8%E5%88%86%E5%BA%93-Sharding-Sphere/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -754,7 +815,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-分表分库概念"><span class="toc-number">1.</span> <span class="toc-text">1.分表分库概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-分表"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 分表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-分库"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 分库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Sharding-Sphere概念"><span class="toc-number">2.</span> <span class="toc-text">2.Sharding-Sphere概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Sharding-JDBC框架简介-配置麻烦"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Sharding-JDBC框架简介[配置麻烦]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Sharding-Proxy中间件简介-成本过大"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 Sharding-Proxy中间件简介[成本过大]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-JDBC、Proxy混合部署模式-取长补短"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 JDBC、Proxy混合部署模式[取长补短]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Sharding-Sphere核心概念—路由键-分片算法"><span class="toc-number">3.</span> <span class="toc-text">3.Sharding-Sphere核心概念—路由键&#x2F;分片算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Sharding-Sphere分表分库的工作流程"><span class="toc-number">4.</span> <span class="toc-text">4.Sharding-Sphere分表分库的工作流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Sharding-Sphere概念—表"><span class="toc-number">5.</span> <span class="toc-text">5.Sharding-Sphere概念—表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-绑定表-解决主外键数据落不同库产生跨库查询"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 绑定表[解决主外键数据落不同库产生跨库查询]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-广播表-解决跨库join问题"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 广播表[解决跨库join问题]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-单表-不分表分库"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 单表[不分表分库]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-动态表"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 动态表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Sharding-Sphere数据分片策略"><span class="toc-number">6.</span> <span class="toc-text">6.Sharding-Sphere数据分片策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-Sharding-Sphere分库方式"><span class="toc-number">7.</span> <span class="toc-text">7.Sharding-Sphere分库方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sharding-Sphere实际操作"><span class="toc-number">8.</span> <span class="toc-text">&#x3D;&#x3D;Sharding-Sphere实际操作&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-配置yml文件-业务代码零侵入"><span class="toc-number">9.</span> <span class="toc-text">1.配置yml文件[业务代码零侵入]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sharding-Sphere工作原理"><span class="toc-number">10.</span> <span class="toc-text">&#x3D;&#x3D;Sharding-Sphere工作原理&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-核心工作步骤"><span class="toc-number">11.</span> <span class="toc-text">1.核心工作步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-分库分表产品对比"><span class="toc-number">12.</span> <span class="toc-text">2.分库分表产品对比</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-分表分库概念"><span class="toc-number">1.</span> <span class="toc-text">1.分表分库概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-分表"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 分表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-水平分表"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1.1 水平分表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-垂直分表"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.1.2 垂直分表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-分库-垂直分库"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 分库[垂直分库]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Sharding-Sphere概念"><span class="toc-number">2.</span> <span class="toc-text">2.Sharding-Sphere概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Sharding-JDBC框架简介-配置麻烦"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Sharding-JDBC框架简介[配置麻烦]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Sharding-Proxy中间件简介-成本过大"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 Sharding-Proxy中间件简介[成本过大]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-JDBC、Proxy混合部署模式-取长补短"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 JDBC、Proxy混合部署模式[取长补短]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Sharding-Sphere核心概念—路由键-分片算法"><span class="toc-number">3.</span> <span class="toc-text">3.Sharding-Sphere核心概念—路由键&#x2F;分片算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Sharding-Sphere分表分库的工作流程"><span class="toc-number">4.</span> <span class="toc-text">4.Sharding-Sphere分表分库的工作流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Sharding-Sphere概念—表"><span class="toc-number">5.</span> <span class="toc-text">5.Sharding-Sphere概念—表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-绑定表-解决主外键数据落不同库产生跨库查询"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 绑定表[解决主外键数据落不同库产生跨库查询]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-广播表-解决跨库join问题"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 广播表[解决跨库join问题]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-单表-不分表分库"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 单表[不分表分库]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-动态表"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 动态表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Sharding-Sphere数据分片策略"><span class="toc-number">6.</span> <span class="toc-text">6.Sharding-Sphere数据分片策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-Sharding-Sphere分库方式"><span class="toc-number">7.</span> <span class="toc-text">7.Sharding-Sphere分库方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sharding-Sphere实际操作"><span class="toc-number">8.</span> <span class="toc-text">&#x3D;&#x3D;Sharding-Sphere实际操作&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-配置yml文件-业务代码零侵入"><span class="toc-number">9.</span> <span class="toc-text">1.配置yml文件[业务代码零侵入]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sharding-Sphere工作原理"><span class="toc-number">10.</span> <span class="toc-text">&#x3D;&#x3D;Sharding-Sphere工作原理&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-核心工作步骤"><span class="toc-number">11.</span> <span class="toc-text">1.核心工作步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-分库分表产品对比"><span class="toc-number">12.</span> <span class="toc-text">2.分库分表产品对比</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
