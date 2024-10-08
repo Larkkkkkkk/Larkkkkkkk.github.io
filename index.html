@@ -572,7 +572,8 @@
 <ul>
 <li>页面：</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291654151.png" alt="image-20240829165442027"></p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291654151.png" alt="image-20240829165442027">
+
 <h1 id="2-XXL-Job部署-调度中心"><a href="#2-XXL-Job部署-调度中心" class="headerlink" title="2.XXL-Job部署[调度中心]"></a>2.XXL-Job部署[调度中心]</h1><p>自己部署，分为两步：</p>
 <ul>
 <li>运行初始化SQL，创建数据库表</li>
@@ -629,7 +630,7 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291739478.png" alt="image-20240829173930400"></p>
 <p>也可以在页面看到日志：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408291740088.png" alt="image-20240829174046001"></p>
-<h1 id="4-XXL-Job任务分片-不同部署处理不同数据"><a href="#4-XXL-Job任务分片-不同部署处理不同数据" class="headerlink" title="4.XXL-Job任务分片[不同部署处理不同数据]"></a>4.XXL-Job任务分片[不同部署处理不同数据]</h1><h2 id="3-1-原理"><a href="#3-1-原理" class="headerlink" title="3.1 原理"></a>3.1 原理</h2><p>刚才定义的定时持久化任务，通过while死循环，不停的查询数据，直到把所有数据都持久化为止。这样如果数据量达到数百万，交给一个任务执行器来处理会耗费非常多时间—-&gt;<strong>实例多个部署</strong>，这样就会有多个执行器并行执行(但是多个执行器执行相同代码，都从第一页开始也会重复处理)—-&gt;<strong>任务分片</strong></p>
+<h1 id="4-XXL-Job任务分片-不同部署处理不同数据"><a href="#4-XXL-Job任务分片-不同部署处理不同数据" class="headerlink" title="4.XXL-Job任务分片[不同部署处理不同数据]"></a>4.XXL-Job任务分片[不同部署处理不同数据]</h1><h2 id="3-1-原理"><a href="#3-1-原理" class="headerlink" title="3.1 原理"></a>3.1 原理</h2><p>刚才定义的定时持久化任务，通过while死循环，不停的查询数据，直到把所有数据都持久化为止。这样如果数据量达到数百万，交给一个任务执行器来处理会耗费非常多时间—-&gt;<strong>实例多个部署</strong>，这样就会有多个执行器并行执行(但是多个执行器执行相同代码，都从第一页开始也会重复处理)—-&gt;<strong>任务分片</strong>【<strong>分片查询</strong>】</p>
 <p>举例[类似于<strong>发牌</strong>]：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301643407.png" alt="image-20240830164322338"></p>
 <p>最终，每个执行器处理的数据页情况：</p>
@@ -640,8 +641,8 @@
 </ul>
 <p>要想知道每一个执行器执行哪些页数据，只要弄清楚两个关键参数即可：</p>
 <ul>
-<li>起始页码：pageNo【执行器编号是多少，起始页码就是多少】</li>
-<li>下一页的跨度：step【执行器有几个，跨度就是多少。也就是说你要跳过别人读取过的页码，类似于分布式ID的步长】</li>
+<li>起始页码(1,2,3)：pageNo【执行器编号是多少，起始页码就是多少】</li>
+<li>下一页的跨度(步长3)：step【执行器有几个，跨度就是多少。也就是说你要跳过别人读取过的页码，类似于分布式ID的步长】</li>
 </ul>
 <p>因此，现在的关键就是获取两个数据：</p>
 <ul>
@@ -651,7 +652,8 @@
 <p>这两个参数XXL-JOB作为任务调度中心，肯定是知道的，而且也提供了API帮助我们获取：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301647099.png" alt="image-20240830164735039"></p>
 <p>这里的分片序号其实就是执行器序号，不过是从0开始，那我们只要对序号+1，就可以作为起始页码了</p>
-<h2 id="3-2-业务优化"><a href="#3-2-业务优化" class="headerlink" title="3.2 业务优化"></a>3.2 业务优化</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301649455.png" alt="image-20240830164953405"></p>
+<h2 id="3-2-业务优化"><a href="#3-2-业务优化" class="headerlink" title="3.2 业务优化"></a>3.2 业务优化</h2><p>根据实际情况，分成多个机器[这个用例，分片1,2,3；步长为1]</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408301649455.png" alt="image-20240830164953405"></p>
 <h2 id="3-3-引发问题解决方案"><a href="#3-3-引发问题解决方案" class="headerlink" title="3.3 引发问题解决方案"></a>3.3 引发问题解决方案</h2><p>使用xxl-job定时每月初进行持久化：</p>
 <p>①根据计算上个月时间创建上赛季mysql表</p>
 <p>②根据查询出来上赛季redis数据，数据库新表名通过mp动态表名插件(本质是一个拦截器，在与mapper数据库接触过程中通过threadlocal更改数据库名)】然后查询数据<br>③根据非阻塞语句del删除redis上赛季数据—但是我考虑使用分片，这样导致分片1执行完异步执行删除，但是分片2执行完数据好像又回来了【针对②查询结果分页用xxlJob分片，log查日志没解决，我就打断点发现是分片次数问题，我就redis添加一个总数，一个分片执行次数，然后将删除逻辑放在一个新的定时任务，判断总数==分片执行次数，符合的情况才删除】</p>

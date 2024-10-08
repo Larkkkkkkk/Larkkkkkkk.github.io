@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101854479.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101854968.png">
 <meta property="article:published_time" content="2024-07-10T05:31:21.000Z">
-<meta property="article:modified_time" content="2024-09-05T12:53:38.876Z">
+<meta property="article:modified_time" content="2024-09-30T02:24:14.295Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
@@ -490,7 +490,7 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101710220.png" alt="image-20240710171033106"></p>
 <ul>
 <li><code>Innodb_row_lock_current_waits</code>：当前正在阻塞等待锁的事务数量。</li>
-<li><code>Innodb_row_lock_time</code>：<code>MySQL</code>启动到现在，所有事务总共阻塞等待的总时长。</li>
+<li><code>Innodb_row_lock_time</code>：MySQL启动到现在，所有事务总共阻塞等待的总时长。</li>
 <li><code>Innodb_row_lock_time_avg</code>：平均每次事务阻塞等待锁时，其平均阻塞时长。</li>
 <li><code>Innodb_row_lock_time_max</code>：<code>MySQL</code>启动至今，最长的一次阻塞时间。</li>
 <li><code>Innodb_row_lock_waits</code>：<code>MySQL</code>启动到现在，所有事务总共阻塞等待的总次数。</li>
@@ -550,13 +550,29 @@
 <p>最后一条信息中，给出了<code>MySQL</code>介入解除死锁的方案，也就是回滚了事务<code>(2)</code>的操作，强制结束了事务<code>(2)</code>并释放了其持有的锁资源，从而能够让事务<code>(1)</code>继续运行。</p>
 <p>经过查看上述日志后，其实<code>MySQL</code>已经为我们记录了产生死锁的事务、线程、<code>SQL</code>、时间、地点等各类信息，因此想要彻底解决死锁问题的方案也很简单了，<strong>根据日志中给出的信息，去找到执行相应<code>SQL</code>的业务和库表，优化<code>SQL</code>语句的执行顺序，或<code>SQL</code>的执行逻辑，从而避免死锁产生即可。</strong></p>
 <p>最后要注意：如果是一些偶发类的死锁问题，也就是很少出现的死锁现象，其实不解决也行，毕竟只有在一些特殊场景下才有可能触发，重点是要关注死锁日志中那些频繁出现的死锁问题，也就是多次死锁时，每次死锁出现的库、表、字段都相同，这种情况时需要额外重视并着手解决。</p>
-<h2 id="4-3-服务器CPU100-两种思路"><a href="#4-3-服务器CPU100-两种思路" class="headerlink" title="4.3 服务器CPU100%[两种思路]"></a>4.3 服务器CPU100%[两种思路]</h2><p>排查思路：</p>
+<h2 id="4-3-服务器CPU100-两种思路"><a href="#4-3-服务器CPU100-两种思路" class="headerlink" title="4.3 服务器CPU100%[两种思路]"></a>4.3 服务器CPU100%[两种思路]</h2><p>可能出现两种情况：</p>
 <ul>
-<li>①先找到<code>CPU</code>过高的<strong>服务器</strong>。</li>
-<li>②然后在其中定位到具体的进程。【top指令】</li>
-<li>③再定位到进程中具体的<strong>线程</strong>。【top -Hpxxxx】 xxxx就是②查出来的PID进程号</li>
-<li>④再查看线程<strong>正在执行的代码逻辑</strong>。【mysql5.7以下查找innodb运行状态日志的某个部分/mysql5.7以上通过threads表信息查找】</li>
-<li>⑤最后从<strong>代码层面着手优化</strong>掉即可。</li>
+<li><p>①业务活动：突然大量流量进来活动后cpu占用率就会下降</p>
+</li>
+<li><p>②cpu长期占用率过高：程序有那种循环次数超级多，甚至出现死循环</p>
+</li>
+</ul>
+<p>排查思路：</p>
+<ul>
+<li><p>①先找到<code>CPU</code>过高的<strong>服务器</strong>。</p>
+</li>
+<li><p>②然后在其中定位到具体的进程。【top指令】</p>
+</li>
+<li><p>③再定位到进程中具体的<strong>线程</strong>。【top -Hp xxxx】 xxxx就是②查出来的PID进程号</p>
+</li>
+<li><p>④再查看线程<strong>正在执行的代码逻辑</strong>–会显示线程是属于Java/Mysql</p>
+<ul>
+<li>4.1 Java层面：该线程的<code>PID</code>转换为<code>16</code>进制，然后进一步排查日志grep 查询接口信息</li>
+<li>4.2 Mysql层面：mysql5.7以下查找innodb运行状态日志的某个部分/mysql5.7以上通过threads表信息查找】</li>
+</ul>
+</li>
+<li><p>⑤最后从<strong>代码层面着手优化</strong>掉即可。</p>
+</li>
 </ul>
 <p>②先使用<strong>top指令</strong>查看系统后台的进程状态：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101839522.png" alt="image-20240710183927468"></p>
@@ -657,7 +673,7 @@
         <p><span>本文标题:</span><a href="/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/">Mysql排查</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年07月10日 - 13时31分</p>
-        <p><span>最后更新:</span>2024年09月05日 - 20时53分</p>
+        <p><span>最后更新:</span>2024年09月30日 - 10时24分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/" title="Mysql排查">https://larkkkkkkk.github.io/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

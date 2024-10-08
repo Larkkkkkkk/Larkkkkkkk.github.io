@@ -863,7 +863,7 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101710220.png" alt="image-20240710171033106"></p>
 <ul>
 <li><code>Innodb_row_lock_current_waits</code>：当前正在阻塞等待锁的事务数量。</li>
-<li><code>Innodb_row_lock_time</code>：<code>MySQL</code>启动到现在，所有事务总共阻塞等待的总时长。</li>
+<li><code>Innodb_row_lock_time</code>：MySQL启动到现在，所有事务总共阻塞等待的总时长。</li>
 <li><code>Innodb_row_lock_time_avg</code>：平均每次事务阻塞等待锁时，其平均阻塞时长。</li>
 <li><code>Innodb_row_lock_time_max</code>：<code>MySQL</code>启动至今，最长的一次阻塞时间。</li>
 <li><code>Innodb_row_lock_waits</code>：<code>MySQL</code>启动到现在，所有事务总共阻塞等待的总次数。</li>
@@ -923,13 +923,29 @@
 <p>最后一条信息中，给出了<code>MySQL</code>介入解除死锁的方案，也就是回滚了事务<code>(2)</code>的操作，强制结束了事务<code>(2)</code>并释放了其持有的锁资源，从而能够让事务<code>(1)</code>继续运行。</p>
 <p>经过查看上述日志后，其实<code>MySQL</code>已经为我们记录了产生死锁的事务、线程、<code>SQL</code>、时间、地点等各类信息，因此想要彻底解决死锁问题的方案也很简单了，<strong>根据日志中给出的信息，去找到执行相应<code>SQL</code>的业务和库表，优化<code>SQL</code>语句的执行顺序，或<code>SQL</code>的执行逻辑，从而避免死锁产生即可。</strong></p>
 <p>最后要注意：如果是一些偶发类的死锁问题，也就是很少出现的死锁现象，其实不解决也行，毕竟只有在一些特殊场景下才有可能触发，重点是要关注死锁日志中那些频繁出现的死锁问题，也就是多次死锁时，每次死锁出现的库、表、字段都相同，这种情况时需要额外重视并着手解决。</p>
-<h2 id="4-3-服务器CPU100-两种思路"><a href="#4-3-服务器CPU100-两种思路" class="headerlink" title="4.3 服务器CPU100%[两种思路]"></a>4.3 服务器CPU100%[两种思路]</h2><p>排查思路：</p>
+<h2 id="4-3-服务器CPU100-两种思路"><a href="#4-3-服务器CPU100-两种思路" class="headerlink" title="4.3 服务器CPU100%[两种思路]"></a>4.3 服务器CPU100%[两种思路]</h2><p>可能出现两种情况：</p>
 <ul>
-<li>①先找到<code>CPU</code>过高的<strong>服务器</strong>。</li>
-<li>②然后在其中定位到具体的进程。【top指令】</li>
-<li>③再定位到进程中具体的<strong>线程</strong>。【top -Hpxxxx】 xxxx就是②查出来的PID进程号</li>
-<li>④再查看线程<strong>正在执行的代码逻辑</strong>。【mysql5.7以下查找innodb运行状态日志的某个部分/mysql5.7以上通过threads表信息查找】</li>
-<li>⑤最后从<strong>代码层面着手优化</strong>掉即可。</li>
+<li><p>①业务活动：突然大量流量进来活动后cpu占用率就会下降</p>
+</li>
+<li><p>②cpu长期占用率过高：程序有那种循环次数超级多，甚至出现死循环</p>
+</li>
+</ul>
+<p>排查思路：</p>
+<ul>
+<li><p>①先找到<code>CPU</code>过高的<strong>服务器</strong>。</p>
+</li>
+<li><p>②然后在其中定位到具体的进程。【top指令】</p>
+</li>
+<li><p>③再定位到进程中具体的<strong>线程</strong>。【top -Hp xxxx】 xxxx就是②查出来的PID进程号</p>
+</li>
+<li><p>④再查看线程<strong>正在执行的代码逻辑</strong>–会显示线程是属于Java/Mysql</p>
+<ul>
+<li>4.1 Java层面：该线程的<code>PID</code>转换为<code>16</code>进制，然后进一步排查日志grep 查询接口信息</li>
+<li>4.2 Mysql层面：mysql5.7以下查找innodb运行状态日志的某个部分/mysql5.7以上通过threads表信息查找】</li>
+</ul>
+</li>
+<li><p>⑤最后从<strong>代码层面着手优化</strong>掉即可。</p>
+</li>
 </ul>
 <p>②先使用<strong>top指令</strong>查看系统后台的进程状态：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101839522.png" alt="image-20240710183927468"></p>
@@ -2126,7 +2142,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="分布式事务产生原因"><a href="#分布式事务产生原因" class="headerlink" title="==分布式事务产生原因=="></a>==分布式事务产生原因==</h1><p>首先我们看看项目中的下单业务整体流程：</p>
+        <h1 id="1-分布式事务产生原因"><a href="#1-分布式事务产生原因" class="headerlink" title="==1.分布式事务产生原因=="></a>==1.分布式事务产生原因==</h1><p>首先我们看看项目中的下单业务整体流程：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201548015.png" alt="image-20240620154853978"></p>
 <p>由于订单、购物车、商品分别在三个不同的微服务，而每个微服务都有自己独立的数据库，因此下单过程中就会跨多个数据库完成业务。而每个微服务都会执行自己的本地事务：</p>
 <ul>
@@ -2145,7 +2161,46 @@
 <li>业务跨多个服务实现</li>
 <li>业务跨多个数据源实现</li>
 </ul>
-<h1 id="分布式事务解决方案-中间人-事务协调者"><a href="#分布式事务解决方案-中间人-事务协调者" class="headerlink" title="==分布式事务解决方案(中间人-事务协调者)=="></a>==分布式事务解决方案(中间人-事务协调者)==</h1><p>解决分布式事务的方案有很多，但实现起来都比较复杂，因此我们一般会使用<strong>开源框架</strong>来解决分布式事务问题。在众多的开源分布式事务框架中，功能最完善、使用最多的就是阿里巴巴在2019年开源的Seata了。</p>
+<h1 id="2-CAP定理"><a href="#2-CAP定理" class="headerlink" title="==2.CAP定理=="></a>==2.CAP定理==</h1><p>1998年，加州大学的计算机科学家Eric Brewer提出，分布式系统要有三个指标：</p>
+<ul>
+<li><p><strong>C</strong>onsistency(一致性)：用户访问分布式系统中的任意节点，得到的数据必须一致</p>
+</li>
+<li><p><strong>A</strong>vailability(可用性)：用户访问分布式系统时，读/写操作总能成功</p>
+</li>
+<li><p><strong>P</strong>artition tolerance(分区容错性)：即使系统出现网络分区，整个系统也要持续对外提供服务</p>
+</li>
+</ul>
+<p>他认为任何分布式系统架构方案都不能同时满足这三个目标，这个结论就是CAP定理。</p>
+<h2 id="2-1-一致性"><a href="#2-1-一致性" class="headerlink" title="2.1 一致性"></a>2.1 一致性</h2><p><strong>C</strong>onsistency(一致性)：用户访问分布式系统中的任意节点，得到的数据必须一致</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410081650722.png" alt="image-20241008165045608" style="zoom:67%;">
+
+
+
+<h2 id="2-2-可用性"><a href="#2-2-可用性" class="headerlink" title="2.2 可用性"></a>2.2 可用性</h2><p><strong>A</strong>vailability （可用性）：用户访问分布式系统时，读或写操作总能成功。</p>
+<p>只能读不能写，或者只能写不能读，或者两者都不能执行，就说明系统弱可用或不可用。</p>
+<h2 id="2-3-分区容错性"><a href="#2-3-分区容错性" class="headerlink" title="2.3 分区容错性"></a>2.3 分区容错性</h2><p><strong>P</strong>artition tolerance(分区容错性)：即使系统出现网络分区partition，整个系统也要持续对外提供服务tolerance。</p>
+<p>其中partition(分区)：当分布式系统节点之间出现网络故障导致节点之间无法通信的情况。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410081707881.png" alt="image-20241008170759823"></p>
+<p>如上图，node01和node02之间网关畅通，但是与node03之间网络断开。于是node03成为一个独立的网络分区；node01和node02在一个网络分区。</p>
+<p>其中tolerance(分区容错)：当系统出现网络分区，整个系统也要持续对外提供服务。</p>
+<h2 id="2-4-三者矛盾-P一定有"><a href="#2-4-三者矛盾-P一定有" class="headerlink" title="2.4 三者矛盾(P一定有)"></a>2.4 三者矛盾(P一定有)</h2><p>在分布式系统中，网络不能100%保证畅通(partition网络分区的情况一定会存在)。而我们的系统必须要持续运行，对外提供服务。所以分区容错性(P)是硬性指标，所有的分布式系统都要满足。</p>
+<p>而设计分布式系统的时候要取舍的就是一致性(C)和可用性(A)。</p>
+<p>【P一定有，C和A不一定有】</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410081723384.png" alt="image-20241008172328325"></p>
+<p>如果允许可用性(A)：这样用户可以任意读写，但是由于node03不能同步数据，那就会出现数据不一致情况【只满足AP】</p>
+<p>如果允许一致性(C)：如果用户不允许随意读写(不允许写，允许读)一直到网络恢复，分区消失，只能满足数据一致性【只满足CP】</p>
+<h2 id="2-5-解决三者矛盾-BASE理论"><a href="#2-5-解决三者矛盾-BASE理论" class="headerlink" title="2.5 解决三者矛盾(BASE理论)"></a>2.5 解决三者矛盾(BASE理论)</h2><p>因为P一定有，C和A不一定有：所以要考虑到底是牺牲一致性还是可用性？—&gt;BASE理论</p>
+<ul>
+<li><strong>B</strong>asically <strong>A</strong>vailable <strong>（</strong>基本可用<strong>）</strong>：分布式系统在出现故障时，允许损失部分可用性，【保证核心可用性】</li>
+<li><strong>S</strong>oft State<strong>（</strong>软状态<strong>）：</strong>在一定时间内，允许出现中间状态，比如临时的不一致状态。</li>
+<li><strong>Ev</strong>entually Consistent<strong>（</strong>最终一致性<strong>）</strong>：虽然无法保证强一致性，但是在软状态结束后，最终达到数据一致。</li>
+</ul>
+<p>总而言之，BASE理论其实就是一种<strong>取舍</strong>方案，不再追求完美，而是追求完成目标。</p>
+<ul>
+<li><strong>AP思想</strong>：【<strong>AT模式</strong>】各个子事务分别执行和提交，无需锁定数据。允许出现结果不一致，然后采用弥补措施恢复，实现最终一致。</li>
+<li><strong>CP思想</strong>：【<strong>XA模式</strong>】各个子事务执行后不要提交，而是等待彼此结果，然后同时提交或回滚。在这个过程中锁定资源，不允许其它人访问，数据处于不可用状态，但能保证一致性。</li>
+</ul>
+<h1 id="—————————————"><a href="#—————————————" class="headerlink" title="—————————————"></a>—————————————</h1><h1 id="解决方案-中间人-事务协调者"><a href="#解决方案-中间人-事务协调者" class="headerlink" title="==解决方案(中间人-事务协调者)=="></a>==解决方案(中间人-事务协调者)==</h1><p>解决分布式事务的方案有很多，但实现起来都比较复杂，因此我们一般会使用<strong>开源框架</strong>来解决分布式事务问题。在众多的开源分布式事务框架中，功能最完善、使用最多的就是阿里巴巴在2019年开源的Seata了。</p>
 <h1 id="1-Seata"><a href="#1-Seata" class="headerlink" title="1.Seata"></a>1.Seata</h1><p>官方地址：<a href="https://seata.apache.org/zh-cn/docs/overview/what-is-seata/" target="_blank" rel="noopener">Seata</a></p>
 <p>分布式事务产生的一个重要原因：参与事务的多个分支事务互相无感知， 不知道彼此的执行状态。</p>
 <p>解决方案：就是找一个统一的<strong>事务协调者</strong>，与多个分支事务通信，检测每个分支事务的执行状态，保证全局事务下的每一个分支事务同时成功或失败即可。大多数的分布式事务框架都是基于这个理论来实现的。</p>
@@ -2165,7 +2220,7 @@
 </ul>
 <h2 id="1-2-代码实现思路-两个方面"><a href="#1-2-代码实现思路-两个方面" class="headerlink" title="1.2 代码实现思路(两个方面)"></a>1.2 代码实现思路(两个方面)</h2><p>①<strong>TM</strong>和<strong>RM</strong>【Seata的客户端部分】，引入到参与事务的微服务依赖中即可。(将来<strong>TM</strong>和<strong>RM</strong>就会协助微服务，实现本地分支事务与<strong>TC</strong>之间交互，实现事务的提交或回滚。)</p>
 <p>②<strong>TC</strong>【事务协调中心】，是一个独立的微服务，需要单独部署。</p>
-<h1 id="Seata具体操作-分两个部分"><a href="#Seata具体操作-分两个部分" class="headerlink" title="==Seata具体操作(分两个部分)=="></a>==Seata具体操作(分两个部分)==</h1><h1 id="1-TC部署"><a href="#1-TC部署" class="headerlink" title="1.TC部署"></a>1.TC部署</h1><h2 id="1-1-准备数据库表"><a href="#1-1-准备数据库表" class="headerlink" title="1.1 准备数据库表"></a>1.1 准备数据库表</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201709606.png" alt="image-20240620170911535"></p>
+<h1 id="—————————————-1"><a href="#—————————————-1" class="headerlink" title="—————————————"></a>—————————————</h1><h1 id="Seata具体操作-分两个部分"><a href="#Seata具体操作-分两个部分" class="headerlink" title="==Seata具体操作(分两个部分)=="></a>==Seata具体操作(分两个部分)==</h1><h1 id="1-TC部署"><a href="#1-TC部署" class="headerlink" title="1.TC部署"></a>1.TC部署</h1><h2 id="1-1-准备数据库表"><a href="#1-1-准备数据库表" class="headerlink" title="1.1 准备数据库表"></a>1.1 准备数据库表</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201709606.png" alt="image-20240620170911535"></p>
 <p>其中seata-tc.sql内容如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE IF NOT EXISTS &#96;seata&#96;;</span><br><span class="line">USE &#96;seata&#96;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS &#96;global_table&#96;</span><br><span class="line">(</span><br><span class="line">    &#96;xid&#96;                       VARCHAR(128) NOT NULL,</span><br><span class="line">    &#96;transaction_id&#96;            BIGINT,</span><br><span class="line">    &#96;status&#96;                    TINYINT      NOT NULL,</span><br><span class="line">    &#96;application_id&#96;            VARCHAR(32),</span><br><span class="line">    &#96;transaction_service_group&#96; VARCHAR(32),</span><br><span class="line">    &#96;transaction_name&#96;          VARCHAR(128),</span><br><span class="line">    &#96;timeout&#96;                   INT,</span><br><span class="line">    &#96;begin_time&#96;                BIGINT,</span><br><span class="line">    &#96;application_data&#96;          VARCHAR(2000),</span><br><span class="line">    &#96;gmt_create&#96;                DATETIME,</span><br><span class="line">    &#96;gmt_modified&#96;              DATETIME,</span><br><span class="line">    PRIMARY KEY (&#96;xid&#96;),</span><br><span class="line">    KEY &#96;idx_status_gmt_modified&#96; (&#96;status&#96; , &#96;gmt_modified&#96;),</span><br><span class="line">    KEY &#96;idx_transaction_id&#96; (&#96;transaction_id&#96;)</span><br><span class="line">) ENGINE &#x3D; InnoDB</span><br><span class="line">  DEFAULT CHARSET &#x3D; utf8mb4;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS &#96;branch_table&#96;</span><br><span class="line">(</span><br><span class="line">    &#96;branch_id&#96;         BIGINT       NOT NULL,</span><br><span class="line">    &#96;xid&#96;               VARCHAR(128) NOT NULL,</span><br><span class="line">    &#96;transaction_id&#96;    BIGINT,</span><br><span class="line">    &#96;resource_group_id&#96; VARCHAR(32),</span><br><span class="line">    &#96;resource_id&#96;       VARCHAR(256),</span><br><span class="line">    &#96;branch_type&#96;       VARCHAR(8),</span><br><span class="line">    &#96;status&#96;            TINYINT,</span><br><span class="line">    &#96;client_id&#96;         VARCHAR(64),</span><br><span class="line">    &#96;application_data&#96;  VARCHAR(2000),</span><br><span class="line">    &#96;gmt_create&#96;        DATETIME(6),</span><br><span class="line">    &#96;gmt_modified&#96;      DATETIME(6),</span><br><span class="line">    PRIMARY KEY (&#96;branch_id&#96;),</span><br><span class="line">    KEY &#96;idx_xid&#96; (&#96;xid&#96;)</span><br><span class="line">) ENGINE &#x3D; InnoDB</span><br><span class="line">  DEFAULT CHARSET &#x3D; utf8mb4;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS &#96;lock_table&#96;</span><br><span class="line">(</span><br><span class="line">    &#96;row_key&#96;        VARCHAR(128) NOT NULL,</span><br><span class="line">    &#96;xid&#96;            VARCHAR(128),</span><br><span class="line">    &#96;transaction_id&#96; BIGINT,</span><br><span class="line">    &#96;branch_id&#96;      BIGINT       NOT NULL,</span><br><span class="line">    &#96;resource_id&#96;    VARCHAR(256),</span><br><span class="line">    &#96;table_name&#96;     VARCHAR(32),</span><br><span class="line">    &#96;pk&#96;             VARCHAR(36),</span><br><span class="line">    &#96;status&#96;         TINYINT      NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;0:locked ,1:rollbacking&#39;,</span><br><span class="line">    &#96;gmt_create&#96;     DATETIME,</span><br><span class="line">    &#96;gmt_modified&#96;   DATETIME,</span><br><span class="line">    PRIMARY KEY (&#96;row_key&#96;),</span><br><span class="line">    KEY &#96;idx_status&#96; (&#96;status&#96;),</span><br><span class="line">    KEY &#96;idx_branch_id&#96; (&#96;branch_id&#96;),</span><br><span class="line">    KEY &#96;idx_xid_and_branch_id&#96; (&#96;xid&#96; , &#96;branch_id&#96;)</span><br><span class="line">) ENGINE &#x3D; InnoDB</span><br><span class="line">  DEFAULT CHARSET &#x3D; utf8mb4;</span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS &#96;distributed_lock&#96;</span><br><span class="line">(</span><br><span class="line">    &#96;lock_key&#96;       CHAR(20) NOT NULL,</span><br><span class="line">    &#96;lock_value&#96;     VARCHAR(20) NOT NULL,</span><br><span class="line">    &#96;expire&#96;         BIGINT,</span><br><span class="line">    primary key (&#96;lock_key&#96;)</span><br><span class="line">) ENGINE &#x3D; InnoDB</span><br><span class="line">  DEFAULT CHARSET &#x3D; utf8mb4;</span><br><span class="line"></span><br><span class="line">INSERT INTO &#96;distributed_lock&#96; (lock_key, lock_value, expire) VALUES (&#39;AsyncCommitting&#39;, &#39; &#39;, 0);</span><br><span class="line">INSERT INTO &#96;distributed_lock&#96; (lock_key, lock_value, expire) VALUES (&#39;RetryCommitting&#39;, &#39; &#39;, 0);</span><br><span class="line">INSERT INTO &#96;distributed_lock&#96; (lock_key, lock_value, expire) VALUES (&#39;RetryRollbacking&#39;, &#39; &#39;, 0);</span><br><span class="line">INSERT INTO &#96;distributed_lock&#96; (lock_key, lock_value, expire) VALUES (&#39;TxTimeoutCheck&#39;, &#39; &#39;, 0);</span><br></pre></td></tr></table></figure>
 
@@ -2243,14 +2298,19 @@
 </ul>
 </li>
 </ul>
-<h1 id="Seate四种底层原理-四种"><a href="#Seate四种底层原理-四种" class="headerlink" title="==Seate四种底层原理-四种=="></a>==Seate四种底层原理-四种==</h1><p>Seata支持四种不同的分布式事务解决方案：</p>
+<h1 id="Seate四种底层原理-四种"><a href="#Seate四种底层原理-四种" class="headerlink" title="==Seate四种底层原理-[四种]=="></a>==Seate四种底层原理-[四种]==</h1><p>Seata支持四种不同的分布式事务解决方案：</p>
 <ul>
 <li><strong>XA</strong></li>
 <li><strong>TCC（Try-Confirm-Cancel）</strong></li>
 <li><strong>AT（Automatic Transaction）</strong></li>
 <li><strong>SAGA</strong></li>
 </ul>
-<h1 id="使用过程中，只是yml配置多一个属性"><a href="#使用过程中，只是yml配置多一个属性" class="headerlink" title="==使用过程中，只是yml配置多一个属性=="></a>==使用过程中，只是yml配置多一个属性==</h1><h1 id="1-XA模式-统一处理"><a href="#1-XA模式-统一处理" class="headerlink" title="1.XA模式[统一处理]"></a>1.XA模式[统一处理]</h1><p>==①各事务执行完都锁住②统一判断是全部提交/全部撤回==</p>
+<h1 id="代码使用思路"><a href="#代码使用思路" class="headerlink" title="代码使用思路"></a>代码使用思路</h1><p>【使用过程中，只是yml配置多一个属性】</p>
+<p>其实就是Seata实现步骤:</p>
+<p>①导入依赖</p>
+<p>②yml配置(基础配置+模式配置属性)       —-<strong>多了一个配置data-source-proxy-mode</strong></p>
+<p>③全局事务位置加注解@GlobalTransactional，分支事务加@Transactional</p>
+<h1 id="1-XA模式-统一控制，统一提交"><a href="#1-XA模式-统一控制，统一提交" class="headerlink" title="1.XA模式[统一控制，统一提交]"></a>1.XA模式[统一控制，统一提交]</h1><p>==①各事务执行完都锁住②统一判断是全部提交/全部撤回==</p>
 <p><code>XA</code> 规范 是<code>X/Open</code> 组织定义的分布式事务处理（DTP，Distributed Transaction Processing）标准，XA 规范 描述了全局的<code>TM</code>与局部的<code>RM</code>之间的接口，几乎所有主流的数据库都对 XA 规范提供了支持。</p>
 <h2 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h2><p>主要分为==两个阶段==提交：</p>
 <p><strong>一阶段</strong>的工作：【TM通知各个RM执行本地事务，RM向TC注册和报告完成情况，但是不提交保持数据库锁】</p>
@@ -2310,7 +2370,31 @@
 </ul>
 </li>
 </ul>
-<h1 id="2-AT模式-Automatic-Transaction-—seata主推"><a href="#2-AT模式-Automatic-Transaction-—seata主推" class="headerlink" title="2.AT模式(Automatic Transaction)—seata主推"></a>2.AT模式(Automatic Transaction)—seata主推</h1><p>分阶段提交的事务模型，不过弥补了XA模型中资源锁定周期过长的缺陷(一直阻塞等到第二阶段TC告知RM才可以进行操作)</p>
+<h2 id="1-5-XA模式和AT模式对比"><a href="#1-5-XA模式和AT模式对比" class="headerlink" title="1.5 XA模式和AT模式对比"></a>1.5 XA模式和AT模式对比</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>XA模式【模式强一致，一步一步来】</th>
+<th>AT模式【模式最终一致，可以第二阶段回退】</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一阶段</td>
+<td>只完成不提交(锁定资源，阻塞)</td>
+<td>直接提交(不锁定资源)</td>
+</tr>
+<tr>
+<td>第二阶段</td>
+<td>数据库机制完成回滚</td>
+<td>数据快照完成回滚(第一阶段执行业务之前生成快照)</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>低(只有第二阶段才决定事务提交/回退)</td>
+<td>高(第一阶段就提交，第二阶段可以恢复)</td>
+</tr>
+</tbody></table>
+<h1 id="2-AT模式-各自提交，有问题回滚"><a href="#2-AT模式-各自提交，有问题回滚" class="headerlink" title="2.AT模式[各自提交，有问题回滚]"></a>2.AT模式[各自提交，有问题回滚]</h1><p>分阶段提交的事务模型，不过弥补了XA模型中资源锁定周期过长的缺陷(一直阻塞等到第二阶段TC告知RM才可以进行操作)</p>
 <p>==①你可以自己提交，然后提交的时候搞个快照(备份)，不用锁定资源②如果都成功就删除快照(备份)，不成功就用快照(备份)恢复==</p>
 <h2 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h2><p>主要分为==两个阶段==提交：</p>
 <p><strong>一阶段</strong>的工作：</p>
@@ -2360,7 +2444,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="3-XA模式和AT模式对比"><a href="#3-XA模式和AT模式对比" class="headerlink" title="3.XA模式和AT模式对比"></a>3.XA模式和AT模式对比</h1><table>
+<h2 id="2-5-XA模式和AT模式对比"><a href="#2-5-XA模式和AT模式对比" class="headerlink" title="2.5 XA模式和AT模式对比"></a>2.5 XA模式和AT模式对比</h2><table>
 <thead>
 <tr>
 <th></th>
@@ -2384,11 +2468,7 @@
 <td>高(第一阶段就提交，第二阶段可以恢复)</td>
 </tr>
 </tbody></table>
-<h1 id="4-代码实现思路"><a href="#4-代码实现思路" class="headerlink" title="4.代码实现思路"></a>4.代码实现思路</h1><p>其实就是Seata实现步骤:</p>
-<p>①导入依赖</p>
-<p>②yml配置(基础配置+模式配置属性)       —-<strong>多了一个配置data-source-proxy-mode</strong></p>
-<p>③全局事务位置加注解@GlobalTransactional，分支事务加@Transactional</p>
-
+<h1 id="3-TCC模式"><a href="#3-TCC模式" class="headerlink" title="3.TCC模式"></a>3.TCC模式</h1>
       
       
     </div>
@@ -2578,8 +2658,8 @@
 <p>第一，超出的QPS上限的请求就只能抛出异常，从而导致购物车的查询失败。但从业务角度来说，即便没有查询到最新的商品信息，购物车也应该展示给用户，用户体验更好。也就是给查询失败设置一个<strong>降级处理</strong>逻辑【fallback快速失败】。</p>
 <p>第二，由于查询商品的延迟较高（模拟的500ms），从而导致查询购物车的响应时间也变的很长。这样不仅拖慢了购物车服务，消耗了购物车服务的更多资源，而且用户体验也很差。对于商品服务这种不太健康的接口，我们应该<strong>直接停止调用</strong>，直接走降级逻辑，避免影响到当前服务。也就是将商品查询接口<strong>熔断</strong>。</p>
 <h1 id="3-快速失败-Fallback-后备方案"><a href="#3-快速失败-Fallback-后备方案" class="headerlink" title="3.快速失败-Fallback(后备方案)"></a>3.快速失败-Fallback(后备方案)</h1><p>触发限流或熔断后的请求不一定要直接报错，也可以返回一些默认数据或者友好提示，用户体验会更好。</p>
-<h2 id="3-1-OpenFeign的Fallback两种配置方式"><a href="#3-1-OpenFeign的Fallback两种配置方式" class="headerlink" title="3.1 OpenFeign的Fallback两种配置方式"></a>3.1 OpenFeign的Fallback两种配置方式</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201349492.png" alt="image-20240620134907425"></p>
-<h2 id="3-2-方式二举例"><a href="#3-2-方式二举例" class="headerlink" title="3.2 方式二举例"></a>3.2 方式二举例</h2><h3 id="3-2-1-yml导入依赖"><a href="#3-2-1-yml导入依赖" class="headerlink" title="3.2.1 yml导入依赖"></a>3.2.1 yml导入依赖</h3><p>修改cart-service模块的application.yml文件，开启Feign的sentinel功能：</p>
+<h2 id="3-1-两种配置方式"><a href="#3-1-两种配置方式" class="headerlink" title="3.1 两种配置方式"></a>3.1 两种配置方式</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201349492.png" alt="image-20240620134907425"></p>
+<h2 id="3-2-举例-以方式二为例："><a href="#3-2-举例-以方式二为例：" class="headerlink" title="3.2 举例-以方式二为例："></a>3.2 举例-以方式二为例：</h2><h3 id="3-2-1-yml导入依赖"><a href="#3-2-1-yml导入依赖" class="headerlink" title="3.2.1 yml导入依赖"></a>3.2.1 yml导入依赖</h3><p>修改cart-service模块的application.yml文件，开启Feign的sentinel功能：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">feign:</span><br><span class="line">  sentinel:</span><br><span class="line">    enabled: true # 开启feign对sentinel的支持</span><br></pre></td></tr></table></figure>
 
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201048318.png" alt="image-20240620104846227" style="zoom:50%;">
@@ -2593,7 +2673,7 @@
 <h3 id="3-2-5-Jmeter测试"><a href="#3-2-5-Jmeter测试" class="headerlink" title="3.2.5 Jmeter测试"></a>3.2.5 Jmeter测试</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201443564.png" alt="image-20240620144351522"></p>
 <p>但是未被限流的请求延时依然很高：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202406201444342.png" alt="image-20240620144417302"></p>
-<p>导致最终的平局响应时间较长。</p>
+<p>导致最终的平均响应时间较长。</p>
 <h1 id="4-服务熔断"><a href="#4-服务熔断" class="headerlink" title="4.服务熔断"></a>4.服务熔断</h1><p>查询商品的RT较高（模拟的500ms），从而导致查询购物车的RT也变的很长。这样不仅拖慢了购物车服务，消耗了购物车服务的更多资源，而且用户体验也很差。</p>
 <p>对于商品服务这种不太健康的接口，我们应该停止调用，直接走降级逻辑，避免影响到当前服务。也就是将商品查询接口<strong>熔断</strong>。当商品服务接口恢复正常后，再允许调用。这其实就是<strong>断路器</strong>的工作模式了。</p>
 <p>Sentinel中的断路器不仅可以统计某个接口的<strong>慢请求比例</strong>，还可以统计<strong>异常请求比例</strong>。当这些比例超出阈值时，就会<strong>熔断</strong>该接口，即拦截访问该接口的一切请求，降级处理；当该接口恢复正常时，再放行对于该接口的请求。</p>
