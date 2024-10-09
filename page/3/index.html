@@ -611,7 +611,7 @@
 <td>高(第一阶段就提交，第二阶段可以恢复)</td>
 </tr>
 </tbody></table>
-<h1 id="2-AT模式-各自提交，有问题回滚"><a href="#2-AT模式-各自提交，有问题回滚" class="headerlink" title="2.AT模式[各自提交，有问题回滚]"></a>2.AT模式[各自提交，有问题回滚]</h1><p>分阶段提交的事务模型，不过弥补了XA模型中资源锁定周期过长的缺陷(一直阻塞等到第二阶段TC告知RM才可以进行操作)</p>
+<h1 id="2-AT模式-各自提交，有问题快照恢复"><a href="#2-AT模式-各自提交，有问题快照恢复" class="headerlink" title="2.AT模式[各自提交，有问题快照恢复]"></a>2.AT模式[各自提交，有问题快照恢复]</h1><p>分阶段提交的事务模型，不过弥补了XA模型中资源锁定周期过长的缺陷(一直阻塞等到第二阶段TC告知RM才可以进行操作)</p>
 <p>==①你可以自己提交，然后提交的时候搞个快照(备份)，不用锁定资源②如果都成功就删除快照(备份)，不成功就用快照(备份)恢复==</p>
 <h2 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h2><p>主要分为==两个阶段==提交：</p>
 <p><strong>一阶段</strong>的工作：</p>
@@ -657,15 +657,24 @@
 </li>
 <li><p>XA模式的<strong>缺点</strong>是什么？</p>
 <ul>
-<li>第一阶段就提交，在第二阶段完成的极小时间段内可能出现数据不一致【<strong>用空间换时间</strong>】</li>
+<li>第一阶段就提交，在第二阶段完成的极小时间段内可能出现数据不一致【<strong>用空间换时间</strong>】—99%没问题，极端情况下【特别是多线程并发访问AT模式的分布式事务时，有可能出现脏写问题(丢失一次更新)】</li>
 </ul>
 </li>
 </ul>
-<h2 id="2-5-XA模式和AT模式对比"><a href="#2-5-XA模式和AT模式对比" class="headerlink" title="2.5 XA模式和AT模式对比"></a>2.5 XA模式和AT模式对比</h2><table>
+<h2 id="2-5-AT模式—脏写问题"><a href="#2-5-AT模式—脏写问题" class="headerlink" title="2.5 AT模式—脏写问题"></a>2.5 AT模式—脏写问题</h2><p>这种模式在大多数情况下（99%）并不会有什么问题，不过在极端情况下，特别是多线程并发访问AT模式的分布式事务时，有可能出现脏写问题，如图：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410082150771.png" alt="image-20241008215009702"></p>
+<ul>
+<li>解决思路：引入全局锁【在释放DB锁之前，先拿到全局锁】，避免同一时刻有另外一个事务来操作当前数据。</li>
+</ul>
+<p>【<strong>全局锁</strong>(TC管理)：记录这行数据，其他事务可以CRUD】</p>
+<p>【<strong>DB锁</strong>(数据库管理)：锁住这行数据，其他事务不可以CRUD】</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410082159494.png" alt="image-20241008215937381"></p>
+<p>就是在原来基础上，增加获取全局锁部分[记录当前操作这行数据的事务]；其他的事务获取全局锁(失败重试30次，间隔10ms一次)</p>
+<h2 id="2-6-XA模式和AT模式对比"><a href="#2-6-XA模式和AT模式对比" class="headerlink" title="2.6 XA模式和AT模式对比"></a>2.6 XA模式和AT模式对比</h2><table>
 <thead>
 <tr>
 <th></th>
-<th>XA模式【模式强一致，一步一步来】</th>
+<th>XA模式【模式强一致，第二阶段统一处理】</th>
 <th>AT模式【模式最终一致，可以第二阶段回退】</th>
 </tr>
 </thead>
@@ -685,7 +694,47 @@
 <td>高(第一阶段就提交，第二阶段可以恢复)</td>
 </tr>
 </tbody></table>
-<h1 id="3-TCC模式"><a href="#3-TCC模式" class="headerlink" title="3.TCC模式"></a>3.TCC模式</h1>
+<h1 id="3-TCC模式-各自提交，有问题人工恢复"><a href="#3-TCC模式-各自提交，有问题人工恢复" class="headerlink" title="3.TCC模式[各自提交，有问题人工恢复]"></a>3.TCC模式[各自提交，有问题人工恢复]</h1><p>TCC模式与AT模式非常相似，每阶段都是独立事务，不同的是TCC通过<strong>人工编码来实现数据恢复</strong>。需要实现三个方法：</p>
+<ul>
+<li><code>try</code>：检测和预留资源； </li>
+<li><code>confirm</code>：完成资源操作业务；要求 <code>try</code> 成功 <code>confirm</code> 一定要能成功。 </li>
+<li><code>cancel</code>：释放预留资源，【try的反向操作】 </li>
+</ul>
+<h2 id="3-1-流程分析-举例"><a href="#3-1-流程分析-举例" class="headerlink" title="3.1 流程分析[举例]"></a>3.1 流程分析[举例]</h2><p>例子：一个扣减用户余额的业务。假设账户A原来余额是100，需要余额扣减30元。</p>
+<ul>
+<li><strong>阶段一(try)：</strong>检查余额是否充足，如果充足则冻结金额增加30元，可用余额扣减30</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410090908514.png" alt="image-20241009090835461"></p>
+<ul>
+<li><strong>阶段二(Confrim)：</strong>假设要提交，之前可用金额已经扣减，并且转移到冻结金额。因此可用金额不变，直接冻结金额-30即可：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410090909500.png" alt="image-20241009090948444"></p>
+<ul>
+<li><strong>阶段三(Cancel)：</strong>如果要回滚，则释放之前冻结的金额(冻结金额-30，可用金额+30)</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410090911048.png" alt="image-20241009091156001"></p>
+<h2 id="3-2-事务悬挂和空回滚"><a href="#3-2-事务悬挂和空回滚" class="headerlink" title="3.2 事务悬挂和空回滚"></a>3.2 事务悬挂和空回滚</h2><p>假如一个分布式事务中包含两个分支事务，try阶段，一个分支成功执行，另一个分支事务<strong>阻塞</strong>：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410090912281.png" alt="img" style="zoom: 80%;">
+
+<p>如果阻塞时间太长，可能导致全局事务超时而触发三阶段的<code>cancel</code>操作。两个分支事务都会执行cancel操作：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410090913625.png" alt="image-20241009091343545" style="zoom:80%;">
+
+<p>其中一个分支是未执行<code>try</code>操作的，直接执行了<code>cancel</code>操作，反而会导致数据错误。因此，这种情况下，尽管<code>cancel</code>方法要执行，但其中不能做任何回滚操作，这就是<strong>空回滚</strong>【一个分支事务没执行try操作，但要被牵连执行cancel操作，需要执行cancel操作但是不能做任何回滚操作(不应该回滚)】</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410090919895.png" alt="image-20241009091922827"></p>
+<p>对于整个空回滚的分支事务，将来阻塞结束try方法依然会执行。但是整个全局事务其实已经结束了，因此永远不会再有confirm或cancel，也就是说这个事务执行了一半，处于<strong>悬挂状态</strong>【阻塞结束，try执行，但是整体全局事务已经结束，无后续】</p>
+<h2 id="3-3-TCC使用总结"><a href="#3-3-TCC使用总结" class="headerlink" title="3.3 TCC使用总结"></a>3.3 TCC使用总结</h2><p>CC的优点是什么？</p>
+<ul>
+<li>一阶段完成直接提交事务，释放数据库资源，性能好</li>
+<li>相比AT模型，无需生成快照，无需使用全局锁，性能最强【不需要快照，人工恢复】</li>
+<li>不依赖数据库事务，而是依赖补偿操作，可以用于非事务型数据库【人工补偿，不依赖数据库事务】</li>
+</ul>
+<p>TCC的缺点是什么？</p>
+<ul>
+<li>有代码侵入，需要人为编写try、Confirm和Cancel接口，太麻烦【人工恢复，需要代码入侵】</li>
+<li>软状态，事务是最终一致【不是强一致性，BASE理论】</li>
+<li>需要考虑Confirm和Cancel的失败情况，做好幂等处理、事务悬挂和空回滚处理</li>
+</ul>
+
       
       
     </div>
