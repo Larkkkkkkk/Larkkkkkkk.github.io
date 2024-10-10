@@ -997,6 +997,99 @@
 <p>2.线程隔离就是车次分到A候车厅(六个通道)和B候车厅(四个通道)，如果B满了或者速度太慢可以去A候车厅的通道，不至于直接瘫痪。</p>
 <p>3.服务熔断就是我提前预测哪里经常会出问题，我可以一段时间内不让大家去那候车可以去备用候车厅；如果一段时间后，我可以测试走一个人如果通那就打开去候车，如果不行那就继续用备用候车厅。</p>
 <p>4.快速失败就是如果这个通道走不了，那你不能让乘客不上车啊，所有可以大喇叭提示等待或者提供备用候车厅上车</p>
+<h1 id="底层原理"><a href="#底层原理" class="headerlink" title="==底层原理=="></a>==底层原理==</h1><p>无论是①Hystix还是②Sentinel都支持线程隔离，实现方式不同。</p>
+<p>①Hystix：线程池隔离[默认]，信号量隔离</p>
+<p>②Sentinel：信号量隔离</p>
+<h1 id="1-线程隔离"><a href="#1-线程隔离" class="headerlink" title="1.线程隔离"></a>1.线程隔离</h1><p>线程隔离有两种方式实现：</p>
+<ul>
+<li><strong>线程池</strong>隔离：给每个微服务调用业务分配一个线程池【利用线程池本身实现隔离效果】</li>
+<li><strong>信号量</strong>隔离：给每个业务设定线程数量，达到信号量上限时就禁止新的请求【不创建线程池，而是使用计数器模式】</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410091004046.png" alt="image-20241009100448925" style="zoom:80%;">
+
+<p>两者的优缺点：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>信号量隔离</th>
+<th>线程池隔离</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>优点</td>
+<td>轻量级，无额外开销</td>
+<td>支持主动超时，支持异步调用</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>不支持主动超时，不支持异步调用</td>
+<td>线程的额外开销比较大</td>
+</tr>
+<tr>
+<td>场景</td>
+<td>高频调用，高扇出</td>
+<td>低扇出</td>
+</tr>
+</tbody></table>
+<h1 id="2-四种算法"><a href="#2-四种算法" class="headerlink" title="2.四种算法"></a>2.四种算法</h1><p>在熔断功能中，需要统计异常请求或慢请求比例，也就是计数。在限流的时候，要统计每秒钟的QPS，同样是计数。可见计数算法在熔断限流中的应用非常多。sentinel中采用的计数器算法就是滑动窗口计数算法。</p>
+<h2 id="2-1-固定窗口计数"><a href="#2-1-固定窗口计数" class="headerlink" title="2.1 固定窗口计数"></a>2.1 固定窗口计数</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410091027897.png" alt="image-20241009102754788"></p>
+<ul>
+<li>每个窗口维护1个计数器，每有1次请求就将计数器<code>+1</code>。限流就是设置计数器阈值，本例为3，图中红线标记</li>
+<li>如果计数器超过了限流阈值，则超出阈值的请求都被丢弃。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410091029515.png" alt="image-20241009102955454"></p>
+<p>说明：</p>
+<ul>
+<li>第1、2秒，请求数量都小于3，没问题</li>
+<li>第3秒，请求数量为5，超过阈值，超出的请求被拒绝</li>
+</ul>
+<p><strong>特殊情况</strong>：【无法结合前后的时间窗口的数据做综合统计】—<strong>只能统计当前某1个时间窗的请求数量是否到达阈值</strong></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410091905104.png" alt="image-20241009190539989"></p>
+<p>说明：</p>
+<ul>
+<li>假如在第5、6秒，请求数量都为3，没有超过阈值，全部放行</li>
+<li>但是，如果第5秒的三次请求都是在4.5-5s之间进来；第6秒的请求是在5-5.5s之间，那么4.5-5s之间就有6次请求！也就是说每秒的QPS达到了6，远超阈值。</li>
+</ul>
+<h2 id="2-2-滑动窗口计数"><a href="#2-2-滑动窗口计数" class="headerlink" title="2.2 滑动窗口计数"></a>2.2 滑动窗口计数</h2><p>固定时间窗口算法中窗口有很多，其跨度和位置是与时间区间绑定，因此是很多固定不动的窗口。而滑动时间窗口算法中只包含1个固定跨度的窗口，但窗口是可移动动的，与时间区间无关。</p>
+<p>具体规则如下：</p>
+<ul>
+<li>窗口时间跨度<code>Interval</code>大小固定，例如1秒</li>
+<li>时间区间跨度为<code>Interval / n</code> ，例如n=2，则时间区间跨度为500ms</li>
+<li>窗口会随着当前请求所在时间<code>currentTime</code>移动，窗口范围从<code>currentTime-Interval</code>时刻之后的第一个时区开始，到<code>currentTime</code>所在时区结束。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410091949356.png" alt="image-20241009194901251"></p>
+<p>限流阈值依然为3，绿色小块就是请求，上面的数字是其<code>currentTime</code>值。</p>
+<ul>
+<li>在第1300ms时接收到一个请求，其所在时区就是1000~1500</li>
+<li>按照规则，currentTime-Interval值为300ms，300ms之后的第一个时区是500<del>1000，因此窗口范围包含两个时区：500</del>1000、1000~1500，也就是粉红色方框部分</li>
+<li>统计窗口内的请求总数，发现是3，未达到上限。</li>
+</ul>
+<p>若第1400ms又来一个请求，会落在1000~1500时区，虽然该时区请求总数是3，但滑动窗口内总数已经达到4，因此该请求会被拒绝：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410091949822.png" alt="image-20241009194936726"></p>
+<p>假如第1600ms又来的一个请求，处于1500<del>2000时区，根据算法，滑动窗口位置应该是1000</del>1500和1500~2000这两个时区，也就是向后移动：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410091949472.png" alt="image-20241009194947384"></p>
+<p>这就是滑动窗口计数的原理，解决了我们之前所说的问题。而且滑动窗口内划分的时区越多，这种统计就越准确。</p>
+<h2 id="2-3-令牌桶算法-Sentinel的热点参数"><a href="#2-3-令牌桶算法-Sentinel的热点参数" class="headerlink" title="2.3 令牌桶算法(Sentinel的热点参数)"></a>2.3 令牌桶算法(Sentinel的热点参数)</h2><p>其基本思路如图：【Sentinel中的<strong>热点参数(一段时间内频繁访问的用户id)限流</strong>】</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410092010273.png" alt="image-20241009201027208"></p>
+<p>说明：</p>
+<ul>
+<li>生成令牌：以固定的速率生成令牌，存入令牌桶【令牌桶满了以后，多余令牌丢弃】</li>
+<li>进入请求：必须先尝试从桶中获取令牌，①获取到令牌后才可以被处理②令牌桶中没有令牌，则请求等待或丢弃</li>
+</ul>
+<p>基于令牌桶算法，每秒产生的<strong>令牌数量</strong>==<strong>QPS上限</strong></p>
+<p>当然也有例外情况，例如：</p>
+<ul>
+<li>某一秒令牌桶中产生了很多令牌，达到令牌桶上限N，缓存在令牌桶中，但是这一秒没有请求进入。</li>
+<li>下一秒的前半秒涌入了超过2N个请求，之前缓存的令牌桶的令牌耗尽，同时这一秒又生成了N个令牌，于是总共放行了2N个请求。超出了我们设定的QPS阈值。</li>
+</ul>
+<p>因此，在使用令牌桶算法时，尽量不要将令牌上限设定到服务能承受的QPS上限。而是<strong>预留一定的波动空间</strong>，这样我们才能应对突发流量。</p>
+<h2 id="2-4-漏桶算法-Sentinel的排队等待"><a href="#2-4-漏桶算法-Sentinel的排队等待" class="headerlink" title="2.4 漏桶算法(Sentinel的排队等待)"></a>2.4 漏桶算法(Sentinel的排队等待)</h2><p>漏桶算法与令牌桶相似，但在设计上更适合<strong>应对并发波动较大的场景</strong>，解决令牌桶中的问题。</p>
+<p>简单来说就是请求到达后不是直接处理，①<strong>放入一个队列</strong>。②<strong>固定的速率从队列中取出并处理请求</strong>。[叫漏桶算法，就是把请求看做水，队列看做是一个漏了的桶]</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410092030787.png" alt="image-20241009203016735"></p>
+<p>漏桶的优势就是<strong>流量整型</strong>，桶就像是一个大坝，请求就是水。并发量不断波动，就如图水流时大时小，但都会被大坝拦住。而后大坝按照固定的速度放水，避免下游被洪水淹没。</p>
+<p>因此，不管并发量如何波动，经过漏桶处理后的请求一定是相对平滑的曲线：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202410092033551.png" alt="image-20241009203304507"></p>
 
       
       
