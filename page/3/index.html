@@ -1600,7 +1600,7 @@
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072218254.png" alt="image-20240507221852165" style="zoom: 67%;">
 
 <p>我们可以看到，标准分词器只能1个字作为一个1个词条，无法正取对中文做分词</p>
-<h3 id="4-2-2-IK分词器-ik-smart智能语义切分"><a href="#4-2-2-IK分词器-ik-smart智能语义切分" class="headerlink" title="4.2.2 IK分词器(ik_smart智能语义切分)"></a>4.2.2 IK分词器(ik_smart智能语义切分)</h3><p>这种情况下，可以智能的将词语切分。但是像程序员这种词可以拆分为程序员，程序，员</p>
+<h3 id="4-2-2-IK分词器-ik-smart智能语义切分"><a href="#4-2-2-IK分词器-ik-smart智能语义切分" class="headerlink" title="4.2.2 IK分词器(ik_smart智能语义切分)"></a>4.2.2 IK分词器(ik_smart智能语义切分)</h3><p>这种情况下，可以智能的将词语切分。但是像程序员这种词可以拆分为程序员，程序，员。这个分词器无法实现</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072222404.png" alt="image-20240507222246345"></p>
 <h3 id="4-2-3-IK分词器-ik-max-word最细粒度切分"><a href="#4-2-3-IK分词器-ik-max-word最细粒度切分" class="headerlink" title="4.2.3 IK分词器(ik_max_word最细粒度切分)"></a>4.2.3 IK分词器(ik_max_word最细粒度切分)</h3><p>这种情况下，可以在4.2.2的前提下继续细分【程序员这种词可以拆分为程序员，程序，员】</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072225864.png" alt="image-20240507222545813"></p>
@@ -1608,7 +1608,7 @@
 <img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072226525.png" alt="image-20240507222659451" style="zoom:80%;">
 
 <p>所以想要正确分词，<strong>IK分词器的词库也需要不断地更新</strong>，IK分词器提供了扩展词汇的功能：</p>
-<p>我们可以在ik-config文件夹下的<code>IkAnalyzer.cfg.xml</code>文件添加拓展词典和停用词典，这样我们再调用的时候，宋亚翔和传智播客就可以被认为是一个词语作为词条</p>
+<p>我们在ik-config文件夹下的<code>IkAnalyzer.cfg.xml</code>文件添加拓展词典和停用词典，这样我们再调用的时候，宋亚翔和传智播客就可以被认为是一个词语作为词条</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405072244524.png" alt="image-20240507224408412"></p>
 <h1 id="基础操作-对索引库和文档基础操作"><a href="#基础操作-对索引库和文档基础操作" class="headerlink" title="==基础操作(对索引库和文档基础操作)=="></a>==基础操作(对索引库和文档基础操作)==</h1><h1 id="方式一：通过ES手动创建–很繁琐"><a href="#方式一：通过ES手动创建–很繁琐" class="headerlink" title="==方式一：通过ES手动创建–很繁琐=="></a>==方式一：通过ES手动创建–很繁琐==</h1><h1 id="1-索引库操作-数据库表"><a href="#1-索引库操作-数据库表" class="headerlink" title="1.索引库操作(数据库表)"></a>1.索引库操作(数据库表)</h1><p>index类似数据库表，映射类似表的结构。我们要向es中存储数据，必须先创建索引(数据库表)和映射(数据库定义)</p>
 <h2 id="1-1-Mapping映射属性"><a href="#1-1-Mapping映射属性" class="headerlink" title="1.1 Mapping映射属性"></a>1.1 Mapping映射属性</h2><p>Mapping是对索引库的文档设置约束，常见的mapping属性包括：</p>

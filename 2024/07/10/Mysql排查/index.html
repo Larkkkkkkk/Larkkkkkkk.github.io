@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101854479.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101854968.png">
 <meta property="article:published_time" content="2024-07-10T05:31:21.000Z">
-<meta property="article:modified_time" content="2024-09-30T02:24:14.295Z">
+<meta property="article:modified_time" content="2024-11-14T02:42:46.290Z">
 <meta property="article:author" content="Larkkkkkkk">
 <meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
@@ -500,6 +500,12 @@
 </ul>
 <p>找到那些执行计划中扫描行数过多、<code>type=index/all</code>的<code>SQL</code>语句，尝试优化掉即可</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202407101717137.png" alt="image-20240710171706075"></p>
+<p>select_type字段：展示查询的类型(简单查询，联合查询，子查询等)—可以往join连接，避免子查询</p>
+<p>partitions字段：展示查询涉及的分区(mysql5.1引出的，解决单表问题)—-可以往分区上优化</p>
+<p>type字段：展示链接类型，反映mysql如何查找表的行—可以往system(系统表查询)/const(主键/唯一索引)</p>
+<p>possible_keys和key字段：mysql认为可以使用的索引和实际使用的索引—可以往一致优化</p>
+<p>filtered字段：mysql认为where符合（返回结果的行数/总行数）的百分比—可以往100%优化[where字段优化]</p>
+<p>extra字段：一些额外操作—可以往①Using index索引覆盖；②Using where使用where子句过滤行</p>
 <ul>
 <li>方法二：人肉排查法：</li>
 </ul>
@@ -673,7 +679,7 @@
         <p><span>本文标题:</span><a href="/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/">Mysql排查</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
         <p><span>发布时间:</span>2024年07月10日 - 13时31分</p>
-        <p><span>最后更新:</span>2024年09月30日 - 10时24分</p>
+        <p><span>最后更新:</span>2024年11月14日 - 10时42分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/" title="Mysql排查">https://larkkkkkkk.github.io/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/</a>
             <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
