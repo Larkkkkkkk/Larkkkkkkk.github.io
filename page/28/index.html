@@ -332,6 +332,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-回溯法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/10/17/%E5%9B%9E%E6%BA%AF%E6%B3%95/" class="article-date">
+      <time datetime="2019-10-17T12:27:06.000Z" itemprop="datePublished">2019-10-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/17/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯算法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>回溯法：<br>回溯在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就 “回溯” 返回，尝试别的路径。按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回溯法，<br>回溯算法的<strong>基本思想</strong>是：从一条路往前走，能进则进，不能进则退回来，换一条路再试。</p>
+<p>例子：<br><strong>八皇后问题</strong><br>在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法？<br><strong>思路：</strong><br>通过分析题目可以得到，就是每一行就必须有一个皇后。<br>①第一种想法是假设8*8的棋盘是一个矩阵形式，那么假设皇后i和皇后j的位置为(i,Xi)和(j,Xj),只要保证两个坐标的点斜率不是1和-1就行。<br>②采用回溯法：<br>假设现在有四个皇后需要放置：<br>(1)假设第一个皇后放在第一行第一列的位置，那么第二行的皇后就只能放在第二行第三列/第四列位置。<br>(2)现在让第二个皇后放在第二行第三列的位置，那么第三行的皇后就没有位置可以放了，没有满足题意的位置了。</p>
+<p><strong>因此我们需要返回考虑第二个皇后的安置问题：</strong><br>(2)现在让第二个皇后放在第二行第四列的位置，那么第三行的皇后就可以放在第三行第二列位置。<br>(3)第三行皇后放置后，第四行皇后又没位置了。</p>
+<p><strong>因此需要不断地去尝试，选择路径去放置</strong></p>
+<p><strong>具体实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class BaHuangHou&#123;	</span><br><span class="line">		public static void main(String[] args) &#123;</span><br><span class="line">			 int a[]&#x3D;new int[4];</span><br><span class="line">		     int number&#x3D;4,count&#x3D;0;</span><br><span class="line">			operate(0);</span><br><span class="line">			System.out.println(count);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public static boolean panduan(int n) &#123;</span><br><span class="line">			for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">			if((a[i]&#x3D;&#x3D;a[n])||(Math.abs(n-i)&#x3D;&#x3D;Math.abs(a[i]-a[n])))  &#x2F;&#x2F;判断下一个皇后是否和上一个皇后在同一行或者是对角线</span><br><span class="line">				return false;</span><br><span class="line"></span><br><span class="line">			return true;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		public static void operate(int n) &#123;  &#x2F;&#x2F;放置一个皇后</span><br><span class="line">			if(n&#x3D;&#x3D;number)</span><br><span class="line">			&#123;</span><br><span class="line">				count++;</span><br><span class="line">			&#125;</span><br><span class="line">			else if(n&lt;number)</span><br><span class="line">			&#123;</span><br><span class="line">				for(int i&#x3D;0;i&lt;number;i++)</span><br><span class="line">				&#123;</span><br><span class="line">					a[n]&#x3D;i;</span><br><span class="line">					if(panduan(n))  &#x2F;&#x2F;判断是否可以放置</span><br><span class="line">					operate(n+1);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码结果如下：<br>！<a href="截图1.png"></a></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%BA%AF%E6%B3%95/" rel="tag">算法-回溯法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-贪心算法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

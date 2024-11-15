@@ -332,6 +332,67 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-date">
+      <time datetime="2020-03-10T06:30:57.000Z" itemprop="datePublished">2020-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><blockquote>
+<p>  软件开发过程中,遇到相似问题,将问题的解决方式抽取<strong>模型(套路)</strong></p>
+</blockquote>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-注解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1335,127 +1396,6 @@ $(&quot;#div1&quot;).load(serlvet); ---&gt; 使用的get请求，回来赋值的
 
 <p><strong>最终输入一个用户名会提示判断，并且在java控制台输出结果：</strong></p>
 <p><img src="/2020/03/05/Ajax%E5%AE%9E%E7%8E%B0%E6%A0%A1%E9%AA%8C%E7%94%A8%E6%88%B7%E5%90%8D/zuizhong.png" alt></p>
-<hr>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/" rel="tag">Ajax</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Ajax" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/04/Ajax/" class="article-date">
-      <time datetime="2020-03-04T07:47:35.000Z" itemprop="datePublished">2020-03-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/04/Ajax/">Ajax</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="一、Ajax概述"><a href="#一、Ajax概述" class="headerlink" title="一、Ajax概述"></a>一、Ajax概述</h1><blockquote>
-<p><strong>Asynchronous Javascript And XML</strong>：<strong>异步JavaScript和XML</strong><br>并不是新的技术，只是把原有的技术，整合到一起而已。 </p>
-</blockquote>
-<pre><code>1.使用CSS和XHTML来表示。
-2. 使用DOM模型来交互和动态显示。
-3.使用XMLHttpRequest来和服务器进行异步通信。
-4.使用javascript来绑定和调用。</code></pre><ul>
-<li><strong>作用：</strong><blockquote>
-<p><strong>刷新局部内容</strong></p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<h1 id="二、数据请求-Get"><a href="#二、数据请求-Get" class="headerlink" title="二、数据请求 Get"></a>二、数据请求 Get</h1><p><strong>创建一个demo01.jsp页面：主要去写浏览器点击按钮后通过ajax方式获得数据请求，servlet得到反馈。</strong></p>
-<p><strong>数据请求中的Get思路：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.在body里面写一个点击按钮 onclick&#x3D;&quot;get()&quot;</span><br><span class="line">2.在head里面引入js代码写get()方法具体实现。</span><br><span class="line">	2.1 主要是去创建对象(调用我们写好的ajaxFunction()方法 ---在F盘的jar文件内)</span><br><span class="line">	2.2 使用open()方法可以添加数据--发送请求</span><br><span class="line">	2.3 使用request.onreadystatechange&#x3D;function()&#123;&#125;--判断是不是准备好了	</span><br><span class="line">	2.4 使用send()方法</span><br></pre></td></tr></table></figure>
-
-<p><strong>jsp页面的主要代码：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;   &lt;!--使用jS文件--&gt;</span><br><span class="line">	</span><br><span class="line">	function ajaxFunction()&#123;     &lt;!--拷贝写好的创建对象的方法 --&gt;</span><br><span class="line">		   var xmlHttp;</span><br><span class="line">		   try&#123; &#x2F;&#x2F; Firefox, Opera 8.0+, Safari</span><br><span class="line">		        xmlHttp&#x3D;new XMLHttpRequest();</span><br><span class="line">		    &#125;</span><br><span class="line">		    catch (e)&#123;</span><br><span class="line">			   try&#123;&#x2F;&#x2F; Internet Explorer</span><br><span class="line">			         xmlHttp&#x3D;new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);</span><br><span class="line">			      &#125;</span><br><span class="line">			    catch (e)&#123;</span><br><span class="line">			      try&#123;</span><br><span class="line">			         xmlHttp&#x3D;new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</span><br><span class="line">			      &#125;</span><br><span class="line">			      catch (e)&#123;&#125;</span><br><span class="line">			      &#125;</span><br><span class="line">		    &#125;</span><br><span class="line">			return xmlHttp;</span><br><span class="line">		 &#125;</span><br><span class="line">	</span><br><span class="line">		function get()&#123;</span><br><span class="line">			&#x2F;&#x2F;1.创建xmlhttprequest对象</span><br><span class="line">				 var request&#x3D;ajaxFunction();    &lt;!--调用写好的创建对象的方法 --&gt;</span><br><span class="line">			&#x2F;&#x2F;2.发送请求</span><br><span class="line">				request.open(&quot;GET&quot;,&quot;&#x2F;day16&#x2F;DemoSerlvet01?name&#x3D;aa&amp;age&#x3D;18&quot;,true);  &#x2F;&#x2F; 第一个参数:get&#x2F;post  第二个:相对路径 默认从 项目开始  所以只用写servlet的代码  第三个: true(异步) &#x2F;false(同步)</span><br><span class="line">				</span><br><span class="line">			&#x2F;&#x2F;3.获取响应数据	</span><br><span class="line">				request.onreadystatechange&#x3D;function()&#123;</span><br><span class="line">					if(request.readyState&#x3D;&#x3D;4&amp;&amp;request.status&#x3D;&#x3D;200)  &#x2F;&#x2F; (4)已经能够正常处理 &amp;&amp; 判断状态码是不是200</span><br><span class="line">						&#123;</span><br><span class="line">							alert(request.responseText);  &#x2F;&#x2F;弹出信息</span><br><span class="line">						&#125;</span><br><span class="line">				&#125;	</span><br><span class="line">				request.send();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;h3&gt;&lt;a href&#x3D;&quot;&quot; onclick&#x3D;&quot;get()&quot;&gt;使用Ajax方式发送Get请求&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>DemoSerlvet01主要去写输出：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;获取传入的信息</span><br><span class="line">		String name &#x3D; request.getParameter(&quot;name&quot;);</span><br><span class="line">		String age &#x3D; request.getParameter(&quot;age&quot;);</span><br><span class="line">		System.out.println(name+&quot;  &quot;+age);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;通过alert的方式弹出</span><br><span class="line">		response.setContentType(&quot;text&#x2F;html;charset&#x3D;utf-8&quot;);  &#x2F;&#x2F;response解决方法加一行代码  而request可以加代码&#x2F;tomcat永久更改(之前博客写过方法)</span><br><span class="line">		response.getWriter().write(&quot;啊啊&quot;);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>最终点击jsp页面的一行弹出alert提示：java控制台输出获取的信息</strong></p>
-<p><img src="/2020/03/04/Ajax/get.png" alt></p>
-<hr>
-<h1 id="三、数据请求-Post"><a href="#三、数据请求-Post" class="headerlink" title="三、数据请求 Post"></a>三、数据请求 Post</h1><p><strong>跟get的差距:</strong></p>
-<ol>
-<li>只是在open里面要是传输数据需在send()里面写。</li>
-<li>传输数据必须现有头部</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F;如果是post方式就必须要添加头  --说明提交的数据类型是一个经过url编码的form表单数据</span><br><span class="line">				request.setRequestHeader(&quot;Content-type&quot;,&quot;application&#x2F;x-www-form-urlencoded&quot;);	</span><br><span class="line">			</span><br><span class="line">				&#x2F;&#x2F;post不能根据open带过去 </span><br><span class="line">				request.send(&quot;name&#x3D;aa&amp;age&#x3D;18&quot;);</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>与get方法的前三步骤一样(不带参数)：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function post()&#123;</span><br><span class="line">		&#x2F;&#x2F;1.创建xmlhttprequest对象</span><br><span class="line">			 var request&#x3D;ajaxFunction();    &lt;!--调用写好的创建对象的方法 --&gt;</span><br><span class="line">		&#x2F;&#x2F;2.发送请求</span><br><span class="line">			request.open(&quot;POST&quot;,&quot;&#x2F;day16&#x2F;DemoSerlvet01&quot;,true);  &#x2F;&#x2F; 第一个参数:get&#x2F;post      第二个:相对路径 默认从 项目开始  所以只用写servlet的代码      第三个: true(异步) &#x2F;false(同步)</span><br><span class="line">			</span><br><span class="line">		&#x2F;&#x2F;3.获取响应数据	</span><br><span class="line">			request.onreadystatechange&#x3D;function()&#123;</span><br><span class="line">				if(request.readyState&#x3D;&#x3D;4&amp;&amp;request.status&#x3D;&#x3D;200)  &#x2F;&#x2F; 已经能够正常处理 &amp;&amp; 判断状态码是不是200</span><br><span class="line">					&#123;</span><br><span class="line">						alert(request.responseText);</span><br><span class="line">					&#125;</span><br><span class="line">			&#125;	</span><br><span class="line">		</span><br><span class="line">			&#x2F;&#x2F;如果是post方式就必须要添加头  --说明提交的数据类型是一个经过url编码的form表单数据</span><br><span class="line">			request.setRequestHeader(&quot;Content-type&quot;,&quot;application&#x2F;x-www-form-urlencoded&quot;);	</span><br><span class="line">		</span><br><span class="line">			&#x2F;&#x2F;post不能根据open带过去 </span><br><span class="line">			request.send(&quot;name&#x3D;aa&amp;age&#x3D;18&quot;);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>主要代码如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;   &lt;!--使用jS文件--&gt;</span><br><span class="line">	</span><br><span class="line">	function ajaxFunction()&#123;     &lt;!--拷贝写好的创建对象的方法 --&gt;</span><br><span class="line">		   var xmlHttp;</span><br><span class="line">		   try&#123; &#x2F;&#x2F; Firefox, Opera 8.0+, Safari</span><br><span class="line">		        xmlHttp&#x3D;new XMLHttpRequest();</span><br><span class="line">		    &#125;</span><br><span class="line">		    catch (e)&#123;</span><br><span class="line">			   try&#123;&#x2F;&#x2F; Internet Explorer</span><br><span class="line">			         xmlHttp&#x3D;new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);</span><br><span class="line">			      &#125;</span><br><span class="line">			    catch (e)&#123;</span><br><span class="line">			      try&#123;</span><br><span class="line">			         xmlHttp&#x3D;new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</span><br><span class="line">			      &#125;</span><br><span class="line">			      catch (e)&#123;&#125;</span><br><span class="line">			      &#125;</span><br><span class="line">		    &#125;</span><br><span class="line">			return xmlHttp;</span><br><span class="line">		 &#125;</span><br><span class="line">	</span><br><span class="line">		function post()&#123;</span><br><span class="line">			&#x2F;&#x2F;1.创建xmlhttprequest对象</span><br><span class="line">				 var request&#x3D;ajaxFunction();    &lt;!--调用写好的创建对象的方法 --&gt;</span><br><span class="line">			&#x2F;&#x2F;2.发送请求</span><br><span class="line">				request.open(&quot;POST&quot;,&quot;&#x2F;day16&#x2F;DemoSerlvet01&quot;,&quot;true&quot;);  &#x2F;&#x2F; 第一个参数:get&#x2F;post      第二个:相对路径 默认从 项目开始  所以只用写servlet的代码      第三个: true(异步) &#x2F;false(同步)</span><br><span class="line">				</span><br><span class="line">			&#x2F;&#x2F;3.获取响应数据	</span><br><span class="line">				request.onreadystatechange&#x3D;function()&#123;</span><br><span class="line">					if(request.readyState&#x3D;&#x3D;4&amp;&amp;request.status&#x3D;&#x3D;200)  &#x2F;&#x2F; 已经能够正常处理 &amp;&amp; 判断状态码是不是200</span><br><span class="line">						&#123;</span><br><span class="line">							alert(request.responseText);</span><br><span class="line">						&#125;</span><br><span class="line">				&#125;	</span><br><span class="line">			</span><br><span class="line">				&#x2F;&#x2F;如果是post方式就必须要添加头  --说明提交的数据类型是一个经过url编码的form表单数据</span><br><span class="line">				request.setRequestHeader(&quot;Content-type&quot;,&quot;application&#x2F;x-www-form-urlencoded&quot;);	</span><br><span class="line">			</span><br><span class="line">				&#x2F;&#x2F;post不能根据open带过去 </span><br><span class="line">				request.send(&quot;name&#x3D;aa&amp;age&#x3D;18&quot;);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;h3&gt;&lt;a href&#x3D;&quot;&quot; onclick&#x3D;&quot;post()&quot;&gt;使用Ajax方式发送Post请求&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>DemoSerlvet01主要去写输出：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		&#x2F;&#x2F;获取传入的信息</span><br><span class="line">		String name &#x3D; request.getParameter(&quot;name&quot;);</span><br><span class="line">		String age &#x3D; request.getParameter(&quot;age&quot;);</span><br><span class="line">		System.out.println(name+&quot;  &quot;+age);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;通过alert的方式弹出</span><br><span class="line">		response.setContentType(&quot;text&#x2F;html;charset&#x3D;utf-8&quot;);  &#x2F;&#x2F;response解决方法加一行代码  而request可以加代码&#x2F;tomcat永久更改(之前博客写过方法)</span><br><span class="line">		response.getWriter().write(&quot;啊啊&quot;);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="四、部分方法解析"><a href="#四、部分方法解析" class="headerlink" title="四、部分方法解析#"></a>四、部分方法解析#</h1><h2 id="创建xmlhttprequest对象"><a href="#创建xmlhttprequest对象" class="headerlink" title="创建xmlhttprequest对象"></a>创建xmlhttprequest对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function ajaxFunction()&#123;     &lt;!--拷贝写好的创建对象的方法 --&gt;</span><br><span class="line">		   var xmlHttp;</span><br><span class="line">		   try&#123; &#x2F;&#x2F; Firefox, Opera 8.0+, Safari</span><br><span class="line">		        xmlHttp&#x3D;new XMLHttpRequest();</span><br><span class="line">		    &#125;</span><br><span class="line">		    catch (e)&#123;</span><br><span class="line">			   try&#123;&#x2F;&#x2F; Internet Explorer</span><br><span class="line">			         xmlHttp&#x3D;new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);</span><br><span class="line">			      &#125;</span><br><span class="line">			    catch (e)&#123;</span><br><span class="line">			      try&#123;</span><br><span class="line">			         xmlHttp&#x3D;new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</span><br><span class="line">			      &#125;</span><br><span class="line">			      catch (e)&#123;&#125;</span><br><span class="line">			      &#125;</span><br><span class="line">		    &#125;</span><br><span class="line">			return xmlHttp;</span><br><span class="line">		 &#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h2><ol>
-<li>第一个参数： GET/POST</li>
-<li>第二个参数： 相对地址(相对于localhost：8080中的8080) 一般是 “/项目名/servlet名字”  (GET的方式可以直接?name=lisi&amp;age=18；而POST的方式只能在send里面写，而且要加头)</li>
-<li>第三个参数： true(异步)/false(同步) </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.open(&quot;GET&quot;,&quot;&#x2F;day16&#x2F;DemoSerlvet01?name&#x3D;aa&amp;age&#x3D;18&quot;,true);</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="onreadystatechange-function-–判断状态"><a href="#onreadystatechange-function-–判断状态" class="headerlink" title="onreadystatechange=function(){}–判断状态##"></a>onreadystatechange=function(){}–判断状态##</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;固定的格式：</span><br><span class="line">request.onreadystatechange&#x3D;function()&#123;</span><br><span class="line">					if(request.readyState&#x3D;&#x3D;4&amp;&amp;request.status&#x3D;&#x3D;200)  &#x2F;&#x2F; 已经能够正常处理 &amp;&amp; 判断状态码是不是200</span><br><span class="line">						&#123;</span><br><span class="line">							alert(request.responseText);  &#x2F;&#x2F;配合request.responseText使用</span><br><span class="line">						&#125;</span><br><span class="line">				&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>readystate状态集：</strong></p>
-<p><img src="/2020/03/04/Ajax/readyState.png" alt></p>
-<p><strong>status的状态集：</strong></p>
-<p><img src="/2020/03/04/Ajax/status.png" alt></p>
-<h2 id="send-方法"><a href="#send-方法" class="headerlink" title="send()方法"></a>send()方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	&#x2F;&#x2F;如果是post方式就必须要添加头  --说明提交的数据类型是一个经过url编码的form表单数据</span><br><span class="line">		request.setRequestHeader(&quot;Content-type&quot;,&quot;application&#x2F;x-www-form-urlencoded&quot;);	</span><br><span class="line">			</span><br><span class="line">	&#x2F;&#x2F;post不能根据open带过去 </span><br><span class="line">		request.send(&quot;name&#x3D;aa&amp;age&#x3D;18&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; -----------------------------------------------</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;get方式</span><br><span class="line">		request.send();</span><br></pre></td></tr></table></figure>
 <hr>
 
       

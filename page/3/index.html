@@ -332,6 +332,77 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Hexo博客报错github传输大文件GH001异常" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/05/28/Hexo%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99github%E4%BC%A0%E8%BE%93%E5%A4%A7%E6%96%87%E4%BB%B6GH001%E5%BC%82%E5%B8%B8/" class="article-date">
+      <time datetime="2024-05-28T02:51:54.000Z" itemprop="datePublished">2024-05-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/05/28/Hexo%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99github%E4%BC%A0%E8%BE%93%E5%A4%A7%E6%96%87%E4%BB%B6GH001%E5%BC%82%E5%B8%B8/">Hexo博客报错github传输大文件GH001异常</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="1-报错原因"><a href="#1-报错原因" class="headerlink" title="1.报错原因"></a>1.报错原因</h1><p>我在Docker文件夹下上传了一个iso文件，这个文件大于了github的100M大小报错。</p>
+<p>在我hexo g的时候没问题，但是hexo d的时候会出错。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405281055923.png" alt="image-20240528105520819"></p>
+<p>但是本地删除了iso文件还是不行，最后查询意思是之前的记录仍然存在，只能从本地仓库删除并且把以前的提交记录全部修改</p>
+<h1 id="2-修改办法"><a href="#2-修改办法" class="headerlink" title="2.修改办法"></a>2.修改办法</h1><p>2.1 在此目录下打开git bash</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405281057150.png" alt="image-20240528105706115"></p>
+<p>2.2 输入指令 git log通过此处找到报错前最新的版本</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405281059890.png" alt="image-20240528105915849"></p>
+<p>2.2 还有一种办法就是通过github查看版本</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405281101521.png" alt="image-20240528110139383"></p>
+<p>2.3 至此直接git reset id 就可以恢复到对应版本</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202405281102890.png" alt="image-20240528110223842"></p>
+<h1 id="3-参考办法"><a href="#3-参考办法" class="headerlink" title="3.参考办法"></a>3.参考办法</h1><p><a href="https://rimbaud-lee.github.io/2021/08/25/blog_deploy_2/" target="_blank" rel="noopener">记一次异常艰难的博客部署（二）—— hexo d 指令向GitHub传输大文件导致的 GH001 报错解决 | 邓小闲的小楼 (rimbaud-lee.github.io)</a></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo%E5%8D%9A%E5%AE%A2/" rel="tag">Hexo博客</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-微服务-分布式事务" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -3565,121 +3636,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-微信小程序开发" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2024/01/06/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" class="article-date">
-      <time datetime="2024-01-06T04:15:49.000Z" itemprop="datePublished">2024-01-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/06/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">微信小程序开发</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="1-小程序介绍"><a href="#1-小程序介绍" class="headerlink" title="1.小程序介绍"></a>1.小程序介绍</h1><p>小程序是一种新的开放能力，开发者可以快速地开发一个小程序。可以在微信内被便捷地获取和传播，同时具有出色的使用体验</p>
-<p><strong>官方网址：</strong><a href="https://mp.weixin.qq.com/cgi-bin/wx?token=&amp;lang=zh_CN" target="_blank" rel="noopener">https://mp.weixin.qq.com/cgi-bin/wx?token=&amp;lang=zh_CN</a></p>
-<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061547938.png" alt="image-20240106154758794" style="zoom:67%;">
-
-<p>小程序主要运行微信内部，可通过上述网站来整体了解微信小程序的开发</p>
-<h1 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h1><p>开发微信小程序之前需要做如下准备工作：</p>
-<ul>
-<li>注册小程序</li>
-<li>完善小程序信息</li>
-<li>下载开发者工具</li>
-</ul>
-<p><strong>1). 注册小程序</strong></p>
-<p>注册地址：<a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1" target="_blank" rel="noopener">https://mp.weixin.qq.com/wxopen/waregister?action=step1</a></p>
-<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061548736.png" alt="image-20240106154849701">
-
-<p><strong>2). 完善小程序信息</strong></p>
-<p>登录小程序后台：<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">https://mp.weixin.qq.com/</a></p>
-<p>两种登录方式选其一即可</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061549733.png" alt="image-20240106154908699"></p>
-<p>完善小程序信息、小程序类目</p>
-<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061549461.png" alt="image-20240106154921416" style="zoom:80%;">
-
-<p>查看小程序的 AppID</p>
-<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061549838.png" alt="image-20240106154938792"></p>
-<p><strong>3). 下载开发者工具</strong></p>
-<p>下载地址： <a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/stable.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/devtools/stable.html</a></p>
-<h1 id="3-入门案例"><a href="#3-入门案例" class="headerlink" title="3.入门案例"></a>3.入门案例</h1><h2 id="3-1-创建小程序项目"><a href="#3-1-创建小程序项目" class="headerlink" title="3.1 创建小程序项目"></a>3.1 创建小程序项目</h2><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061554678.png" alt="image-20240106155417633" style="zoom: 80%;">
-
-<h2 id="3-2-小程序目录结构"><a href="#3-2-小程序目录结构" class="headerlink" title="3.2 小程序目录结构"></a>3.2 小程序目录结构</h2><h3 id="3-2-1-开发界面-五个部分"><a href="#3-2-1-开发界面-五个部分" class="headerlink" title="3.2.1 开发界面(五个部分)"></a>3.2.1 开发界面(五个部分)</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061552662.png" style="zoom: 67%;">
-
-<h3 id="3-2-2-小程序整体目录结构-三个部分"><a href="#3-2-2-小程序整体目录结构-三个部分" class="headerlink" title="3.2.2 小程序整体目录结构(三个部分)"></a>3.2.2 小程序整体目录结构(三个部分)</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061636677.png" alt="image-20240106163632628" style="zoom:80%;">
-
-<h3 id="3-2-3-每个页面结构-四个部分"><a href="#3-2-3-每个页面结构-四个部分" class="headerlink" title="3.2.3 每个页面结构(四个部分)"></a>3.2.3 每个页面结构(四个部分)</h3><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061638867.png" alt="image-20240106163848831" style="zoom:150%;">
-
-<h2 id="3-3-具体代码"><a href="#3-3-具体代码" class="headerlink" title="3.3 具体代码"></a>3.3 具体代码</h2><ul>
-<li>进入到index.wxml，编写页面布局</li>
-</ul>
-<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061641396.png" alt="image-20240106164109283" style="zoom:67%;">
-
-<ul>
-<li>进入到index.js，编写业务逻辑代码</li>
-</ul>
-<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061643185.png" alt="image-20240106164345127">
-
-<p>具体代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; index.js</span><br><span class="line">Page(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    msg:&#39;hello world&#39;,</span><br><span class="line">    nickname: &#39;&#39;,</span><br><span class="line">    url:&#39;&#39;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;获取微信用户头像和昵称</span><br><span class="line">  getUserInfo()&#123;</span><br><span class="line">    &#x2F;&#x2F;调用weixin内置方法</span><br><span class="line">    wx.getUserProfile(&#123;</span><br><span class="line">      desc: &#39;获取用户信息&#39;,</span><br><span class="line">      success: (res) &#x3D;&gt;&#123;</span><br><span class="line">        &#x2F;&#x2F;调试器输出</span><br><span class="line">        console.log(res.userInfo)</span><br><span class="line">        &#x2F;&#x2F;为数据赋值</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">          nickname:res.userInfo.nickName,</span><br><span class="line">          url:res.userInfo.avatarUrl</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;获取微信用户的授权码</span><br><span class="line">  wxLogin()&#123;</span><br><span class="line">    &#x2F;&#x2F;调用weixin内置方法</span><br><span class="line">    wx.login(&#123;</span><br><span class="line">      desc: &#39;获取微信用户授权码&#39;,</span><br><span class="line">      success: (res) &#x3D;&gt;&#123;</span><br><span class="line">        &#x2F;&#x2F;调试器输出</span><br><span class="line">        console.log(res.code)  &#x2F;&#x2F;每次登录的授权码不一样(只能使用一次)</span><br><span class="line">        &#x2F;&#x2F;为数据赋值</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">          code:res.code</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;发送请求</span><br><span class="line">  sendRequest()&#123;</span><br><span class="line">    &#x2F;&#x2F;调用weixin内置方法</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">      desc: &#39;获取用户端查询店铺运营状态&#39;,</span><br><span class="line">      url: &#39;http:&#x2F;&#x2F;localhost:8080&#x2F;user&#x2F;shop&#x2F;status&#39;,   &#x2F;&#x2F;调用后端的接口!!!!!!!!</span><br><span class="line">      method: &#39;GET&#39;,</span><br><span class="line">      success: (res) &#x3D;&gt;&#123;</span><br><span class="line">        &#x2F;&#x2F;调试器输出</span><br><span class="line">        console.log(res.data) &#x2F;&#x2F;相应过来的整体json数据</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>进行调试 -点击编译按钮</p>
-<p><strong><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061644039.png" alt="image-20240106164444992"></strong></p>
-</li>
-<li><p>一定要先打开后台程序，然后在模拟器中点击</p>
-<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061646640.png" alt="image-20240106164648572" style="zoom: 80%;">
-
-</li>
-</ul>
-<h2 id="3-4-发布小程序"><a href="#3-4-发布小程序" class="headerlink" title="3.4 发布小程序"></a>3.4 发布小程序</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202401061648158.png" alt="image-20240106164811098"></p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></li></ul>
     </div>
 
       
