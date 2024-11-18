@@ -2733,15 +2733,15 @@
 <li><strong>1.原始查询</strong>条件：query部分，基于这个条件搜索文档，并且基于BM25算法给文档打分，<strong>原始算分</strong>（query score)</li>
 <li><strong>2.过滤条件</strong>：filter部分，符合该条件的文档才会重新算分</li>
 <li><strong>3.算分函数</strong>：符合filter条件的文档要根据这个函数做运算，得到的<strong>函数算分</strong>（function score），有四种函数 <ul>
-<li>weight：函数结果是常量</li>
-<li>field_value_factor：以文档中的某个字段值作为函数结果</li>
-<li>random_score：以随机数作为函数结果</li>
+<li>weight：函数结果=常量</li>
+<li>field_value_factor：函数结果=文档中的某个字段值</li>
+<li>random_score：函数结果=随机数</li>
 <li>script_score：自定义算分函数算法</li>
 </ul>
 </li>
 <li>4.<strong>运算模式</strong>：算分函数的结果、原始查询的相关性算分，两者之间的运算方式，包括： <ul>
 <li>multiply：相乘</li>
-<li>replace：用function score替换query score</li>
+<li>replace：用function score原始算分替换query score</li>
 <li>其它，例如：sum、avg、max、min</li>
 </ul>
 </li>
@@ -2751,8 +2751,8 @@
 <ul>
 <li>1）根据<strong>原始条件</strong>查询搜索文档，并且计算相关性算分，称为<strong>原始算分</strong>（query score）</li>
 <li>2）根据<strong>过滤条件</strong>，过滤文档</li>
-<li>3）符合<strong>过滤条件</strong>的文档，基于<strong>算分函数</strong>运算，得到<strong>函数算分</strong>（function score）</li>
-<li>4）将<strong>原始算分</strong>（query score）和<strong>函数算分</strong>（function score）基于<strong>运算模式</strong>做运算，得到最终结果，作为相关性算分。</li>
+<li>3）符合<strong>过滤条件</strong>的文档，基于<strong>算分函数</strong>，得到<strong>函数算分</strong>（function score）–算分函数=①常量②文档中某字段值③随机数④自定义</li>
+<li>4）将<strong>原始算分</strong>（query score）和<strong>函数算分</strong>（function score）基于<strong>运算模式[各种]</strong>做运算，得到最终结果，作为相关性算分。</li>
 </ul>
 <p>举例：给IPhone这个品牌的手机算分提高十倍，分析如下：</p>
 <ul>
