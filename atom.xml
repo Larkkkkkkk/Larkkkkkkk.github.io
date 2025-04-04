@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://larkkkkkkk.github.io/"/>
-  <updated>2025-04-04T08:47:29.039Z</updated>
+  <updated>2025-04-04T14:26:07.497Z</updated>
   <id>https://larkkkkkkk.github.io/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="https://larkkkkkkk.github.io/2025/04/04/Vue%E6%A1%86%E6%9E%B6/"/>
     <id>https://larkkkkkkk.github.io/2025/04/04/Vue%E6%A1%86%E6%9E%B6/</id>
     <published>2025-04-04T06:17:18.000Z</published>
-    <updated>2025-04-04T08:47:29.039Z</updated>
+    <updated>2025-04-04T14:26:07.497Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="1-Vue简介"><a href="#1-Vue简介" class="headerlink" title="1.Vue简介"></a>1.Vue简介</h1><h1 id="2-Vue学习路线"><a href="#2-Vue学习路线" class="headerlink" title="2.Vue学习路线"></a>2.Vue学习路线</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="1-Vue简介"><a href="#1-Vue简介" class="headerlink" title="1.Vue简介"></a>1.Vue简介</h1><h2 id="1-1-学习路线"><a href="#1-1-学习路线" class="headerlink" title="1.1 学习路线"></a>1.1 学习路线</h2><p>中文版本：<a href="https://cn.vuejs.org/guide/introduction.html" target="_blank" rel="noopener">简介 | Vue.js</a></p><h2 id="1-2-两种API风格"><a href="#1-2-两种API风格" class="headerlink" title="1.2 两种API风格"></a>1.2 两种API风格</h2><p>Vue 的组件可以按两种不同的风格书写：<strong>选项式 API</strong> 和<strong>组合式 API</strong></p><h1 id="2-Vue入门"><a href="#2-Vue入门" class="headerlink" title="2.Vue入门"></a>2.Vue入门</h1><p>前提条件：</p><ul><li><p>1.熟悉cmd的指令【Win+R键输入cmd之后黑框进行ls cd 等操作】</p></li><li><p>2.Node版本大于15.0【cmd输入node -V即可查看】</p></li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;1-Vue简介&quot;&gt;&lt;a href=&quot;#1-Vue简介&quot; class=&quot;headerlink&quot; title=&quot;1.Vue简介&quot;&gt;&lt;/a&gt;1.Vue简介&lt;/h1&gt;&lt;h1 id=&quot;2-Vue学习路线&quot;&gt;&lt;a href=&quot;#2-Vue学习路线&quot; class=&quot;header
+        &lt;h1 id=&quot;1-Vue简介&quot;&gt;&lt;a href=&quot;#1-Vue简介&quot; class=&quot;headerlink&quot; title=&quot;1.Vue简介&quot;&gt;&lt;/a&gt;1.Vue简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-学习路线&quot;&gt;&lt;a href=&quot;#1-1-学习路线&quot; class=&quot;headerli
       
     
     </summary>
