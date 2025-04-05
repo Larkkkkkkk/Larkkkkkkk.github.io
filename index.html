@@ -359,8 +359,45 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="1-Vue简介"><a href="#1-Vue简介" class="headerlink" title="1.Vue简介"></a>1.Vue简介</h1><h2 id="1-1-学习路线"><a href="#1-1-学习路线" class="headerlink" title="1.1 学习路线"></a>1.1 学习路线</h2><p>中文版本：<a href="https://cn.vuejs.org/guide/introduction.html" target="_blank" rel="noopener">简介 | Vue.js</a></p>
-<h2 id="1-2-两种API风格"><a href="#1-2-两种API风格" class="headerlink" title="1.2 两种API风格"></a>1.2 两种API风格</h2><p>Vue 的组件可以按两种不同的风格书写：<strong>选项式 API</strong> 和<strong>组合式 API</strong></p>
+        <h1 id="1-Vue简介"><a href="#1-Vue简介" class="headerlink" title="1.Vue简介"></a>1.Vue简介</h1><p><a href="https://cn.vuejs.org/guide/introduction.html" target="_blank" rel="noopener">Vue</a> (发音为 /vjuː/，类似 <strong>view</strong>) 是一款用于构建用户界面的 <strong>JavaScript 框架</strong>。它基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型，帮助你高效地开发用户界面。无论是简单还是复杂的界面，Vue 都可以胜任。</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createApp, ref &#125; from &#39;vue&#39;</span><br><span class="line"></span><br><span class="line">createApp(&#123;</span><br><span class="line">  setup() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      count: ref(0)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).mount(&#39;#app&#39;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">  &lt;button @click&#x3D;&quot;count++&quot;&gt;</span><br><span class="line">    Count is: &#123;&#123; count &#125;&#125;</span><br><span class="line">  &lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>结果展示：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504052112682.png" alt="image-20250405211243611"></p>
+<ul>
+<li><strong>声明式渲染</strong>：Vue 基于标准 HTML 拓展了一套模板语法，使得我们可以声明式地描述最终输出的 HTML 和 JavaScript 状态之间的关系。</li>
+<li><strong>响应性</strong>：Vue 会自动跟踪 JavaScript 状态并在其发生变化时响应式地更新 DOM。</li>
+</ul>
+<h2 id="1-1-渐进式框架"><a href="#1-1-渐进式框架" class="headerlink" title="1.1 渐进式框架"></a>1.1 渐进式框架</h2><p>Vue是一个框架(生态)，能够覆盖大部分前端开发常见的需求。Vue 的设计非常注重灵活性和“可以被逐步集成”这个特点。根据你的需求场景，你可以用不同的方式使用 Vue：</p>
+<ul>
+<li>无需构建步骤，渐进式增强静态的 HTML</li>
+<li>在任何页面中作为 Web Components 嵌入</li>
+<li>单页应用 (SPA)</li>
+<li>全栈 / 服务端渲染 (SSR)</li>
+<li>Jamstack / 静态站点生成 (SSG)</li>
+<li>开发桌面端、移动端、WebGL，甚至是命令行终端中的界面</li>
+</ul>
+<h2 id="1-2-单文件组件"><a href="#1-2-单文件组件" class="headerlink" title="1.2 单文件组件"></a>1.2 单文件组件</h2><p>在大多数启用了构建工具的 Vue 项目中，我们可以使用一种类似 HTML 格式的文件来书写 Vue 组件，它被称为<strong>单文件组件</strong> (也被称为 <code>*.vue</code> 文件，英文 Single-File Components，缩写为 <strong>SFC</strong>)。顾名思义，Vue 的单文件组件会将一个组件的逻辑 (JavaScript)，模板 (HTML) 和样式 (CSS) 封装在同一个文件里。下面我们将用单文件组件的格式重写上面的计数器示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#39;vue&#39;</span><br><span class="line">const count &#x3D; ref(0)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;button @click&#x3D;&quot;count++&quot;&gt;Count is: &#123;&#123; count &#125;&#125;&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">button &#123;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>单文件组件是 Vue 的标志性功能。如果你的用例需要进行构建，我们推荐用它来编写 Vue 组件。</p>
+<h2 id="1-3-两种API风格"><a href="#1-3-两种API风格" class="headerlink" title="1.3 两种API风格"></a>1.3 两种API风格</h2><p>Vue 的组件可以按两种不同的风格书写：<strong>选项式 API</strong> 和<strong>组合式 API</strong></p>
+<h3 id="1-3-1-选项式API-Options-API"><a href="#1-3-1-选项式API-Options-API" class="headerlink" title="1.3.1 选项式API(Options API)"></a>1.3.1 选项式API(Options API)</h3><ul>
+<li>用<strong>对象（包含多个选项）</strong>来描述组件的逻辑，例如 <code>data</code>、<code>methods</code> 和 <code>mounted</code>。选项所定义的属性都会暴露在函数内部的 <code>this</code> 上，它会指向当前的组件实例。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504052122612.png" alt="image-20250405212257556"></p>
+<h3 id="1-3-2-组合式API-Composition-API"><a href="#1-3-2-组合式API-Composition-API" class="headerlink" title="1.3.2 组合式API(Composition API)"></a>1.3.2 组合式API(Composition API)</h3><ul>
+<li>用<strong>导入的 API 函数</strong>来描述组件的逻辑。在单文件组件中，组合式 API 通常会与<script setup>搭。这个setup attribute是一个标识(用来告诉Vue需要再编译时进行一些处理)，让我们更加简洁地使用组合式API。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504052126745.png" alt="image-20250405212650694"></p>
+<h3 id="1-3-3-选择原则"><a href="#1-3-3-选择原则" class="headerlink" title="1.3.3 选择原则"></a>1.3.3 选择原则</h3><p>【原则：哪个顺手用哪个】</p>
+<ul>
+<li>老项目：Vue2的选择式API</li>
+<li>新项目：Vue3的组合式API</li>
+</ul>
 <h1 id="2-Vue入门"><a href="#2-Vue入门" class="headerlink" title="2.Vue入门"></a>2.Vue入门</h1><p>前提条件：</p>
 <ul>
 <li><p>1.熟悉cmd的指令【Win+R键输入cmd之后黑框进行ls cd 等操作】</p>
@@ -368,7 +405,7 @@
 <li><p>2.Node版本大于15.0【cmd输入node -V即可查看】</p>
 </li>
 </ul>
-
+<h2 id="2-1-创建项目"><a href="#2-1-创建项目" class="headerlink" title="2.1 创建项目"></a>2.1 创建项目</h2></script></li></ul>
       
       
     </div>
