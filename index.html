@@ -436,7 +436,37 @@
 </ul>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504061231210.png" alt="image-20250406123146140"></p>
 <h3 id="2-2-4-总结"><a href="#2-2-4-总结" class="headerlink" title="2.2.4 总结"></a>2.2.4 总结</h3><p>通过上述步骤可以得到自己的一个前端脚手架---可以基于此进行很多开发</p>
-<p><img src="C:/Users/larkkkkkkk/AppData/Roaming/Typora/typora-user-images/image-20250406125357543.png" alt="image-20250406125357543"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504061253599.png" alt="image-20250406125357543"></p>
+<h2 id="2-3-修改项目"><a href="#2-3-修改项目" class="headerlink" title="2.3 修改项目"></a>2.3 修改项目</h2><h3 id="2-3-1-修改全局css样式"><a href="#2-3-1-修改全局css样式" class="headerlink" title="2.3.1 修改全局css样式"></a>2.3.1 修改全局css样式</h3><p>①在Home.vue中针对div块修改内容：【前端查看body会有一个本身的margin属性】</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504071950092.png" alt="image-20250407195027039"></p>
+<p>②在assets文件下创建global.css文件：【创建自定义的body】<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504071949376.png" alt="image-20250407194912256"></p>
+<p>③main.js里面引入第二步写的全局global.css文件</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504071951907.png" alt="image-20250407195154860"></p>
+<p>④查看页面：<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504071953593.png" alt="image-20250407195309513"></p>
+<h1 id="3-Vue基本语法-针对Home-vue"><a href="#3-Vue基本语法-针对Home-vue" class="headerlink" title="3.Vue基本语法[针对Home.vue]"></a>3.Vue基本语法[针对Home.vue]</h1><ul>
+<li>①script setup里面导包和定义数据</li>
+<li>②template里面渲染数据</li>
+</ul>
+<h2 id="3-1-ref和reactive"><a href="#3-1-ref和reactive" class="headerlink" title="3.1 ref和reactive"></a>3.1 ref和reactive</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504072022069.png" alt="image-20250407202216970"></p>
+<h2 id="3-2-v-model"><a href="#3-2-v-model" class="headerlink" title="3.2 v-model"></a>3.2 v-model</h2><ul>
+<li>会存在一个<strong>双向绑定</strong>情况：input内部变化也会导致定义的数据进行变化</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504072024601.png" alt="image-20250407202451527"></p>
+<h2 id="3-3-v-if和v-else"><a href="#3-3-v-if和v-else" class="headerlink" title="3.3 v-if和v-else"></a>3.3 v-if和v-else</h2><ul>
+<li>主要用于从多个值取出一个值</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504072034650.png" alt="image-20250407203404572"></p>
+<h2 id="3-4-v-for"><a href="#3-4-v-for" class="headerlink" title="3.4 v-for"></a>3.4 v-for</h2><ul>
+<li>主要用于从多个值循环取出所有值--可以全部展示/下拉栏展示</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504072046649.png" alt="image-20250407204656554"></p>
+<h2 id="3-5-v-on-事件绑定"><a href="#3-5-v-on-事件绑定" class="headerlink" title="3.5 v-on:(@) 事件绑定"></a>3.5 v-on:(@) 事件绑定</h2><p>@click 点击事件</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504072056759.png" alt="image-20250407205628648"></p>
+<h2 id="3-6-v-bind-动态绑定"><a href="#3-6-v-bind-动态绑定" class="headerlink" title="3.6 v-bind:(:) 动态绑定"></a>3.6 v-bind:(:) 动态绑定</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504072111944.png" alt="image-20250407211140864"></p>
+<h2 id="3-7-OnMounted"><a href="#3-7-OnMounted" class="headerlink" title="3.7 OnMounted"></a>3.7 OnMounted</h2><ul>
+<li>就是在页面元素完全加载完成之后触发，页面元素加载需要时间【只需要修改script setup里面内容】</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504072116392.png" alt="image-20250407211614327"></p>
 </script></li></ul>
       
       
