@@ -399,6 +399,41 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import &#123; fileURLToPath, URL &#125; from &#39;node:url&#39;</span><br><span class="line">import &#123; defineConfig &#125; from &#39;vite&#39;</span><br><span class="line">import vue from &#39;@vitejs&#x2F;plugin-vue&#39;</span><br><span class="line">import vueDevTools from &#39;vite-plugin-vue-devtools&#39;</span><br><span class="line">&#x2F;&#x2F;更改主题色-添加内容【引入index.scss内容】</span><br><span class="line">import AutoImport from &#39;unplugin-auto-import&#x2F;vite&#39;</span><br><span class="line">import Components from &#39;unplugin-vue-components&#x2F;vite&#39;</span><br><span class="line">import &#123; ElementPlusResolver&#125; from &#39;unplugin-vue-components&#x2F;resolvers&#39;</span><br><span class="line">import ElmentPlus from &#39;unplugin-element-plus&#x2F;vite&#39;</span><br><span class="line"></span><br><span class="line">export default defineConfig(&#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    vue(),</span><br><span class="line">    vueDevTools(),</span><br><span class="line">    &#x2F;&#x2F;更改主题色-添加内容</span><br><span class="line">    ElmentPlus(&#123;</span><br><span class="line">      useSource: true,</span><br><span class="line">    &#125;),</span><br><span class="line">    AutoImport(&#123;</span><br><span class="line">      resolvers: [ElementPlusResolver(&#123; importStyle: &#39;sass&#39;&#125;)],</span><br><span class="line">    &#125;),</span><br><span class="line">    Components(&#123;</span><br><span class="line">      resolvers: [ElementPlusResolver(&#123; importStyle: &#39;sass&#39;&#125;)],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: &#123;</span><br><span class="line">      &#39;@&#39;: fileURLToPath(new URL(&#39;.&#x2F;src&#39;, import.meta.url))</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#x2F;&#x2F;更改主题色-添加内容</span><br><span class="line">  css: &#123;</span><br><span class="line">    preprocessorOptions: &#123;</span><br><span class="line">      scss: &#123;</span><br><span class="line">        additionalData: &#96;</span><br><span class="line">        @use &quot;@&#x2F;assets&#x2F;index.scss&quot; as *;   &#x2F;&#x2F;注意是Esc按键下的&#96;&#96;符号!!!</span><br><span class="line">        &#96;,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h2 id="5-4-查看对比"><a href="#5-4-查看对比" class="headerlink" title="5.4 查看对比"></a>5.4 查看对比</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504081743050.png" alt="image-20250408174325003"></p>
+<h1 id="6-文本框el-input"><a href="#6-文本框el-input" class="headerlink" title="6.文本框el-input"></a>6.文本框el-input</h1><p>参考内容：<a href="https://element-plus.org/zh-CN/component/input.html" target="_blank" rel="noopener">Input 输入框 | Element Plus</a></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504151117564.png" alt="image-20250415111715494"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504151115678.png" alt="image-20250415111550604"></p>
+<h1 id="7-下拉框el-select"><a href="#7-下拉框el-select" class="headerlink" title="7.下拉框el-select"></a>7.下拉框el-select</h1><p>参考内容：<a href="https://element-plus.org/zh-CN/component/select.html" target="_blank" rel="noopener">Select 选择器 | Element Plus</a><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504151222048.png" alt="image-20250415122256921"></p>
+<p>两个核心：v-model绑定data的value【下拉选中之后就可以绑定到value】，v-for的遍历绑定options【可以是数组，也可以是对象】</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504151217491.png" alt="image-20250415121730349"></p>
+<h1 id="8-单选框el-radio-group"><a href="#8-单选框el-radio-group" class="headerlink" title="8.单选框el-radio-group"></a>8.单选框el-radio-group</h1><p>参考内容：<a href="https://element-plus.org/zh-CN/component/radio.html" target="_blank" rel="noopener">Radio 单选框 | Element Plus</a></p>
+<p>两种写法要确认自己的element-plus版本，我的是2.9.7对应使用第一种写法</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504171728647.png" alt="image-20250417172813498"></p>
+<p>要注意v-model绑定的值和value值要对应【保证能够渲染成功】–例如sex是女，那单选框默认就标到女的位置</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504171728048.png" alt="image-20250417172828989"></p>
+<h1 id="9-多选框el-checkbox-group"><a href="#9-多选框el-checkbox-group" class="headerlink" title="9.多选框el-checkbox-group"></a>9.多选框el-checkbox-group</h1><p>参考内容：<a href="https://element-plus.org/zh-CN/component/checkbox.html" target="_blank" rel="noopener">Checkbox 多选框 | Element Plus</a></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504181501415.png" alt="image-20250418150137302"></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504181453784.png" alt="image-20250418145333741"></p>
+<h1 id="10-图片显示el-image"><a href="#10-图片显示el-image" class="headerlink" title="10.图片显示el-image"></a>10.图片显示el-image</h1><p>参考内容：<a href="https://element-plus.org/zh-CN/component/image.html" target="_blank" rel="noopener">Image 图片 | Element Plus</a></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504181536638.png" alt="image-20250418153614500"></p>
+<p>相比于img而言，能够进行高级操作【懒加载，翻转，和缩放等功能】</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504181531665.png" alt="image-20250418153145323"></p>
+<h1 id="11-轮播图el-carousel"><a href="#11-轮播图el-carousel" class="headerlink" title="11.轮播图el-carousel"></a>11.轮播图el-carousel</h1><p>参考内容：<a href="https://element-plus.org/zh-CN/component/carousel.html" target="_blank" rel="noopener">Carousel 走马灯 | Element Plus</a></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504181604085.png" alt="image-20250418160418987"></p>
+<p>可以在el-carousel里面添加各种属性值</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504181601690.png" alt="image-20250418160130419"></p>
+<h1 id="12-日期时间控件el-date-picker"><a href="#12-日期时间控件el-date-picker" class="headerlink" title="12.日期时间控件el-date-picker"></a>12.日期时间控件el-date-picker</h1><p>参考内容：<a href="https://element-plus.org/zh-CN/component/datetime-picker.html#datetimepicker-日期时间选择器" target="_blank" rel="noopener">DateTimePicker 日期时间选择器 | Element Plus</a></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504191123308.png" alt="image-20250419112342220"></p>
+<h1 id="13-数据表格el-table"><a href="#13-数据表格el-table" class="headerlink" title="13.数据表格el-table"></a>13.数据表格el-table</h1><p>参考内容：<a href="https://element-plus.org/zh-CN/component/table.html" target="_blank" rel="noopener">Table 表格 | Element Plus</a></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504191227834.png" alt="image-20250419122706760"></p>
+<p>具体的对应情况：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504191220121.png" alt="image-20250419122009016"></p>
+<h1 id="14-分页组件el-pagination"><a href="#14-分页组件el-pagination" class="headerlink" title="14.分页组件el-pagination"></a>14.分页组件el-pagination</h1><p>5.11的数据因为设置了max-height的流体高度：但是如果行很多的情况应该采用分页：</p>
+<p>参考内容：<a href="https://element-plus.org/zh-CN/component/pagination.html" target="_blank" rel="noopener">Pagination 分页 | Element Plus</a></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504191244539.png" alt="image-20250419124426447"></p>
+<h1 id="15-对话框el-dialog"><a href="#15-对话框el-dialog" class="headerlink" title="15.对话框el-dialog"></a>15.对话框el-dialog</h1><p>参考内容：<a href="https://element-plus.org/zh-CN/component/dialog.html" target="_blank" rel="noopener">Dialog 对话框 | Element Plus</a></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504191254646.png" alt="image-20250419125422503"></p>
+<p>点击对话框之后：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504191253140.png" alt="image-20250419125321990"></p>
 
       
       
@@ -645,25 +680,62 @@
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504191254646.png" alt="image-20250419125422503"></p>
 <p>点击对话框之后：</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504191253140.png" alt="image-20250419125321990"></p>
-<h1 id="6-Vue3集成Vue-Router实现路由跳转"><a href="#6-Vue3集成Vue-Router实现路由跳转" class="headerlink" title="6.Vue3集成Vue-Router实现路由跳转"></a>6.Vue3集成Vue-Router实现路由跳转</h1><h2 id="6-1-路由跳转定义"><a href="#6-1-路由跳转定义" class="headerlink" title="6.1 路由跳转定义"></a>6.1 路由跳转定义</h2><p>参考内容：<a href="https://router.vuejs.org/api/" target="_blank" rel="noopener">API Documentation | Vue Router</a></p>
+<h1 id="6-Vue3集成Vue-Router实现路由跳转"><a href="#6-Vue3集成Vue-Router实现路由跳转" class="headerlink" title="6.Vue3集成Vue-Router实现路由跳转"></a>6.Vue3集成Vue-Router实现路由跳转</h1><h2 id="6-1-路由定义"><a href="#6-1-路由定义" class="headerlink" title="6.1 路由定义"></a>6.1 路由定义</h2><p>参考内容：<a href="https://router.vuejs.org/api/" target="_blank" rel="noopener">API Documentation | Vue Router</a></p>
+<p>客户端路由的作用是在单页应用(SPA)中把<strong>浏览器的URL</strong>和<strong>用户看到的内容</strong>绑定起来。当用户在应用中浏览不同页面时，URL会随之更新，但页面不需要从服务器重新加载。</p>
+<p>Vue Router基于Vue组件系统构建，可以通过配置路由来告诉Vue Router为每个URL路径显示哪些组件。</p>
 <h2 id="6-2-如何定义新的路由-index-js"><a href="#6-2-如何定义新的路由-index-js" class="headerlink" title="6.2 如何定义新的路由[index.js]"></a>6.2 如何定义新的路由[index.js]</h2><p>在src-router-index.js文件内：【name不能一致!!!】</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504191824979.png" alt="image-20250419182409838"></p>
 <h3 id="6-2-1-默认路由-redirect重定向"><a href="#6-2-1-默认路由-redirect重定向" class="headerlink" title="6.2.1 默认路由[redirect重定向]"></a>6.2.1 默认路由[redirect重定向]</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504191837578.png" alt="image-20250419183711479"></p>
+<h3 id="6-2-2-嵌套路由-children孩子"><a href="#6-2-2-嵌套路由-children孩子" class="headerlink" title="6.2.2 嵌套路由[children孩子]"></a>6.2.2 嵌套路由[children孩子]</h3><ul>
+<li>①index.js页面设置路由内容：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504201713933.png" alt="image-20250420171337852"></p>
+<ul>
+<li>②父类页面内容：【要添加RouterView标签】<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504201714487.png" alt="image-20250420171441451"></li>
+</ul>
+<p>具体页面：/manager/home点击之后跳转/manager/test?id=1&name=宋亚翔</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504201717761.png" alt="image-20250420171723694"></p>
 <h2 id="6-3-跳转方式-两大类"><a href="#6-3-跳转方式-两大类" class="headerlink" title="6.3 跳转方式[两大类]"></a>6.3 跳转方式[两大类]</h2><p>①RouterLink方法</p>
-<p>②编程式路由：push和replace方法</p>
+<p>②编程式路由：router.push()方法和router.replace()方法</p>
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504191835990.png" alt="image-20250419183559931"></p>
 <h2 id="6-4-路由传参-query类型"><a href="#6-4-路由传参-query类型" class="headerlink" title="6.4 路由传参[query类型]"></a>6.4 路由传参[query类型]</h2><p>都是使用query类型的参数：</p>
-<h3 id="6-1传参-两种方式"><a href="#6-1传参-两种方式" class="headerlink" title="6.1传参[两种方式]"></a>6.1传参[两种方式]</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">均通过router.push()方法进行</span><br><span class="line">①以路径形式【推荐】</span><br><span class="line">router.push(&#39;&#x2F;test?id&#x3D;1&#39;)</span><br><span class="line">router.push(&#39;&#x2F;test?id&#x3D;1&amp;name&#x3D;宋亚翔&#39;)</span><br><span class="line">②以对象形式【不推荐】</span><br><span class="line">router.push(&#123;path: &#39;&#x2F;test&#39;,query :&#123;id:1,name:&#39;宋亚翔&#39;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="6-4-1-传参-两种方式"><a href="#6-4-1-传参-两种方式" class="headerlink" title="6.4.1 传参[两种方式]"></a>6.4.1 传参[两种方式]</h3><p>均通过router.push()方法进行</p>
+<ul>
+<li>①以路径形式【推荐】</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">router.push(&#39;&#x2F;test?id&#x3D;1&#39;)</span><br><span class="line">router.push(&#39;&#x2F;test?id&#x3D;1&amp;name&#x3D;宋亚翔&#39;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="6-2-获取参数"><a href="#6-2-获取参数" class="headerlink" title="6.2 获取参数"></a>6.2 获取参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通过router.currentRoute.value.query.XXX获取</span><br></pre></td></tr></table></figure>
+<ul>
+<li>②以对象形式【不推荐】</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">router.push(&#123;path:&#39;&#x2F;test&#39;,query:&#123;id:1,name:&#39;宋亚翔&#39;&#125;&#125;)</span><br></pre></td></tr></table></figure>
 
-
+<h3 id="6-4-2-获取参数"><a href="#6-4-2-获取参数" class="headerlink" title="6.4.2 获取参数"></a>6.4.2 获取参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通过router.currentRoute.value.query.XXX获取</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504201349453.png" alt="image-20250420134907379"></p>
-<h3 id="6-3-整体代码"><a href="#6-3-整体代码" class="headerlink" title="6.3 整体代码"></a>6.3 整体代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123;ref,reactive&#125; from &quot;vue&quot;;</span><br><span class="line">import router from &#39;..&#x2F;router&#x2F;index.js&#39;</span><br><span class="line">const data&#x3D;reactive(&#123;</span><br><span class="line">  id: router.currentRoute.value.query.id,</span><br><span class="line">  name: router.currentRoute.value.query.name,</span><br><span class="line">&#125;)</span><br><span class="line">console.log(&quot;路由传参过来的：&quot;+data.id)</span><br><span class="line">console.log(&quot;路由传参过来的：&quot;+data.name)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!--路由传参--&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;!--①第一种--&gt;</span><br><span class="line">    &lt;el-button type&#x3D;&quot;primary&quot; @click&#x3D;&quot;router.push(&#39;&#x2F;test?id&#x3D;1&#39;)&quot;&gt;路由传参[单参数]&lt;&#x2F;el-button&gt;  &lt;!--跳转后可以返回--&gt;</span><br><span class="line">    &lt;el-button type&#x3D;&quot;primary&quot; @click&#x3D;&quot;router.push(&#39;&#x2F;test?id&#x3D;1&amp;name&#x3D;宋亚翔&#39;)&quot;&gt;路由传参[多参数]&lt;&#x2F;el-button&gt;  &lt;!--跳转后可以返回--&gt;</span><br><span class="line">    &lt;!--②第二种--&gt;</span><br><span class="line">    &lt;el-button type&#x3D;&quot;primary&quot; @click&#x3D;&quot;router.push(&#123;path: &#39;&#x2F;test&#39;,query :&#123;id:1,name:&#39;宋亚翔&#39;&#125;&#125;)&quot;&gt;路由传参&lt;&#x2F;el-button&gt;  &lt;!--跳转后可以返回--&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="6-4-3-跳转整体代码"><a href="#6-4-3-跳转整体代码" class="headerlink" title="6.4.3 跳转整体代码"></a>6.4.3 跳转整体代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123;ref,reactive&#125; from &quot;vue&quot;;</span><br><span class="line">import router from &#39;..&#x2F;router&#x2F;index.js&#39;</span><br><span class="line">const data&#x3D;reactive(&#123;</span><br><span class="line">  id: router.currentRoute.value.query.id,</span><br><span class="line">  name: router.currentRoute.value.query.name,</span><br><span class="line">&#125;)</span><br><span class="line">console.log(&quot;路由传参过来的：&quot;+data.id)</span><br><span class="line">console.log(&quot;路由传参过来的：&quot;+data.name)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!--路由传参--&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;!--①第一种--&gt;</span><br><span class="line">    &lt;el-button type&#x3D;&quot;primary&quot; @click&#x3D;&quot;router.push(&#39;&#x2F;test?id&#x3D;1&#39;)&quot;&gt;路由传参[单参数]&lt;&#x2F;el-button&gt;  &lt;!--跳转后可以返回--&gt;</span><br><span class="line">    &lt;el-button type&#x3D;&quot;primary&quot; @click&#x3D;&quot;router.push(&#39;&#x2F;test?id&#x3D;1&amp;name&#x3D;宋亚翔&#39;)&quot;&gt;路由传参[多参数]&lt;&#x2F;el-button&gt;  &lt;!--跳转后可以返回--&gt;</span><br><span class="line">    &lt;!--②第二种--&gt;</span><br><span class="line">    &lt;el-button type&#x3D;&quot;primary&quot; @click&#x3D;&quot;router.push(&#123;path: &#39;&#x2F;test&#39;,query :&#123;id:1,name:&#39;宋亚翔&#39;&#125;&#125;)&quot;&gt;路由传参&lt;&#x2F;el-button&gt;  &lt;!--跳转后可以返回--&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504201352039.png" alt="image-20250420135209955"></p>
-<h2 id="6-5-嵌套路由"><a href="#6-5-嵌套路由" class="headerlink" title="6.5 嵌套路由"></a>6.5 嵌套路由</h2></script></li></ul>
+<h2 id="6-5-路由守卫"><a href="#6-5-路由守卫" class="headerlink" title="6.5 路由守卫"></a>6.5 路由守卫</h2><h3 id="6-5-1-导航守卫"><a href="#6-5-1-导航守卫" class="headerlink" title="6.5.1 导航守卫"></a>6.5.1 导航守卫</h3><ul>
+<li>在路由配置文件index.js中使用导航守卫，修改网页标题【meta属性】</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504201751661.png" alt="image-20250420175128572"></p>
+<p>通过router.back()回退到上一个页面</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504201756405.png" alt="image-20250420175652344"></p>
+<p>测试：然后点击对应页面，页面跳转后上方标题会变化</p>
+<h3 id="6-5-2-404守卫"><a href="#6-5-2-404守卫" class="headerlink" title="6.5.2 404守卫"></a>6.5.2 404守卫</h3><ul>
+<li>①定义404页面</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504201809610.png" alt="image-20250420180946535"></p>
+<ul>
+<li><p>②定义404路由【只能定义在外侧】</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504201810635.png" alt="image-20250420181029566"></p>
+</li>
+<li><p>③定义错误路由【只能定义在外侧】</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202504201810704.png" alt="image-20250420181049636"></p>
+</script></li></ul>
       
       
     </div>
