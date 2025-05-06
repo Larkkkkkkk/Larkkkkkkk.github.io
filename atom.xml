@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://larkkkkkkk.github.io/"/>
-  <updated>2025-05-05T09:09:01.980Z</updated>
+  <updated>2025-05-06T05:31:18.589Z</updated>
   <id>https://larkkkkkkk.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>wangEditor5-富文本编辑器</title>
+    <link href="https://larkkkkkkk.github.io/2025/05/06/wangEditor5-%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+    <id>https://larkkkkkkk.github.io/2025/05/06/wangEditor5-%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/</id>
+    <published>2025-05-06T04:53:20.000Z</published>
+    <updated>2025-05-06T05:31:18.589Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-wangEditor5"><a href="#1-wangEditor5" class="headerlink" title="1.wangEditor5"></a>1.wangEditor5</h1><p>参考官网：<a href="https://www.wangeditor.com/v5/getting-started.html" target="_blank" rel="noopener">快速开始 | wangEditor</a></p><h2 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h2><ul><li>指令:</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install @wangeditor&#x2F;editor --save</span><br><span class="line">npm install @wangeditor&#x2F;editor-for-vue@next --save</span><br></pre></td></tr></table></figure><h2 id="1-2-引入和使用"><a href="#1-2-引入和使用" class="headerlink" title="1.2 引入和使用"></a>1.2 引入和使用</h2><ul><li>指令:</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#39;@wangeditor&#x2F;editor&#x2F;dist&#x2F;css&#x2F;style.css&#39;</span><br><span class="line">import &#123;onBeforeUnmount, ref, shallowRef&#125; from &quot;vue&quot;;</span><br><span class="line">import &#123; Editor, Toolbar &#125; from &#39;@wangeditor&#x2F;editor-for-vue&#39;</span><br></pre></td></tr></table></figure><h2 id="1-3-在表格里查看富文本内容"><a href="#1-3-在表格里查看富文本内容" class="headerlink" title="1.3 在表格里查看富文本内容"></a>1.3 在表格里查看富文本内容</h2><h2 id="1-4-富文本对应的后端文件上传接口"><a href="#1-4-富文本对应的后端文件上传接口" class="headerlink" title="1.4 富文本对应的后端文件上传接口"></a>1.4 富文本对应的后端文件上传接口</h2><h2 id="1-5-外部引入view-css（可选）"><a href="#1-5-外部引入view-css（可选）" class="headerlink" title="1.5 外部引入view.css（可选）"></a>1.5 外部引入view.css（可选）</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;1-wangEditor5&quot;&gt;&lt;a href=&quot;#1-wangEditor5&quot; class=&quot;headerlink&quot; title=&quot;1.wangEditor5&quot;&gt;&lt;/a&gt;1.wangEditor5&lt;/h1&gt;&lt;p&gt;参考官网：&lt;a href=&quot;https://www.
+      
+    
+    </summary>
+    
+    
+    
+      <category term="wangEditor5-富文本编辑器" scheme="https://Larkkkkkkk.github.io/tags/wangEditor5-%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue后端管理系统</title>
@@ -466,32 +490,6 @@
     
     
       <category term="微服务" scheme="https://Larkkkkkkk.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>持续集成</title>
-    <link href="https://larkkkkkkk.github.io/2024/08/12/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
-    <id>https://larkkkkkkk.github.io/2024/08/12/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</id>
-    <published>2024-08-12T01:43:11.000Z</published>
-    <updated>2024-08-13T11:18:29.537Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="1-项目部署"><a href="#1-项目部署" class="headerlink" title="1.项目部署"></a>1.项目部署</h1><ul><li>项目打成jar包</li><li>Docker部署(项目打成jar包 —&gt;docker镜像文件—&gt;docker容器)</li><li>K8S</li></ul><h1 id="2-持续集成CI"><a href="#2-持续集成CI" class="headerlink" title="2.持续集成CI"></a>2.持续集成CI</h1><p>持续集成是一种<strong>软件开发实践</strong>，即团队开发成员经常集成他们的工作，通常每个成员每天至少集成一次，就意味着每天有多次集成。每次集成都通过自动化的构建(包括编译，发布，自动化测试)来验证，从而尽早发现集成错误。</p><h2 id="2-1-优点"><a href="#2-1-优点" class="headerlink" title="2.1 优点"></a>2.1 优点</h2><ul><li>1.自动构建，发布，测试</li><li>2.降低风险</li></ul><h2 id="2-2-分类"><a href="#2-2-分类" class="headerlink" title="2.2 分类"></a>2.2 分类</h2><ul><li>Jenkins[tk旧项目使用]</li><li>坎特[tk新项目使用]</li></ul><h1 id="3-Jenkins-老头"><a href="#3-Jenkins-老头" class="headerlink" title="3.Jenkins(老头)"></a>3.Jenkins(老头)</h1><p>Jenkins是一个开源的实现持续集成的软件工具：<a href="https://www.jenkins.io/zh/" target="_blank" rel="noopener">Jenkins</a></p><p>==<strong>原理图</strong>：每当我们push代码时候就触发项目完成自动编译和打包==</p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png" alt="image-20240812101022218" style="zoom:150%;"> <h1 id="4-项目部署"><a href="#4-项目部署" class="headerlink" title="4.项目部署"></a>4.项目部署</h1><p>微服务部署比较麻烦，所以企业中都会采用持续集成的方式，快捷实现开发、部署一条龙服务。</p><p>为了模拟真实环境，我们在虚拟机中已经提供了一套持续集成的开发环境，代码一旦自测完成，push到Git私服后即可自动编译部署。</p><p>==<strong>原理图</strong>：每当我们push代码时候就触发项目完成自动编译和打包==</p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408121010483.png" alt="image-20240812101022218" style="zoom:150%;"><p>而开发我们负责的微服务时，则需要在本地启动运行部分微服务。</p><h2 id="4-1-虚拟机部署"><a href="#4-1-虚拟机部署" class="headerlink" title="4.1 虚拟机部署"></a>4.1 虚拟机部署</h2><h2 id="4-2-本地部署"><a href="#4-2-本地部署" class="headerlink" title="4.2 本地部署"></a>4.2 本地部署</h2><p>如果需要运行某个微服务时，只需要以下两步：</p><ul><li>第一步：访问Jenkins控制台</li><li>第二步：点击对应微服务后面的绿色运行按钮</li></ul><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122119180.png" alt="image-20240812211957065"></p><p>构建过程中，可以在页面左侧看到构建进度，如果没有说明构建已经结束了（你的机器速度太快了！）：</p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202408122120448.png" alt="image-20240812212051332" style="zoom:67%;">]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;1-项目部署&quot;&gt;&lt;a href=&quot;#1-项目部署&quot; class=&quot;headerlink&quot; title=&quot;1.项目部署&quot;&gt;&lt;/a&gt;1.项目部署&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;项目打成jar包&lt;/li&gt;
-&lt;li&gt;Docker部署(项目打成jar包 —&amp;gt;docker镜
-      
-    
-    </summary>
-    
-    
-    
-      <category term="JAVA" scheme="https://Larkkkkkkk.github.io/tags/JAVA/"/>
     
   </entry>
   
