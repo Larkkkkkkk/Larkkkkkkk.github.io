@@ -629,39 +629,6 @@ jdk1.8      无永久代 常量池在元空间</code></pre><hr>
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-虚拟机-二进制字节码运行环境"><span class="toc-number">1.</span> <span class="toc-text">1.1 虚拟机(二进制字节码运行环境)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-jvm位置"><span class="toc-number">2.</span> <span class="toc-text">1.2 jvm位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-jvm整体结构-背"><span class="toc-number">3.</span> <span class="toc-text">1.3 jvm整体结构(背)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-java代码执行流程"><span class="toc-number">4.</span> <span class="toc-text">1.4 java代码执行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-jvm架构模型-栈-寄存器指令集架构"><span class="toc-number">5.</span> <span class="toc-text">1.5 jvm架构模型(栈&#x2F;寄存器指令集架构)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-jvm生命周期-三个状态"><span class="toc-number">6.</span> <span class="toc-text">1.6 jvm生命周期(三个状态)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-类加载过程-3步"><span class="toc-number">7.</span> <span class="toc-text">3.1 类加载过程(3步)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#举例-Car类"><span class="toc-number">8.</span> <span class="toc-text">举例(Car类)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加载器分类-4个"><span class="toc-number">9.</span> <span class="toc-text">加载器分类(4个)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双亲委派机制-保证安全"><span class="toc-number">10.</span> <span class="toc-text">双亲委派机制(保证安全)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本组件-字节码校验器-类加载器"><span class="toc-number">11.</span> <span class="toc-text">基本组件(字节码校验器&#x2F;类加载器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三种JVM"><span class="toc-number">12.</span> <span class="toc-text">三种JVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-堆内存三个区域"><span class="toc-number">13.</span> <span class="toc-text">11.1 堆内存三个区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-新生区—类诞生、成长、死亡"><span class="toc-number">13.1.</span> <span class="toc-text">1.新生区—类诞生、成长、死亡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-养老区"><span class="toc-number">13.2.</span> <span class="toc-text">2.养老区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-永久区—常驻内存-存放java运行时环境-class信息"><span class="toc-number">13.3.</span> <span class="toc-text">3.永久区—常驻内存,存放java运行时环境&#x2F;class信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-复制算法-新生代使用"><span class="toc-number">14.</span> <span class="toc-text">12.1 复制算法(新生代使用)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-标记清除算法-标记-清除"><span class="toc-number">15.</span> <span class="toc-text">12.2 标记清除算法(标记-清除)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-标记压缩算法-标记-清除-压缩"><span class="toc-number">16.</span> <span class="toc-text">12.3 标记压缩算法(标记-清除-压缩)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-4-分代收集算法-分代不同的解决方案"><span class="toc-number">17.</span> <span class="toc-text">12.4 分代收集算法(分代不同的解决方案)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法总结"><span class="toc-number">18.</span> <span class="toc-text">算法总结</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

@@ -543,39 +543,6 @@ type：区别关键字和封装类（int和Integer）</code></pre><figure class=
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#框架图-八个部分"><span class="toc-number">1.</span> <span class="toc-text">框架图(八个部分)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体讲解"><span class="toc-number">2.</span> <span class="toc-text">具体讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Test"><span class="toc-number">2.1.</span> <span class="toc-text">Test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Core-Container"><span class="toc-number">2.2.</span> <span class="toc-text">Core Container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOP"><span class="toc-number">2.3.</span> <span class="toc-text">AOP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aspects"><span class="toc-number">2.4.</span> <span class="toc-text">Aspects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Instrumentation"><span class="toc-number">2.5.</span> <span class="toc-text">Instrumentation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Messaging"><span class="toc-number">2.6.</span> <span class="toc-text">Messaging</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Access-Integration"><span class="toc-number">2.7.</span> <span class="toc-text">Data Access &#x2F; Integration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web"><span class="toc-number">2.8.</span> <span class="toc-text">Web</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring容器"><span class="toc-number">3.</span> <span class="toc-text">spring容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入jar"><span class="toc-number">4.</span> <span class="toc-text">导入jar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建applicationContext-xml配置文件"><span class="toc-number">5.</span> <span class="toc-text">新建applicationContext.xml配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写实体类"><span class="toc-number">6.</span> <span class="toc-text">编写实体类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写测试类"><span class="toc-number">7.</span> <span class="toc-text">编写测试类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分析使用"><span class="toc-number">7.1.</span> <span class="toc-text">分析使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体实现"><span class="toc-number">7.2.</span> <span class="toc-text">具体实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无参构造方法"><span class="toc-number">8.</span> <span class="toc-text">无参构造方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有参构造方法-constructor-arg标签"><span class="toc-number">9.</span> <span class="toc-text">有参构造方法(constructor-arg标签)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成一个实例工厂"><span class="toc-number">10.</span> <span class="toc-text">生成一个实例工厂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件配置工厂对象"><span class="toc-number">11.</span> <span class="toc-text">配置文件配置工厂对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不需要工厂-静态方法直接用"><span class="toc-number">12.</span> <span class="toc-text">不需要工厂(静态方法直接用)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件调用方法"><span class="toc-number">13.</span> <span class="toc-text">配置文件调用方法</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

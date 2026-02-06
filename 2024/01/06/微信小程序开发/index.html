@@ -536,39 +536,6 @@
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-创建小程序项目"><span class="toc-number">1.</span> <span class="toc-text">3.1 创建小程序项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-小程序目录结构"><span class="toc-number">2.</span> <span class="toc-text">3.2 小程序目录结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-开发界面-五个部分"><span class="toc-number">2.1.</span> <span class="toc-text">3.2.1 开发界面(五个部分)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-小程序整体目录结构-三个部分"><span class="toc-number">2.2.</span> <span class="toc-text">3.2.2 小程序整体目录结构(三个部分)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-每个页面结构-四个部分"><span class="toc-number">2.3.</span> <span class="toc-text">3.2.3 每个页面结构(四个部分)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-具体代码"><span class="toc-number">3.</span> <span class="toc-text">3.3 具体代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-发布小程序"><span class="toc-number">4.</span> <span class="toc-text">3.4 发布小程序</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

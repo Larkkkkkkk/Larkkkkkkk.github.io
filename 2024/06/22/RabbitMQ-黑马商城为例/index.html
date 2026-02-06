@@ -581,39 +581,6 @@
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-pom-xml导入依赖"><span class="toc-number">1.</span> <span class="toc-text">3.1 pom.xml导入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-yml配置RabbitMQ信息"><span class="toc-number">2.</span> <span class="toc-text">3.2 yml配置RabbitMQ信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-简单配置"><span class="toc-number">2.1.</span> <span class="toc-text">3.2.1 简单配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-nacos统一配置管理"><span class="toc-number">2.2.</span> <span class="toc-text">3.2.2 nacos统一配置管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-支付服务–发送消息"><span class="toc-number">3.</span> <span class="toc-text">3.3 支付服务–发送消息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-修改原来业务"><span class="toc-number">3.1.</span> <span class="toc-text">3.3.1 修改原来业务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-配置Jackson消息转换器"><span class="toc-number">3.2.</span> <span class="toc-text">3.3.2 配置Jackson消息转换器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-交易服务–接受消息"><span class="toc-number">4.</span> <span class="toc-text">3.4 交易服务–接受消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-测试"><span class="toc-number">5.</span> <span class="toc-text">3.5 测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-1-重启两个服务"><span class="toc-number">5.1.</span> <span class="toc-text">3.5.1 重启两个服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-2-前端下单"><span class="toc-number">5.2.</span> <span class="toc-text">3.5.2 前端下单</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-订单服务–发送消息"><span class="toc-number">6.</span> <span class="toc-text">4.1 订单服务–发送消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-购物车服务–接收消息"><span class="toc-number">7.</span> <span class="toc-text">4.2 购物车服务–接收消息</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

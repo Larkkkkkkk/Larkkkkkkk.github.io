@@ -577,39 +577,6 @@
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-工作机制"><span class="toc-number">1.</span> <span class="toc-text">1.1 工作机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-MCP和工具对比"><span class="toc-number">2.</span> <span class="toc-text">1.2 MCP和工具对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-STDIO"><span class="toc-number">3.</span> <span class="toc-text">3.1 STDIO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-SSE"><span class="toc-number">4.</span> <span class="toc-text">3.2 SSE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Streamable-HTTP"><span class="toc-number">5.</span> <span class="toc-text">3.3 Streamable HTTP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-服务端"><span class="toc-number">6.</span> <span class="toc-text">5.1 服务端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-客户端"><span class="toc-number">7.</span> <span class="toc-text">5.2 客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方式一：客户端工具调用"><span class="toc-number">7.1.</span> <span class="toc-text">方式一：客户端工具调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式二：代码调用"><span class="toc-number">7.2.</span> <span class="toc-text">方式二：代码调用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#①STDIO客户端"><span class="toc-number">7.2.1.</span> <span class="toc-text">①STDIO客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#②SSE客户端"><span class="toc-number">7.2.2.</span> <span class="toc-text">②SSE客户端</span></a></li></ol></li></ol></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

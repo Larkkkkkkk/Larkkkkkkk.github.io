@@ -548,39 +548,6 @@
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用框架前后对比"><span class="toc-number">1.</span> <span class="toc-text">使用框架前后对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久层-Dao-技术解决方案"><span class="toc-number">2.</span> <span class="toc-text">持久层(Dao)技术解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前期环境准备"><span class="toc-number">3.</span> <span class="toc-text">前期环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#书写代码框架"><span class="toc-number">4.</span> <span class="toc-text">书写代码框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拷贝日志文件-log4j-properties"><span class="toc-number">5.</span> <span class="toc-text">拷贝日志文件(log4j.properties)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#书写Test类"><span class="toc-number">6.</span> <span class="toc-text">书写Test类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更改IUserDao-xml映射文件-增加结果封装到哪里"><span class="toc-number">7.</span> <span class="toc-text">更改IUserDao.xml映射文件(增加结果封装到哪里)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试执行"><span class="toc-number">8.</span> <span class="toc-text">测试执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备之前的所有东西"><span class="toc-number">9.</span> <span class="toc-text">准备之前的所有东西</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进行xml更改为注解方式"><span class="toc-number">10.</span> <span class="toc-text">进行xml更改为注解方式</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

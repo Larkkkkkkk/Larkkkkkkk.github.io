@@ -498,39 +498,6 @@
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JQuery中ajax分类"><span class="toc-number">1.</span> <span class="toc-text">JQuery中ajax分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一层：-ajax-属性名1-值，属性名2-值"><span class="toc-number">1.1.</span> <span class="toc-text">第一层：$.ajax({属性名1:值，属性名2:值})</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二层-简化-ajax"><span class="toc-number">1.2.</span> <span class="toc-text">第二层(简化$.ajax)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三层-简化-get"><span class="toc-number">1.3.</span> <span class="toc-text">第三层(简化$.get())</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入jar包"><span class="toc-number">2.</span> <span class="toc-text">导入jar包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成Users实体类"><span class="toc-number">3.</span> <span class="toc-text">生成Users实体类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成DemoServlet类"><span class="toc-number">4.</span> <span class="toc-text">生成DemoServlet类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成-index-jsp页面"><span class="toc-number">5.</span> <span class="toc-text">生成 index.jsp页面</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

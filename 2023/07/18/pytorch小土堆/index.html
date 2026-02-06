@@ -567,39 +567,6 @@
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#两种损失函数和交叉熵"><span class="toc-number">1.</span> <span class="toc-text">两种损失函数和交叉熵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带网络的"><span class="toc-number">2.</span> <span class="toc-text">带网络的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用和修改"><span class="toc-number">3.</span> <span class="toc-text">使用和修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p26保存"><span class="toc-number">4.</span> <span class="toc-text">p26保存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#保存方法1-模型结构-模型参数"><span class="toc-number">4.1.</span> <span class="toc-text">保存方法1(模型结构+模型参数)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保存方法2-模型参数"><span class="toc-number">4.2.</span> <span class="toc-text">保存方法2(模型参数)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#p26读取"><span class="toc-number">5.</span> <span class="toc-text">p26读取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取方法1-load"><span class="toc-number">5.1.</span> <span class="toc-text">读取方法1(load)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取方法2-考虑字典形式"><span class="toc-number">5.2.</span> <span class="toc-text">读取方法2(考虑字典形式)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cuda"><span class="toc-number">6.</span> <span class="toc-text">.cuda()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#torch-device-“cuda-0”"><span class="toc-number">7.</span> <span class="toc-text">.torch.device(“cuda:0”)</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

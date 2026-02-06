@@ -518,39 +518,6 @@ ${}  字符串拼接 默认去找${内容}中内容的get/set方法 (如果写�
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用步骤"><span class="toc-number">1.</span> <span class="toc-text">使用步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置步骤"><span class="toc-number">2.</span> <span class="toc-text">配置步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置步骤-1"><span class="toc-number">3.</span> <span class="toc-text">配置步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体分析"><span class="toc-number">4.</span> <span class="toc-text">具体分析</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

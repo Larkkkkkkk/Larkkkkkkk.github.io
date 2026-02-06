@@ -540,39 +540,6 @@
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库准备"><span class="toc-number">1.</span> <span class="toc-text">数据库准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入jar包"><span class="toc-number">2.</span> <span class="toc-text">导入jar包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备全局配置文件mybatis-xml文件"><span class="toc-number">3.</span> <span class="toc-text">准备全局配置文件mybatis.xml文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备pojo包的实体类Account"><span class="toc-number">4.</span> <span class="toc-text">准备pojo包的实体类Account</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#log显示成功界面"><span class="toc-number">5.</span> <span class="toc-text">log显示成功界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#index主页面界面"><span class="toc-number">6.</span> <span class="toc-text">index主页面界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#error错误界面"><span class="toc-number">7.</span> <span class="toc-text">error错误界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带入jar包和配置文件log4j-properties"><span class="toc-number">8.</span> <span class="toc-text">带入jar包和配置文件log4j.properties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局配置文件中配置log4j"><span class="toc-number">9.</span> <span class="toc-text">全局配置文件中配置log4j</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行结果"><span class="toc-number">10.</span> <span class="toc-text">执行结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建表log"><span class="toc-number">11.</span> <span class="toc-text">创建表log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新增log实体类"><span class="toc-number">12.</span> <span class="toc-text">新增log实体类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新增关于log表的配置xml文件"><span class="toc-number">13.</span> <span class="toc-text">新增关于log表的配置xml文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在serviceimpl实现类添加"><span class="toc-number">14.</span> <span class="toc-text">在serviceimpl实现类添加</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日志文件显示转账信息-log4j"><span class="toc-number">15.</span> <span class="toc-text">日志文件显示转账信息(log4j)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mapper包xml里面添加分页功能的sql语句"><span class="toc-number">16.</span> <span class="toc-text">mapper包xml里面添加分页功能的sql语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加分页显示的实体类"><span class="toc-number">17.</span> <span class="toc-text">添加分页显示的实体类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#service层接口实现方法"><span class="toc-number">18.</span> <span class="toc-text">service层接口实现方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#service实现类"><span class="toc-number">19.</span> <span class="toc-text">service实现类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备servlet类"><span class="toc-number">20.</span> <span class="toc-text">准备servlet类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#书写log-jsp页面"><span class="toc-number">21.</span> <span class="toc-text">书写log.jsp页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局配置文件添加mappers"><span class="toc-number">22.</span> <span class="toc-text">全局配置文件添加mappers</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

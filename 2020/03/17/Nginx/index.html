@@ -603,39 +603,6 @@
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景需求"><span class="toc-number">1.</span> <span class="toc-text">场景需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx概述"><span class="toc-number">2.</span> <span class="toc-text">Nginx概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境准备"><span class="toc-number">3.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传解压"><span class="toc-number">4.</span> <span class="toc-text">上传解压</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动步骤"><span class="toc-number">5.</span> <span class="toc-text">启动步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他操作指令-目录站在nginx-sbin里面"><span class="toc-number">6.</span> <span class="toc-text">其他操作指令(目录站在nginx&#x2F;sbin里面)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更改nginx-conf-nginx-conf配置文件"><span class="toc-number">7.</span> <span class="toc-text">更改nginx&#x2F;conf&#x2F;nginx.conf配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备好index文件复制到nginx目录下"><span class="toc-number">8.</span> <span class="toc-text">准备好index文件复制到nginx目录下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件解析"><span class="toc-number">9.</span> <span class="toc-text">配置文件解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#往linux再上传需要的静态网页文件"><span class="toc-number">10.</span> <span class="toc-text">往linux再上传需要的静态网页文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">11.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#举例"><span class="toc-number">12.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更改server里的server-name"><span class="toc-number">13.</span> <span class="toc-text">更改server里的server_name</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正向代理-针对客户端"><span class="toc-number">14.</span> <span class="toc-text">正向代理(针对客户端)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反向代理-针对服务器端"><span class="toc-number">15.</span> <span class="toc-text">反向代理(针对服务器端)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反向代理准备"><span class="toc-number">16.</span> <span class="toc-text">反向代理准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置反向代理"><span class="toc-number">17.</span> <span class="toc-text">配置反向代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结-1"><span class="toc-number">18.</span> <span class="toc-text">总结</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

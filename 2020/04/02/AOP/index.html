@@ -586,39 +586,6 @@
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#两种AOP实现方式"><span class="toc-number">1.</span> <span class="toc-text">两种AOP实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总体实现步骤"><span class="toc-number">2.</span> <span class="toc-text">总体实现步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现代码"><span class="toc-number">3.</span> <span class="toc-text">具体实现代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行结果"><span class="toc-number">4.1.</span> <span class="toc-text">执行结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前置通知实现的接口方法参数"><span class="toc-number">4.2.</span> <span class="toc-text">前置通知实现的接口方法参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后置通知实现的接口方法参数"><span class="toc-number">4.3.</span> <span class="toc-text">后置通知实现的接口方法参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备类和异常通知方法"><span class="toc-number">5.</span> <span class="toc-text">准备类和异常通知方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建Demo类-切点方法"><span class="toc-number">6.</span> <span class="toc-text">创建Demo类(切点方法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更改配置文件"><span class="toc-number">7.</span> <span class="toc-text">更改配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加测试类"><span class="toc-number">8.</span> <span class="toc-text">添加测试类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备异常类"><span class="toc-number">9.</span> <span class="toc-text">准备异常类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备配置文件-展示细节"><span class="toc-number">10.</span> <span class="toc-text">准备配置文件(展示细节)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对比两种方法的区别"><span class="toc-number">11.</span> <span class="toc-text">对比两种方法的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建类实现MethodInterceptor接口"><span class="toc-number">12.</span> <span class="toc-text">创建类实现MethodInterceptor接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件-展示细节"><span class="toc-number">13.</span> <span class="toc-text">配置文件(展示细节)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建MyAdvice类-不实现接口"><span class="toc-number">14.</span> <span class="toc-text">创建MyAdvice类(不实现接口)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建Demo类-切点方法-1"><span class="toc-number">15.</span> <span class="toc-text">创建Demo类(切点方法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件"><span class="toc-number">16.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试Test类"><span class="toc-number">17.</span> <span class="toc-text">测试Test类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于配置文件中的细节"><span class="toc-number">18.</span> <span class="toc-text">关于配置文件中的细节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件-引入xmlns：context"><span class="toc-number">19.</span> <span class="toc-text">配置文件(引入xmlns：context)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Component"><span class="toc-number">20.</span> <span class="toc-text">@Component</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现步骤"><span class="toc-number">21.</span> <span class="toc-text">实现步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件注解在哪些包"><span class="toc-number">21.1.</span> <span class="toc-text">配置文件注解在哪些包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Demo切片类"><span class="toc-number">21.2.</span> <span class="toc-text">配置Demo切片类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置前置-后置类"><span class="toc-number">21.3.</span> <span class="toc-text">配置前置&#x2F;后置类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件更改代理"><span class="toc-number">21.4.</span> <span class="toc-text">配置文件更改代理</span></a></li></ol></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">

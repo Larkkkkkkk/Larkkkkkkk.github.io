@@ -601,39 +601,6 @@ IE、Chrome ---使用的是URLEncoder</code></pre><p><strong>代码结构框架:
   
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-get方式-前端代码form表单里面是method-”get”"><span class="toc-number">1.</span> <span class="toc-text">1.get方式(前端代码form表单里面是method&#x3D;”get”)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-post方式-前端代码form表单里面是method-”post”"><span class="toc-number">2.</span> <span class="toc-text">2.post方式(前端代码form表单里面是method&#x3D;”post”)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-使用超链接的方式下载"><span class="toc-number">3.</span> <span class="toc-text">1.使用超链接的方式下载##</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-手写编码实现"><span class="toc-number">4.</span> <span class="toc-text">2.手写编码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两者之间的区别和联系"><span class="toc-number">5.</span> <span class="toc-text">两者之间的区别和联系</span></a></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
 
 
 <div class="bdsharebuttonbox">
