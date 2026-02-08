@@ -3068,6 +3068,8 @@ a.gitment-editor-footer-tip:hover {
   padding: 0;
   border: none;
   margin: -30px 0 20px 30px;
+  display: block;
+  overflow: visible;
 }
 .article-entry {
   line-height: 1.8em;

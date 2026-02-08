@@ -551,19 +551,21 @@ netstat –nltp           查看系统中网络进程的端口监听情况</code
     if ($(".left-col").is(":hidden")) {
         $("#tocButton").attr("value", valueShow);
     }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
+    $(document).ready(function() {
+        $("#tocButton").click(function() {
+            if ($("#toc").is(":hidden")) {
+                $("#tocButton").attr("value", valueHide);
+                $("#toc").slideDown(320);
+            }
+            else {
+                $("#tocButton").attr("value", valueShow);
+                $("#toc").slideUp(350);
+            }
+        })
+        if ($(".toc").length < 1) {
+            $("#toc, #tocButton").hide();
         }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
+    });
 </script>
 
 
