@@ -1078,13 +1078,14 @@ res集合嵌套存放结果(每次新建list存入最终的list集合嵌套)</co
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
 <script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
     $(document).ready(function() {
+        var valueHide = "隐藏目录";
+        var valueShow = "显示目录";
+
+        if ($(".left-col").is(":hidden")) {
+            $("#tocButton").attr("value", valueShow);
+        }
+        
         $("#tocButton").click(function() {
             if ($("#toc").is(":hidden")) {
                 $("#tocButton").attr("value", valueHide);
@@ -1095,6 +1096,7 @@ res集合嵌套存放结果(每次新建list存入最终的list集合嵌套)</co
                 $("#toc").slideUp(350);
             }
         })
+        
         if ($(".toc").length < 1) {
             $("#toc, #tocButton").hide();
         }

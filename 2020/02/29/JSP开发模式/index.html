@@ -495,13 +495,14 @@ C：controller 控制层---Servlet接收页面，找模型层处理，然后响�
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
 <script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
     $(document).ready(function() {
+        var valueHide = "隐藏目录";
+        var valueShow = "显示目录";
+
+        if ($(".left-col").is(":hidden")) {
+            $("#tocButton").attr("value", valueShow);
+        }
+        
         $("#tocButton").click(function() {
             if ($("#toc").is(":hidden")) {
                 $("#tocButton").attr("value", valueHide);
@@ -512,6 +513,7 @@ C：controller 控制层---Servlet接收页面，找模型层处理，然后响�
                 $("#toc").slideUp(350);
             }
         })
+        
         if ($(".toc").length < 1) {
             $("#toc, #tocButton").hide();
         }

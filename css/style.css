@@ -4503,25 +4503,43 @@ pre .link_url {
 }
 .article-tag {
   float: left;
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+  position: relative;
+  z-index: 100;
 }
 .article-tag .article-tag-list {
   float: left;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-tag .article-tag-list-item {
+  float: left;
+  margin: 5px;
+  list-style: none;
+}
+.article-tag .article-tag-list-item a {
+  display: inline-block;
+  background: #39b3d7 !important;
+  color: #fff !important;
+  padding: 5px 12px !important;
+  margin: 0 !important;
+  border-radius: 4px;
+  font-size: 13px !important;
+  text-decoration: none !important;
+}
+.article-tag .article-tag-list-item a:hover {
+  opacity: 0.85;
 }
 .article-tag:before {
   float: left;
   color: #999;
   content: "\f02e";
   font: 16px FontAwesome;
-  float: left;
   margin-right: 10px;
-  margin-top: 9px;
-}
-.article-tag:after {
-  float: left;
-  content: "";
-  margin-right: 20px;
-  margin-top: 9px;
-  float: left;
+  margin-top: 8px;
 }
 .article-category {
   float: left;
