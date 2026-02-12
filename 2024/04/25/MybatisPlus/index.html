@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MybatisPlus | Larkkkkkkk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Mybatis介绍在日常开发中应该能发现，单表的CRUD功能代码重复度很高，也没有什么难度。而这部分代码量往往比较大，开发起来比较费时。 因此，目前企业中都会使用一些组件来简化或省略单表的CRUD开发工作。目前在国内使用较多的一个组件就是MybatisPlus。 官方网站如下： 当然，MybatisPlus不仅仅可以简化单表操作，而且还对Mybatis的功能有很多的增强。 1.&#x3D;&#x3D;Mybatis—">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MybatisPlus">
+<meta property="og:url" content="https://larkkkkkkk.github.io/2024/04/25/MybatisPlus/index.html">
+<meta property="og:site_name" content="Larkkkkkkk">
+<meta property="og:description" content="Mybatis介绍在日常开发中应该能发现，单表的CRUD功能代码重复度很高，也没有什么难度。而这部分代码量往往比较大，开发起来比较费时。 因此，目前企业中都会使用一些组件来简化或省略单表的CRUD开发工作。目前在国内使用较多的一个组件就是MybatisPlus。 官方网站如下： 当然，MybatisPlus不仅仅可以简化单表操作，而且还对Mybatis的功能有很多的增强。 1.&#x3D;&#x3D;Mybatis—">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251623535.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251730201.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251731200.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556323.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251748690.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556542.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556898.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251805672.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556871.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556553.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556013.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251719086.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556460.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251813468.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557411.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251815330.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251816541.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557952.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261525035.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557927.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557838.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261543946.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261545351.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557154.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557847.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557861.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261558520.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261558839.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261559663.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261600209.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261600943.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261601255.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261605501.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261606835.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261703070.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261711105.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261707032.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261752712.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404272308413.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404281818769.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404281820612.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404281823255.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404281824739.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404281835860.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291709199.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291211605.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291715300.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291715596.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291637868.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291643419.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291640002.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291652755.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291655394.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291656672.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291721065.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301426197.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301424410.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301427801.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301432687.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301435095.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301438113.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301440705.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301647585.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301523505.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301522267.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301643474.png">
+<meta property="article:published_time" content="2024-04-25T08:17:17.000Z">
+<meta property="article:modified_time" content="2026-01-07T10:14:04.310Z">
+<meta property="article:author" content="Larkkkkkkk">
+<meta property="article:tag" content="MybatisPlus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251623535.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Larkkkkkkk" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
+  
+  
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/dist/require.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="img/head.jpg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Larkkkkkkk</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索文章标题..." autocomplete="off">
+            </form>
+            <div id="local-search-result" style="position:absolute;z-index:1000;width:280px;max-height:300px;overflow-y:auto;background:#fff;border:1px solid #ddd;border-radius:4px;margin-top:5px;padding:10px;display:none;box-shadow:0 2px 10px rgba(0,0,0,0.2);"></div>
+        
+        
+            <script type="text/javascript">
+                var searchData = null;
+                var searchLoaded = false;
+                
+                function performSearch(keyword) {
+                    console.log('Searching for:', keyword);
+                    var $resultContent = $('#local-search-result');
+                    var str = '<ul class="search-result-list" style="list-style:none;padding:0;margin:0;">';
+                    var matchData = [];
+                    
+                    if (!searchData || searchData.length === 0) {
+                        console.log('No search data available');
+                        str += '<li style="padding:8px 0;color:#999;">搜索数据未加载</li>';
+                        $resultContent.html(str).show();
+                        return;
+                    }
+                    
+                    console.log('Total posts:', searchData.length);
+                    
+                    for(var i = 0; i < searchData.length; i++) {
+                        var title = (searchData[i].title || '').toLowerCase();
+                        console.log('Checking title:', searchData[i].title);
+                        if(title.indexOf(keyword) >= 0) {
+                            matchData.push(searchData[i]);
+                        }
+                    }
+                    
+                    console.log('Found matches:', matchData.length);
+                    
+                    if(matchData.length === 0) {
+                        str += '<li style="padding:8px 0;color:#999;">没有找到结果</li>';
+                    } else {
+                        for(var i = 0; i < Math.min(matchData.length, 20); i++) {
+                            str += '<li style="padding:8px 0;border-bottom:1px solid #eee;"><a href="' + matchData[i].url + '" style="color:#333;text-decoration:none;font-size:14px;">' + matchData[i].title + '</a></li>';
+                        }
+                        if(matchData.length > 20) {
+                            str += '<li style="padding:8px 0;color:#999;">...还有 ' + (matchData.length - 20) + ' 条结果</li>';
+                        }
+                    }
+                    str += '</ul>';
+                    $resultContent.html(str).show();
+                }
+                
+                $(document).ready(function() {
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    
+                    $input.on('input', function() {
+                        var keyword = $(this).val().trim().toLowerCase();
+                        console.log('Input keyword:', keyword);
+                        
+                        if (keyword.length <= 0) {
+                            $resultContent.hide();
+                            return;
+                        }
+                        
+                        if (!searchLoaded) {
+                            console.log('Loading search.json...');
+                            $.getJSON('/search.json', function(data) {
+                                searchData = data;
+                                searchLoaded = true;
+                                console.log('Search data loaded, total:', data.length);
+                                performSearch(keyword);
+                            }).fail(function(jqXHR, textStatus, errorThrown) {
+                                console.error('Failed to load search.json:', textStatus, errorThrown);
+                            });
+                        } else {
+                            performSearch(keyword);
+                        }
+                    });
+                    
+                    $(document).on('click', function(e) {
+                        if (!$(e.target).closest('#local-search-input').length) {
+                            $resultContent.hide();
+                        }
+                    });
+                });
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                        
+                            <li><a  href="/archives">文章归档</a></li>
+                        
+                            <li><a  href="/CTFStudy">学习导航</a></li>
+                        
+                            <li><a  href="/PWNABLE">PWNABLE</a></li>
+                        
+                            <li><a  href="/resume">个人简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail"  target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                            
+                                <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Ajax/" style="font-size: 11.82px;">Ajax</a> <a href="/tags/Cookie%E5%92%8CSession/" style="font-size: 13.64px;">Cookie和Session</a> <a href="/tags/DBUtils/" style="font-size: 10.91px;">DBUtils</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">EL表达式</a> <a href="/tags/Elasticsearch/" style="font-size: 10.91px;">Elasticsearch</a> <a href="/tags/Element-Plus/" style="font-size: 10px;">Element-Plus</a> <a href="/tags/Filter/" style="font-size: 10.91px;">Filter</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HTTPServletReauest%E5%92%8CHTTPServletResponse/" style="font-size: 10px;">HTTPServletReauest和HTTPServletResponse</a> <a href="/tags/Hexo%E5%8D%9A%E5%AE%A2/" style="font-size: 12.73px;">Hexo博客</a> <a href="/tags/IDEA%E5%AE%89%E8%A3%85%E5%92%8C%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">IDEA安装和破解</a> <a href="/tags/JAVA/" style="font-size: 19.09px;">JAVA</a> <a href="/tags/JAVA-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-Lambda表达式</a> <a href="/tags/JAVA-Set%E9%9B%86%E5%90%88/" style="font-size: 10px;">JAVA-Set集合</a> <a href="/tags/JAVA-%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">JAVA-反射</a> <a href="/tags/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 11.82px;">JAVA-多线程</a> <a href="/tags/JAVA-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">JAVA-正则表达式</a> <a href="/tags/JAVA-%E6%B3%9B%E5%9E%8B/" style="font-size: 10px;">JAVA-泛型</a> <a href="/tags/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 11.82px;">JAVA-网络编程</a> <a href="/tags/JAVA-%E9%9B%86%E5%90%88/" style="font-size: 11.82px;">JAVA-集合</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0/" style="font-size: 10.91px;">JAVA练习</a> <a href="/tags/JAVA%E7%BB%83%E4%B9%A0-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">JAVA练习-动态规划</a> <a href="/tags/JQuery/" style="font-size: 12.73px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Jmeter/" style="font-size: 10px;">Jmeter</a> <a href="/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/tags/LeetCode/" style="font-size: 16.36px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 14.55px;">Linux</a> <a href="/tags/Listener/" style="font-size: 10px;">Listener</a> <a href="/tags/Mybatis/" style="font-size: 18.18px;">Mybatis</a> <a href="/tags/MybatisPlus/" style="font-size: 10px;">MybatisPlus</a> <a href="/tags/Mysql/" style="font-size: 11.82px;">Mysql</a> <a href="/tags/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CJDBC/" style="font-size: 14.55px;">Mysql数据库和JDBC</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/QPS/" style="font-size: 10px;">QPS</a> <a href="/tags/RabbitMQ/" style="font-size: 10px;">RabbitMQ</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Servlet/" style="font-size: 10.91px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 15.45px;">Spring</a> <a href="/tags/SpringMVC/" style="font-size: 14.55px;">SpringMVC</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Vue/" style="font-size: 10.91px;">Vue</a> <a href="/tags/Web%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 20px;">Web前端知识点</a> <a href="/tags/XML/" style="font-size: 10.91px;">XML</a> <a href="/tags/Zookeeper/" style="font-size: 10px;">Zookeeper</a> <a href="/tags/cpolar/" style="font-size: 10px;">cpolar</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/flask%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">flask框架</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/jsp%E6%A0%87%E5%87%86%E6%A0%87%E7%AD%BE%E5%BA%93/" style="font-size: 10px;">jsp标准标签库</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/picture/" style="font-size: 10px;">picture</a> <a href="/tags/python/" style="font-size: 11.82px;">python</a> <a href="/tags/pytorch/" style="font-size: 10px;">pytorch</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/ssm%E6%A1%86%E6%9E%B6%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">ssm框架模板</a> <a href="/tags/wangEditor5-%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" style="font-size: 10px;">wangEditor5-富文本编辑器</a> <a href="/tags/webserver%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">webserver编程</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E4%BA%AC%E4%B8%9C/" style="font-size: 10.91px;">京东</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" style="font-size: 10px;">加密算法</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91/" style="font-size: 10px;">后缀树</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10px;">哈希表</a> <a href="/tags/%E5%9B%BE/" style="font-size: 10px;">图</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86-git%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">基础操作整理-git操作</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 10px;">复杂度分析</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 10px;">大模型</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8BLangChain/" style="font-size: 10px;">大模型LangChain</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8BLangGraph/" style="font-size: 10px;">大模型LangGraph</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8BMCP/" style="font-size: 10px;">大模型MCP</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%89%8D%E7%AB%AFGradio/" style="font-size: 10px;">大模型前端Gradio</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">学生管理系统</a> <a href="/tags/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F2-0/" style="font-size: 11.82px;">学生管理系统2.0</a> <a href="/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" style="font-size: 10.91px;">定时任务</a> <a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 10px;">实习</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 17.27px;">微服务</a> <a href="/tags/%E6%8B%BC%E5%A4%9A%E5%A4%9A/" style="font-size: 10px;">拼多多</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" style="font-size: 10px;">数据库连接池</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数据结构-稀疏数组</a> <a href="/tags/%E6%96%87%E5%AD%97%E7%AF%87-%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">文字篇-记录</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 11.82px;">机器学习</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%91/" style="font-size: 11.82px;">树</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">注解</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 13.64px;">深度学习</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10.91px;">爬虫</a> <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" style="font-size: 10px;">生物信息学</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" style="font-size: 11.82px;">知识图谱</a> <a href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%88%9D%E8%AF%95/" style="font-size: 11.82px;">研究生初试</a> <a href="/tags/%E7%A7%8B%E6%8B%9B/" style="font-size: 10px;">秋招</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">算法-动态规划</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E5%9B%9E%E6%BA%AF%E6%B3%95/" style="font-size: 10px;">算法-回溯法</a> <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法-贪心算法</a> <a href="/tags/%E8%80%83%E7%A0%94/" style="font-size: 10px;">考研</a> <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 12.73px;">蓝桥杯</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.91px;">计算机网络</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE-%E8%BD%AF%E4%BB%B6%E4%B8%93%E4%B8%9A%E9%A2%98%E7%9B%AE/" style="font-size: 10px;">计算机网络课设(软件专业题目)</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 11.82px;">设计模式</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 10px;">软件体系结构</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%A1%B5%E9%9D%A2%EF%BC%88H5-CSS%EF%BC%89/" style="font-size: 10px;">页面（H5+CSS）</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0/" style="font-size: 10px;">项目上传</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://ring3.xyz/">Yllen</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://mxny.org/">麦香浓郁</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://whereisk0shl.top/">K0sh1</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.ycjcl.cc/">信鑫</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://bystudent.com/">ByStundet表哥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jarviswang.me/">汪神_Jarvis</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sh3ll.me/">Chu</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.hackfun.org/">4ido10n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/iamstudy">L3m0n</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://o0xmuhe.me/">muhe</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.nuptzj.cn/">_画船听雨</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.virzz.com/index.html">Virink</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.sqlsec.com/">国光</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bodkin.ren/">老锥</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cizel.cn/">C1zel</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://1phan.cc">1phan</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.liuil.top/">liuil</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/Ox9A82/">Ox9A82</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://burnegg.com/">burnegg</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://jwrsec.cn/">jwr-sec</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://sudalover.cn/">苏打</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.binklac.com">VeroFess</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.bendawang.site/">bendawang</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://weeklyalgo.codes/">hook</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.flier.net.cn/">Flier&#39;blog</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.mutepig.club">mutepig</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://blog.iret.xyz/list.aspx">Silver</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://simp1e.leanote.com/">Simple</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://processor.pub/">Processor</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一只淹死在二进制海洋里的二进制狗!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Larkkkkkkk</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Larkkkkkkk</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://github.com/Larkkkkkkk" target="_blank" rel="noopener">博客首页</a></li>
+                
+                    <li><a href="/archives">文章归档</a></li>
+                
+                    <li><a href="/CTFStudy">学习导航</a></li>
+                
+                    <li><a href="/PWNABLE">PWNABLE</a></li>
+                
+                    <li><a href="/resume">个人简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=U2JgZ2ZlY2VmamATIiJ9MDw_" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/Larkkkkkkk" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/plain-3-78/activities" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/5304208276/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-MybatisPlus" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/04/25/MybatisPlus/" class="article-date">
+      <time datetime="2024-04-25T08:17:17.000Z" itemprop="datePublished">2024-04-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MybatisPlus
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MybatisPlus/" rel="tag">MybatisPlus</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Mybatis介绍"><a href="#Mybatis介绍" class="headerlink" title="Mybatis介绍"></a>Mybatis介绍</h1><p>在日常开发中应该能发现，单表的CRUD功能代码重复度很高，也没有什么难度。而这部分代码量往往比较大，开发起来比较费时。</p>
+<p>因此，目前企业中都会使用一些组件来简化或省略单表的CRUD开发工作。目前在国内使用较多的一个组件就是MybatisPlus。</p>
+<p>官方网站如下：</p>
+<p>当然，MybatisPlus不仅仅可以简化单表操作，而且还对Mybatis的功能有很多的增强。</p>
+<h1 id="1-Mybatis——-基础使用——"><a href="#1-Mybatis——-基础使用——" class="headerlink" title="1.==Mybatis——-基础使用——-=="></a>1.==Mybatis——-基础使用——-==</h1><h2 id="1-1-pom-xml引入依赖"><a href="#1-1-pom-xml引入依赖" class="headerlink" title="1.1 pom.xml引入依赖"></a>1.1 pom.xml引入依赖</h2><p>MybatisPlus提供了starter，实现了自动Mybatis以及MybatisPlus的自动装配功能，坐标如下：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251623535.png" alt="image-20240425162339464"></p>
+<p>如图所示，由于这个starter包含对mybatis的自动装配，因此完全可以替换掉Mybatis的starter</p>
+<h2 id="1-2-定义Mapper层"><a href="#1-2-定义Mapper层" class="headerlink" title="1.2 定义Mapper层"></a>1.2 定义Mapper层</h2><p>为了简化单表CRUD，MybatisPlus提供了一个基础的<code>BaseMapper</code>接口，其中已经实现了单表的CRUD：</p>
+<p>我们直接==实现BaseMapper接口==即可</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251730201.png" alt="image-20240425173015132"></p>
+<h2 id="1-3-对比"><a href="#1-3-对比" class="headerlink" title="1.3 对比"></a>1.3 对比</h2><p>我们可以看出这样直接调用简单的CRUD方法即可，就不用自己去mapper层写方法和对应xml文件了。==只需要继承BaseMapper就能省去所有的单表CRUD==。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251731200.png" alt="image-20240425173132151"></p>
+<h2 id="1-4-底层实现原理"><a href="#1-4-底层实现原理" class="headerlink" title="1.4 底层实现原理"></a>1.4 底层实现原理</h2><p>刚才①引入依赖和②mapper层继承BaseMapper接口就可以进行CRUD，那MP怎么知道是哪张表？表中有哪些字段？</p>
+<p>这也是因为UserMapper在继承BaseMapper的时候指定了一个泛型和数据库对应的实体类</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556323.png" alt="image-20240425174306575"></p>
+<p>MybatisPlus就是根据PO实体的信息来推断出表的信息，从而生成SQL的。默认情况下：</p>
+<ul>
+<li>MybatisPlus会把PO实体的类名驼峰转下划线作为表名</li>
+<li>MybatisPlus会把PO实体的所有变量名驼峰转下划线作为表的字段名，并根据变量类型推断字段类型</li>
+<li>MybatisPlus会把名为id的字段作为主键</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251748690.png" alt="image-20240425174818635"></p>
+<p>但很多情况下，默认的实现与实际场景不符，因此MybatisPlus提供一些注解便于我们声明表信息</p>
+<h1 id="2-常见注解解决po和mysql字段映射"><a href="#2-常见注解解决po和mysql字段映射" class="headerlink" title="2.常见注解解决po和mysql字段映射"></a>2.常见注解解决po和mysql字段映射</h1><p>==如果不按照约定的话，需要使用以下三种注解来解决：==  </p>
+<p>MybatisPlus中比较常用的几个注解如下：</p>
+<p>•<strong>@TableName</strong>：用来指定表名</p>
+<p>•<strong>@TableId</strong>：用来指定表中的<strong>主键字段</strong>信息</p>
+<p>•<strong>@TableField</strong>：用来指定表中的<strong>普通字段</strong>信息 </p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556542.png" alt="image-20240425175502493"></p>
+<p>其中，具体的细节如图所示：==使用查看==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556898.png" alt="image-20240425175807030"></p>
+<h2 id="2-1-TableName"><a href="#2-1-TableName" class="headerlink" title="2.1 @TableName"></a>2.1 @TableName</h2><ul>
+<li>描述：表名注解，标识实体类对应的表</li>
+<li>使用位置：实体类</li>
+</ul>
+<p>所有属性:</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251805672.png" alt="image-20240425180531600"></p>
+<h2 id="2-2-TableId"><a href="#2-2-TableId" class="headerlink" title="2.2 @TableId"></a>2.2 @TableId</h2><ul>
+<li>描述：主键注解，标识实体类中的主键字段</li>
+<li>使用位置：实体类的主键字段</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556871.png" alt="image-20240425180555143"></p>
+<p>其中type=IdType.xxxx取值范围：</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556553.png" alt="image-20240425180718677" style="zoom:67%;">
+
+
+
+<h2 id="2-3-TableField"><a href="#2-3-TableField" class="headerlink" title="2.3 @TableField"></a>2.3 @TableField</h2><p>描述：普通字段注解</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556013.png" alt="image-20240425180842453"></p>
+<h1 id="3-yml常见配置"><a href="#3-yml常见配置" class="headerlink" title="3.yml常见配置"></a>3.yml常见配置</h1><p>在application.yml文件配置：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251719086.png" alt="image-20240425171943982"></p>
+<h1 id="Mybatis——-核心功能"><a href="#Mybatis——-核心功能" class="headerlink" title="==Mybatis——-核心功能=="></a>==Mybatis——-核心功能==</h1><p>刚才都是以id为条件的简单CRUD,一些复杂的SQL语句就需要用到一些高级功能。</p>
+<h1 id="1-条件构造器提供复杂where语句"><a href="#1-条件构造器提供复杂where语句" class="headerlink" title="1.条件构造器提供复杂where语句"></a>1.条件构造器提供复杂where语句</h1><p>修改、删除、查询的SQL语句都需要<strong>指定where条件</strong></p>
+<p>因此BaseMapper中提供的相关方法除了以<code>id</code>作为<code>where</code>条件以外，还支持更加复杂的<code>where</code>条件。</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261556460.png" alt="image-20240425181511109"></p>
+<p>参数中的<code>Wrapper</code>就是条件构造的抽象类，其下有很多默认实现，继承关系如图：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251813468.png" alt="image-20240425181331409"></p>
+<p>其中，<code>Wrapper</code>的子类<code>AbstractWrapper</code>提供了where中包含的所有条件构造方法：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557411.png" alt="image-20240425181538417"></p>
+<p>而QueryWrapper在AbstractWrapper的基础上拓展了一个select方法，允许指定查询字段：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251815330.png" alt="image-20240425181553298"></p>
+<p>而UpdateWrapper在AbstractWrapper的基础上拓展了一个set方法，允许指定SQL中的SET部分：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404251816541.png" alt="image-20240425181601512"></p>
+<h2 id="1-1-QueryWrapper"><a href="#1-1-QueryWrapper" class="headerlink" title="1.1 QueryWrapper"></a>1.1 QueryWrapper</h2><p>==主要对where语句的条件进行设置==</p>
+<p>对于查询：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select id,username,info,balance</span><br><span class="line">from user</span><br><span class="line">where name like &quot;%o%&quot; AND balance &gt;&#x3D; 1000</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557952.png" alt="image-20240426152253324"></p>
+<p>对于修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update </span><br><span class="line">set balance&#x3D;2000</span><br><span class="line">where username&#x3D;&#39;Jack&#39;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261525035.png" alt="image-20240426152523969"></p>
+<h2 id="1-2-UpdateWrapper"><a href="#1-2-UpdateWrapper" class="headerlink" title="1.2 UpdateWrapper"></a>1.2 UpdateWrapper</h2><p>==弥补BaseMapper中update()只能写 set Xxx==，提出的updatewrapper可以写成set balance=balance-xx这种形式</p>
+<p>以更新多个id为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update user</span><br><span class="line">set balance&#x3D;balance-200</span><br><span class="line">where id in(1,2,3)</span><br></pre></td></tr></table></figure>
+
+<p>这个set的赋值结果是基于字段现有值，这时候需要使用UpdateWrapper中的==setSql功能：==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557927.png" alt="image-20240426153602036"></p>
+<h2 id="1-3-LambdaQueryWrapper"><a href="#1-3-LambdaQueryWrapper" class="headerlink" title="1.3 LambdaQueryWrapper"></a>1.3 LambdaQueryWrapper</h2><p>==1.1和1.2会在构造条件时候写死字段名称==，现在1.3就可以通过变量的getter方法结合反射获取</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557838.png" alt="image-20240426154148926"></p>
+<h1 id="2-自定义SQL"><a href="#2-自定义SQL" class="headerlink" title="2.自定义SQL"></a>2.自定义SQL</h1><p>1.2中演示了一个修改余额-200的时候将sql维护应该放在持久层，而不是业务层：<br><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261543946.png" alt="image-20240426154345876"></p>
+<p>==利用Wrapper生成查询条件，然后再结合mapper自定义xml文件编写sql==</p>
+<h2 id="2-1-原位置变化"><a href="#2-1-原位置变化" class="headerlink" title="2.1 原位置变化"></a>2.1 原位置变化</h2><p>以刚才案例为例：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261545351.png" alt="image-20240426154550302"></p>
+<h2 id="2-2-Mapper层方法定义"><a href="#2-2-Mapper层方法定义" class="headerlink" title="2.2 Mapper层方法定义"></a>2.2 Mapper层方法定义</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557154.png" alt="image-20240426154750747"></p>
+<h2 id="2-3-写sql语句"><a href="#2-3-写sql语句" class="headerlink" title="2.3 写sql语句"></a>2.3 写sql语句</h2><p>方式一：直接在mapper的方法上写@Select方法</p>
+<p>方式二：在mapper.xml文件中写动态sql</p>
+<p>和以往的区别就是：==where语句直接用${ew.customSqlSegment}替换==</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557847.png" alt="image-20240426154956395"></p>
+<p><strong>总结如下</strong>：</p>
+<p>与以往的变化就是我传入参数和where判断条件，mapper方法加一个@Param(“ew”)标志，然后sql里面就直接用${ew.customSqlSegment}替换</p>
+<h1 id="3-Service接口"><a href="#3-Service接口" class="headerlink" title="3.Service接口"></a>3.Service接口</h1><p>通用接口为==Iservice==，默认实现为==ServiceImpl==。其中封装方法可以分为：</p>
+<ul>
+<li><code>save</code>：新增</li>
+<li><code>remove</code>：删除</li>
+<li><code>update</code>：更新</li>
+<li><code>get</code>：查询单个结果</li>
+<li><code>list</code>：查询集合结果</li>
+<li><code>count</code>：计数</li>
+<li><code>page</code>：分页查询</li>
+</ul>
+<h2 id="3-1-五大类方法解释"><a href="#3-1-五大类方法解释" class="headerlink" title="3.1 五大类方法解释"></a>3.1 五大类方法解释</h2><h3 id="3-1-1-新增-save"><a href="#3-1-1-新增-save" class="headerlink" title="3.1.1 新增(save)"></a>3.1.1 新增(save)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261557861.png" alt="image-20240426155746820"></p>
+<h3 id="3-1-2-删除-remove"><a href="#3-1-2-删除-remove" class="headerlink" title="3.1.2 删除(remove)"></a>3.1.2 删除(remove)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261558520.png" alt="image-20240426155808475"></p>
+<h3 id="3-1-3-修改-update"><a href="#3-1-3-修改-update" class="headerlink" title="3.1.3 修改(update)"></a>3.1.3 修改(update)</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261558839.png" alt="image-20240426155852795"></p>
+<h3 id="3-1-4-查询"><a href="#3-1-4-查询" class="headerlink" title="3.1.4 查询"></a>3.1.4 查询</h3><h4 id="3-4-1-查询一条-get"><a href="#3-4-1-查询一条-get" class="headerlink" title="3.4.1 查询一条(get)"></a>3.4.1 查询一条(get)</h4><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261559663.png" alt="image-20240426155954622"></p>
+<h4 id="3-4-2-查询多条-list"><a href="#3-4-2-查询多条-list" class="headerlink" title="3.4.2 查询多条(list)"></a>3.4.2 查询多条(list)</h4><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261600209.png" alt="image-20240426160001166"></p>
+<h4 id="3-4-3-计数-count"><a href="#3-4-3-计数-count" class="headerlink" title="3.4.3 计数(count)"></a>3.4.3 计数(count)</h4><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261600943.png" alt="image-20240426160025902"></p>
+<h3 id="3-1-5调用mapper层自定义sql"><a href="#3-1-5调用mapper层自定义sql" class="headerlink" title="3.1.5调用mapper层自定义sql"></a>3.1.5调用mapper层自定义sql</h3><p>通过getBaseMapper获取Mapper，然后就mapper.自定义sql()</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261601255.png" alt="image-20240426160126219"></p>
+<h2 id="3-6-基本用法"><a href="#3-6-基本用法" class="headerlink" title="3.6 基本用法"></a>3.6 基本用法</h2><p>现在的变化就是，==拿现成的直接用==:</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261605501.png" alt="image-20240426160527425"></p>
+<p>具体操作就是：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261606835.png" alt="image-20240426160603797"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--保证自定义mapper继承basemapper 【底层使用时候直接还是调用basemapper的方法】</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-7-快速搭建-直接看"><a href="#3-7-快速搭建-直接看" class="headerlink" title="3.7 快速搭建(直接看)"></a>3.7 快速搭建(直接看)</h2><p>==1.业务简单的话直接调用mp方法；==</p>
+<p>==2.业务复杂的话就跟原来方式一样，controller调用service方法，然后在mapper层写具体sql==</p>
+<h3 id="3-7-1-简单业务-直接调用mp方法"><a href="#3-7-1-简单业务-直接调用mp方法" class="headerlink" title="3.7.1 简单业务-直接调用mp方法"></a>3.7.1 简单业务-直接调用mp方法</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261703070.png" alt="image-20240426170341983"></p>
+<h3 id="3-7-2-复杂业务-原始模式优化"><a href="#3-7-2-复杂业务-原始模式优化" class="headerlink" title="3.7.2 复杂业务-原始模式优化"></a>3.7.2 复杂业务-原始模式优化</h3><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261711105.png" alt="image-20240426171113039"></p>
+<p>之后调用mapper层的sql：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261707032.png" alt="image-20240426170626547"></p>
+<h2 id="3-8-Lambda查询-添加属性"><a href="#3-8-Lambda查询-添加属性" class="headerlink" title="3.8 Lambda查询[添加属性]"></a>3.8 Lambda查询[添加属性]</h2><p>就是在基本的方法上(属性，最新值)再多使用一个属性(==判断条件==，属性，最新值)</p>
+<p>这样就可以把动态sql里面<if>标签这种麻烦的操作放在serviceImpl类上进行操作</if></p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404261752712.png" alt="image-20240426175243646"></p>
+<h2 id="3-9-批量新增"><a href="#3-9-批量新增" class="headerlink" title="3.9 批量新增"></a>3.9 批量新增</h2><p>三种方案：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404272308413.png" alt="image-20240427230857329"></p>
+<p>最推荐第三种我们在yml配置文件中添加&amp;rewriteBatchedStatements=true</p>
+<h1 id="Mybatis——-扩展功能——"><a href="#Mybatis——-扩展功能——" class="headerlink" title="==Mybatis——-扩展功能——-=="></a>==Mybatis——-扩展功能——-==</h1><h1 id="1-代码生成"><a href="#1-代码生成" class="headerlink" title="1.代码生成"></a>1.代码生成</h1><p>在使用MybatisPlus以后，基础的<code>Mapper</code>、<code>Service</code>、<code>PO</code>代码相对固定，重复编写也比较麻烦</p>
+<p>==为了方便生成基本固定的代码==</p>
+<h2 id="1-1-下载插件"><a href="#1-1-下载插件" class="headerlink" title="1.1 下载插件"></a>1.1 下载插件</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404281818769.png" alt="image-20240428181825670"></p>
+<h2 id="1-2-配置数据库"><a href="#1-2-配置数据库" class="headerlink" title="1.2 配置数据库"></a>1.2 配置数据库</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404281820612.png" alt="image-20240428182003520"></p>
+<h2 id="1-3-配置信息生成代码"><a href="#1-3-配置信息生成代码" class="headerlink" title="1.3 配置信息生成代码"></a>1.3 配置信息生成代码</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404281823255.png" alt="image-20240428182342159"></p>
+<h2 id="1-4查看代码"><a href="#1-4查看代码" class="headerlink" title="1.4查看代码"></a>1.4查看代码</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404281824739.png" alt="image-20240428182458664"></p>
+<h1 id="2-静态工具—-Db"><a href="#2-静态工具—-Db" class="headerlink" title="2.静态工具—-Db"></a>2.静态工具—-Db</h1><p>有一种可能就是有AService用来查询用户和BService用来查询地址，他们都实现了Iservice可以实现一些简单的CRUD。现在需要查询用户和对应的地址，就可能AService调用BService，然后BService也要调用AService就会导致@Autowired时候<strong>循环依赖</strong></p>
+<p>MybatisPlus提供一个静态工具类:==Db==，==就是用来解决多个service层互相调用导致的循环依赖==，其中一些静态方法与IService中的方法签名基本一致，也可以帮助我们实现CRUD的功能</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404281835860.png" alt="image-20240428183527812"></p>
+<p>在使用的时候，就可以直接像平时书写习惯直接调用</p>
+<h1 id="3-逻辑删除"><a href="#3-逻辑删除" class="headerlink" title="3.逻辑删除"></a>3.逻辑删除</h1><p>多表查询时删除A表的数据同时也会删除B数据，但是B里面有一些比较重要的数据我们不想删除。因此，我们采用==逻辑删除==的方案：</p>
+<p>可以考虑在表中添加一个字段flag(标记数据是否被删除)，这样我们在删除数据的时候还需要将flag设置为true，如果在查询数据的时候还需要添加一个and flag=xxx的条件。<strong>这样的话就会让之前的查询和删除逻辑都要跟着变化，非常麻烦。</strong></p>
+<p>因此，MybatisPlus就添加了对逻辑删除的支持。</p>
+<blockquote>
+<p>只有MybatisPlus生成的SQL语句才支持自动的逻辑删除【就是直接拿来用的哪些CRUD方法】</p>
+<p>自定义SQL就需要自己手动处理逻辑删除</p>
+</blockquote>
+<h2 id="3-1-配置逻辑删除"><a href="#3-1-配置逻辑删除" class="headerlink" title="3.1 配置逻辑删除"></a>3.1 配置逻辑删除</h2><p>我们对于Address表添加一个字段deleted用于判断是否删除：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291709199.png" alt="image-20240429170953086"></p>
+<h2 id="3-2-底层实现"><a href="#3-2-底层实现" class="headerlink" title="3.2 底层实现"></a>3.2 底层实现</h2><p>我们在使用MybatisPlus自己的CRUD方法时候支持自动逻辑删除：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291211605.png" alt="image-20240429121132491"></p>
+<p>具体的两个语法操作：</p>
+<p>1.删除的时候我们就会将delete更改为一个update语句拼接一个deleted=false未被删除的判断</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291715300.png" alt="image-20240429171532251"></p>
+<p>2.查询的时候我们就会在where语句拼接一个deleted=false未被删除的判断</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291715596.png" alt="image-20240429171544562"></p>
+<h2 id="3-3-注意事项"><a href="#3-3-注意事项" class="headerlink" title="3.3 注意事项"></a>3.3 注意事项</h2><p>开启逻辑删除功能之后，可以像普通删除一样做CRUD，基本不用考虑代码逻辑功能问题。</p>
+<p>但是，逻辑删除本身也有缺点：</p>
+<ul>
+<li>会导致数据库表垃圾数据越来越多，从而影响查询效率</li>
+<li>sql中全都需要对逻辑删除字段做判断，影响查询效率</li>
+</ul>
+<p>==因此，不太建议采用逻辑删除功能，如果数据不能删除，可以采用数据迁移到其他表的办法==</p>
+<h1 id="4-枚举处理器-字段有多个值"><a href="#4-枚举处理器-字段有多个值" class="headerlink" title="4.枚举处理器(字段有多个值)"></a>4.枚举处理器(字段有多个值)</h1><p>对某个字段(0是正常，1是不正常)判断时候如果写==1这样很不美观，并且如果0和1的含义修改了要修改很多地方，因此我们可以使用枚举(很像c语言的参数宏定义)来处理</p>
+<p>针对于之前案例User类的status属性，就可以这样修改：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291637868.png" alt="image-20240429163735826"></p>
+<p>在原始的mybatis底层帮我们把Java中的类型和数据库的类型一一对应，但是对于枚举类型和Json类型无法解决。因此mybatisplus针对枚举和Json类型提出了新的处理器：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291643419.png" alt="image-20240429164303308"></p>
+<h2 id="4-1-配置枚举处理器"><a href="#4-1-配置枚举处理器" class="headerlink" title="4.1 配置枚举处理器"></a>4.1 配置枚举处理器</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291640002.png" alt="image-20240429164034948"></p>
+<h2 id="4-2-定义枚举类"><a href="#4-2-定义枚举类" class="headerlink" title="4.2 定义枚举类"></a>4.2 定义枚举类</h2><p>这样就可以将1和2分别代表正常和冻结，我们在使用的时候只需要调用UserStatus.NORMAL就可以对比了</p>
+<p>此外，@EnumValue可以保证我们可以按照value的类型和数据库一一对应；而@JsonValue可以保证我们输出给前端的时候可以将描述词/对应值返回(而不是返回NORMAL/FORZEN这种类型)</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291652755.png" alt="image-20240429165234689"></p>
+<h2 id="4-3-修改PO和VO类型"><a href="#4-3-修改PO和VO类型" class="headerlink" title="4.3 修改PO和VO类型"></a>4.3 修改PO和VO类型</h2><p>主要是将类型Integer改为UserStatus枚举类</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291655394.png" alt="image-20240429165517353"></p>
+<h2 id="4-4-修改具体逻辑位置"><a href="#4-4-修改具体逻辑位置" class="headerlink" title="4.4 修改具体逻辑位置"></a>4.4 修改具体逻辑位置</h2><p>原来位置是用数字比对，可读性太差，现在就可以优雅地使用枚举类</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291656672.png" alt="image-20240429165653581"></p>
+<h1 id="5-Json类型处理器-字段是Json类型"><a href="#5-Json类型处理器-字段是Json类型" class="headerlink" title="5.Json类型处理器(字段是Json类型)"></a>5.Json类型处理器(字段是Json类型)</h1><p>如果实体类有一个属性是Json类型，那么Java中的Json类型和数据库中的匹配就有问题：<br>就跟4枚举处理器里面将的，MybatisPlus在Myabtis的基础上提供了Json类型处理器</p>
+<img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404291721065.png" alt="image-20240429172137951" style="zoom: 67%;">
+
+<h2 id="5-1-配置Json类型处理器"><a href="#5-1-配置Json类型处理器" class="headerlink" title="5.1 配置Json类型处理器"></a>5.1 配置Json类型处理器</h2><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301426197.png" alt="image-20240430142629145" style="zoom: 67%;">
+
+<p>因为没有提供在application.yml配置的方式，只能通过给实体类属性添加注解</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301424410.png" alt="image-20240430142453316"></p>
+<h2 id="5-2-测试查看"><a href="#5-2-测试查看" class="headerlink" title="5.2 测试查看"></a>5.2 测试查看</h2><p>info字段已经改成了一个Json类型</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301427801.png" alt="image-20240430142717732"></p>
+<h1 id="6-配置加密"><a href="#6-配置加密" class="headerlink" title="6.配置加密"></a>6.配置加密</h1><p>目前我们配置文件中很多参数都是明文存储，如果开发人员跑路很容易导致敏感信息泄露。</p>
+<p>MyBatisPlus从3.3.2版本开始提供了一个==基于AES算法的加密工具==，帮助我们对配置中的敏感信息做加密处理。</p>
+<h2 id="6-1-生成秘钥"><a href="#6-1-生成秘钥" class="headerlink" title="6.1 生成秘钥"></a>6.1 生成秘钥</h2><p>以数据库的账户密码为例：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301432687.png" alt="image-20240430143223630"></p>
+<h2 id="6-2-配置秘钥"><a href="#6-2-配置秘钥" class="headerlink" title="6.2 配置秘钥"></a>6.2 配置秘钥</h2><p>在application.yml文件中修改：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301435095.png" alt="image-20240430143508047"></p>
+<h2 id="6-3-测试"><a href="#6-3-测试" class="headerlink" title="6.3 测试"></a>6.3 测试</h2><p>测试类：在测试类的注解上配置：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301438113.png" alt="image-20240430143859062"></p>
+<p>启动项目：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301440705.png" alt="image-20240430144043661"></p>
+<h1 id="Mybatis——-插件功能"><a href="#Mybatis——-插件功能" class="headerlink" title="==Mybatis——-插件功能=="></a>==Mybatis——-插件功能==</h1><p>其实MybatisPlus提供了多个插件，而我们重点关注分页插件</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301647585.png" alt="image-20240430164735500"></p>
+<h1 id="1-分页插件"><a href="#1-分页插件" class="headerlink" title="1.分页插件"></a>1.分页插件</h1><h2 id="1-1-配置分页功能"><a href="#1-1-配置分页功能" class="headerlink" title="1.1 配置分页功能"></a>1.1 配置分页功能</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301523505.png" alt="image-20240430152339416"></p>
+<h2 id="1-2-测试简单分页"><a href="#1-2-测试简单分页" class="headerlink" title="1.2 测试简单分页"></a>1.2 测试简单分页</h2><p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301522267.png" alt="image-20240430152253190"></p>
+<h2 id="1-3-测试复杂分页"><a href="#1-3-测试复杂分页" class="headerlink" title="1.3 测试复杂分页"></a>1.3 测试复杂分页</h2><p>针对于1.2的话其实就是更针对业务逻辑：</p>
+<p><img src="https://raw.githubusercontent.com/Larkkkkkkk/hexo-picture/main/.images/202404301643474.png" alt="image-20240430164354320"></p>
+<h1 id="Mybatis——-使用操作"><a href="#Mybatis——-使用操作" class="headerlink" title="==Mybatis——-使用操作=="></a>==Mybatis——-使用操作==</h1><p>1.可以创建好数据库表</p>
+<p>2.根据mybatis插件生成:</p>
+<p>​    po(可以添加注解保证数据库和Java实体类对应，对于枚举和Json类型都有新推出的处理器解决)，</p>
+<p>​    service(extends IService<Xxx>)，</Xxx></p>
+<p>​    serviceImpl( extends ServiceImpl&lt;XxxMapper, Xxx&gt; implements IAddressService)， [引入mapper方法：①注入xxxMapper ②直接getBaseMapper]</p>
+<p>​    controller，</p>
+<p>​    mapper(extends BaseMapper<Xxx>)</Xxx></p>
+<p>3.按照原有的设计思路写代码：</p>
+<p>​    3.1 简单的就直接调用service的CRUD方法【service接口默认也有实现类ServiceImpl&lt;XXXMapper,实体类&gt;，这样也说明底层还是直接调用BaseMapper方法】</p>
+<p>​    3.2 复杂的话，①xml文件按照原来的动态sql书写</p>
+<p>​    3.3 复杂的话，②使用xxxMapper.条件构造器[创建复杂where语句]</p>
+<p>​    3.4 复杂的话，③使用lambdaQuery()/lambdaUpdate()添加一些where语句  –新特性【好用】</p>
+<p>【只不过在书写过程中有很多好用的扩展功能】</p>
+<p>4.如果涉及Json字段([“XX”,”XX”])要记得用5.1里面的方法!</p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2024/04/25/MybatisPlus/">MybatisPlus</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Larkkkkkkk 的个人博客">Larkkkkkkk</a></p>
+        <p><span>发布时间:</span>2024年04月25日 - 16时17分</p>
+        <p><span>最后更新:</span>2026年01月07日 - 18时14分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2024/04/25/MybatisPlus/" title="MybatisPlus">https://larkkkkkkk.github.io/2024/04/25/MybatisPlus/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://larkkkkkkk.github.io/2024/04/25/MybatisPlus/　　作者: Larkkkkkkk" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          微服务-服务保护
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/04/17/Elasticsearch/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Elasticsearch</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article" style="display: block;">
+    <strong class="toc-title">文章目录</strong>
+    <style>
+        .toc .toc-number { display: none !important; }
+        .toc .toc-text { padding-left: 0 !important; }
+    </style>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybatis介绍"><span class="toc-number">1.</span> <span class="toc-text">Mybatis介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Mybatis——-基础使用——"><span class="toc-number">2.</span> <span class="toc-text">1.&#x3D;&#x3D;Mybatis——-基础使用——-&#x3D;&#x3D;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-pom-xml引入依赖"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 pom.xml引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-定义Mapper层"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 定义Mapper层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-对比"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-底层实现原理"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 底层实现原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-常见注解解决po和mysql字段映射"><span class="toc-number">3.</span> <span class="toc-text">2.常见注解解决po和mysql字段映射</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-TableName"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 @TableName</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-TableId"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 @TableId</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-TableField"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 @TableField</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-yml常见配置"><span class="toc-number">4.</span> <span class="toc-text">3.yml常见配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybatis——-核心功能"><span class="toc-number">5.</span> <span class="toc-text">&#x3D;&#x3D;Mybatis——-核心功能&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-条件构造器提供复杂where语句"><span class="toc-number">6.</span> <span class="toc-text">1.条件构造器提供复杂where语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-QueryWrapper"><span class="toc-number">6.1.</span> <span class="toc-text">1.1 QueryWrapper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-UpdateWrapper"><span class="toc-number">6.2.</span> <span class="toc-text">1.2 UpdateWrapper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-LambdaQueryWrapper"><span class="toc-number">6.3.</span> <span class="toc-text">1.3 LambdaQueryWrapper</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-自定义SQL"><span class="toc-number">7.</span> <span class="toc-text">2.自定义SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-原位置变化"><span class="toc-number">7.1.</span> <span class="toc-text">2.1 原位置变化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Mapper层方法定义"><span class="toc-number">7.2.</span> <span class="toc-text">2.2 Mapper层方法定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-写sql语句"><span class="toc-number">7.3.</span> <span class="toc-text">2.3 写sql语句</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Service接口"><span class="toc-number">8.</span> <span class="toc-text">3.Service接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-五大类方法解释"><span class="toc-number">8.1.</span> <span class="toc-text">3.1 五大类方法解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-新增-save"><span class="toc-number">8.1.1.</span> <span class="toc-text">3.1.1 新增(save)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-删除-remove"><span class="toc-number">8.1.2.</span> <span class="toc-text">3.1.2 删除(remove)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-修改-update"><span class="toc-number">8.1.3.</span> <span class="toc-text">3.1.3 修改(update)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-4-查询"><span class="toc-number">8.1.4.</span> <span class="toc-text">3.1.4 查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-1-查询一条-get"><span class="toc-number">8.1.4.1.</span> <span class="toc-text">3.4.1 查询一条(get)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-2-查询多条-list"><span class="toc-number">8.1.4.2.</span> <span class="toc-text">3.4.2 查询多条(list)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-3-计数-count"><span class="toc-number">8.1.4.3.</span> <span class="toc-text">3.4.3 计数(count)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-5调用mapper层自定义sql"><span class="toc-number">8.1.5.</span> <span class="toc-text">3.1.5调用mapper层自定义sql</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-基本用法"><span class="toc-number">8.2.</span> <span class="toc-text">3.6 基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7-快速搭建-直接看"><span class="toc-number">8.3.</span> <span class="toc-text">3.7 快速搭建(直接看)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-1-简单业务-直接调用mp方法"><span class="toc-number">8.3.1.</span> <span class="toc-text">3.7.1 简单业务-直接调用mp方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-2-复杂业务-原始模式优化"><span class="toc-number">8.3.2.</span> <span class="toc-text">3.7.2 复杂业务-原始模式优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-8-Lambda查询-添加属性"><span class="toc-number">8.4.</span> <span class="toc-text">3.8 Lambda查询[添加属性]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-9-批量新增"><span class="toc-number">8.5.</span> <span class="toc-text">3.9 批量新增</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybatis——-扩展功能——"><span class="toc-number">9.</span> <span class="toc-text">&#x3D;&#x3D;Mybatis——-扩展功能——-&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-代码生成"><span class="toc-number">10.</span> <span class="toc-text">1.代码生成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-下载插件"><span class="toc-number">10.1.</span> <span class="toc-text">1.1 下载插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-配置数据库"><span class="toc-number">10.2.</span> <span class="toc-text">1.2 配置数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-配置信息生成代码"><span class="toc-number">10.3.</span> <span class="toc-text">1.3 配置信息生成代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4查看代码"><span class="toc-number">10.4.</span> <span class="toc-text">1.4查看代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-静态工具—-Db"><span class="toc-number">11.</span> <span class="toc-text">2.静态工具—-Db</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-逻辑删除"><span class="toc-number">12.</span> <span class="toc-text">3.逻辑删除</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-配置逻辑删除"><span class="toc-number">12.1.</span> <span class="toc-text">3.1 配置逻辑删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-底层实现"><span class="toc-number">12.2.</span> <span class="toc-text">3.2 底层实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-注意事项"><span class="toc-number">12.3.</span> <span class="toc-text">3.3 注意事项</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-枚举处理器-字段有多个值"><span class="toc-number">13.</span> <span class="toc-text">4.枚举处理器(字段有多个值)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-配置枚举处理器"><span class="toc-number">13.1.</span> <span class="toc-text">4.1 配置枚举处理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-定义枚举类"><span class="toc-number">13.2.</span> <span class="toc-text">4.2 定义枚举类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-修改PO和VO类型"><span class="toc-number">13.3.</span> <span class="toc-text">4.3 修改PO和VO类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-修改具体逻辑位置"><span class="toc-number">13.4.</span> <span class="toc-text">4.4 修改具体逻辑位置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Json类型处理器-字段是Json类型"><span class="toc-number">14.</span> <span class="toc-text">5.Json类型处理器(字段是Json类型)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-配置Json类型处理器"><span class="toc-number">14.1.</span> <span class="toc-text">5.1 配置Json类型处理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-测试查看"><span class="toc-number">14.2.</span> <span class="toc-text">5.2 测试查看</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-配置加密"><span class="toc-number">15.</span> <span class="toc-text">6.配置加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-生成秘钥"><span class="toc-number">15.1.</span> <span class="toc-text">6.1 生成秘钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-配置秘钥"><span class="toc-number">15.2.</span> <span class="toc-text">6.2 配置秘钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-测试"><span class="toc-number">15.3.</span> <span class="toc-text">6.3 测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybatis——-插件功能"><span class="toc-number">16.</span> <span class="toc-text">&#x3D;&#x3D;Mybatis——-插件功能&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-分页插件"><span class="toc-number">17.</span> <span class="toc-text">1.分页插件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-配置分页功能"><span class="toc-number">17.1.</span> <span class="toc-text">1.1 配置分页功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-测试简单分页"><span class="toc-number">17.2.</span> <span class="toc-text">1.2 测试简单分页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-测试复杂分页"><span class="toc-number">17.3.</span> <span class="toc-text">1.3 测试复杂分页</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybatis——-使用操作"><span class="toc-number">18.</span> <span class="toc-text">&#x3D;&#x3D;Mybatis——-使用操作&#x3D;&#x3D;</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" onclick="toggleToc()">
+
+<script>
+function toggleToc() {
+    var toc = document.getElementById('toc');
+    var btn = document.getElementById('tocButton');
+    if (toc.style.display === 'none') {
+        toc.style.display = 'block';
+        btn.value = '隐藏目录';
+    } else {
+        toc.style.display = 'none';
+        btn.value = '显示目录';
+    }
+}
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'swing'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4/" title="上一篇: 微服务-服务保护">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2024/04/17/Elasticsearch/" title="下一篇: Elasticsearch">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2026/01/16/Spring%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/">Spring参数校验</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/12/08/LangGraph/">LangGraph</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/12/05/MCP/">MCP</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/12/04/Gardio/">Gardio</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/11/17/LangChain/">LangChain</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/10/31/Kafka/">Kafka</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/10/30/PostgreSQL/">PostgreSQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/09/02/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/08/07/Quartz%E6%A1%86%E6%9E%B6/">Quartz框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/08/07/%E8%8B%A5%E4%BE%9D/">若依</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/08/06/SpringAI-DeepSeek%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">SpringAI+DeepSeek大模型应用开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/07/22/SpringSecurity/">SpringSecurity</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/05/06/wangEditor5-%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">wangEditor5-富文本编辑器</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/04/21/Vue%E5%90%8E%E7%AB%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">Vue后端管理系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/04/08/Element-Plus/">Element-Plus</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/04/04/Vue%E6%A1%86%E6%9E%B6/">Vue框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2025/03/23/cpolar/">cpolar</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/11/16/QPS/">QPS</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/11/16/%E5%AE%9E%E4%B9%A0git%E4%BD%93%E4%BC%9A/">实习git体会</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/11/16/PageHelper/">PageHelper</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/11/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">微服务和分布式系统设计</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/08/Hexo%E5%8D%9A%E5%AE%A2%E5%85%B3%E9%97%AD%E7%AA%97%E5%8F%A3%E4%B8%8B%E6%AC%A1%E6%8F%90%E4%BA%A4%E6%8A%A5%E9%94%99/">Hexo博客关闭窗口下次提交报错</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/08/%E5%8D%9A%E5%AE%A2%E5%85%B3%E9%97%AD%E7%AA%97%E5%8F%A3%E4%B8%8B%E6%AC%A1%E6%8F%90%E4%BA%A4%E6%8A%A5%E9%94%99/">Hexo博客关闭窗口下次提交报错</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/09/02/%E5%85%B3%E4%BA%8E%E5%88%9B%E5%BB%BA%E8%A1%A8%E7%9A%84%E4%B8%BB%E9%94%AEID%E9%97%AE%E9%A2%98/">关于创建表的主键ID问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/29/XXL-Job%E5%88%86%E5%B8%83%E5%BC%8F%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/">XXL-Job分布式任务调度</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/29/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%AD%96%E7%95%A5/">海量数据存储策略</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/26/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E7%A7%AF%E5%88%86%E7%B3%BB%E7%BB%9F/">东林在线微课堂-积分系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/24/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E7%82%B9%E8%B5%9E%E7%9B%B8%E5%85%B3/">东林在线微课堂-点赞相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/23/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E4%BA%92%E5%8A%A8%E9%97%AE%E7%AD%94/">东林在线微课堂-互动问答</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/18/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E6%88%91%E7%9A%84%E8%AF%BE%E8%A1%A8%E7%9B%B8%E5%85%B3/">东林在线微课堂-我的课表相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/16/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82-%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E5%92%8C%E8%BF%9B%E5%BA%A6/">东林在线微课堂-学习计划和进度</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/12/%E4%B8%9C%E6%9E%97%E5%9C%A8%E7%BA%BF%E5%BE%AE%E8%AF%BE%E5%A0%82/">东林在线微课堂</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/08/12/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/07/22/Mysql%E5%88%86%E8%A1%A8%E5%88%86%E5%BA%93-Sharding-Sphere/">Mysql分表分库-Sharding-Sphere</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/07/10/Mysql%E6%8E%92%E6%9F%A5/">Mysql排查</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/06/25/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E5%88%86%E5%B8%83%E5%BC%8F%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/">微服务-分布式链路追踪</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/06/22/Elasticsearch-%E9%BB%91%E9%A9%AC%E5%95%86%E5%9F%8E%E4%B8%BA%E4%BE%8B/">Elasticsearch-黑马商城为例</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/06/22/RabbitMQ-%E9%BB%91%E9%A9%AC%E5%95%86%E5%9F%8E%E4%B8%BA%E4%BE%8B/">RabbitMQ-黑马商城为例</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/06/20/Jmeter/">Jmeter</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/28/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E9%BB%91%E9%A9%AC%E5%95%86%E5%9F%8E%E4%B8%BA%E4%BE%8B/">微服务-黑马商城为例</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/28/Hexo%E5%8D%9A%E5%AE%A2%E6%8A%A5%E9%94%99github%E4%BC%A0%E8%BE%93%E5%A4%A7%E6%96%87%E4%BB%B6GH001%E5%BC%82%E5%B8%B8/">Hexo博客报错github传输大文件GH001异常</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">微服务-分布式事务</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1-%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4/">微服务-服务保护</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/04/25/MybatisPlus/">MybatisPlus</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/04/17/Elasticsearch/">Elasticsearch</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/04/01/Zookeeper/">Zookeeper</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/03/18/RabbitMQ-0/">RabbitMQ</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/03/15/SpringCloud/">SpringCloud</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/02/02/JUC/">JUC</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/09/Apache-Echarts/">Apache-Echarts</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/06/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">微信小程序开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/05/%E5%85%AB%E8%82%A1%E6%96%87%E6%95%B4%E7%90%86/">八股文整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/02/Springboot-takeout/">Springboot-takeout</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/24/JAVAWeb-tlias%E6%99%BA%E8%83%BD%E5%AD%A6%E4%B9%A0%E8%BE%85%E5%8A%A9%E7%B3%BB%E7%BB%9F/">JAVAWeb-tlias智能学习辅助系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/23/Mybatis/">Mybatis</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/22/SpringBootWeb%E8%AF%B7%E6%B1%82/">SpringBootWeb请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/11/10/%E5%9B%BE%E8%A7%A3HTTP/">图解HTTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/11/06/JAVA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">JAVA-数据结构与算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/11/03/JAVA-%E5%8F%8D%E5%B0%84/">JAVA-反射</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/11/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/11/02/JAVA-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">JAVA-网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/31/JAVA-File%E7%B1%BB%E5%92%8CIO%E6%B5%81/">JAVA-File类和IO流</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/30/JAVA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81/">JAVA-数据结构与集合源码</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/28/JAVA-%E6%B3%9B%E5%9E%8B/">JAVA-泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/24/JAVA-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">JAVA-集合框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/21/picgo/">picgo</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">JAVA-代码随想录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%92%8C%E5%9F%BA%E7%A1%80API/">JAVA-常用类和基础API</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">JAVA-异常处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">JAVA-面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/20/JAVA-%E5%9F%BA%E7%A1%80%E7%AF%87/">JAVA-基础篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/19/%E5%B0%9A%E7%A1%85%E8%B0%B7java/">尚硅谷JAVA基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/18/pytorch%E5%B0%8F%E5%9C%9F%E5%A0%86/">pytorch小土堆</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/04/python%E6%89%93%E5%8C%85/">python打包</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/25/pytorch/">pytorch</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/23/django/">django</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/flask%E6%8E%A5%E5%8F%A3/">flask接口</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Docker/">Docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/style/">JQ实现表单校验/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/jquery-1.11.0/">JQ实现表单校验/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/style/">JQ实现老黄历/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/laohuangli/">JQ实现老黄历/laohuangli</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/jquery-1.11.0/">JQ实现老黄历/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/data/">JQ实现老黄历/data</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery%E9%80%89%E6%8B%A9%E5%99%A8/style/">JQuery选择器/style</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/jquery-1.11.3.min/">JQuery基本用法/jquery-1.11.3.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/JQuery/jquery-1.11.0/">JQuery/jquery-1.11.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/npm/">Bootstrap/bootstrap-3.3.5-dist/js/npm</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.min/">Bootstrap/bootstrap-3.3.5-dist/js/bootstrap.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/js/bootstrap/">Bootstrap/bootstrap-3.3.5-dist/js/bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap.min/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme.min/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme/">Bootstrap/bootstrap-3.3.5-dist/css/bootstrap-theme</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/22/Larkkkkkkk/">Larkkkkkkk</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/17/py2neo/">py2neo</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/17/neo4j/">neo4j</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/16/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">知识图谱</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/22/%E5%90%8E%E7%BC%80%E6%A0%91/">后缀树</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/11/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/">生物信息学</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/02/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">动手学深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/01/Scrapy%E7%88%AC%E8%99%AB%E8%BF%9B%E9%98%B6/">Scrapy爬虫进阶</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/28/%E7%88%AC%E8%99%AB/">爬虫基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/26/%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB%EF%BC%88Python%EF%BC%89/">算法汇总（Python）</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/15/CS224n%E6%96%AF%E5%9D%A6%E7%A6%8F%E6%B7%B1%E5%BA%A6%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E8%AF%BE/">CS224n斯坦福深度自然语言处理课</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/11/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/10/%E5%8F%8C%E7%A2%B3%E5%A4%A7%E8%B5%9B-%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB/">双碳大赛-垃圾分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/07/PyTorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/">PyTorch深度学习实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/27/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E4%B9%8B%E5%B7%A5%E4%B8%9A%E8%92%B8%E6%B1%BD/">机器学习实战之工业蒸汽</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/17/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/">统计学习方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/06/%E5%88%A9%E7%94%A8python%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">利用python进行数据分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/07/python%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%E8%AF%BE%E6%9C%AC%E8%AF%BE%E5%90%8E%E9%A2%98/">python从入门到实践课本课后题</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/01/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/12/31/python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/28/B%E5%86%8C%E7%BC%96%E7%A8%8B%E9%A2%98/">B册编程题</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/23/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%AC%E9%A2%98%E7%9B%AE/">c语言课本题目</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/04/07/%E5%88%9D%E8%AF%95code/">初试code</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/25/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/">蓝桥杯国赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/23/Linux%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">Linux系统目录结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/04/LeetCode%E9%93%BE%E8%A1%A8/">LeetCode链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/21/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%BC%A0Github/">本地项目上传Github</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/13/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/05/Mysql%E5%A4%8D%E4%B9%A0/">Mysql复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/">设计模式总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/31/%E4%BA%AC%E4%B8%9C2019%E6%A0%A1%E6%8B%9B%E7%AC%94%E8%AF%95Java%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AF%95%E9%A2%98/">京东2019校招笔试Java开发工程师笔试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/30/%E4%BA%AC%E4%B8%9C2019%E6%98%A5%E6%8B%9B%E4%BA%AC%E4%B8%9CJava%E5%BC%80%E5%8F%91%E8%AF%95%E5%8D%B7/">京东2019春招京东Java开发试卷</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/29/%E6%8B%BC%E5%A4%9A%E5%A4%9A2020%E6%A0%A1%E6%8B%9B%E9%83%A8%E5%88%86%E7%BC%96%E7%A8%8B%E9%A2%98%E5%90%88%E9%9B%86/">拼多多2020校招部分编程题合集</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/21/Git%E5%A4%8D%E4%B9%A0/">Git复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/16/leetcode%E5%89%91%E6%8C%87offer/">leetcode剑指offer</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2/">Hexo博客重装系统重新部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/08/%E5%B0%9A%E5%AD%A6%E5%A0%82CRUD%E6%A8%A1%E6%9D%BF/">尚学堂CRUD模板</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/19/LeetCode%E7%B2%BE%E9%80%89TOP%E9%9D%A2%E8%AF%95%E9%A2%98/">LeetCode精选TOP面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/16/LeetCode%E5%93%88%E5%B8%8C%E8%A1%A8/">LeetCode哈希表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/16/LeetCode%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">LeetCode贪心算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/15/LeetCode%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">LeetCode二分查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/14/LeetCode%E5%8F%8C%E6%8C%87%E9%92%88/">LeetCode双指针</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/LeetCode%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">LeetCode动态规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/12/LeetCode%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/">LeetCode数学问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/11/LeetCode%E9%80%92%E5%BD%92/">LeetCode递归</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/10/LeetCode%E6%8E%92%E5%BA%8F/">LeetCode排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/LeetCode%E5%AD%97%E7%AC%A6%E4%B8%B2/">LeetCode字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/LeetCode%E6%95%B0%E7%BB%84/">LeetCode数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/%E5%89%91%E6%8C%87offer/">剑指offer</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/02/%E5%9B%BE/">图</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/01/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/22/%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91/">哈弗曼树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/18/%E6%A0%91/">树</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/%E6%8E%92%E5%BA%8F/">排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/">时间复杂度和空间复杂度分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/%E9%80%92%E5%BD%92/">递归</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/SpringBoot/">SpringBoot</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/12/%E9%93%BE%E8%A1%A8/">链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/%E9%98%9F%E5%88%97/">队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/%E6%A0%88/">栈</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%AF%B9Date%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">SpringMVC对Date类型转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/">SpringMVC原理分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/SpringMVC%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8B%A6%E6%88%AA%E5%99%A8/">SpringMVC实现自定义拦截器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/10/SpringMVC%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">SpringMVC实现文件上传和下载</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/JSP%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9B%9B%E5%A4%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/">JSP九大内置对象和四大作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/SpringMVC%E5%AE%9E%E7%8E%B0%E8%8F%9C%E5%8D%95%E5%8A%9F%E8%83%BD/">SpringMVC实现菜单功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/07/SpringMVC/">SpringMVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/06/Ajax%E6%95%B4%E7%90%86/">Ajax整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/06/Spring%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/">Spring常用注解整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E4%BA%8B%E5%8A%A1/">Spring事务</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Spring单例设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/Spring%E5%8A%A0%E8%BD%BD%E5%B1%9E%E6%80%A7%E6%96%87%E4%BB%B6%E5%92%8Cscope%E5%B1%9E%E6%80%A7/">Spring加载属性文件和scope属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/03/Spring%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5/">Spring自动注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/03/Spring%E4%BB%A3%E7%90%86%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Spring代理设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/02/AOP/">AOP</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/Spring%E6%95%B4%E5%90%88Mybatis/">Spring整合Mybatis</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/Spring%E7%BB%99Bean%E6%B3%A8%E5%85%A5/">Spring给Bean注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/Spring/">Spring</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/Mybatis%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/">Mybatis运行原理总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/30/Mybatis%E6%B3%A8%E8%A7%A3/">Mybatis注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/29/%E4%BD%BF%E7%94%A8Mybatis%E7%9A%84%E5%8A%A8%E6%80%81Sql%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">使用Mybatis的动态Sql实现多表查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/Mybatis%E7%BC%93%E5%AD%98/">Mybatis缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/ThreadLocal/">ThreadLocal</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/28/%E5%8A%A8%E6%80%81SQL/">动态SQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/27/getMapper%E6%8E%A5%E5%8F%A3%E7%BB%91%E5%AE%9A%E5%92%8C%E5%A4%9A%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/">getMapper接口绑定和多参数传递</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/Mybatis%E5%AE%9E%E7%8E%B0%E8%BD%AC%E8%B4%A6/">Mybatis实现转账</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/Mybatis%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E5%8A%9F%E8%83%BD%EF%BC%88%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%EF%BC%89/">Mybatis实现分页功能（完整流程）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Mybatis%E5%AE%9E%E7%8E%B0%E6%96%B0%E5%A2%9E%E5%88%A0%E9%99%A4%E4%BF%AE%E6%94%B9%E5%92%8C%E4%BA%8B%E5%8A%A1%E8%AE%B2%E8%A7%A3/">Mybatis实现新增删除修改和事务讲解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/24/Mybatis%E5%AE%9E%E7%8E%B0mysql%E5%88%86%E9%A1%B5/">Mybatis实现mysql分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/21/Mybatis%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89/">Mybatis查询所有</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/21/Log4J/">Log4J</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/Mybatis%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">Mybatis全局配置文件详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/Mybatis%EF%BC%88eclipse%E8%AF%A6%E7%BB%86%EF%BC%89/">Mybatis（eclipse详细）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/Mybatis%EF%BC%88idea+maven%EF%BC%89/">Mybatis（idea+maven）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/17/Nginx/">Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/17/Linux%E9%83%A8%E7%BD%B2/">Linux部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/Linux%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/">Linux网络知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/Vim/">Vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/maven/">maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/13/redis%E9%85%8D%E5%90%88ajax%E5%AE%9E%E7%8E%B0%E6%98%BE%E7%A4%BA%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E7%9C%81%E4%BB%BD/">redis配合ajax实现显示下拉列表省份</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/Linux%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">Linux安装软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/redis/">redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E8%B0%B7%E6%AD%8CCar%E5%BC%95%E5%85%A5%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/">谷歌Car引入装饰者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/%E6%B3%A8%E8%A7%A3/">注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/08/%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89/">自动登录（过滤器）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/08/Filter/">Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/JQuery%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8/">JQuery省市联动</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/Listener/">Listener</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E4%BB%BF%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2/">JQuery仿百度搜索</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E6%A0%A1%E9%AA%8C%E7%94%A8%E6%88%B7%E5%90%8D/">JQuery校验用户名</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/JQuery%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">JQuery基本用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/Ajax%E5%AE%9E%E7%8E%B0%E6%A0%A1%E9%AA%8C%E7%94%A8%E6%88%B7%E5%90%8D/">Ajax实现校验用户名</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/04/Ajax/">Ajax</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%882-0%EF%BC%89/">学生管理系统（2.0）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">三层架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/JSP%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/">JSP开发模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/DBUtils%E9%80%9A%E7%94%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/">DBUtils通用的增删查改</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/29/DBUtils/">DBUtils</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">数据库连接池</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/27/%E4%BA%8B%E5%8A%A1/">事务</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/27/%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">学生管理系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/26/JSTL/">JSTL</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/26/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">EL表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/JSP/">JSP</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/Session%E5%AE%9E%E7%8E%B0%E8%B4%AD%E7%89%A9%E8%BD%A6/">Session实现购物车</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E5%95%86%E5%93%81%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95/">Cookie获取商品浏览记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/Cookie%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E7%99%BB%E5%BD%95%E6%97%B6%E9%97%B4/">Cookie获取上次登录时间</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/23/Session/">Session</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/23/Cookie/">Cookie</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/19/Linux/">Linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/18/ServletContext/">ServletContext</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/18/HTTPServletReauest%E5%92%8CHTTPServletResponse/">HTTPServletReauest和HTTPServletResponse</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/17/Servlet/">Servlet</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/17/HTTP%E5%8D%8F%E8%AE%AE/">HTTP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/16/Tomcat/">Tomcat</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/16/dom4j%E5%85%A5%E9%97%A8/">dom4j入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/XML/">XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93cmd%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BB%A5%E5%90%8E%E5%86%99%EF%BC%89/">数据库cmd的操作（以后写）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA%E6%9F%A5%E7%9C%8B%E5%88%A0%E9%99%A4/">数据库的创建查看删除</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/14/JDBC%E4%B8%AD%E7%9A%84JAVAEE%E7%BB%93%E6%9E%84/">JDBC中的JAVAEE结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/13/JDBC%E5%AF%B9%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84CRUD/">数据库的CRUD</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/JDBC%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/">JDBC的工具类</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/bootstrap%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5/">bootstrap实现网站首页</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/boostrap%E5%AE%9E%E7%8E%B0%E5%AF%BC%E8%88%AA%E6%9D%A1/">boostrap实现导航条</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/JQ%E5%AE%9E%E7%8E%B0%E8%80%81%E9%BB%84%E5%8E%86/">JQ实现老黄历</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/">JQ实现表单校验</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/Bootstrap/">Bootstrap</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E5%95%86%E5%93%81%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/">JQ实现商品左右选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8/">JQ实现省市联动</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/">JQ实现表格隔行换色</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/09/JQ%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4/">JQ实现表单属性过滤</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/08/JQuery%E9%80%89%E6%8B%A9%E5%99%A8/">JQuery选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/08/JQuery%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6%E6%92%AD%E6%94%BE%E5%B9%BF%E5%91%8A/">JQuery实现定时播放广告</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JQuery/">JQuery</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E6%8E%A7%E5%88%B6%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E5%B7%A6%E5%8F%B3%E9%80%89%E6%8B%A9/">JS控制下拉列表左右选择</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E5%8D%95%E6%A3%80%E9%AA%8C%EF%BC%88%E4%BD%BF%E7%94%A8onfoucs%E7%AD%89%E7%84%A6%E7%82%B9%E6%97%B6%E9%97%B4%EF%BC%89/">JS实现表单检验（使用onfoucs等焦点时间）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0%E8%A1%A8%E6%A0%BC%E5%8F%98%E8%89%B2%E5%92%8C%E5%85%A8%E9%80%89%E9%97%AE%E9%A2%98/">JS实现表格变色和全选问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/07/JS%E5%AE%9E%E7%8E%B0DOM%E6%93%8D%E4%BD%9C%EF%BC%88%E5%85%B3%E4%BA%8Eselect%E6%A0%87%E7%AD%BE%E7%9A%84%E4%B8%8B%E6%8B%89%E7%9C%81%E5%B8%82%E8%81%94%E5%8A%A8%EF%BC%89/">JS实现DOM操作（关于select标签的下拉省市联动）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/JS%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE%E5%B9%BF%E5%91%8A/">JS实现页面表单表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/JS%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD%E5%9B%BE/">JS实现轮播图</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/JS/">JS</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/CSS%E7%BD%91%E7%AB%99%E6%B3%A8%E5%86%8C%E6%A1%88%E4%BE%8B/">CSS网站注册案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/04/CSS-div%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E4%BC%98%E5%8C%96/">CSS+div实现网站首页优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/CSS/">CSS和DIV</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/HTML%E7%BD%91%E7%AB%99%E5%90%8E%E5%8F%B0%E6%A1%88%E4%BE%8B/">网站后台案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/02/HTML%E7%BD%91%E7%AB%99%E6%B3%A8%E5%86%8C%E6%A1%88%E4%BE%8B/">网站注册案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/01/HTML%E7%BD%91%E7%AB%99%E9%A6%96%E9%A1%B5%E6%A1%88%E4%BE%8B/">HTML网站首页案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/01/HTML/">HTML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/30/%E5%8F%8D%E5%B0%84/">反射</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/28/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/">稀疏数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/%E7%BD%91%E7%BB%9C%E8%AF%BE%E8%AE%BE/">网络课设</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/webserver/">webserver</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/TCP/">TCP编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/17/%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE/">传输协议(UDP)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/13/%E7%AC%AC%E5%8D%81%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9B/">第十届蓝桥杯省赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/11/%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6/">等待唤醒机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A0%A1%E8%B5%9B/">蓝桥杯校赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/">线程状态</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/05/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/04/JAVA-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">JAVA-多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/List/">List接口</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Set/">Set集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式(regex)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/29/%E8%BF%AD%E4%BB%A3%E5%99%A8/">集合2</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/29/%E6%B3%9B%E5%9E%8B/">泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%BB%83%E4%B9%A0/">蓝桥杯</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/%E9%9B%86%E5%90%88/">集合1</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/Lambda/">Lambda表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/%E9%A1%B5%E9%9D%A2/">人机交互实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/17/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/%E7%88%AC%E6%A5%BC%E6%A2%AF/">以爬楼梯为例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/idea%E5%AE%89%E8%A3%85/">IntelliJ IDEA</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/%E6%8E%A5%E9%9B%A8%E6%B0%B4(%E5%8F%8C%E6%8C%87%E9%92%88)/">接雨水</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/%E4%B9%98%E6%9B%B4%E5%A4%9A%E7%9A%84%E6%B0%B4(%E5%8F%8C%E6%8C%87%E9%92%88)/">乘更多的水</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/04/wenzipian2/">文字篇2-《码农翻身》</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/28/hello-world/">git和github的操作整理</a></li></ul>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2026 Larkkkkkkk
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="http://bestwing.me" target="_blank">Sw'blog</a> by Swing
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/dist/require.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+  </div>
+</body>
+</html>
