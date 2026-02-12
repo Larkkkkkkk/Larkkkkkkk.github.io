@@ -36,7 +36,8 @@
     <script src="/js/pace.js"></script>
     <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/dist/require.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script>window.require = requirejs; window.define = define;</script>
+  <script src="/js/main"></script>
   <script>
       var yiliaConfig = {
           rootUrl: '/',
@@ -574,9 +575,7 @@
 </footer>
 
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/dist/require.min.js"></script>
-<script>window.require = requirejs; window.define = define;</script>
-<script src="/js/main"></script>
+    
 
     <script>
         $(document).ready(function() {
