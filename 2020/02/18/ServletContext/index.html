@@ -560,19 +560,23 @@
         var toc = document.getElementById('toc');
         var valueHide = "隐藏目录";
         var valueShow = "显示目录";
+        var isTocHidden = false;
         
         if (document.querySelector('.left-col') && document.querySelector('.left-col').offsetWidth === 0) {
             tocButton.value = valueShow;
+            isTocHidden = true;
         }
         
         if (tocButton && toc) {
             tocButton.addEventListener('click', function() {
-                if (toc.style.display === 'none') {
+                if (isTocHidden) {
                     tocButton.value = valueHide;
                     toc.style.display = 'block';
+                    isTocHidden = false;
                 } else {
                     tocButton.value = valueShow;
                     toc.style.display = 'none';
+                    isTocHidden = true;
                 }
             });
         }

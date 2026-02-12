@@ -3158,7 +3158,8 @@ a.gitment-editor-footer-tip:hover {
   width: 100%;
   border: 1px solid #dedede;
   margin: 20px 0;
-  color: #fff;
+  color: #333;
+  background: #fff;
   border-collapse: collapse;
 }
 .article-entry table tr,
@@ -3166,15 +3167,19 @@ a.gitment-editor-footer-tip:hover {
   height: 35px;
 }
 .article-entry table thead tr {
-  background: #2d2d2d;
+  background: #258fb8;
+  color: #fff;
+}
+.article-entry table tbody tr:nth-child(even) {
+  background: #f9f9f9;
 }
 .article-entry table tbody tr:hover {
-  background: #151414;
+  background: #e6f7ff;
 }
 .article-entry table td,
 .article-entry table th {
-  border: 1px solid #020202;
-  padding: 0 10px;
+  border: 1px solid #ddd;
+  padding: 8px 15px;
 }
 .article-entry figure table {
   border: none;
