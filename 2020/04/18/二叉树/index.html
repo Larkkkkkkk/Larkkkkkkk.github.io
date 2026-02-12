@@ -99,47 +99,39 @@
         
         
             <script type="text/javascript">
-                (function() {
-                    'use strict';
-                    function getMatchData(keyword, data) {
-                        var matchData = [];
-                        for(var i =0;i<data.length;i++){
-                            if(data[i].title.toLowerCase().indexOf(keyword)>=0)
-                                matchData.push(data[i])
-                        }
-                        return matchData;
-                    }
+                $(document).ready(function() {
                     var $input = $('#local-search-input');
                     var $resultContent = $('#local-search-result');
-                    $input.on('input keyup', function(){
-                        $.ajax({
-                            url: '/search.json',
-                            dataType: "json",
-                            success: function( json ) {
-                                var str='<ul class="search-result-list">';
-                                var keyword = $input.val().trim().toLowerCase();
-                                $resultContent.html("");
-                                if ($input.val().trim().length <= 0) {
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
+                    
+                    $input.on('input', function() {
+                        var keyword = $input.val().trim().toLowerCase();
+                        if (keyword.length <= 0) {
+                            $resultContent.hide();
+                            return;
+                        }
+                        
+                        $.getJSON('/search.json', function(data) {
+                            var str = '<ul class="search-result-list">';
+                            var matchData = [];
+                            
+                            for(var i = 0; i < data.length; i++) {
+                                if(data[i].title.toLowerCase().indexOf(keyword) >= 0) {
+                                    matchData.push(data[i]);
                                 }
-                                var results = getMatchData(keyword, json);
-                                if(results.length === 0){
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                }
-                                for(var i =0; i<results.length; i++){
-                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
-                                }
-                                str += "</ul>";
-                                $resultContent.html(str);
-                                $('#switch-area').hide();
                             }
+                            
+                            if(matchData.length === 0) {
+                                str += '<li>没有找到结果</li>';
+                            } else {
+                                for(var i = 0; i < matchData.length; i++) {
+                                    str += '<li><a href="' + matchData[i].url + '" class="search-result-title">' + matchData[i].title + '</a></li>';
+                                }
+                            }
+                            str += '</ul>';
+                            $resultContent.html(str).show();
                         });
                     });
-                })();
+                });
             </script>
         
         
@@ -679,7 +671,7 @@
   
 </article>
 
-    <div id="toc" class="toc-article">
+    <div id="toc" class="toc-article" style="display: block;">
     <strong class="toc-title">文章目录</strong>
     <style>
         .toc .toc-number { display: none !important; }
@@ -687,43 +679,20 @@
     </style>
     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树-任何子节点数-lt-2"><span class="toc-number">1.</span> <span class="toc-text">二叉树(任何子节点数&lt;&#x3D;2)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#存储方式"><span class="toc-number">1.1.</span> <span class="toc-text">存储方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#满二叉树-很完美"><span class="toc-number">2.</span> <span class="toc-text">满二叉树(很完美)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#完全二叉树-编号没有间断"><span class="toc-number">3.</span> <span class="toc-text">完全二叉树(编号没有间断)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树链式存储"><span class="toc-number">4.</span> <span class="toc-text">二叉树链式存储</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#实现功能"><span class="toc-number">4.1.</span> <span class="toc-text">实现功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三种遍历方法解析"><span class="toc-number">4.2.</span> <span class="toc-text">三种遍历方法解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找节点"><span class="toc-number">4.3.</span> <span class="toc-text">查找节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除子树"><span class="toc-number">4.4.</span> <span class="toc-text">删除子树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整代码"><span class="toc-number">4.5.</span> <span class="toc-text">完整代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BinaryTree类"><span class="toc-number">4.5.1.</span> <span class="toc-text">BinaryTree类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeNode类"><span class="toc-number">4.5.2.</span> <span class="toc-text">TreeNode类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TestBinaryTree类"><span class="toc-number">4.5.3.</span> <span class="toc-text">TestBinaryTree类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉树顺序存储"><span class="toc-number">5.</span> <span class="toc-text">二叉树顺序存储</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#顺序存储的性质"><span class="toc-number">5.1.</span> <span class="toc-text">顺序存储的性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体类-三种遍历"><span class="toc-number">5.2.</span> <span class="toc-text">具体类(三种遍历)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类"><span class="toc-number">5.3.</span> <span class="toc-text">测试类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线索二叉树-双向链表"><span class="toc-number">6.</span> <span class="toc-text">线索二叉树(双向链表)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现-可知前后节点信息"><span class="toc-number">6.1.</span> <span class="toc-text">具体实现(可知前后节点信息)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#中序线索化二叉树-关键点"><span class="toc-number">6.1.1.</span> <span class="toc-text">中序线索化二叉树(关键点)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历"><span class="toc-number">6.1.2.</span> <span class="toc-text">遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整代码如下-三个类"><span class="toc-number">6.2.</span> <span class="toc-text">完整代码如下(三个类)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ThreadedBinaryTree类-二叉树的基础上添加中序线索树和遍历的方法"><span class="toc-number">6.2.1.</span> <span class="toc-text">ThreadedBinaryTree类(二叉树的基础上添加中序线索树和遍历的方法)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TestThreadedBinaryTree测试类"><span class="toc-number">6.2.2.</span> <span class="toc-text">TestThreadedBinaryTree测试类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ThreadedNode节点类-只需要添加左右指针类型"><span class="toc-number">6.2.3.</span> <span class="toc-text">ThreadedNode节点类(只需要添加左右指针类型)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉排序树BST-二叉查找树-二叉搜索树"><span class="toc-number">7.</span> <span class="toc-text">二叉排序树BST(二叉查找树&#x2F;二叉搜索树)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现的代码框架"><span class="toc-number">7.1.</span> <span class="toc-text">具体实现的代码框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建二叉排序树-添加节点"><span class="toc-number">7.2.</span> <span class="toc-text">创建二叉排序树(添加节点)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现思路"><span class="toc-number">7.2.1.</span> <span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BinarySortTree类写方法"><span class="toc-number">7.2.2.</span> <span class="toc-text">BinarySortTree类写方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node类具体实现"><span class="toc-number">7.2.3.</span> <span class="toc-text">Node类具体实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找节点-1"><span class="toc-number">7.3.</span> <span class="toc-text">查找节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现思路-1"><span class="toc-number">7.3.1.</span> <span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BinarySortTree类写方法-1"><span class="toc-number">7.3.2.</span> <span class="toc-text">BinarySortTree类写方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node类具体实现-1"><span class="toc-number">7.3.3.</span> <span class="toc-text">Node类具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试添加节点和查询功能"><span class="toc-number">7.3.4.</span> <span class="toc-text">测试添加节点和查询功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除节点"><span class="toc-number">7.4.</span> <span class="toc-text">删除节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三种情况概述"><span class="toc-number">7.4.1.</span> <span class="toc-text">三种情况概述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除叶子节点-2种情况"><span class="toc-number">7.5.</span> <span class="toc-text">删除叶子节点(2种情况)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现思路-2"><span class="toc-number">7.5.1.</span> <span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BinarySortTree类写方法-2"><span class="toc-number">7.5.2.</span> <span class="toc-text">BinarySortTree类写方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node类具体实现-2"><span class="toc-number">7.5.3.</span> <span class="toc-text">Node类具体实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除有一颗子树的节点-4种情况"><span class="toc-number">7.6.</span> <span class="toc-text">删除有一颗子树的节点(4种情况)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现思路-3"><span class="toc-number">7.6.1.</span> <span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BinarySortTree类写方法-3"><span class="toc-number">7.6.2.</span> <span class="toc-text">BinarySortTree类写方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除有两颗子树的节点-2种情况"><span class="toc-number">7.7.</span> <span class="toc-text">删除有两颗子树的节点(2种情况)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现思路-4"><span class="toc-number">7.7.1.</span> <span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BinarySortTree类写方法-4"><span class="toc-number">7.7.2.</span> <span class="toc-text">BinarySortTree类写方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整代码-1"><span class="toc-number">7.8.</span> <span class="toc-text">完整代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BinarySortTree类写方法-5"><span class="toc-number">7.8.1.</span> <span class="toc-text">BinarySortTree类写方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node类写具体实现"><span class="toc-number">7.8.2.</span> <span class="toc-text">Node类写具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TestBinarySortTree类"><span class="toc-number">7.8.3.</span> <span class="toc-text">TestBinarySortTree类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结果展示"><span class="toc-number">7.8.4.</span> <span class="toc-text">结果展示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#平衡二叉树-AVL树"><span class="toc-number">8.</span> <span class="toc-text">平衡二叉树(AVL树)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#平衡二叉树概念"><span class="toc-number">8.1.</span> <span class="toc-text">平衡二叉树概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备获高度方法和add方法添加判断平衡"><span class="toc-number">8.2.</span> <span class="toc-text">准备获高度方法和add方法添加判断平衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造平衡二叉树-单旋转"><span class="toc-number">8.3.</span> <span class="toc-text">构造平衡二叉树(单旋转)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#左左情况-右旋转"><span class="toc-number">8.3.1.</span> <span class="toc-text">左左情况(右旋转)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#右右情况-左旋转"><span class="toc-number">8.3.2.</span> <span class="toc-text">右右情况(左旋转)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整代码-2"><span class="toc-number">8.3.3.</span> <span class="toc-text">完整代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造平衡二叉树-双旋转"><span class="toc-number">8.4.</span> <span class="toc-text">构造平衡二叉树(双旋转)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#双旋转条件"><span class="toc-number">8.4.1.</span> <span class="toc-text">双旋转条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node类更新-单循环添加特定条件"><span class="toc-number">8.4.2.</span> <span class="toc-text">Node类更新(单循环添加特定条件)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多路查找树"><span class="toc-number">9.</span> <span class="toc-text">多路查找树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据存储原理"><span class="toc-number">9.1.</span> <span class="toc-text">数据存储原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3树原理"><span class="toc-number">9.2.</span> <span class="toc-text">2-3树原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B树和B-树原理"><span class="toc-number">9.3.</span> <span class="toc-text">B树和B+树原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B树和B-树的区别"><span class="toc-number">9.3.1.</span> <span class="toc-text">B树和B+树的区别</span></a></li></ol></li></ol></li></ol>
 </div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<input type="button" id="tocButton" value="隐藏目录" onclick="toggleToc()">
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var tocButton = document.getElementById('tocButton');
-        var toc = document.getElementById('toc');
-        var valueHide = "隐藏目录";
-        var valueShow = "显示目录";
-        var isTocHidden = false;
-        
-        if (document.querySelector('.left-col') && document.querySelector('.left-col').offsetWidth === 0) {
-            tocButton.value = valueShow;
-            isTocHidden = true;
-        }
-        
-        if (tocButton && toc) {
-            tocButton.addEventListener('click', function() {
-                if (isTocHidden) {
-                    tocButton.value = valueHide;
-                    toc.style.display = 'block';
-                    isTocHidden = false;
-                } else {
-                    tocButton.value = valueShow;
-                    toc.style.display = 'none';
-                    isTocHidden = true;
-                }
-            });
-        }
-        
-        var tocElements = document.querySelectorAll('.toc');
-        if (tocElements.length < 1) {
-            tocButton.style.display = 'none';
-        }
-    });
+function toggleToc() {
+    var toc = document.getElementById('toc');
+    var btn = document.getElementById('tocButton');
+    if (toc.style.display === 'none') {
+        toc.style.display = 'block';
+        btn.value = '隐藏目录';
+    } else {
+        toc.style.display = 'none';
+        btn.value = '显示目录';
+    }
+}
 </script>
 
 

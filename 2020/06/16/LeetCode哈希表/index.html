@@ -87,47 +87,39 @@
         
         
             <script type="text/javascript">
-                (function() {
-                    'use strict';
-                    function getMatchData(keyword, data) {
-                        var matchData = [];
-                        for(var i =0;i<data.length;i++){
-                            if(data[i].title.toLowerCase().indexOf(keyword)>=0)
-                                matchData.push(data[i])
-                        }
-                        return matchData;
-                    }
+                $(document).ready(function() {
                     var $input = $('#local-search-input');
                     var $resultContent = $('#local-search-result');
-                    $input.on('input keyup', function(){
-                        $.ajax({
-                            url: '/search.json',
-                            dataType: "json",
-                            success: function( json ) {
-                                var str='<ul class="search-result-list">';
-                                var keyword = $input.val().trim().toLowerCase();
-                                $resultContent.html("");
-                                if ($input.val().trim().length <= 0) {
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
+                    
+                    $input.on('input', function() {
+                        var keyword = $input.val().trim().toLowerCase();
+                        if (keyword.length <= 0) {
+                            $resultContent.hide();
+                            return;
+                        }
+                        
+                        $.getJSON('/search.json', function(data) {
+                            var str = '<ul class="search-result-list">';
+                            var matchData = [];
+                            
+                            for(var i = 0; i < data.length; i++) {
+                                if(data[i].title.toLowerCase().indexOf(keyword) >= 0) {
+                                    matchData.push(data[i]);
                                 }
-                                var results = getMatchData(keyword, json);
-                                if(results.length === 0){
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                }
-                                for(var i =0; i<results.length; i++){
-                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
-                                }
-                                str += "</ul>";
-                                $resultContent.html(str);
-                                $('#switch-area').hide();
                             }
+                            
+                            if(matchData.length === 0) {
+                                str += '<li>没有找到结果</li>';
+                            } else {
+                                for(var i = 0; i < matchData.length; i++) {
+                                    str += '<li><a href="' + matchData[i].url + '" class="search-result-title">' + matchData[i].title + '</a></li>';
+                                }
+                            }
+                            str += '</ul>';
+                            $resultContent.html(str).show();
                         });
                     });
-                })();
+                });
             </script>
         
         
@@ -497,7 +489,7 @@
   
 </article>
 
-    <div id="toc" class="toc-article">
+    <div id="toc" class="toc-article" style="display: block;">
     <strong class="toc-title">文章目录</strong>
     <style>
         .toc .toc-number { display: none !important; }
@@ -505,43 +497,20 @@
     </style>
     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#面试10-02-变位词组-HashMap"><span class="toc-number">1.</span> <span class="toc-text">面试10.02 变位词组(HashMap)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">1.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.3.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果"><span class="toc-number">1.4.</span> <span class="toc-text">结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#面试16-02-单词频率-HashMap"><span class="toc-number">2.</span> <span class="toc-text">面试16.02 单词频率(HashMap)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-1"><span class="toc-number">2.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-1"><span class="toc-number">2.3.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果-1"><span class="toc-number">2.4.</span> <span class="toc-text">结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#剑指offer50-第一次只出现一次的字符-count-s-charAt-i-97-1"><span class="toc-number">3.</span> <span class="toc-text">剑指offer50 第一次只出现一次的字符(count[s.charAt(i)-97]&#x3D;&#x3D;1)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-2"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-2"><span class="toc-number">3.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-2"><span class="toc-number">3.3.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果-2"><span class="toc-number">3.4.</span> <span class="toc-text">结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#面试16-24-数对和-双指针-list集合"><span class="toc-number">4.</span> <span class="toc-text">面试16.24 数对和(双指针+list集合)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目-3"><span class="toc-number">4.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-3"><span class="toc-number">4.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码-3"><span class="toc-number">4.3.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果-3"><span class="toc-number">4.4.</span> <span class="toc-text">结果</span></a></li></ol></li></ol>
 </div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<input type="button" id="tocButton" value="隐藏目录" onclick="toggleToc()">
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var tocButton = document.getElementById('tocButton');
-        var toc = document.getElementById('toc');
-        var valueHide = "隐藏目录";
-        var valueShow = "显示目录";
-        var isTocHidden = false;
-        
-        if (document.querySelector('.left-col') && document.querySelector('.left-col').offsetWidth === 0) {
-            tocButton.value = valueShow;
-            isTocHidden = true;
-        }
-        
-        if (tocButton && toc) {
-            tocButton.addEventListener('click', function() {
-                if (isTocHidden) {
-                    tocButton.value = valueHide;
-                    toc.style.display = 'block';
-                    isTocHidden = false;
-                } else {
-                    tocButton.value = valueShow;
-                    toc.style.display = 'none';
-                    isTocHidden = true;
-                }
-            });
-        }
-        
-        var tocElements = document.querySelectorAll('.toc');
-        if (tocElements.length < 1) {
-            tocButton.style.display = 'none';
-        }
-    });
+function toggleToc() {
+    var toc = document.getElementById('toc');
+    var btn = document.getElementById('tocButton');
+    if (toc.style.display === 'none') {
+        toc.style.display = 'block';
+        btn.value = '隐藏目录';
+    } else {
+        toc.style.display = 'none';
+        btn.value = '显示目录';
+    }
+}
 </script>
 
 
