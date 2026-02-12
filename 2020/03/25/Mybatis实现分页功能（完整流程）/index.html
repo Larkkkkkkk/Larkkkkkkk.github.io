@@ -44,13 +44,28 @@
   <!-- 加载特效 -->
     <script src="/js/pace.js"></script>
     <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
-  <script src="/js/jquery-1.9.1.min.js"></script>
-  <script src="/js/require.min.js"></script>
   <script>
-      window.require = requirejs;
-      window.define = define;
+    // 确保jQuery先加载
+    (function() {
+      var script = document.createElement('script');
+      script.src = '/js/jquery-1.9.1.min.js';
+      script.onload = function() {
+        // jQuery加载后再加载RequireJS
+        var requireScript = document.createElement('script');
+        requireScript.src = '/js/require.min.js';
+        requireScript.onload = function() {
+          window.require = requirejs;
+          window.define = define;
+          // 最后加载main.js
+          var mainScript = document.createElement('script');
+          mainScript.src = '/js/main';
+          document.head.appendChild(mainScript);
+        };
+        document.head.appendChild(requireScript);
+      };
+      document.head.appendChild(script);
+    })();
   </script>
-  <script src="/js/main"></script>
   <script>
       var yiliaConfig = {
           rootUrl: '/',
@@ -476,7 +491,6 @@
             </div>
           </div>
         </div>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
         <script type="text/javascript">
           $(".pay_item").click(function(){
             $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
