@@ -85,61 +85,69 @@
         
         
             <form>
-                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索文章标题..." autocomplete="off">
             </form>
-            <div id="local-search-result"></div>
+            <div id="local-search-result" style="position:absolute;z-index:1000;width:280px;max-height:300px;overflow-y:auto;background:#fff;border:1px solid #ddd;border-radius:4px;margin-top:5px;padding:10px;display:none;box-shadow:0 2px 10px rgba(0,0,0,0.2);"></div>
         
         
             <script type="text/javascript">
+                var searchData = null;
+                var searchLoaded = false;
+                
+                function performSearch(keyword) {
+                    var $resultContent = $('#local-search-result');
+                    var str = '<ul class="search-result-list" style="list-style:none;padding:0;margin:0;">';
+                    var matchData = [];
+                    
+                    for(var i = 0; i < searchData.length; i++) {
+                        var title = (searchData[i].title || '').toLowerCase();
+                        if(title.indexOf(keyword) >= 0) {
+                            matchData.push(searchData[i]);
+                        }
+                    }
+                    
+                    if(matchData.length === 0) {
+                        str += '<li style="padding:8px 0;color:#999;">没有找到结果</li>';
+                    } else {
+                        for(var i = 0; i < Math.min(matchData.length, 20); i++) {
+                            str += '<li style="padding:8px 0;border-bottom:1px solid #eee;"><a href="' + matchData[i].url + '" style="color:#333;text-decoration:none;font-size:14px;">' + matchData[i].title + '</a></li>';
+                        }
+                        if(matchData.length > 20) {
+                            str += '<li style="padding:8px 0;color:#999;">...还有 ' + (matchData.length - 20) + ' 条结果</li>';
+                        }
+                    }
+                    str += '</ul>';
+                    $resultContent.html(str).show();
+                }
+                
                 $(document).ready(function() {
                     var $input = $('#local-search-input');
                     var $resultContent = $('#local-search-result');
-                    var searchData = null;
                     
                     $input.on('input', function() {
-                        var keyword = $input.val().trim().toLowerCase();
+                        var keyword = $(this).val().trim().toLowerCase();
+                        
                         if (keyword.length <= 0) {
                             $resultContent.hide();
                             return;
                         }
                         
-                        if (!searchData) {
+                        if (!searchLoaded) {
                             $.getJSON('/search.json', function(data) {
                                 searchData = data;
+                                searchLoaded = true;
                                 performSearch(keyword);
                             }).fail(function(jqXHR, textStatus, errorThrown) {
                                 console.error('Failed to load search.json:', textStatus, errorThrown);
-                                $resultContent.html('<ul class="search-result-list"><li>搜索加载失败，请刷新页面重试</li></ul>').show();
                             });
                         } else {
                             performSearch(keyword);
                         }
-                        
-                        function performSearch(keyword) {
-                            var str = '<ul class="search-result-list">';
-                            var matchData = [];
-                            
-                            for(var i = 0; i < searchData.length; i++) {
-                                var title = (searchData[i].title || '').toLowerCase();
-                                var content = (searchData[i].content || '').toLowerCase();
-                                
-                                if(title.indexOf(keyword) >= 0 || content.indexOf(keyword) >= 0) {
-                                    matchData.push(searchData[i]);
-                                }
-                            }
-                            
-                            if(matchData.length === 0) {
-                                str += '<li>没有找到结果</li>';
-                            } else {
-                                for(var i = 0; i < Math.min(matchData.length, 20); i++) {
-                                    str += '<li><a href="' + matchData[i].url + '" class="search-result-title">' + matchData[i].title + '</a></li>';
-                                }
-                                if(matchData.length > 20) {
-                                    str += '<li>...还有 ' + (matchData.length - 20) + ' 条结果</li>';
-                                }
-                            }
-                            str += '</ul>';
-                            $resultContent.html(str).show();
+                    });
+                    
+                    $(document).on('click', function(e) {
+                        if (!$(e.target).closest('#local-search-input').length) {
+                            $resultContent.hide();
                         }
                     });
                 });
