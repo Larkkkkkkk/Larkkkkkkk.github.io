@@ -101,6 +101,7 @@
                 $(document).ready(function() {
                     var $input = $('#local-search-input');
                     var $resultContent = $('#local-search-result');
+                    var searchData = null;
                     
                     $input.on('input', function() {
                         var keyword = $input.val().trim().toLowerCase();
@@ -109,26 +110,44 @@
                             return;
                         }
                         
-                        $.getJSON('/search.json', function(data) {
+                        if (!searchData) {
+                            $.getJSON('/search.json', function(data) {
+                                searchData = data;
+                                performSearch(keyword);
+                            }).fail(function(jqXHR, textStatus, errorThrown) {
+                                console.error('Failed to load search.json:', textStatus, errorThrown);
+                                $resultContent.html('<ul class="search-result-list"><li>搜索加载失败，请刷新页面重试</li></ul>').show();
+                            });
+                        } else {
+                            performSearch(keyword);
+                        }
+                        
+                        function performSearch(keyword) {
                             var str = '<ul class="search-result-list">';
                             var matchData = [];
                             
-                            for(var i = 0; i < data.length; i++) {
-                                if(data[i].title.toLowerCase().indexOf(keyword) >= 0) {
-                                    matchData.push(data[i]);
+                            for(var i = 0; i < searchData.length; i++) {
+                                var title = (searchData[i].title || '').toLowerCase();
+                                var content = (searchData[i].content || '').toLowerCase();
+                                
+                                if(title.indexOf(keyword) >= 0 || content.indexOf(keyword) >= 0) {
+                                    matchData.push(searchData[i]);
                                 }
                             }
                             
                             if(matchData.length === 0) {
                                 str += '<li>没有找到结果</li>';
                             } else {
-                                for(var i = 0; i < matchData.length; i++) {
+                                for(var i = 0; i < Math.min(matchData.length, 20); i++) {
                                     str += '<li><a href="' + matchData[i].url + '" class="search-result-title">' + matchData[i].title + '</a></li>';
+                                }
+                                if(matchData.length > 20) {
+                                    str += '<li>...还有 ' + (matchData.length - 20) + ' 条结果</li>';
                                 }
                             }
                             str += '</ul>';
                             $resultContent.html(str).show();
-                        });
+                        }
                     });
                 });
             </script>
