@@ -225,16 +225,29 @@
                 var searchLoaded = false;
                 
                 function performSearch(keyword) {
+                    console.log('Searching for:', keyword);
                     var $resultContent = $('#local-search-result');
                     var str = '<ul class="search-result-list" style="list-style:none;padding:0;margin:0;">';
                     var matchData = [];
                     
+                    if (!searchData || searchData.length === 0) {
+                        console.log('No search data available');
+                        str += '<li style="padding:8px 0;color:#999;">搜索数据未加载</li>';
+                        $resultContent.html(str).show();
+                        return;
+                    }
+                    
+                    console.log('Total posts:', searchData.length);
+                    
                     for(var i = 0; i < searchData.length; i++) {
                         var title = (searchData[i].title || '').toLowerCase();
+                        console.log('Checking title:', searchData[i].title);
                         if(title.indexOf(keyword) >= 0) {
                             matchData.push(searchData[i]);
                         }
                     }
+                    
+                    console.log('Found matches:', matchData.length);
                     
                     if(matchData.length === 0) {
                         str += '<li style="padding:8px 0;color:#999;">没有找到结果</li>';
@@ -256,6 +269,7 @@
                     
                     $input.on('input', function() {
                         var keyword = $(this).val().trim().toLowerCase();
+                        console.log('Input keyword:', keyword);
                         
                         if (keyword.length <= 0) {
                             $resultContent.hide();
@@ -263,9 +277,11 @@
                         }
                         
                         if (!searchLoaded) {
+                            console.log('Loading search.json...');
                             $.getJSON('/search.json', function(data) {
                                 searchData = data;
                                 searchLoaded = true;
+                                console.log('Search data loaded, total:', data.length);
                                 performSearch(keyword);
                             }).fail(function(jqXHR, textStatus, errorThrown) {
                                 console.error('Failed to load search.json:', textStatus, errorThrown);
