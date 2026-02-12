@@ -78,21 +78,21 @@
                     function getMatchData(keyword, data) {
                         var matchData = [];
                         for(var i =0;i<data.length;i++){
-                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0)
                                 matchData.push(data[i])
                         }
                         return matchData;
                     }
                     var $input = $('#local-search-input');
                     var $resultContent = $('#local-search-result');
-                    $input.keyup(function(){
+                    $input.on('input keyup', function(){
                         $.ajax({
                             url: '/search.json',
                             dataType: "json",
                             success: function( json ) {
-                                var str='<ul class=\"search-result-list\">';                
+                                var str='<ul class="search-result-list">';
                                 var keyword = $input.val().trim().toLowerCase();
-                                $resultContent.innerHTML = "";
+                                $resultContent.html("");
                                 if ($input.val().trim().length <= 0) {
                                     $resultContent.empty();
                                     $('#switch-area').show();
@@ -103,13 +103,12 @@
                                     $resultContent.empty();
                                     $('#switch-area').show();
                                     return;
-                                } 
+                                }
                                 for(var i =0; i<results.length; i++){
                                     str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
                                 }
                                 str += "</ul>";
-                                $resultContent.empty();
-                                $resultContent.append(str);
+                                $resultContent.html(str);
                                 $('#switch-area').hide();
                             }
                         });

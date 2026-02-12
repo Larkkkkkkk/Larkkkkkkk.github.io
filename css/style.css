@@ -3068,8 +3068,14 @@ a.gitment-editor-footer-tip:hover {
   padding: 0;
   border: none;
   margin: -30px 0 20px 30px;
-  display: block;
-  overflow: visible;
+  display: block !important;
+  overflow: visible !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.article-tag.tagcloud {
+  display: block !important;
+  visibility: visible !important;
 }
 .article-entry {
   line-height: 1.8em;
@@ -4522,7 +4528,7 @@ pre .link_url {
 }
 .article-tag .article-tag-list-item a {
   display: inline-block;
-  background: #39b3d7 !important;
+  background: #333 !important;
   color: #fff !important;
   padding: 5px 12px !important;
   margin: 0 !important;
@@ -4531,7 +4537,7 @@ pre .link_url {
   text-decoration: none !important;
 }
 .article-tag .article-tag-list-item a:hover {
-  opacity: 0.85;
+  opacity: 0.8;
 }
 .article-tag:before {
   float: left;
