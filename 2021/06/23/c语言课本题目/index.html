@@ -135,82 +135,92 @@
         
         
             <script type="text/javascript">
-                var searchData = null;
-                var searchLoaded = false;
-                
-                function performSearch(keyword) {
-                    console.log('Searching for:', keyword);
-                    var $resultContent = $('#local-search-result');
-                    var str = '<ul class="search-result-list" style="list-style:none;padding:0;margin:0;">';
-                    var matchData = [];
-                    
-                    if (!searchData || searchData.length === 0) {
-                        console.log('No search data available');
-                        str += '<li style="padding:8px 0;color:#999;">搜索数据未加载</li>';
-                        $resultContent.html(str).show();
+                // 等待jQuery加载完成
+                function initSearch() {
+                    if (typeof $ === 'undefined' || typeof jQuery === 'undefined') {
+                        setTimeout(initSearch, 50);
                         return;
                     }
                     
-                    console.log('Total posts:', searchData.length);
+                    var searchData = null;
+                    var searchLoaded = false;
                     
-                    for(var i = 0; i < searchData.length; i++) {
-                        var title = (searchData[i].title || '').toLowerCase();
-                        console.log('Checking title:', searchData[i].title);
-                        if(title.indexOf(keyword) >= 0) {
-                            matchData.push(searchData[i]);
-                        }
-                    }
-                    
-                    console.log('Found matches:', matchData.length);
-                    
-                    if(matchData.length === 0) {
-                        str += '<li style="padding:8px 0;color:#999;">没有找到结果</li>';
-                    } else {
-                        for(var i = 0; i < Math.min(matchData.length, 20); i++) {
-                            str += '<li style="padding:8px 0;border-bottom:1px solid #eee;"><a href="' + matchData[i].url + '" style="color:#333;text-decoration:none;font-size:14px;">' + matchData[i].title + '</a></li>';
-                        }
-                        if(matchData.length > 20) {
-                            str += '<li style="padding:8px 0;color:#999;">...还有 ' + (matchData.length - 20) + ' 条结果</li>';
-                        }
-                    }
-                    str += '</ul>';
-                    $resultContent.html(str).show();
-                }
-                
-                $(document).ready(function() {
-                    var $input = $('#local-search-input');
-                    var $resultContent = $('#local-search-result');
-                    
-                    $input.on('input', function() {
-                        var keyword = $(this).val().trim().toLowerCase();
-                        console.log('Input keyword:', keyword);
+                    function performSearch(keyword) {
+                        console.log('Searching for:', keyword);
+                        var $resultContent = $('#local-search-result');
+                        var str = '<ul class="search-result-list" style="list-style:none;padding:0;margin:0;">';
+                        var matchData = [];
                         
-                        if (keyword.length <= 0) {
-                            $resultContent.hide();
+                        if (!searchData || searchData.length === 0) {
+                            console.log('No search data available');
+                            str += '<li style="padding:8px 0;color:#999;">搜索数据未加载</li>';
+                            $resultContent.html(str).show();
                             return;
                         }
                         
-                        if (!searchLoaded) {
-                            console.log('Loading search.json...');
-                            $.getJSON('/search.json', function(data) {
-                                searchData = data;
-                                searchLoaded = true;
-                                console.log('Search data loaded, total:', data.length);
-                                performSearch(keyword);
-                            }).fail(function(jqXHR, textStatus, errorThrown) {
-                                console.error('Failed to load search.json:', textStatus, errorThrown);
-                            });
+                        console.log('Total posts:', searchData.length);
+                        
+                        for(var i = 0; i < searchData.length; i++) {
+                            var title = (searchData[i].title || '').toLowerCase();
+                            console.log('Checking title:', searchData[i].title);
+                            if(title.indexOf(keyword) >= 0) {
+                                matchData.push(searchData[i]);
+                            }
+                        }
+                        
+                        console.log('Found matches:', matchData.length);
+                        
+                        if(matchData.length === 0) {
+                            str += '<li style="padding:8px 0;color:#999;">没有找到结果</li>';
                         } else {
-                            performSearch(keyword);
+                            for(var i = 0; i < Math.min(matchData.length, 20); i++) {
+                                str += '<li style="padding:8px 0;border-bottom:1px solid #eee;"><a href="' + matchData[i].url + '" style="color:#333;text-decoration:none;font-size:14px;">' + matchData[i].title + '</a></li>';
+                            }
+                            if(matchData.length > 20) {
+                                str += '<li style="padding:8px 0;color:#999;">...还有 ' + (matchData.length - 20) + ' 条结果</li>';
+                            }
                         }
-                    });
+                        str += '</ul>';
+                        $resultContent.html(str).show();
+                    }
                     
-                    $(document).on('click', function(e) {
-                        if (!$(e.target).closest('#local-search-input').length) {
-                            $resultContent.hide();
-                        }
+                    $(document).ready(function() {
+                        var $input = $('#local-search-input');
+                        var $resultContent = $('#local-search-result');
+                        
+                        $input.on('input', function() {
+                            var keyword = $(this).val().trim().toLowerCase();
+                            console.log('Input keyword:', keyword);
+                            
+                            if (keyword.length <= 0) {
+                                $resultContent.hide();
+                                return;
+                            }
+                            
+                            if (!searchLoaded) {
+                                console.log('Loading search.json...');
+                                $.getJSON('/search.json', function(data) {
+                                    searchData = data;
+                                    searchLoaded = true;
+                                    console.log('Search data loaded, total:', data.length);
+                                    performSearch(keyword);
+                                }).fail(function(jqXHR, textStatus, errorThrown) {
+                                    console.error('Failed to load search.json:', textStatus, errorThrown);
+                                });
+                            } else {
+                                performSearch(keyword);
+                            }
+                        });
+                        
+                        $(document).on('click', function(e) {
+                            if (!$(e.target).closest('#local-search-input').length) {
+                                $resultContent.hide();
+                            }
+                        });
                     });
-                });
+                }
+                
+                initSearch();
             </script>
         
         
@@ -883,12 +893,19 @@ function toggleToc() {
     
 
     <script>
-        $(document).ready(function() {
-            var backgroundnum = 24;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
+        function initBackground() {
+            if (typeof $ === 'undefined') {
+                setTimeout(initBackground, 50);
+                return;
+            }
+            $(document).ready(function() {
+                var backgroundnum = 24;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+                $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            });
+        }
+        initBackground();
     </script>
 
 
@@ -901,40 +918,54 @@ function toggleToc() {
     <a href="#footer"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
+    function initScroll() {
+        if (typeof $ === 'undefined') {
+            setTimeout(initScroll, 50);
+            return;
+        }
+        $(document).ready(function() {
+            if ($("#comments").length < 1) {
+                $("#scroll > a:nth-child(2)").hide();
+            };
+        })
+    }
+    initScroll();
 </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 
   <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
+    function initTipTitle() {
+        if (typeof $ === 'undefined') {
+            setTimeout(initTipTitle, 50);
+            return;
+        }
+        $(function() {
+            $("a[title]").each(function() {
+                var a = $(this);
+                var title = a.attr('title');
+                if (title == undefined || title == "") return;
+                a.data('title', title).removeAttr('title').hover(
 
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
+                function() {
+                    var offset = a.offset();
+                    $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                        top: offset.top - a.outerHeight() - 15,
+                        left: offset.left + a.outerWidth()/2 + 1
+                    }).fadeIn(function() {
+                        var pop = $(this);
+                        setTimeout(function() {
+                            pop.remove();
+                        }, pop.text().length * 800);
+                    });
+                }, function() {
+                    $("#anchortitlecontainer").remove();
                 });
-            }, function() {
-                $("#anchortitlecontainer").remove();
             });
         });
-    });
+    }
+    initTipTitle();
 </script>
 
   </div>
